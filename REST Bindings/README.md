@@ -1,11 +1,8 @@
-# GS1 EPCIS 2.0 Bindings
+# GS1 EPCIS 2.0 REST Bindings
 
-
-
-A repository for the GS1 EPCIS 2.0 Working Group contribution.
+This folder contains the work in progress for the EPCIS 2.0 REST interface.
 The [EPCIS 2.0 REST bindings](openapi.yaml) are described using
-[OpenApi Specifications 3.01](https://github.com/OAI/OpenAPI-Specification/). We're also working on a
-[OData 4.x](https://www.odata.org) profile to describe the EPCIS query language. Please find the draft [here](EPCIS_query_odata.md)
+[OpenApi Specifications 3.01](https://github.com/OAI/OpenAPI-Specification/).
 
 
 ## Reading, editing and validating OpenAPI specification for EPCIS 2.0
