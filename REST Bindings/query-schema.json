@@ -1,0 +1,630 @@
+{
+  "title": "EPCIS Query parameters",
+  "type": "object",
+  "patternProperties": {
+    "eventType": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "GE_eventTime": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "LT_eventTime": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "GE_recordTime": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "LT_recordTime": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "EQ_action": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "EQ_bizStep": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "WD_readPoint": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "EQ_bizLocation": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "WD_bizLocation": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "EQ_bizTransaction_type": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "EQ_source_type": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "EQ_destination_type": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "EQ_transformationID": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "MATCH_epc": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "MATCH_parentID": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "MATCH_inputEPC": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "MATCH_outputEPC": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "MATCH_anyEPC": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "MATCH_epcClass": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "MATCH_inputEPCClass": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "MATCH_outputEPCClass": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "MATCH_anyEPCClass": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "^EQ_\\w+$": {
+      "oneOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        {
+          "oneOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "string",
+              "format": "date-time"
+            }
+          ]
+        }
+      ]
+    },
+    "^GT_\\w+$": {
+      "oneOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "string",
+          "format": "date-time"
+        }
+      ]
+    },
+    "^GE_\\w+$": {
+      "oneOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "string",
+          "format": "date-time"
+        }
+      ]
+    },
+    "^LT_\\w+$": {
+      "oneOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "string",
+          "format": "date-time"
+        }
+      ]
+    },
+    "^LE_\\w+$": {
+      "oneOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "string",
+          "format": "date-time"
+        }
+      ]
+    },
+    "^EQ_ILMD_\\w+$": {
+      "oneOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        {
+          "oneOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "string",
+              "format": "date-time"
+            }
+          ]
+        }
+      ]
+    },
+    "^GT_ILMD_\\w+$": {
+      "oneOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "string",
+          "format": "date-time"
+        }
+      ]
+    },
+    "^GE_ILMD_\\w+$": {
+      "oneOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "string",
+          "format": "date-time"
+        }
+      ]
+    },
+    "^LT_ILMD_\\w+$": {
+      "oneOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "string",
+          "format": "date-time"
+        }
+      ]
+    },
+    "^LE_ILMD_\\w+$": {
+      "oneOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "string",
+          "format": "date-time"
+        }
+      ]
+    },
+    "^EQ_INNER_\\w+$": {
+      "oneOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        {
+          "oneOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "string",
+              "format": "date-time"
+            }
+          ]
+        }
+      ]
+    },
+    "^GT_INNER_\\w+$": {
+      "oneOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "string",
+          "format": "date-time"
+        }
+      ]
+    },
+    "^GE_INNER_\\w+$": {
+      "oneOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "string",
+          "format": "date-time"
+        }
+      ]
+    },
+    "^LT_INNER_\\w+$": {
+      "oneOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "string",
+          "format": "date-time"
+        }
+      ]
+    },
+    "^LE_INNER_\\w+$": {
+      "oneOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "string",
+          "format": "date-time"
+        }
+      ]
+    },
+    "^EQ_INNER_ILMD_\\w+$": {
+      "oneOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        {
+          "oneOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "string",
+              "format": "date-time"
+            }
+          ]
+        }
+      ]
+    },
+    "^GT_INNER_ILMD_\\w+$": {
+      "oneOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "string",
+          "format": "date-time"
+        }
+      ]
+    },
+    "^GE_INNER_ILMD_\\w+$": {
+      "oneOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "string",
+          "format": "date-time"
+        }
+      ]
+    },
+    "^LT_INNER_ILMD_\\w+$": {
+      "oneOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "string",
+          "format": "date-time"
+        }
+      ]
+    },
+    "^LE_INNER_ILMD_\\w+$": {
+      "oneOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "string",
+          "format": "date-time"
+        }
+      ]
+    },
+    "^EXISTS_\\w+$": {
+      "type": "integer",
+      "nullable": true
+    },
+    "^EXISTS_INNER_\\w+$": {
+      "type": "integer",
+      "nullable": true
+    },
+    "^EXISTS_ILMD_\\w+$": {
+      "type": "integer",
+      "nullable": true
+    },
+    "^EXISTS_INNER_ILMD_\\w+$": {
+      "type": "integer",
+      "nullable": true
+    },
+    "^HASATTR_\\w+$": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "^EQ_ATTR_\\w+_attrname$": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "EQ_eventID": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "GE_errorDeclaration_Time": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "LT_errorDeclaration_Time": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "EQ_errorReason": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "EQ_correctiveEventID": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "^EQ_ERROR_DECLARATION_\\w+$": {
+      "oneOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        {
+          "oneOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "string",
+              "format": "date-time"
+            }
+          ]
+        }
+      ]
+    },
+    "^GT_ERROR_DECLARATION_\\w+$": {
+      "oneOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "string",
+          "format": "date-time"
+        }
+      ]
+    },
+    "^GE_ERROR_DECLARATION_\\w+$": {
+      "oneOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "string",
+          "format": "date-time"
+        }
+      ]
+    },
+    "^LT_ERROR_DECLARATION_\\w+$": {
+      "oneOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "string",
+          "format": "date-time"
+        }
+      ]
+    },
+    "^LE_ERROR_DECLARATION_\\w+$": {
+      "oneOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "string",
+          "format": "date-time"
+        }
+      ]
+    },
+    "^EQ_INNER_ERROR_DECLARATION_\\w+$": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "^GT_INNER_ERROR_DECLARATION_\\w+$": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "^GE_INNER_ERROR_DECLARATION_\\w+$": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "^LT_INNER_ERROR_DECLARATION_\\w+$": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "^LE_INNER_ERROR_DECLARATION_\\w+$": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "^EXISTS_ERROR_DECLARATION_\\w+$": {
+      "type": "integer",
+      "nullable": true
+    },
+    "^EXISTS_INNER_ERROR_DECLARATION_\\w+$": {
+      "type": "integer",
+      "nullable": true
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

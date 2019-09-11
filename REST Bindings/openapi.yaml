@@ -1,0 +1,536 @@
+openapi: "3.0.1"
+info:
+  # Version of the EPCIS REST bindings document.
+  version: 2.0.1-alpha
+  title: EPCIS 2.0 REST Bindings
+  license:
+    name: Apache2
+
+paths:
+  /:
+    options:
+      summary: Query supported EPCIS version and related vocabularies/standards
+      parameters:
+        - $ref: '#/components/headers/X-EPCIS-version'
+        - $ref: '#/components/headers/X-EPCIS-min'
+        - $ref: '#/components/headers/X-EPCIS-max'
+        - $ref: '#/components/headers/X-CBV-version'
+        - $ref: '#/components/headers/X-EPCIS-extensions'
+        - $ref: '#/components/headers/X-CBV-extensions'
+        - $ref: '#/components/headers/X-vendor-version'
+
+      responses:
+        '200':
+          description: Server can comply with the EPCIS-related requirements from the client
+          content:
+            application/json:
+              schema:
+                {}
+
+  /capture:
+    post:
+      description: Creates a batch of EPCIS events.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+              uniqueItems: true
+      responses:
+        '200':
+          description: Successfully captured one or more EPCIS events.
+        '400':
+          description: Bad request. Malformed EPCIS event document.
+        '401':
+          description: Authorization information is missing or invalid.
+
+  /events:
+    get:
+      responses:
+        '200':
+          description: Returns all supported EPCIS event types.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EPCISEventTypes'
+
+        '401':
+          description: Authorization information is missing or invalid.
+        '5XX':
+          description: Unexpected error.
+
+
+  /events/{eventType}:
+    parameters:
+    - name: eventType
+      in: path
+      required: true
+      schema:
+        oneOf:
+          - $ref: '#/components/schemas/EPCISEventTypes'
+          - $ref: '#/components/schemas/AllEvent'
+
+    get:
+      operationId: getEvents
+      parameters:
+        - name: filter
+          in: query
+          schema:
+            $ref: '#/components/schemas/EPCISQuery'
+      description: Returns all EPCIS events of a given type.
+      responses:
+        '200':
+          description: Returns a list of EPCIS events of the type specified in the path.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                uniqueItems: true
+        '400':
+          $ref: '#/components/responses/40xQueryExceptions'
+        '414':
+          $ref: '#/components/responses/414QueryTooLong'
+        '412':
+          description: Mismatch of the event type constraint in the path and in the query.
+          content:
+            application/json:
+              schema:
+                type: string
+                enum:
+                - QueryParameterException
+
+  /events/{eventType}/{eventId}:
+    get:
+      operationId: getEvent
+      parameters:
+      - name: eventType
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/EPCISEventTypes'
+      - name: eventId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Accesses the EPCIS event corresponding to the given event id.
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
+          description: This event does not exists.
+
+  /queries:
+    get:
+      responses:
+        '200':
+          description: Returns a list of active queries.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NamedQueryMetaData'
+                uniqueItems: true
+        '400':
+          description: >-
+            Exceptions defined in EPCIS 1.2, section 8.2.6 for `getQueryNames`
+          content:
+            application/json:
+              schema:
+                type: string
+                enum:
+                - SecurityException
+                - ValidationException
+                - ImplementationException
+
+    post:
+      description: Creates a new named query.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NamedQueryMetaData'
+      responses:
+        '201':
+          description: A resource was created and the link to the newly created resource is returned in the header.
+          headers:
+            Location:
+              schema:
+                type: string
+                format: uri
+            Content-Location:
+              schema:
+                type: string
+                format: uri
+        '400':
+          $ref: '#/components/responses/40xQueryExceptions'
+        '414':
+          $ref: '#/components/responses/414QueryTooLong'
+
+  /queries/{queryName}/events:
+    get:
+      operationId: runNamedQuery
+      parameters:
+      - name: queryName
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Returns a list of EPCIS events that match the query named in the path.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                uniqueItems: true
+        '414':
+          $ref: '#/components/responses/414QueryTooLong'
+        '404':
+          description: Exceptions defined in EPCIS 1.2, section 8.2.6 for `poll`.
+          content:
+            application/json:
+              schema:
+                type: string
+                enum:
+                - NoSuchNameException
+        '400':
+          description: Exceptions defined in EPCIS 1.2, section 8.2.6 for `poll`.
+          content:
+            application/json:
+              schema:
+                  type: string
+                  enum:
+                  - SecurityException
+                  - ValidationException
+                  - ImplementationException
+
+  /queries/{queryName}/subscriptions:
+    parameters:
+    - name: queryName
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      summary: Create a new query subscription. You must specify either a trigger parameter or schedule parameter.
+      parameters:
+      - name: schedule
+        in: query
+        schema:
+          $ref: '#/components/schemas/QuerySchedule'
+      - name: trigger
+        in: query
+        schema:
+          $ref: '#/components/schemas/EPCISQuery'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - $ref: '#/components/schemas/TriggeredSubscriptionCallbackUrls'
+                - $ref: '#/components/schemas/ScheduledSubscriptionCallbackUrls'
+      responses:
+        '201':
+          description: A resource was created and the link to the newly created resource is returned in the header.
+          headers:
+            Location:
+              schema:
+                type: string
+                format: uri
+            Content-Location:
+              schema:
+                type: string
+                format: uri
+        '404':
+          description: Exceptions defined in EPCIS 1.2, section 8.2.6 for `poll`.
+          content:
+            application/json:
+              schema:
+                type: string
+                enum:
+                  - NoSuchNameException
+        '400':
+          description: Exceptions defined in EPCIS 1.2, section 8.2.6 for `subscribe`
+          content:
+            application/json:
+              schema:
+                type: string
+                enum:
+                - InvalidURIException
+                - DuplicateSubscriptionException
+                - QueryParameterException
+                - QueryTooComplexException
+                - SubscriptionControlsException
+                - SubscribeNotPermittedException
+                - SecurityException
+                - ValidationException
+                - ImplementationException
+      callbacks:
+        onTriggeredEvent:
+          '{$request.body#/triggerUrl}':
+            description: >-
+              Successfully subscribed to a stream of events that match the trigger conditions defined
+              in the trigger parameter.
+            post:
+              requestBody:
+                content:
+                  application/json:
+                    schema:
+                      type: array
+                      items:
+                        type: object
+                      uniqueItems: true
+              responses:
+                '200':
+                  description: Success
+        onScheduledEvent:
+          '{$request.body#/scheduleUrl}':
+            description: >-
+              Successfully subscribed to a stream of events that are delivered periodically as defined in the
+              schedule query parameter.
+            post:
+              requestBody:
+                content:
+                  application/json:
+                    schema:
+                      type: array
+                      items:
+                        type: object
+                      uniqueItems: true
+              responses:
+                '200':
+                  description: Success
+        onError:
+          '{$request.body#/errorUrl}':
+            description: The channel to receive errors an exceptions has been successfully established.
+            post:
+              requestBody:
+                content:
+                  application/json:
+                    schema:
+                      type: string
+                      enum:
+                      - SubscribeResult
+                      - NoSuchNameException
+                      - InvalidURIException
+                      - DuplicateSubscriptionException
+                      - QueryParameterException
+                      - QueryTooComplexException
+                      - SubscriptionControlsException
+                      - SubscribeNotPermittedException
+                      - SecurityException
+                      - ValidationException
+                      - ImplementationException
+              responses:
+                '200':
+                  description: Success
+
+  /queries/{queryName}/subscriptions/{subscriptionId}:
+    delete:
+      operationId: unsubscribeOperation
+      parameters:
+      - name: queryName
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: subscriptionId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '201':
+          description: Successfully unsubscribed.
+        '400':
+          description: Exceptions defined in EPCIS 1.2, section 8.2.6 for unsubscribe.
+          content:
+            application/json:
+              schema:
+                type: string
+                enum:
+                - NoSuchSubscriptionException
+                - SecurityException
+                - ValidationException
+                - ImplementationException
+
+
+components:
+  schemas:
+    ScheduledSubscriptionCallbackUrls:
+      description: A subscription for periodic updates
+      type: object
+      properties:
+        scheduleUrl:
+          type: string
+          format: uri
+        errorUrl:
+          type: string
+          format: uri
+
+    TriggeredSubscriptionCallbackUrls:
+      description: A subscription that listens for events that match a query rule
+      type: object
+      properties:
+        triggerUrl:
+          type: string
+          format: uri
+
+        errorUrl:
+          type: string
+          format: uri
+
+    QuerySubscriptionMetaData:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        callbacks:
+          oneOf:
+            - $ref: '#/components/schemas/TriggeredSubscriptionCallbackUrls'
+            - $ref: '#/components/schemas/ScheduledSubscriptionCallbackUrls'
+        createdAt:
+          type: string
+          format: date-time
+
+    NamedQueryMetaData:
+      type: object
+      required:
+      - name
+      - query
+      properties:
+        name:
+          type: string
+        query:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        epcisQuery:
+          $ref: '#/components/schemas/EPCISQuery'
+        activeSubscriptions:
+          type: array
+          items:
+            $ref: '#/components/schemas/QuerySubscriptionMetaData'
+          uniqueItems: true
+
+
+    EPCISQuery:
+      type: array
+      items:
+        type: object
+      uniqueItems: true
+      externalDocs:
+        url: https://...
+        description: Filter EPCIS events by properties using the [EPCIS query JSON-Schema](query-schema.json)
+
+    QuerySchedule:
+      type: object
+      properties:
+        second:
+          type: string
+        minute:
+          type: string
+        hour:
+          type: string
+        dayOfMonth:
+          type: string
+        month:
+          type: string
+        dayOfWeek:
+          type: string
+
+    AllEvent:
+      type: string
+      description: A virtual EPCIS event superset.
+      enum: [all]
+
+    EPCISEventTypes:
+      type: string
+      description: The four types of EPCIS events.
+      enum:
+      - ObjectEvent
+      - AggregationEvent
+      - TransformationEvent
+      - TransactionEvent
+
+
+
+  responses:
+    414QueryTooLong:
+      description: Query too long, if the total URL length exceeds 2000 characters.
+      content:
+        application/json:
+          schema:
+            type: string
+            enum:
+            - QueryTooComplexException
+    40xQueryExceptions:
+      description: Query exceptions defined in EPCIS
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              exception:
+                type: string
+                enum:
+                - QueryValidationException
+                - QueryParameterException
+                - QueryTooComplexException
+              message:
+                type: string
+  headers:
+    X-EPCIS-version:
+      description: The EPCIS version
+      schema:
+        type: string
+        pattern: '^\d+(\.\d+)?$'
+        example: "2.0"
+    X-EPCIS-min:
+      description: The lowest EPCIS version supported
+      schema:
+        type: string
+        pattern: '^\d+(\.\d+)?$'
+        example: "2.0"
+    X-EPCIS-max:
+      description: The highest EPCIS version supported
+      schema:
+        type: string
+        pattern: '^\d+(\.\d+)?$'
+    X-CBV-version:
+      description: The core business vocabulary version
+      schema:
+        type: string
+    X-EPCIS-extensions:
+      description: Specific EPCIS extensions supported (e.g. for FIT)
+      schema:
+        type: array
+        items:
+          type: string
+    X-CBV-extensions:
+      description: Specific CBV extensions supported (e.g. for fish, rail, FIT)
+      schema:
+        type: array
+        items:
+          type: string
+    X-vendor-version:
+      description: A versioning scheme that can be freely chosen by the vendor
+      schema:
+        type: string
