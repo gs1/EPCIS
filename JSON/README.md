@@ -11,7 +11,9 @@ Initially developed by Danny Haak (Nedap) and slightly modified by Mark Harrison
 To try out JSON Schema validation of the examples, you can use online tools such as:
 
 https://www.jsonschemavalidator.net/
+
 https://jsonschemalint.com
+
 https://json-schema-validator.herokuapp.com/
 
 Paste the contents of EPCIS-JSON-Schema.json into the 'Schema' window (which usually appears first or to the left)
