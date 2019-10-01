@@ -34,3 +34,33 @@ Press both 'Update' buttons under the two  main text areas where you have just p
 
 If there are validation errors, they will appear in the Validation Report window (bottom-right).
 If there are no validation errors, the Validation Report window should be empty.
+
+
+# Checking conversion of EPCIS JSON / JSON-LD examples as Linked Data
+
+The contents of any of the EPCIS example files can also be pasted into this online tool:
+
+https://json-ld.org/playground/
+
+This JSON-LD playground tool perforns a basic check that the data is valid JSON-LD - although it has no awareness of our EPCIS-SHACL.ttl file.
+The JSON-LD playground tool also performs conversion of JSON-LD data into other Linked Data formats such as N-Quads or Normalised (both of which are RDF Turtle format, consisting of Subject-Predicate-Object or Subject-Property-Value triples.
+The JSON-LD playground tool now also includes a tabular view, as well as a visualisation as  a branching diagram.
+
+# Further information about JSON Schema
+
+JSON Schema may be familiar to many Web / app developers, particularly since the Open API specification makes use of it.
+
+Further information about JSON Schema can be found at: https://json-schema.org/
+
+# Further information about W3C Shape Constraint Language (SHACL)
+
+Shape Constraint Language (SHACL) may be less familiar, even though it is a relatively new W3C technical recommendation (standard)
+
+The W3C SHACL standard is available at: https://www.w3.org/TR/shacl/
+
+# General note about editing in this directory
+
+If you notice any validation errors in the examples, please contact mark.harrison@gs1.org so that we can investigate further.
+
+Please only edit the existing JSON Schema file or SHACL file if you know what you are doing!
+Please only edit the existing JSON / JSON-LD EPCIS examples if you know what you are doing - but feel free to take a copy or contribute additional example files.
