@@ -64,8 +64,8 @@
 		  "bizLocation": "urn:epc:id:sgln:0614141.00888.0",
 		  
 		  "childQuantityList": [
-		  	{"epcClass":"urn:epc:idpat:sgtin:4012345.098765.*","quantity":"10"},
-		  	{"epcClass":"urn:epc:class:lgtin:4012345.012345.998877","quantity":"200.5","uom":"KGM"}
+		  	{"epcClass":"urn:epc:idpat:sgtin:4012345.098765.*","quantity":10},
+		  	{"epcClass":"urn:epc:class:lgtin:4012345.012345.998877","quantity":200.5,"uom":"KGM"}
 		  ],
 		  "example:myField":"Example of a vendor/user extension"
      }
