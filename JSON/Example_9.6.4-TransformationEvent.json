@@ -57,9 +57,9 @@
 		  "eventTime": "2013-10-31T14:58:56.591Z",
 		  "eventTimeZoneOffset": "+02:00",
 		  "inputEPCList": ["urn:epc:id:sgtin:4012345.011122.25","urn:epc:id:sgtin:4000001.065432.99886655"],
-		  "inputQuantityList": [{"epcClass":"urn:epc:class:lgtin:4012345.011111.4444","quantity":"10","uom":"KGM"},
-		  		{"epcClass":"urn:epc:class:lgtin:0614141.077777.987","quantity":"30"},
-		  		{"epcClass":"urn:epc:idpat:sgtin:4012345.066666.*","quantity":"220"}		  		
+		  "inputQuantityList": [{"epcClass":"urn:epc:class:lgtin:4012345.011111.4444","quantity":10,"uom":"KGM"},
+		  		{"epcClass":"urn:epc:class:lgtin:0614141.077777.987","quantity":30},
+		  		{"epcClass":"urn:epc:idpat:sgtin:4012345.066666.*","quantity":220}		  		
 		  ],
 		  "outputEPCList": [
 			  "urn:epc:id:sgtin:4012345.077889.25",
