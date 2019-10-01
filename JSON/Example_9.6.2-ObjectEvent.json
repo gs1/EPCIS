@@ -61,7 +61,7 @@
 		  "readPoint": "urn:epc:id:sgln:0614141.00777.0",
 		  "bizLocation": "urn:epc:id:sgln:0614141.00888.0",
 		  "quantityList": [
-		  	{"epcClass":"urn:epc:class:lgtin:4012345.012345.998877","quantity":"200","uom":"KGM"}
+		  	{"epcClass":"urn:epc:class:lgtin:4012345.012345.998877","quantity":200,"uom":"KGM"}
 		  ],
 		  "sourceList": [
 		  	{"type":"urn:epcglobal:cbv:sdt:possessing_party","source":"urn:epc:id:sgln:4012345.00001.0"},
