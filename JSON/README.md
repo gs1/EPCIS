@@ -63,4 +63,6 @@ The W3C SHACL standard is available at: https://www.w3.org/TR/shacl/
 If you notice any validation errors in the examples, please contact mark.harrison@gs1.org so that we can investigate further.
 
 Please only edit the existing JSON Schema file or SHACL file if you know what you are doing!
-Please only edit the existing JSON / JSON-LD EPCIS examples if you know what you are doing - but feel free to take a copy or contribute additional example files.
+
+Please only edit the existing JSON / JSON-LD EPCIS examples if you know what you are doing 
+- but feel free to take a copy or contribute additional example files.
