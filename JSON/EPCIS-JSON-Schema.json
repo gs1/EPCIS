@@ -136,7 +136,7 @@
             "bizTransactionList": {
               "type": "array",
               "items": { "$ref": "#/definitions/bizTransaction" },
-              "minItems": 1
+              "minItems": 0
             },
             "sourceList": {
               "type": "array",
@@ -291,9 +291,7 @@
     }
   },
   "properties": {
-    "@context": {
-      "type": "string"
-    },
+    "@context": {"anyOf":[{"type":"string","format": "uri"},{"type":"object"}]} ,
     "isA": {
       "type": "string"
     },
@@ -330,7 +328,7 @@
               }
             ]
           },
-          "minItems":  1
+          "minItems":  0
         }
       },
       "required": [ "eventList" ]
