@@ -548,5 +548,5 @@
     "required": [ "eventList" ]
   }
 },
-"required": [ "schemaVersion", "creationDate", "epcisBody" ]
+"required": [ "schemaVersion", "created", "epcisBody" ]
 }
