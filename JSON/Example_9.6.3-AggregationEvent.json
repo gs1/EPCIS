@@ -11,7 +11,6 @@
     "eventTime": {"@type":"xsd:dateTime"},
     "recordTime": {"@type":"xsd:dateTime"},
     "declarationTime": {"@type":"xsd:dateTime"},
-	"creationDate": {"@type":"xsd:dateTime"},
     "eventTimeZoneOffset": {"@type":"xsd:string"},
     "action": {"@type":"xsd:string"},
 
@@ -38,14 +37,14 @@
     
     "isA": "@type",
     "id":"@id",
-    "created": {"@id":"dcterms:created", "@type":"xsd:dateTime"},
+    "creationDate": {"@id":"dcterms:created", "@type":"xsd:dateTime"},
     "format": {"@id":"dcterms:format", "@type":"xsd:string"},
     "schemaVersion": {"@id":"owl:versionInfo", "@type":"xsd:string"}
   },
   
   "id": "_:document1",
   "isA": "EPCISDocument",
-  "schemaVersion":"2.0",
+  "schemaVersion":2.0,
   "created":"2005-07-11T11:30:47.0Z",
   "format":"application/ld+json",
   "epcisBody": {
