@@ -1,0 +1,97 @@
+{
+  "@context": {
+    "@vocab" : "https://id.gs1.org/epcis/",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "epcis": "https://id.gs1.org/epcis/",
+    "gs1": "https://gs1.org/voc/",
+    "example": "http://ns.example.com/epcis/",
+ 
+    "time": {"@type":"xsd:dateTime"},
+    "startTime": {"@type":"xsd:dateTime"},
+    "endTime": {"@type":"xsd:dateTime"},
+    "eventTime": {"@type":"xsd:dateTime"},
+    "recordTime": {"@type":"xsd:dateTime"},
+    "declarationTime": {"@type":"xsd:dateTime"},
+    "eventTimeZoneOffset": {"@type":"xsd:string"},
+    "action": {"@type":"xsd:string"},
+
+    "quantity": {"@type":"xsd:decimal"},
+    "value" : {"@type": "xsd:string"},
+    "minValue" : {"@type": "xsd:float"},
+    "maxValue" : {"@type": "xsd:float"},
+    "mean" : {"@type": "xsd:float"},
+    "sDev" : {"@type": "xsd:float"},
+    
+    "uom": {"@type":"xsd:string"},
+
+    "epcList": {"@type":"@id"},
+    "epcClass": {"@type":"@id"},
+    "parentID": {"@type":"@id"},
+    "childEPCs": {"@type":"@id"},
+    "inputEPCList": {"@type":"@id"},
+    "outputEPCList": {"@type":"@id"},
+
+    "bizStep": {"@type":"@id"},
+    "disposition": {"@type":"@id"},
+    "readPoint": {"@type":"@id"},
+    "bizLocation": {"@type":"@id"},
+    "bizTransaction": {"@type":"@id"},
+    "source": {"@type":"@id"},
+    "destination": {"@type":"@id"},
+
+    "type": {"@type":"@id"},
+    "deviceID": {"@type":"@id"},
+    "deviceMetaData": {"@type":"@id"},
+    "rawData": {"@type":"@id"},
+    "bizRules": {"@type":"@id"},
+    "dataProcessingMethod": {"@type":"@id"},
+    "chemicalSubstance": {"@type":"@id"},
+    "microorganism": {"@type":"@id"},
+    "valueType": {"@type":"@id"},
+   
+    
+    "isA": "@type",
+    "id":"@id",
+    "creationDate": {"@id":"dcterms:created", "@type":"xsd:dateTime"},
+    "format": {"@id":"dcterms:format", "@type":"xsd:string"},
+    "schemaVersion": {"@id":"owl:versionInfo", "@type":"xsd:string"}
+  },
+  
+  "id": "_:document1",
+  "isA": "EPCISDocument",
+  "schemaVersion":2.0,
+  "creationDate":"2005-07-11T11:30:47.0Z",
+  "format":"application/ld+json",
+  "epcisBody": {
+  "eventList": [
+     {
+		  "id": "_:event4",
+		  "isA": "ObjectEvent",
+		  "action": "OBSERVE",
+		  "bizStep": "urn:epcglobal:cbv:bizstep:inspecting",
+		  "epcList": [],
+		  "eventTime": "2019-04-02T15:00:00.000+01:00",
+		  "eventTimeZoneOffset": "+01:00",
+		  "readPoint": "urn:epc:id:sgln:4012345.00005.0",
+		  "quantityList": [{"epcClass":"urn:epc:class:lgtin:4023333.002000.2019-10-07","quantity":"150","uom":"KGM"}],
+		  "sensorElementList": [
+		   {"isA": "SensorElement", 
+		    "sensorMetaData" : {"time":"2019-04-02T14:55:00.000+01:00"},
+		    "sensorReport" : [
+			 { "type": "gs1:Temperature" , "value" : "26.0", "uom": "CEL", "deviceID":"urn:epc:id:giai:4000001.111", "deviceMetaData":"https://id.gs1.org/giai/4000001111", "rawData":"https://example.org/giai/401234599999" },
+			 { "type": "gs1:Humidity" , "minValue" : "12.1" , "uom": "A93", "deviceID":"urn:epc:id:giai:4000001.222", "deviceMetaData":"https://id.gs1.org/giai/4000001222", "rawData":"https://example.org/giai/401234599999"},
+			 { "type": "gs1:Speed" , "minValue" : "160" , "uom": "KMH", "deviceID":"urn:epc:id:giai:4000001.333", "deviceMetaData":"https://id.gs1.org/giai/4000001333", "rawData":"https://example.org/giai/401234599999"},
+			 { "type": "gs1:Illuminance" , "minValue" : "800" , "uom": "LUX", "deviceID":"urn:epc:id:giai:4000001.444", "deviceMetaData":"https://id.gs1.org/giai/4000001444", "rawData":"https://example.org/giai/401234599999"}
+		     ]
+		    }	    
+		  ]
+		  
+     }
+   ]
+  }
+  
+}
+
