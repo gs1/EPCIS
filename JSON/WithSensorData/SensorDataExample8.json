@@ -79,8 +79,7 @@
 		  "eventTimeZoneOffset": "+01:00",
 		  "readPoint": "urn:epc:id:sgln:4012345.00025.0",
 		  "sensorElementList": [
-		   {"isA": "SensorElement", 
-		    "sensorMetaData" : {"time":"2019-07-19T14:00:00.000+01:00", "deviceID":"urn:epc:id:giai:4000001.111", "deviceMetaData":"https://id.gs1.org/giai/4000001111", "rawData":"https://example.org/giai/401234599999", "dataProcessingMethod":"https://example.com/gdti/4012345000054987", "bizRules":"https://example.org/gdti/4012345000054987"},
+		   {"sensorMetaData" : {"time":"2019-07-19T14:00:00.000+01:00", "deviceID":"urn:epc:id:giai:4000001.111", "deviceMetaData":"https://id.gs1.org/giai/4000001111", "rawData":"https://example.org/giai/401234599999", "dataProcessingMethod":"https://example.com/gdti/4012345000054987", "bizRules":"https://example.org/gdti/4012345000054987"},
 		    "sensorReport" : [
 			 { "type": "gs1:Humidity", "value":"12.1", "uom":"A93"},
 			 { "type": "gs1:Molar_concentration" , "chemicalSubstance":"urn:epcglobal:cbv:inchikey:CZMRCDWAGMRECN-UGDNZRGBSA-N", "value":"0.18", "uom":"C35"},
@@ -88,8 +87,7 @@
 		     ]
 		    },
 
-		   {"isA": "SensorElement", 
-		    "sensorMetaData" : {"startTime":"2019-04-01T15:00:00.000+01:00", "endTime":"2019-04-02T14:59:59.999+01:00", "example:someFurtherMetaData":"someText"},
+		   {"sensorMetaData" : {"startTime":"2019-04-01T15:00:00.000+01:00", "endTime":"2019-04-02T14:59:59.999+01:00", "example:someFurtherMetaData":"someText"},
 		    "sensorReport" : [
 			 { "type":"gs1:Temperature", "minValue":"12.4", "maxValue":"13.8", "averageValue":"13.2", "sDev":"0.41", "uom":"CEL", "percRank":"50", "percValue":"12.7", "example:cv":"123"},
 			 { "type":"example:someSensorProperty", "valueType":"xsd:string", "value":"someSensorOutput"},
@@ -100,8 +98,7 @@
 		     ]
 		    },
 
-		   {"isA": "SensorElement", 
-		    "sensorReport" : [
+		   {"sensorReport" : [
 			 { "type":"gs1:Temperature", "uom":"CEL", "time":"2019-07-19T14:00:00.000+01:00", "deviceID":"urn:epc:id:giai:4000001.111", "deviceMetaData":"https://id.gs1.org/giai/4000001111", "rawData":"https://example.org/giai/401234599999", "dataProcessingMethod":"https://example.com/gdti/4012345000054987", "bizRules":"https://example.org/gdti/4012345000054987"},
 			 { "type":"example:someSensorProperty", "valueType":"xsd:string", "value":"someSensorOutput"}
 		     ]
