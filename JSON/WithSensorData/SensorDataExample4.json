@@ -78,8 +78,7 @@
 		  "readPoint": "urn:epc:id:sgln:4012345.00005.0",
 		  "quantityList": [{"epcClass":"urn:epc:class:lgtin:4023333.002000.2019-10-07","quantity":"150","uom":"KGM"}],
 		  "sensorElementList": [
-		   {"isA": "SensorElement", 
-		    "sensorMetaData" : {"time":"2019-04-02T14:55:00.000+01:00"},
+		   {"sensorMetaData" : {"time":"2019-04-02T14:55:00.000+01:00"},
 		    "sensorReport" : [
 			 { "type": "gs1:Temperature" , "value" : "26.0", "uom": "CEL", "deviceID":"urn:epc:id:giai:4000001.111", "deviceMetaData":"https://id.gs1.org/giai/4000001111", "rawData":"https://example.org/giai/401234599999" },
 			 { "type": "gs1:Humidity" , "minValue" : "12.1" , "uom": "A93", "deviceID":"urn:epc:id:giai:4000001.222", "deviceMetaData":"https://id.gs1.org/giai/4000001222", "rawData":"https://example.org/giai/401234599999"},
