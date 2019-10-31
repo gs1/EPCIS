@@ -77,8 +77,7 @@
 		  "eventTimeZoneOffset": "+01:00",
 		  "readPoint": "urn:epc:id:sgln:4012345.00005.0",
 		  "sensorElementList": [
-		   {"isA": "SensorElement", 
-		    "sensorMetaData" : {"deviceID":"urn:epc:id:giai:4000001.111", "deviceMetaData":"https://id.gs1.org/giai/4000001111"},
+		   {"sensorMetaData" : {"deviceID":"urn:epc:id:giai:4000001.111", "deviceMetaData":"https://id.gs1.org/giai/4000001111"},
 		    "sensorReport" : [
 			 { "type": "gs1:Temperature" , "time":"2019-04-02T14:05:00.000+01:00", "value" : "26.0", "uom": "CEL"},
 			 { "type": "gs1:Temperature" , "time":"2019-04-02T14:15:00.000+01:00", "value" : "26.1", "uom": "CEL"},
