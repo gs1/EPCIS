@@ -22,6 +22,8 @@
     "value" : {"@type": "xsd:string"},
     "minValue" : {"@type": "xsd:float"},
     "maxValue" : {"@type": "xsd:float"},
+    "percValue" : {"@type": "xsd:float"},
+    "percRank" : {"@type": "xsd:float"},
     "mean" : {"@type": "xsd:float"},
     "sDev" : {"@type": "xsd:float"},
     
@@ -77,7 +79,8 @@
 		  "eventTimeZoneOffset": "+01:00",
 		  "readPoint": "urn:epc:id:sgln:4012345.00005.0",
 		  "sensorElementList": [
-		   {"sensorMetaData" : {"startTime":"2019-04-01T15:00:00.000+01:00", "endTime":"2019-04-02T14:59:99.999+01:00"},
+		   {"isA": "SensorElement", 
+		    "sensorMetaData" : {"startTime":"2019-04-01T15:00:00.000+01:00", "endTime":"2019-04-02T14:59:99.999+01:00"},
 		    "sensorReport" : [
 			 { "type": "gs1:Temperature" , "minValue" : "12.4", "maxValue":"13.8", "uom": "CEL" },
 			 { "type": "gs1:Humidity" , "minValue" : "69.2" , "maxValue":"72.5", "uom": "A93"}
