@@ -22,6 +22,8 @@
     "value" : {"@type": "xsd:string"},
     "minValue" : {"@type": "xsd:float"},
     "maxValue" : {"@type": "xsd:float"},
+    "percValue" : {"@type": "xsd:float"},
+    "percRank" : {"@type": "xsd:float"},
     "mean" : {"@type": "xsd:float"},
     "sDev" : {"@type": "xsd:float"},
     
@@ -77,7 +79,8 @@
 		  "eventTimeZoneOffset": "+01:00",
 		  "readPoint": "urn:epc:id:sgln:4012345.00005.0",
 		  "sensorElementList": [
-		   {"sensorMetaData" : {"time":"2019-07-19T14:00:00.000+01:00"},
+		   {"isA": "SensorElement", 
+		    "sensorMetaData" : {"time":"2019-07-19T14:00:00.000+01:00"},
 		    "sensorReport" : [
 			 { "type": "gs1:Temperature" , "value":"26.0", "uom":"CEL", "deviceID":"urn:epc:id:giai:4000001.111"},
 			 { "type": "rail:Abc" , "valueType":"xsd:string", "value":"111100001111000011110000", "deviceID":"urn:epc:id:giai:4000001.112"},
