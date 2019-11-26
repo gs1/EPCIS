@@ -22,6 +22,8 @@
     "value" : {"@type": "xsd:string"},
     "minValue" : {"@type": "xsd:float"},
     "maxValue" : {"@type": "xsd:float"},
+    "percValue" : {"@type": "xsd:float"},
+    "percRank" : {"@type": "xsd:float"},
     "mean" : {"@type": "xsd:float"},
     "sDev" : {"@type": "xsd:float"},
     
@@ -78,7 +80,8 @@
 		  "eventTimeZoneOffset": "+01:00",
 		  "readPoint": "urn:epc:id:sgln:4012345.00005.0",
 		  "sensorElementList": [
-		   {"sensorMetaData" : {"startTime":"2019-04-02T13:55:01.000+01:00", "endTime":"2019-04-02T14:55:00.000+01:00", "deviceID": "urn:epc:id:giai:4000001.111", "deviceMetaData": "https://id.gs1.org/giai/4000001111","rawData":"https://example.org/giai/401234599999","bizRules":"https://example.com/gdti/4012345000054987"},
+		   {"isA": "SensorElement", 
+		    "sensorMetaData" : {"startTime":"2019-04-02T13:55:01.000+01:00", "endTime":"2019-04-02T14:55:00.000+01:00", "deviceID": "urn:epc:id:giai:4000001.111", "deviceMetaData": "https://id.gs1.org/giai/4000001111","rawData":"https://example.org/giai/401234599999","bizRules":"https://example.com/gdti/4012345000054987"},
 		    "sensorReport" : [
 			 { "type": "gs1:Temperature" , "minValue" : "26.0", "maxValue":"26.2", "uom": "CEL", "sDev":"0.1" },
 			 { "type": "gs1:Humidity" , "minValue" : "12.1" , "maxValue":"12.2", "uom": "A93"},
