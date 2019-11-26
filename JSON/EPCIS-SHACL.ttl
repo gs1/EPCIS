@@ -35,6 +35,7 @@ epcis:ObjectEventShape
 	sh:property epcis:QuantityList_TypeConstraint ;
 	sh:property epcis:SourceList_TypeConstraint ;
 	sh:property epcis:DestinationList_TypeConstraint ;
+	sh:property epcis:SensorElementList_TypeConstraint ;
 	sh:property epcis:ILMD_TypeConstraint .
     
     
@@ -64,7 +65,8 @@ epcis:AggregationEventShape
 	sh:property epcis:ErrorDeclaration_TypeConstraint ;
 	sh:property epcis:ChildQuantityList_TypeConstraint ;
 	sh:property epcis:SourceList_TypeConstraint ;
-	sh:property epcis:DestinationList_TypeConstraint .
+	sh:property epcis:DestinationList_TypeConstraint ;
+	sh:property epcis:SensorElementList_TypeConstraint .
     
  
 epcis:TransactionEventShape
@@ -94,7 +96,11 @@ epcis:TransactionEventShape
 	sh:property epcis:ErrorDeclaration_TypeConstraint ;
 	sh:property epcis:QuantityList_TypeConstraint ;
 	sh:property epcis:SourceList_TypeConstraint ;
-	sh:property epcis:DestinationList_TypeConstraint .
+	sh:property epcis:DestinationList_TypeConstraint ;
+	sh:property epcis:SensorElementList_TypeConstraint .
+
+
+    
 
 
 epcis:TransformationEventShape
@@ -122,7 +128,8 @@ epcis:TransformationEventShape
 	sh:property epcis:DestinationList_TypeConstraint ;
 	sh:property epcis:InputQuantityList_TypeConstraint ;
 	sh:property epcis:OutputQuantityList_TypeConstraint ;
-	sh:property epcis:TransformationID_TypeConstraint .
+	sh:property epcis:TransformationID_TypeConstraint ;
+	sh:property epcis:SensorElementList_TypeConstraint .
 		
 		
 
@@ -503,6 +510,88 @@ epcis:SourceDest_TypeConstraint owl:sameAs [
 	sh:message "type must be an xsd:anyURI" 
 ].
 
+epcis:SensorMetaDataShape
+	a sh:NodeShape;
+    sh:targetClass epcis:SensorMetaData ;
+    sh:property epcis:SensorTime_TypeConstraint ;
+    sh:property epcis:SensorDeviceID_TypeConstraint ;
+    sh:property epcis:SensorDeviceMetaData_TypeConstraint ;
+    sh:property epcis:SensorRawData_TypeConstraint ;
+    sh:property epcis:SensorMetaDataStartTime_TypeConstraint ;
+    sh:property epcis:SensorMetaDataEndTime_TypeConstraint ;
+    sh:property epcis:SensorBizRules_TypeConstraint ;
+    sh:property epcis:SensorDataProcessingMethod_TypeConstraint .
+
+
+epcis:SensorReportShape
+	a sh:NodeShape;
+    sh:targetClass epcis:SensorReport ;
+    sh:property epcis:SensorReportType_TypeConstraint ;
+    sh:property epcis:SensorReportType_IsMandatoryConstraint ;
+    sh:property epcis:SensorTime_TypeConstraint ;
+    			sh:property epcis:SensorReportValue_TypeConstraint ;
+				sh:property epcis:SensorReportValueType_TypeConstraint ;
+    sh:property epcis:UOM_TypeConstraint ;
+    sh:property epcis:SensorReportMinValue_TypeConstraint ;
+    sh:property epcis:SensorReportMaxValue_TypeConstraint ;
+    sh:property epcis:SensorReportMean_TypeConstraint ;
+    sh:property epcis:SensorReportSDev_TypeConstraint ;
+    sh:property epcis:SensorReportPercRank_TypeConstraint ;
+    sh:property epcis:SensorReportPercValue_TypeConstraint ;
+    sh:property epcis:SensorReportChemicalSubstance_TypeConstraint ;
+    sh:property epcis:SensorReportMicroorganism_TypeConstraint ;
+    sh:property epcis:SensorDeviceID_TypeConstraint ;
+    sh:property epcis:SensorDeviceMetaData_TypeConstraint ;
+    sh:property epcis:SensorRawData_TypeConstraint ;
+    sh:property epcis:SensorBizRules_TypeConstraint ;
+    sh:property epcis:SensorDataProcessingMethod_TypeConstraint .
+
+
+
+	
+epcis:SensorElementList_TypeConstraint  owl:sameAs [
+	sh:path epcis:sensorElementList ;
+	sh:node epcis:SensorElementListShape ;
+	sh:name "sensorElementList type constraint" ;
+	sh:message "sensorElementList expects a populated epcis:sensorElementList" 
+].
+
+epcis:SensorElementListShape
+	a sh:NodeShape;
+	sh:property epcis:SensorMetaData_TypeConstraint;
+	sh:property epcis:SensorMetaData_IsOptional;
+	sh:property epcis:SensorReport_TypeConstraint;
+	sh:property epcis:SensorReport_IsMandatory.
+
+epcis:SensorReport_IsMandatory	owl:sameAs [
+	sh:path epcis:sensorReport ;
+	sh:name "sensorReport is mandatory within each element of sensorElementList" ;
+	sh:minCount 1;
+	sh:message "sensorReport is mandatory within each element of sensorElementList." 
+].
+
+epcis:SensorMetaData_IsOptional	owl:sameAs [
+	sh:path epcis:sensorMetaData ;
+	sh:name "sensorMetaData is optional within each element of sensorElementList" ;
+	sh:minCount 0;
+	sh:maxCount 1;
+	sh:message "sensorMetaData is optional within each element of sensorElementList." 
+].
+
+epcis:SensorMetaData_TypeConstraint  owl:sameAs [
+	sh:path epcis:sensorMetaData ;
+	sh:node epcis:SensorMetaDataShape ;
+	sh:name "sensorMetaData type constraint" ;
+	sh:message "sensorMetaData expects 0 or 1 of epcis:SensorMetaData" 
+].
+
+epcis:SensorReport_TypeConstraint  owl:sameAs [
+	sh:path epcis:sensorReport ;
+	sh:node epcis:SensorReportShape ;
+	sh:name "sensorReport type constraint" ;
+	sh:message "sensorReport expects a populated epcis:SensorReport" 
+].
+	
 	
 epcis:SourceList_TypeConstraint  owl:sameAs [
 	sh:path epcis:sourceList ;
@@ -549,15 +638,149 @@ epcis:UOM_TypeAndFormat owl:sameAs [
 	sh:message "uom must be a UN ECE Rec 20 code value ( 2-3 characters uppercase alphanumeric )" 
 ].
 
+epcis:SensorTime_TypeConstraint owl:sameAs [
+	sh:path epcis:time ;
+	sh:datatype xsd:dateTime ;
+	sh:name "time type constraint" ;
+	sh:message "time must be an xsd:dateTime" 
+].
+
+epcis:SensorMetaDataStartTime_TypeConstraint owl:sameAs [
+	sh:path epcis:startTime ;
+	sh:datatype xsd:dateTime ;
+	sh:name "startTime type constraint" ;
+	sh:message "startTime must be an xsd:dateTime" 
+].
+
+epcis:SensorMetaDataEndTime_TypeConstraint owl:sameAs [
+	sh:path epcis:endTime ;
+	sh:datatype xsd:dateTime ;
+	sh:name "endTime type constraint" ;
+	sh:message "endTime must be an xsd:dateTime" 
+].
 
 
+epcis:SensorReportType_TypeConstraint owl:sameAs [
+	sh:path epcis:type ;
+	sh:nodeKind sh:IRI ;
+	sh:name "type type constraint" ;
+	sh:message "type must be an xsd:anyURI" 
+].
+
+epcis:SensorReportType_IsMandatoryConstraint owl:sameAs [
+	sh:path epcis:type ;
+	sh:name "type is mandatory within an epcis:SensorReport" ;
+	sh:minCount 1 ;
+	sh:maxCount 1 ;
+	sh:message "type is a mandatory field within epcis:SensorReport, in which it must have a single value." 
+].
 
 
+epcis:SensorReportValue_TypeConstraint owl:sameAs [
+	sh:path epcis:value ;
+	sh:datatype xsd:string ;
+	sh:name "value type constraint" ;
+	sh:message "value must be an xsd:string" 
+].
+
+epcis:SensorReportValueType_TypeConstraint owl:sameAs [
+	sh:path epcis:valueType ;
+	sh:nodeKind sh:IRI ;
+	sh:name "valueType type constraint" ;
+	sh:message "valueType must be an xsd:anyURI" 
+].
 
 
+epcis:SensorReportMinValue_TypeConstraint owl:sameAs [
+	sh:path epcis:minValue ;
+	sh:datatype xsd:float ;
+	sh:name "minValue type constraint" ;
+	sh:message "minValue must be an xsd:float" 
+].
 
+epcis:SensorReportMaxValue_TypeConstraint owl:sameAs [
+	sh:path epcis:maxValue ;
+	sh:datatype xsd:float ;
+	sh:name "maxValue type constraint" ;
+	sh:message "maxValue must be an xsd:float" 
+].
 
+epcis:SensorReportMean_TypeConstraint owl:sameAs [
+	sh:path epcis:mean ;
+	sh:datatype xsd:float ;
+	sh:name "mean type constraint" ;
+	sh:message "mean must be an xsd:float" 
+].
 
+epcis:SensorReportSDev_TypeConstraint owl:sameAs [
+	sh:path epcis:sDev ;
+	sh:datatype xsd:float ;
+	sh:name "sDev type constraint" ;
+	sh:message "sDev must be an xsd:float" 
+].
+
+epcis:SensorReportPercRank_TypeConstraint owl:sameAs [
+	sh:path epcis:percRank ;
+	sh:datatype xsd:float ;
+	sh:name "percRank type constraint" ;
+	sh:message "percRank must be an xsd:float" 
+].
+
+epcis:SensorReportPercValue_TypeConstraint owl:sameAs [
+	sh:path epcis:percValue ;
+	sh:datatype xsd:float ;
+	sh:name "percValue type constraint" ;
+	sh:message "percValue must be an xsd:float" 
+].
+
+epcis:SensorReportChemicalSubstance_TypeConstraint owl:sameAs [
+	sh:path epcis:chemicalSubstance ;
+	sh:nodeKind sh:IRI ;
+	sh:name "chemicalSubstance type constraint" ;
+	sh:message "chemicalSubstance must be an xsd:anyURI.  Please refer to the EPCIS 2.0 standard.  Use of InchiKey URI is recommended." 
+].
+
+epcis:SensorReportMicroorganism_TypeConstraint owl:sameAs [
+	sh:path epcis:microorganism ;
+	sh:nodeKind sh:IRI ;
+	sh:name "microorganism type constraint" ;
+	sh:message "microorganism must be an xsd:anyURI.  Please refer to the EPCIS 2.0 standard." 
+].
+
+epcis:SensorDeviceID_TypeConstraint owl:sameAs [
+	sh:path epcis:deviceID ;
+	sh:nodeKind sh:IRI ;
+	sh:name "deviceID type constraint" ;
+	sh:message "deviceID must be an xsd:anyURI.  Please refer to the EPCIS 2.0 standard." 
+].
+
+epcis:SensorDeviceMetaData_TypeConstraint owl:sameAs [
+	sh:path epcis:deviceMetaData ;
+	sh:nodeKind sh:IRI ;
+	sh:name "deviceMetaData type constraint" ;
+	sh:message "deviceMetaData must be an xsd:anyURI.  Please refer to the EPCIS 2.0 standard." 
+].
+
+epcis:SensorRawData_TypeConstraint owl:sameAs [
+	sh:path epcis:rawData ;
+	sh:nodeKind sh:IRI ;
+	sh:name "rawData type constraint" ;
+	sh:message "rawData must be an xsd:anyURI.  Please refer to the EPCIS 2.0 standard." 
+].
+
+epcis:SensorBizRules_TypeConstraint owl:sameAs [
+	sh:path epcis:bizRules ;
+	sh:nodeKind sh:IRI ;
+	sh:name "bizRules type constraint" ;
+	sh:message "bizRules must be an xsd:anyURI.  Please refer to the EPCIS 2.0 standard." 
+].
+
+epcis:SensorDataProcessingMethod_TypeConstraint owl:sameAs [
+	sh:path epcis:dataProcessingMethod ;
+	sh:nodeKind sh:IRI ;
+	sh:name "dataProcessingMethod type constraint" ;
+	sh:message "dataProcessingMethod must be an xsd:anyURI.  Please refer to the EPCIS 2.0 standard." 
+].
 
 
 
