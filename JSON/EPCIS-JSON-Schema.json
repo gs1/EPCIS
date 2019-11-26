@@ -80,6 +80,66 @@
       },
       "required": [ "type" ]
     },
+    
+    
+    "sensorElement": {
+      "type": "object",
+      "properties": {
+        "sensorMetaData": { "$ref": "#/definitions/sensorMetaData" },
+        "sensorReport": { "$ref": "#/definitions/sensorReportList" }
+      },
+      "required": [ "sensorReport" ]
+    },
+
+    "sensorReportList": {
+      "type":"array",
+      "items": { "$ref": "#/definitions/sensorReport" }  
+    },  
+      
+    "sensorReport": {
+      "type": "object",
+      "properties": {
+        "type": { "$ref": "#/definitions/uri" },
+        "value": { "$ref": "#/definitions/string" },
+        "uom": { "$ref": "#/definitions/string" },
+        "minValue": { "$ref": "#/definitions/decimal" },
+        "maxValue": { "$ref": "#/definitions/decimal" },
+        "sDev": { "$ref": "#/definitions/decimal" },
+        "chemicalSubstance": { "$ref": "#/definitions/uri" },
+        "microorganism": { "$ref": "#/definitions/uri" },
+        "deviceID": { "$ref": "#/definitions/uri" },
+        "deviceMetaData": { "$ref": "#/definitions/uri" },
+        "rawData": { "$ref": "#/definitions/uri" },
+        "time": { "$ref": "#/definitions/time" },
+        "mean": { "$ref": "#/definitions/decimal" },
+        "percRank": { "$ref": "#/definitions/decimal" },
+        "percValue": { "$ref": "#/definitions/decimal" },
+        "valueType": { "$ref": "#/definitions/string" },
+        "dataProcessingMethod": { "$ref": "#/definitions/uri" },
+        "bizRules": { "$ref": "#/definitions/uri" }
+      },
+      "required": [ "type" ]
+    },
+
+    "sensorMetaData": {
+      "type": "object",
+      "properties": {
+        "time": { "$ref": "#/definitions/time" },
+        "deviceID": { "$ref": "#/definitions/uri" },
+        "deviceMetaData": { "$ref": "#/definitions/uri" },
+        "rawData": { "$ref": "#/definitions/uri" },
+        "startTime": { "$ref": "#/definitions/time" },
+        "endTime": { "$ref": "#/definitions/time" },
+        "dataProcessingMethod": { "$ref": "#/definitions/uri" },
+        "bizRules": { "$ref": "#/definitions/uri" }
+        }
+     },
+    
+
+	"string": {
+	  "type":"string"
+	},    
+    
     "ilmd": {
       "type": "object"
     },
@@ -132,6 +192,10 @@
               "type": "array",
               "items": { "$ref": "#/definitions/destination" }
             },
+            "sensorElementList": {
+              "type": "array",
+              "items": { "$ref": "#/definitions/sensorElement" }
+            },
             "ilmd": { "$ref": "#/definitions/ilmd" }
           },
           "required": [ "isA", "action" ]
@@ -141,7 +205,7 @@
             {
               "properties": {
                 "epcList": {
-                  "minItems": 1
+                  "minItems": 0
                 }
               },
               "required": [ "epcList" ]
@@ -226,6 +290,10 @@
             "destinationList": {
               "type": "array",
               "items": { "$ref": "#/definitions/destination" }
+            },
+            "sensorElementList": {
+              "type": "array",
+              "items": { "$ref": "#/definitions/sensorElement" }
             }
           },
           "required": [ "isA", "action" ]
@@ -246,7 +314,7 @@
                   "minItems": 1
                 }
               },
-              "required": [ "quantityList" ]
+              "required": [ "childQuantityList" ]
             },
             {
               "properties": {
@@ -297,6 +365,10 @@
             "destinationList": {
               "type": "array",
               "items": { "$ref": "#/definitions/destination" }
+            },
+            "sensorElementList": {
+              "type": "array",
+              "items": { "$ref": "#/definitions/sensorElement" }
             }
           },
           "required": [ "isA", "bizTransactionList", "action" ]
@@ -306,7 +378,7 @@
             {
               "properties": {
                 "epcList": {
-                  "minItems": 1
+                  "minItems": 0
                 }
               },
               "required": [ "epcList" ]
@@ -358,6 +430,10 @@
             "destinationList": {
               "type": "array",
               "items": { "$ref": "#/definitions/destination" }
+            },
+            "sensorElementList": {
+              "type": "array",
+              "items": { "$ref": "#/definitions/sensorElement" }
             },
             "ilmd": { "$ref": "#/definitions/ilmd" }
           },
