@@ -79,7 +79,7 @@
 		  "eventTimeZoneOffset": "+01:00",
 		  "readPoint": "urn:epc:id:sgln:4012345.00005.0",
 		  "sensorElementList": [
-		   {"isA": "SensorElement", 
+		   {
 		    "sensorMetaData" : {"time":"2019-07-19T14:00:00.000+01:00"},
 		    "sensorReport" : [
 			 { "type": "gs1:Temperature" , "value":"26.0", "uom":"CEL", "deviceID":"urn:epc:id:giai:4000001.111"},
