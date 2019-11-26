@@ -76,7 +76,7 @@
 		  "bizStep": "urn:epcglobal:cbv:bizstep:packing",
 		  "disposition": "urn:epcglobal:cbv:disp:in_progress",
 		  "parentID": "urn:epc:id:sscc:4012345.0111111111",
-		  "childQuantityList": [{"epcClass":"urn:epc:class:lgtin:4012345.011111.1234","quantity":"52","uom":"KGM"}],
+		  "childQuantityList": [{"epcClass":"urn:epc:class:lgtin:4012345.011111.1234","quantity":52,"uom":"KGM"}],
 		  "eventTime": "2019-10-07T15:30:00.000+01:00",
 		  "eventTimeZoneOffset": "+01:00",
 		  "readPoint": "urn:epc:id:sgln:4012345.00025.0",
@@ -93,7 +93,7 @@
 		   { 
 		    "sensorMetaData" : {"startTime":"2019-04-01T15:00:00.000+01:00", "endTime":"2019-04-02T14:59:59.999+01:00", "example:someFurtherMetaData":"someText"},
 		    "sensorReport" : [
-			 { "type":"gs1:Temperature", "minValue":"12.4", "maxValue":"13.8", "averageValue":"13.2", "sDev":"0.41", "uom":"CEL", "percRank":"50", "percValue":"12.7", "example:cv":"123"},
+			 { "type":"gs1:Temperature", "minValue":12.4, "maxValue":13.8, "mean":13.2, "sDev":0.41, "uom":"CEL", "percRank":50, "percValue":12.7, "example:cv":"123"},
 			 { "type":"example:someSensorProperty", "valueType":"xsd:string", "value":"someSensorOutput"}
 		     ],
 		     "example:furtherSensorData": [
