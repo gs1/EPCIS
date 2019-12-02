@@ -19,13 +19,17 @@
     "action": {"@type":"xsd:string"},
 
     "quantity": {"@type":"xsd:decimal"},
-    "value" : {"@type": "xsd:string"},
+    "value" : {"@type": "xsd:float"},
     "minValue" : {"@type": "xsd:float"},
     "maxValue" : {"@type": "xsd:float"},
     "percValue" : {"@type": "xsd:float"},
     "percRank" : {"@type": "xsd:float"},
-    "mean" : {"@type": "xsd:float"},
+    "meanValue" : {"@type": "xsd:float"},
     "sDev" : {"@type": "xsd:float"},
+    "stringValue" : {"@type": "xsd:string"},
+    "booleanValue" : {"@type": "xsd:boolean"},
+    "hexBinaryValue" : {"@type": "xsd:hexBinary"},
+    "uriValue" : {"@type": "@id"},
     
     "uom": {"@type":"xsd:string"},
 
@@ -82,12 +86,12 @@
 		   {
 		    "sensorMetaData" : {"time":"2019-07-19T14:00:00.000+01:00"},
 		    "sensorReport" : [
-			 { "type": "gs1:Temperature" , "value":"26.0", "uom":"CEL", "deviceID":"urn:epc:id:giai:4000001.111"},
-			 { "type": "rail:Abc" , "valueType":"xsd:string", "value":"111100001111000011110000", "deviceID":"urn:epc:id:giai:4000001.112"},
-			 { "type": "rail:Def" , "valueType":"xsd:boolean", "value":"true", "deviceID":"urn:epc:id:giai:4000001.113"},
-			 { "type": "example:Ghi" , "valueType":"xsd:string", "value":"SomeString", "deviceID":"urn:epc:id:giai:4000001.114"},
-			 { "type": "example:Jkl" , "valueType":"xsd:hexBinary", "value":"F0F0F0", "deviceID":"urn:epc:id:giai:4000001.115"},
-			 { "type": "rail:Mno" , "valueType":"xsd:anyURI", "value":"https://example.org/rail/someSectorSpecificValue", "deviceID":"urn:epc:id:giai:4000001.116"}
+			 { "type": "gs1:Temperature" , "value":26.0, "uom":"CEL", "deviceID":"urn:epc:id:giai:4000001.111"},
+			 { "type": "rail:Abc" , "valueType":"xsd:string", "stringValue":"111100001111000011110000", "deviceID":"urn:epc:id:giai:4000001.112"},
+			 { "type": "rail:Def" , "valueType":"xsd:boolean", "booleanValue":true, "deviceID":"urn:epc:id:giai:4000001.113"},
+			 { "type": "example:Ghi" , "valueType":"xsd:string", "stringValue":"SomeString", "deviceID":"urn:epc:id:giai:4000001.114"},
+			 { "type": "example:Jkl" , "valueType":"xsd:hexBinary", "hexBinaryValue":"F0F0F0", "deviceID":"urn:epc:id:giai:4000001.115"},
+			 { "type": "rail:Mno" , "valueType":"xsd:anyURI", "uriValue":"https://example.org/rail/someSectorSpecificValue", "deviceID":"urn:epc:id:giai:4000001.116"}
 		     ]
 		    }	    
 		  ]
