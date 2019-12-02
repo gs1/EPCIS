@@ -19,13 +19,17 @@
     "action": {"@type":"xsd:string"},
 
     "quantity": {"@type":"xsd:decimal"},
-    "value" : {"@type": "xsd:string"},
+    "value" : {"@type": "xsd:float"},
     "minValue" : {"@type": "xsd:float"},
     "maxValue" : {"@type": "xsd:float"},
     "percValue" : {"@type": "xsd:float"},
     "percRank" : {"@type": "xsd:float"},
-    "mean" : {"@type": "xsd:float"},
+    "meanValue" : {"@type": "xsd:float"},
     "sDev" : {"@type": "xsd:float"},
+    "stringValue" : {"@type": "xsd:string"},
+    "booleanValue" : {"@type": "xsd:boolean"},
+    "hexBinaryValue" : {"@type": "xsd:hexBinary"},
+    "uriValue" : {"@type": "@id"},
     
     "uom": {"@type":"xsd:string"},
 
@@ -87,8 +91,8 @@
 			 { "type": "gs1:Humidity" , "minValue" : 12.1 , "maxValue":12.2, "uom": "A93"},
 			 { "type": "gs1:Speed" , "minValue": 160.0, "maxValue": 162.0, "uom":"KMH"},
 			 { "type": "gs1:Illuminance" , "minValue": 800.0, "maxValue": 802.0, "uom":"LUX"},
-			 { "type": "gs1:Molar_concentration" , "chemicalSubstance":"urn:epcglobal:cbv:inchikey:CZMRCDWAGMRECN-UGDNZRGBSA-N", "value": "0.18", "uom":"C35"},			 
-			 { "type": "gs1:Molar_concentration" , "microorganism":"https://www.ncbi.nlm.nih.gov/taxonomy/1126011", "value": "0.05", "uom":"C35"}			 
+			 { "type": "gs1:Molar_concentration" , "chemicalSubstance":"urn:epcglobal:cbv:inchikey:CZMRCDWAGMRECN-UGDNZRGBSA-N", "value": 0.18, "uom":"C35"},			 
+			 { "type": "gs1:Molar_concentration" , "microorganism":"https://www.ncbi.nlm.nih.gov/taxonomy/1126011", "value": 0.05, "uom":"C35"}			 
 		     ]
 		    }	    
 		  ]
