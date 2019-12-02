@@ -529,12 +529,16 @@ epcis:SensorReportShape
     sh:property epcis:SensorReportType_TypeConstraint ;
     sh:property epcis:SensorReportType_IsMandatoryConstraint ;
     sh:property epcis:SensorTime_TypeConstraint ;
-    			sh:property epcis:SensorReportValue_TypeConstraint ;
-				sh:property epcis:SensorReportValueType_TypeConstraint ;
+		sh:property epcis:SensorReportValue_TypeConstraint ;
+		sh:property epcis:SensorReportStringValue_TypeConstraint ;
+		sh:property epcis:SensorReportBooleanValue_TypeConstraint ;
+		sh:property epcis:SensorReportHexBinaryValue_TypeConstraint ;
+		sh:property epcis:SensorReportURIValue_TypeConstraint ;
+		sh:property epcis:SensorReportValueType_TypeConstraint ;
     sh:property epcis:UOM_TypeConstraint ;
     sh:property epcis:SensorReportMinValue_TypeConstraint ;
     sh:property epcis:SensorReportMaxValue_TypeConstraint ;
-    sh:property epcis:SensorReportMean_TypeConstraint ;
+    sh:property epcis:SensorReportMeanValue_TypeConstraint ;
     sh:property epcis:SensorReportSDev_TypeConstraint ;
     sh:property epcis:SensorReportPercRank_TypeConstraint ;
     sh:property epcis:SensorReportPercValue_TypeConstraint ;
@@ -676,11 +680,39 @@ epcis:SensorReportType_IsMandatoryConstraint owl:sameAs [
 ].
 
 
+epcis:SensorReportStringValue_TypeConstraint owl:sameAs [
+	sh:path epcis:stringValue ;
+	sh:datatype xsd:string ;
+	sh:name "stringValue type constraint" ;
+	sh:message "stringValue must be an xsd:string" 
+].
+
 epcis:SensorReportValue_TypeConstraint owl:sameAs [
 	sh:path epcis:value ;
-	sh:datatype xsd:string ;
+	sh:datatype xsd:float ;
 	sh:name "value type constraint" ;
-	sh:message "value must be an xsd:string" 
+	sh:message "value must be an xsd:float" 
+].
+
+epcis:SensorReportBooleanValue_TypeConstraint owl:sameAs [
+	sh:path epcis:booleanValue ;
+	sh:datatype xsd:boolean ;
+	sh:name "booleanValue type constraint" ;
+	sh:message "booleanValue must be an xsd:boolean" 
+].
+
+epcis:SensorReportURIValue_TypeConstraint owl:sameAs [
+	sh:path epcis:uriValue ;
+	sh:nodeKind sh:IRI ;
+	sh:name "uriValue type constraint" ;
+	sh:message "uriValue must be an xsd:anyURI" 
+].
+
+epcis:SensorReportHexBinaryValue_TypeConstraint owl:sameAs [
+	sh:path epcis:hexBinaryValue ;
+	sh:datatype xsd:hexBinary ;
+	sh:name "hexBinaryValue type constraint" ;
+	sh:message "hexBinaryValue must be an xsd:hexBinary" 
 ].
 
 epcis:SensorReportValueType_TypeConstraint owl:sameAs [
@@ -705,11 +737,11 @@ epcis:SensorReportMaxValue_TypeConstraint owl:sameAs [
 	sh:message "maxValue must be an xsd:float" 
 ].
 
-epcis:SensorReportMean_TypeConstraint owl:sameAs [
-	sh:path epcis:mean ;
+epcis:SensorReportMeanValue_TypeConstraint owl:sameAs [
+	sh:path epcis:meanValue ;
 	sh:datatype xsd:float ;
-	sh:name "mean type constraint" ;
-	sh:message "mean must be an xsd:float" 
+	sh:name "meanValue type constraint" ;
+	sh:message "meanValue must be an xsd:float" 
 ].
 
 epcis:SensorReportSDev_TypeConstraint owl:sameAs [
