@@ -165,7 +165,7 @@
 						<sensorElementList>
 							<sensorElement>
 								<sensorMetaData startTime="2019-04-01T15:00:00.000+01:00" endTime="2019-04-02T14:59:59.999+01:00" example:someFurtherMetaData="someText"/>
-								<sensorReport type="gs1:Temperature" minValue="12.4" maxValue="13.8" averageValue="13.2" sDev="0.41" uom="CEL" percRank="50" percValue="12.7" example:cv="123"/>
+								<sensorReport type="gs1:Temperature" minValue="12.4" maxValue="13.8" meanValue="13.2" sDev="0.41" uom="CEL" percRank="50" percValue="12.7" example:cv="123"/>
 								<sensorReport type="example:someSensorProperty" valueType="xsd:string" value="someSensorOutput"/>
 								<example:furtherSensorData>
 									<example:measure1>123.5</example:measure1>
@@ -194,11 +194,7 @@
 							<sensorElement>
 								<sensorMetaData time="2019-07-19T14:00:00.000+01:00"/>
 								<sensorReport type="gs1:Temperature" value="26.0" uom="CEL" deviceID="urn:epc:id:giai:4000001.111"/>
-								<sensorReport type="rail:Abc" valueType="xsd:base64Binary" value="111100001111000011110000" deviceID="urn:epc:id:giai:4000001.112"/>
-								<sensorReport type="rail:Def" valueType="xsd:boolean" value="true" deviceID="urn:epc:id:giai:4000001.113"/>
-								<sensorReport type="example:Ghi" valueType="xsd:string" value="SomeString" deviceID="urn:epc:id:giai:4000001.114"/>
-								<sensorReport type="example:Jkl" valueType="xsd:hexBinary" value="F0F0F0" deviceID="urn:epc:id:giai:4000001.115"/>
-								<sensorReport type="rail:Mno" valueType="xsd:anyURI" value="https://example.org/rail/someSectorSpecificValue" deviceID="urn:epc:id:giai:4000001.116"/>
+								<sensorReport type="rail:Def" booleanValue="true" deviceID="urn:epc:id:giai:4000001.113"/>
 							</sensorElement>
 						</sensorElementList>
 					</extension>
@@ -234,8 +230,8 @@
 							</sensorElement>
 							<sensorElement>
 								<sensorMetaData startTime="2019-04-01T15:00:00.000+01:00" endTime="2019-04-02T14:59:59.999+01:00" example:someFurtherMetaData="someText"/>
-								<sensorReport type="gs1:Temperature" minValue="12.4" maxValue="13.8" averageValue="13.2" sDev="0.41" uom="CEL" percRank="50" percValue="12.7" example:cv="123"/>
-								<sensorReport type="example:someSensorProperty" valueType="xsd:string" value="someSensorOutput"/>
+								<sensorReport type="gs1:Temperature" minValue="12.4" maxValue="13.8" meanValue="13.2" sDev="0.41" uom="CEL" percRank="50" percValue="12.7" example:cv="123"/>
+								<sensorReport type="example:someSensorProperty" stringValue="someSensorOutput"/>
 								<example:furtherSensorData>
 									<measure1>123.5</measure1>
 									<measure2>0.987</measure2>
@@ -243,7 +239,7 @@
 							</sensorElement>
 							<sensorElement>
 								<sensorReport type="gs1:Temperature" uom="CEL" time="2019-07-19T14:00:00.000+01:00" deviceID="urn:epc:id:giai:4000001.111" deviceMetaData="https://id.gs1.org/giai/4000001111" rawData="https://example.org/giai/401234599999" dataProcessingMethod="https://example.com/gdti/4012345000054987" bizRules="https://example.org/gdti/4012345000054987"/>
-								<sensorReport type="example:someSensorProperty" valueType="xsd:string" value="someSensorOutput"/>
+								<sensorReport type="example:someSensorProperty" stringValue="someSensorOutput"/>
 							</sensorElement>
 						</sensorElementList>
 					</extension>
