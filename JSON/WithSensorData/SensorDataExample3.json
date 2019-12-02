@@ -19,13 +19,17 @@
     "action": {"@type":"xsd:string"},
 
     "quantity": {"@type":"xsd:decimal"},
-    "value" : {"@type": "xsd:string"},
+    "value" : {"@type": "xsd:float"},
     "minValue" : {"@type": "xsd:float"},
     "maxValue" : {"@type": "xsd:float"},
     "percValue" : {"@type": "xsd:float"},
     "percRank" : {"@type": "xsd:float"},
-    "mean" : {"@type": "xsd:float"},
+    "meanValue" : {"@type": "xsd:float"},
     "sDev" : {"@type": "xsd:float"},
+    "stringValue" : {"@type": "xsd:string"},
+    "booleanValue" : {"@type": "xsd:boolean"},
+    "hexBinaryValue" : {"@type": "xsd:hexBinary"},
+    "uriValue" : {"@type": "@id"},
     
     "uom": {"@type":"xsd:string"},
 
