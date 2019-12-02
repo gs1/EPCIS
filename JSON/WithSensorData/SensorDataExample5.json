@@ -19,13 +19,17 @@
     "action": {"@type":"xsd:string"},
 
     "quantity": {"@type":"xsd:decimal"},
-    "value" : {"@type": "xsd:string"},
+    "value" : {"@type": "xsd:float"},
     "minValue" : {"@type": "xsd:float"},
     "maxValue" : {"@type": "xsd:float"},
     "percValue" : {"@type": "xsd:float"},
     "percRank" : {"@type": "xsd:float"},
-    "mean" : {"@type": "xsd:float"},
+    "meanValue" : {"@type": "xsd:float"},
     "sDev" : {"@type": "xsd:float"},
+    "stringValue" : {"@type": "xsd:string"},
+    "booleanValue" : {"@type": "xsd:boolean"},
+    "hexBinaryValue" : {"@type": "xsd:hexBinary"},
+    "uriValue" : {"@type": "@id"},
     
     "uom": {"@type":"xsd:string"},
 
@@ -82,12 +86,12 @@
 		   {
 		    "sensorMetaData" : {"deviceID":"urn:epc:id:giai:4000001.111", "deviceMetaData":"https://id.gs1.org/giai/4000001111"},
 		    "sensorReport" : [
-			 { "type": "gs1:Temperature" , "time":"2019-04-02T14:05:00.000+01:00", "value" : "26.0", "uom": "CEL"},
-			 { "type": "gs1:Temperature" , "time":"2019-04-02T14:15:00.000+01:00", "value" : "26.1", "uom": "CEL"},
-			 { "type": "gs1:Temperature" , "time":"2019-04-02T14:25:00.000+01:00", "value" : "26.2", "uom": "CEL"},
-			 { "type": "gs1:Temperature" , "time":"2019-04-02T14:35:00.000+01:00", "value" : "26.3", "uom": "CEL"},
-			 { "type": "gs1:Temperature" , "time":"2019-04-02T14:45:00.000+01:00", "value" : "26.4", "uom": "CEL"},
-			 { "type": "gs1:Temperature" , "time":"2019-04-02T14:55:00.000+01:00", "value" : "26.5", "uom": "CEL"}
+			 { "type": "gs1:Temperature" , "time":"2019-04-02T14:05:00.000+01:00", "value" : 26.0, "uom": "CEL"},
+			 { "type": "gs1:Temperature" , "time":"2019-04-02T14:15:00.000+01:00", "value" : 26.1, "uom": "CEL"},
+			 { "type": "gs1:Temperature" , "time":"2019-04-02T14:25:00.000+01:00", "value" : 26.2, "uom": "CEL"},
+			 { "type": "gs1:Temperature" , "time":"2019-04-02T14:35:00.000+01:00", "value" : 26.3, "uom": "CEL"},
+			 { "type": "gs1:Temperature" , "time":"2019-04-02T14:45:00.000+01:00", "value" : 26.4, "uom": "CEL"},
+			 { "type": "gs1:Temperature" , "time":"2019-04-02T14:55:00.000+01:00", "value" : 26.5, "uom": "CEL"}
 		     ]
 		    }	    
 		  ]
