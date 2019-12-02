@@ -13,6 +13,13 @@
     "decimal": {
       "type": "number"
     },
+    "boolean": {
+      "type": "boolean"
+    },
+    "hexBinary": {
+      "type": "string",
+      "pattern": "^[A-Fa-f0-9]+$"
+    },
     "action": {
       "type": "string",
       "enum": [
@@ -100,7 +107,11 @@
       "type": "object",
       "properties": {
         "type": { "$ref": "#/definitions/uri" },
-        "value": { "$ref": "#/definitions/string" },
+        "value": { "$ref": "#/definitions/decimal" },
+        "stringValue": { "$ref": "#/definitions/string" },
+        "uriValue": { "$ref": "#/definitions/uri" },
+        "booleanValue": { "$ref": "#/definitions/boolean" },
+        "hexBinaryValue": { "$ref": "#/definitions/hexBinary" },
         "uom": { "$ref": "#/definitions/string" },
         "minValue": { "$ref": "#/definitions/decimal" },
         "maxValue": { "$ref": "#/definitions/decimal" },
@@ -111,7 +122,7 @@
         "deviceMetaData": { "$ref": "#/definitions/uri" },
         "rawData": { "$ref": "#/definitions/uri" },
         "time": { "$ref": "#/definitions/time" },
-        "mean": { "$ref": "#/definitions/decimal" },
+        "meanValue": { "$ref": "#/definitions/decimal" },
         "percRank": { "$ref": "#/definitions/decimal" },
         "percValue": { "$ref": "#/definitions/decimal" },
         "valueType": { "$ref": "#/definitions/string" },
