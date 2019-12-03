@@ -534,7 +534,6 @@ epcis:SensorReportShape
 		sh:property epcis:SensorReportBooleanValue_TypeConstraint ;
 		sh:property epcis:SensorReportHexBinaryValue_TypeConstraint ;
 		sh:property epcis:SensorReportURIValue_TypeConstraint ;
-		sh:property epcis:SensorReportValueType_TypeConstraint ;
     sh:property epcis:UOM_TypeConstraint ;
     sh:property epcis:SensorReportMinValue_TypeConstraint ;
     sh:property epcis:SensorReportMaxValue_TypeConstraint ;
@@ -714,14 +713,6 @@ epcis:SensorReportHexBinaryValue_TypeConstraint owl:sameAs [
 	sh:name "hexBinaryValue type constraint" ;
 	sh:message "hexBinaryValue must be an xsd:hexBinary" 
 ].
-
-epcis:SensorReportValueType_TypeConstraint owl:sameAs [
-	sh:path epcis:valueType ;
-	sh:nodeKind sh:IRI ;
-	sh:name "valueType type constraint" ;
-	sh:message "valueType must be an xsd:anyURI" 
-].
-
 
 epcis:SensorReportMinValue_TypeConstraint owl:sameAs [
 	sh:path epcis:minValue ;
