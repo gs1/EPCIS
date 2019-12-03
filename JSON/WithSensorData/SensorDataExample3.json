@@ -56,8 +56,6 @@
     "dataProcessingMethod": {"@type":"@id"},
     "chemicalSubstance": {"@type":"@id"},
     "microorganism": {"@type":"@id"},
-    "valueType": {"@type":"@id"},
-    
     
     "isA": "@type",
     "id":"@id",
