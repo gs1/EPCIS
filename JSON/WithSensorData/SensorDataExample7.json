@@ -56,8 +56,6 @@
     "dataProcessingMethod": {"@type":"@id"},
     "chemicalSubstance": {"@type":"@id"},
     "microorganism": {"@type":"@id"},
-    "valueType": {"@type":"@id"},
-    
     
     "isA": "@type",
     "id":"@id",
@@ -87,11 +85,11 @@
 		    "sensorMetaData" : {"time":"2019-07-19T14:00:00.000+01:00"},
 		    "sensorReport" : [
 			 { "type": "gs1:Temperature" , "value":26.0, "uom":"CEL", "deviceID":"urn:epc:id:giai:4000001.111"},
-			 { "type": "rail:Abc" , "valueType":"xsd:string", "stringValue":"111100001111000011110000", "deviceID":"urn:epc:id:giai:4000001.112"},
-			 { "type": "rail:Def" , "valueType":"xsd:boolean", "booleanValue":true, "deviceID":"urn:epc:id:giai:4000001.113"},
-			 { "type": "example:Ghi" , "valueType":"xsd:string", "stringValue":"SomeString", "deviceID":"urn:epc:id:giai:4000001.114"},
-			 { "type": "example:Jkl" , "valueType":"xsd:hexBinary", "hexBinaryValue":"F0F0F0", "deviceID":"urn:epc:id:giai:4000001.115"},
-			 { "type": "rail:Mno" , "valueType":"xsd:anyURI", "uriValue":"https://example.org/rail/someSectorSpecificValue", "deviceID":"urn:epc:id:giai:4000001.116"}
+			 { "type": "rail:Abc" , "stringValue":"111100001111000011110000", "deviceID":"urn:epc:id:giai:4000001.112"},
+			 { "type": "rail:Def" , "booleanValue":true, "deviceID":"urn:epc:id:giai:4000001.113"},
+			 { "type": "example:Ghi" , "stringValue":"SomeString", "deviceID":"urn:epc:id:giai:4000001.114"},
+			 { "type": "example:Jkl" , "hexBinaryValue":"F0F0F0", "deviceID":"urn:epc:id:giai:4000001.115"},
+			 { "type": "rail:Mno" , "uriValue":"https://example.org/rail/someSectorSpecificValue", "deviceID":"urn:epc:id:giai:4000001.116"}
 		     ]
 		    }	    
 		  ]
