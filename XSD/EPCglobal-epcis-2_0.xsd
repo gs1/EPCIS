@@ -461,7 +461,7 @@ GS1 retains the right to make changes to this document at any time, without noti
     <xsd:complexType name="SensorReportType">
       <xsd:simpleContent>
         <xsd:extension base="xsd:string">
-			  <xsd:attribute type="xsd:string" name="type" use="required"/>
+			  <xsd:attribute type="xsd:anyURI" name="type" use="required"/>
 			  <xsd:attribute type="xsd:float" name="value" use="optional"/>
 			  <xsd:attribute type="xsd:string" name="stringValue" use="optional"/>
 			  <xsd:attribute type="xsd:boolean" name="booleanValue" use="optional"/>
@@ -480,7 +480,6 @@ GS1 retains the right to make changes to this document at any time, without noti
 			  <xsd:attribute type="xsd:float" name="meanValue" use="optional"/>
 			  <xsd:attribute type="xsd:float" name="percRank" use="optional"/>
 			  <xsd:attribute type="xsd:float" name="percValue" use="optional"/>
-			  <xsd:attribute type="xsd:string" name="valueType" use="optional"/>
 			  <xsd:attribute type="xsd:anyURI" name="dataProcessingMethod" use="optional"/>
 			  <xsd:attribute type="xsd:anyURI" name="bizRules" use="optional"/>
 		    <xsd:anyAttribute processContents="lax"/>
