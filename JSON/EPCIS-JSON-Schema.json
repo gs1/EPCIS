@@ -125,7 +125,6 @@
         "meanValue": { "$ref": "#/definitions/decimal" },
         "percRank": { "$ref": "#/definitions/decimal" },
         "percValue": { "$ref": "#/definitions/decimal" },
-        "valueType": { "$ref": "#/definitions/string" },
         "dataProcessingMethod": { "$ref": "#/definitions/uri" },
         "bizRules": { "$ref": "#/definitions/uri" }
       },
