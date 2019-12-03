@@ -227,6 +227,26 @@
                 }
               },
               "required": [ "quantityList" ]
+            },
+            {
+             "allOf": [
+				{
+				  "properties": {
+					"sensorElementList": {
+					  "minItems": 1
+					}
+				  },
+				  "required": [ "sensorElementList" ]
+				},
+				{
+				  "properties": {
+					"readPoint": {
+					  "minItems": 1
+					}
+				  },
+				  "required": [ "readPoint" ]
+				}
+             ]
             }
           ]
         },
