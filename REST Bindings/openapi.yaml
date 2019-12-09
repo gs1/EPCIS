@@ -389,7 +389,23 @@ paths:
                           - SecurityException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
         '404':
-          description: This event does not exists.
+          description: Event type or evnet id not found
+          content:
+            application/problem+json:
+              schema:
+                allOf:
+                  - properties:
+                      status:
+                        type: integer
+                        enum:
+                          - 404
+                        default: 404
+                      type:
+                        type: string
+                        format: uri
+                        enum:
+                          - NoSuchNameException
+                  - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
 
 
   /queries:
@@ -1085,7 +1101,7 @@ components:
                   type: string
             - properties:
                 event:
-                  type: string
+                  type: object
         - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
 
 
