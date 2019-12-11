@@ -1,7 +1,6 @@
-openapi: "3.0.1"
+openapi: "3.0.2"
 info:
-  # Version of the EPCIS REST bindings document.
-  version: 2.0.1-alpha
+  version: 2.0.0
   title: EPCIS 2.0 REST Bindings
   license:
     name: Apache2
@@ -63,7 +62,7 @@ paths:
                         type: string
                         format: uri
                         enum:
-                          - ValidationException
+                          - epcisExceptions:ValidationException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
         '401':
           description: Authorization information is missing or invalid.
@@ -81,7 +80,7 @@ paths:
                         type: string
                         format: uri
                         enum:
-                          - SecurityException
+                          - epcisExceptions:SecurityException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
       callbacks:
         onError:
@@ -99,9 +98,9 @@ paths:
                               type: string
                               format: uri
                               enum:
-                                - SecurityException
-                                - ValidationException
-                                - ImplementationException
+                                - epcisExceptions:SecurityException
+                                - epcisExceptions:ValidationException
+                                - epcisExceptions:ImplementationException
               responses:
                 '200':
                   description: Success
@@ -150,7 +149,7 @@ paths:
                         type: string
                         format: uri
                         enum:
-                          - SecurityException
+                          - epcisExceptions:SecurityException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
 
         '500':
@@ -169,9 +168,8 @@ paths:
                         type: string
                         format: uri
                         enum:
-                          - ImplementationException
+                          - epcisExceptions:ImplementationException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-
 
   /events/{eventType}:
     options:
@@ -235,9 +233,9 @@ paths:
                         type: string
                         format: uri
                         enum:
-                          - QueryValidationException
-                          - QueryParameterException
-                          - QueryTooComplexException
+                          - epcisExceptions:QueryValidationException
+                          - epcisExceptions:QueryParameterException
+                          - epcisExceptions:QueryTooComplexException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
         '401':
           description: Authorization information is missing or invalid.
@@ -255,7 +253,7 @@ paths:
                         type: string
                         format: uri
                         enum:
-                          - SecurityException
+                          - epcisExceptions:SecurityException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
         '404':
           description: Event type not found
@@ -273,7 +271,7 @@ paths:
                         type: string
                         format: uri
                         enum:
-                          - NoSuchNameException
+                          - epcisExceptions:NoSuchNameException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
         '414':
           description: Query too long, if the total URL length exceeds 2000 characters.
@@ -291,7 +289,7 @@ paths:
                         type: string
                         format: uri
                         enum:
-                          - QueryTooComplexException
+                          - epcisExceptions:QueryTooComplexException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
         '412':
           description: Mismatch of the event type constraint in the path and in the query.
@@ -309,7 +307,7 @@ paths:
                         type: string
                         format: uri
                         enum:
-                          - QueryParameterException
+                          - epcisExceptions:QueryParameterException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
 
 
@@ -368,7 +366,7 @@ paths:
                         type: string
                         format: uri
                         enum:
-                          - SecurityException
+                          - epcisExceptions:SecurityException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
         '403':
           description: Client is unauthorized to access this resource.
@@ -386,7 +384,7 @@ paths:
                         type: string
                         format: uri
                         enum:
-                          - SecurityException
+                          - epcisExceptions:SecurityException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
         '404':
           description: Event type or evnet id not found
@@ -404,7 +402,7 @@ paths:
                         type: string
                         format: uri
                         enum:
-                          - NoSuchNameException
+                          - epcisExceptions:NoSuchNameException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
 
 
@@ -455,8 +453,8 @@ paths:
                         type: string
                         format: uri
                         enum:
-                          - ValidationException
-                          - ImplementationException
+                          - epcisExceptions:ValidationException
+                          - epcisExceptions:ImplementationException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
         '401':
           description: Authorization information is missing or invalid.
@@ -474,7 +472,7 @@ paths:
                         type: string
                         format: uri
                         enum:
-                          - SecurityException
+                          - epcisExceptions:SecurityException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
 
     post:
@@ -513,7 +511,7 @@ paths:
                         type: string
                         format: uri
                         enum:
-                          - SecurityException
+                          - epcisExceptions:SecurityException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
         '400':
           description: Query exceptions defined in EPCIS
@@ -531,9 +529,9 @@ paths:
                         type: string
                         format: uri
                         enum:
-                          - QueryValidationException
-                          - QueryParameterException
-                          - QueryTooComplexException
+                          - epcisExceptions:QueryValidationException
+                          - epcisExceptions:QueryParameterException
+                          - epcisExceptions:QueryTooComplexException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
         '414':
           description: Query too long, if the total URL length exceeds 2000 characters.
@@ -551,7 +549,7 @@ paths:
                         type: string
                         format: uri
                         enum:
-                          - QueryTooComplexException
+                          - epcisExceptions:QueryTooComplexException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
 
 
@@ -610,7 +608,7 @@ paths:
                         type: string
                         format: uri
                         enum:
-                          - SecurityException
+                          - epcisExceptions:SecurityException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
 
         '404':
@@ -629,7 +627,7 @@ paths:
                         type: string
                         format: uri
                         enum:
-                          - NoSuchNameException
+                          - epcisExceptions:NoSuchNameException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
         '400':
           description: The query is invalid
@@ -647,7 +645,7 @@ paths:
                         type: string
                         format: uri
                         enum:
-                          - ValidationException
+                          - epcisExceptions:ValidationException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
         '500':
           description: This is a backend problem caused when the query was resolved and executed.
@@ -665,7 +663,7 @@ paths:
                         type: string
                         format: uri
                         enum:
-                          - ImplementationException
+                          - epcisExceptions:ImplementationException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
         '414':
           description: Query too long, if the total URL length exceeds 2000 characters.
@@ -683,7 +681,7 @@ paths:
                         type: string
                         format: uri
                         enum:
-                          - QueryTooComplexException
+                          - epcisExceptions:QueryTooComplexException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
 
 
@@ -760,12 +758,12 @@ paths:
                         type: string
                         format: uri
                         enum:
-                          - InvalidURIException
-                          - DuplicateSubscriptionException
-                          - QueryParameterException
-                          - QueryTooComplexException
-                          - SubscriptionControlsException
-                          - ValidationException
+                          - epcisExceptions:InvalidURIException
+                          - epcisExceptions:DuplicateSubscriptionException
+                          - epcisExceptions:QueryParameterException
+                          - epcisExceptions:QueryTooComplexException
+                          - epcisExceptions:SubscriptionControlsException
+                          - epcisExceptions:ValidationException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
         '401':
           description: Authorization information is missing or invalid.
@@ -783,7 +781,7 @@ paths:
                         type: string
                         format: uri
                         enum:
-                          - SecurityException
+                          - epcisExceptions:SecurityException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
 
         '403':
@@ -802,7 +800,7 @@ paths:
                         type: string
                         format: uri
                         enum:
-                          - SubscribeNotPermittedException
+                          - epcisExceptions:SubscribeNotPermittedException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
 
         '404':
@@ -821,7 +819,7 @@ paths:
                         type: string
                         format: uri
                         enum:
-                          - NoSuchNameException
+                          - epcisExceptions:NoSuchNameException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
 
 
@@ -842,7 +840,7 @@ paths:
                         type: string
                         format: uri
                         enum:
-                          - DuplicateSubscriptionException
+                          - epcisExceptions:DuplicateSubscriptionException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
 
         '414':
@@ -861,7 +859,7 @@ paths:
                         type: string
                         format: uri
                         enum:
-                          - QueryTooComplexException
+                          - epcisExceptions:QueryTooComplexException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
 
         '500':
@@ -880,7 +878,7 @@ paths:
                         type: string
                         format: uri
                         enum:
-                          - ImplementationException
+                          - epcisExceptions:ImplementationException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
       callbacks:
         onTriggeredEvent:
@@ -933,16 +931,16 @@ paths:
                               format: uri
                               enum:
                                 - SubscribeResult
-                                - NoSuchNameException
-                                - InvalidURIException
-                                - DuplicateSubscriptionException
-                                - QueryParameterException
-                                - QueryTooComplexException
-                                - SubscriptionControlsException
-                                - SubscribeNotPermittedException
-                                - SecurityException
-                                - ValidationException
-                                - ImplementationException
+                                - epcisExceptions:NoSuchNameException
+                                - epcisExceptions:InvalidURIException
+                                - epcisExceptions:DuplicateSubscriptionException
+                                - epcisExceptions:QueryParameterException
+                                - epcisExceptions:QueryTooComplexException
+                                - epcisExceptions:SubscriptionControlsException
+                                - epcisExceptions:SubscribeNotPermittedException
+                                - epcisExceptions:SecurityException
+                                - epcisExceptions:ValidationException
+                                - epcisExceptions:ImplementationException
               responses:
                 '200':
                   description: Success
@@ -1001,9 +999,9 @@ paths:
                         type: string
                         format: uri
                         enum:
-                          - InvalidURIException
-                          - SubscriptionControlsException
-                          - ValidationException
+                          - epcisExceptions:InvalidURIException
+                          - epcisExceptions:SubscriptionControlsException
+                          - epcisExceptions:ValidationException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
         '401':
           description: Authorization information is missing or invalid.
@@ -1021,7 +1019,7 @@ paths:
                         type: string
                         format: uri
                         enum:
-                          - SecurityException
+                          - epcisExceptions:SecurityException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
 
 
@@ -1041,8 +1039,8 @@ paths:
                         type: string
                         format: uri
                         enum:
-                          - NoSuchNameException
-                          - NoSuchSubscriptionException
+                          - epcisExceptions:NoSuchNameException
+                          - epcisExceptions:NoSuchSubscriptionException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
 
 
@@ -1062,7 +1060,7 @@ paths:
                         type: string
                         format: uri
                         enum:
-                          - ImplementationException
+                          - epcisExceptions:ImplementationException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
 
 components:
@@ -1095,7 +1093,7 @@ components:
         messages comply with [RFC 7807](https://tools.ietf.org/html/rfc7807) to make exception more reusable.
 
       allOf:
-        -  oneOf:
+        - oneOf:
             - properties:
                 eventId:
                   type: string
@@ -1103,7 +1101,6 @@ components:
                 event:
                   type: object
         - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-
 
     NamedQueryMetaData:
       type: object
