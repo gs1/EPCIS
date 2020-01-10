@@ -17,8 +17,8 @@ paths:
         - $ref: '#/components/parameters/X-CBV-version'
         - $ref: '#/components/parameters/X-EPCIS-extensions'
         - $ref: '#/components/parameters/X-CBV-extensions'
-        - $ref: '#/components/parameters/X-Vendor-Version'
-        - $ref: '#/components/parameters/X-TL-Vocabulary'
+        - $ref: '#/components/parameters/X-Vendor-version'
+        - $ref: '#/components/parameters/X-Resources-vocabulary'
       responses:
         '200':
           description: Server can comply with the EPCIS-related requirements from the client
@@ -115,8 +115,8 @@ paths:
         - $ref: '#/components/parameters/X-CBV-version'
         - $ref: '#/components/parameters/X-EPCIS-extensions'
         - $ref: '#/components/parameters/X-CBV-extensions'
-        - $ref: '#/components/parameters/X-Vendor-Version'
-        - $ref: '#/components/parameters/X-TL-Vocabulary'
+        - $ref: '#/components/parameters/X-Vendor-version'
+        - $ref: '#/components/parameters/X-Resources-vocabulary'
       responses:
         '200':
           description: Server can comply with the EPCIS-related requirements from the client
@@ -181,8 +181,8 @@ paths:
         - $ref: '#/components/parameters/X-CBV-version'
         - $ref: '#/components/parameters/X-EPCIS-extensions'
         - $ref: '#/components/parameters/X-CBV-extensions'
-        - $ref: '#/components/parameters/X-Vendor-Version'
-        - $ref: '#/components/parameters/X-TL-Vocabulary'
+        - $ref: '#/components/parameters/X-Vendor-version'
+        - $ref: '#/components/parameters/X-Resources-vocabulary'
       responses:
         '200':
           description: Server can comply with the EPCIS-related requirements from the client
@@ -333,8 +333,8 @@ paths:
         - $ref: '#/components/parameters/X-CBV-version'
         - $ref: '#/components/parameters/X-EPCIS-extensions'
         - $ref: '#/components/parameters/X-CBV-extensions'
-        - $ref: '#/components/parameters/X-Vendor-Version'
-        - $ref: '#/components/parameters/X-TL-Vocabulary'
+        - $ref: '#/components/parameters/X-Vendor-version'
+        - $ref: '#/components/parameters/X-Resources-vocabulary'
       responses:
         '200':
           description: Server can comply with the EPCIS-related requirements from the client
@@ -416,8 +416,8 @@ paths:
         - $ref: '#/components/parameters/X-CBV-version'
         - $ref: '#/components/parameters/X-EPCIS-extensions'
         - $ref: '#/components/parameters/X-CBV-extensions'
-        - $ref: '#/components/parameters/X-Vendor-Version'
-        - $ref: '#/components/parameters/X-TL-Vocabulary'
+        - $ref: '#/components/parameters/X-Vendor-version'
+        - $ref: '#/components/parameters/X-Resources-vocabulary'
 
       responses:
         '200':
@@ -570,8 +570,8 @@ paths:
         - $ref: '#/components/parameters/X-CBV-version'
         - $ref: '#/components/parameters/X-EPCIS-extensions'
         - $ref: '#/components/parameters/X-CBV-extensions'
-        - $ref: '#/components/parameters/X-Vendor-Version'
-        - $ref: '#/components/parameters/X-TL-Vocabulary'
+        - $ref: '#/components/parameters/X-Vendor-version'
+        - $ref: '#/components/parameters/X-Resources-vocabulary'
       responses:
         '200':
           description: Server can comply with the EPCIS-related requirements from the client
@@ -701,8 +701,8 @@ paths:
         - $ref: '#/components/parameters/X-CBV-version'
         - $ref: '#/components/parameters/X-EPCIS-extensions'
         - $ref: '#/components/parameters/X-CBV-extensions'
-        - $ref: '#/components/parameters/X-Vendor-Version'
-        - $ref: '#/components/parameters/X-TL-Vocabulary'
+        - $ref: '#/components/parameters/X-Vendor-version'
+        - $ref: '#/components/parameters/X-Resources-vocabulary'
       responses:
         '200':
           description: Server can comply with the EPCIS-related requirements from the client
@@ -967,8 +967,8 @@ paths:
         - $ref: '#/components/parameters/X-CBV-version'
         - $ref: '#/components/parameters/X-EPCIS-extensions'
         - $ref: '#/components/parameters/X-CBV-extensions'
-        - $ref: '#/components/parameters/X-Vendor-Version'
-        - $ref: '#/components/parameters/X-TL-Vocabulary'
+        - $ref: '#/components/parameters/X-Vendor-version'
+        - $ref: '#/components/parameters/X-Resources-vocabulary'
       responses:
         '200':
           description: Server can comply with the EPCIS-related requirements from the client
@@ -1243,18 +1243,18 @@ components:
         type: array
         items:
           type: string
-    X-Vendor-Version:
+    X-Vendor-version:
       in: header
-      name: X-Vendor-Version
+      name: X-Vendor-version
       description: A versioning scheme that can be freely chosen by the vendor
       schema:
         type: array
         items:
           type: string
         uniqueItems: true
-    X-TL-Vocabulary:
+    X-Resources-vocabulary:
       in: header
-      name: X-TL-Vocabulary
+      name: X-Resources-vocabulary
       description: An optional header to specify the vocabuary for the top-level endpoints
       schema:
         type: array
