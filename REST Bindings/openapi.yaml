@@ -18,7 +18,7 @@ paths:
         - $ref: '#/components/parameters/X-EPCIS-extensions'
         - $ref: '#/components/parameters/X-CBV-extensions'
         - $ref: '#/components/parameters/X-Vendor-version'
-        - $ref: '#/components/parameters/X-Resources-vocabulary'
+        - $ref: '#/components/parameters/X-CBV-extensions'
       responses:
         '200':
           description: Server can comply with the EPCIS-related requirements from the client
@@ -85,7 +85,7 @@ paths:
       callbacks:
         onError:
           '{$request.body#/errorUrl}':
-            description: The channel to receive errors an exceptions has been successfully established.
+            description: The channel to receive errors an exception has been successfully established.
             post:
               requestBody:
                 content:
@@ -116,7 +116,7 @@ paths:
         - $ref: '#/components/parameters/X-EPCIS-extensions'
         - $ref: '#/components/parameters/X-CBV-extensions'
         - $ref: '#/components/parameters/X-Vendor-version'
-        - $ref: '#/components/parameters/X-Resources-vocabulary'
+        - $ref: '#/components/parameters/X-CBV-extensions'
       responses:
         '200':
           description: Server can comply with the EPCIS-related requirements from the client
@@ -182,7 +182,7 @@ paths:
         - $ref: '#/components/parameters/X-EPCIS-extensions'
         - $ref: '#/components/parameters/X-CBV-extensions'
         - $ref: '#/components/parameters/X-Vendor-version'
-        - $ref: '#/components/parameters/X-Resources-vocabulary'
+        - $ref: '#/components/parameters/X-CBV-extensions'
       responses:
         '200':
           description: Server can comply with the EPCIS-related requirements from the client
@@ -334,7 +334,7 @@ paths:
         - $ref: '#/components/parameters/X-EPCIS-extensions'
         - $ref: '#/components/parameters/X-CBV-extensions'
         - $ref: '#/components/parameters/X-Vendor-version'
-        - $ref: '#/components/parameters/X-Resources-vocabulary'
+        - $ref: '#/components/parameters/X-CBV-extensions'
       responses:
         '200':
           description: Server can comply with the EPCIS-related requirements from the client
@@ -417,7 +417,7 @@ paths:
         - $ref: '#/components/parameters/X-EPCIS-extensions'
         - $ref: '#/components/parameters/X-CBV-extensions'
         - $ref: '#/components/parameters/X-Vendor-version'
-        - $ref: '#/components/parameters/X-Resources-vocabulary'
+        - $ref: '#/components/parameters/X-CBV-extensions'
 
       responses:
         '200':
@@ -571,7 +571,7 @@ paths:
         - $ref: '#/components/parameters/X-EPCIS-extensions'
         - $ref: '#/components/parameters/X-CBV-extensions'
         - $ref: '#/components/parameters/X-Vendor-version'
-        - $ref: '#/components/parameters/X-Resources-vocabulary'
+        - $ref: '#/components/parameters/X-CBV-extensions'
       responses:
         '200':
           description: Server can comply with the EPCIS-related requirements from the client
@@ -702,7 +702,7 @@ paths:
         - $ref: '#/components/parameters/X-EPCIS-extensions'
         - $ref: '#/components/parameters/X-CBV-extensions'
         - $ref: '#/components/parameters/X-Vendor-version'
-        - $ref: '#/components/parameters/X-Resources-vocabulary'
+        - $ref: '#/components/parameters/X-CBV-extensions'
       responses:
         '200':
           description: Server can comply with the EPCIS-related requirements from the client
@@ -917,7 +917,7 @@ paths:
                   description: Success
         onError:
           '{$request.body#/errorUrl}':
-            description: The channel to receive errors an exceptions has been successfully established.
+            description: The channel to receive errors an exception has been successfully established.
             post:
               requestBody:
                 content:
@@ -968,7 +968,7 @@ paths:
         - $ref: '#/components/parameters/X-EPCIS-extensions'
         - $ref: '#/components/parameters/X-CBV-extensions'
         - $ref: '#/components/parameters/X-Vendor-version'
-        - $ref: '#/components/parameters/X-Resources-vocabulary'
+        - $ref: '#/components/parameters/X-CBV-extensions'
       responses:
         '200':
           description: Server can comply with the EPCIS-related requirements from the client
@@ -1066,7 +1066,7 @@ paths:
 components:
   schemas:
     RFC7807ProblemResponseBody:
-      description: A response as speciified in [RFC 7807](https://tools.ietf.org/html/rfc7807)
+      description: A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)
       type: object
       required:
         - type
@@ -1235,14 +1235,6 @@ components:
         type: array
         items:
           type: string
-    X-CBV-extensions:
-      in: header
-      name: X-CBV-extensions
-      description: Specific CBV extensions supported (e.g. for fish, rail, FIT)
-      schema:
-        type: array
-        items:
-          type: string
     X-Vendor-version:
       in: header
       name: X-Vendor-version
@@ -1252,9 +1244,9 @@ components:
         items:
           type: string
         uniqueItems: true
-    X-Resources-vocabulary:
+    X-CBV-extensions:
       in: header
-      name: X-Resources-vocabulary
+      name: X-CBV-extensions
       description: An optional header to specify the vocabuary for the top-level endpoints
       schema:
         type: array
