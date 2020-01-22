@@ -180,6 +180,13 @@ paths:
 
   /{optionalTopLevelResource}/events/{eventType}:
     parameters:
+      - name: eventType
+        in: path
+        required: true
+        schema:
+          oneOf:
+            - $ref: '#/components/schemas/EPCISEventTypes'
+            - $ref: '#/components/schemas/AllEvent'
       - in: path
         name: optionalTopLevelResource
         description: An optional top-level resource to access events.
@@ -204,15 +211,6 @@ paths:
             application/json:
               schema:
                 {}
-    parameters:
-      - name: eventType
-        in: path
-        required: true
-        schema:
-          oneOf:
-            - $ref: '#/components/schemas/EPCISEventTypes'
-            - $ref: '#/components/schemas/AllEvent'
-
     get:
       operationId: getEvents
       parameters:
@@ -327,14 +325,6 @@ paths:
 
   /{optionalTopLevelResource}/events/{eventType}/{eventId}:
     parameters:
-      - in: path
-        name: optionalTopLevelResource
-        description: An optional top-level resource to access events.
-        required: true
-        schema:
-          type: string
-          pattern: '^(\/(epcs|bizSteps|bizLocations|readPoints|dispositions)\/(.+))?$'
-    parameters:
       - name: eventType
         in: path
         required: true
@@ -346,6 +336,15 @@ paths:
         schema:
           type: string
           format: uuid
+      - in: path
+        name: optionalTopLevelResource
+        description: An optional top-level resource to access events.
+        required: true
+        schema:
+          type: string
+          pattern: '^(\/(epcs|bizSteps|bizLocations|readPoints|dispositions)\/(.+))?$'
+
+
     options:
       summary: Query supported EPCIS version and related vocabularies/standards.
       parameters:
@@ -746,9 +745,8 @@ paths:
         content:
           application/json:
             schema:
-              oneOf:
-                - $ref: '#/components/schemas/TriggeredSubscriptionCallbackUrls'
-                - $ref: '#/components/schemas/ScheduledSubscriptionCallbackUrls'
+              $ref: '#/components/schemas/EventCallbackUrls'
+
       responses:
         '201':
           description: A resource was created and the link to the newly created resource is returned in the header.
@@ -803,7 +801,6 @@ paths:
                         enum:
                           - epcisExceptions:SecurityException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-
         '403':
           description: Subscripotion not permitted
           content:
@@ -822,7 +819,6 @@ paths:
                         enum:
                           - epcisExceptions:SubscribeNotPermittedException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-
         '404':
           description: The query name does not exist.
           content:
@@ -841,9 +837,6 @@ paths:
                         enum:
                           - epcisExceptions:NoSuchNameException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-
-
-
         '409':
           description: Client is already subscribed to that query
           content:
@@ -862,7 +855,6 @@ paths:
                         enum:
                           - epcisExceptions:DuplicateSubscriptionException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-
         '414':
           description: Query too long, if the total URL length exceeds 2000 characters.
           content:
@@ -881,7 +873,6 @@ paths:
                         enum:
                           - epcisExceptions:QueryTooComplexException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-
         '500':
           description: This is a backend problem caused when the query was resolved and executed.
           content:
@@ -901,28 +892,11 @@ paths:
                           - epcisExceptions:ImplementationException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
       callbacks:
-        onTriggeredEvent:
-          '{$request.body#/triggerUrl}':
+        onEvent:
+          '{$request.body#/eventUrl}':
             description: >-
               Successfully subscribed to a stream of events that match the trigger conditions defined
-              in the trigger parameter.
-            post:
-              requestBody:
-                content:
-                  application/json:
-                    schema:
-                      type: array
-                      items:
-                        type: object
-                      uniqueItems: true
-              responses:
-                '200':
-                  description: Success
-        onScheduledEvent:
-          '{$request.body#/scheduleUrl}':
-            description: >-
-              Successfully subscribed to a stream of events that are delivered periodically as defined in the
-              schedule query parameter.
+              in the trigger parameter or the schedule definition.
             post:
               requestBody:
                 content:
@@ -1149,14 +1123,11 @@ components:
           type: string
           format: uuid
         callbacks:
-          oneOf:
-            - $ref: '#/components/schemas/TriggeredSubscriptionCallbackUrls'
-            - $ref: '#/components/schemas/ScheduledSubscriptionCallbackUrls'
+          $ref: '#/components/schemas/EventCallbackUrls'
 
         createdAt:
           type: string
           format: date-time
-
 
     QuerySchedule:
       type: object
@@ -1182,22 +1153,11 @@ components:
         url: https://...
         description: Filter EPCIS events by properties using the [EPCIS query JSON-Schema](section EPCIS query language)
 
-    ScheduledSubscriptionCallbackUrls:
-      description: A subscription for periodic updates
-      type: object
-      properties:
-        scheduleUrl:
-          type: string
-          format: uri
-        errorUrl:
-          type: string
-          format: uri
-
-    TriggeredSubscriptionCallbackUrls:
+    EventCallbackUrls:
       description: A subscription that listens for events that match a query rule
       type: object
       properties:
-        triggerUrl:
+        eventUrl:
           type: string
           format: uri
 
