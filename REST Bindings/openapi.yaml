@@ -18,6 +18,7 @@ paths:
         - $ref: '#/components/parameters/EPCIS-extensions'
         - $ref: '#/components/parameters/CBV-extensions'
         - $ref: '#/components/parameters/Vendor-version'
+        - $ref: '#/components/parameters/CAPTURE-limit'
       responses:
         '200':
           description: Server can comply with the EPCIS-related requirements from the client.
@@ -26,7 +27,7 @@ paths:
               schema:
                 {}
     post:
-      description: Captures one or several EPCIS events.
+      description: Captures one or several EPCIS events. The server either accepts or rejects all events.
       requestBody:
         required: true
         content:
@@ -34,17 +35,15 @@ paths:
             schema:
               type: object
       responses:
-        '201':
-          description: Successfully uploaded one or more EPCIS events and created a cature job.
-          headers:
-            Location:
-              description: Capturing events creates a new capture job. Clients can poll or subscribe to that job
+        '200':
+          description: Successfully captured one or more EPCIS events.
+          content:
+            application/json:
               schema:
-                type: string
-                format: uri
+                {}
 
         '400':
-          description: Bad request. Malformed EPCIS event document.
+          description: An error occured while capturing EPCIS events. All events are rejected.
           content:
             application/problem+json:
               schema:
@@ -79,68 +78,15 @@ paths:
                         enum:
                           - epcisExceptions:SecurityException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-
-  /capture/{captureJobId}/errors:
-    parameters:
-      - in: path
-        name: captureJobId
-        required: true
-        description: Each capturing of events creates a new capture job. The errors endpoint return events that could not be captured
-        schema:
-          type: string
-    options:
-      summary: Query supported EPCIS version and related vocabularies/standards
-      parameters:
-        - $ref: '#/components/parameters/EPCIS-version'
-        - $ref: '#/components/parameters/EPCIS-min'
-        - $ref: '#/components/parameters/EPCIS-max'
-        - $ref: '#/components/parameters/CBV-version'
-        - $ref: '#/components/parameters/EPCIS-extensions'
-        - $ref: '#/components/parameters/CBV-extensions'
-        - $ref: '#/components/parameters/Vendor-version'
-      responses:
-        '200':
-          description: Server can comply with the EPCIS-related requirements from the client.
-          content:
-            application/json:
-              schema:
-                {}
-    get:
-      parameters:
-        - in: header
-          name: Upgrade
-          required: false
-          schema:
-            type: string
-            default: websocket
-        - in: header
-          required: false
-          name: Connection
-          schema:
-            type: string
-            default: upgrade
-      responses:
-        '101':
-          description: Create a WebSocket connection to listen for errors. Upon subscription, the server SHALL send all events that already occured to the client
+        '413':
+          description: The client exceeded the limit, set in CAPTURE-limit, of events that can be captured per call.
           headers:
-            Upgrade:
+            CAPTURE-limit:
               required: true
+              description: The maximum batch size of EPCIS events that can be captured per call
               schema:
                 type: string
-                default: websocket
-            Connection:
-              required: true
-              schema:
-                type: string
-                default: upgrade
-        '200':
-          description: Return errors that occured while capturing events
-          content:
-            application/problem+json:
-              schema:
-                $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-        '400':
-          description: Bad request
+                pattern: ^(\d+|\*)$
           content:
             application/problem+json:
               schema:
@@ -149,31 +95,9 @@ paths:
                       status:
                         type: integer
                         enum:
-                          - 400
-                        default: 400
-                      type:
-                        type: string
-                        format: uri
+                          - 413
+                        default: 413
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-        '401':
-          description: Authorization information is missing or invalid.
-          content:
-            application/problem+json:
-              schema:
-                allOf:
-                  - properties:
-                      status:
-                        type: integer
-                        enum:
-                          - 401
-                        default: 401
-                      type:
-                        type: string
-                        format: uri
-                        enum:
-                          - epcisExceptions:SecurityException
-                  - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-
 
   /{optionalTopLevelResource}/events:
     parameters:
@@ -183,7 +107,7 @@ paths:
         required: true
         schema:
           type: string
-          pattern: '^(\/(epcs|bizSteps|bizLocations|readPoints|dispositions)\/(.+))?$'
+          pattern: ^(\/(epcs|bizSteps|bizLocations|readPoints|dispositions)\/(.+))?$
 
     options:
       summary: Query supported EPCIS version and related vocabularies/standards.
@@ -264,7 +188,7 @@ paths:
         required: true
         schema:
           type: string
-          pattern: '^(\/(epcs|bizLocations|bizSteps|readPoints|dispositions)\/(.+))?$'
+          pattern: ^(\/(epcs|bizLocations|bizSteps|readPoints|dispositions)\/(.+))?$
     options:
       summary: Query supported EPCIS version and related vocabularies/standards
       parameters:
@@ -413,7 +337,7 @@ paths:
         required: true
         schema:
           type: string
-          pattern: '^(\/(epcs|bizSteps|bizLocations|readPoints|dispositions)\/(.+))?$'
+          pattern: ^(\/(epcs|bizSteps|bizLocations|readPoints|dispositions)\/(.+))?$
 
 
     options:
@@ -926,7 +850,7 @@ components:
       description: The EPCIS version
       schema:
         type: string
-        pattern: '^\d+(\.\d+)?$'
+        pattern: ^\d+(\.\d+)?$
         example: "2.0"
     EPCIS-min:
       in: header
@@ -934,7 +858,7 @@ components:
       description: The lowest EPCIS version supported
       schema:
         type: string
-        pattern: '^\d+(\.\d+)?$'
+        pattern: ^\d+(\.\d+)?$
         example: "2.0"
     EPCIS-max:
       in: header
@@ -942,7 +866,7 @@ components:
       description: The highest EPCIS version supported
       schema:
         type: string
-        pattern: '^\d+(\.\d+)?$'
+        pattern: ^\d+(\.\d+)?$
     CBV-version:
       in: header
       name: CBV-version
@@ -975,3 +899,10 @@ components:
         items:
           type: string
         uniqueItems: true
+    CAPTURE-limit:
+      in: header
+      name: CAPTURE-limit
+      description: The maximum batch size of EPCIS events that can be captured per call
+      schema:
+        type: string
+        pattern: ^(\d+|\*)$
