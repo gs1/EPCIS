@@ -505,10 +505,6 @@ paths:
               schema:
                 type: string
                 format: uri
-            Content-Location:
-              schema:
-                type: string
-                format: uri
         '401':
           description: Authorization information is missing or invalid.
           content:
