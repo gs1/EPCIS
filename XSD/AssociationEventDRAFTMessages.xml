@@ -71,11 +71,6 @@
 					<eventTime>2019-11-05T14:00:00.000+01:00</eventTime>
 					<eventTimeZoneOffset>+01:00</eventTimeZoneOffset>
 					<parentID>urn:epc:id:grai:4012345.55555.987</parentID>
-					<action>ADD</action>
-					<bizStep>urn:epcglobal:cbv:bizstep:assembling</bizStep>
-					<readPoint>
-						<id>urn:epc:id:sgln:4012345.00001.0</id>
-					</readPoint>
 					<childQuantityList>
 						<quantityElement>
 							<epcClass>urn:epc:class:lgtin:4023333.002000.123</epcClass>
@@ -86,6 +81,11 @@
 							<quantity>600</quantity>
 						</quantityElement>
 					</childQuantityList>
+					<action>ADD</action>
+					<bizStep>urn:epcglobal:cbv:bizstep:assembling</bizStep>
+					<readPoint>
+						<id>urn:epc:id:sgln:4012345.00001.0</id>
+					</readPoint>
 				</AssociationEvent>
 			</extension>
 			<!-- Association event - case (f): containing all fields of an ordinary event -->
