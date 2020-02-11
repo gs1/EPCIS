@@ -171,10 +171,12 @@
       },
       "required": [ "eventTime", "eventTimeZoneOffset" ]
     },
+       
+    
     "objectEvent": {
       "allOf": [
         {
-          "$ref": "#/definitions/event"
+          "$ref": "#/definitions/event"          
         },
         {
           "type": "object",
@@ -556,6 +558,31 @@
         }
       ]
     },
+
+    
+    "onlyValidEvent": {
+      "required":["isA"],
+      "allOf": [
+		  {
+			  "if": {"properties":{"isA":{ "const":"ObjectEvent" }}},
+			  "then": { "$ref": "#/definitions/objectEvent" }
+		  },
+		  {
+			  "if": {"properties":{"isA":{ "const":"AggregationEvent" }}},
+			  "then": { "$ref": "#/definitions/aggregationEvent" }
+		  },
+		  {
+			  "if": {"properties":{"isA":{ "const":"TransactionEvent" }}},
+			  "then": { "$ref": "#/definitions/transactionEvent" }
+		  },
+		  {
+			  "if": {"properties":{"isA":{ "const":"TransformationEvent" }}},
+			  "then": { "$ref": "#/definitions/transformationEvent" }
+		  },
+	  ]
+	},     
+    
+    
     "vocabulary": {
       "type": "object",
       "properties": {
@@ -639,16 +666,7 @@
           "items": {
             "anyOf": [
               {
-                "$ref": "#/definitions/objectEvent"
-              },
-              {
-                "$ref": "#/definitions/aggregationEvent"
-              },
-              {
-                "$ref": "#/definitions/transactionEvent"
-              },
-              {
-                "$ref": "#/definitions/transformationEvent"
+                "$ref": "#/definitions/onlyValidEvent"
               }
             ]
           }
