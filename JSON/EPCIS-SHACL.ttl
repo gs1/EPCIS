@@ -373,7 +373,7 @@ epcis:ErrorReasonID_TypeConstraint owl:sameAs [
 
 
 epcis:EventID_TypeConstraint owl:sameAs [
-	sh:path epcis:epcList ;
+	sh:path epcis:eventID ;
 	sh:nodeKind sh:IRI ;
 	sh:name "eventID type constraint" ;
 	sh:message "eventID must be an xsd:anyURI." 
