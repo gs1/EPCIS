@@ -43,7 +43,7 @@ paths:
                 {}
 
         '400':
-          description: An error occured while capturing EPCIS events. All events are rejected.
+          description: An error occurred while capturing EPCIS events. All events are rejected.
           content:
             application/problem+json:
               schema:
