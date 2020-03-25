@@ -190,8 +190,19 @@ GS1 retains the right to make changes to this document at any time, without noti
       <xsd:element name="extension" type="epcis:EPCISEventListExtension2Type"/>
     </xsd:choice>
   </xsd:complexType>
-  <!-- Since 1.1 -->
+
+  <!-- Modified in 2.0 -->
   <xsd:complexType name="EPCISEventListExtension2Type">
+    <xsd:sequence>
+      <xsd:element name="AssociationEvent" type="epcis:AssociationEventType"/>
+      <xsd:element name="extension" type="epcis:EPCISEventListExtension3Type"/>
+    </xsd:sequence>
+    <xsd:anyAttribute processContents="lax"/>
+  </xsd:complexType>
+
+
+  <!-- Since 2.0 -->
+  <xsd:complexType name="EPCISEventListExtension3Type">
     <xsd:sequence>
       <xsd:any namespace="##local" processContents="lax" maxOccurs="unbounded"/>
     </xsd:sequence>
@@ -753,4 +764,45 @@ GS1 retains the right to make changes to this document at any time, without noti
     </xsd:sequence>
     <xsd:anyAttribute processContents="lax"/>
   </xsd:complexType>
+  
+  <!-- Since 2.0 -->
+  <xsd:complexType name="AssociationEventType">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+      Association Event captures an event that applies to objects that 
+      have a physical association with one another, a physical association being more
+      permanent or persistent than a physical aggregation.
+             </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="epcis:EPCISEventType">
+        <xsd:sequence>
+          <xsd:element name="parentID" type="epcis:ParentIDType" minOccurs="1"/>
+          <xsd:element name="childEPCs" type="epcis:EPCListType"/>
+          <xsd:element name="childQuantityList" type="epcis:QuantityListType" minOccurs="0"/>
+          <xsd:element name="action" type="epcis:ActionType"/>
+          <xsd:element name="bizStep" type="epcis:BusinessStepIDType" minOccurs="0"/>
+          <xsd:element name="disposition" type="epcis:DispositionIDType" minOccurs="0"/>
+          <xsd:element name="readPoint" type="epcis:ReadPointType" minOccurs="0"/>
+          <xsd:element name="bizLocation" type="epcis:BusinessLocationType" minOccurs="0"/>
+          <xsd:element name="bizTransactionList" type="epcis:BusinessTransactionListType" minOccurs="0"/>
+          <xsd:element name="sourceList" type="epcis:SourceListType" minOccurs="0"/>
+          <xsd:element name="destinationList" type="epcis:DestinationListType" minOccurs="0"/>
+          <xsd:element name="sensorElementList" type="epcis:SensorElementListType" minOccurs="0"/>
+          <xsd:element name="extension" type="epcis:AssociationEventExtensionType" minOccurs="0"/>
+          <xsd:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+        <xsd:anyAttribute processContents="lax"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <xsd:complexType name="AssociationEventExtensionType">
+    <xsd:sequence>
+      <xsd:any namespace="##local" processContents="lax" maxOccurs="unbounded"/>
+    </xsd:sequence>
+    <xsd:anyAttribute processContents="lax"/>
+  </xsd:complexType>
+  
+  
 </xsd:schema>
