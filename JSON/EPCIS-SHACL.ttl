@@ -67,6 +67,35 @@ epcis:AggregationEventShape
 	sh:property epcis:SourceList_TypeConstraint ;
 	sh:property epcis:DestinationList_TypeConstraint ;
 	sh:property epcis:SensorElementList_TypeConstraint .
+
+epcis:AssociationEventShape
+    a sh:NodeShape ;
+    sh:targetClass epcis:AssociationEvent ;
+
+    sh:property epcis:Action_IsMandatory ;
+    sh:property epcis:EventTime_IsMandatory ;
+    sh:property epcis:EventTimeZoneOffset_IsMandatory ;
+    sh:property epcis:ParentID_IsMandatory ;
+
+    sh:property epcis:EventID_TypeConstraint ;
+    sh:property epcis:Action_TypeAndFormat ;
+    sh:property epcis:EventTime_TypeConstraint ;
+    sh:property epcis:EventTimeZoneOffset_TypeAndFormat ;
+    sh:property epcis:RecordTime_TypeConstraint ;
+    sh:property epcis:ParentID_TypeConstraint ;
+    sh:property epcis:ChildEPCs_TypeConstraint ;
+
+    sh:property epcis:BizStep_TypeConstraint ;
+    sh:property epcis:Disposition_TypeConstraint ;
+    sh:property epcis:ReadPoint_TypeConstraint ;
+    sh:property epcis:BizLocation_TypeConstraint ;
+    
+	sh:property epcis:BizTransactionList_TypeConstraint ;
+	sh:property epcis:ErrorDeclaration_TypeConstraint ;
+	sh:property epcis:ChildQuantityList_TypeConstraint ;
+	sh:property epcis:SourceList_TypeConstraint ;
+	sh:property epcis:DestinationList_TypeConstraint ;
+	sh:property epcis:SensorElementList_TypeConstraint .
     
  
 epcis:TransactionEventShape
@@ -402,6 +431,15 @@ epcis:EventTimeZoneOffset_IsMandatory owl:sameAs [
 	sh:maxCount 1 ;
 	sh:message "eventTimeZoneOffset is a mandatory field which must have a single value." 
 ].
+
+epcis:ParentID_IsMandatory owl:sameAs [
+	sh:path epcis:parentID ;
+	sh:name "parentID is mandatory within association events" ;
+	sh:minCount 1;
+	sh:maxCount 1;
+	sh:message "parentID is a mandatory field within association events, which must have a single value." 
+].
+
 
 epcis:EventTimeZoneOffset_TypeAndFormat owl:sameAs [
 	sh:path epcis:eventTimeZoneOffset ;
@@ -804,12 +842,3 @@ epcis:SensorDataProcessingMethod_TypeConstraint owl:sameAs [
 	sh:name "dataProcessingMethod type constraint" ;
 	sh:message "dataProcessingMethod must be an xsd:anyURI.  Please refer to the EPCIS 2.0 standard." 
 ].
-
-
-
-
-
-
-
-
-
