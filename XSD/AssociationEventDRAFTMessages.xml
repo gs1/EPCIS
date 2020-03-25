@@ -99,6 +99,12 @@
 						<epc>urn:epc:id:giai:4000001.12345</epc>
 						<epc>urn:epc:id:giai:4000001.12346</epc>
 					</childEPCs>
+					<childQuantityList>
+						<quantityElement>
+							<epcClass>urn:epc:class:lgtin:4023333.002000.998877</epcClass>
+							<quantity>4</quantity>
+						</quantityElement>
+					</childQuantityList>
 					<action>ADD</action>
 					<bizStep>urn:epcglobal:cbv:bizstep:installing</bizStep>
 					<disposition>urn:epcglobal:cbv:disp:in_progress</disposition>
