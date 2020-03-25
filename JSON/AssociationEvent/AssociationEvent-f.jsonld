@@ -1,0 +1,88 @@
+{
+  "@context": {
+    "@vocab" : "https://id.gs1.org/epcis/",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "epcis": "https://id.gs1.org/epcis/",
+    "example": "http://ns.example.com/epcis/",
+
+    "eventTime": {"@type":"xsd:dateTime"},
+    "recordTime": {"@type":"xsd:dateTime"},
+    "declarationTime": {"@type":"xsd:dateTime"},
+    "eventTimeZoneOffset": {"@type":"xsd:string"},
+    "action": {"@type":"xsd:string"},
+
+    "quantity": {"@type":"xsd:decimal"},
+    "uom": {"@type":"xsd:string"},
+
+	"epcList": {"@type":"@id"},
+	"epcClass": {"@type":"@id"},
+    "parentID": {"@type":"@id"},
+    "childEPCs": {"@type":"@id"},
+    "inputEPCList": {"@type":"@id"},
+    "outputEPCList": {"@type":"@id"},
+
+    "bizStep": {"@type":"@id"},
+    "disposition": {"@type":"@id"},
+    "readPoint": {"@type":"@id"},
+    "bizLocation": {"@type":"@id"},
+    "bizTransaction": {"@type":"@id"},
+    "source": {"@type":"@id"},
+    "destination": {"@type":"@id"},
+
+    "type": {"@type":"@id"},
+    
+    
+    "isA": "@type",
+    "id":"@id",
+    "creationDate": {"@id":"dcterms:created", "@type":"xsd:dateTime"},
+    "format": {"@id":"dcterms:format", "@type":"xsd:string"},
+    "schemaVersion": {"@id":"owl:versionInfo", "@type":"xsd:string"}
+  },
+  
+  "id": "_:document1",
+  "isA": "EPCISDocument",
+  "schemaVersion":2.0,
+  "creationDate":"2019-11-06T14:00:00.000+01:00",
+  "format":"application/ld+json",
+  "epcisBody": {
+   "eventList": [
+     {
+		  "id": "_:event_f",
+		  "isA": "AssociationEvent",
+		  "eventTime": "2019-11-06T14:00:00.000+01:00",
+		  "recordTime": "2019-11-06T14:05:00.000+01:00",
+		  "eventTimeZoneOffset": "+01:00",
+		  "parentID":"urn:epc:id:grai:4012345.55555.98765",
+		  "childEPCs":["urn:epc:id:giai:4000001.12345","urn:epc:id:giai:4000001.12346"],
+		  "childQuantityList": [
+		  	{"epcClass":"urn:epc:class:lgtin:4023333.002000.998877","quantity":4}
+		  ],
+		  "action": "ADD",
+		  "bizStep": "urn:epcglobal:cbv:bizstep:installing",
+		  "disposition": "urn:epcglobal:cbv:disp:in_progress",
+		  "readPoint": "urn:epc:id:sgln:4012345.00001.0",
+		  "bizLocation": "urn:epc:id:sgln:4012345.00002.0",
+		  "bizTransactionList": [  {"type":"urn:epcglobal:cbv:btt:inv", "bizTransaction": "urn:epcglobal:cbv:bt:4023333000000:54545" }  ],
+		  "sourceList": [
+		  	{"type":"urn:epcglobal:cbv:sdt:possessing_party","source":"urn:epc:id:pgln:4000001.00012"}
+		  ],
+		  "destinationList": [
+		  	{"type":"urn:epcglobal:cbv:sdt:possessing_party","destination":"urn:epc:id:pgln:4012345.00000"}
+		  ],
+		  "sensorElementList": [
+		   {
+		    "sensorMetaData" : {"startTime":"2019-11-06T13:55:00.000+01:00", "endTime":"2019-11-06T13:57:00.000+01:00"},
+		    "sensorReport" : [
+			 { "type": "gs1:Humidity" , "minValue" : 12.1 , "maxValue" : 12.2 , "uom": "A93"}
+		     ]
+		    }
+		   ]
+     }
+
+   ]
+  }
+  
+}

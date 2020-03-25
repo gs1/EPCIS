@@ -1,0 +1,67 @@
+{
+  "@context": {
+    "@vocab" : "https://id.gs1.org/epcis/",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "epcis": "https://id.gs1.org/epcis/",
+    "example": "http://ns.example.com/epcis/",
+
+    "eventTime": {"@type":"xsd:dateTime"},
+    "recordTime": {"@type":"xsd:dateTime"},
+    "declarationTime": {"@type":"xsd:dateTime"},
+    "eventTimeZoneOffset": {"@type":"xsd:string"},
+    "action": {"@type":"xsd:string"},
+
+    "quantity": {"@type":"xsd:decimal"},
+    "uom": {"@type":"xsd:string"},
+
+	"epcList": {"@type":"@id"},
+	"epcClass": {"@type":"@id"},
+    "parentID": {"@type":"@id"},
+    "childEPCs": {"@type":"@id"},
+    "inputEPCList": {"@type":"@id"},
+    "outputEPCList": {"@type":"@id"},
+
+    "bizStep": {"@type":"@id"},
+    "disposition": {"@type":"@id"},
+    "readPoint": {"@type":"@id"},
+    "bizLocation": {"@type":"@id"},
+    "bizTransaction": {"@type":"@id"},
+    "source": {"@type":"@id"},
+    "destination": {"@type":"@id"},
+
+    "type": {"@type":"@id"},
+    
+    
+    "isA": "@type",
+    "id":"@id",
+    "creationDate": {"@id":"dcterms:created", "@type":"xsd:dateTime"},
+    "format": {"@id":"dcterms:format", "@type":"xsd:string"},
+    "schemaVersion": {"@id":"owl:versionInfo", "@type":"xsd:string"}
+  },
+  
+  "id": "_:document1",
+  "isA": "EPCISDocument",
+  "schemaVersion":2.0,
+  "creationDate":"2019-11-04T14:00:00.000+01:00",
+  "format":"application/ld+json",
+  "epcisBody": {
+   "eventList": [
+     {
+		  "id": "_:event_g",
+		  "isA": "AssociationEvent",
+		  "eventTime": "2019-11-04T14:00:00.000+01:00",
+		  "eventTimeZoneOffset": "+01:00",
+		  "errorDeclaration": {"declarationTime":"2019-11-07T14:00:00.000+01:00","reason":"urn:epcglobal:cbv:er:incorrect_data","correctiveEventIDs":["urn:uuid:fd338495-0e6d-41dd-afee-a862ecd32518"]}
+		  "parentID":"urn:epc:id:grai:4012345.55555.987",
+		  "action": "DELETE",
+		  "bizStep": "urn:epcglobal:cbv:bizstep:disassembling",
+		  "readPoint": "urn:epc:id:sgln:4012345.00002.0"
+     }
+
+   ]
+  }
+  
+}
