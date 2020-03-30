@@ -19,6 +19,7 @@ paths:
         - $ref: '#/components/parameters/CBV-extensions'
         - $ref: '#/components/parameters/Vendor-version'
         - $ref: '#/components/parameters/CAPTURE-limit'
+        - $ref: '#/components/parameters/CAPTURE-file-size-limit'
       responses:
         '200':
           description: Server can comply with the EPCIS-related requirements from the client.
@@ -35,12 +36,13 @@ paths:
             schema:
               type: object
       responses:
-        '200':
-          description: Successfully captured one or more EPCIS events.
-          content:
-            application/json:
+        '201':
+          description: Successfully captured one or more EPCIS events. The request returns a capture job id in the Location header.
+          headers:
+            Location:
               schema:
-                {}
+                type: string
+                format: uri
 
         '400':
           description: An error occurred while capturing EPCIS events. All events are rejected.
@@ -98,6 +100,99 @@ paths:
                           - 413
                         default: 413
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+
+  /capture/{captureId}/events:
+    parameters:
+      - in: path
+        name: captureId
+        required: true
+        schema:
+          type: string
+          format: uuid
+    options:
+      summary: Query supported EPCIS version and related vocabularies/standards.
+      parameters:
+        - $ref: '#/components/parameters/EPCIS-version'
+        - $ref: '#/components/parameters/EPCIS-min'
+        - $ref: '#/components/parameters/EPCIS-max'
+        - $ref: '#/components/parameters/CBV-version'
+        - $ref: '#/components/parameters/EPCIS-extensions'
+        - $ref: '#/components/parameters/CBV-extensions'
+        - $ref: '#/components/parameters/Vendor-version'
+      responses:
+        '200':
+          description: Server can comply with the EPCIS-related requirements from the client.
+          content:
+            application/json:
+              schema:
+                {}
+    get:
+      responses:
+        '200':
+          description: If the job was successful, a list of event locations is returned, in the same order as events were ordered in the captured EPCIS evnts document.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                uniqueItems: true
+        '400':
+          description: An error occurred while capturing EPCIS events. All events are rejected.
+          content:
+            application/problem+json:
+              schema:
+                allOf:
+                  - properties:
+                      status:
+                        type: integer
+                        enum:
+                          - 400
+                        default: 400
+                      type:
+                        type: string
+                        format: uri
+                        enum:
+                          - epcisExceptions:ValidationException
+                  - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+        '401':
+          description: Authorization information is missing or invalid.
+          content:
+            application/problem+json:
+              schema:
+                allOf:
+                  - properties:
+                      status:
+                        type: integer
+                        enum:
+                          - 401
+                        default: 401
+                      type:
+                        type: string
+                        format: uri
+                        enum:
+                          - epcisExceptions:SecurityException
+                  - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+
+        '500':
+          description: This is a backend problem caused by an exception.
+          content:
+            application/problem+json:
+              schema:
+                allOf:
+                  - properties:
+                      status:
+                        type: integer
+                        enum:
+                          - 500
+                        default: 500
+                      type:
+                        type: string
+                        format: uri
+                        enum:
+                          - epcisExceptions:ImplementationException
+                  - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+
 
   /{optionalTopLevelResource}/events:
     parameters:
@@ -207,13 +302,7 @@ paths:
               schema:
                 {}
     get:
-      operationId: getEvents
-      parameters:
-        - name: filter
-          in: query
-          schema:
-            $ref: '#/components/schemas/EPCISQuery'
-      description: Returns all EPCIS events of a given type.
+      description: Returns all EPCIS events of a given type. Please note that EPCIS query
       responses:
         '200':
           description: Returns a list of EPCIS events of the type specified in the path.
@@ -222,7 +311,7 @@ paths:
               schema:
                 type: array
                 items:
-                  type: object
+                  type: object # TODO: Link to real schema when available
                 uniqueItems: true
         '400':
           description: Query exceptions defined in EPCIS
@@ -318,14 +407,14 @@ paths:
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
 
 
-  /{optionalTopLevelResource}/events/{eventType}/{eventId}:
+  /{optionalTopLevelResource}/events/{eventType}/{eventFingerprint}:
     parameters:
       - name: eventType
         in: path
         required: true
         schema:
           $ref: '#/components/schemas/EPCISEventTypes'
-      - name: eventId
+      - name: eventFingerprint
         in: path
         required: true
         schema:
@@ -363,7 +452,7 @@ paths:
           description: Accesses the EPCIS event corresponding to the given event id.
           content:
             application/json:
-              schema:
+              schema: # TODO: Link to real schema when available
                 type: object
         '401':
           description: Authorization is invalid
@@ -443,7 +532,7 @@ paths:
     get:
       responses:
         '200':
-          description: Returns a list of active queries.
+          description: Returns a list of active queries available to that user.
           content:
             application/json:
               schema:
@@ -598,14 +687,14 @@ paths:
             type: string
             default: websocket
         - in: header
-          required: false
           name: Connection
+          required: false
           schema:
             type: string
             default: upgrade
       responses:
         '101':
-          description: Create a WebSocket connection to subscribe to queries. Upon subscription, the server SHALL send all new events to subscribing clients. If multiple clients have the same query, all clients will receive events which they are authorised to see
+          description: Create a WebSocket connection to subscribe to queries. Upon subscription, the server SHALL send all new events to subscribing clients. If multiple clients have the same query, each client will receive events which they are authorized to see and the repository must keep track of the latest polling time for each client independently, in order to ensure that each client receives a complete set of events for that query subscription, subject to what they are authorized to see, but independent of the polling times of other clients to the same query.
           headers:
             Upgrade:
               required: true
@@ -624,7 +713,7 @@ paths:
               schema:
                 type: array
                 items:
-                  type: object
+                  type: object # TODO: Link to real schema when available
                 uniqueItems: true
         '401':
           description: Authorization information is missing or invalid.
@@ -742,21 +831,6 @@ components:
           type: string
           format: uri
 
-    RFC7807ProblbemCallbackPayload:
-      description: |-
-        We can't return error messages to the client for most cases during subscriptions or capture operations because
-         they are asynchronous. Instead, the client asks the server to open a channel for error messages. These error
-        messages comply with [RFC 7807](https://tools.ietf.org/html/rfc7807) to make exception more reusable.
-
-      allOf:
-        - oneOf:
-            - properties:
-                eventId:
-                  type: string
-            - properties:
-                event:
-                  type: object
-        - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
 
     NamedQueryMetaData:
       type: object
@@ -777,7 +851,13 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/QuerySubscriptionMetaData'
-
+    EPCISQuery:
+      type: array
+      items:
+        type: object
+      externalDocs:
+        url: https://...
+        description: Filter EPCIS events by properties using the [EPCIS query JSON-Schema](section EPCIS query language)
     QuerySubscriptionMetaData:
       type: object
       properties:
@@ -790,30 +870,6 @@ components:
         createdAt:
           type: string
           format: date-time
-
-    QuerySchedule:
-      type: object
-      properties:
-        second:
-          type: string
-        minute:
-          type: string
-        hour:
-          type: string
-        dayOfMonth:
-          type: string
-        month:
-          type: string
-        dayOfWeek:
-          type: string
-
-    EPCISQuery:
-      type: array
-      items:
-        type: object
-      externalDocs:
-        url: https://...
-        description: Filter EPCIS events by properties using the [EPCIS query JSON-Schema](section EPCIS query language)
 
     EventCallbackUrls:
       description: A subscription that listens for events that match a query rule
@@ -831,10 +887,11 @@ components:
 
     EPCISEventTypes:
       type: string
-      description: The four types of EPCIS events.
+      description: The five types of EPCIS events.
       enum:
         - ObjectEvents
         - AggregationEvents
+        - AssociationEvents
         - TransformationEvents
         - TransactionEvents
         - all
@@ -877,6 +934,7 @@ components:
         type: array
         items:
           type: string
+        uniqueItems: true
     Vendor-version:
       in: header
       name: Vendor-version
@@ -898,7 +956,14 @@ components:
     CAPTURE-limit:
       in: header
       name: CAPTURE-limit
-      description: The maximum batch size of EPCIS events that can be captured per call
+      description: The maximum number of EPCIS events that can be captured per call
+      schema:
+        type: string
+        pattern: ^(\d+|\*)$
+    CAPTURE-file-size-limit:
+      in: header
+      name: CAPTURE-file-size-limit
+      description: The maximum event document length in octets (8-bit bytes)
       schema:
         type: string
         pattern: ^(\d+|\*)$
