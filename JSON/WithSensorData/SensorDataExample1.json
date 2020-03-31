@@ -80,6 +80,7 @@
 		  "readPoint": "urn:epc:id:sgln:4012345.00005.0",
 		  "sensorElementList": [
 		   {
+	            "isA":"epcis:SensorElement"
 		    "sensorMetaData" : {"time":"2019-04-02T14:05:00.000+01:00", "deviceID": "urn:epc:id:giai:4000001.111", "deviceMetaData": "https://id.gs1.org/giai/4000001111","rawData":"https://example.org/giai/401234599999"},
 		    "sensorReport" : [
 			 { "type": "gs1:Temperature" , "value" : 26.0, "uom": "CEL" },
