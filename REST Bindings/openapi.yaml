@@ -5,8 +5,23 @@ info:
   license:
     name: Apache2
 
-paths:
+servers:
+  - url: https://{vendorVersion}.{vendorDomain}/{standardVersion}
+    variables:
+      vendorVersion:
+        default: production
+        description: Vendor-specific version of the EPCIS respository implementation
+      standardVersion:
+        default: 'v2_0'
+        enum:
+          - "v2_0"
+        description: The version of the EPCIS standard that is supported
+      vendorDomain:
+        default: gs1.org
+        description: Domain name of the EPCIS respository
 
+paths:
+  
   /capture:
     options:
       summary: Query supported EPCIS version and related vocabularies/standards
@@ -42,10 +57,21 @@ paths:
                   format: uri
                 epcisBody:
                   type: object
+                  properties:
+                    eventList:
+                      type: array
+                      items:
+                        "$ref": "#/components/schemas/OnlyValidEvent"
+                    vocabularyList:
+                      type: array
+                      items:
+                        "$ref": "#/components/schemas/vocabulary"
+                  required:
+                    - eventList
       responses:
         '202':
           description: Successfully received one or more EPCIS events.
-
+        
         '400':
           description: Bad request. Malformed EPCIS event document.
           content:
@@ -104,7 +130,7 @@ paths:
               responses:
                 '200':
                   description: Success
-
+  
   /events:
     options:
       summary: Query supported EPCIS version and related vocabularies/standards
@@ -132,7 +158,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EPCISEventTypes'
-
+        
         '401':
           description: Authorization information is missing or invalid.
           content:
@@ -151,7 +177,7 @@ paths:
                         enum:
                           - epcisExceptions:SecurityException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-
+        
         '500':
           description: This is a backend problem caused by an exception.
           content:
@@ -170,7 +196,7 @@ paths:
                         enum:
                           - epcisExceptions:ImplementationException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-
+  
   /events/{eventType}:
     options:
       summary: Query supported EPCIS version and related vocabularies/standards
@@ -198,7 +224,7 @@ paths:
           oneOf:
             - $ref: '#/components/schemas/EPCISEventTypes'
             - $ref: '#/components/schemas/AllEvent'
-
+    
     get:
       operationId: getEvents
       parameters:
@@ -309,8 +335,8 @@ paths:
                         enum:
                           - epcisExceptions:QueryParameterException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-
-
+  
+  
   /events/{eventType}/{eventId}:
     parameters:
       - name: eventType
@@ -404,8 +430,8 @@ paths:
                         enum:
                           - epcisExceptions:NoSuchNameException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-
-
+  
+  
   /queries:
     options:
       summary: Query supported EPCIS version and related vocabularies/standards
@@ -418,7 +444,7 @@ paths:
         - $ref: '#/components/parameters/X-CBV-extensions'
         - $ref: '#/components/parameters/X-Vendor-version'
         - $ref: '#/components/parameters/X-Resources-vocabulary'
-
+      
       responses:
         '200':
           description: Server can comply with the EPCIS-related requirements from the client
@@ -474,7 +500,7 @@ paths:
                         enum:
                           - epcisExceptions:SecurityException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-
+    
     post:
       description: Creates a new named query.
       requestBody:
@@ -551,9 +577,9 @@ paths:
                         enum:
                           - epcisExceptions:QueryTooComplexException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-
-
-
+  
+  
+  
   /queries/{queryName}/events:
     parameters:
       - name: queryName
@@ -581,7 +607,7 @@ paths:
                 {}
     get:
       operationId: runNamedQuery
-
+      
       responses:
         '200':
           description: Returns a list of EPCIS events that match the query named in the path.
@@ -610,7 +636,7 @@ paths:
                         enum:
                           - epcisExceptions:SecurityException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-
+        
         '404':
           description: Exceptions defined in EPCIS 1.2, section 8.2.6 for `poll`.
           content:
@@ -683,8 +709,8 @@ paths:
                         enum:
                           - epcisExceptions:QueryTooComplexException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-
-
+  
+  
   /queries/{queryName}/subscriptions:
     parameters:
       - name: queryName
@@ -710,7 +736,7 @@ paths:
             application/json:
               schema:
                 {}
-
+    
     post:
       summary: Create a new query subscription. You must specify either a trigger parameter or schedule parameter.
       parameters:
@@ -743,7 +769,7 @@ paths:
                 format: uri
         '400':
           description: Exceptions defined in EPCIS 1.2, section 8.2.6 for `subscribe`
-
+          
           content:
             application/problem+json:
               schema:
@@ -783,7 +809,7 @@ paths:
                         enum:
                           - epcisExceptions:SecurityException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-
+        
         '403':
           description: Subscripotion not permitted
           content:
@@ -802,7 +828,7 @@ paths:
                         enum:
                           - epcisExceptions:SubscribeNotPermittedException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-
+        
         '404':
           description: The query name does not exist.
           content:
@@ -821,9 +847,9 @@ paths:
                         enum:
                           - epcisExceptions:NoSuchNameException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-
-
-
+        
+        
+        
         '409':
           description: Client is already subscribed to that query
           content:
@@ -842,7 +868,7 @@ paths:
                         enum:
                           - epcisExceptions:DuplicateSubscriptionException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-
+        
         '414':
           description: Query too long, if the total URL length exceeds 2000 characters.
           content:
@@ -861,7 +887,7 @@ paths:
                         enum:
                           - epcisExceptions:QueryTooComplexException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-
+        
         '500':
           description: This is a backend problem caused when the query was resolved and executed.
           content:
@@ -944,7 +970,7 @@ paths:
               responses:
                 '200':
                   description: Success
-
+  
   /queries/{queryName}/subscriptions/{subscriptionId}:
     parameters:
       - name: queryName
@@ -978,13 +1004,13 @@ paths:
                 {}
     delete:
       operationId: unsubscribeOperation
-
+      
       responses:
         '201':
           description: Successfully unsubscribed.
         '400':
           description: Errors that occur when the client tried to unsubscribe
-
+          
           content:
             application/problem+json:
               schema:
@@ -1021,8 +1047,8 @@ paths:
                         enum:
                           - epcisExceptions:SecurityException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-
-
+        
+        
         '404':
           description: The query name does not exist or the subscription does not exist.
           content:
@@ -1042,8 +1068,8 @@ paths:
                           - epcisExceptions:NoSuchNameException
                           - epcisExceptions:NoSuchSubscriptionException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-
-
+        
+        
         '500':
           description: This is a backend problem caused when the client tried to unsubscribe.
           content:
@@ -1085,13 +1111,13 @@ components:
         instance:
           type: string
           format: uri
-
+    
     RFC7807ProblbemCallbackPayload:
       description: |-
         We can't return error messages to the client for most cases during subscriptions or capture operations because
          they are asynchronous. Instead, the client asks the server to open a channel for error messages. These error
         messages comply with [RFC 7807](https://tools.ietf.org/html/rfc7807) to make exception more reusable.
-
+      
       allOf:
         - oneOf:
             - properties:
@@ -1101,7 +1127,7 @@ components:
                 event:
                   type: object
         - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-
+    
     NamedQueryMetaData:
       type: object
       required:
@@ -1121,7 +1147,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/QuerySubscriptionMetaData'
-
+    
     QuerySubscriptionMetaData:
       type: object
       properties:
@@ -1132,12 +1158,12 @@ components:
           oneOf:
             - $ref: '#/components/schemas/TriggeredSubscriptionCallbackUrls'
             - $ref: '#/components/schemas/ScheduledSubscriptionCallbackUrls'
-
+        
         createdAt:
           type: string
           format: date-time
-
-
+    
+    
     QuerySchedule:
       type: object
       properties:
@@ -1153,7 +1179,7 @@ components:
           type: string
         dayOfWeek:
           type: string
-
+    
     EPCISQuery:
       type: array
       items:
@@ -1161,7 +1187,7 @@ components:
       externalDocs:
         url: https://...
         description: Filter EPCIS events by properties using the [EPCIS query JSON-Schema](section EPCIS query language)
-
+    
     ScheduledSubscriptionCallbackUrls:
       description: A subscription for periodic updates
       type: object
@@ -1172,7 +1198,7 @@ components:
         errorUrl:
           type: string
           format: uri
-
+    
     TriggeredSubscriptionCallbackUrls:
       description: A subscription that listens for events that match a query rule
       type: object
@@ -1180,13 +1206,13 @@ components:
         triggerUrl:
           type: string
           format: uri
-
-
+    
+    
     AllEvent:
       type: string
       description: A virtual EPCIS event superset.
       enum: [all]
-
+    
     EPCISEventTypes:
       type: string
       description: The four types of EPCIS events.
@@ -1196,7 +1222,585 @@ components:
         - TransformationEvents
         - TransactionEvents
         - all
-
+    
+    
+    
+    
+    uri:
+      type: string
+      format: uri
+    
+    time:
+      type: string
+      format: "date-time"
+    
+    decimal:
+      type: number
+    
+    boolean:
+      type: boolean
+    
+    hexBinary:
+      type: string
+      pattern: "^[A-Fa-f0-9]+$"
+    
+    action:
+      type: string
+      enum:
+        - OBSERVE
+        - ADD
+        - DELETE
+    
+    epcList:
+      type: array
+      items:
+        "$ref": "#/components/schemas/uri"
+    
+    quantityList:
+      type: array
+      items:
+        "$ref": "#/components/schemas/quantityElement"
+    
+    uom:
+      type: string
+      pattern: "^[A-Z0-9]{2,3}$"
+    
+    eventID:
+      "$ref": "#/components/schemas/uri"
+    
+    errorDeclaration:
+      type: object
+      properties:
+        declarationtime:
+          "$ref": "#/components/schemas/time"
+        reason:
+          "$ref": "#/components/schemas/uri"
+        correctiveEventIDs:
+          type: array
+          items:
+            "$ref": "#/components/schemas/eventID"
+    
+    quantityElement:
+      type: object
+      properties:
+        epcClass:
+          "$ref": "#/components/schemas/uri"
+        quantity:
+          "$ref": "#/components/schemas/decimal"
+        uom:
+          "$ref": "#/components/schemas/uom"
+      required:
+        - epcClass
+    
+    bizTransaction:
+      type: object
+      properties:
+        type:
+          "$ref": "#/components/schemas/uri"
+        bizTransaction:
+          "$ref": "#/components/schemas/uri"
+      required:
+        - bizTransaction
+    
+    source:
+      type: object
+      properties:
+        type:
+          "$ref": "#/components/schemas/uri"
+        source:
+          "$ref": "#/components/schemas/uri"
+      required:
+        - type
+    
+    destination:
+      type: object
+      properties:
+        type:
+          "$ref": "#/components/schemas/uri"
+        destination:
+          "$ref": "#/components/schemas/uri"
+      required:
+        - type
+    
+    sensorElement:
+      type: object
+      properties:
+        sensorMetaData:
+          "$ref": "#/components/schemas/sensorMetaData"
+        sensorReport:
+          "$ref": "#/components/schemas/sensorReportList"
+      required:
+        - sensorReport
+    
+    sensorReportList:
+      type: array
+      items:
+        "$ref": "#/components/schemas/sensorReport"
+    
+    sensorReport:
+      type: object
+      properties:
+        type:
+          "$ref": "#/components/schemas/uri"
+        value:
+          "$ref": "#/components/schemas/decimal"
+        stringValue:
+          "$ref": "#/components/schemas/string"
+        uriValue:
+          "$ref": "#/components/schemas/uri"
+        booleanValue:
+          "$ref": "#/components/schemas/boolean"
+        hexBinaryValue:
+          "$ref": "#/components/schemas/hexBinary"
+        uom:
+          "$ref": "#/components/schemas/string"
+        minValue:
+          "$ref": "#/components/schemas/decimal"
+        maxValue:
+          "$ref": "#/components/schemas/decimal"
+        sDev:
+          "$ref": "#/components/schemas/decimal"
+        chemicalSubstance:
+          "$ref": "#/components/schemas/uri"
+        microorganism:
+          "$ref": "#/components/schemas/uri"
+        deviceID:
+          "$ref": "#/components/schemas/uri"
+        deviceMetaData:
+          "$ref": "#/components/schemas/uri"
+        rawData:
+          "$ref": "#/components/schemas/uri"
+        time:
+          "$ref": "#/components/schemas/time"
+        meanValue:
+          "$ref": "#/components/schemas/decimal"
+        percRank:
+          "$ref": "#/components/schemas/decimal"
+        percValue:
+          "$ref": "#/components/schemas/decimal"
+        dataProcessingMethod:
+          "$ref": "#/components/schemas/uri"
+        bizRules:
+          "$ref": "#/components/schemas/uri"
+      required:
+        - type
+    
+    sensorMetaData:
+      type: object
+      properties:
+        time:
+          "$ref": "#/components/schemas/time"
+        deviceID:
+          "$ref": "#/components/schemas/uri"
+        deviceMetaData:
+          "$ref": "#/components/schemas/uri"
+        rawData:
+          "$ref": "#/components/schemas/uri"
+        startTime:
+          "$ref": "#/components/schemas/time"
+        endTime:
+          "$ref": "#/components/schemas/time"
+        dataProcessingMethod:
+          "$ref": "#/components/schemas/uri"
+        bizRules:
+          "$ref": "#/components/schemas/uri"
+    
+    string:
+      type: string
+    
+    ilmd:
+      type: object
+    
+    vocabulary:
+      type: object
+      properties:
+        type:
+          "$ref": "#/components/schemas/uri"
+        vocabularyElementList:
+          type: array
+          items:
+            "$ref": "#/components/schemas/vocabularyElement"
+      required:
+        - type
+    
+    vocabularyElement:
+      type: object
+      properties:
+        id:
+          "$ref": "#/components/schemas/uri"
+        attributes:
+          type: array
+          items:
+            "$ref": "#/components/schemas/attribute"
+        children:
+          type: array
+          items:
+            "$ref": "#/components/schemas/uri"
+      required:
+        - id
+    
+    attribute:
+      type: object
+      properties:
+        id:
+          "$ref": "#/components/schemas/uri"
+        attribute:
+          type: object
+      required:
+        - id
+    
+    Event:
+      type: object
+      properties:
+        eventTime:
+          "$ref": "#/components/schemas/time"
+        recordTime:
+          "$ref": "#/components/schemas/time"
+        eventTimeZoneOffset:
+          type: string
+          pattern: "^(\\+|\\-)((0[0-9]|1[0-3]):([0-5][0-9])|14:00)$"
+        eventID:
+          "$ref": "#/components/schemas/eventID"
+        errorDeclaration:
+          "$ref": "#/components/schemas/errorDeclaration"
+      required:
+        - eventTime
+        - eventTimeZoneOffset
+    
+    ObjectEvent:
+      allOf:
+        - "$ref": "#/components/schemas/Event"
+        -   type: object
+            properties:
+              isA:
+                type: string
+                pattern: "^ObjectEvent$"
+              epcList:
+                "$ref": "#/components/schemas/epcList"
+              quantityList:
+                "$ref": "#/components/schemas/quantityList"
+              action:
+                "$ref": "#/components/schemas/action"
+              bizStep:
+                "$ref": "#/components/schemas/uri"
+              disposition:
+                "$ref": "#/components/schemas/uri"
+              readPoint:
+                "$ref": "#/components/schemas/uri"
+              bizLocation:
+                "$ref": "#/components/schemas/uri"
+              bizTransactionList:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/bizTransaction"
+              sourceList:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/source"
+              destinationList:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/destination"
+              sensorElementList:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/sensorElement"
+              ilmd:
+                "$ref": "#/components/schemas/ilmd"
+    
+    AggregationEvent:
+      allOf:
+        -   "$ref": "#/components/schemas/Event"
+        -   type: object
+            properties:
+              isA:
+                type: string
+                pattern: "^AggregationEvent$"
+              parentID:
+                "$ref": "#/components/schemas/uri"
+              childEPCs:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/uri"
+              childQuantityList:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/quantityElement"
+              action:
+                "$ref": "#/components/schemas/action"
+              bizStep:
+                "$ref": "#/components/schemas/uri"
+              disposition:
+                "$ref": "#/components/schemas/uri"
+              readPoint:
+                "$ref": "#/components/schemas/uri"
+              bizLocation:
+                "$ref": "#/components/schemas/uri"
+              bizTransactionList:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/bizTransaction"
+              sourceList:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/source"
+              destinationList:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/destination"
+              sensorElementList:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/sensorElement"
+            required:
+              - isA
+              - action
+        -   anyOf:
+              -   properties:
+                    childEPCs:
+                      minItems: 1
+                  required:
+                    - childEPCs
+              -   properties:
+                    childQuantityList:
+                      minItems: 1
+                  required:
+                    - childQuantityList
+              -   properties:
+                    action:
+                      pattern: "^DELETE$"
+    
+    
+    TransformationEvent:
+      allOf:
+        -   "$ref": "#/components/schemas/Event"
+        -   type: object
+            properties:
+              isA:
+                type: string
+                pattern: "^TransformationEvent$"
+              inputEPCList:
+                "$ref": "#/components/schemas/epcList"
+              inputQuantityList:
+                "$ref": "#/components/schemas/quantityList"
+              outputEPCList:
+                "$ref": "#/components/schemas/epcList"
+              outputQuantityList:
+                "$ref": "#/components/schemas/quantityList"
+              transformationID:
+                "$ref": "#/components/schemas/uri"
+              bizStep:
+                "$ref": "#/components/schemas/uri"
+              disposition:
+                "$ref": "#/components/schemas/uri"
+              readPoint:
+                "$ref": "#/components/schemas/uri"
+              bizLocation:
+                "$ref": "#/components/schemas/uri"
+              sourceList:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/source"
+              destinationList:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/destination"
+              sensorElementList:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/sensorElement"
+              ilmd:
+                "$ref": "#/components/schemas/ilmd"
+            required:
+              - isA
+        -   anyOf:
+              -   allOf:
+                    -   anyOf:
+                          -   properties:
+                                inputEPCList:
+                                  minItems: 1
+                              required:
+                                -   inputEPCList
+                          -   properties:
+                                inputQuantityList:
+                                  minItems: 1
+                              required:
+                                -   inputQuantityList
+                    -   anyOf:
+                          -   properties:
+                                outputEPCList:
+                                  minItems: 1
+                              required:
+                                -   outputEPCList
+                          -   properties:
+                                outputQuantityList:
+                                  minItems: 1
+                              required:
+                                -   outputQuantityList
+              -   anyOf:
+                    -   properties:
+                          inputEPCList:
+                            minItems: 1
+                        required:
+                          -   inputEPCList
+                    -   properties:
+                          inputQuantityList:
+                            minItems: 1
+                        required:
+                          -   inputQuantityList
+                    -   properties:
+                          outputEPCList:
+                            minItems: 1
+                        required:
+                          -   outputEPCList
+                    -   properties:
+                          outputQuantityList:
+                            minItems: 1
+                        required:
+                          -   outputQuantityList
+              -   required:
+                    -   transformationID
+    AssociationEvent:
+      deprecated: true
+      allOf:
+        -   "$ref": "#/components/schemas/Event"
+        -   type: object
+            properties:
+              isA:
+                type: string
+                pattern: "^AssociationEvent$"
+              parentID:
+                "$ref": "#/components/schemas/uri"
+              childEPCs:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/uri"
+              childQuantityList:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/quantityElement"
+              action:
+                "$ref": "#/components/schemas/action"
+              bizStep:
+                "$ref": "#/components/schemas/uri"
+              disposition:
+                "$ref": "#/components/schemas/uri"
+              readPoint:
+                "$ref": "#/components/schemas/uri"
+              bizLocation:
+                "$ref": "#/components/schemas/uri"
+              bizTransactionList:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/bizTransaction"
+              sourceList:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/source"
+              destinationList:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/destination"
+              sensorElementList:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/sensorElement"
+            required:
+              -   isA
+              -   action
+              -   parentID
+        -   anyOf:
+              -   properties:
+                    childEPCs:
+                      minItems: 1
+                  required:
+                    -   childEPCs
+              -   properties:
+                    childQuantityList:
+                      minItems: 1
+                  required:
+                    -   childQuantityList
+              -   properties:
+                    action:
+                      pattern: "^DELETE$"
+    
+    
+    TransactionEvent:
+      allOf:
+        -   "$ref": "#/components/schemas/Event"
+        -   type: object
+            properties:
+              isA:
+                type: string
+                pattern: "^TransactionEvent$"
+              bizTransactionList:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/bizTransaction"
+                minItems: 1
+              parentID:
+                "$ref": "#/components/schemas/uri"
+              epcList:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/uri"
+              quantityList:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/quantityElement"
+              action:
+                "$ref": "#/components/schemas/action"
+              bizStep:
+                "$ref": "#/components/schemas/uri"
+              disposition:
+                "$ref": "#/components/schemas/uri"
+              readPoint:
+                "$ref": "#/components/schemas/uri"
+              bizLocation:
+                "$ref": "#/components/schemas/uri"
+              sourceList:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/source"
+              destinationList:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/destination"
+              sensorElementList:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/sensorElement"
+            required:
+              -   isA
+              -   bizTransactionList
+              -   action
+        -   anyOf:
+              -   properties:
+                    epcList:
+                      minItems: 0
+                  required:
+                    -   epcList
+              -   properties:
+                    quantityList:
+                      minItems: 1
+                  required:
+                    -   quantityList
+              -   properties:
+                    action:
+                      pattern: "^DELETE$"
+    
+    OnlyValidEvent:
+      oneOf:
+        - "$ref": "#/components/schemas/ObjectEvent"
+        - "$ref": "#/components/schemas/AggregationEvent"
+        - "$ref": "#/components/schemas/TransformationEvent"
+        - "$ref": "#/components/schemas/AssociationEvent"
+        - "$ref": "#/components/schemas/TransactionEvent"
+      required:
+        - "isA"
+  
+  
+  
   parameters:
     X-EPCIS-version:
       in: header
