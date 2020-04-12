@@ -613,7 +613,7 @@ paths:
                             schema:
                                 type: array
                                 items:
-                                    type: object
+                                    "$ref": "#/components/schemas/OnlyValidEvent"
                                 uniqueItems: true
                 '401':
                     description: Authorization information is missing or invalid.
