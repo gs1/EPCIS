@@ -228,7 +228,7 @@
       "get": {
         "responses": {
           "200": {
-            "description": "If the job was successful, a list of event locations is returned, in the same order as events were ordered in the captured EPCIS evnts document.",
+            "description": "If the job was successful, a list of event URLs is returned, in the same order as events were ordered in the captured EPCIS evnts document.",
             "content": {
               "application/json": {
                 "schema": {
@@ -306,7 +306,7 @@
             }
           },
           "500": {
-            "description": "This is a backend problem caused by an exception.",
+            "description": "This is a server-side problem caused by an exception.",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -343,13 +343,22 @@
     "/{optionalTopLevelResource}/events": {
       "parameters": [
         {
+          "in": "query",
+          "name": "perPage",
+          "description": "Parameter to control pagination. perPage specifies the maximum number of events returned in one batch.",
+          "schema": {
+            "type": "integer",
+            "default": 30
+          }
+        },
+        {
           "in": "path",
           "name": "optionalTopLevelResource",
           "description": "An optional top-level resource to access events.",
           "required": true,
           "schema": {
             "type": "string",
-            "pattern": "^(\\/(epcs|bizSteps|bizLocations|readPoints|dispositions)\\/(.+))?$"
+            "pattern": "^(\\/(epcs|bizSteps|bizLocations|readPoints|dispositions)\\/([^/\\n\\r]+))?$"
           }
         }
       ],
@@ -434,7 +443,7 @@
             }
           },
           "500": {
-            "description": "This is a backend problem caused by an exception.",
+            "description": "This is a server-side problem caused by an exception.",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -492,7 +501,7 @@
           "required": true,
           "schema": {
             "type": "string",
-            "pattern": "^(\\/(epcs|bizLocations|bizSteps|readPoints|dispositions)\\/(.+))?$"
+            "pattern": "^(\\/(epcs|bizSteps|bizLocations|readPoints|dispositions)\\/([^/\\n\\r]+))?$"
           }
         }
       ],
@@ -533,7 +542,7 @@
         }
       },
       "get": {
-        "description": "Returns all EPCIS events of a given type. Please note that EPCIS query",
+        "description": "Returns all EPCIS events of a specific type, if specified.",
         "responses": {
           "200": {
             "description": "Returns a list of EPCIS events of the type specified in the path.",
@@ -714,7 +723,7 @@
         }
       }
     },
-    "/{optionalTopLevelResource}/events/{eventType}/{eventFingerprint}": {
+    "/{optionalTopLevelResource}/events/{eventType}/{eventId}": {
       "parameters": [
         {
           "name": "eventType",
@@ -725,7 +734,7 @@
           }
         },
         {
-          "name": "eventFingerprint",
+          "name": "eventId",
           "in": "path",
           "required": true,
           "schema": {
@@ -740,7 +749,7 @@
           "required": true,
           "schema": {
             "type": "string",
-            "pattern": "^(\\/(epcs|bizSteps|bizLocations|readPoints|dispositions)\\/(.+))?$"
+            "pattern": "^(\\/(epcs|bizSteps|bizLocations|readPoints|dispositions)\\/([^/\\n\\r]+))?$"
           }
         }
       ],
@@ -783,7 +792,7 @@
       "get": {
         "responses": {
           "200": {
-            "description": "Accesses the EPCIS event corresponding to the given event id.",
+            "description": "Accesses the EPCIS event corresponding to the given event URLs.",
             "content": {
               "application/json": {
                 "schema": {
@@ -857,7 +866,7 @@
             }
           },
           "404": {
-            "description": "Event type or event id not found",
+            "description": "Event type or event URL not found",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -1367,7 +1376,7 @@
             }
           },
           "500": {
-            "description": "This is a backend problem caused when the query was resolved and executed.",
+            "description": "This is a server-side problem caused when the query was resolved and executed.",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -1559,11 +1568,7 @@
         "name": "EPCIS-extensions",
         "description": "Specific EPCIS extensions supported (e.g. for FIT)",
         "schema": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "uniqueItems": true
+          "type": "object"
         }
       },
       "Vendor-version": {
@@ -1583,11 +1588,7 @@
         "name": "CBV-extensions",
         "description": "An optional header to specify the vocabuary for the top-level endpoints",
         "schema": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "uniqueItems": true
+          "type": "object"
         }
       },
       "CAPTURE-limit": {
