@@ -37,7 +37,7 @@ paths:
               type: object
       responses:
         '201':
-          description: Successfully captured one or more EPCIS events. The request returns a capture job id in the Location header.
+          description: Successfully captured one or more EPCIS events. The request returns a unique capture job URL in the Location header.
           headers:
             Location:
               schema:
@@ -718,7 +718,7 @@ paths:
             default: upgrade
       responses:
         '101':
-          description: Create a WebSocket connection to subscribe to queries. Upon subscription, the server SHALL send all new events to subscribing clients. If multiple clients have the same query, each client will receive events which they are authorized to see and the repository must keep track of the latest polling time for each client independently, in order to ensure that each client receives a complete set of events for that query subscription, subject to what they are authorized to see, but independent of the polling times of other clients to the same query.
+          description: Create a WebSocket connection to subscribe to queries. Upon subscription, the server SHALL send all new events to subscribing clients. If multiple clients have the same query, each client will receive events which they are authorized to see.
           headers:
             Upgrade:
               required: true
@@ -968,7 +968,7 @@ components:
     CBV-extensions:
       in: header
       name: CBV-extensions
-      description: An optional header to specify the vocabuary for the top-level endpoints
+      description: An optional header to specify the vocabulary for the top-level endpoints
       schema:
         type: object
     CAPTURE-limit:
