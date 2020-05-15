@@ -1163,8 +1163,96 @@
         }
       }
     },
+    "/queries/{queryName}": {
+      "options": {
+        "summary": "Query supported EPCIS version and related vocabularies/standards",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/EPCIS-version"
+          },
+          {
+            "$ref": "#/components/parameters/EPCIS-min"
+          },
+          {
+            "$ref": "#/components/parameters/EPCIS-max"
+          },
+          {
+            "$ref": "#/components/parameters/CBV-version"
+          },
+          {
+            "$ref": "#/components/parameters/EPCIS-extensions"
+          },
+          {
+            "$ref": "#/components/parameters/CBV-extensions"
+          },
+          {
+            "$ref": "#/components/parameters/Vendor-version"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Server can comply with the EPCIS-related requirements from the client",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "responses": {
+          "201": {
+            "description": "Removes a named query and destroyes all subscriptions and open connections to clients."
+          },
+          "400": {
+            "description": "Errors that occur when deleting a named query",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "properties": {
+                        "status": {
+                          "type": "integer",
+                          "enum": [
+                            400
+                          ],
+                          "default": 400
+                        },
+                        "type": {
+                          "type": "string",
+                          "format": "uri",
+                          "enum": [
+                            "InvalidURIException",
+                            "SubscriptionControlsException",
+                            "ValidationException"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "$ref": "#/components/schemas/RFC7807ProblemResponseBody"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/queries/{queryName}/events": {
       "parameters": [
+        {
+          "in": "header",
+          "name": "QUERY-minRecordTime",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "format": "time"
+          }
+        },
         {
           "in": "query",
           "name": "perPage",
@@ -1238,6 +1326,24 @@
               "type": "string",
               "default": "upgrade"
             }
+          },
+          {
+            "in": "query",
+            "name": "initialRecordTime",
+            "description": "Parameter to specify from when onwards the query subscription applies. The default time is when the subscription was created.",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "in": "query",
+            "name": "reportIfEmpty",
+            "description": "Parameter to request notification even when the query result is empty",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
           }
         ],
         "responses": {
@@ -1293,7 +1399,8 @@
                           "type": "string",
                           "format": "uri",
                           "enum": [
-                            "epcisExceptions:ValidationException"
+                            "epcisExceptions:ValidationException",
+                            "epcisExceptions:SubscriptionControlsException"
                           ]
                         }
                       }
