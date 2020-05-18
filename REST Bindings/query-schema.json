@@ -5,7 +5,15 @@
     "eventType": {
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "string",
+        "enum": [
+          "ObjectEvents",
+          "AggregationEvents",
+          "AssociationEvents",
+          "TransformationEvents",
+          "TransactionEvents",
+          "all"
+        ]
       }
     },
     "GE_eventTime": {
@@ -27,109 +35,132 @@
     "EQ_action": {
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "string",
+        "enum": [
+          "ADD",
+          "OBSERVE",
+          "DELETE"
+        ]
       }
     },
     "EQ_bizStep": {
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "string",
+        "format": "uri"
       }
     },
     "WD_readPoint": {
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "string",
+        "format": "uri"
       }
     },
     "EQ_bizLocation": {
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "string",
+        "format": "uri"
       }
     },
     "WD_bizLocation": {
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "string",
+        "format": "uri"
       }
     },
     "EQ_bizTransaction_type": {
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "string",
+        "format": "uri"
       }
     },
     "EQ_source_type": {
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "string",
+        "format": "uri"
       }
     },
     "EQ_destination_type": {
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "string",
+        "format": "uri"
       }
     },
     "EQ_transformationID": {
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "string",
+        "format": "uri"
       }
     },
     "MATCH_epc": {
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "string",
+        "format": "uri"
       }
     },
     "MATCH_parentID": {
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "string",
+        "format": "uri"
       }
     },
     "MATCH_inputEPC": {
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "string",
+        "format": "uri"
       }
     },
     "MATCH_outputEPC": {
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "string",
+        "format": "uri",
+        "format": "uri"
       }
     },
     "MATCH_anyEPC": {
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "string",
+        "format": "uri"
       }
     },
     "MATCH_epcClass": {
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "string",
+        "format": "uri"
       }
     },
     "MATCH_inputEPCClass": {
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "string",
+        "format": "uri"
       }
     },
     "MATCH_outputEPCClass": {
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "string",
+        "format": "uri"
       }
     },
     "MATCH_anyEPCClass": {
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "string",
+        "format": "uri"
       }
     },
     "^EQ_\\w+$": {
