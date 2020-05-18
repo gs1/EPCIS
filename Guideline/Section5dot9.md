@@ -61,7 +61,7 @@ It is of paramount importance that EPCIS is not a means to transmit raw sensor d
             <td>15 June 00:00 am</td>
         </tr>
         <tr>
-            <td>How</td>
+            <td/>
             <td>End Time</td>
             <td>15 June 07:59 am</td>
             <td>15 June 08:14 am</td>
@@ -92,10 +92,7 @@ It is of paramount importance that EPCIS is not a means to transmit raw sensor d
         <tr>
             <td/>
             <td>UOM</td>
-            <td>CEL</td>
-            <td>CEL</td>
-            <td>CEL</td>
-            <td>CEL</td>
+            <td colspan=4>CEL</td>
         </tr>
     </tbody>
 </table>
