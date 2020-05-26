@@ -1,0 +1,5 @@
+title Example Content and EPCIS version negotiation
+
+Client->Server: OPTIONS * HTTP/1.1
+Server-->Client: HTTP/1.1 204 No Content
+note over Server, Client:\nResponse Header\nAccess-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS\nAccess-Control-Allow-Origin: *\nAccept: application/ld+json  application/soap+xml\nAccess-Control-Expose-Headers: Link, Location, X-Result-Count, X-Calculation-Date\nAccess-Control-Allow-Headers: Content-Type, Accept, X-EPCIS-version, X-EPCIS-min, \n X-EPCIS-max, X-CBV-version, X-EPCIS-extensions, X-CBV-extensions\nX-Vendor-version: generic EPCIS server\nX-EPCIS-min: 2.0\nX-EPCIS-max: 2.0\nX-CBV-version: 1.2.2\nAllow: OPTIONS\nContent-length: 0\nDate: Thu, 13 Jun 2019 14:50:02 GMT\nClient->Server: GET /events/ObjectEvents/oe1 HTTP/1.1

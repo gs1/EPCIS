@@ -1,0 +1,44 @@
+participant Client as c
+participant Server as s
+
+c->s: POST /capture HTTP/1.1
+note over Server, Client:
+EPCIS-version: 2.0
+CBV-version: 1.2.2
+Content-Type: application/ld+json
+Content-Length: 2051
+...
+{
+    "@context": "https://id.gs1.org/epcis-context.jsonld",
+    "isA": "EPCISDocument",
+    "creationDate": "2019-13-06T11:30:47+00:00",
+    "format": "application/ld+json",
+    "epcisBody": {
+      "eventList": [
+        {
+          "eventID": "oe123",
+...
+}
+end note
+s-->c: HTTP/1.1 201 Created
+note over Server, Client:
+Location: /capture/XAyj-4Zd-3Rw-sYA
+...
+end note 
+c->s: GET /capture/XAyj-4Zd-3Rw-sYA/errors HTTP/1.1
+note over Client, Server:
+Host: example.com
+Upgrade: websocket
+Connection: Upgrade
+...
+end note
+s-->c: HTTP/1.1 101 Switching Protocols
+note over Server, Client:
+Upgrade: websocket
+Connection: Upgrade
+...
+end note
+c->s: send([event 1, event 2, event ...])
+s->s: raise exception event 10 is invalid
+s->c: 400, epcisExceptions:ValidationException
+c->s: close() 
