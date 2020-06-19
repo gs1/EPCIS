@@ -14,17 +14,19 @@ Typical critical tracing events accommodating sensor data can easily be modelled
 
 | Dim | Data Element | V1 | V2 | V3 | V4 |
 | --- | ------------ | -- | -- | -- | -- |
-| When | `Event Time` | 15 June, 08:00 am | 15 June, 08:15 am | 15 June, 05:45 pm | 15 June, 11:59 pm |
-| What | `EPC List` | SSCC of logistics unit | SSCC of logistics unit | SSCC of logistics unit | (empty) |
-| Where | `Read Point` | GLN of receiving area | GLN of interim storage room | GLN of cold storage room | GLN of cold storage room |
-| | `Business Location` | GLN of interim storage room | GLN of cold storage room | GLN of shipping area | (empty) |
-| Why | `Business Step` | `Storing (CBV)` | `Storing (CBV)` | `Storing (CBV)` | `Sensor reporting (CBV)` |
-| How | `Start Time` | 15 June 07:55 am | 15 June 08:10 am | 15 June 05:35 pm | 15 June 00:00 am |
-| | `End Time` | 15 June 07:59 am | 15 June 08:14 am | 15 June 05:55 pm | 15 June 11:59 pm |
-| | `Type` | `Temperature (CBV`) | `Temperature (CBV)` | `Temperature (CBV)` | `Temperature (CBV)` |
-| | `Min Value` | 12 | 12.1 | 9.2 | 9.1 |
-| | `Max Value` | 12.1 | 12.2 | 9.2 | 9.4 |
-| | `UOM` | `CEL` | `CEL` | `CEL` | `CEL` |
+| When | `eventTime` | 15 June, 08:00 am | 15 June, 08:15 am | 15 June, 05:45 pm | 15 June, 11:59 pm |
+| What | `epcList` | SSCC of logistics unit | SSCC of logistics unit | SSCC of logistics unit | (empty) |
+| Where | `readPoint` | GLN of receiving area | GLN of interim storage room | GLN of cold storage room | GLN of cold storage room |
+| | `bizLocation` | GLN of interim storage room | GLN of cold storage room | GLN of shipping area | (empty) |
+| Why | `bizStep` | `Storing (CBV)` | `Storing (CBV)` | `Storing (CBV)` | `Sensor reporting (CBV)` |
+| How | `sensorElement` |
+| | `sensorReport` |
+| | `startTime` | 15 June 07:55 am | 15 June 08:10 am | 15 June 05:35 pm | 15 June 00:00 am |
+| | `endTime` | 15 June 07:59 am | 15 June 08:14 am | 15 June 05:55 pm | 15 June 11:59 pm |
+| | `type` | `Temperature (CBV`) | `Temperature (CBV)` | `Temperature (CBV)` | `Temperature (CBV)` |
+| | `minValue` | 12 | 12.1 | 9.2 | 9.1 |
+| | `maxValue` | 12.1 | 12.2 | 9.2 | 9.4 |
+| | `uom` | `CEL` | `CEL` | `CEL` | `CEL` |
 
 On this basis, the organisation has an unbroken chain of events documenting the condition of an individual item, beginning from when it was relocated from the receiving area to an interim storage room (V1), when it was moved in and out of the cold storage room (V2 and V3), and while it was residing in the cold storage room (V4).
 
@@ -37,12 +39,33 @@ In this context, the company could also have chosen another appropriate unit of 
 For convenience and to ease implementation, GS1 provides an Open Source library to automatically convert between any quantitative value of a given property type (e.g. temperature). The library is available at
 https://github.com/gs1/UnitConverterUNECERec20.  
 
-## Example 2: Exception notification 
+## Example 2: Exception notification
 
-e.g. temperature excursion 
+Presume a company wishes to trigger processes (adjust settings of an environmental control system, alert an employee, etc.) when a certain condition (e.g. a temperature excursion) occurs.
 
-easy example: temperature of cold storage room exceeds predefined threshold   
+Pursuing the example from the previous section, a company may want to trigger an alert message to the warehouse manager in case the temperature in the cold storage room falls below or exceeds a predefined threshold (e.g. < 8 ° CEL and > 15 ° CEL). The company also wants to store that information in their Quality Management System as well as provide that to an external solution provider which is in charge of maintaining the cold storage room's technical infrastructure.
 
+In such a setting, the 'alert' EPCIS event could be modelled as follows:
+
+| Dim | Data Element | V1 |
+| --- | ------------ | -- |
+| When | `eventTime` | 23 June, 11:19 am |
+| Where | `readPoint` | GLN of cold storage room |
+| Why | `bizStep` | `Sensor reporting (CBV)` |
+| How | `sensorElement` |
+| | `sensorMetaData` |
+| | `bizRules` | https://example.org/253/4012345000054987
+| | `sensorReport` |
+| | `type` | `Temperature (CBV`) |
+| | `value` | 15.1 |
+| | `uom` | `CEL` |
+| | `sensorReport` |
+| | `type` | `AlarmCondition (CBV`) |
+| | `uriValue` | https://example.com/alarmCodes/temperatureExceeded |
+
+In contrast to the previous example, the event accommodates the (optional) `sensorMetaData` field, which in turn contains a reference (the Web URI is a valid GS1 Digital Link URI leveraging a custom (here: "example.com) domain, `253` denotes the GS1 Application Identifier for the Global Document Type Identifier) to an electronic document including the business rule(s) upon which the EPCIS event was captured. The company may decide to also insert additional attributes such as `deviceID`or `deviceMetaData` into this element, if applicable.
+
+Apart from the actual temperature value (exceeding the predefined threshold), the `sensorElement` contains a second `sensorReport` element accommodating an alarm value, expressed as a URI. The latter consists of a custom value - a future GS1 working group may define standard vocabulary for alarm/error code values for this application domain.
 
 ## Example 3: Sea container 
 
@@ -51,3 +74,9 @@ Aggregation Event SGTIN => SSCC => BIC
 Pallets are loaded/unloaded 
 
 Association Event sensor device => Container 
+
+## Example 4: ??? Association Event 
+
+## Example 5: ??? Microorganism/Chemical Substance
+
+## Example 6: ??? Alarm/Error 
