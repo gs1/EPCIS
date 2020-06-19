@@ -12,98 +12,19 @@ Now, if this organisation wants to provide that data to internal or external sta
 
 Typical critical tracing events accommodating sensor data can easily be modelled as EPCIS events. Following the usual approach, a visibility data matrix could look like this (the table focusses on the relevant excerpt of the overall chain of events):
 
-<table>
-    <thead>
-        <tr>
-            <th>Dim</th>
-            <th>Data Element</th>
-            <th>V1</th>
-            <th>V2</th>
-            <th>V3</th>
-            <th>V4</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>When</td>
-            <td>Event Time</td>
-            <td>15 June, 08:00 am</td>
-            <td>15 June, 08:15 am</td>
-            <td>15 June, 05:45 pm</td>
-            <td>15 June, 11:59 pm</td>
-        </tr>
-        <tr>
-            <td>What</td>
-            <td>EPC List</td>
-            <td colspan=3>SSCC of logistics unit</td>
-            <td>(empty)
-        </tr>
-        <tr>
-            <td>Where</td>
-            <td>Read Point</td>
-            <td>GLN of receiving area</td>
-            <td>GLN of interim storage room</td>
-            <td>GLN of cold storage room</td>
-            <td>GLN of cold storage room</td>
-        </tr>
-        <tr>
-            <td/>
-            <td>Business Location</td>
-            <td>GLN of interim storage room</td>
-            <td>GLN of cold storage room</td>
-            <td>GLN of shipping area</td>
-            <td>(empty)</td>
-        </tr>
-        <tr>
-            <td>Why</td>
-            <td>Business Step</td>
-            <td colspan=3>Storing (CBV)</td>
-            <td>Sensor reporting (CBV)</td>
-        </tr>
-        <tr>
-            <td>How</td>
-            <td>Start Time</td>
-            <td>15 June 07:55 am</td>
-            <td>15 June 08:10 am</td>
-            <td>15 June 05:35 pm</td>
-            <td>15 June 00:00 am</td>
-        </tr>
-        <tr>
-            <td/>
-            <td>End Time</td>
-            <td>15 June 07:59 am</td>
-            <td>15 June 08:14 am</td>
-            <td>15 June 05:55 pm</td>
-            <td>15 June 11:59 pm</td>
-        </tr>
-        <tr>
-            <td/>
-            <td>Type</td>
-            <td colspan=4>Temperature (CBV)</td>
-        </tr>
-        <tr>
-            <td/>
-            <td>Min Value</td>
-            <td>12</td>
-            <td>12.1</td>
-            <td>9.2</td>
-            <td>9.1</td>
-        </tr>
-        <tr>
-            <td/>
-            <td>Max Value</td>
-            <td>12.1</td>
-            <td>12.2</td>
-            <td>9.2</td>
-            <td>9.4</td>
-        </tr>
-        <tr>
-            <td/>
-            <td>UOM</td>
-            <td colspan=4>CEL</td>
-        </tr>
-    </tbody>
-</table>
+| Dim | Data Element | V1 | V2 | V3 | V4 |
+| --- | ------------ | -- | -- | -- | -- |
+| When | `Event Time` | 15 June, 08:00 am | 15 June, 08:15 am | 15 June, 05:45 pm | 15 June, 11:59 pm |
+| What | `EPC List` | SSCC of logistics unit | SSCC of logistics unit | SSCC of logistics unit | (empty) |
+| Where | `Read Point` | GLN of receiving area | GLN of interim storage room | GLN of cold storage room | GLN of cold storage room |
+| | `Business Location` | GLN of interim storage room | GLN of cold storage room | GLN of shipping area | (empty) |
+| Why | `Business Step` | `Storing (CBV)` | `Storing (CBV)` | `Storing (CBV)` | `Sensor reporting (CBV)` |
+| How | `Start Time` | 15 June 07:55 am | 15 June 08:10 am | 15 June 05:35 pm | 15 June 00:00 am |
+| | `End Time` | 15 June 07:59 am | 15 June 08:14 am | 15 June 05:55 pm | 15 June 11:59 pm |
+| | `Type` | `Temperature (CBV`) | `Temperature (CBV)` | `Temperature (CBV)` | `Temperature (CBV)` |
+| | `Min Value` | 12 | 12.1 | 9.2 | 9.1 |
+| | `Max Value` | 12.1 | 12.2 | 9.2 | 9.4 |
+| | `UOM` | `CEL` | `CEL` | `CEL` | `CEL` |
 
 On this basis, the organisation has an unbroken chain of events documenting the condition of an individual item, beginning from when it was relocated from the receiving area to an interim storage room (V1), when it was moved in and out of the cold storage room (V2 and V3), and while it was residing in the cold storage room (V4).
 
