@@ -24,7 +24,7 @@ Typical critical tracing events accommodating sensor data can easily be modelled
 | Why | `bizStep` | `Storing (CBV)` | `Storing (CBV)` | `Storing (CBV)` | `Sensor reporting (CBV)` |
 | How | `sensorElement` |
 | | `sensorReport` |
-| | `startTime` | 15 June 07:55 am | 15 June 08:10 am | 15 June 05:35 pm | 15 June 00:00 am |
+| | `startTime` | 15 June 07:55 am | 15 June 08:10 am | 15 June 05:35 pm | 14 June 11:59 pm |
 | | `endTime` | 15 June 07:59 am | 15 June 08:14 am | 15 June 05:55 pm | 15 June 11:59 pm |
 | | `type` | `Temperature (CBV`) | `Temperature (CBV)` | `Temperature (CBV)` | `Temperature (CBV)` |
 | | `minValue` | 12 | 12.1 | 9.2 | 9.1 |
@@ -79,23 +79,47 @@ Nowadays, goods are often transported through several modes of transport, e.g. i
 
 For instance, if an organisation is interested in ascertaining that their products were not exposed to a certain level of air humidity during sea transport, the following EPCIS event sequence would make sense:
 
-| Dim | Data Element | V1 | V2 | V3 | V4 | V5 | V6 |
-| --- | ------------ | -- | -- | -- | -- | -- | -- |
-| When | `eventTime` | 24 June, 08:00 am | 24 June, 02:15 pm | 24 June, 11:59 pm | 25 June, 11:59 pm |
-| What | `epcList` | | | | BIC of sea container | | |
-|  | `parentID` | SSCC of logistics unit | BIC of sea container | GIAI of the truck  |  |
-|  | `childEPCs` | SGTINs of products | SSCC of logistics unit | BIC of sea container |  |
-| Where | `readPoint` | GLN of warehouse | GLN of warehouse | GLN of warehouse |  |
-| Why | `bizStep` | `Packing (CBV)` | `Loading (CBV)` | `Loading (CBV)` | `Sensor reporting (CBV)` |
+| Dim | Data Element | V1 | V2 | V3 | V4 | V5 | V6 | V7 | V8 | V9 | V10 |
+| --- | ------------ | -- | -- | -- | -- | -- | -- | -- | -- | -- | --- |
+|  | Description | Pack products into logistics unit | Load logistics unit onto sea container | Load sea containers onto truck | Truck arrival at port | Unload sea containers from truck | Load sea containers onto vessel | Vessel departure from port | Daily sensor reporting of sea container |Daily vessel report with 4-hourly geo positions | Daily sensor reporting of sea container |
+|  | Event Type | Aggregation Event | Aggregation Event | Aggregation Event | Object Event | Aggregation Event | Aggregation Event | Object Event | Object Event | Object Event | Object Event |
+|  | Action | ADD | ADD | ADD | OBSERVE | DELETE | ADD | OBSERVE | OBSERVE | OBSERVE | OBSERVE |
+| When | `eventTime` | 24 June, 08:00 am | 24 June, 09:15 am | 24 June, 09:45 am | 24 June, 02:20 pm | 24 June, 02:55 pm | 24 June, 05:11 pm | 25 June, 04:00 am | 24 June, 11:59 pm | 25 June, 11:59 pm | 25 June, 11:59 pm |
+| What | `epcList` | | | | GIAI of the truck |  |  | IMO Vessel Number of ship | BIC of sea container | IMO Vessel Number of ship | BIC of sea container |
+|  | `parentID` | SSCC of logistics unit | BIC of sea container | GIAI of the truck  |  | GIAI of the truck | IMO Vessel Number of ship |  |  |  |  |  |
+|  | `childEPCs` | SGTINs of products | SSCC of logistics unit | BIC of sea container |  | BIC of sea container | BIC of sea container |  |  |  |  |
+| Where | `readPoint` | GLN of warehouse | GLN of warehouse | GLN of warehouse | GLN of port | GLN of port | GLN of port | GLN of port |  |  |
+| Why | `bizStep` | `Packing (CBV)` | `Loading (CBV)` | `Loading (CBV)` | `Arriving (CBV)` | `Unloading (CBV)` | `Loading (CBV)` | `Departing (CBV)`| `Sensor reporting (CBV)` |  `Sensor reporting (CBV)` | `Sensor reporting (CBV)` |
 | How | `sensorElement` |
+|  |  `sensorMetaData` |
+| | `startTime` |  |  |  |  |  |  |  | 23 June 11:59 pm |  | 24 June 11:59 pm |
+| | `endTime` |  |  |  |  |  |  |  | 24 June 11:59 pm |  | 25 June 11:59 pm |
 | | `sensorReport` |
-| | `startTime` |  |  |  | 15 June 00:00 am |
-| | `endTime` |  |  |  | 15 June 11:59 pm |
-| | `type` |  |  |  | `Temperature (CBV)` |
-| | `minValue` |  |  |  | 9.1 |
-| | `maxValue` |  |  |  | 9.4 |
-| | `uom` |  |  |  | `CEL` |
+| | `type` |  |  |  |  |  |  |  | `Temperature (CBV)` |  | `Temperature (CBV)` |
+| | `minValue` |  |  |  |  |  |  |  | 8.1 |  | 5.6 |
+| | `maxValue` |  |  |  |  |  |  |  | 21.8 | | 14.9 |
+| | `uom` |  |  |  |  |  |  |  | `CEL` |  | `CEL` |
+| | `sensorReport` |
+| | `type` |  |  |  |  |  |  |  | `Humidity (CBV)` |  | `Humidity (CBV)` |
+| | `minValue` |  |  |  |  |  |  |  | 6.1 |  | 4.6 |
+| | `maxValue` |  |  |  |  |  |  |  | 8.2 | | 3.3 |
+| | `uom` |  |  |  |  |  |  |  | `A93` |  | `A93` |
+| | `sensorElement` |
+| | `sensorMetaData` |
+| | `time` |  |  |  |  |  |  |  |  | 25 June 02:00 am |  |
+| | `sensorReport` |
+| | `type` |  |  |  |  |  |  |  |  | `Latitude (CBV)` |  |  |
+| | `stringValue` |  |  |  |  |  |  |  |  | `Latitude (CBV)` |  |  |
 
+53.553747  8.562372
+53.882318  8.099310
+54.172892  7.094428
+54.389794  5.753072
+54.790116  3.407863
+56.196056  1.490934
+
+
+A93","name":"gram per cubic metre"
 
 rawData 
 
