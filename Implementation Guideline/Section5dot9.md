@@ -14,10 +14,13 @@ Typical critical tracing events accommodating sensor data can easily be modelled
 
 | Dim | Data Element | V1 | V2 | V3 | V4 |
 | --- | ------------ | -- | -- | -- | -- |
+|  | Description | Move logistics unit to interim storage room | Move logistics into cold storage room | Move logistics out of cold storage room | Daily sensor reporting of cold storage room |
+|  | Event Type | Object Event | Object Event | Object Event | Object Event |
+|  | Action | OBSERVE | OBSERVE | OBSERVE | OBSERVE |
 | When | `eventTime` | 15 June, 08:00 am | 15 June, 08:15 am | 15 June, 05:45 pm | 15 June, 11:59 pm |
-| What | `epcList` | SSCC of logistics unit | SSCC of logistics unit | SSCC of logistics unit | (empty) |
+| What | `epcList` | SSCC of logistics unit | SSCC of logistics unit | SSCC of logistics unit | |
 | Where | `readPoint` | GLN of receiving area | GLN of interim storage room | GLN of cold storage room | GLN of cold storage room |
-| | `bizLocation` | GLN of interim storage room | GLN of cold storage room | GLN of shipping area | (empty) |
+| | `bizLocation` | GLN of interim storage room | GLN of cold storage room | GLN of shipping area | |
 | Why | `bizStep` | `Storing (CBV)` | `Storing (CBV)` | `Storing (CBV)` | `Sensor reporting (CBV)` |
 | How | `sensorElement` |
 | | `sensorReport` |
@@ -49,6 +52,9 @@ In such a setting, the 'alert' EPCIS event could be modelled as follows:
 
 | Dim | Data Element | V1 |
 | --- | ------------ | -- |
+|  | Description | Exception notification event for temperature exceeding |
+|  | Event Type | Object Event |
+|  | Action | OBSERVE |
 | When | `eventTime` | 23 June, 11:19 am |
 | Where | `readPoint` | GLN of cold storage room |
 | Why | `bizStep` | `Sensor reporting (CBV)` |
@@ -67,7 +73,42 @@ In contrast to the previous example, the event accommodates the (optional) `sens
 
 Apart from the actual temperature value (exceeding the predefined threshold), the `sensorElement` contains a second `sensorReport` element accommodating an alarm value, expressed as a URI. The latter consists of a custom value - a future GS1 working group may define standard vocabulary for alarm/error code values for this application domain.
 
-## Example 3: Sea container 
+## Example 3: Condition monitoring in intermodal transports
+
+Nowadays, goods are often transported through several modes of transport, e.g. in sea containers, trucks or railway carriages. If a companies wants to control whether their products are properly transported, it would make a lot of sense if logistics/transport providers supplies that data in a standardised manner.
+
+For instance, if an organisation is interested in ascertaining that their products were not exposed to a certain level of air humidity during sea transport, the following EPCIS event sequence would make sense:
+
+| Dim | Data Element | V1 | V2 | V3 | V4 | V5 | V6 |
+| --- | ------------ | -- | -- | -- | -- | -- | -- |
+| When | `eventTime` | 24 June, 08:00 am | 24 June, 02:15 pm | 24 June, 11:59 pm | 25 June, 11:59 pm |
+| What | `epcList` | | | | BIC of sea container | | |
+|  | `parentID` | SSCC of logistics unit | BIC of sea container | GIAI of the truck  |  |
+|  | `childEPCs` | SGTINs of products | SSCC of logistics unit | BIC of sea container |  |
+| Where | `readPoint` | GLN of warehouse | GLN of warehouse | GLN of warehouse |  |
+| Why | `bizStep` | `Packing (CBV)` | `Loading (CBV)` | `Loading (CBV)` | `Sensor reporting (CBV)` |
+| How | `sensorElement` |
+| | `sensorReport` |
+| | `startTime` |  |  |  | 15 June 00:00 am |
+| | `endTime` |  |  |  | 15 June 11:59 pm |
+| | `type` |  |  |  | `Temperature (CBV)` |
+| | `minValue` |  |  |  | 9.1 |
+| | `maxValue` |  |  |  | 9.4 |
+| | `uom` |  |  |  | `CEL` |
+
+
+rawData 
+
+container closed 
+
+if 
+
+Some events (e.g. shipping/receiving, transporting () )
+
+Aggregation Events to truck, ship, etc. also ... for simplicity reasons, omitted  
+
+Geo coordinates?  
+
 
 Aggregation Event SGTIN => SSCC => BIC 
 
@@ -75,8 +116,15 @@ Pallets are loaded/unloaded
 
 Association Event sensor device => Container 
 
-## Example 4: ??? Association Event 
+## Example 4: Long-term/fixed associations
+
+An organisation ... visibility which sensor device/assembly/module was built in into which 
+
+For instance, if ... it turns out ...not exactly calibrated, ...
+identify 
+also, there may be customs authorities ... enquiring 
+
+Let us take the example of an asset pool operator 
 
 ## Example 5: ??? Microorganism/Chemical Substance
-
-## Example 6: ??? Alarm/Error 
+quality control of e.g. fresh fruits and vegetables 
