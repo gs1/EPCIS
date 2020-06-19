@@ -172,7 +172,9 @@ GS1 retains the right to make changes to this document at any time, without noti
     <xsd:choice minOccurs="0" maxOccurs="unbounded">
       <xsd:element name="ObjectEvent" type="epcis:ObjectEventType" minOccurs="0" maxOccurs="unbounded"/>
       <xsd:element name="AggregationEvent" type="epcis:AggregationEventType" minOccurs="0" maxOccurs="unbounded"/>
+	<!-- DEPRECATED in 2.0
       <xsd:element name="QuantityEvent" type="epcis:QuantityEventType" minOccurs="0" maxOccurs="unbounded"/>
+	-->
       <xsd:element name="TransactionEvent" type="epcis:TransactionEventType" minOccurs="0" maxOccurs="unbounded"/>
       <xsd:element name="extension" type="epcis:EPCISEventListExtensionType"/>
       <xsd:any namespace="##other" processContents="lax"/>
@@ -633,6 +635,7 @@ GS1 retains the right to make changes to this document at any time, without noti
     <xsd:anyAttribute processContents="lax"/>
   </xsd:complexType>
 
+<!-- DEPRECATED in 2.0
   <xsd:complexType name="QuantityEventType">
     <xsd:annotation>
       <xsd:documentation xml:lang="en">
@@ -663,6 +666,7 @@ GS1 retains the right to make changes to this document at any time, without noti
     </xsd:sequence>
     <xsd:anyAttribute processContents="lax"/>
   </xsd:complexType>
+-->
 
   <xsd:complexType name="TransactionEventType">
     <xsd:annotation>
