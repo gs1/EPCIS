@@ -75,9 +75,9 @@ Apart from the actual temperature value (exceeding the predefined threshold), th
 
 ## Example 3: Condition monitoring and tracking of intermodal transports
 
-Nowadays, goods are often transported through several modes of transport, e.g. in sea containers, trucks or railway carriages. If a companies wants to control whether their products are properly transported and which areas a container vessel traversed, it would make if the respective logistics/transport service providers supply that data in a standardised manner.
+Nowadays, goods are often transported through several modes of transport, e.g. in sea containers, trucks or railway carriages. If a companies wants to control whether their products are properly transported and which areas a container vessel traversed, it is advisable if the respective logistics/transport service providers supply the corresponding visibility event data in a standardised manner.
 
-For instance, if an organisation is interested in ascertaining that their products were not exposed to a certain level of air humidity during as well as the approximate sea transport route, the following EPCIS event sequence would make sense:
+For instance, if an organisation is interested to ascertain that their products were not exposed to a certain level of air humidity during transport as well as the approximate sea transport route, the following EPCIS event sequence would make sense:
 
 | Dim | Data Element | V1 | V2 | V3 | V4 | V5 | V6 | V7 | V8 | V9 | V10 |
 | --- | ------------ | -- | -- | -- | -- | -- | -- | -- | -- | -- | --- |
@@ -107,6 +107,7 @@ For instance, if an organisation is interested in ascertaining that their produc
 | | `sensorElement` |
 | | `sensorMetaData` |
 | | `time` |  |  |  |  |  |  |  |  | 25 June 02:00 am |  |
+| | `rawData` |  |  |  |  |  |  |  |  | https://example.org/8004/401234599999 |  |
 | | `sensorReport` |
 | | `type` |  |  |  |  |  |  |  |  | `Latitude (CBV)` |  |  |
 | | `stringValue` |  |  |  |  |  |  |  |  | 53.553747 |  |  |
@@ -159,22 +160,13 @@ For instance, if an organisation is interested in ascertaining that their produc
 | | `type` |  |  |  |  |  |  |  |  | `Longitude (CBV)` |  |  |
 | | `stringValue` |  |  |  |  |  |  |  |  | 1.490934 |  |  |
   
-Note that though further appropriate EPCIS events (e.g. shipping, receiving) were omitted for simplicity reasons, this sequence of events enables the organisation to obtain a complete view of how an individual item was transported.
+Note that though further appropriate EPCIS events (e.g. shipping, receiving) were omitted for simplicity reasons, the above sequence of events enables the organisation to obtain a complete view of how an individual item was transported.
 
-First, the Aggregation Events (V1, V2, V3, V5 and V6) allow for precise knowledge which individual products were, at which point in time, packed into which containers and hauled with which means of transport (here: a truck and a vessel).
+The Aggregation Events (V1, V2, V3, V5 and V6) allow for precise knowledge which individual products were, at which point in time, packed into which containers and hauled with which means of transport (here: a truck and a vessel).
 
-Second, if someone is interested to know whether temperature and air humidity (in this regard, uom "A93" stands for gram per cubic metre, a possible unit to measure absolute humidity) where within an acceptable range, the accessing application only needs to 
+If someone is interested to know whether temperature and air humidity (in this regard, `uom` "A93" stands for gram per cubic metre, a possible unit for measuring absolute humidity) were below an acceptable level, the accessing application only needs to query for the corresponding daily sensor reporting events via the data owner's EPCIS repository (V8 and V10).
 
-allowed ... 
-
-rawData ... API call to e.g. timestamped data
-detailed view ...
-
-presume ... part of the agreement ... between transport service provider ... 
-
-
-
-
+Event V9 illustrates how the sensor-related standard extension fields can be used to transmit geographic positions of a given item. In this instance, the EPCIS capturing application triggers an event at the end of each day, thereby inserting the latitude/longitude values in 4-hour intervals. Further, if an accessing client is interested in more granular data, the event also includes a Web URI (which again is a valid GS1 Digital Link Web URI - thereby, '8004' is the GS1 AI for a Global Individual Asset Identifier) pointing to the underlying raw sensor data.
 
 ## Example 4: ??? Long-term/fixed associations
 
