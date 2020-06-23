@@ -170,15 +170,15 @@ Event V9 illustrates how the sensor-related standard extension fields can be use
 
 ## Example 4: ??? Long-term/fixed associations
 
-TBD
+TBD  
 o need: visibility which sensor device/assembly/module was built into  which product/asset/building  
 o for instance, if it turns out in retrospect that a given sensor device/model was not exactly calibrated, the organisation most probably requires to identify all objects equipped with the sensor device in question. In addition, this information may also be enquired by customs authorities  
-0 visibility data matrix: Association Event  
-o example: asset pool operator
+o visibility data matrix: Association Event  
+o example: asset pool operator  
 
 ## Example 5: ??? Microorganism/Chemical Substance
 
-TBD
+TBD  
 o need: quality control of e.g. fresh fruits and vegetables, control/random sample at goods receipt  
 o visibility data matrix: inspecting event with a device that determines sugar content, consistency, check for bacteria (e.g. Lactobacillus)  
-o example: retailer receiving a batch/lot of apples
+o example: retailer receiving a batch/lot of apples  
