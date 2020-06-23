@@ -69,15 +69,15 @@ In such a setting, the 'alert' EPCIS event could be modelled as follows:
 | | `type` | `AlarmCondition (CBV`) |
 | | `uriValue` | https://example.com/alarmCodes/temperatureExceeded |
 
-In contrast to the previous example, the event accommodates the (optional) `sensorMetaData` field, which in turn contains a reference (the Web URI is a valid GS1 Digital Link URI leveraging a custom (here: "example.com) domain, `253` denotes the GS1 Application Identifier for the Global Document Type Identifier) to an electronic document including the business rule(s) upon which the EPCIS event was captured. The company may decide to also insert additional attributes such as `deviceID`or `deviceMetaData` into this element, if applicable.
+In contrast to the previous example, the event accommodates the (optional) `sensorMetaData` field, which in turn contains a reference (the Web URI is a valid GS1 Digital Link URI leveraging a custom (here: "example.com) domain, `253` denotes the GS1 Application Identifier for the Global Document Type Identifier) to an electronic document including the business rule(s) upon which the EPCIS event was captured. The company may decide to also insert additional attributes such as `deviceID` or `deviceMetaData` into this element, if applicable.
 
 Apart from the actual temperature value (exceeding the predefined threshold), the `sensorElement` contains a second `sensorReport` element accommodating an alarm value, expressed as a URI. The latter consists of a custom value - a future GS1 working group may define standard vocabulary for alarm/error code values for this application domain.
 
-## Example 3: Condition monitoring in intermodal transports
+## Example 3: Condition monitoring and tracking of intermodal transports
 
-Nowadays, goods are often transported through several modes of transport, e.g. in sea containers, trucks or railway carriages. If a companies wants to control whether their products are properly transported, it would make a lot of sense if logistics/transport providers supplies that data in a standardised manner.
+Nowadays, goods are often transported through several modes of transport, e.g. in sea containers, trucks or railway carriages. If a companies wants to control whether their products are properly transported and which areas a container vessel traversed, it would make if the respective logistics/transport service providers supply that data in a standardised manner.
 
-For instance, if an organisation is interested in ascertaining that their products were not exposed to a certain level of air humidity during sea transport, the following EPCIS event sequence would make sense:
+For instance, if an organisation is interested in ascertaining that their products were not exposed to a certain level of air humidity during as well as the approximate sea transport route, the following EPCIS event sequence would make sense:
 
 | Dim | Data Element | V1 | V2 | V3 | V4 | V5 | V6 | V7 | V8 | V9 | V10 |
 | --- | ------------ | -- | -- | -- | -- | -- | -- | -- | -- | -- | --- |
@@ -109,46 +109,84 @@ For instance, if an organisation is interested in ascertaining that their produc
 | | `time` |  |  |  |  |  |  |  |  | 25 June 02:00 am |  |
 | | `sensorReport` |
 | | `type` |  |  |  |  |  |  |  |  | `Latitude (CBV)` |  |  |
-| | `stringValue` |  |  |  |  |  |  |  |  | `Latitude (CBV)` |  |  |
+| | `stringValue` |  |  |  |  |  |  |  |  | 53.553747 |  |  |
+| | `sensorReport` |
+| | `type` |  |  |  |  |  |  |  |  | `Longitude (CBV)` |  |  |
+| | `stringValue` |  |  |  |  |  |  |  |  | 8.562372 |  |  |
+| | `sensorElement` |
+| | `sensorMetaData` |
+| | `time` |  |  |  |  |  |  |  |  | 25 June 06:00 am |  |
+| | `sensorReport` |
+| | `type` |  |  |  |  |  |  |  |  | `Latitude (CBV)` |  |  |
+| | `stringValue` |  |  |  |  |  |  |  |  | 53.882318 |  |  |
+| | `sensorReport` |
+| | `type` |  |  |  |  |  |  |  |  | `Longitude (CBV)` |  |  |
+| | `stringValue` |  |  |  |  |  |  |  |  | 8.099310 |  |  |
+| | `sensorElement` |
+| | `sensorMetaData` |
+| | `time` |  |  |  |  |  |  |  |  | 25 June 10:00 am |  |
+| | `sensorReport` |
+| | `type` |  |  |  |  |  |  |  |  | `Latitude (CBV)` |  |  |
+| | `stringValue` |  |  |  |  |  |  |  |  | 54.172892 |  |  |
+| | `sensorReport` |
+| | `type` |  |  |  |  |  |  |  |  | `Longitude (CBV)` |  |  |
+| | `stringValue` |  |  |  |  |  |  |  |  | 7.094428 |  |  |
+| | `sensorElement` |
+| | `sensorMetaData` |
+| | `time` |  |  |  |  |  |  |  |  | 25 June 02:00 pm |  |
+| | `sensorReport` |
+| | `type` |  |  |  |  |  |  |  |  | `Latitude (CBV)` |  |  |
+| | `stringValue` |  |  |  |  |  |  |  |  | 54.389794 |  |  |
+| | `sensorReport` |
+| | `type` |  |  |  |  |  |  |  |  | `Longitude (CBV)` |  |  |
+| | `stringValue` |  |  |  |  |  |  |  |  | 5.753072 |  |  |
+| | `sensorElement` |
+| | `sensorMetaData` |
+| | `time` |  |  |  |  |  |  |  |  | 25 June 06:00 pm |  |
+| | `sensorReport` |
+| | `type` |  |  |  |  |  |  |  |  | `Latitude (CBV)` |  |  |
+| | `stringValue` |  |  |  |  |  |  |  |  | 54.790116 |  |  |
+| | `sensorReport` |
+| | `type` |  |  |  |  |  |  |  |  | `Longitude (CBV)` |  |  |
+| | `stringValue` |  |  |  |  |  |  |  |  | 3.407863 |  |  |
+| | `sensorElement` |
+| | `sensorMetaData` |
+| | `time` |  |  |  |  |  |  |  |  | 25 June 10:00 pm |  |
+| | `sensorReport` |
+| | `type` |  |  |  |  |  |  |  |  | `Latitude (CBV)` |  |  |
+| | `stringValue` |  |  |  |  |  |  |  |  | 56.196056 |  |  |
+| | `sensorReport` |
+| | `type` |  |  |  |  |  |  |  |  | `Longitude (CBV)` |  |  |
+| | `stringValue` |  |  |  |  |  |  |  |  | 1.490934 |  |  |
+  
+Note that though further appropriate EPCIS events (e.g. shipping, receiving) were omitted for simplicity reasons, this sequence of events enables the organisation to obtain a complete view of how an individual item was transported.
 
-53.553747  8.562372
-53.882318  8.099310
-54.172892  7.094428
-54.389794  5.753072
-54.790116  3.407863
-56.196056  1.490934
+First, the Aggregation Events (V1, V2, V3, V5 and V6) allow for precise knowledge which individual products were, at which point in time, packed into which containers and hauled with which means of transport (here: a truck and a vessel).
+
+Second, if someone is interested to know whether temperature and air humidity (in this regard, uom "A93" stands for gram per cubic metre, a possible unit to measure absolute humidity) where within an acceptable range, the accessing application only needs to 
+
+allowed ... 
+
+rawData ... API call to e.g. timestamped data
+detailed view ...
+
+presume ... part of the agreement ... between transport service provider ... 
 
 
-A93","name":"gram per cubic metre"
-
-rawData 
-
-container closed 
-
-if 
-
-Some events (e.g. shipping/receiving, transporting () )
-
-Aggregation Events to truck, ship, etc. also ... for simplicity reasons, omitted  
-
-Geo coordinates?  
 
 
-Aggregation Event SGTIN => SSCC => BIC 
 
-Pallets are loaded/unloaded 
+## Example 4: ??? Long-term/fixed associations
 
-Association Event sensor device => Container 
-
-## Example 4: Long-term/fixed associations
-
-An organisation ... visibility which sensor device/assembly/module was built in into which 
-
-For instance, if ... it turns out ...not exactly calibrated, ...
-identify 
-also, there may be customs authorities ... enquiring 
-
-Let us take the example of an asset pool operator 
+TBD
+o need: visibility which sensor device/assembly/module was built into  which product/asset/building
+o for instance, if it turns out in retrospect that a given sensor device/model was not exactly calibrated, the organisation most probably requires to identify all objects equipped with the sensor device in question. In addition, this information may also be enquired by customs authorities
+0 visibility data matrix: Association Event
+o example: asset pool operator
 
 ## Example 5: ??? Microorganism/Chemical Substance
-quality control of e.g. fresh fruits and vegetables 
+
+TBD
+o need: quality control of e.g. fresh fruits and vegetables, control/random sample at goods receipt
+o visibility data matrix: inspecting event with a device that determines sugar content, consistency, check for bacteria (e.g. Lactobacillus)
+o example: retailer receiving a batch/lot of apples
