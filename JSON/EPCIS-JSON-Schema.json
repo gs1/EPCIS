@@ -28,13 +28,34 @@
         "DELETE"
       ]
     },
+    "persistentDisposition": {
+      "type": "object",
+      "properties": {
+        "set": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/uri"
+          }
+        },
+        "unset": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/uri"
+          }
+        }
+      }
+    },
     "epcList": {
       "type": "array",
-      "items": { "$ref": "#/definitions/uri" }
+      "items": {
+        "$ref": "#/definitions/uri"
+      }
     },
     "quantityList": {
       "type": "array",
-      "items": { "$ref": "#/definitions/quantityElement" }
+      "items": {
+        "$ref": "#/definitions/quantityElement"
+      }
     },
     "uom": {
       "type": "string",
@@ -46,110 +67,198 @@
     "errorDeclaration": {
       "type": "object",
       "properties": {
-        "declarationtime": { "$ref": "#/definitions/time" },
-        "reason": { "$ref": "#/definitions/uri" },
+        "declarationtime": {
+          "$ref": "#/definitions/time"
+        },
+        "reason": {
+          "$ref": "#/definitions/uri"
+        },
         "correctiveEventIDs": {
           "type": "array",
-          "items": { "$ref": "#/definitions/eventID" }
+          "items": {
+            "$ref": "#/definitions/eventID"
+          }
         }
       }
     },
     "quantityElement": {
       "type": "object",
       "properties": {
-        "epcClass": { "$ref": "#/definitions/uri" },
-        "quantity": { "$ref": "#/definitions/decimal" },
-        "uom": { "$ref": "#/definitions/uom" }
+        "epcClass": {
+          "$ref": "#/definitions/uri"
+        },
+        "quantity": {
+          "$ref": "#/definitions/decimal"
+        },
+        "uom": {
+          "$ref": "#/definitions/uom"
+        }
       },
-      "required": [ "epcClass" ]
+      "required": ["epcClass"]
     },
     "bizTransaction": {
       "type": "object",
       "properties": {
-        "type": { "$ref": "#/definitions/uri" },
-        "bizTransaction": { "$ref": "#/definitions/uri" }
+        "type": {
+          "$ref": "#/definitions/uri"
+        },
+        "bizTransaction": {
+          "$ref": "#/definitions/uri"
+        }
       },
-      "required": [ "bizTransaction" ]
+      "required": ["bizTransaction"]
     },
     "source": {
       "type": "object",
       "properties": {
-        "type": { "$ref": "#/definitions/uri" },
-        "source": { "$ref": "#/definitions/uri" }
+        "type": {
+          "$ref": "#/definitions/uri"
+        },
+        "source": {
+          "$ref": "#/definitions/uri"
+        }
       },
-      "required": [ "type" ]
+      "required": ["type"]
     },
     "destination": {
       "type": "object",
       "properties": {
-        "type": { "$ref": "#/definitions/uri" },
-        "destination": { "$ref": "#/definitions/uri" }
+        "type": {
+          "$ref": "#/definitions/uri"
+        },
+        "destination": {
+          "$ref": "#/definitions/uri"
+        }
       },
-      "required": [ "type" ]
+      "required": ["type"]
     },
-    
-    
+
+
     "sensorElement": {
       "type": "object",
       "properties": {
-        "sensorMetaData": { "$ref": "#/definitions/sensorMetaData" },
-        "sensorReport": { "$ref": "#/definitions/sensorReportList" }
+        "sensorMetaData": {
+          "$ref": "#/definitions/sensorMetaData"
+        },
+        "sensorReport": {
+          "$ref": "#/definitions/sensorReportList"
+        }
       },
-      "required": [ "sensorReport" ]
+      "required": ["sensorReport"]
     },
 
     "sensorReportList": {
-      "type":"array",
-      "items": { "$ref": "#/definitions/sensorReport" }  
-    },  
-      
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/sensorReport"
+      }
+    },
+
     "sensorReport": {
       "type": "object",
       "properties": {
-        "type": { "$ref": "#/definitions/uri" },
-        "value": { "$ref": "#/definitions/decimal" },
-        "stringValue": { "$ref": "#/definitions/string" },
-        "uriValue": { "$ref": "#/definitions/uri" },
-        "booleanValue": { "$ref": "#/definitions/boolean" },
-        "hexBinaryValue": { "$ref": "#/definitions/hexBinary" },
-        "uom": { "$ref": "#/definitions/string" },
-        "minValue": { "$ref": "#/definitions/decimal" },
-        "maxValue": { "$ref": "#/definitions/decimal" },
-        "sDev": { "$ref": "#/definitions/decimal" },
-        "chemicalSubstance": { "$ref": "#/definitions/uri" },
-        "microorganism": { "$ref": "#/definitions/uri" },
-        "deviceID": { "$ref": "#/definitions/uri" },
-        "deviceMetaData": { "$ref": "#/definitions/uri" },
-        "rawData": { "$ref": "#/definitions/uri" },
-        "time": { "$ref": "#/definitions/time" },
-        "meanValue": { "$ref": "#/definitions/decimal" },
-        "percRank": { "$ref": "#/definitions/decimal" },
-        "percValue": { "$ref": "#/definitions/decimal" },
-        "dataProcessingMethod": { "$ref": "#/definitions/uri" },
-        "bizRules": { "$ref": "#/definitions/uri" }
+        "type": {
+          "$ref": "#/definitions/uri"
+        },
+        "value": {
+          "$ref": "#/definitions/decimal"
+        },
+        "stringValue": {
+          "$ref": "#/definitions/string"
+        },
+        "uriValue": {
+          "$ref": "#/definitions/uri"
+        },
+        "booleanValue": {
+          "$ref": "#/definitions/boolean"
+        },
+        "hexBinaryValue": {
+          "$ref": "#/definitions/hexBinary"
+        },
+        "uom": {
+          "$ref": "#/definitions/string"
+        },
+        "minValue": {
+          "$ref": "#/definitions/decimal"
+        },
+        "maxValue": {
+          "$ref": "#/definitions/decimal"
+        },
+        "sDev": {
+          "$ref": "#/definitions/decimal"
+        },
+        "chemicalSubstance": {
+          "$ref": "#/definitions/uri"
+        },
+        "microorganism": {
+          "$ref": "#/definitions/uri"
+        },
+        "deviceID": {
+          "$ref": "#/definitions/uri"
+        },
+        "deviceMetaData": {
+          "$ref": "#/definitions/uri"
+        },
+        "rawData": {
+          "$ref": "#/definitions/uri"
+        },
+        "time": {
+          "$ref": "#/definitions/time"
+        },
+        "meanValue": {
+          "$ref": "#/definitions/decimal"
+        },
+        "percRank": {
+          "$ref": "#/definitions/decimal"
+        },
+        "percValue": {
+          "$ref": "#/definitions/decimal"
+        },
+        "dataProcessingMethod": {
+          "$ref": "#/definitions/uri"
+        },
+        "bizRules": {
+          "$ref": "#/definitions/uri"
+        }
       },
-      "required": [ "type" ]
+      "required": ["type"]
     },
 
     "sensorMetaData": {
       "type": "object",
       "properties": {
-        "time": { "$ref": "#/definitions/time" },
-        "deviceID": { "$ref": "#/definitions/uri" },
-        "deviceMetaData": { "$ref": "#/definitions/uri" },
-        "rawData": { "$ref": "#/definitions/uri" },
-        "startTime": { "$ref": "#/definitions/time" },
-        "endTime": { "$ref": "#/definitions/time" },
-        "dataProcessingMethod": { "$ref": "#/definitions/uri" },
-        "bizRules": { "$ref": "#/definitions/uri" }
+        "time": {
+          "$ref": "#/definitions/time"
+        },
+        "deviceID": {
+          "$ref": "#/definitions/uri"
+        },
+        "deviceMetaData": {
+          "$ref": "#/definitions/uri"
+        },
+        "rawData": {
+          "$ref": "#/definitions/uri"
+        },
+        "startTime": {
+          "$ref": "#/definitions/time"
+        },
+        "endTime": {
+          "$ref": "#/definitions/time"
+        },
+        "dataProcessingMethod": {
+          "$ref": "#/definitions/uri"
+        },
+        "bizRules": {
+          "$ref": "#/definitions/uri"
         }
-     },
-    
+      }
+    },
 
-	"string": {
-	  "type":"string"
-	},    
-    
+
+    "string": {
+      "type": "string"
+    },
+
     "ilmd": {
       "type": "object"
     },
@@ -166,17 +275,20 @@
           "type": "string",
           "pattern": "^(\\+|\\-)((0[0-9]|1[0-3]):([0-5][0-9])|14:00)$"
         },
-        "eventID": { "$ref": "#/definitions/eventID" },
-        "errorDeclaration": { "$ref": "#/definitions/errorDeclaration" }
+        "eventID": {
+          "$ref": "#/definitions/eventID"
+        },
+        "errorDeclaration": {
+          "$ref": "#/definitions/errorDeclaration"
+        }
       },
-      "required": [ "eventTime", "eventTimeZoneOffset" ]
+      "required": ["eventTime", "eventTimeZoneOffset"]
     },
-       
-    
+
+
     "objectEvent": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/event"          
+      "allOf": [{
+          "$ref": "#/definitions/event"
         },
         {
           "type": "object",
@@ -185,42 +297,68 @@
               "type": "string",
               "pattern": "^ObjectEvent$"
             },
-            "epcList": { "$ref": "#/definitions/epcList" },
-            "quantityList": { "$ref": "#/definitions/quantityList" },
-            "action": { "$ref": "#/definitions/action" },
-            "bizStep": { "$ref": "#/definitions/uri" },
-            "disposition": { "$ref": "#/definitions/uri" },
-            "readPoint": { "$ref": "#/definitions/uri" },
-            "bizLocation": { "$ref": "#/definitions/uri" },
+            "epcList": {
+              "$ref": "#/definitions/epcList"
+            },
+            "quantityList": {
+              "$ref": "#/definitions/quantityList"
+            },
+            "action": {
+              "$ref": "#/definitions/action"
+            },
+            "bizStep": {
+              "$ref": "#/definitions/uri"
+            },
+            "disposition": {
+              "$ref": "#/definitions/uri"
+            },
+            "persistentDisposition": {
+              "$ref": "#/definitions/persistentDisposition"
+            },
+            "readPoint": {
+              "$ref": "#/definitions/uri"
+            },
+            "bizLocation": {
+              "$ref": "#/definitions/uri"
+            },
             "bizTransactionList": {
               "type": "array",
-              "items": { "$ref": "#/definitions/bizTransaction" }
+              "items": {
+                "$ref": "#/definitions/bizTransaction"
+              }
             },
             "sourceList": {
               "type": "array",
-              "items": { "$ref": "#/definitions/source" }
+              "items": {
+                "$ref": "#/definitions/source"
+              }
             },
             "destinationList": {
               "type": "array",
-              "items": { "$ref": "#/definitions/destination" }
+              "items": {
+                "$ref": "#/definitions/destination"
+              }
             },
             "sensorElementList": {
               "type": "array",
-              "items": { "$ref": "#/definitions/sensorElement" }
+              "items": {
+                "$ref": "#/definitions/sensorElement"
+              }
             },
-            "ilmd": { "$ref": "#/definitions/ilmd" }
+            "ilmd": {
+              "$ref": "#/definitions/ilmd"
+            }
           },
-          "required": [ "isA", "action" ]
+          "required": ["isA", "action"]
         },
         {
-          "anyOf": [
-            {
+          "anyOf": [{
               "properties": {
                 "epcList": {
                   "minItems": 0
                 }
               },
-              "required": [ "epcList" ]
+              "required": ["epcList"]
             },
             {
               "properties": {
@@ -228,33 +366,31 @@
                   "minItems": 1
                 }
               },
-              "required": [ "quantityList" ]
+              "required": ["quantityList"]
             },
             {
-             "allOf": [
-				{
-				  "properties": {
-					"sensorElementList": {
-					  "minItems": 1
-					}
-				  },
-				  "required": [ "sensorElementList" ]
-				},
-				{
-				  "properties": {
-					"readPoint": {
-					  "minItems": 1
-					}
-				  },
-				  "required": [ "readPoint" ]
-				}
-             ]
+              "allOf": [{
+                  "properties": {
+                    "sensorElementList": {
+                      "minItems": 1
+                    }
+                  },
+                  "required": ["sensorElementList"]
+                },
+                {
+                  "properties": {
+                    "readPoint": {
+                      "minItems": 1
+                    }
+                  },
+                  "required": ["readPoint"]
+                }
+              ]
             }
           ]
         },
         {
-          "anyOf": [
-            {
+          "anyOf": [{
               "properties": {
                 "ilmd": {
                   "not": {}
@@ -286,8 +422,7 @@
       ]
     },
     "aggregationEvent": {
-      "allOf": [
-        {
+      "allOf": [{
           "$ref": "#/definitions/event"
         },
         {
@@ -297,48 +432,74 @@
               "type": "string",
               "pattern": "^AggregationEvent$"
             },
-            "parentID": { "$ref": "#/definitions/uri" },
+            "parentID": {
+              "$ref": "#/definitions/uri"
+            },
             "childEPCs": {
               "type": "array",
-              "items": { "$ref": "#/definitions/uri" }
+              "items": {
+                "$ref": "#/definitions/uri"
+              }
             },
             "childQuantityList": {
               "type": "array",
-              "items": { "$ref": "#/definitions/quantityElement" }
+              "items": {
+                "$ref": "#/definitions/quantityElement"
+              }
             },
-            "action": { "$ref": "#/definitions/action" },
-            "bizStep": { "$ref": "#/definitions/uri" },
-            "disposition": { "$ref": "#/definitions/uri" },
-            "readPoint": { "$ref": "#/definitions/uri" },
-            "bizLocation": { "$ref": "#/definitions/uri" },
+            "action": {
+              "$ref": "#/definitions/action"
+            },
+            "bizStep": {
+              "$ref": "#/definitions/uri"
+            },
+            "disposition": {
+              "$ref": "#/definitions/uri"
+            },
+            "persistentDisposition": {
+              "$ref": "#/definitions/persistentDisposition"
+            },
+            "readPoint": {
+              "$ref": "#/definitions/uri"
+            },
+            "bizLocation": {
+              "$ref": "#/definitions/uri"
+            },
             "bizTransactionList": {
               "type": "array",
-              "items": { "$ref": "#/definitions/bizTransaction" }
+              "items": {
+                "$ref": "#/definitions/bizTransaction"
+              }
             },
             "sourceList": {
               "type": "array",
-              "items": { "$ref": "#/definitions/source" }
+              "items": {
+                "$ref": "#/definitions/source"
+              }
             },
             "destinationList": {
               "type": "array",
-              "items": { "$ref": "#/definitions/destination" }
+              "items": {
+                "$ref": "#/definitions/destination"
+              }
             },
             "sensorElementList": {
               "type": "array",
-              "items": { "$ref": "#/definitions/sensorElement" }
+              "items": {
+                "$ref": "#/definitions/sensorElement"
+              }
             }
           },
-          "required": [ "isA", "action" ]
+          "required": ["isA", "action"]
         },
         {
-          "anyOf": [
-            {
+          "anyOf": [{
               "properties": {
                 "childEPCs": {
                   "minItems": 1
                 }
               },
-              "required": [ "childEPCs" ]
+              "required": ["childEPCs"]
             },
             {
               "properties": {
@@ -346,7 +507,7 @@
                   "minItems": 1
                 }
               },
-              "required": [ "childQuantityList" ]
+              "required": ["childQuantityList"]
             },
             {
               "properties": {
@@ -360,8 +521,7 @@
       ]
     },
     "associationEvent": {
-      "allOf": [
-        {
+      "allOf": [{
           "$ref": "#/definitions/event"
         },
         {
@@ -371,48 +531,74 @@
               "type": "string",
               "pattern": "^AssociationEvent$"
             },
-            "parentID": { "$ref": "#/definitions/uri" },
+            "parentID": {
+              "$ref": "#/definitions/uri"
+            },
             "childEPCs": {
               "type": "array",
-              "items": { "$ref": "#/definitions/uri" }
+              "items": {
+                "$ref": "#/definitions/uri"
+              }
             },
             "childQuantityList": {
               "type": "array",
-              "items": { "$ref": "#/definitions/quantityElement" }
+              "items": {
+                "$ref": "#/definitions/quantityElement"
+              }
             },
-            "action": { "$ref": "#/definitions/action" },
-            "bizStep": { "$ref": "#/definitions/uri" },
-            "disposition": { "$ref": "#/definitions/uri" },
-            "readPoint": { "$ref": "#/definitions/uri" },
-            "bizLocation": { "$ref": "#/definitions/uri" },
+            "action": {
+              "$ref": "#/definitions/action"
+            },
+            "bizStep": {
+              "$ref": "#/definitions/uri"
+            },
+            "disposition": {
+              "$ref": "#/definitions/uri"
+            },
+            "persistentDisposition": {
+              "$ref": "#/definitions/persistentDisposition"
+            },
+            "readPoint": {
+              "$ref": "#/definitions/uri"
+            },
+            "bizLocation": {
+              "$ref": "#/definitions/uri"
+            },
             "bizTransactionList": {
               "type": "array",
-              "items": { "$ref": "#/definitions/bizTransaction" }
+              "items": {
+                "$ref": "#/definitions/bizTransaction"
+              }
             },
             "sourceList": {
               "type": "array",
-              "items": { "$ref": "#/definitions/source" }
+              "items": {
+                "$ref": "#/definitions/source"
+              }
             },
             "destinationList": {
               "type": "array",
-              "items": { "$ref": "#/definitions/destination" }
+              "items": {
+                "$ref": "#/definitions/destination"
+              }
             },
             "sensorElementList": {
               "type": "array",
-              "items": { "$ref": "#/definitions/sensorElement" }
+              "items": {
+                "$ref": "#/definitions/sensorElement"
+              }
             }
           },
-          "required": [ "isA", "action", "parentID" ]
+          "required": ["isA", "action", "parentID"]
         },
         {
-          "anyOf": [
-            {
+          "anyOf": [{
               "properties": {
                 "childEPCs": {
                   "minItems": 1
                 }
               },
-              "required": [ "childEPCs" ]
+              "required": ["childEPCs"]
             },
             {
               "properties": {
@@ -420,7 +606,7 @@
                   "minItems": 1
                 }
               },
-              "required": [ "childQuantityList" ]
+              "required": ["childQuantityList"]
             },
             {
               "properties": {
@@ -434,8 +620,7 @@
       ]
     },
     "transactionEvent": {
-      "allOf": [
-        {
+      "allOf": [{
           "$ref": "#/definitions/event"
         },
         {
@@ -447,47 +632,73 @@
             },
             "bizTransactionList": {
               "type": "array",
-              "items": { "$ref": "#/definitions/bizTransaction" },
+              "items": {
+                "$ref": "#/definitions/bizTransaction"
+              },
               "minItems": 1
             },
-            "parentID": { "$ref": "#/definitions/uri" },
+            "parentID": {
+              "$ref": "#/definitions/uri"
+            },
             "epcList": {
               "type": "array",
-              "items": { "$ref": "#/definitions/uri" }
+              "items": {
+                "$ref": "#/definitions/uri"
+              }
             },
             "quantityList": {
               "type": "array",
-              "items": { "$ref": "#/definitions/quantityElement" }
+              "items": {
+                "$ref": "#/definitions/quantityElement"
+              }
             },
-            "action": { "$ref": "#/definitions/action" },
-            "bizStep": { "$ref": "#/definitions/uri" },
-            "disposition": { "$ref": "#/definitions/uri" },
-            "readPoint": { "$ref": "#/definitions/uri" },
-            "bizLocation": { "$ref": "#/definitions/uri" },
+            "action": {
+              "$ref": "#/definitions/action"
+            },
+            "bizStep": {
+              "$ref": "#/definitions/uri"
+            },
+            "disposition": {
+              "$ref": "#/definitions/uri"
+            },
+            "persistentDisposition": {
+              "$ref": "#/definitions/persistentDisposition"
+            },
+            "readPoint": {
+              "$ref": "#/definitions/uri"
+            },
+            "bizLocation": {
+              "$ref": "#/definitions/uri"
+            },
             "sourceList": {
               "type": "array",
-              "items": { "$ref": "#/definitions/source" }
+              "items": {
+                "$ref": "#/definitions/source"
+              }
             },
             "destinationList": {
               "type": "array",
-              "items": { "$ref": "#/definitions/destination" }
+              "items": {
+                "$ref": "#/definitions/destination"
+              }
             },
             "sensorElementList": {
               "type": "array",
-              "items": { "$ref": "#/definitions/sensorElement" }
+              "items": {
+                "$ref": "#/definitions/sensorElement"
+              }
             }
           },
-          "required": [ "isA", "bizTransactionList", "action" ]
+          "required": ["isA", "bizTransactionList", "action"]
         },
         {
-          "anyOf": [
-            {
+          "anyOf": [{
               "properties": {
                 "epcList": {
                   "minItems": 0
                 }
               },
-              "required": [ "epcList" ]
+              "required": ["epcList"]
             },
             {
               "properties": {
@@ -495,7 +706,7 @@
                   "minItems": 1
                 }
               },
-              "required": [ "quantityList" ]
+              "required": ["quantityList"]
             },
             {
               "properties": {
@@ -509,8 +720,7 @@
       ]
     },
     "transformationEvent": {
-      "allOf": [
-        {
+      "allOf": [{
           "$ref": "#/definitions/event"
         },
         {
@@ -520,44 +730,70 @@
               "type": "string",
               "pattern": "^TransformationEvent$"
             },
-            "inputEPCList": { "$ref": "#/definitions/epcList" },
-            "inputQuantityList": { "$ref": "#/definitions/quantityList" },
-            "outputEPCList": { "$ref": "#/definitions/epcList" },
-            "outputQuantityList": { "$ref": "#/definitions/quantityList" },
-            "transformationID": { "$ref": "#/definitions/uri" },
-            "bizStep": { "$ref": "#/definitions/uri" },
-            "disposition": { "$ref": "#/definitions/uri" },
-            "readPoint": { "$ref": "#/definitions/uri" },
-            "bizLocation": { "$ref": "#/definitions/uri" },
+            "inputEPCList": {
+              "$ref": "#/definitions/epcList"
+            },
+            "inputQuantityList": {
+              "$ref": "#/definitions/quantityList"
+            },
+            "outputEPCList": {
+              "$ref": "#/definitions/epcList"
+            },
+            "outputQuantityList": {
+              "$ref": "#/definitions/quantityList"
+            },
+            "transformationID": {
+              "$ref": "#/definitions/uri"
+            },
+            "bizStep": {
+              "$ref": "#/definitions/uri"
+            },
+            "disposition": {
+              "$ref": "#/definitions/uri"
+            },
+            "persistentDisposition": {
+              "$ref": "#/definitions/persistentDisposition"
+            },
+            "readPoint": {
+              "$ref": "#/definitions/uri"
+            },
+            "bizLocation": {
+              "$ref": "#/definitions/uri"
+            },
             "sourceList": {
               "type": "array",
-              "items": { "$ref": "#/definitions/source" }
+              "items": {
+                "$ref": "#/definitions/source"
+              }
             },
             "destinationList": {
               "type": "array",
-              "items": { "$ref": "#/definitions/destination" }
+              "items": {
+                "$ref": "#/definitions/destination"
+              }
             },
             "sensorElementList": {
               "type": "array",
-              "items": { "$ref": "#/definitions/sensorElement" }
+              "items": {
+                "$ref": "#/definitions/sensorElement"
+              }
             },
-            "ilmd": { "$ref": "#/definitions/ilmd" }
+            "ilmd": {
+              "$ref": "#/definitions/ilmd"
+            }
           },
-          "required": [ "isA" ]
+          "required": ["isA"]
         },
         {
-          "anyOf": [
-            {
-              "allOf": [
-                {
-                  "anyOf": [
-                    {
+          "anyOf": [{
+              "allOf": [{
+                  "anyOf": [{
                       "properties": {
                         "inputEPCList": {
                           "minItems": 1
                         }
                       },
-                      "required": [ "inputEPCList" ]
+                      "required": ["inputEPCList"]
                     },
                     {
                       "properties": {
@@ -565,19 +801,18 @@
                           "minItems": 1
                         }
                       },
-                      "required": [ "inputQuantityList" ]
+                      "required": ["inputQuantityList"]
                     }
                   ]
                 },
                 {
-                  "anyOf": [
-                    {
+                  "anyOf": [{
                       "properties": {
                         "outputEPCList": {
                           "minItems": 1
                         }
                       },
-                      "required": [ "outputEPCList" ]
+                      "required": ["outputEPCList"]
                     },
                     {
                       "properties": {
@@ -585,21 +820,20 @@
                           "minItems": 1
                         }
                       },
-                      "required": [ "outputQuantityList" ]
+                      "required": ["outputQuantityList"]
                     }
                   ]
                 }
               ]
             },
             {
-              "anyOf": [
-                {
+              "anyOf": [{
                   "properties": {
                     "inputEPCList": {
                       "minItems": 1
                     }
                   },
-                  "required": [ "inputEPCList" ]
+                  "required": ["inputEPCList"]
                 },
                 {
                   "properties": {
@@ -607,7 +841,7 @@
                       "minItems": 1
                     }
                   },
-                  "required": [ "inputQuantityList" ]
+                  "required": ["inputQuantityList"]
                 },
                 {
                   "properties": {
@@ -615,7 +849,7 @@
                       "minItems": 1
                     }
                   },
-                  "required": [ "outputEPCList" ]
+                  "required": ["outputEPCList"]
                 },
                 {
                   "properties": {
@@ -623,89 +857,141 @@
                       "minItems": 1
                     }
                   },
-                  "required": [ "outputQuantityList" ]
+                  "required": ["outputQuantityList"]
                 }
               ],
-              "required": [ "transformationID" ]
+              "required": ["transformationID"]
             }
           ]
         }
       ]
     },
 
-    
+
     "onlyValidEvent": {
-      "required":["isA"],
-      "allOf": [
-		  {
-			  "if": {"properties":{"isA":{ "const":"ObjectEvent" }}},
-			  "then": { "$ref": "#/definitions/objectEvent" }
-		  },
-		  {
-			  "if": {"properties":{"isA":{ "const":"AggregationEvent" }}},
-			  "then": { "$ref": "#/definitions/aggregationEvent" }
-		  },
-		  {
-			  "if": {"properties":{"isA":{ "const":"TransactionEvent" }}},
-			  "then": { "$ref": "#/definitions/transactionEvent" }
-		  },
-		  {
-			  "if": {"properties":{"isA":{ "const":"TransformationEvent" }}},
-			  "then": { "$ref": "#/definitions/transformationEvent" }
-		  },
-		  {
-			  "if": {"properties":{"isA":{ "const":"AssociationEvent" }}},
-			  "then": { "$ref": "#/definitions/associationEvent" }
-		  }
-	  ]
-	},     
-    
-    
+      "required": ["isA"],
+      "allOf": [{
+          "if": {
+            "properties": {
+              "isA": {
+                "const": "ObjectEvent"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/definitions/objectEvent"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "isA": {
+                "const": "AggregationEvent"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/definitions/aggregationEvent"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "isA": {
+                "const": "TransactionEvent"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/definitions/transactionEvent"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "isA": {
+                "const": "TransformationEvent"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/definitions/transformationEvent"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "isA": {
+                "const": "AssociationEvent"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/definitions/associationEvent"
+          }
+        }
+      ]
+    },
+
+
     "vocabulary": {
       "type": "object",
       "properties": {
-        "type": { "$ref": "#/definitions/uri" },
+        "type": {
+          "$ref": "#/definitions/uri"
+        },
         "vocabularyElementList": {
           "type": "array",
-          "items": { "$ref": "#/definitions/vocabularyElement" }
+          "items": {
+            "$ref": "#/definitions/vocabularyElement"
+          }
         }
       },
-      "required": [ "type" ]
+      "required": ["type"]
     },
     "vocabularyElement": {
       "type": "object",
       "properties": {
-        "id": { "$ref": "#/definitions/uri" },
+        "id": {
+          "$ref": "#/definitions/uri"
+        },
         "attributes": {
           "type": "array",
-          "items": { "$ref": "#/definitions/attribute" }
+          "items": {
+            "$ref": "#/definitions/attribute"
+          }
         },
         "children": {
           "type": "array",
-          "items": { "$ref": "#/definitions/uri" }
+          "items": {
+            "$ref": "#/definitions/uri"
+          }
         }
       },
-      "required": [ "id" ]
+      "required": ["id"]
     },
     "attribute": {
       "type": "object",
       "properties": {
-        "id": { "$ref": "#/definitions/uri" },
+        "id": {
+          "$ref": "#/definitions/uri"
+        },
         "attribute": {
           "type": "object"
         }
       },
-      "required": [ "id" ]
+      "required": ["id"]
     }
   },
   "properties": {
     "@context": {
-      "anyOf": [
-        {
+      "anyOf": [{
           "type": "string",
           "format": "uri"
         },
-        { "type": "object" }
+        {
+          "type": "object"
+        }
       ]
     },
     "isA": {
@@ -730,7 +1016,9 @@
           "properties": {
             "vocabularyList": {
               "type": "array",
-              "items": { "$ref": "#/definitions/vocabulary" }
+              "items": {
+                "$ref": "#/definitions/vocabulary"
+              }
             }
           }
         }
@@ -742,20 +1030,20 @@
         "eventList": {
           "type": "array",
           "items": {
-            "anyOf": [
-              {
-                "$ref": "#/definitions/onlyValidEvent"
-              }
-            ]
+            "anyOf": [{
+              "$ref": "#/definitions/onlyValidEvent"
+            }]
           }
         },
         "vocabularyList": {
           "type": "array",
-          "items": { "$ref": "#/definitions/vocabulary" }
+          "items": {
+            "$ref": "#/definitions/vocabulary"
+          }
         }
       },
-      "required": [ "eventList" ]
+      "required": ["eventList"]
     }
   },
-  "required": [ "schemaVersion", "creationDate", "epcisBody" ]
+  "required": ["schemaVersion", "creationDate", "epcisBody"]
 }
