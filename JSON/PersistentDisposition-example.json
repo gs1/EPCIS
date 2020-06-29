@@ -1,0 +1,138 @@
+{
+  "@context": {
+    "@vocab" : "https://ns.gs1.org/epcis/",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "epcis": "https://id.gs1.org/epcis/",
+    "example": "http://ns.example.com/epcis/",
+
+    "eventTime": {"@type":"xsd:dateTime"},
+    "recordTime": {"@type":"xsd:dateTime"},
+    "declarationTime": {"@type":"xsd:dateTime"},
+    "eventTimeZoneOffset": {"@type":"xsd:string"},
+    "action": {"@type":"xsd:string"},
+
+    "quantity": {"@type":"xsd:decimal"},
+    "uom": {"@type":"xsd:string"},
+
+	"epcList": {"@type":"@id"},
+	"epcClass": {"@type":"@id"},
+    "parentID": {"@type":"@id"},
+    "childEPCs": {"@type":"@id"},
+    "inputEPCList": {"@type":"@id"},
+    "outputEPCList": {"@type":"@id"},
+
+    "bizStep": {"@type":"@id"},
+    "disposition": {"@type":"@id"},
+    "readPoint": {"@type":"@id"},
+    "bizLocation": {"@type":"@id"},
+    "bizTransaction": {"@type":"@id"},
+    "source": {"@type":"@id"},
+    "destination": {"@type":"@id"},
+
+    "type": {"@type":"@id"},
+    "set": {"@type":"@id"},
+    "unset": {"@type":"@id"},
+    
+    
+    "isA": "@type",
+    "id":"@id",
+    "creationDate": {"@id":"dcterms:created", "@type":"xsd:dateTime"},
+    "format": {"@id":"dcterms:format", "@type":"xsd:string"},
+    "schemaVersion": {"@id":"owl:versionInfo", "@type":"xsd:string"}
+  },
+  
+  "id": "_:document1",
+  "isA": "EPCISDocument",
+  "schemaVersion":2.0,
+  "creationDate":"2020-06-28T13:41:00.000Z",
+  "format":"application/ld+json",
+  "epcisBody": {
+   "eventList": [
+     {
+		  "id": "_:event1",
+		  "isA": "AggregationEvent",
+		  "eventTime": "2020-06-07T17:10:16Z",
+		  "eventTimeZoneOffset": "+02:00",
+		  "parentID":"urn:epc:id:sgtin:952001.1012345.22222223333",
+		  "childEPCs":[
+			"urn:epc:id:sgtin:9520001.012346.10000001001",
+			"urn:epc:id:sgtin:9520001.012346.10000001002",
+			"urn:epc:id:sgtin:9520001.012346.10000001003",
+			"urn:epc:id:sgtin:9520001.012346.10000001004",
+			"urn:epc:id:sgtin:9520001.012346.10000001005",
+			"urn:epc:id:sgtin:9520001.012346.10000001006",
+			"urn:epc:id:sgtin:9520001.012346.10000001007",
+			"urn:epc:id:sgtin:9520001.012346.10000001008",
+			"urn:epc:id:sgtin:9520001.012346.10000001009",
+			"urn:epc:id:sgtin:9520001.012346.10000001010"
+		  	],
+		  "action": "OBSERVE",
+		  "bizStep": "urn:epcglobal:cbv:bizstep:receiving",
+		  "disposition": "urn:epcglobal:cbv:disp:in_progress",
+		  "readPoint": "urn:epc:id:sgln:9529999.99999.0",
+		  "bizLocation": "urn:epc:id:sgln:9529999.99999.0",
+		  "bizTransactionList": [  
+		  	{"type":"urn:epcglobal:cbv:btt:inv", "bizTransaction": "urn:epcglobal:cbv:bt:9520011111116:A123"},  
+		  	{"type":"urn:epcglobal:cbv:btt:po", "bizTransaction": "urn:epcglobal:cbv:bt:9529999999991:XYZ567"},
+		  	{"type":"urn:epcglobal:cbv:btt:desadv", "bizTransaction": "urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6"}
+		  ],
+		  "sourceList": [
+		  	{"type":"urn:epcglobal:cbv:sdt:owning_party","source":"urn:epc:id:pgln:9520001.11111"}
+		  ],
+		  "destinationList": [
+		  	{"type":"urn:epcglobal:cbv:sdt:owning_party","destination":"urn:epc:id:pgln:9520999.99999"}
+		  ],
+		  "persistentDisposition": {
+		  	"set": ["urn:epcglobal:cbv:disp:completeness_inferred"]
+		  }		  
+     },
+     
+     {
+		  "id": "_:event2",
+		  "isA": "AggregationEvent",
+		  "eventTime": "2020-06-08T18:11:16Z",
+		  "eventTimeZoneOffset": "+02:00",
+		  "parentID":"urn:epc:id:sgtin:952001.1012345.22222223333",
+		  "childEPCs":[
+			"urn:epc:id:sgtin:9520001.012346.10000001001",
+			"urn:epc:id:sgtin:9520001.012346.10000001002",
+			"urn:epc:id:sgtin:9520001.012346.10000001003",
+			"urn:epc:id:sgtin:9520001.012346.10000001004",
+			"urn:epc:id:sgtin:9520001.012346.10000001005",
+			"urn:epc:id:sgtin:9520001.012346.10000001006",
+			"urn:epc:id:sgtin:9520001.012346.10000001007",
+			"urn:epc:id:sgtin:9520001.012346.10000001008",
+			"urn:epc:id:sgtin:9520001.012346.10000001009",
+			"urn:epc:id:sgtin:9520001.012346.10000001010"
+		  	],
+		  "action": "DELETE",
+		  "bizStep": "urn:epcglobal:cbv:bizstep:unpacking",
+		  "disposition": "urn:epcglobal:cbv:disp:in_progress",
+		  "readPoint": "urn:epc:id:sgln:9529999.99999.0",
+		  "bizLocation": "urn:epc:id:sgln:9529999.99999.0",
+		  "bizTransactionList": [  
+		  	{"type":"urn:epcglobal:cbv:btt:inv", "bizTransaction": "urn:epcglobal:cbv:bt:9520011111116:A123"},  
+		  	{"type":"urn:epcglobal:cbv:btt:po", "bizTransaction": "urn:epcglobal:cbv:bt:9529999999991:XYZ567"},
+		  	{"type":"urn:epcglobal:cbv:btt:desadv", "bizTransaction": "urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6"}
+		  ],
+		  "sourceList": [
+		  	{"type":"urn:epcglobal:cbv:sdt:owning_party","source":"urn:epc:id:pgln:9520001.11111"}
+		  ],
+		  "destinationList": [
+		  	{"type":"urn:epcglobal:cbv:sdt:owning_party","destination":"urn:epc:id:pgln:9520999.99999"}
+		  ],
+		  "persistentDisposition": {
+		  	"unset": ["urn:epcglobal:cbv:disp:completeness_inferred"],
+		  	"set": ["urn:epcglobal:cbv:disp:completeness_verified"]
+		  }		  
+     }
+     
+     
+
+   ]
+  }
+  
+}
