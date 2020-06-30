@@ -27,6 +27,7 @@ epcis:ObjectEventShape
 
     sh:property epcis:BizStep_TypeConstraint ;
     sh:property epcis:Disposition_TypeConstraint ;
+    sh:property epcis:PersistentDisposition_TypeConstraint ;
     sh:property epcis:ReadPoint_TypeConstraint ;
     sh:property epcis:BizLocation_TypeConstraint ;
 
@@ -58,6 +59,7 @@ epcis:AggregationEventShape
 
     sh:property epcis:BizStep_TypeConstraint ;
     sh:property epcis:Disposition_TypeConstraint ;
+    sh:property epcis:PersistentDisposition_TypeConstraint ;
     sh:property epcis:ReadPoint_TypeConstraint ;
     sh:property epcis:BizLocation_TypeConstraint ;
     
@@ -87,6 +89,7 @@ epcis:AssociationEventShape
 
     sh:property epcis:BizStep_TypeConstraint ;
     sh:property epcis:Disposition_TypeConstraint ;
+    sh:property epcis:PersistentDisposition_TypeConstraint ;
     sh:property epcis:ReadPoint_TypeConstraint ;
     sh:property epcis:BizLocation_TypeConstraint ;
     
@@ -118,6 +121,7 @@ epcis:TransactionEventShape
 
     sh:property epcis:BizStep_TypeConstraint ;
     sh:property epcis:Disposition_TypeConstraint ;
+    sh:property epcis:PersistentDisposition_TypeConstraint ;
     sh:property epcis:ReadPoint_TypeConstraint ;
     sh:property epcis:BizLocation_TypeConstraint ;
 
@@ -148,6 +152,7 @@ epcis:TransformationEventShape
 
     sh:property epcis:BizStep_TypeConstraint ;
     sh:property epcis:Disposition_TypeConstraint ;
+    sh:property epcis:PersistentDisposition_TypeConstraint ;
     sh:property epcis:ReadPoint_TypeConstraint ;
     sh:property epcis:BizLocation_TypeConstraint ;
 	
@@ -478,6 +483,25 @@ epcis:ParentID_TypeConstraint owl:sameAs [
 	sh:message "parentID must be an xsd:anyURI." 
 ].
 
+epcis:PersistentDisposition_TypeConstraint
+	a sh:NodeShape;
+	sh:closed true;
+	sh:property epcis:Set_TypeConstraint ;
+	sh:property epcis:Unset_TypeConstraint .
+
+epcis:Set_TypeConstraint owl:sameAs [
+	sh:path epcis:set ;
+	sh:nodeKind sh:IRI ;
+	sh:name "set type constraint" ;
+	sh:message "set must be an xsd:anyURI." 
+].
+
+epcis:Unset_TypeConstraint owl:sameAs [
+	sh:path epcis:unset ;
+	sh:nodeKind sh:IRI ;
+	sh:name "unset type constraint" ;
+	sh:message "unset must be an xsd:anyURI." 
+].
 
 epcis:QuantityList_TypeConstraint  owl:sameAs [
 	sh:path epcis:quantityList ;
