@@ -13,36 +13,36 @@
         "summary": "Query supported EPCIS version and related vocabularies/standards",
         "parameters": [
           {
-            "$ref": "#/components/parameters/EPCIS-version"
+            "$ref": "#/components/parameters/GS1-EPCIS-version"
           },
           {
-            "$ref": "#/components/parameters/EPCIS-min"
+            "$ref": "#/components/parameters/GS1-EPCIS-min"
           },
           {
-            "$ref": "#/components/parameters/EPCIS-max"
+            "$ref": "#/components/parameters/GS1-EPCIS-max"
           },
           {
-            "$ref": "#/components/parameters/CBV-version"
+            "$ref": "#/components/parameters/GS1-CBV-version"
           },
           {
-            "$ref": "#/components/parameters/EPCIS-extensions"
+            "$ref": "#/components/parameters/GS1-EPCIS-extensions"
           },
           {
-            "$ref": "#/components/parameters/CBV-extensions"
+            "$ref": "#/components/parameters/GS1-CBV-extensions"
           },
           {
-            "$ref": "#/components/parameters/Vendor-version"
+            "$ref": "#/components/parameters/GS1-Vendor-version"
           },
           {
-            "$ref": "#/components/parameters/CAPTURE-limit"
+            "$ref": "#/components/parameters/GS1-CAPTURE-limit"
           },
           {
-            "$ref": "#/components/parameters/CAPTURE-file-size-limit"
+            "$ref": "#/components/parameters/GS1-CAPTURE-file-size-limit"
           }
         ],
         "responses": {
           "200": {
-            "description": "Server can comply with the EPCIS-related requirements from the client.",
+            "description": "Server can comply with the GS1-EPCIS-related requirements from the client.",
             "content": {
               "application/json": {
                 "schema": {}
@@ -140,9 +140,9 @@
             }
           },
           "413": {
-            "description": "The client exceeded the limit, set in CAPTURE-limit, of events that can be captured per call.",
+            "description": "The client exceeded the limit, set in GS1-CAPTURE-limit, of events that can be captured per call.",
             "headers": {
-              "CAPTURE-limit": {
+              "GS1-CAPTURE-limit": {
                 "required": true,
                 "description": "The maximum batch size of EPCIS events that can be captured per call",
                 "schema": {
@@ -177,11 +177,11 @@
         }
       }
     },
-    "/capture/{captureId}/events": {
+    "/capture/{captureID}": {
       "parameters": [
         {
           "in": "path",
-          "name": "captureId",
+          "name": "captureID",
           "required": true,
           "schema": {
             "type": "string",
@@ -193,30 +193,30 @@
         "summary": "Query supported EPCIS version and related vocabularies/standards.",
         "parameters": [
           {
-            "$ref": "#/components/parameters/EPCIS-version"
+            "$ref": "#/components/parameters/GS1-EPCIS-version"
           },
           {
-            "$ref": "#/components/parameters/EPCIS-min"
+            "$ref": "#/components/parameters/GS1-EPCIS-min"
           },
           {
-            "$ref": "#/components/parameters/EPCIS-max"
+            "$ref": "#/components/parameters/GS1-EPCIS-max"
           },
           {
-            "$ref": "#/components/parameters/CBV-version"
+            "$ref": "#/components/parameters/GS1-CBV-version"
           },
           {
-            "$ref": "#/components/parameters/EPCIS-extensions"
+            "$ref": "#/components/parameters/GS1-EPCIS-extensions"
           },
           {
-            "$ref": "#/components/parameters/CBV-extensions"
+            "$ref": "#/components/parameters/GS1-CBV-extensions"
           },
           {
-            "$ref": "#/components/parameters/Vendor-version"
+            "$ref": "#/components/parameters/GS1-Vendor-version"
           }
         ],
         "responses": {
           "200": {
-            "description": "Server can comply with the EPCIS-related requirements from the client.",
+            "description": "Server can comply with the GS1-EPCIS-related requirements from the client.",
             "content": {
               "application/json": {
                 "schema": {}
@@ -228,7 +228,7 @@
       "get": {
         "responses": {
           "200": {
-            "description": "If the job was successful, a list of event URLs is returned, in the same order as events were ordered in the captured EPCIS evnts document.",
+            "description": "If the job was successful, a list of absolute, endpoint-specific URLs of all events, in the sequence in which they were submitted by the client.",
             "content": {
               "application/json": {
                 "schema": {
@@ -358,7 +358,7 @@
           "required": true,
           "schema": {
             "type": "string",
-            "pattern": "^(\\/(epcs|bizSteps|bizLocations|readPoints|dispositions)\\/([^/\\n\\r]+))?$"
+            "pattern": "^((epcs|bizSteps|bizLocations|readPoints|dispositions)\\/([^/\\n\\r]+))?$"
           }
         }
       ],
@@ -366,30 +366,30 @@
         "summary": "Query supported EPCIS version and related vocabularies/standards.",
         "parameters": [
           {
-            "$ref": "#/components/parameters/EPCIS-version"
+            "$ref": "#/components/parameters/GS1-EPCIS-version"
           },
           {
-            "$ref": "#/components/parameters/EPCIS-min"
+            "$ref": "#/components/parameters/GS1-EPCIS-min"
           },
           {
-            "$ref": "#/components/parameters/EPCIS-max"
+            "$ref": "#/components/parameters/GS1-EPCIS-max"
           },
           {
-            "$ref": "#/components/parameters/CBV-version"
+            "$ref": "#/components/parameters/GS1-CBV-version"
           },
           {
-            "$ref": "#/components/parameters/EPCIS-extensions"
+            "$ref": "#/components/parameters/GS1-EPCIS-extensions"
           },
           {
-            "$ref": "#/components/parameters/CBV-extensions"
+            "$ref": "#/components/parameters/GS1-CBV-extensions"
           },
           {
-            "$ref": "#/components/parameters/Vendor-version"
+            "$ref": "#/components/parameters/GS1-Vendor-version"
           }
         ],
         "responses": {
           "200": {
-            "description": "Server can comply with the EPCIS-related requirements from the client.",
+            "description": "Server can comply with the GS1-EPCIS-related requirements from the client.",
             "content": {
               "application/json": {
                 "schema": {}
@@ -510,7 +510,7 @@
           "required": true,
           "schema": {
             "type": "string",
-            "pattern": "^(\\/(epcs|bizSteps|bizLocations|readPoints|dispositions)\\/([^/\\n\\r]+))?$"
+            "pattern": "^((epcs|bizSteps|bizLocations|readPoints|dispositions)\\/([^/\\n\\r]+))?$"
           }
         }
       ],
@@ -518,30 +518,30 @@
         "summary": "Query supported EPCIS version and related vocabularies/standards",
         "parameters": [
           {
-            "$ref": "#/components/parameters/EPCIS-version"
+            "$ref": "#/components/parameters/GS1-EPCIS-version"
           },
           {
-            "$ref": "#/components/parameters/EPCIS-min"
+            "$ref": "#/components/parameters/GS1-EPCIS-min"
           },
           {
-            "$ref": "#/components/parameters/EPCIS-max"
+            "$ref": "#/components/parameters/GS1-EPCIS-max"
           },
           {
-            "$ref": "#/components/parameters/CBV-version"
+            "$ref": "#/components/parameters/GS1-CBV-version"
           },
           {
-            "$ref": "#/components/parameters/EPCIS-extensions"
+            "$ref": "#/components/parameters/GS1-EPCIS-extensions"
           },
           {
-            "$ref": "#/components/parameters/CBV-extensions"
+            "$ref": "#/components/parameters/GS1-CBV-extensions"
           },
           {
-            "$ref": "#/components/parameters/Vendor-version"
+            "$ref": "#/components/parameters/GS1-Vendor-version"
           }
         ],
         "responses": {
           "200": {
-            "description": "Server can comply with the EPCIS-related requirements from the client",
+            "description": "Server can comply with the GS1-EPCIS-related requirements from the client",
             "content": {
               "application/json": {
                 "schema": {}
@@ -732,7 +732,7 @@
         }
       }
     },
-    "/{optionalTopLevelResource}/events/{eventType}/{eventId}": {
+    "/{optionalTopLevelResource}/events/{eventType}/{eventID}": {
       "parameters": [
         {
           "in": "query",
@@ -752,7 +752,7 @@
           }
         },
         {
-          "name": "eventId",
+          "name": "eventID",
           "in": "path",
           "required": true,
           "schema": {
@@ -767,7 +767,7 @@
           "required": true,
           "schema": {
             "type": "string",
-            "pattern": "^(\\/(epcs|bizSteps|bizLocations|readPoints|dispositions)\\/([^/\\n\\r]+))?$"
+            "pattern": "^((epcs|bizSteps|bizLocations|readPoints|dispositions)\\/([^/\\n\\r]+))?$"
           }
         }
       ],
@@ -775,30 +775,30 @@
         "summary": "Query supported EPCIS version and related vocabularies/standards.",
         "parameters": [
           {
-            "$ref": "#/components/parameters/EPCIS-version"
+            "$ref": "#/components/parameters/GS1-EPCIS-version"
           },
           {
-            "$ref": "#/components/parameters/EPCIS-min"
+            "$ref": "#/components/parameters/GS1-EPCIS-min"
           },
           {
-            "$ref": "#/components/parameters/EPCIS-max"
+            "$ref": "#/components/parameters/GS1-EPCIS-max"
           },
           {
-            "$ref": "#/components/parameters/CBV-version"
+            "$ref": "#/components/parameters/GS1-CBV-version"
           },
           {
-            "$ref": "#/components/parameters/EPCIS-extensions"
+            "$ref": "#/components/parameters/GS1-EPCIS-extensions"
           },
           {
-            "$ref": "#/components/parameters/CBV-extensions"
+            "$ref": "#/components/parameters/GS1-CBV-extensions"
           },
           {
-            "$ref": "#/components/parameters/Vendor-version"
+            "$ref": "#/components/parameters/GS1-Vendor-version"
           }
         ],
         "responses": {
           "200": {
-            "description": "Server can comply with the EPCIS-related requirements from the client",
+            "description": "Server can comply with the GS1-EPCIS-related requirements from the client",
             "content": {
               "application/json": {
                 "schema": {}
@@ -923,30 +923,30 @@
         "summary": "Query supported EPCIS version and related vocabularies/standards",
         "parameters": [
           {
-            "$ref": "#/components/parameters/EPCIS-version"
+            "$ref": "#/components/parameters/GS1-EPCIS-version"
           },
           {
-            "$ref": "#/components/parameters/EPCIS-min"
+            "$ref": "#/components/parameters/GS1-EPCIS-min"
           },
           {
-            "$ref": "#/components/parameters/EPCIS-max"
+            "$ref": "#/components/parameters/GS1-EPCIS-max"
           },
           {
-            "$ref": "#/components/parameters/CBV-version"
+            "$ref": "#/components/parameters/GS1-CBV-version"
           },
           {
-            "$ref": "#/components/parameters/EPCIS-extensions"
+            "$ref": "#/components/parameters/GS1-EPCIS-extensions"
           },
           {
-            "$ref": "#/components/parameters/CBV-extensions"
+            "$ref": "#/components/parameters/GS1-CBV-extensions"
           },
           {
-            "$ref": "#/components/parameters/Vendor-version"
+            "$ref": "#/components/parameters/GS1-Vendor-version"
           }
         ],
         "responses": {
           "200": {
-            "description": "Server can comply with the EPCIS-related requirements from the client",
+            "description": "Server can comply with the GS1-EPCIS-related requirements from the client",
             "content": {
               "application/json": {
                 "schema": {}
@@ -1168,30 +1168,30 @@
         "summary": "Query supported EPCIS version and related vocabularies/standards",
         "parameters": [
           {
-            "$ref": "#/components/parameters/EPCIS-version"
+            "$ref": "#/components/parameters/GS1-EPCIS-version"
           },
           {
-            "$ref": "#/components/parameters/EPCIS-min"
+            "$ref": "#/components/parameters/GS1-EPCIS-min"
           },
           {
-            "$ref": "#/components/parameters/EPCIS-max"
+            "$ref": "#/components/parameters/GS1-EPCIS-max"
           },
           {
-            "$ref": "#/components/parameters/CBV-version"
+            "$ref": "#/components/parameters/GS1-CBV-version"
           },
           {
-            "$ref": "#/components/parameters/EPCIS-extensions"
+            "$ref": "#/components/parameters/GS1-EPCIS-extensions"
           },
           {
-            "$ref": "#/components/parameters/CBV-extensions"
+            "$ref": "#/components/parameters/GS1-CBV-extensions"
           },
           {
-            "$ref": "#/components/parameters/Vendor-version"
+            "$ref": "#/components/parameters/GS1-Vendor-version"
           }
         ],
         "responses": {
           "200": {
-            "description": "Server can comply with the EPCIS-related requirements from the client",
+            "description": "Server can comply with the GS1-EPCIS-related requirements from the client",
             "content": {
               "application/json": {
                 "schema": {}
@@ -1246,7 +1246,7 @@
       "parameters": [
         {
           "in": "header",
-          "name": "QUERY-minRecordTime",
+          "name": "GS1-QUERY-minRecordTime",
           "required": false,
           "schema": {
             "type": "string",
@@ -1275,30 +1275,30 @@
         "summary": "Query supported EPCIS version and related vocabularies/standards",
         "parameters": [
           {
-            "$ref": "#/components/parameters/EPCIS-version"
+            "$ref": "#/components/parameters/GS1-EPCIS-version"
           },
           {
-            "$ref": "#/components/parameters/EPCIS-min"
+            "$ref": "#/components/parameters/GS1-EPCIS-min"
           },
           {
-            "$ref": "#/components/parameters/EPCIS-max"
+            "$ref": "#/components/parameters/GS1-EPCIS-max"
           },
           {
-            "$ref": "#/components/parameters/CBV-version"
+            "$ref": "#/components/parameters/GS1-CBV-version"
           },
           {
-            "$ref": "#/components/parameters/EPCIS-extensions"
+            "$ref": "#/components/parameters/GS1-EPCIS-extensions"
           },
           {
-            "$ref": "#/components/parameters/CBV-extensions"
+            "$ref": "#/components/parameters/GS1-CBV-extensions"
           },
           {
-            "$ref": "#/components/parameters/Vendor-version"
+            "$ref": "#/components/parameters/GS1-Vendor-version"
           }
         ],
         "responses": {
           "200": {
-            "description": "Server can comply with the EPCIS-related requirements from the client",
+            "description": "Server can comply with the GS1-EPCIS-related requirements from the client",
             "content": {
               "application/json": {
                 "schema": {}
@@ -1660,9 +1660,9 @@
       }
     },
     "parameters": {
-      "EPCIS-version": {
+      "GS1-EPCIS-version": {
         "in": "header",
-        "name": "EPCIS-version",
+        "name": "GS1-EPCIS-version",
         "description": "The EPCIS version",
         "schema": {
           "type": "string",
@@ -1670,9 +1670,9 @@
           "example": "2.0"
         }
       },
-      "EPCIS-min": {
+      "GS1-EPCIS-min": {
         "in": "header",
-        "name": "EPCIS-min",
+        "name": "GS1-EPCIS-min",
         "description": "The lowest EPCIS version supported",
         "schema": {
           "type": "string",
@@ -1680,34 +1680,34 @@
           "example": "2.0"
         }
       },
-      "EPCIS-max": {
+      "GS1-EPCIS-max": {
         "in": "header",
-        "name": "EPCIS-max",
+        "name": "GS1-EPCIS-max",
         "description": "The highest EPCIS version supported",
         "schema": {
           "type": "string",
           "pattern": "^\\d+(\\.\\d+)?$"
         }
       },
-      "CBV-version": {
+      "GS1-CBV-version": {
         "in": "header",
-        "name": "CBV-version",
+        "name": "GS1-CBV-version",
         "description": "The core business vocabulary version",
         "schema": {
           "type": "string"
         }
       },
-      "EPCIS-extensions": {
+      "GS1-EPCIS-extensions": {
         "in": "header",
-        "name": "EPCIS-extensions",
+        "name": "GS1-EPCIS-extensions",
         "description": "Specific EPCIS extensions supported (e.g. for FIT)",
         "schema": {
           "type": "object"
         }
       },
-      "Vendor-version": {
+      "GS1-Vendor-version": {
         "in": "header",
-        "name": "Vendor-version",
+        "name": "GS1-Vendor-version",
         "description": "A versioning scheme that can be freely chosen by the vendor",
         "schema": {
           "type": "array",
@@ -1717,26 +1717,26 @@
           "uniqueItems": true
         }
       },
-      "CBV-extensions": {
+      "GS1-CBV-extensions": {
         "in": "header",
-        "name": "CBV-extensions",
+        "name": "GS1-CBV-extensions",
         "description": "An optional header to specify the vocabulary for the top-level endpoints",
         "schema": {
           "type": "object"
         }
       },
-      "CAPTURE-limit": {
+      "GS1-CAPTURE-limit": {
         "in": "header",
-        "name": "CAPTURE-limit",
+        "name": "GS1-CAPTURE-limit",
         "description": "The maximum number of EPCIS events that can be captured per call",
         "schema": {
           "type": "string",
           "pattern": "^(\\d+|\\*)$"
         }
       },
-      "CAPTURE-file-size-limit": {
+      "GS1-CAPTURE-file-size-limit": {
         "in": "header",
-        "name": "CAPTURE-file-size-limit",
+        "name": "GS1-CAPTURE-file-size-limit",
         "description": "The maximum event document length in octets (8-bit bytes)",
         "schema": {
           "type": "string",
