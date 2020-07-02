@@ -11,24 +11,24 @@ s-->c: HTTP/1.1 204 No Content
 note over s, c:
 Allow: GET, OPTIONS
 Accept: application/ld+json
-EPCIS-min: 2.0
-EPCIS-max: 2.0
-CBV-version: 1.0
-EPCIS-extensions: example-epc-ext:<https://example.com/epcis>
-Vendor-version: example-version-1.0
-CBV-extensions: ex1: <https://example.com/>, vendor1: <https://example.org/defs#>
+GS1-EPCIS-min: 2.0
+GS1-EPCIS-max: 2.0
+GS1-CBV-version: 1.0
+GS1-EPCIS-extensions: example-epc-ext:<https://example.com/epcis>
+GS1-Vendor-version: example-version-1.0
+GS1-CBV-extensions: ex1: <https://example.com/>, vendor1: <https://example.org/defs#>
 ...
 end note
 c->s: GET /events HTTP/1.1
 note over c, s:
 Host: example.com
 Content-Type: application/ld+json
-EPCIS-version: 2.0
+GS1-EPCIS-version: 2.0
 ...
 end note
 s-->c: HTTP/1.1 200 OK
 note over c, s:
-EPCIS-version: 2.0
+GS1-EPCIS-version: 2.0
 Content-Type: application/ld+json
 Content-Length: 2051
 ...
