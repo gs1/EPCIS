@@ -519,7 +519,7 @@ epcis:Quantity_IsMandatory owl:sameAs [
 ].
 
 epcis:Quantity_TypeConstraint owl:sameAs [
-	sh:path epcis:destination ;
+	sh:path epcis:quantity ;
 	sh:datatype xsd:decimal ;
 	sh:name "quantity type constraint" ;
 	sh:message "quantity must be an xsd:decimal" 
