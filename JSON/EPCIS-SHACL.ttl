@@ -302,15 +302,6 @@ epcis:CorrectiveEventIDs_IsMandatory owl:sameAs [
 	sh:message "correctiveEventIDs is a mandatory field which must have a single value." 
 ].
 
-epcis:CorrectiveEventIDs_IsMandatory owl:sameAs [
-	sh:path epcis:correctiveEventIDs ;
-	sh:name "correctiveEventIDs is mandatory within an epcis:ErrorDeclaration" ;
-	sh:minCount 1 ;
-	sh:maxCount 1 ;
-	sh:message "correctiveEventIDs is a mandatory field which must have a single value." 
-].
-
-
 epcis:DeclarationTime_IsMandatory owl:sameAs [
 	sh:path epcis:declarationTime ;
 	sh:name "declarationTime is mandatory within an epcis:ErrorDeclaration" ;
@@ -339,16 +330,7 @@ epcis:Destination_IsMandatory owl:sameAs [
 	sh:name "destination is mandatory within an epcis:DestinationList" ;
 	sh:minCount 1 ;
 	sh:maxCount 1 ;
-	sh:message "destination is a mandatory field which must have a single value." 
-].
-
-
-epcis:Destination_IsMandatory owl:sameAs [
-	sh:path epcis:destination ;
-	sh:name "destination is mandatory" ;
-	sh:minCount 1;
-	sh:maxCount 1;
-	sh:message "destination is a mandatory field within an epcis:Destination, in which it must have a single value." 
+	sh:message "destination is a mandatory field within epcis:DestinationList, in which must have a single value." 
 ].
 
 epcis:Destination_TypeConstraint owl:sameAs [
@@ -357,7 +339,6 @@ epcis:Destination_TypeConstraint owl:sameAs [
 	sh:name "destination type constraint" ;
 	sh:message "destination must be an xsd:anyURI" 
 ].
-
 
 epcis:Disposition_TypeConstraint owl:sameAs [
 	sh:path epcis:disposition ;
@@ -551,18 +532,10 @@ epcis:RecordTime_TypeConstraint owl:sameAs [
 
 epcis:SourceDestType_IsMandatory owl:sameAs [
 	sh:path epcis:type ;
-	sh:name "type is mandatory" ;
+	sh:name "type is mandatory within an epcis:SourceList or epcis:DestinationList" ;
 	sh:minCount 1;
 	sh:maxCount 1;
 	sh:message "type (of source/destination) is a mandatory field within an epcis:Source or epcis:Destination." 
-].
-
-epcis:SourceDestType_IsMandatory owl:sameAs [
-	sh:path epcis:type ;
-	sh:name "type is mandatory within an epcis:SourceList or  epcis:DestinationList" ;
-	sh:minCount 1 ;
-	sh:maxCount 1 ;
-	sh:message "type is a mandatory field which must have a single value." 
 ].
 
 epcis:SourceDest_TypeConstraint owl:sameAs [
