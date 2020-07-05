@@ -147,8 +147,8 @@ epcis:TransformationEventShape
     sh:property epcis:EventTime_TypeConstraint ;
     sh:property epcis:EventTimeZoneOffset_TypeAndFormat ;
     sh:property epcis:RecordTime_TypeConstraint ;
-    sh:property epcis:InputEPCs_TypeConstraint ;
-    sh:property epcis:OutputEPCs_TypeConstraint ;
+    sh:property epcis:InputEPCList_TypeConstraint ;
+    sh:property epcis:OutputEPCList_TypeConstraint ;
 
     sh:property epcis:BizStep_TypeConstraint ;
     sh:property epcis:Disposition_TypeConstraint ;
@@ -293,6 +293,21 @@ epcis:ChildQuantityList_TypeConstraint  owl:sameAs [
     sh:name "childQuantityList type constraint" ;
     sh:message "childQuantityList expects a list of epcis:QuantityElement" 
 ].
+
+epcis:InputEPCList_TypeConstraint owl:sameAs [
+    sh:path epcis:inputEPCList ;
+    sh:nodeKind sh:IRI ;
+    sh:name "inputEPCList type constraint" ;
+    sh:message "inputEPCList must be an xsd:anyURI." 
+].
+
+epcis:OutputEPCList_TypeConstraint owl:sameAs [
+    sh:path epcis:outputEPCList ;
+    sh:nodeKind sh:IRI ;
+    sh:name "outputEPCList type constraint" ;
+    sh:message "outputEPCList must be an xsd:anyURI." 
+].
+
 
 epcis:CorrectiveEventIDs_IsMandatory owl:sameAs [
     sh:path epcis:correctiveEventIDs ;
