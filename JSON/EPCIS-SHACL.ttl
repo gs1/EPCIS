@@ -564,13 +564,13 @@ epcis:SensorMetaDataShape
     a sh:NodeShape;
     sh:targetClass epcis:SensorMetaData ;
     sh:property epcis:SensorTime_TypeConstraint ;
+    sh:property epcis:SensorMetaDataStartTime_TypeConstraint ;
+    sh:property epcis:SensorMetaDataEndTime_TypeConstraint ;
     sh:property epcis:SensorDeviceID_TypeConstraint ;
     sh:property epcis:SensorDeviceMetaData_TypeConstraint ;
     sh:property epcis:SensorRawData_TypeConstraint ;
-    sh:property epcis:SensorMetaDataStartTime_TypeConstraint ;
-    sh:property epcis:SensorMetaDataEndTime_TypeConstraint ;
-    sh:property epcis:SensorBizRules_TypeConstraint ;
-    sh:property epcis:SensorDataProcessingMethod_TypeConstraint .
+    sh:property epcis:SensorDataProcessingMethod_TypeConstraint ;
+    sh:property epcis:SensorBizRules_TypeConstraint .
 
 
 epcis:SensorReportShape
@@ -578,26 +578,26 @@ epcis:SensorReportShape
     sh:targetClass epcis:SensorReport ;
     sh:property epcis:SensorReportType_TypeConstraint ;
     sh:property epcis:SensorReportType_IsMandatoryConstraint ;
+    sh:property epcis:SensorDeviceID_TypeConstraint ;
+    sh:property epcis:SensorDeviceMetaData_TypeConstraint ;
+    sh:property epcis:SensorRawData_TypeConstraint ;
+    sh:property epcis:SensorDataProcessingMethod_TypeConstraint ;
     sh:property epcis:SensorTime_TypeConstraint ;
+    sh:property epcis:SensorReportMicroorganism_TypeConstraint ;
+    sh:property epcis:SensorReportChemicalSubstance_TypeConstraint ;
     sh:property epcis:SensorReportValue_TypeConstraint ;
+    sh:property epcis:SensorReportComponent_TypeConstraint ;
     sh:property epcis:SensorReportStringValue_TypeConstraint ;
     sh:property epcis:SensorReportBooleanValue_TypeConstraint ;
     sh:property epcis:SensorReportHexBinaryValue_TypeConstraint ;
     sh:property epcis:SensorReportURIValue_TypeConstraint ;
-    sh:property epcis:UOM_TypeConstraint ;
     sh:property epcis:SensorReportMinValue_TypeConstraint ;
     sh:property epcis:SensorReportMaxValue_TypeConstraint ;
     sh:property epcis:SensorReportMeanValue_TypeConstraint ;
     sh:property epcis:SensorReportSDev_TypeConstraint ;
     sh:property epcis:SensorReportPercRank_TypeConstraint ;
     sh:property epcis:SensorReportPercValue_TypeConstraint ;
-    sh:property epcis:SensorReportChemicalSubstance_TypeConstraint ;
-    sh:property epcis:SensorReportMicroorganism_TypeConstraint ;
-    sh:property epcis:SensorDeviceID_TypeConstraint ;
-    sh:property epcis:SensorDeviceMetaData_TypeConstraint ;
-    sh:property epcis:SensorRawData_TypeConstraint ;
-    sh:property epcis:SensorBizRules_TypeConstraint ;
-    sh:property epcis:SensorDataProcessingMethod_TypeConstraint .
+    sh:property epcis:UOM_TypeConstraint .
 
 
 
@@ -681,6 +681,13 @@ epcis:UOM_TypeConstraint owl:sameAs [
     sh:datatype xsd:string ;
     sh:name "uom type constraint" ;
     sh:message "uom must be an xsd:string" 
+].
+
+epcis:SensorReportComponent_TypeConstraint owl:sameAs [
+    sh:path epcis:component ;
+    sh:datatype xsd:string ;
+    sh:name "component type constraint" ;
+    sh:message "component must be an xsd:string" 
 ].
 
 epcis:UOM_TypeAndFormat owl:sameAs [
