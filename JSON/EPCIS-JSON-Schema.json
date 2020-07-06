@@ -760,6 +760,12 @@
             "bizLocation": {
               "$ref": "#/definitions/uri"
             },
+            "bizTransactionList": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/bizTransaction"
+              }
+            },
             "sourceList": {
               "type": "array",
               "items": {
