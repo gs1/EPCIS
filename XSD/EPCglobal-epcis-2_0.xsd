@@ -476,6 +476,7 @@ GS1 retains the right to make changes to this document at any time, without noti
         <xsd:extension base="xsd:string">
 			  <xsd:attribute type="xsd:anyURI" name="type" use="required"/>
 			  <xsd:attribute type="xsd:float" name="value" use="optional"/>
+			  <xsd:attribute type="xsd:string" name="component" use="optional"/>
 			  <xsd:attribute type="xsd:string" name="stringValue" use="optional"/>
 			  <xsd:attribute type="xsd:boolean" name="booleanValue" use="optional"/>
 			  <xsd:attribute type="xsd:hexBinary" name="hexBinaryValue" use="optional"/>
