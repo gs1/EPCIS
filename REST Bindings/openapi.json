@@ -1164,6 +1164,16 @@
       }
     },
     "/queries/{queryName}": {
+      "parameters": [
+        {
+          "name": "queryName",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
       "options": {
         "summary": "Query supported EPCIS version and related vocabularies/standards",
         "parameters": [
