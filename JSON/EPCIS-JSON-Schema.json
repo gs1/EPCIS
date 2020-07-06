@@ -160,39 +160,6 @@
         "type": {
           "$ref": "#/definitions/uri"
         },
-        "value": {
-          "$ref": "#/definitions/decimal"
-        },
-        "stringValue": {
-          "$ref": "#/definitions/string"
-        },
-        "uriValue": {
-          "$ref": "#/definitions/uri"
-        },
-        "booleanValue": {
-          "$ref": "#/definitions/boolean"
-        },
-        "hexBinaryValue": {
-          "$ref": "#/definitions/hexBinary"
-        },
-        "uom": {
-          "$ref": "#/definitions/string"
-        },
-        "minValue": {
-          "$ref": "#/definitions/decimal"
-        },
-        "maxValue": {
-          "$ref": "#/definitions/decimal"
-        },
-        "sDev": {
-          "$ref": "#/definitions/decimal"
-        },
-        "chemicalSubstance": {
-          "$ref": "#/definitions/uri"
-        },
-        "microorganism": {
-          "$ref": "#/definitions/uri"
-        },
         "deviceID": {
           "$ref": "#/definitions/uri"
         },
@@ -202,10 +169,46 @@
         "rawData": {
           "$ref": "#/definitions/uri"
         },
+        "dataProcessingMethod": {
+          "$ref": "#/definitions/uri"
+        },
         "time": {
           "$ref": "#/definitions/time"
         },
+        "microorganism": {
+          "$ref": "#/definitions/uri"
+        },
+        "chemicalSubstance": {
+          "$ref": "#/definitions/uri"
+        },
+        "value": {
+          "$ref": "#/definitions/decimal"
+        },
+        "component": {
+          "$ref": "#/definitions/string"
+        },
+        "stringValue": {
+          "$ref": "#/definitions/string"
+        },
+        "booleanValue": {
+          "$ref": "#/definitions/boolean"
+        },
+        "hexBinaryValue": {
+          "$ref": "#/definitions/hexBinary"
+        },
+        "uriValue": {
+          "$ref": "#/definitions/uri"
+        },
+        "minValue": {
+          "$ref": "#/definitions/decimal"
+        },
+        "maxValue": {
+          "$ref": "#/definitions/decimal"
+        },
         "meanValue": {
+          "$ref": "#/definitions/decimal"
+        },
+        "sDev": {
           "$ref": "#/definitions/decimal"
         },
         "percRank": {
@@ -214,11 +217,8 @@
         "percValue": {
           "$ref": "#/definitions/decimal"
         },
-        "dataProcessingMethod": {
-          "$ref": "#/definitions/uri"
-        },
-        "bizRules": {
-          "$ref": "#/definitions/uri"
+        "uom": {
+          "$ref": "#/definitions/string"
         }
       },
       "required": ["type"]
