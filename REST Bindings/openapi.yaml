@@ -11,18 +11,18 @@ paths:
     options:
       summary: Query supported EPCIS version and related vocabularies/standards
       parameters:
-        - $ref: '#/components/parameters/EPCIS-version'
-        - $ref: '#/components/parameters/EPCIS-min'
-        - $ref: '#/components/parameters/EPCIS-max'
-        - $ref: '#/components/parameters/CBV-version'
-        - $ref: '#/components/parameters/EPCIS-extensions'
-        - $ref: '#/components/parameters/CBV-extensions'
-        - $ref: '#/components/parameters/Vendor-version'
-        - $ref: '#/components/parameters/CAPTURE-limit'
-        - $ref: '#/components/parameters/CAPTURE-file-size-limit'
+        - $ref: '#/components/parameters/GS1-EPCIS-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-min'
+        - $ref: '#/components/parameters/GS1-EPCIS-max'
+        - $ref: '#/components/parameters/GS1-CBV-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
+        - $ref: '#/components/parameters/GS1-CBV-extensions'
+        - $ref: '#/components/parameters/GS1-Vendor-version'
+        - $ref: '#/components/parameters/GS1-CAPTURE-limit'
+        - $ref: '#/components/parameters/GS1-CAPTURE-file-size-limit'
       responses:
         '200':
-          description: Server can comply with the EPCIS-related requirements from the client.
+          description: Server can comply with the GS1-EPCIS-related requirements from the client.
           content:
             application/json:
               schema:
@@ -81,9 +81,9 @@ paths:
                           - epcisExceptions:SecurityException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
         '413':
-          description: The client exceeded the limit, set in CAPTURE-limit, of events that can be captured per call.
+          description: The client exceeded the limit, set in GS1-CAPTURE-limit, of events that can be captured per call.
           headers:
-            CAPTURE-limit:
+            GS1-CAPTURE-limit:
               required: true
               description: The maximum batch size of EPCIS events that can be captured per call
               schema:
@@ -101,10 +101,10 @@ paths:
                         default: 413
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
 
-  /capture/{captureId}/events:
+  /capture/{captureID}:
     parameters:
       - in: path
-        name: captureId
+        name: captureID
         required: true
         schema:
           type: string
@@ -112,16 +112,16 @@ paths:
     options:
       summary: Query supported EPCIS version and related vocabularies/standards.
       parameters:
-        - $ref: '#/components/parameters/EPCIS-version'
-        - $ref: '#/components/parameters/EPCIS-min'
-        - $ref: '#/components/parameters/EPCIS-max'
-        - $ref: '#/components/parameters/CBV-version'
-        - $ref: '#/components/parameters/EPCIS-extensions'
-        - $ref: '#/components/parameters/CBV-extensions'
-        - $ref: '#/components/parameters/Vendor-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-min'
+        - $ref: '#/components/parameters/GS1-EPCIS-max'
+        - $ref: '#/components/parameters/GS1-CBV-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
+        - $ref: '#/components/parameters/GS1-CBV-extensions'
+        - $ref: '#/components/parameters/GS1-Vendor-version'
       responses:
         '200':
-          description: Server can comply with the EPCIS-related requirements from the client.
+          description: Server can comply with the GS1-EPCIS-related requirements from the client.
           content:
             application/json:
               schema:
@@ -129,7 +129,7 @@ paths:
     get:
       responses:
         '200':
-          description: If the job was successful, a list of event URLs is returned, in the same order as events were ordered in the captured EPCIS evnts document.
+          description: If the job was successful, a list of absolute, endpoint-specific URLs of all events, in the sequence in which they were submitted by the client.
           content:
             application/json:
               schema:
@@ -194,7 +194,7 @@ paths:
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
 
 
-  /{optionalTopLevelResource}/events:
+  /{optionalTopLevelResourceAndEvents}:
     parameters:
       - in: query
         name: perPage
@@ -203,26 +203,34 @@ paths:
           type: integer
           default: 30
       - in: path
-        name: optionalTopLevelResource
-        description: An optional top-level resource to access events.
+        name: optionalTopLevelResourceAndEvents
+        description: >
+          An optional top-level resource to access events. This regex matches
+          - events
+          - bizSteps/myBizStep/events
+          It will not match nesting of top-level resources, e.g.
+          - bizSteps/aBizStep/epcs/anEpcs/events
+          is invalid.
+          Please note that the first character cannot be a "/", because an OpenAPI path pattern
+          already includes a slash.
         required: true
         schema:
           type: string
-          pattern: ^(\/(epcs|bizSteps|bizLocations|readPoints|dispositions)\/([^/\n\r]+))?$
+          pattern: ^((epcs|bizSteps|bizLocations|readPoints|dispositions)\/([^/\n\r]+)/)?events$
 
     options:
       summary: Query supported EPCIS version and related vocabularies/standards.
       parameters:
-        - $ref: '#/components/parameters/EPCIS-version'
-        - $ref: '#/components/parameters/EPCIS-min'
-        - $ref: '#/components/parameters/EPCIS-max'
-        - $ref: '#/components/parameters/CBV-version'
-        - $ref: '#/components/parameters/EPCIS-extensions'
-        - $ref: '#/components/parameters/CBV-extensions'
-        - $ref: '#/components/parameters/Vendor-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-min'
+        - $ref: '#/components/parameters/GS1-EPCIS-max'
+        - $ref: '#/components/parameters/GS1-CBV-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
+        - $ref: '#/components/parameters/GS1-CBV-extensions'
+        - $ref: '#/components/parameters/GS1-Vendor-version'
       responses:
         '200':
-          description: Server can comply with the EPCIS-related requirements from the client.
+          description: Server can comply with the GS1-EPCIS-related requirements from the client.
           content:
             application/json:
               schema:
@@ -274,11 +282,19 @@ paths:
                           - epcisExceptions:ImplementationException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
 
-  /{optionalTopLevelResource}/events/{eventType}:
+  /{optionalTopLevelResourceAndEvents}/{eventType}:
     parameters:
       - in: query
         name: perPage
-        description: Parameter to control pagination. perPage specifies the maximum number of events returned in one batch.
+        description: >
+          An optional top-level resource to access events. This regex matches
+          - events
+          - bizSteps/myBizStep/events
+          It will not match nesting of top-level resources, e.g.
+          - bizSteps/aBizStep/epcs/anEpcs/events
+          is invalid.
+          Please note that the first character cannot be a "/", because an OpenAPI path pattern
+          already includes a slash.
         schema:
           type: integer
           default: 30
@@ -290,25 +306,25 @@ paths:
             - $ref: '#/components/schemas/EPCISEventTypes'
             - $ref: '#/components/schemas/AllEvent'
       - in: path
-        name: optionalTopLevelResource
+        name: optionalTopLevelResourceAndEvents
         description: An optional top-level resource to access events.
         required: true
         schema:
           type: string
-          pattern: ^(\/(epcs|bizSteps|bizLocations|readPoints|dispositions)\/([^/\n\r]+))?$
+          pattern: ^((epcs|bizSteps|bizLocations|readPoints|dispositions)\/([^/\n\r]+)/)?events$
     options:
       summary: Query supported EPCIS version and related vocabularies/standards
       parameters:
-        - $ref: '#/components/parameters/EPCIS-version'
-        - $ref: '#/components/parameters/EPCIS-min'
-        - $ref: '#/components/parameters/EPCIS-max'
-        - $ref: '#/components/parameters/CBV-version'
-        - $ref: '#/components/parameters/EPCIS-extensions'
-        - $ref: '#/components/parameters/CBV-extensions'
-        - $ref: '#/components/parameters/Vendor-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-min'
+        - $ref: '#/components/parameters/GS1-EPCIS-max'
+        - $ref: '#/components/parameters/GS1-CBV-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
+        - $ref: '#/components/parameters/GS1-CBV-extensions'
+        - $ref: '#/components/parameters/GS1-Vendor-version'
       responses:
         '200':
-          description: Server can comply with the EPCIS-related requirements from the client
+          description: Server can comply with the GS1-EPCIS-related requirements from the client
           content:
             application/json:
               schema:
@@ -419,7 +435,7 @@ paths:
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
 
 
-  /{optionalTopLevelResource}/events/{eventType}/{eventId}:
+  /{optionalTopLevelResourceAndEvents}/{eventType}/{eventID}:
     parameters:
       - in: query
         name: perPage
@@ -432,34 +448,42 @@ paths:
         required: true
         schema:
           $ref: '#/components/schemas/EPCISEventTypes'
-      - name: eventId
+      - name: eventID
         in: path
         required: true
         schema:
           type: string
           format: uuid
       - in: path
-        name: optionalTopLevelResource
-        description: An optional top-level resource to access events.
+        name: optionalTopLevelResourceAndEvents
+        description: >
+          An optional top-level resource to access events. This regex matches
+          - events
+          - bizSteps/myBizStep/events
+          It will not match nesting of top-level resources, e.g.
+          - bizSteps/aBizStep/epcs/anEpcs/events
+          is invalid.
+          Please note that the first character cannot be a "/", because an OpenAPI path pattern
+          already includes a slash.
         required: true
         schema:
           type: string
-          pattern: ^(\/(epcs|bizSteps|bizLocations|readPoints|dispositions)\/([^/\n\r]+))?$
+          pattern: ^((epcs|bizSteps|bizLocations|readPoints|dispositions)\/([^/\n\r]+)/)?events$
 
 
     options:
       summary: Query supported EPCIS version and related vocabularies/standards.
       parameters:
-        - $ref: '#/components/parameters/EPCIS-version'
-        - $ref: '#/components/parameters/EPCIS-min'
-        - $ref: '#/components/parameters/EPCIS-max'
-        - $ref: '#/components/parameters/CBV-version'
-        - $ref: '#/components/parameters/EPCIS-extensions'
-        - $ref: '#/components/parameters/CBV-extensions'
-        - $ref: '#/components/parameters/Vendor-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-min'
+        - $ref: '#/components/parameters/GS1-EPCIS-max'
+        - $ref: '#/components/parameters/GS1-CBV-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
+        - $ref: '#/components/parameters/GS1-CBV-extensions'
+        - $ref: '#/components/parameters/GS1-Vendor-version'
       responses:
         '200':
-          description: Server can comply with the EPCIS-related requirements from the client
+          description: Server can comply with the GS1-EPCIS-related requirements from the client
           content:
             application/json:
               schema:
@@ -470,7 +494,8 @@ paths:
           description: Accesses the EPCIS event corresponding to the given event URLs.
           content:
             application/json:
-              schema: # TODO: Link to real schema when available
+              schema: # TODO: LINK NEEDED: They're currently in the GS1 GitHub repository in JSON Schema.   The final reference should point to a stable URL within the gs1.org/epcis site.
+
                 type: object
         '401':
           description: Authorization is invalid
@@ -532,17 +557,17 @@ paths:
     options:
       summary: Query supported EPCIS version and related vocabularies/standards
       parameters:
-        - $ref: '#/components/parameters/EPCIS-version'
-        - $ref: '#/components/parameters/EPCIS-min'
-        - $ref: '#/components/parameters/EPCIS-max'
-        - $ref: '#/components/parameters/CBV-version'
-        - $ref: '#/components/parameters/EPCIS-extensions'
-        - $ref: '#/components/parameters/CBV-extensions'
-        - $ref: '#/components/parameters/Vendor-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-min'
+        - $ref: '#/components/parameters/GS1-EPCIS-max'
+        - $ref: '#/components/parameters/GS1-CBV-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
+        - $ref: '#/components/parameters/GS1-CBV-extensions'
+        - $ref: '#/components/parameters/GS1-Vendor-version'
 
       responses:
         '200':
-          description: Server can comply with the EPCIS-related requirements from the client
+          description: Server can comply with the GS1-EPCIS-related requirements from the client
           content:
             application/json:
               schema:
@@ -673,16 +698,16 @@ paths:
     options:
       summary: Query supported EPCIS version and related vocabularies/standards
       parameters:
-        - $ref: '#/components/parameters/EPCIS-version'
-        - $ref: '#/components/parameters/EPCIS-min'
-        - $ref: '#/components/parameters/EPCIS-max'
-        - $ref: '#/components/parameters/CBV-version'
-        - $ref: '#/components/parameters/EPCIS-extensions'
-        - $ref: '#/components/parameters/CBV-extensions'
-        - $ref: '#/components/parameters/Vendor-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-min'
+        - $ref: '#/components/parameters/GS1-EPCIS-max'
+        - $ref: '#/components/parameters/GS1-CBV-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
+        - $ref: '#/components/parameters/GS1-CBV-extensions'
+        - $ref: '#/components/parameters/GS1-Vendor-version'
       responses:
         '200':
-          description: Server can comply with the EPCIS-related requirements from the client
+          description: Server can comply with the GS1-EPCIS-related requirements from the client
           content:
             application/json:
               schema:
@@ -715,7 +740,7 @@ paths:
   /queries/{queryName}/events:
     parameters:
       - in: header
-        name: QUERY-minRecordTime
+        name: GS1-QUERY-minRecordTime
         required: false
         schema:
           type: string
@@ -734,17 +759,17 @@ paths:
     options:
       summary: Query supported EPCIS version and related vocabularies/standards
       parameters:
-        - $ref: '#/components/parameters/EPCIS-version'
-        - $ref: '#/components/parameters/EPCIS-min'
-        - $ref: '#/components/parameters/EPCIS-max'
-        - $ref: '#/components/parameters/CBV-version'
-        - $ref: '#/components/parameters/EPCIS-extensions'
-        - $ref: '#/components/parameters/CBV-extensions'
-        - $ref: '#/components/parameters/Vendor-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-min'
+        - $ref: '#/components/parameters/GS1-EPCIS-max'
+        - $ref: '#/components/parameters/GS1-CBV-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
+        - $ref: '#/components/parameters/GS1-CBV-extensions'
+        - $ref: '#/components/parameters/GS1-Vendor-version'
 
       responses:
         '200':
-          description: Server can comply with the EPCIS-related requirements from the client
+          description: Server can comply with the GS1-EPCIS-related requirements from the client
           content:
             application/json:
               schema:
@@ -981,66 +1006,66 @@ components:
         - all
 
   parameters:
-    EPCIS-version:
+    GS1-EPCIS-version:
       in: header
-      name: EPCIS-version
+      name: GS1-EPCIS-version
       description: The EPCIS version
       schema:
         type: string
         pattern: ^\d+(\.\d+)?$
         example: "2.0"
-    EPCIS-min:
+    GS1-EPCIS-min:
       in: header
-      name: EPCIS-min
+      name: GS1-EPCIS-min
       description: The lowest EPCIS version supported
       schema:
         type: string
         pattern: ^\d+(\.\d+)?$
         example: "2.0"
-    EPCIS-max:
+    GS1-EPCIS-max:
       in: header
-      name: EPCIS-max
+      name: GS1-EPCIS-max
       description: The highest EPCIS version supported
       schema:
         type: string
         pattern: ^\d+(\.\d+)?$
-    CBV-version:
+    GS1-CBV-version:
       in: header
-      name: CBV-version
+      name: GS1-CBV-version
       description: The core business vocabulary version
       schema:
         type: string
-    EPCIS-extensions:
+    GS1-EPCIS-extensions:
       in: header
-      name: EPCIS-extensions
+      name: GS1-EPCIS-extensions
       description: Specific EPCIS extensions supported (e.g. for FIT)
       schema:
         type: object
-    Vendor-version:
+    GS1-Vendor-version:
       in: header
-      name: Vendor-version
+      name: GS1-Vendor-version
       description: A versioning scheme that can be freely chosen by the vendor
       schema:
         type: array
         items:
           type: string
         uniqueItems: true
-    CBV-extensions:
+    GS1-CBV-extensions:
       in: header
-      name: CBV-extensions
+      name: GS1-CBV-extensions
       description: An optional header to specify the vocabulary for the top-level endpoints
       schema:
         type: object
-    CAPTURE-limit:
+    GS1-CAPTURE-limit:
       in: header
-      name: CAPTURE-limit
+      name: GS1-CAPTURE-limit
       description: The maximum number of EPCIS events that can be captured per call
       schema:
         type: string
         pattern: ^(\d+|\*)$
-    CAPTURE-file-size-limit:
+    GS1-CAPTURE-file-size-limit:
       in: header
-      name: CAPTURE-file-size-limit
+      name: GS1-CAPTURE-file-size-limit
       description: The maximum event document length in octets (8-bit bytes)
       schema:
         type: string
