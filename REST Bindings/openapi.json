@@ -13,36 +13,92 @@
         "summary": "Query supported EPCIS version and related vocabularies/standards",
         "parameters": [
           {
-            "$ref": "#/components/parameters/EPCIS-version"
+            "in": "header",
+            "name": "GS1-EPCIS-version",
+            "description": "The EPCIS version",
+            "schema": {
+              "type": "string",
+              "pattern": "^\\d+(\\.\\d+)?$",
+              "example": "2.0"
+            }
           },
           {
-            "$ref": "#/components/parameters/EPCIS-min"
+            "in": "header",
+            "name": "GS1-EPCIS-min",
+            "description": "The lowest EPCIS version supported",
+            "schema": {
+              "type": "string",
+              "pattern": "^\\d+(\\.\\d+)?$",
+              "example": "2.0"
+            }
           },
           {
-            "$ref": "#/components/parameters/EPCIS-max"
+            "in": "header",
+            "name": "GS1-EPCIS-max",
+            "description": "The highest EPCIS version supported",
+            "schema": {
+              "type": "string",
+              "pattern": "^\\d+(\\.\\d+)?$"
+            }
           },
           {
-            "$ref": "#/components/parameters/CBV-version"
+            "in": "header",
+            "name": "GS1-CBV-version",
+            "description": "The core business vocabulary version",
+            "schema": {
+              "type": "string"
+            }
           },
           {
-            "$ref": "#/components/parameters/EPCIS-extensions"
+            "in": "header",
+            "name": "GS1-EPCIS-extensions",
+            "description": "Specific EPCIS extensions supported (e.g. for FIT)",
+            "schema": {
+              "type": "object"
+            }
           },
           {
-            "$ref": "#/components/parameters/CBV-extensions"
+            "in": "header",
+            "name": "GS1-CBV-extensions",
+            "description": "An optional header to specify the vocabulary for the top-level endpoints",
+            "schema": {
+              "type": "object"
+            }
           },
           {
-            "$ref": "#/components/parameters/Vendor-version"
+            "in": "header",
+            "name": "GS1-Vendor-version",
+            "description": "A versioning scheme that can be freely chosen by the vendor",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "uniqueItems": true
+            }
           },
           {
-            "$ref": "#/components/parameters/CAPTURE-limit"
+            "in": "header",
+            "name": "GS1-CAPTURE-limit",
+            "description": "The maximum number of EPCIS events that can be captured per call",
+            "schema": {
+              "type": "string",
+              "pattern": "^(\\d+|\\*)$"
+            }
           },
           {
-            "$ref": "#/components/parameters/CAPTURE-file-size-limit"
+            "in": "header",
+            "name": "GS1-CAPTURE-file-size-limit",
+            "description": "The maximum event document length in octets (8-bit bytes)",
+            "schema": {
+              "type": "string",
+              "pattern": "^(\\d+|\\*)$"
+            }
           }
         ],
         "responses": {
           "200": {
-            "description": "Server can comply with the EPCIS-related requirements from the client.",
+            "description": "Server can comply with the EPCIS related requirements from the client.",
             "content": {
               "application/json": {
                 "schema": {}
@@ -94,13 +150,38 @@
                           "type": "string",
                           "format": "uri",
                           "enum": [
-                            "epcisExceptions:ValidationException"
+                            "epcisException:ValidationException"
                           ]
                         }
                       }
                     },
                     {
-                      "$ref": "#/components/schemas/RFC7807ProblemResponseBody"
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
                     }
                   ]
                 }
@@ -126,13 +207,95 @@
                           "type": "string",
                           "format": "uri",
                           "enum": [
-                            "epcisExceptions:SecurityException"
+                            "epcisException:SecurityException"
                           ]
                         }
                       }
                     },
                     {
-                      "$ref": "#/components/schemas/RFC7807ProblemResponseBody"
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Client is unauthorized to access this resource.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "properties": {
+                        "status": {
+                          "type": "integer",
+                          "enum": [
+                            403
+                          ],
+                          "default": 403
+                        },
+                        "type": {
+                          "type": "string",
+                          "format": "uri",
+                          "enum": [
+                            "epcisException:SecurityException"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
                     }
                   ]
                 }
@@ -140,9 +303,9 @@
             }
           },
           "413": {
-            "description": "The client exceeded the limit, set in CAPTURE-limit, of events that can be captured per call.",
+            "description": "The client exceeded the limit, set in GS1-CAPTURE-limit, of events that can be captured per call.",
             "headers": {
-              "CAPTURE-limit": {
+              "GS1-CAPTURE-limit": {
                 "required": true,
                 "description": "The maximum batch size of EPCIS events that can be captured per call",
                 "schema": {
@@ -163,11 +326,43 @@
                             413
                           ],
                           "default": 413
+                        },
+                        "type": {
+                          "type": "string",
+                          "format": "uri",
+                          "enum": [
+                            "epcisException:CaptureException"
+                          ]
                         }
                       }
                     },
                     {
-                      "$ref": "#/components/schemas/RFC7807ProblemResponseBody"
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
                     }
                   ]
                 }
@@ -177,15 +372,14 @@
         }
       }
     },
-    "/capture/{captureId}/events": {
+    "/capture/{captureID}": {
       "parameters": [
         {
           "in": "path",
-          "name": "captureId",
+          "name": "captureID",
           "required": true,
           "schema": {
-            "type": "string",
-            "format": "uuid"
+            "type": "string"
           }
         }
       ],
@@ -193,30 +387,74 @@
         "summary": "Query supported EPCIS version and related vocabularies/standards.",
         "parameters": [
           {
-            "$ref": "#/components/parameters/EPCIS-version"
+            "in": "header",
+            "name": "GS1-EPCIS-version",
+            "description": "The EPCIS version",
+            "schema": {
+              "type": "string",
+              "pattern": "^\\d+(\\.\\d+)?$",
+              "example": "2.0"
+            }
           },
           {
-            "$ref": "#/components/parameters/EPCIS-min"
+            "in": "header",
+            "name": "GS1-EPCIS-min",
+            "description": "The lowest EPCIS version supported",
+            "schema": {
+              "type": "string",
+              "pattern": "^\\d+(\\.\\d+)?$",
+              "example": "2.0"
+            }
           },
           {
-            "$ref": "#/components/parameters/EPCIS-max"
+            "in": "header",
+            "name": "GS1-EPCIS-max",
+            "description": "The highest EPCIS version supported",
+            "schema": {
+              "type": "string",
+              "pattern": "^\\d+(\\.\\d+)?$"
+            }
           },
           {
-            "$ref": "#/components/parameters/CBV-version"
+            "in": "header",
+            "name": "GS1-CBV-version",
+            "description": "The core business vocabulary version",
+            "schema": {
+              "type": "string"
+            }
           },
           {
-            "$ref": "#/components/parameters/EPCIS-extensions"
+            "in": "header",
+            "name": "GS1-EPCIS-extensions",
+            "description": "Specific EPCIS extensions supported (e.g. for FIT)",
+            "schema": {
+              "type": "object"
+            }
           },
           {
-            "$ref": "#/components/parameters/CBV-extensions"
+            "in": "header",
+            "name": "GS1-CBV-extensions",
+            "description": "An optional header to specify the vocabulary for the top-level endpoints",
+            "schema": {
+              "type": "object"
+            }
           },
           {
-            "$ref": "#/components/parameters/Vendor-version"
+            "in": "header",
+            "name": "GS1-Vendor-version",
+            "description": "A versioning scheme that can be freely chosen by the vendor",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "uniqueItems": true
+            }
           }
         ],
         "responses": {
           "200": {
-            "description": "Server can comply with the EPCIS-related requirements from the client.",
+            "description": "Server can comply with the EPCIS related requirements from the client.",
             "content": {
               "application/json": {
                 "schema": {}
@@ -260,13 +498,38 @@
                           "type": "string",
                           "format": "uri",
                           "enum": [
-                            "epcisExceptions:ValidationException"
+                            "epcisException:ValidationException"
                           ]
                         }
                       }
                     },
                     {
-                      "$ref": "#/components/schemas/RFC7807ProblemResponseBody"
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
                     }
                   ]
                 }
@@ -292,13 +555,152 @@
                           "type": "string",
                           "format": "uri",
                           "enum": [
-                            "epcisExceptions:SecurityException"
+                            "epcisException:SecurityException"
                           ]
                         }
                       }
                     },
                     {
-                      "$ref": "#/components/schemas/RFC7807ProblemResponseBody"
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Client is unauthorized to access this resource.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "properties": {
+                        "status": {
+                          "type": "integer",
+                          "enum": [
+                            403
+                          ],
+                          "default": 403
+                        },
+                        "type": {
+                          "type": "string",
+                          "format": "uri",
+                          "enum": [
+                            "epcisException:SecurityException"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Capture ID not found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "properties": {
+                        "status": {
+                          "type": "integer",
+                          "enum": [
+                            404
+                          ],
+                          "default": 404
+                        },
+                        "type": {
+                          "type": "string",
+                          "format": "uri",
+                          "enum": [
+                            "epcisException:NoSuchNameException"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
                     }
                   ]
                 }
@@ -306,7 +708,7 @@
             }
           },
           "500": {
-            "description": "This is a server-side problem caused by an exception.",
+            "description": "This is a server-side problem caused when the query was resolved and executed.",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -324,13 +726,38 @@
                           "type": "string",
                           "format": "uri",
                           "enum": [
-                            "epcisExceptions:ImplementationException"
+                            "epcisException:ImplementationException"
                           ]
                         }
                       }
                     },
                     {
-                      "$ref": "#/components/schemas/RFC7807ProblemResponseBody"
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
                     }
                   ]
                 }
@@ -340,7 +767,7 @@
         }
       }
     },
-    "/{optionalTopLevelResource}/events": {
+    "/{topLevelResources}/events": {
       "parameters": [
         {
           "in": "query",
@@ -353,12 +780,18 @@
         },
         {
           "in": "path",
-          "name": "optionalTopLevelResource",
-          "description": "An optional top-level resource to access events.",
+          "name": "topLevelResources",
+          "description": "A top-level resource to access events.",
           "required": true,
           "schema": {
             "type": "string",
-            "pattern": "^(\\/(epcs|bizSteps|bizLocations|readPoints|dispositions)\\/([^/\\n\\r]+))?$"
+            "enum": [
+              "epcs",
+              "bizSteps",
+              "bizLocations",
+              "readPoints",
+              "dispositions"
+            ]
           }
         }
       ],
@@ -366,30 +799,74 @@
         "summary": "Query supported EPCIS version and related vocabularies/standards.",
         "parameters": [
           {
-            "$ref": "#/components/parameters/EPCIS-version"
+            "in": "header",
+            "name": "GS1-EPCIS-version",
+            "description": "The EPCIS version",
+            "schema": {
+              "type": "string",
+              "pattern": "^\\d+(\\.\\d+)?$",
+              "example": "2.0"
+            }
           },
           {
-            "$ref": "#/components/parameters/EPCIS-min"
+            "in": "header",
+            "name": "GS1-EPCIS-min",
+            "description": "The lowest EPCIS version supported",
+            "schema": {
+              "type": "string",
+              "pattern": "^\\d+(\\.\\d+)?$",
+              "example": "2.0"
+            }
           },
           {
-            "$ref": "#/components/parameters/EPCIS-max"
+            "in": "header",
+            "name": "GS1-EPCIS-max",
+            "description": "The highest EPCIS version supported",
+            "schema": {
+              "type": "string",
+              "pattern": "^\\d+(\\.\\d+)?$"
+            }
           },
           {
-            "$ref": "#/components/parameters/CBV-version"
+            "in": "header",
+            "name": "GS1-CBV-version",
+            "description": "The core business vocabulary version",
+            "schema": {
+              "type": "string"
+            }
           },
           {
-            "$ref": "#/components/parameters/EPCIS-extensions"
+            "in": "header",
+            "name": "GS1-EPCIS-extensions",
+            "description": "Specific EPCIS extensions supported (e.g. for FIT)",
+            "schema": {
+              "type": "object"
+            }
           },
           {
-            "$ref": "#/components/parameters/CBV-extensions"
+            "in": "header",
+            "name": "GS1-CBV-extensions",
+            "description": "An optional header to specify the vocabulary for the top-level endpoints",
+            "schema": {
+              "type": "object"
+            }
           },
           {
-            "$ref": "#/components/parameters/Vendor-version"
+            "in": "header",
+            "name": "GS1-Vendor-version",
+            "description": "A versioning scheme that can be freely chosen by the vendor",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "uniqueItems": true
+            }
           }
         ],
         "responses": {
           "200": {
-            "description": "Server can comply with the EPCIS-related requirements from the client.",
+            "description": "Server can comply with the EPCIS related requirements from the client.",
             "content": {
               "application/json": {
                 "schema": {}
@@ -405,7 +882,16 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/EPCISEventTypes"
+                  "type": "string",
+                  "description": "The five types of EPCIS events.",
+                  "enum": [
+                    "ObjectEvents",
+                    "AggregationEvents",
+                    "AssociationEvents",
+                    "TransformationEvents",
+                    "TransactionEvents",
+                    "all"
+                  ]
                 }
               }
             }
@@ -429,13 +915,152 @@
                           "type": "string",
                           "format": "uri",
                           "enum": [
-                            "epcisExceptions:SecurityException"
+                            "epcisException:SecurityException"
                           ]
                         }
                       }
                     },
                     {
-                      "$ref": "#/components/schemas/RFC7807ProblemResponseBody"
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Client is unauthorized to access this resource.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "properties": {
+                        "status": {
+                          "type": "integer",
+                          "enum": [
+                            403
+                          ],
+                          "default": 403
+                        },
+                        "type": {
+                          "type": "string",
+                          "format": "uri",
+                          "enum": [
+                            "epcisException:SecurityException"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Top-level resource or event type not found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "properties": {
+                        "status": {
+                          "type": "integer",
+                          "enum": [
+                            404
+                          ],
+                          "default": 404
+                        },
+                        "type": {
+                          "type": "string",
+                          "format": "uri",
+                          "enum": [
+                            "epcisException:NoSuchNameException"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
                     }
                   ]
                 }
@@ -443,7 +1068,7 @@
             }
           },
           "500": {
-            "description": "This is a server-side problem caused by an exception.",
+            "description": "This is a server-side problem caused when the query was resolved and executed.",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -461,13 +1086,38 @@
                           "type": "string",
                           "format": "uri",
                           "enum": [
-                            "epcisExceptions:ImplementationException"
+                            "epcisException:ImplementationException"
                           ]
                         }
                       }
                     },
                     {
-                      "$ref": "#/components/schemas/RFC7807ProblemResponseBody"
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
                     }
                   ]
                 }
@@ -477,7 +1127,7 @@
         }
       }
     },
-    "/{optionalTopLevelResource}/events/{eventType}": {
+    "/{topLevelResources}/events/{eventTypes}": {
       "parameters": [
         {
           "in": "query",
@@ -489,28 +1139,47 @@
           }
         },
         {
-          "name": "eventType",
+          "in": "path",
+          "name": "topLevelResources",
+          "description": "A top-level resource to access events.",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "enum": [
+              "epcs",
+              "bizSteps",
+              "bizLocations",
+              "readPoints",
+              "dispositions"
+            ]
+          }
+        },
+        {
+          "name": "eventTypes",
           "in": "path",
           "required": true,
           "schema": {
             "oneOf": [
               {
-                "$ref": "#/components/schemas/EPCISEventTypes"
+                "type": "string",
+                "description": "The five types of EPCIS events.",
+                "enum": [
+                  "ObjectEvents",
+                  "AggregationEvents",
+                  "AssociationEvents",
+                  "TransformationEvents",
+                  "TransactionEvents",
+                  "all"
+                ]
               },
               {
-                "$ref": "#/components/schemas/AllEvent"
+                "type": "string",
+                "description": "A virtual EPCIS event superset.",
+                "enum": [
+                  "all"
+                ]
               }
             ]
-          }
-        },
-        {
-          "in": "path",
-          "name": "optionalTopLevelResource",
-          "description": "An optional top-level resource to access events.",
-          "required": true,
-          "schema": {
-            "type": "string",
-            "pattern": "^(\\/(epcs|bizSteps|bizLocations|readPoints|dispositions)\\/([^/\\n\\r]+))?$"
           }
         }
       ],
@@ -518,30 +1187,74 @@
         "summary": "Query supported EPCIS version and related vocabularies/standards",
         "parameters": [
           {
-            "$ref": "#/components/parameters/EPCIS-version"
+            "in": "header",
+            "name": "GS1-EPCIS-version",
+            "description": "The EPCIS version",
+            "schema": {
+              "type": "string",
+              "pattern": "^\\d+(\\.\\d+)?$",
+              "example": "2.0"
+            }
           },
           {
-            "$ref": "#/components/parameters/EPCIS-min"
+            "in": "header",
+            "name": "GS1-EPCIS-min",
+            "description": "The lowest EPCIS version supported",
+            "schema": {
+              "type": "string",
+              "pattern": "^\\d+(\\.\\d+)?$",
+              "example": "2.0"
+            }
           },
           {
-            "$ref": "#/components/parameters/EPCIS-max"
+            "in": "header",
+            "name": "GS1-EPCIS-max",
+            "description": "The highest EPCIS version supported",
+            "schema": {
+              "type": "string",
+              "pattern": "^\\d+(\\.\\d+)?$"
+            }
           },
           {
-            "$ref": "#/components/parameters/CBV-version"
+            "in": "header",
+            "name": "GS1-CBV-version",
+            "description": "The core business vocabulary version",
+            "schema": {
+              "type": "string"
+            }
           },
           {
-            "$ref": "#/components/parameters/EPCIS-extensions"
+            "in": "header",
+            "name": "GS1-EPCIS-extensions",
+            "description": "Specific EPCIS extensions supported (e.g. for FIT)",
+            "schema": {
+              "type": "object"
+            }
           },
           {
-            "$ref": "#/components/parameters/CBV-extensions"
+            "in": "header",
+            "name": "GS1-CBV-extensions",
+            "description": "An optional header to specify the vocabulary for the top-level endpoints",
+            "schema": {
+              "type": "object"
+            }
           },
           {
-            "$ref": "#/components/parameters/Vendor-version"
+            "in": "header",
+            "name": "GS1-Vendor-version",
+            "description": "A versioning scheme that can be freely chosen by the vendor",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "uniqueItems": true
+            }
           }
         ],
         "responses": {
           "200": {
-            "description": "Server can comply with the EPCIS-related requirements from the client",
+            "description": "Server can comply with the EPCIS related requirements from the client",
             "content": {
               "application/json": {
                 "schema": {}
@@ -586,15 +1299,40 @@
                           "type": "string",
                           "format": "uri",
                           "enum": [
-                            "epcisExceptions:QueryValidationException",
-                            "epcisExceptions:QueryParameterException",
-                            "epcisExceptions:QueryTooComplexException"
+                            "epcisException:QueryValidationException",
+                            "epcisException:QueryParameterException",
+                            "epcisException:QueryTooComplexException"
                           ]
                         }
                       }
                     },
                     {
-                      "$ref": "#/components/schemas/RFC7807ProblemResponseBody"
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
                     }
                   ]
                 }
@@ -620,231 +1358,38 @@
                           "type": "string",
                           "format": "uri",
                           "enum": [
-                            "epcisExceptions:SecurityException"
+                            "epcisException:SecurityException"
                           ]
                         }
                       }
                     },
                     {
-                      "$ref": "#/components/schemas/RFC7807ProblemResponseBody"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Event type not found",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "allOf": [
-                    {
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
                       "properties": {
-                        "status": {
-                          "type": "integer",
-                          "enum": [
-                            404
-                          ],
-                          "default": 404
-                        },
                         "type": {
                           "type": "string",
-                          "format": "uri",
-                          "enum": [
-                            "epcisExceptions:NoSuchNameException"
-                          ]
-                        }
-                      }
-                    },
-                    {
-                      "$ref": "#/components/schemas/RFC7807ProblemResponseBody"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "412": {
-            "description": "Mismatch of the event type constraint in the path and in the query.",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "allOf": [
-                    {
-                      "properties": {
-                        "status": {
-                          "type": "integer",
-                          "enum": [
-                            412
-                          ],
-                          "default": 412
+                          "format": "uri"
                         },
-                        "type": {
-                          "type": "string",
-                          "format": "uri",
-                          "enum": [
-                            "epcisExceptions:QueryParameterException"
-                          ]
-                        }
-                      }
-                    },
-                    {
-                      "$ref": "#/components/schemas/RFC7807ProblemResponseBody"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "414": {
-            "description": "Query too long, if the total URL length exceeds 2000 characters.",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "allOf": [
-                    {
-                      "properties": {
-                        "status": {
-                          "type": "integer",
-                          "enum": [
-                            414
-                          ],
-                          "default": 414
+                        "title": {
+                          "type": "string"
                         },
-                        "type": {
-                          "type": "string",
-                          "format": "uri",
-                          "enum": [
-                            "epcisExceptions:QueryTooComplexException"
-                          ]
-                        }
-                      }
-                    },
-                    {
-                      "$ref": "#/components/schemas/RFC7807ProblemResponseBody"
-                    }
-                  ]
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/{optionalTopLevelResource}/events/{eventType}/{eventId}": {
-      "parameters": [
-        {
-          "in": "query",
-          "name": "perPage",
-          "description": "Parameter to control pagination. perPage specifies the maximum number of events returned in one batch.",
-          "schema": {
-            "type": "integer",
-            "default": 30
-          }
-        },
-        {
-          "name": "eventType",
-          "in": "path",
-          "required": true,
-          "schema": {
-            "$ref": "#/components/schemas/EPCISEventTypes"
-          }
-        },
-        {
-          "name": "eventId",
-          "in": "path",
-          "required": true,
-          "schema": {
-            "type": "string",
-            "format": "uuid"
-          }
-        },
-        {
-          "in": "path",
-          "name": "optionalTopLevelResource",
-          "description": "An optional top-level resource to access events.",
-          "required": true,
-          "schema": {
-            "type": "string",
-            "pattern": "^(\\/(epcs|bizSteps|bizLocations|readPoints|dispositions)\\/([^/\\n\\r]+))?$"
-          }
-        }
-      ],
-      "options": {
-        "summary": "Query supported EPCIS version and related vocabularies/standards.",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/EPCIS-version"
-          },
-          {
-            "$ref": "#/components/parameters/EPCIS-min"
-          },
-          {
-            "$ref": "#/components/parameters/EPCIS-max"
-          },
-          {
-            "$ref": "#/components/parameters/CBV-version"
-          },
-          {
-            "$ref": "#/components/parameters/EPCIS-extensions"
-          },
-          {
-            "$ref": "#/components/parameters/CBV-extensions"
-          },
-          {
-            "$ref": "#/components/parameters/Vendor-version"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Server can comply with the EPCIS-related requirements from the client",
-            "content": {
-              "application/json": {
-                "schema": {}
-              }
-            }
-          }
-        }
-      },
-      "get": {
-        "responses": {
-          "200": {
-            "description": "Accesses the EPCIS event corresponding to the given event URLs.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Authorization is invalid",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "allOf": [
-                    {
-                      "properties": {
                         "status": {
-                          "type": "integer",
-                          "enum": [
-                            401
-                          ],
-                          "default": 401
+                          "type": "integer"
                         },
-                        "type": {
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
                           "type": "string",
-                          "format": "uri",
-                          "enum": [
-                            "epcisExceptions:SecurityException"
-                          ]
+                          "format": "uri"
                         }
                       }
-                    },
-                    {
-                      "$ref": "#/components/schemas/RFC7807ProblemResponseBody"
                     }
                   ]
                 }
@@ -870,13 +1415,38 @@
                           "type": "string",
                           "format": "uri",
                           "enum": [
-                            "epcisExceptions:SecurityException"
+                            "epcisException:SecurityException"
                           ]
                         }
                       }
                     },
                     {
-                      "$ref": "#/components/schemas/RFC7807ProblemResponseBody"
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
                     }
                   ]
                 }
@@ -884,7 +1454,7 @@
             }
           },
           "404": {
-            "description": "Event type or event URL not found",
+            "description": "Top-level resource or event type not found",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -902,13 +1472,209 @@
                           "type": "string",
                           "format": "uri",
                           "enum": [
-                            "epcisExceptions:NoSuchNameException"
+                            "epcisException:NoSuchNameException"
                           ]
                         }
                       }
                     },
                     {
-                      "$ref": "#/components/schemas/RFC7807ProblemResponseBody"
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "Mismatch of the event type constraint in the path and in the query.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "properties": {
+                        "status": {
+                          "type": "integer",
+                          "enum": [
+                            412
+                          ],
+                          "default": 412
+                        },
+                        "type": {
+                          "type": "string",
+                          "format": "uri",
+                          "enum": [
+                            "epcisException:QueryParameterException"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "414": {
+            "description": "Query too long, if the total URL length exceeds 2000 characters.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "properties": {
+                        "status": {
+                          "type": "integer",
+                          "enum": [
+                            414
+                          ],
+                          "default": 414
+                        },
+                        "type": {
+                          "type": "string",
+                          "format": "uri",
+                          "enum": [
+                            "epcisException:QueryTooComplexException"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "This is a server-side problem caused when the query was resolved and executed.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "properties": {
+                        "status": {
+                          "type": "integer",
+                          "enum": [
+                            500
+                          ],
+                          "default": 500
+                        },
+                        "type": {
+                          "type": "string",
+                          "format": "uri",
+                          "enum": [
+                            "epcisException:ImplementationException"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
                     }
                   ]
                 }
@@ -918,35 +1684,133 @@
         }
       }
     },
-    "/queries": {
+    "/{topLevelResources}/events/{eventTypes}/{eventID}": {
+      "parameters": [
+        {
+          "in": "path",
+          "name": "topLevelResources",
+          "description": "A top-level resource to access events.",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "enum": [
+              "epcs",
+              "bizSteps",
+              "bizLocations",
+              "readPoints",
+              "dispositions"
+            ]
+          }
+        },
+        {
+          "name": "eventTypes",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "oneOf": [
+              {
+                "type": "string",
+                "description": "The five types of EPCIS events.",
+                "enum": [
+                  "ObjectEvents",
+                  "AggregationEvents",
+                  "AssociationEvents",
+                  "TransformationEvents",
+                  "TransactionEvents",
+                  "all"
+                ]
+              },
+              {
+                "type": "string",
+                "description": "A virtual EPCIS event superset.",
+                "enum": [
+                  "all"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "eventID",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
       "options": {
-        "summary": "Query supported EPCIS version and related vocabularies/standards",
+        "summary": "Query supported EPCIS version and related vocabularies/standards.",
         "parameters": [
           {
-            "$ref": "#/components/parameters/EPCIS-version"
+            "in": "header",
+            "name": "GS1-EPCIS-version",
+            "description": "The EPCIS version",
+            "schema": {
+              "type": "string",
+              "pattern": "^\\d+(\\.\\d+)?$",
+              "example": "2.0"
+            }
           },
           {
-            "$ref": "#/components/parameters/EPCIS-min"
+            "in": "header",
+            "name": "GS1-EPCIS-min",
+            "description": "The lowest EPCIS version supported",
+            "schema": {
+              "type": "string",
+              "pattern": "^\\d+(\\.\\d+)?$",
+              "example": "2.0"
+            }
           },
           {
-            "$ref": "#/components/parameters/EPCIS-max"
+            "in": "header",
+            "name": "GS1-EPCIS-max",
+            "description": "The highest EPCIS version supported",
+            "schema": {
+              "type": "string",
+              "pattern": "^\\d+(\\.\\d+)?$"
+            }
           },
           {
-            "$ref": "#/components/parameters/CBV-version"
+            "in": "header",
+            "name": "GS1-CBV-version",
+            "description": "The core business vocabulary version",
+            "schema": {
+              "type": "string"
+            }
           },
           {
-            "$ref": "#/components/parameters/EPCIS-extensions"
+            "in": "header",
+            "name": "GS1-EPCIS-extensions",
+            "description": "Specific EPCIS extensions supported (e.g. for FIT)",
+            "schema": {
+              "type": "object"
+            }
           },
           {
-            "$ref": "#/components/parameters/CBV-extensions"
+            "in": "header",
+            "name": "GS1-CBV-extensions",
+            "description": "An optional header to specify the vocabulary for the top-level endpoints",
+            "schema": {
+              "type": "object"
+            }
           },
           {
-            "$ref": "#/components/parameters/Vendor-version"
+            "in": "header",
+            "name": "GS1-Vendor-version",
+            "description": "A versioning scheme that can be freely chosen by the vendor",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "uniqueItems": true
+            }
           }
         ],
         "responses": {
           "200": {
-            "description": "Server can comply with the EPCIS-related requirements from the client",
+            "description": "Server can comply with the EPCIS related requirements from the client",
             "content": {
               "application/json": {
                 "schema": {}
@@ -958,13 +1822,664 @@
       "get": {
         "responses": {
           "200": {
-            "description": "Returns a list of active queries available to that user.",
+            "description": "Accesses the EPCIS event corresponding to the given event URLs.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authorization information is missing or invalid.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "properties": {
+                        "status": {
+                          "type": "integer",
+                          "enum": [
+                            401
+                          ],
+                          "default": 401
+                        },
+                        "type": {
+                          "type": "string",
+                          "format": "uri",
+                          "enum": [
+                            "epcisException:SecurityException"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Client is unauthorized to access this resource.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "properties": {
+                        "status": {
+                          "type": "integer",
+                          "enum": [
+                            403
+                          ],
+                          "default": 403
+                        },
+                        "type": {
+                          "type": "string",
+                          "format": "uri",
+                          "enum": [
+                            "epcisException:SecurityException"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Either Top-level resource, event type or event ID not found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "properties": {
+                        "status": {
+                          "type": "integer",
+                          "enum": [
+                            404
+                          ],
+                          "default": 404
+                        },
+                        "type": {
+                          "type": "string",
+                          "format": "uri",
+                          "enum": [
+                            "epcisException:NoSuchNameException"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "This is a server-side problem caused when the query was resolved and executed.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "properties": {
+                        "status": {
+                          "type": "integer",
+                          "enum": [
+                            500
+                          ],
+                          "default": 500
+                        },
+                        "type": {
+                          "type": "string",
+                          "format": "uri",
+                          "enum": [
+                            "epcisException:ImplementationException"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/events": {
+      "parameters": [
+        {
+          "in": "query",
+          "name": "perPage",
+          "description": "Parameter to control pagination. perPage specifies the maximum number of events returned in one batch.",
+          "schema": {
+            "type": "integer",
+            "default": 30
+          }
+        }
+      ],
+      "options": {
+        "summary": "Query supported EPCIS version and related vocabularies/standards.",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "GS1-EPCIS-version",
+            "description": "The EPCIS version",
+            "schema": {
+              "type": "string",
+              "pattern": "^\\d+(\\.\\d+)?$",
+              "example": "2.0"
+            }
+          },
+          {
+            "in": "header",
+            "name": "GS1-EPCIS-min",
+            "description": "The lowest EPCIS version supported",
+            "schema": {
+              "type": "string",
+              "pattern": "^\\d+(\\.\\d+)?$",
+              "example": "2.0"
+            }
+          },
+          {
+            "in": "header",
+            "name": "GS1-EPCIS-max",
+            "description": "The highest EPCIS version supported",
+            "schema": {
+              "type": "string",
+              "pattern": "^\\d+(\\.\\d+)?$"
+            }
+          },
+          {
+            "in": "header",
+            "name": "GS1-CBV-version",
+            "description": "The core business vocabulary version",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "GS1-EPCIS-extensions",
+            "description": "Specific EPCIS extensions supported (e.g. for FIT)",
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "in": "header",
+            "name": "GS1-CBV-extensions",
+            "description": "An optional header to specify the vocabulary for the top-level endpoints",
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "in": "header",
+            "name": "GS1-Vendor-version",
+            "description": "A versioning scheme that can be freely chosen by the vendor",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "uniqueItems": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Server can comply with the EPCIS related requirements from the client.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Returns all supported EPCIS event types.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "description": "The five types of EPCIS events.",
+                  "enum": [
+                    "ObjectEvents",
+                    "AggregationEvents",
+                    "AssociationEvents",
+                    "TransformationEvents",
+                    "TransactionEvents",
+                    "all"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authorization information is missing or invalid.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "properties": {
+                        "status": {
+                          "type": "integer",
+                          "enum": [
+                            401
+                          ],
+                          "default": 401
+                        },
+                        "type": {
+                          "type": "string",
+                          "format": "uri",
+                          "enum": [
+                            "epcisException:SecurityException"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Client is unauthorized to access this resource.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "properties": {
+                        "status": {
+                          "type": "integer",
+                          "enum": [
+                            403
+                          ],
+                          "default": 403
+                        },
+                        "type": {
+                          "type": "string",
+                          "format": "uri",
+                          "enum": [
+                            "epcisException:SecurityException"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "This is a server-side problem caused when the query was resolved and executed.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "properties": {
+                        "status": {
+                          "type": "integer",
+                          "enum": [
+                            500
+                          ],
+                          "default": 500
+                        },
+                        "type": {
+                          "type": "string",
+                          "format": "uri",
+                          "enum": [
+                            "epcisException:ImplementationException"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/events/{eventTypes}": {
+      "parameters": [
+        {
+          "in": "query",
+          "name": "perPage",
+          "description": "Parameter to control pagination. perPage specifies the maximum number of events returned in one batch.",
+          "schema": {
+            "type": "integer",
+            "default": 30
+          }
+        },
+        {
+          "name": "eventTypes",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "oneOf": [
+              {
+                "type": "string",
+                "description": "The five types of EPCIS events.",
+                "enum": [
+                  "ObjectEvents",
+                  "AggregationEvents",
+                  "AssociationEvents",
+                  "TransformationEvents",
+                  "TransactionEvents",
+                  "all"
+                ]
+              },
+              {
+                "type": "string",
+                "description": "A virtual EPCIS event superset.",
+                "enum": [
+                  "all"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "options": {
+        "summary": "Query supported EPCIS version and related vocabularies/standards",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "GS1-EPCIS-version",
+            "description": "The EPCIS version",
+            "schema": {
+              "type": "string",
+              "pattern": "^\\d+(\\.\\d+)?$",
+              "example": "2.0"
+            }
+          },
+          {
+            "in": "header",
+            "name": "GS1-EPCIS-min",
+            "description": "The lowest EPCIS version supported",
+            "schema": {
+              "type": "string",
+              "pattern": "^\\d+(\\.\\d+)?$",
+              "example": "2.0"
+            }
+          },
+          {
+            "in": "header",
+            "name": "GS1-EPCIS-max",
+            "description": "The highest EPCIS version supported",
+            "schema": {
+              "type": "string",
+              "pattern": "^\\d+(\\.\\d+)?$"
+            }
+          },
+          {
+            "in": "header",
+            "name": "GS1-CBV-version",
+            "description": "The core business vocabulary version",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "GS1-EPCIS-extensions",
+            "description": "Specific EPCIS extensions supported (e.g. for FIT)",
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "in": "header",
+            "name": "GS1-CBV-extensions",
+            "description": "An optional header to specify the vocabulary for the top-level endpoints",
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "in": "header",
+            "name": "GS1-Vendor-version",
+            "description": "A versioning scheme that can be freely chosen by the vendor",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "uniqueItems": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Server can comply with the EPCIS related requirements from the client",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "description": "Returns all EPCIS events of a specific type, if specified.",
+        "responses": {
+          "200": {
+            "description": "Returns a list of EPCIS events of the type specified in the path.",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/NamedQueryMetaData"
+                    "type": "object"
                   },
                   "uniqueItems": true
                 }
@@ -972,7 +2487,7 @@
             }
           },
           "400": {
-            "description": "Exceptions defined in EPCIS 1.2, section 8.2.6 for `getQueryNames`",
+            "description": "Query exceptions defined in EPCIS",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -990,14 +2505,40 @@
                           "type": "string",
                           "format": "uri",
                           "enum": [
-                            "epcisExceptions:ValidationException",
-                            "epcisExceptions:ImplementationException"
+                            "epcisException:QueryValidationException",
+                            "epcisException:QueryParameterException",
+                            "epcisException:QueryTooComplexException"
                           ]
                         }
                       }
                     },
                     {
-                      "$ref": "#/components/schemas/RFC7807ProblemResponseBody"
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
                     }
                   ]
                 }
@@ -1023,13 +2564,1122 @@
                           "type": "string",
                           "format": "uri",
                           "enum": [
-                            "epcisExceptions:SecurityException"
+                            "epcisException:SecurityException"
                           ]
                         }
                       }
                     },
                     {
-                      "$ref": "#/components/schemas/RFC7807ProblemResponseBody"
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Client is unauthorized to access this resource.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "properties": {
+                        "status": {
+                          "type": "integer",
+                          "enum": [
+                            403
+                          ],
+                          "default": 403
+                        },
+                        "type": {
+                          "type": "string",
+                          "format": "uri",
+                          "enum": [
+                            "epcisException:SecurityException"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Event type not found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "properties": {
+                        "status": {
+                          "type": "integer",
+                          "enum": [
+                            404
+                          ],
+                          "default": 404
+                        },
+                        "type": {
+                          "type": "string",
+                          "format": "uri",
+                          "enum": [
+                            "epcisException:NoSuchNameException"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "Mismatch of the event type constraint in the path and in the query.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "properties": {
+                        "status": {
+                          "type": "integer",
+                          "enum": [
+                            412
+                          ],
+                          "default": 412
+                        },
+                        "type": {
+                          "type": "string",
+                          "format": "uri",
+                          "enum": [
+                            "epcisException:QueryParameterException"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "414": {
+            "description": "Query too long, if the total URL length exceeds 2000 characters.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "properties": {
+                        "status": {
+                          "type": "integer",
+                          "enum": [
+                            414
+                          ],
+                          "default": 414
+                        },
+                        "type": {
+                          "type": "string",
+                          "format": "uri",
+                          "enum": [
+                            "epcisException:QueryTooComplexException"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "This is a server-side problem caused when the query was resolved and executed.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "properties": {
+                        "status": {
+                          "type": "integer",
+                          "enum": [
+                            500
+                          ],
+                          "default": 500
+                        },
+                        "type": {
+                          "type": "string",
+                          "format": "uri",
+                          "enum": [
+                            "epcisException:ImplementationException"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/events/{eventTypes}/{eventID}": {
+      "parameters": [
+        {
+          "name": "eventTypes",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "oneOf": [
+              {
+                "type": "string",
+                "description": "The five types of EPCIS events.",
+                "enum": [
+                  "ObjectEvents",
+                  "AggregationEvents",
+                  "AssociationEvents",
+                  "TransformationEvents",
+                  "TransactionEvents",
+                  "all"
+                ]
+              },
+              {
+                "type": "string",
+                "description": "A virtual EPCIS event superset.",
+                "enum": [
+                  "all"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "eventID",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "options": {
+        "summary": "Query supported EPCIS version and related vocabularies/standards.",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "GS1-EPCIS-version",
+            "description": "The EPCIS version",
+            "schema": {
+              "type": "string",
+              "pattern": "^\\d+(\\.\\d+)?$",
+              "example": "2.0"
+            }
+          },
+          {
+            "in": "header",
+            "name": "GS1-EPCIS-min",
+            "description": "The lowest EPCIS version supported",
+            "schema": {
+              "type": "string",
+              "pattern": "^\\d+(\\.\\d+)?$",
+              "example": "2.0"
+            }
+          },
+          {
+            "in": "header",
+            "name": "GS1-EPCIS-max",
+            "description": "The highest EPCIS version supported",
+            "schema": {
+              "type": "string",
+              "pattern": "^\\d+(\\.\\d+)?$"
+            }
+          },
+          {
+            "in": "header",
+            "name": "GS1-CBV-version",
+            "description": "The core business vocabulary version",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "GS1-EPCIS-extensions",
+            "description": "Specific EPCIS extensions supported (e.g. for FIT)",
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "in": "header",
+            "name": "GS1-CBV-extensions",
+            "description": "An optional header to specify the vocabulary for the top-level endpoints",
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "in": "header",
+            "name": "GS1-Vendor-version",
+            "description": "A versioning scheme that can be freely chosen by the vendor",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "uniqueItems": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Server can comply with the EPCIS related requirements from the client",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Accesses the EPCIS event corresponding to the given event URLs.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authorization information is missing or invalid.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "properties": {
+                        "status": {
+                          "type": "integer",
+                          "enum": [
+                            401
+                          ],
+                          "default": 401
+                        },
+                        "type": {
+                          "type": "string",
+                          "format": "uri",
+                          "enum": [
+                            "epcisException:SecurityException"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Client is unauthorized to access this resource.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "properties": {
+                        "status": {
+                          "type": "integer",
+                          "enum": [
+                            403
+                          ],
+                          "default": 403
+                        },
+                        "type": {
+                          "type": "string",
+                          "format": "uri",
+                          "enum": [
+                            "epcisException:SecurityException"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Event type not found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "properties": {
+                        "status": {
+                          "type": "integer",
+                          "enum": [
+                            404
+                          ],
+                          "default": 404
+                        },
+                        "type": {
+                          "type": "string",
+                          "format": "uri",
+                          "enum": [
+                            "epcisException:NoSuchNameException"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "This is a server-side problem caused when the query was resolved and executed.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "properties": {
+                        "status": {
+                          "type": "integer",
+                          "enum": [
+                            500
+                          ],
+                          "default": 500
+                        },
+                        "type": {
+                          "type": "string",
+                          "format": "uri",
+                          "enum": [
+                            "epcisException:ImplementationException"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/queries": {
+      "options": {
+        "summary": "Query supported EPCIS version and related vocabularies/standards",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "GS1-EPCIS-version",
+            "description": "The EPCIS version",
+            "schema": {
+              "type": "string",
+              "pattern": "^\\d+(\\.\\d+)?$",
+              "example": "2.0"
+            }
+          },
+          {
+            "in": "header",
+            "name": "GS1-EPCIS-min",
+            "description": "The lowest EPCIS version supported",
+            "schema": {
+              "type": "string",
+              "pattern": "^\\d+(\\.\\d+)?$",
+              "example": "2.0"
+            }
+          },
+          {
+            "in": "header",
+            "name": "GS1-EPCIS-max",
+            "description": "The highest EPCIS version supported",
+            "schema": {
+              "type": "string",
+              "pattern": "^\\d+(\\.\\d+)?$"
+            }
+          },
+          {
+            "in": "header",
+            "name": "GS1-CBV-version",
+            "description": "The core business vocabulary version",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "GS1-EPCIS-extensions",
+            "description": "Specific EPCIS extensions supported (e.g. for FIT)",
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "in": "header",
+            "name": "GS1-CBV-extensions",
+            "description": "An optional header to specify the vocabulary for the top-level endpoints",
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "in": "header",
+            "name": "GS1-Vendor-version",
+            "description": "A versioning scheme that can be freely chosen by the vendor",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "uniqueItems": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Server can comply with the EPCIS related requirements from the client",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Returns a list of active queries available to that user.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "name",
+                      "query"
+                    ],
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "query": {
+                        "type": "string"
+                      },
+                      "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "epcisQuery": {
+                        "type": "array",
+                        "items": {
+                          "type": "object"
+                        },
+                        "externalDocs": {
+                          "url": "https://...",
+                          "description": "Filter EPCIS events by properties using the [EPCIS query JSON-Schema](section EPCIS query language)"
+                        }
+                      },
+                      "activeSubscriptions": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "callbacks": {
+                              "description": "A subscription that listens for events that match a query rule",
+                              "type": "object",
+                              "properties": {
+                                "eventUrl": {
+                                  "type": "string",
+                                  "format": "uri"
+                                }
+                              }
+                            },
+                            "createdAt": {
+                              "type": "string",
+                              "format": "date-time"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "uniqueItems": true
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Exceptions defined in EPCIS 1.2, section 8.2.6 for `getQueryNames`",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "properties": {
+                        "status": {
+                          "type": "integer",
+                          "enum": [
+                            400
+                          ],
+                          "default": 400
+                        },
+                        "type": {
+                          "type": "string",
+                          "format": "uri",
+                          "enum": [
+                            "epcisException:ValidationException",
+                            "epcisException:ImplementationException"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authorization information is missing or invalid.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "properties": {
+                        "status": {
+                          "type": "integer",
+                          "enum": [
+                            401
+                          ],
+                          "default": 401
+                        },
+                        "type": {
+                          "type": "string",
+                          "format": "uri",
+                          "enum": [
+                            "epcisException:SecurityException"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Client is unauthorized to access this resource.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "properties": {
+                        "status": {
+                          "type": "integer",
+                          "enum": [
+                            403
+                          ],
+                          "default": 403
+                        },
+                        "type": {
+                          "type": "string",
+                          "format": "uri",
+                          "enum": [
+                            "epcisException:SecurityException"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Event type or event ID not found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "properties": {
+                        "status": {
+                          "type": "integer",
+                          "enum": [
+                            404
+                          ],
+                          "default": 404
+                        },
+                        "type": {
+                          "type": "string",
+                          "format": "uri",
+                          "enum": [
+                            "epcisException:NoSuchNameException"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "This is a server-side problem caused when the query was resolved and executed.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "properties": {
+                        "status": {
+                          "type": "integer",
+                          "enum": [
+                            500
+                          ],
+                          "default": 500
+                        },
+                        "type": {
+                          "type": "string",
+                          "format": "uri",
+                          "enum": [
+                            "epcisException:ImplementationException"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
                     }
                   ]
                 }
@@ -1045,7 +3695,58 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NamedQueryMetaData"
+                "type": "object",
+                "required": [
+                  "name",
+                  "query"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "query": {
+                    "type": "string"
+                  },
+                  "createdAt": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "epcisQuery": {
+                    "type": "array",
+                    "items": {
+                      "type": "object"
+                    },
+                    "externalDocs": {
+                      "url": "https://...",
+                      "description": "Filter EPCIS events by properties using the [EPCIS query JSON-Schema](section EPCIS query language)"
+                    }
+                  },
+                  "activeSubscriptions": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "callbacks": {
+                          "description": "A subscription that listens for events that match a query rule",
+                          "type": "object",
+                          "properties": {
+                            "eventUrl": {
+                              "type": "string",
+                              "format": "uri"
+                            }
+                          }
+                        },
+                        "createdAt": {
+                          "type": "string",
+                          "format": "date-time"
+                        }
+                      }
+                    }
+                  }
+                }
               }
             }
           }
@@ -1081,15 +3782,40 @@
                           "type": "string",
                           "format": "uri",
                           "enum": [
-                            "epcisExceptions:QueryValidationException",
-                            "epcisExceptions:QueryParameterException",
-                            "epcisExceptions:QueryTooComplexException"
+                            "epcisException:QueryValidationException",
+                            "epcisException:QueryParameterException",
+                            "epcisException:QueryTooComplexException"
                           ]
                         }
                       }
                     },
                     {
-                      "$ref": "#/components/schemas/RFC7807ProblemResponseBody"
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
                     }
                   ]
                 }
@@ -1115,13 +3841,38 @@
                           "type": "string",
                           "format": "uri",
                           "enum": [
-                            "epcisExceptions:SecurityException"
+                            "epcisException:SecurityException"
                           ]
                         }
                       }
                     },
                     {
-                      "$ref": "#/components/schemas/RFC7807ProblemResponseBody"
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
                     }
                   ]
                 }
@@ -1147,92 +3898,38 @@
                           "type": "string",
                           "format": "uri",
                           "enum": [
-                            "epcisExceptions:QueryTooComplexException"
+                            "epcisException:QueryTooComplexException"
                           ]
                         }
                       }
                     },
                     {
-                      "$ref": "#/components/schemas/RFC7807ProblemResponseBody"
-                    }
-                  ]
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/queries/{queryName}": {
-      "options": {
-        "summary": "Query supported EPCIS version and related vocabularies/standards",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/EPCIS-version"
-          },
-          {
-            "$ref": "#/components/parameters/EPCIS-min"
-          },
-          {
-            "$ref": "#/components/parameters/EPCIS-max"
-          },
-          {
-            "$ref": "#/components/parameters/CBV-version"
-          },
-          {
-            "$ref": "#/components/parameters/EPCIS-extensions"
-          },
-          {
-            "$ref": "#/components/parameters/CBV-extensions"
-          },
-          {
-            "$ref": "#/components/parameters/Vendor-version"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Server can comply with the EPCIS-related requirements from the client",
-            "content": {
-              "application/json": {
-                "schema": {}
-              }
-            }
-          }
-        }
-      },
-      "delete": {
-        "responses": {
-          "201": {
-            "description": "Removes a named query and destroyes all subscriptions and open connections to clients."
-          },
-          "400": {
-            "description": "Errors that occur when deleting a named query",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "allOf": [
-                    {
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
                       "properties": {
-                        "status": {
-                          "type": "integer",
-                          "enum": [
-                            400
-                          ],
-                          "default": 400
-                        },
                         "type": {
                           "type": "string",
-                          "format": "uri",
-                          "enum": [
-                            "InvalidURIException",
-                            "SubscriptionControlsException",
-                            "ValidationException"
-                          ]
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri"
                         }
                       }
-                    },
-                    {
-                      "$ref": "#/components/schemas/RFC7807ProblemResponseBody"
                     }
                   ]
                 }
@@ -1242,28 +3939,10 @@
         }
       }
     },
-    "/queries/{queryName}/events": {
+    "/queries/{queryNames}": {
       "parameters": [
         {
-          "in": "header",
-          "name": "QUERY-minRecordTime",
-          "required": false,
-          "schema": {
-            "type": "string",
-            "format": "time"
-          }
-        },
-        {
-          "in": "query",
-          "name": "perPage",
-          "description": "Parameter to control pagination. perPage specifies the maximum number of events returned in one batch.",
-          "schema": {
-            "type": "integer",
-            "default": 30
-          }
-        },
-        {
-          "name": "queryName",
+          "name": "queryNames",
           "in": "path",
           "required": true,
           "schema": {
@@ -1275,30 +3954,473 @@
         "summary": "Query supported EPCIS version and related vocabularies/standards",
         "parameters": [
           {
-            "$ref": "#/components/parameters/EPCIS-version"
+            "in": "header",
+            "name": "GS1-EPCIS-version",
+            "description": "The EPCIS version",
+            "schema": {
+              "type": "string",
+              "pattern": "^\\d+(\\.\\d+)?$",
+              "example": "2.0"
+            }
           },
           {
-            "$ref": "#/components/parameters/EPCIS-min"
+            "in": "header",
+            "name": "GS1-EPCIS-min",
+            "description": "The lowest EPCIS version supported",
+            "schema": {
+              "type": "string",
+              "pattern": "^\\d+(\\.\\d+)?$",
+              "example": "2.0"
+            }
           },
           {
-            "$ref": "#/components/parameters/EPCIS-max"
+            "in": "header",
+            "name": "GS1-EPCIS-max",
+            "description": "The highest EPCIS version supported",
+            "schema": {
+              "type": "string",
+              "pattern": "^\\d+(\\.\\d+)?$"
+            }
           },
           {
-            "$ref": "#/components/parameters/CBV-version"
+            "in": "header",
+            "name": "GS1-CBV-version",
+            "description": "The core business vocabulary version",
+            "schema": {
+              "type": "string"
+            }
           },
           {
-            "$ref": "#/components/parameters/EPCIS-extensions"
+            "in": "header",
+            "name": "GS1-EPCIS-extensions",
+            "description": "Specific EPCIS extensions supported (e.g. for FIT)",
+            "schema": {
+              "type": "object"
+            }
           },
           {
-            "$ref": "#/components/parameters/CBV-extensions"
+            "in": "header",
+            "name": "GS1-CBV-extensions",
+            "description": "An optional header to specify the vocabulary for the top-level endpoints",
+            "schema": {
+              "type": "object"
+            }
           },
           {
-            "$ref": "#/components/parameters/Vendor-version"
+            "in": "header",
+            "name": "GS1-Vendor-version",
+            "description": "A versioning scheme that can be freely chosen by the vendor",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "uniqueItems": true
+            }
           }
         ],
         "responses": {
           "200": {
-            "description": "Server can comply with the EPCIS-related requirements from the client",
+            "description": "Server can comply with the EPCIS related requirements from the client",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "Removes a named query and disconnects clients",
+        "responses": {
+          "204": {
+            "description": "Query deleted and clients disconnected",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "401": {
+            "description": "Authorization information is missing or invalid.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "properties": {
+                        "status": {
+                          "type": "integer",
+                          "enum": [
+                            401
+                          ],
+                          "default": 401
+                        },
+                        "type": {
+                          "type": "string",
+                          "format": "uri",
+                          "enum": [
+                            "epcisException:SecurityException"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Client is unauthorized to access this resource.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "properties": {
+                        "status": {
+                          "type": "integer",
+                          "enum": [
+                            403
+                          ],
+                          "default": 403
+                        },
+                        "type": {
+                          "type": "string",
+                          "format": "uri",
+                          "enum": [
+                            "epcisException:SecurityException"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Exceptions defined in EPCIS 1.2, section 8.2.6 for `poll`.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "properties": {
+                        "status": {
+                          "type": "integer",
+                          "enum": [
+                            404
+                          ],
+                          "default": 404
+                        },
+                        "type": {
+                          "type": "string",
+                          "format": "uri",
+                          "enum": [
+                            "epcisException:NoSuchNameException"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "414": {
+            "description": "Query too long, if the total URL length exceeds 2000 characters.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "properties": {
+                        "status": {
+                          "type": "integer",
+                          "enum": [
+                            414
+                          ],
+                          "default": 414
+                        },
+                        "type": {
+                          "type": "string",
+                          "format": "uri",
+                          "enum": [
+                            "epcisException:QueryTooComplexException"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "This is a server-side problem caused when the query was resolved and executed.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "properties": {
+                        "status": {
+                          "type": "integer",
+                          "enum": [
+                            500
+                          ],
+                          "default": 500
+                        },
+                        "type": {
+                          "type": "string",
+                          "format": "uri",
+                          "enum": [
+                            "epcisException:ImplementationException"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/queries/{queryNames}/events": {
+      "parameters": [
+        {
+          "in": "query",
+          "name": "perPage",
+          "description": "Parameter to control pagination. perPage specifies the maximum number of events returned in one batch.",
+          "schema": {
+            "type": "integer",
+            "default": 30
+          }
+        },
+        {
+          "name": "queryNames",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "options": {
+        "summary": "Query supported EPCIS version and related vocabularies/standards",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "GS1-EPCIS-version",
+            "description": "The EPCIS version",
+            "schema": {
+              "type": "string",
+              "pattern": "^\\d+(\\.\\d+)?$",
+              "example": "2.0"
+            }
+          },
+          {
+            "in": "header",
+            "name": "GS1-EPCIS-min",
+            "description": "The lowest EPCIS version supported",
+            "schema": {
+              "type": "string",
+              "pattern": "^\\d+(\\.\\d+)?$",
+              "example": "2.0"
+            }
+          },
+          {
+            "in": "header",
+            "name": "GS1-EPCIS-max",
+            "description": "The highest EPCIS version supported",
+            "schema": {
+              "type": "string",
+              "pattern": "^\\d+(\\.\\d+)?$"
+            }
+          },
+          {
+            "in": "header",
+            "name": "GS1-CBV-version",
+            "description": "The core business vocabulary version",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "GS1-EPCIS-extensions",
+            "description": "Specific EPCIS extensions supported (e.g. for FIT)",
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "in": "header",
+            "name": "GS1-CBV-extensions",
+            "description": "An optional header to specify the vocabulary for the top-level endpoints",
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "in": "header",
+            "name": "GS1-Vendor-version",
+            "description": "A versioning scheme that can be freely chosen by the vendor",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "uniqueItems": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Server can comply with the EPCIS related requirements from the client",
             "content": {
               "application/json": {
                 "schema": {}
@@ -1325,24 +4447,6 @@
             "schema": {
               "type": "string",
               "default": "upgrade"
-            }
-          },
-          {
-            "in": "query",
-            "name": "initialRecordTime",
-            "description": "Parameter to specify from when onwards the query subscription applies. The default time is when the subscription was created.",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          },
-          {
-            "in": "query",
-            "name": "reportIfEmpty",
-            "description": "Parameter to request notification even when the query result is empty",
-            "schema": {
-              "type": "boolean",
-              "default": false
             }
           }
         ],
@@ -1399,14 +4503,38 @@
                           "type": "string",
                           "format": "uri",
                           "enum": [
-                            "epcisExceptions:ValidationException",
-                            "epcisExceptions:SubscriptionControlsException"
+                            "epcisException:ValidationException"
                           ]
                         }
                       }
                     },
                     {
-                      "$ref": "#/components/schemas/RFC7807ProblemResponseBody"
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
                     }
                   ]
                 }
@@ -1432,13 +4560,95 @@
                           "type": "string",
                           "format": "uri",
                           "enum": [
-                            "epcisExceptions:SecurityException"
+                            "epcisException:SecurityException"
                           ]
                         }
                       }
                     },
                     {
-                      "$ref": "#/components/schemas/RFC7807ProblemResponseBody"
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Client is unauthorized to access this resource.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "properties": {
+                        "status": {
+                          "type": "integer",
+                          "enum": [
+                            403
+                          ],
+                          "default": 403
+                        },
+                        "type": {
+                          "type": "string",
+                          "format": "uri",
+                          "enum": [
+                            "epcisException:SecurityException"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
                     }
                   ]
                 }
@@ -1456,21 +4666,46 @@
                         "status": {
                           "type": "integer",
                           "enum": [
-                            401
+                            404
                           ],
-                          "default": 401
+                          "default": 404
                         },
                         "type": {
                           "type": "string",
                           "format": "uri",
                           "enum": [
-                            "epcisExceptions:NoSuchNameException"
+                            "epcisException:NoSuchNameException"
                           ]
                         }
                       }
                     },
                     {
-                      "$ref": "#/components/schemas/RFC7807ProblemResponseBody"
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
                     }
                   ]
                 }
@@ -1496,13 +4731,38 @@
                           "type": "string",
                           "format": "uri",
                           "enum": [
-                            "epcisExceptions:QueryTooComplexException"
+                            "epcisException:QueryTooComplexException"
                           ]
                         }
                       }
                     },
                     {
-                      "$ref": "#/components/schemas/RFC7807ProblemResponseBody"
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
                     }
                   ]
                 }
@@ -1528,13 +4788,38 @@
                           "type": "string",
                           "format": "uri",
                           "enum": [
-                            "epcisExceptions:ImplementationException"
+                            "epcisException:ImplementationException"
                           ]
                         }
                       }
                     },
                     {
-                      "$ref": "#/components/schemas/RFC7807ProblemResponseBody"
+                      "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "title",
+                        "detail"
+                      ],
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "instance": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
                     }
                   ]
                 }
@@ -1546,6 +4831,464 @@
     }
   },
   "components": {
+    "responses": {
+      "500ImplementationException": {
+        "description": "This is a server-side problem caused when the query was resolved and executed.",
+        "content": {
+          "application/problem+json": {
+            "schema": {
+              "allOf": [
+                {
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "enum": [
+                        500
+                      ],
+                      "default": 500
+                    },
+                    "type": {
+                      "type": "string",
+                      "format": "uri",
+                      "enum": [
+                        "epcisException:ImplementationException"
+                      ]
+                    }
+                  }
+                },
+                {
+                  "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                  "type": "object",
+                  "required": [
+                    "type",
+                    "title",
+                    "detail"
+                  ],
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string",
+                      "format": "uri"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "404EventTypeOrTopLevelOrEventIdNotFound": {
+        "description": "Either Top-level resource, event type or event ID not found",
+        "content": {
+          "application/problem+json": {
+            "schema": {
+              "allOf": [
+                {
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "enum": [
+                        404
+                      ],
+                      "default": 404
+                    },
+                    "type": {
+                      "type": "string",
+                      "format": "uri",
+                      "enum": [
+                        "epcisException:NoSuchNameException"
+                      ]
+                    }
+                  }
+                },
+                {
+                  "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                  "type": "object",
+                  "required": [
+                    "type",
+                    "title",
+                    "detail"
+                  ],
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string",
+                      "format": "uri"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "404EventTypeOrEventIdNotFound": {
+        "description": "Event type or event ID not found",
+        "content": {
+          "application/problem+json": {
+            "schema": {
+              "allOf": [
+                {
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "enum": [
+                        404
+                      ],
+                      "default": 404
+                    },
+                    "type": {
+                      "type": "string",
+                      "format": "uri",
+                      "enum": [
+                        "epcisException:NoSuchNameException"
+                      ]
+                    }
+                  }
+                },
+                {
+                  "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                  "type": "object",
+                  "required": [
+                    "type",
+                    "title",
+                    "detail"
+                  ],
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string",
+                      "format": "uri"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "404QueryNameNotFound": {
+        "description": "Exceptions defined in EPCIS 1.2, section 8.2.6 for `poll`.",
+        "content": {
+          "application/problem+json": {
+            "schema": {
+              "allOf": [
+                {
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "enum": [
+                        404
+                      ],
+                      "default": 404
+                    },
+                    "type": {
+                      "type": "string",
+                      "format": "uri",
+                      "enum": [
+                        "epcisException:NoSuchNameException"
+                      ]
+                    }
+                  }
+                },
+                {
+                  "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                  "type": "object",
+                  "required": [
+                    "type",
+                    "title",
+                    "detail"
+                  ],
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string",
+                      "format": "uri"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "403ClientUnauthorized": {
+        "description": "Client is unauthorized to access this resource.",
+        "content": {
+          "application/problem+json": {
+            "schema": {
+              "allOf": [
+                {
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "enum": [
+                        403
+                      ],
+                      "default": 403
+                    },
+                    "type": {
+                      "type": "string",
+                      "format": "uri",
+                      "enum": [
+                        "epcisException:SecurityException"
+                      ]
+                    }
+                  }
+                },
+                {
+                  "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                  "type": "object",
+                  "required": [
+                    "type",
+                    "title",
+                    "detail"
+                  ],
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string",
+                      "format": "uri"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "404EventTypeOrTopLevelNotFound": {
+        "description": "Top-level resource or event type not found",
+        "content": {
+          "application/problem+json": {
+            "schema": {
+              "allOf": [
+                {
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "enum": [
+                        404
+                      ],
+                      "default": 404
+                    },
+                    "type": {
+                      "type": "string",
+                      "format": "uri",
+                      "enum": [
+                        "epcisException:NoSuchNameException"
+                      ]
+                    }
+                  }
+                },
+                {
+                  "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                  "type": "object",
+                  "required": [
+                    "type",
+                    "title",
+                    "detail"
+                  ],
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string",
+                      "format": "uri"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "404EventTypeNotFound": {
+        "description": "Event type not found",
+        "content": {
+          "application/problem+json": {
+            "schema": {
+              "allOf": [
+                {
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "enum": [
+                        404
+                      ],
+                      "default": 404
+                    },
+                    "type": {
+                      "type": "string",
+                      "format": "uri",
+                      "enum": [
+                        "epcisException:NoSuchNameException"
+                      ]
+                    }
+                  }
+                },
+                {
+                  "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                  "type": "object",
+                  "required": [
+                    "type",
+                    "title",
+                    "detail"
+                  ],
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string",
+                      "format": "uri"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "401AuthorizationInformationMissing": {
+        "description": "Authorization information is missing or invalid.",
+        "content": {
+          "application/problem+json": {
+            "schema": {
+              "allOf": [
+                {
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "enum": [
+                        401
+                      ],
+                      "default": 401
+                    },
+                    "type": {
+                      "type": "string",
+                      "format": "uri",
+                      "enum": [
+                        "epcisException:SecurityException"
+                      ]
+                    }
+                  }
+                },
+                {
+                  "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
+                  "type": "object",
+                  "required": [
+                    "type",
+                    "title",
+                    "detail"
+                  ],
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "instance": {
+                      "type": "string",
+                      "format": "uri"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
     "schemas": {
       "RFC7807ProblemResponseBody": {
         "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
@@ -1593,12 +5336,38 @@
             "format": "date-time"
           },
           "epcisQuery": {
-            "$ref": "#/components/schemas/EPCISQuery"
+            "type": "array",
+            "items": {
+              "type": "object"
+            },
+            "externalDocs": {
+              "url": "https://...",
+              "description": "Filter EPCIS events by properties using the [EPCIS query JSON-Schema](section EPCIS query language)"
+            }
           },
           "activeSubscriptions": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/QuerySubscriptionMetaData"
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "callbacks": {
+                  "description": "A subscription that listens for events that match a query rule",
+                  "type": "object",
+                  "properties": {
+                    "eventUrl": {
+                      "type": "string",
+                      "format": "uri"
+                    }
+                  }
+                },
+                "createdAt": {
+                  "type": "string",
+                  "format": "date-time"
+                }
+              }
             }
           }
         }
@@ -1617,11 +5386,17 @@
         "type": "object",
         "properties": {
           "id": {
-            "type": "string",
-            "format": "uuid"
+            "type": "string"
           },
           "callbacks": {
-            "$ref": "#/components/schemas/EventCallbackUrls"
+            "description": "A subscription that listens for events that match a query rule",
+            "type": "object",
+            "properties": {
+              "eventUrl": {
+                "type": "string",
+                "format": "uri"
+              }
+            }
           },
           "createdAt": {
             "type": "string",
@@ -1660,9 +5435,70 @@
       }
     },
     "parameters": {
-      "EPCIS-version": {
+      "EventID": {
+        "name": "eventID",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "EventTypes": {
+        "name": "eventTypes",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "oneOf": [
+            {
+              "type": "string",
+              "description": "The five types of EPCIS events.",
+              "enum": [
+                "ObjectEvents",
+                "AggregationEvents",
+                "AssociationEvents",
+                "TransformationEvents",
+                "TransactionEvents",
+                "all"
+              ]
+            },
+            {
+              "type": "string",
+              "description": "A virtual EPCIS event superset.",
+              "enum": [
+                "all"
+              ]
+            }
+          ]
+        }
+      },
+      "PerPage": {
+        "in": "query",
+        "name": "perPage",
+        "description": "Parameter to control pagination. perPage specifies the maximum number of events returned in one batch.",
+        "schema": {
+          "type": "integer",
+          "default": 30
+        }
+      },
+      "TopLevelResources": {
+        "in": "path",
+        "name": "topLevelResources",
+        "description": "A top-level resource to access events.",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "epcs",
+            "bizSteps",
+            "bizLocations",
+            "readPoints",
+            "dispositions"
+          ]
+        }
+      },
+      "GS1-EPCIS-version": {
         "in": "header",
-        "name": "EPCIS-version",
+        "name": "GS1-EPCIS-version",
         "description": "The EPCIS version",
         "schema": {
           "type": "string",
@@ -1670,9 +5506,9 @@
           "example": "2.0"
         }
       },
-      "EPCIS-min": {
+      "GS1-EPCIS-min": {
         "in": "header",
-        "name": "EPCIS-min",
+        "name": "GS1-EPCIS-min",
         "description": "The lowest EPCIS version supported",
         "schema": {
           "type": "string",
@@ -1680,34 +5516,34 @@
           "example": "2.0"
         }
       },
-      "EPCIS-max": {
+      "GS1-EPCIS-max": {
         "in": "header",
-        "name": "EPCIS-max",
+        "name": "GS1-EPCIS-max",
         "description": "The highest EPCIS version supported",
         "schema": {
           "type": "string",
           "pattern": "^\\d+(\\.\\d+)?$"
         }
       },
-      "CBV-version": {
+      "GS1-CBV-version": {
         "in": "header",
-        "name": "CBV-version",
+        "name": "GS1-CBV-version",
         "description": "The core business vocabulary version",
         "schema": {
           "type": "string"
         }
       },
-      "EPCIS-extensions": {
+      "GS1-EPCIS-extensions": {
         "in": "header",
-        "name": "EPCIS-extensions",
+        "name": "GS1-EPCIS-extensions",
         "description": "Specific EPCIS extensions supported (e.g. for FIT)",
         "schema": {
           "type": "object"
         }
       },
-      "Vendor-version": {
+      "GS1-Vendor-version": {
         "in": "header",
-        "name": "Vendor-version",
+        "name": "GS1-Vendor-version",
         "description": "A versioning scheme that can be freely chosen by the vendor",
         "schema": {
           "type": "array",
@@ -1717,26 +5553,26 @@
           "uniqueItems": true
         }
       },
-      "CBV-extensions": {
+      "GS1-CBV-extensions": {
         "in": "header",
-        "name": "CBV-extensions",
+        "name": "GS1-CBV-extensions",
         "description": "An optional header to specify the vocabulary for the top-level endpoints",
         "schema": {
           "type": "object"
         }
       },
-      "CAPTURE-limit": {
+      "GS1-CAPTURE-limit": {
         "in": "header",
-        "name": "CAPTURE-limit",
+        "name": "GS1-CAPTURE-limit",
         "description": "The maximum number of EPCIS events that can be captured per call",
         "schema": {
           "type": "string",
           "pattern": "^(\\d+|\\*)$"
         }
       },
-      "CAPTURE-file-size-limit": {
+      "GS1-CAPTURE-file-size-limit": {
         "in": "header",
-        "name": "CAPTURE-file-size-limit",
+        "name": "GS1-CAPTURE-file-size-limit",
         "description": "The maximum event document length in octets (8-bit bytes)",
         "schema": {
           "type": "string",
