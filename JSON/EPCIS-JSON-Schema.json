@@ -67,7 +67,7 @@
     "errorDeclaration": {
       "type": "object",
       "properties": {
-        "declarationtime": {
+        "declarationTime": {
           "$ref": "#/definitions/time"
         },
         "reason": {
