@@ -176,7 +176,7 @@
 					</extension>
 				</extension>
 			</ObjectEvent>
-			<!-- Case 7: accommodating non-decimal values -->
+			<!-- Case 7: accommodating non-float values -->
 			<ObjectEvent>
 				<eventTime>2019-10-07T16:00:00.000+01:00</eventTime>
 				<eventTimeZoneOffset>+01:00</eventTimeZoneOffset>
