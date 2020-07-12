@@ -20,7 +20,7 @@ Server->+Server: onEvent
 Server->+Client: POST /onEvent
 note over Server, Client:
 {
-    "@context": "https://id.gs1.org/epcis-context.jsonld",
+    "@context": "https://www.gs1.org/docs/epc/epcis_2_0_draft_schema_20200713/EPCIS-2.0-context.jsonld",
     "isA": "EPCISDocument",
     "creationDate": "2019-07-11T11:30:47+00:00",
     "schemaVersion": 1.2,
