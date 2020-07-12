@@ -22,12 +22,12 @@
 			"children": {
 				"@type": "@id"
 			},
-			"@vocab": "https://id.gs1.org/epcis-masterdata/",
+			"@vocab": "https://ns.gs1.org/epcis-masterdata/",
 			"rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
 			"rdfs": "http://www.w3.org/2000/01/rdf-schema#",
 			"xsd": "http://www.w3.org/2001/XMLSchema#",
 			"dcterms": "http://purl.org/dc/terms/",
-			"epcis": "https://id.gs1.org/epcis/",
+			"epcis": "https://ns.gs1.org/epcis/",
 			"vtype": "urn:epcglobal:epcis:vtype:",
 			"cbvmda": "urn:epcglobal:cbv:mda:"
 		},
