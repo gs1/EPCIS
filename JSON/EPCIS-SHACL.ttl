@@ -5,8 +5,29 @@
 @prefix schema: <http://schema.org/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix epcis: <https://id.gs1.org/epcis/> .
+@prefix epcis: <https://ns.gs1.org/epcis/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 
+
+epcis:EventListShape
+    a sh:NodeShape;
+    sh:targetObjectsOf epcis:eventList;
+    sh:property epcis:EventType_Constraint .
+    
+
+epcis:EventType_Constraint
+    sh:path rdf:type;
+    sh:in epcis:EventTypeEnum;
+    sh:message "eventList must contain valid subclasses of EPCISEvent".
+
+
+epcis:EventTypeEnum owl:sameAs (
+   epcis:ObjectEvent
+   epcis:AggregationEvent
+   epcis:TransactionEvent
+   epcis:TransformationEvent
+   epcis:AssociationEvent
+).
 
 
 epcis:ObjectEventShape
@@ -479,14 +500,74 @@ epcis:ParentID_TypeConstraint owl:sameAs [
     sh:message "parentID must be an xsd:anyURI." 
 ].
 
-epcis:PersistentDisposition_TypeConstraint
+
+
+epcis:EventList_TypeConstraint 
+    sh:path epcis:eventList ;
+    sh:message "eventList must be specified within epcisBody";
+    sh:minCount 1 .
+    
+
+
+epcis:EPCISDocumentShape 
+    a sh:NodeShape;
+    sh:targetClass epcis:EPCISDocument  ;
+    sh:property epcis:schemaVersion_IsMandatory;
+    sh:property epcis:creationDate_IsMandatory ;
+    sh:property epcis:epcisBody_IsMandatory .
+   
+    
+    
+epcis:schemaVersion_IsMandatory 
+    sh:path owl:versionInfo ;
+    sh:minCount 1;
+    sh:maxCount 1;
+    sh:datatype  xsd:string;
+    sh:message "schemaVersion must be specified within EPCISDocument".
+
+epcis:creationDate_IsMandatory
+    sh:path dcterms:created ;
+    sh:minCount 1;
+    sh:maxCount 1;
+    sh:datatype  xsd:dateTime;
+    sh:message "creationDate must be specified within EPCISDocument".
+     
+epcis:epcisBodyShape
+    a sh:NodeShape;
+    sh:property epcis:EventList_TypeConstraint .
+
+
+epcis:epcisBody_IsMandatory
+    sh:path epcis:epcisBody ;
+    sh:minCount 1;
+    sh:maxCount 1;
+    sh:node epcis:epcisBodyShape ;
+    sh:message "epcisBody must be specified within EPCISDocument".
+   
+
+
+
+    
+
+
+epcis:PersistentDispositionShape 
     a sh:NodeShape;
     sh:closed true;
     sh:property epcis:Set_TypeConstraint ;
     sh:property epcis:Unset_TypeConstraint .
 
+
+epcis:PersistentDisposition_TypeConstraint
+    sh:path epcis:persistentDisposition ;
+    sh:minCount 0;
+    sh:maxCount 1;
+    sh:node epcis:PersistentDispositionShape ;
+    sh:name  "persistentDisposition type constraint" ;
+    sh:message "persistentDisposition expects an object containing properties set and/or unset to be populated." .
+
 epcis:Set_TypeConstraint owl:sameAs [
     sh:path epcis:set ;
+    sh:minCount 0;
     sh:nodeKind sh:IRI ;
     sh:name "set type constraint" ;
     sh:message "set must be an xsd:anyURI." 
@@ -494,6 +575,7 @@ epcis:Set_TypeConstraint owl:sameAs [
 
 epcis:Unset_TypeConstraint owl:sameAs [
     sh:path epcis:unset ;
+    sh:minCount 0;
     sh:nodeKind sh:IRI ;
     sh:name "unset type constraint" ;
     sh:message "unset must be an xsd:anyURI." 
