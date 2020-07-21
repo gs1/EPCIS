@@ -124,7 +124,6 @@
       "type": "array",
       "items": {
         "type": "string",
-        "format": "uri",
         "format": "uri"
       }
     },
