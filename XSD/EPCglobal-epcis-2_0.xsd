@@ -197,7 +197,7 @@ GS1 retains the right to make changes to this document at any time, without noti
   <xsd:complexType name="EPCISEventListExtension2Type">
     <xsd:sequence>
       <xsd:element name="AssociationEvent" type="epcis:AssociationEventType"/>
-      <xsd:element name="extension" type="epcis:EPCISEventListExtension3Type"/>
+      <xsd:element name="extension" type="epcis:EPCISEventListExtension3Type" minOccurs="0"/>
     </xsd:sequence>
     <xsd:anyAttribute processContents="lax"/>
   </xsd:complexType>
@@ -783,7 +783,7 @@ GS1 retains the right to make changes to this document at any time, without noti
       <xsd:extension base="epcis:EPCISEventType">
         <xsd:sequence>
           <xsd:element name="parentID" type="epcis:ParentIDType" minOccurs="1"/>
-          <xsd:element name="childEPCs" type="epcis:EPCListType"/>
+          <xsd:element name="childEPCs" type="epcis:EPCListType" minOccurs="0"/>
           <xsd:element name="childQuantityList" type="epcis:QuantityListType" minOccurs="0"/>
           <xsd:element name="action" type="epcis:ActionType"/>
           <xsd:element name="bizStep" type="epcis:BusinessStepIDType" minOccurs="0"/>
