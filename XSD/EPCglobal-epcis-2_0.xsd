@@ -239,8 +239,8 @@ GS1 retains the right to make changes to this document at any time, without noti
   <!-- Since 2.0 -->
   <xsd:complexType name="PersistentDispositionType">
     <xsd:sequence>
-      <xsd:element name="unset" type="epcis:DispositionIDType" minOccurs="0"/>
-      <xsd:element name="set" type="epcis:DispositionIDType" minOccurs="0"/>
+      <xsd:element name="unset" type="epcis:DispositionIDType" minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name="set" type="epcis:DispositionIDType" minOccurs="0" maxOccurs="unbounded"/>
     </xsd:sequence>
   </xsd:complexType>
 
