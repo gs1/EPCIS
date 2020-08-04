@@ -67,7 +67,7 @@
 			  "urn:epc:id:sgtin:4012345.077889.28"
 		  ],
 		
-		  "bizStep": "urn:epcglobal:cbv:bizstep:transforming",
+		  "bizStep": "urn:epcglobal:cbv:bizstep:commissioning",
 		  "disposition": "urn:epcglobal:cbv:disp:in_progress",
 		  "readPoint": "urn:epc:id:sgln:4012345.00001.0",
 		  "ilmd": {"example:bestBeforeDate":"2014-12-10","example:batch":"XYZ" },
