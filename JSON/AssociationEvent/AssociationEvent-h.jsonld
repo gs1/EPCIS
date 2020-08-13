@@ -56,7 +56,7 @@
 		  "eventTimeZoneOffset": "+01:00",
 		  "eventID": "urn:uuid:fd338495-0e6d-41dd-afee-a862ecd32518",
 		  "parentID":"urn:epc:id:grai:4012345.55555.987",
-		  "childEPCs": ["urn:epc:id:giai:4000001.12345","urn:epc:id:giai:4000001.12346"]
+		  "childEPCs": ["urn:epc:id:giai:4000001.12345","urn:epc:id:giai:4000001.12346"],
 		  "action": "DELETE",
 		  "bizStep": "urn:epcglobal:cbv:bizstep:disassembling",
 		  "readPoint": "urn:epc:id:sgln:4012345.00002.0"

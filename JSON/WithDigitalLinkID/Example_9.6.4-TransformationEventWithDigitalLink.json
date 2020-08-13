@@ -1,0 +1,124 @@
+{
+  "id": "_:document1",
+  "isA": "EPCISDocument",
+  "schemaVersion": 2.0,
+  "creationDate": "2013-06-04T14:59:02.099+02:00",
+  "format": "application/ld+json",
+  "epcisBody": {
+    "eventList": [
+      {
+        "id": "_:event_example_9_6_4_1",
+        "isA": "TransformationEvent",
+        "eventTime": "2013-10-31T14:58:56.591Z",
+        "eventTimeZoneOffset": "+02:00",
+        "inputEPCList": [ "urn:epc:id:sgtin:4012345.011122.25", "urn:epc:id:sgtin:4000001.065432.99886655" ],
+        "inputQuantityList": [
+          { "epcClass": "urn:epc:class:lgtin:4012345.011111.4444", "quantity": 10, "uom": "KGM" },
+          { "epcClass": "https://id.gs1.org/01/00614141777778/10/987", "quantity": 30 },
+          { "epcClass": "https://id.gs1.org/01/04012345666663", "quantity": 220 }
+        ],
+        "outputEPCList": [
+          "urn:epc:id:sgtin:4012345.077889.25",
+          "urn:epc:id:sgtin:4012345.077889.26",
+          "urn:epc:id:sgtin:4012345.077889.27",
+          "urn:epc:id:sgtin:4012345.077889.28"
+        ],
+        "bizStep": "urn:epcglobal:cbv:bizstep:commissioning",
+        "disposition": "urn:epcglobal:cbv:disp:in_progress",
+        "readPoint": "urn:epc:id:sgln:4012345.00001.0",
+        "ilmd": {
+          "example:bestBeforeDate": "2014-12-10",
+          "example:batch": "XYZ"
+        },
+        "example:myField": "Example of a vendor/user extension"
+      }
+    ]
+  },
+  "@context": {
+    "@vocab": "https://ns.gs1.org/epcis/",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "epcis": "https://ns.gs1.org/epcis/",
+    "example": "http://ns.example.com/epcis/",
+    "eventTime": {
+      "@type": "xsd:dateTime"
+    },
+    "recordTime": {
+      "@type": "xsd:dateTime"
+    },
+    "declarationTime": {
+      "@type": "xsd:dateTime"
+    },
+    "eventTimeZoneOffset": {
+      "@type": "xsd:string"
+    },
+    "action": {
+      "@type": "xsd:string"
+    },
+    "quantity": {
+      "@type": "xsd:decimal"
+    },
+    "uom": {
+      "@type": "xsd:string"
+    },
+    "epcList": {
+      "@type": "@id"
+    },
+    "epcClass": {
+      "@type": "@id"
+    },
+    "parentID": {
+      "@type": "@id"
+    },
+    "childEPCs": {
+      "@type": "@id"
+    },
+    "inputEPCList": {
+      "@type": "@id"
+    },
+    "outputEPCList": {
+      "@type": "@id"
+    },
+    "bizStep": {
+      "@type": "@id"
+    },
+    "disposition": {
+      "@type": "@id"
+    },
+    "readPoint": {
+      "@type": "@id"
+    },
+    "bizLocation": {
+      "@type": "@id"
+    },
+    "bizTransaction": {
+      "@type": "@id"
+    },
+    "source": {
+      "@type": "@id"
+    },
+    "destination": {
+      "@type": "@id"
+    },
+    "type": {
+      "@type": "@id"
+    },
+    "isA": "@type",
+    "id": "@id",
+    "creationDate": {
+      "@id": "dcterms:created",
+      "@type": "xsd:dateTime"
+    },
+    "format": {
+      "@id": "dcterms:format",
+      "@type": "xsd:string"
+    },
+    "schemaVersion": {
+      "@id": "owl:versionInfo",
+      "@type": "xsd:string"
+    }
+  }
+}
+

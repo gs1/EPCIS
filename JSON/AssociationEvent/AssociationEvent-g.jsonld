@@ -54,7 +54,7 @@
 		  "isA": "AssociationEvent",
 		  "eventTime": "2019-11-04T14:00:00.000+01:00",
 		  "eventTimeZoneOffset": "+01:00",
-		  "errorDeclaration": {"declarationTime":"2019-11-07T14:00:00.000+01:00","reason":"urn:epcglobal:cbv:er:incorrect_data","correctiveEventIDs":["urn:uuid:fd338495-0e6d-41dd-afee-a862ecd32518"]}
+		  "errorDeclaration": {"declarationTime":"2019-11-07T14:00:00.000+01:00","reason":"urn:epcglobal:cbv:er:incorrect_data","correctiveEventIDs":["urn:uuid:fd338495-0e6d-41dd-afee-a862ecd32518"]},
 		  "parentID":"urn:epc:id:grai:4012345.55555.987",
 		  "action": "DELETE",
 		  "bizStep": "urn:epcglobal:cbv:bizstep:disassembling",
