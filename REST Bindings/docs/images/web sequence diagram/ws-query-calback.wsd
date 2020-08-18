@@ -1,0 +1,18 @@
+participant Client as c
+participant Server as s
+c->s: GET /queries/AnEPCISQuery/events?bizStep=EQ_bizStep=urn:epcglobal:cbv:bizstep:shipping HTTP/1.1 
+note over Client, Server:
+Host: example.com
+Upgrade: websocket
+Connection: Upgrade
+...
+end note
+s-->c: HTTP/1.1 101 Switching Protocols
+note over Server, Client:
+Upgrade: websocket
+Connection: Upgrade
+...
+end note
+s->s: capture({..., "bizStep": "urn:epcglobal:cbv:bizstep:shipping",...})
+s->c: {..., "bizStep": "urn:epcglobal:cbv:bizstep:shipping",...}
+c->s: close() 

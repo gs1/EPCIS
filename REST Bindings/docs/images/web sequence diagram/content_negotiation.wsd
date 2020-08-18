@@ -1,0 +1,46 @@
+participant Client as c
+participant Server as s
+
+c->s: OPTIONS /events HTTP/1.1
+note over c, s:
+Host: example.com
+...
+end note
+
+s-->c: HTTP/1.1 204 No Content
+note over s, c:
+Allow: GET, OPTIONS
+Accept: application/ld+json
+GS1-EPCIS-min: 2.0
+GS1-EPCIS-max: 2.0
+GS1-CBV-version: 1.0
+GS1-EPCIS-extensions: example-epc-ext:<https://example.com/epcis>
+GS1-Vendor-version: example-version-1.0
+GS1-CBV-extensions: ex1: <https://example.com/>, vendor1: <https://example.org/defs#>
+...
+end note
+c->s: GET /events HTTP/1.1
+note over c, s:
+Host: example.com
+Content-Type: application/ld+json
+GS1-EPCIS-version: 2.0
+...
+end note
+s-->c: HTTP/1.1 200 OK
+note over c, s:
+GS1-EPCIS-version: 2.0
+Content-Type: application/ld+json
+Content-Length: 2051
+...
+{
+    "@context": "https://example.com/epcis-context.jsonld",
+    "isA": "EPCISDocument",
+    "creationDate": "2019-13-06T11:30:47+00:00",
+    "format": "application/ld+json",
+    "epcisBody": {
+      "eventList": [
+        {
+          "eventID": "oe1",
+...
+}
+end note
