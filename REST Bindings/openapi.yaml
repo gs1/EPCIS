@@ -94,6 +94,8 @@ paths:
 
   /capture/{captureID}:
     parameters:
+      - $ref: '#/components/parameters/PerPage'
+      - $ref:  '#/components/parameters/NextPageToken'
       - in: path
         name: captureID
         required: true
@@ -175,6 +177,7 @@ paths:
   /{topLevelResources}/events:
     parameters:
       - $ref: '#/components/parameters/PerPage'
+      - $ref:  '#/components/parameters/NextPageToken'
       - $ref: '#/components/parameters/TopLevelResources'
 
     options:
@@ -387,6 +390,7 @@ paths:
   /events/{eventTypes}:
     parameters:
       - $ref: '#/components/parameters/PerPage'
+      - $ref:  '#/components/parameters/NextPageToken'
       - $ref: '#/components/parameters/EventTypes'
     options:
       summary: Query supported EPCIS version and related vocabularies/standards
@@ -637,11 +641,7 @@ paths:
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
   /queries/{queryNames}:
     parameters:
-      - name: queryNames
-        in: path
-        required: true
-        schema:
-          type: string
+     - $ref: '#/components/parameters/QueryNames'
     options:
       summary: Query supported EPCIS version and related vocabularies/standards
       parameters:
@@ -695,14 +695,12 @@ paths:
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
         '500':
           $ref: '#/components/responses/500ImplementationException'
+
   /queries/{queryNames}/events:
     parameters:
+      - $ref: '#/components/parameters/QueryNames'
       - $ref: '#/components/parameters/PerPage'
-      - name: queryNames
-        in: path
-        required: true
-        schema:
-          type: string
+      - $ref:  '#/components/parameters/NextPageToken'
     options:
       summary: Query supported EPCIS version and related vocabularies/standards
       parameters:
@@ -1055,6 +1053,13 @@ components:
         oneOf:
           - $ref: '#/components/schemas/EPCISEventTypes'
           - $ref: '#/components/schemas/AllEvent'
+    QueryNames:
+        in: path
+        name: queryNames
+        description: Unique name of a named query
+        required: true
+        schema:
+          type: string
     PerPage:
       in: query
       name: perPage
