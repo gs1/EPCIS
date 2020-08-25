@@ -1062,6 +1062,12 @@ components:
       schema:
         type: integer
         default: 30
+    NextPageToken:
+      in: query
+      name: nextPageToken
+      description: Paramter that point to the next list of results when requesting a list of events that is larger than the value specified with the perPage parameter.
+      schema:
+        type: string
     TopLevelResources:
       in: path
       name: topLevelResources
