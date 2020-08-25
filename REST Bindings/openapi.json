@@ -94,7 +94,7 @@
                           "type": "string",
                           "format": "uri",
                           "enum": [
-                            "epcisExceptions:ValidationException"
+                            "epcisException:ValidationException"
                           ]
                         }
                       }
@@ -108,36 +108,10 @@
             }
           },
           "401": {
-            "description": "Authorization information is missing or invalid.",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "allOf": [
-                    {
-                      "properties": {
-                        "status": {
-                          "type": "integer",
-                          "enum": [
-                            401
-                          ],
-                          "default": 401
-                        },
-                        "type": {
-                          "type": "string",
-                          "format": "uri",
-                          "enum": [
-                            "epcisExceptions:SecurityException"
-                          ]
-                        }
-                      }
-                    },
-                    {
-                      "$ref": "#/components/schemas/RFC7807ProblemResponseBody"
-                    }
-                  ]
-                }
-              }
-            }
+            "$ref": "#/components/responses/401AuthorizationInformationMissing"
+          },
+          "403": {
+            "$ref": "#/components/responses/403ClientUnauthorized"
           },
           "413": {
             "description": "The client exceeded the limit, set in GS1-CAPTURE-limit, of events that can be captured per call.",
@@ -163,6 +137,13 @@
                             413
                           ],
                           "default": 413
+                        },
+                        "type": {
+                          "type": "string",
+                          "format": "uri",
+                          "enum": [
+                            "epcisException:CaptureException"
+                          ]
                         }
                       }
                     },
@@ -180,12 +161,17 @@
     "/capture/{captureID}": {
       "parameters": [
         {
+          "$ref": "#/components/parameters/PerPage"
+        },
+        {
+          "$ref": "#/components/parameters/NextPageToken"
+        },
+        {
           "in": "path",
           "name": "captureID",
           "required": true,
           "schema": {
-            "type": "string",
-            "format": "uuid"
+            "type": "string"
           }
         }
       ],
@@ -260,7 +246,7 @@
                           "type": "string",
                           "format": "uri",
                           "enum": [
-                            "epcisExceptions:ValidationException"
+                            "epcisException:ValidationException"
                           ]
                         }
                       }
@@ -274,7 +260,13 @@
             }
           },
           "401": {
-            "description": "Authorization information is missing or invalid.",
+            "$ref": "#/components/responses/401AuthorizationInformationMissing"
+          },
+          "403": {
+            "$ref": "#/components/responses/403ClientUnauthorized"
+          },
+          "404": {
+            "description": "Capture ID not found",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -284,15 +276,15 @@
                         "status": {
                           "type": "integer",
                           "enum": [
-                            401
+                            404
                           ],
-                          "default": 401
+                          "default": 404
                         },
                         "type": {
                           "type": "string",
                           "format": "uri",
                           "enum": [
-                            "epcisExceptions:SecurityException"
+                            "epcisException:NoSuchNameException"
                           ]
                         }
                       }
@@ -306,60 +298,21 @@
             }
           },
           "500": {
-            "description": "This is a server-side problem caused by an exception.",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "allOf": [
-                    {
-                      "properties": {
-                        "status": {
-                          "type": "integer",
-                          "enum": [
-                            500
-                          ],
-                          "default": 500
-                        },
-                        "type": {
-                          "type": "string",
-                          "format": "uri",
-                          "enum": [
-                            "epcisExceptions:ImplementationException"
-                          ]
-                        }
-                      }
-                    },
-                    {
-                      "$ref": "#/components/schemas/RFC7807ProblemResponseBody"
-                    }
-                  ]
-                }
-              }
-            }
+            "$ref": "#/components/responses/500ImplementationException"
           }
         }
       }
     },
-    "/{optionalTopLevelResource}/events": {
+    "/{topLevelResources}/events": {
       "parameters": [
         {
-          "in": "query",
-          "name": "perPage",
-          "description": "Parameter to control pagination. perPage specifies the maximum number of events returned in one batch.",
-          "schema": {
-            "type": "integer",
-            "default": 30
-          }
+          "$ref": "#/components/parameters/PerPage"
         },
         {
-          "in": "path",
-          "name": "optionalTopLevelResource",
-          "description": "An optional top-level resource to access events.",
-          "required": true,
-          "schema": {
-            "type": "string",
-            "pattern": "^((epcs|bizSteps|bizLocations|readPoints|dispositions)\\/([^/\\n\\r]+))?$"
-          }
+          "$ref": "#/components/parameters/NextPageToken"
+        },
+        {
+          "$ref": "#/components/parameters/TopLevelResources"
         }
       ],
       "options": {
@@ -411,107 +364,30 @@
             }
           },
           "401": {
-            "description": "Authorization information is missing or invalid.",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "allOf": [
-                    {
-                      "properties": {
-                        "status": {
-                          "type": "integer",
-                          "enum": [
-                            401
-                          ],
-                          "default": 401
-                        },
-                        "type": {
-                          "type": "string",
-                          "format": "uri",
-                          "enum": [
-                            "epcisExceptions:SecurityException"
-                          ]
-                        }
-                      }
-                    },
-                    {
-                      "$ref": "#/components/schemas/RFC7807ProblemResponseBody"
-                    }
-                  ]
-                }
-              }
-            }
+            "$ref": "#/components/responses/401AuthorizationInformationMissing"
+          },
+          "403": {
+            "$ref": "#/components/responses/403ClientUnauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/404EventTypeOrTopLevelNotFound"
           },
           "500": {
-            "description": "This is a server-side problem caused by an exception.",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "allOf": [
-                    {
-                      "properties": {
-                        "status": {
-                          "type": "integer",
-                          "enum": [
-                            500
-                          ],
-                          "default": 500
-                        },
-                        "type": {
-                          "type": "string",
-                          "format": "uri",
-                          "enum": [
-                            "epcisExceptions:ImplementationException"
-                          ]
-                        }
-                      }
-                    },
-                    {
-                      "$ref": "#/components/schemas/RFC7807ProblemResponseBody"
-                    }
-                  ]
-                }
-              }
-            }
+            "$ref": "#/components/responses/500ImplementationException"
           }
         }
       }
     },
-    "/{optionalTopLevelResource}/events/{eventType}": {
+    "/{topLevelResources}/events/{eventTypes}": {
       "parameters": [
         {
-          "in": "query",
-          "name": "perPage",
-          "description": "Parameter to control pagination. perPage specifies the maximum number of events returned in one batch.",
-          "schema": {
-            "type": "integer",
-            "default": 30
-          }
+          "$ref": "#/components/parameters/PerPage"
         },
         {
-          "name": "eventType",
-          "in": "path",
-          "required": true,
-          "schema": {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/EPCISEventTypes"
-              },
-              {
-                "$ref": "#/components/schemas/AllEvent"
-              }
-            ]
-          }
+          "$ref": "#/components/parameters/TopLevelResources"
         },
         {
-          "in": "path",
-          "name": "optionalTopLevelResource",
-          "description": "An optional top-level resource to access events.",
-          "required": true,
-          "schema": {
-            "type": "string",
-            "pattern": "^((epcs|bizSteps|bizLocations|readPoints|dispositions)\\/([^/\\n\\r]+))?$"
-          }
+          "$ref": "#/components/parameters/EventTypes"
         }
       ],
       "options": {
@@ -586,9 +462,9 @@
                           "type": "string",
                           "format": "uri",
                           "enum": [
-                            "epcisExceptions:QueryValidationException",
-                            "epcisExceptions:QueryParameterException",
-                            "epcisExceptions:QueryTooComplexException"
+                            "epcisException:QueryValidationException",
+                            "epcisException:QueryParameterException",
+                            "epcisException:QueryTooComplexException"
                           ]
                         }
                       }
@@ -602,68 +478,13 @@
             }
           },
           "401": {
-            "description": "Authorization information is missing or invalid.",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "allOf": [
-                    {
-                      "properties": {
-                        "status": {
-                          "type": "integer",
-                          "enum": [
-                            401
-                          ],
-                          "default": 401
-                        },
-                        "type": {
-                          "type": "string",
-                          "format": "uri",
-                          "enum": [
-                            "epcisExceptions:SecurityException"
-                          ]
-                        }
-                      }
-                    },
-                    {
-                      "$ref": "#/components/schemas/RFC7807ProblemResponseBody"
-                    }
-                  ]
-                }
-              }
-            }
+            "$ref": "#/components/responses/401AuthorizationInformationMissing"
+          },
+          "403": {
+            "$ref": "#/components/responses/403ClientUnauthorized"
           },
           "404": {
-            "description": "Event type not found",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "allOf": [
-                    {
-                      "properties": {
-                        "status": {
-                          "type": "integer",
-                          "enum": [
-                            404
-                          ],
-                          "default": 404
-                        },
-                        "type": {
-                          "type": "string",
-                          "format": "uri",
-                          "enum": [
-                            "epcisExceptions:NoSuchNameException"
-                          ]
-                        }
-                      }
-                    },
-                    {
-                      "$ref": "#/components/schemas/RFC7807ProblemResponseBody"
-                    }
-                  ]
-                }
-              }
-            }
+            "$ref": "#/components/responses/404EventTypeOrTopLevelNotFound"
           },
           "412": {
             "description": "Mismatch of the event type constraint in the path and in the query.",
@@ -684,7 +505,7 @@
                           "type": "string",
                           "format": "uri",
                           "enum": [
-                            "epcisExceptions:QueryParameterException"
+                            "epcisException:QueryParameterException"
                           ]
                         }
                       }
@@ -716,7 +537,7 @@
                           "type": "string",
                           "format": "uri",
                           "enum": [
-                            "epcisExceptions:QueryTooComplexException"
+                            "epcisException:QueryTooComplexException"
                           ]
                         }
                       }
@@ -728,47 +549,23 @@
                 }
               }
             }
+          },
+          "500": {
+            "$ref": "#/components/responses/500ImplementationException"
           }
         }
       }
     },
-    "/{optionalTopLevelResource}/events/{eventType}/{eventID}": {
+    "/{topLevelResources}/events/{eventTypes}/{eventID}": {
       "parameters": [
         {
-          "in": "query",
-          "name": "perPage",
-          "description": "Parameter to control pagination. perPage specifies the maximum number of events returned in one batch.",
-          "schema": {
-            "type": "integer",
-            "default": 30
-          }
+          "$ref": "#/components/parameters/TopLevelResources"
         },
         {
-          "name": "eventType",
-          "in": "path",
-          "required": true,
-          "schema": {
-            "$ref": "#/components/schemas/EPCISEventTypes"
-          }
+          "$ref": "#/components/parameters/EventTypes"
         },
         {
-          "name": "eventID",
-          "in": "path",
-          "required": true,
-          "schema": {
-            "type": "string",
-            "format": "uuid"
-          }
-        },
-        {
-          "in": "path",
-          "name": "optionalTopLevelResource",
-          "description": "An optional top-level resource to access events.",
-          "required": true,
-          "schema": {
-            "type": "string",
-            "pattern": "^((epcs|bizSteps|bizLocations|readPoints|dispositions)\\/([^/\\n\\r]+))?$"
-          }
+          "$ref": "#/components/parameters/EventID"
         }
       ],
       "options": {
@@ -820,39 +617,153 @@
             }
           },
           "401": {
-            "description": "Authorization is invalid",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "allOf": [
-                    {
-                      "properties": {
-                        "status": {
-                          "type": "integer",
-                          "enum": [
-                            401
-                          ],
-                          "default": 401
-                        },
-                        "type": {
-                          "type": "string",
-                          "format": "uri",
-                          "enum": [
-                            "epcisExceptions:SecurityException"
-                          ]
-                        }
-                      }
-                    },
-                    {
-                      "$ref": "#/components/schemas/RFC7807ProblemResponseBody"
-                    }
-                  ]
-                }
-              }
-            }
+            "$ref": "#/components/responses/401AuthorizationInformationMissing"
           },
           "403": {
-            "description": "Client is unauthorized to access this resource.",
+            "$ref": "#/components/responses/403ClientUnauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/404EventTypeOrTopLevelOrEventIdNotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/500ImplementationException"
+          }
+        }
+      }
+    },
+    "/events": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/PerPage"
+        }
+      ],
+      "options": {
+        "summary": "Query supported EPCIS version and related vocabularies/standards.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/GS1-EPCIS-version"
+          },
+          {
+            "$ref": "#/components/parameters/GS1-EPCIS-min"
+          },
+          {
+            "$ref": "#/components/parameters/GS1-EPCIS-max"
+          },
+          {
+            "$ref": "#/components/parameters/GS1-CBV-version"
+          },
+          {
+            "$ref": "#/components/parameters/GS1-EPCIS-extensions"
+          },
+          {
+            "$ref": "#/components/parameters/GS1-CBV-extensions"
+          },
+          {
+            "$ref": "#/components/parameters/GS1-Vendor-version"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Server can comply with the EPCIS related requirements from the client.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Returns all supported EPCIS event types.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EPCISEventTypes"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/401AuthorizationInformationMissing"
+          },
+          "403": {
+            "$ref": "#/components/responses/403ClientUnauthorized"
+          },
+          "500": {
+            "$ref": "#/components/responses/500ImplementationException"
+          }
+        }
+      }
+    },
+    "/events/{eventTypes}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/PerPage"
+        },
+        {
+          "$ref": "#/components/parameters/NextPageToken"
+        },
+        {
+          "$ref": "#/components/parameters/EventTypes"
+        }
+      ],
+      "options": {
+        "summary": "Query supported EPCIS version and related vocabularies/standards",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/GS1-EPCIS-version"
+          },
+          {
+            "$ref": "#/components/parameters/GS1-EPCIS-min"
+          },
+          {
+            "$ref": "#/components/parameters/GS1-EPCIS-max"
+          },
+          {
+            "$ref": "#/components/parameters/GS1-CBV-version"
+          },
+          {
+            "$ref": "#/components/parameters/GS1-EPCIS-extensions"
+          },
+          {
+            "$ref": "#/components/parameters/GS1-CBV-extensions"
+          },
+          {
+            "$ref": "#/components/parameters/GS1-Vendor-version"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Server can comply with the EPCIS related requirements from the client",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "description": "Returns all EPCIS events of a specific type, if specified.",
+        "responses": {
+          "200": {
+            "description": "Returns a list of EPCIS events of the type specified in the path.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  },
+                  "uniqueItems": true
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Query exceptions defined in EPCIS",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -862,15 +773,17 @@
                         "status": {
                           "type": "integer",
                           "enum": [
-                            403
+                            400
                           ],
-                          "default": 403
+                          "default": 400
                         },
                         "type": {
                           "type": "string",
                           "format": "uri",
                           "enum": [
-                            "epcisExceptions:SecurityException"
+                            "epcisException:QueryValidationException",
+                            "epcisException:QueryParameterException",
+                            "epcisException:QueryTooComplexException"
                           ]
                         }
                       }
@@ -883,8 +796,17 @@
               }
             }
           },
+          "401": {
+            "$ref": "#/components/responses/401AuthorizationInformationMissing"
+          },
+          "403": {
+            "$ref": "#/components/responses/403ClientUnauthorized"
+          },
           "404": {
-            "description": "Event type or event URL not found",
+            "$ref": "#/components/responses/404EventTypeNotFound"
+          },
+          "412": {
+            "description": "Mismatch of the event type constraint in the path and in the query.",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -894,15 +816,15 @@
                         "status": {
                           "type": "integer",
                           "enum": [
-                            404
+                            412
                           ],
-                          "default": 404
+                          "default": 412
                         },
                         "type": {
                           "type": "string",
                           "format": "uri",
                           "enum": [
-                            "epcisExceptions:NoSuchNameException"
+                            "epcisException:QueryParameterException"
                           ]
                         }
                       }
@@ -914,6 +836,113 @@
                 }
               }
             }
+          },
+          "414": {
+            "description": "Query too long, if the total URL length exceeds 2000 characters.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "properties": {
+                        "status": {
+                          "type": "integer",
+                          "enum": [
+                            414
+                          ],
+                          "default": 414
+                        },
+                        "type": {
+                          "type": "string",
+                          "format": "uri",
+                          "enum": [
+                            "epcisException:QueryTooComplexException"
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "$ref": "#/components/schemas/RFC7807ProblemResponseBody"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/responses/500ImplementationException"
+          }
+        }
+      }
+    },
+    "/events/{eventTypes}/{eventID}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/EventTypes"
+        },
+        {
+          "$ref": "#/components/parameters/EventID"
+        }
+      ],
+      "options": {
+        "summary": "Query supported EPCIS version and related vocabularies/standards.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/GS1-EPCIS-version"
+          },
+          {
+            "$ref": "#/components/parameters/GS1-EPCIS-min"
+          },
+          {
+            "$ref": "#/components/parameters/GS1-EPCIS-max"
+          },
+          {
+            "$ref": "#/components/parameters/GS1-CBV-version"
+          },
+          {
+            "$ref": "#/components/parameters/GS1-EPCIS-extensions"
+          },
+          {
+            "$ref": "#/components/parameters/GS1-CBV-extensions"
+          },
+          {
+            "$ref": "#/components/parameters/GS1-Vendor-version"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Server can comply with the EPCIS related requirements from the client",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Accesses the EPCIS event corresponding to the given event URLs.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/401AuthorizationInformationMissing"
+          },
+          "403": {
+            "$ref": "#/components/responses/403ClientUnauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/404EventTypeNotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/500ImplementationException"
           }
         }
       }
@@ -990,8 +1019,8 @@
                           "type": "string",
                           "format": "uri",
                           "enum": [
-                            "epcisExceptions:ValidationException",
-                            "epcisExceptions:ImplementationException"
+                            "epcisException:ValidationException",
+                            "epcisException:ImplementationException"
                           ]
                         }
                       }
@@ -1005,36 +1034,16 @@
             }
           },
           "401": {
-            "description": "Authorization information is missing or invalid.",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "allOf": [
-                    {
-                      "properties": {
-                        "status": {
-                          "type": "integer",
-                          "enum": [
-                            401
-                          ],
-                          "default": 401
-                        },
-                        "type": {
-                          "type": "string",
-                          "format": "uri",
-                          "enum": [
-                            "epcisExceptions:SecurityException"
-                          ]
-                        }
-                      }
-                    },
-                    {
-                      "$ref": "#/components/schemas/RFC7807ProblemResponseBody"
-                    }
-                  ]
-                }
-              }
-            }
+            "$ref": "#/components/responses/401AuthorizationInformationMissing"
+          },
+          "403": {
+            "$ref": "#/components/responses/403ClientUnauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/404EventTypeOrEventIdNotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/500ImplementationException"
           }
         }
       },
@@ -1081,9 +1090,9 @@
                           "type": "string",
                           "format": "uri",
                           "enum": [
-                            "epcisExceptions:QueryValidationException",
-                            "epcisExceptions:QueryParameterException",
-                            "epcisExceptions:QueryTooComplexException"
+                            "epcisException:QueryValidationException",
+                            "epcisException:QueryParameterException",
+                            "epcisException:QueryTooComplexException"
                           ]
                         }
                       }
@@ -1097,36 +1106,7 @@
             }
           },
           "401": {
-            "description": "Authorization information is missing or invalid.",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "allOf": [
-                    {
-                      "properties": {
-                        "status": {
-                          "type": "integer",
-                          "enum": [
-                            401
-                          ],
-                          "default": 401
-                        },
-                        "type": {
-                          "type": "string",
-                          "format": "uri",
-                          "enum": [
-                            "epcisExceptions:SecurityException"
-                          ]
-                        }
-                      }
-                    },
-                    {
-                      "$ref": "#/components/schemas/RFC7807ProblemResponseBody"
-                    }
-                  ]
-                }
-              }
-            }
+            "$ref": "#/components/responses/401AuthorizationInformationMissing"
           },
           "414": {
             "description": "Query too long, if the total URL length exceeds 2000 characters.",
@@ -1147,7 +1127,7 @@
                           "type": "string",
                           "format": "uri",
                           "enum": [
-                            "epcisExceptions:QueryTooComplexException"
+                            "epcisException:QueryTooComplexException"
                           ]
                         }
                       }
@@ -1163,15 +1143,10 @@
         }
       }
     },
-    "/queries/{queryName}": {
+    "/queries/{queryNames}": {
       "parameters": [
         {
-          "name": "queryName",
-          "in": "path",
-          "required": true,
-          "schema": {
-            "type": "string"
-          }
+          "$ref": "#/components/parameters/QueryNames"
         }
       ],
       "options": {
@@ -1211,12 +1186,27 @@
         }
       },
       "delete": {
+        "description": "Removes a named query and disconnects clients",
         "responses": {
-          "201": {
-            "description": "Removes a named query and destroyes all subscriptions and open connections to clients."
+          "204": {
+            "description": "Query deleted and clients disconnected",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
           },
-          "400": {
-            "description": "Errors that occur when deleting a named query",
+          "401": {
+            "$ref": "#/components/responses/401AuthorizationInformationMissing"
+          },
+          "403": {
+            "$ref": "#/components/responses/403ClientUnauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/404QueryNameNotFound"
+          },
+          "414": {
+            "description": "Query too long, if the total URL length exceeds 2000 characters.",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -1226,17 +1216,15 @@
                         "status": {
                           "type": "integer",
                           "enum": [
-                            400
+                            414
                           ],
-                          "default": 400
+                          "default": 414
                         },
                         "type": {
                           "type": "string",
                           "format": "uri",
                           "enum": [
-                            "InvalidURIException",
-                            "SubscriptionControlsException",
-                            "ValidationException"
+                            "epcisException:QueryTooComplexException"
                           ]
                         }
                       }
@@ -1248,11 +1236,14 @@
                 }
               }
             }
+          },
+          "500": {
+            "$ref": "#/components/responses/500ImplementationException"
           }
         }
       }
     },
-    "/queries/{queryName}/events": {
+    "/queries/{queryNames}/events": {
       "parameters": [
         {
           "in": "header",
@@ -1264,21 +1255,13 @@
           }
         },
         {
-          "in": "query",
-          "name": "perPage",
-          "description": "Parameter to control pagination. perPage specifies the maximum number of events returned in one batch.",
-          "schema": {
-            "type": "integer",
-            "default": 30
-          }
+          "$ref": "#/components/parameters/QueryNames"
         },
         {
-          "name": "queryName",
-          "in": "path",
-          "required": true,
-          "schema": {
-            "type": "string"
-          }
+          "$ref": "#/components/parameters/PerPage"
+        },
+        {
+          "$ref": "#/components/parameters/NextPageToken"
         }
       ],
       "options": {
@@ -1336,24 +1319,6 @@
               "type": "string",
               "default": "upgrade"
             }
-          },
-          {
-            "in": "query",
-            "name": "initialRecordTime",
-            "description": "Parameter to specify from when onwards the query subscription applies. The default time is when the subscription was created.",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          },
-          {
-            "in": "query",
-            "name": "reportIfEmpty",
-            "description": "Parameter to request notification even when the query result is empty",
-            "schema": {
-              "type": "boolean",
-              "default": false
-            }
           }
         ],
         "responses": {
@@ -1409,8 +1374,7 @@
                           "type": "string",
                           "format": "uri",
                           "enum": [
-                            "epcisExceptions:ValidationException",
-                            "epcisExceptions:SubscriptionControlsException"
+                            "epcisException:ValidationException"
                           ]
                         }
                       }
@@ -1424,68 +1388,13 @@
             }
           },
           "401": {
-            "description": "Authorization information is missing or invalid.",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "allOf": [
-                    {
-                      "properties": {
-                        "status": {
-                          "type": "integer",
-                          "enum": [
-                            401
-                          ],
-                          "default": 401
-                        },
-                        "type": {
-                          "type": "string",
-                          "format": "uri",
-                          "enum": [
-                            "epcisExceptions:SecurityException"
-                          ]
-                        }
-                      }
-                    },
-                    {
-                      "$ref": "#/components/schemas/RFC7807ProblemResponseBody"
-                    }
-                  ]
-                }
-              }
-            }
+            "$ref": "#/components/responses/401AuthorizationInformationMissing"
+          },
+          "403": {
+            "$ref": "#/components/responses/403ClientUnauthorized"
           },
           "404": {
-            "description": "Exceptions defined in EPCIS 1.2, section 8.2.6 for `poll`.",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "allOf": [
-                    {
-                      "properties": {
-                        "status": {
-                          "type": "integer",
-                          "enum": [
-                            401
-                          ],
-                          "default": 401
-                        },
-                        "type": {
-                          "type": "string",
-                          "format": "uri",
-                          "enum": [
-                            "epcisExceptions:NoSuchNameException"
-                          ]
-                        }
-                      }
-                    },
-                    {
-                      "$ref": "#/components/schemas/RFC7807ProblemResponseBody"
-                    }
-                  ]
-                }
-              }
-            }
+            "$ref": "#/components/responses/404QueryNameNotFound"
           },
           "414": {
             "description": "Query too long, if the total URL length exceeds 2000 characters.",
@@ -1506,7 +1415,7 @@
                           "type": "string",
                           "format": "uri",
                           "enum": [
-                            "epcisExceptions:QueryTooComplexException"
+                            "epcisException:QueryTooComplexException"
                           ]
                         }
                       }
@@ -1520,42 +1429,271 @@
             }
           },
           "500": {
-            "description": "This is a server-side problem caused when the query was resolved and executed.",
-            "content": {
-              "application/problem+json": {
-                "schema": {
-                  "allOf": [
-                    {
-                      "properties": {
-                        "status": {
-                          "type": "integer",
-                          "enum": [
-                            500
-                          ],
-                          "default": 500
-                        },
-                        "type": {
-                          "type": "string",
-                          "format": "uri",
-                          "enum": [
-                            "epcisExceptions:ImplementationException"
-                          ]
-                        }
-                      }
-                    },
-                    {
-                      "$ref": "#/components/schemas/RFC7807ProblemResponseBody"
-                    }
-                  ]
-                }
-              }
-            }
+            "$ref": "#/components/responses/500ImplementationException"
           }
         }
       }
     }
   },
   "components": {
+    "responses": {
+      "500ImplementationException": {
+        "description": "This is a server-side problem caused when the query was resolved and executed.",
+        "content": {
+          "application/problem+json": {
+            "schema": {
+              "allOf": [
+                {
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "enum": [
+                        500
+                      ],
+                      "default": 500
+                    },
+                    "type": {
+                      "type": "string",
+                      "format": "uri",
+                      "enum": [
+                        "epcisException:ImplementationException"
+                      ]
+                    }
+                  }
+                },
+                {
+                  "$ref": "#/components/schemas/RFC7807ProblemResponseBody"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "404EventTypeOrTopLevelOrEventIdNotFound": {
+        "description": "Either Top-level resource, event type or event ID not found",
+        "content": {
+          "application/problem+json": {
+            "schema": {
+              "allOf": [
+                {
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "enum": [
+                        404
+                      ],
+                      "default": 404
+                    },
+                    "type": {
+                      "type": "string",
+                      "format": "uri",
+                      "enum": [
+                        "epcisException:NoSuchNameException"
+                      ]
+                    }
+                  }
+                },
+                {
+                  "$ref": "#/components/schemas/RFC7807ProblemResponseBody"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "404EventTypeOrEventIdNotFound": {
+        "description": "Event type or event ID not found",
+        "content": {
+          "application/problem+json": {
+            "schema": {
+              "allOf": [
+                {
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "enum": [
+                        404
+                      ],
+                      "default": 404
+                    },
+                    "type": {
+                      "type": "string",
+                      "format": "uri",
+                      "enum": [
+                        "epcisException:NoSuchNameException"
+                      ]
+                    }
+                  }
+                },
+                {
+                  "$ref": "#/components/schemas/RFC7807ProblemResponseBody"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "404QueryNameNotFound": {
+        "description": "Exceptions defined in EPCIS 1.2, section 8.2.6 for `poll`.",
+        "content": {
+          "application/problem+json": {
+            "schema": {
+              "allOf": [
+                {
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "enum": [
+                        404
+                      ],
+                      "default": 404
+                    },
+                    "type": {
+                      "type": "string",
+                      "format": "uri",
+                      "enum": [
+                        "epcisException:NoSuchNameException"
+                      ]
+                    }
+                  }
+                },
+                {
+                  "$ref": "#/components/schemas/RFC7807ProblemResponseBody"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "403ClientUnauthorized": {
+        "description": "Client is unauthorized to access this resource.",
+        "content": {
+          "application/problem+json": {
+            "schema": {
+              "allOf": [
+                {
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "enum": [
+                        403
+                      ],
+                      "default": 403
+                    },
+                    "type": {
+                      "type": "string",
+                      "format": "uri",
+                      "enum": [
+                        "epcisException:SecurityException"
+                      ]
+                    }
+                  }
+                },
+                {
+                  "$ref": "#/components/schemas/RFC7807ProblemResponseBody"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "404EventTypeOrTopLevelNotFound": {
+        "description": "Top-level resource or event type not found",
+        "content": {
+          "application/problem+json": {
+            "schema": {
+              "allOf": [
+                {
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "enum": [
+                        404
+                      ],
+                      "default": 404
+                    },
+                    "type": {
+                      "type": "string",
+                      "format": "uri",
+                      "enum": [
+                        "epcisException:NoSuchNameException"
+                      ]
+                    }
+                  }
+                },
+                {
+                  "$ref": "#/components/schemas/RFC7807ProblemResponseBody"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "404EventTypeNotFound": {
+        "description": "Event type not found",
+        "content": {
+          "application/problem+json": {
+            "schema": {
+              "allOf": [
+                {
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "enum": [
+                        404
+                      ],
+                      "default": 404
+                    },
+                    "type": {
+                      "type": "string",
+                      "format": "uri",
+                      "enum": [
+                        "epcisException:NoSuchNameException"
+                      ]
+                    }
+                  }
+                },
+                {
+                  "$ref": "#/components/schemas/RFC7807ProblemResponseBody"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "401AuthorizationInformationMissing": {
+        "description": "Authorization information is missing or invalid.",
+        "content": {
+          "application/problem+json": {
+            "schema": {
+              "allOf": [
+                {
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "enum": [
+                        401
+                      ],
+                      "default": 401
+                    },
+                    "type": {
+                      "type": "string",
+                      "format": "uri",
+                      "enum": [
+                        "epcisException:SecurityException"
+                      ]
+                    }
+                  }
+                },
+                {
+                  "$ref": "#/components/schemas/RFC7807ProblemResponseBody"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
     "schemas": {
       "RFC7807ProblemResponseBody": {
         "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)",
@@ -1627,8 +1765,7 @@
         "type": "object",
         "properties": {
           "id": {
-            "type": "string",
-            "format": "uuid"
+            "type": "string"
           },
           "callbacks": {
             "$ref": "#/components/schemas/EventCallbackUrls"
@@ -1670,6 +1807,71 @@
       }
     },
     "parameters": {
+      "EventID": {
+        "name": "eventID",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "EventTypes": {
+        "name": "eventTypes",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "oneOf": [
+            {
+              "$ref": "#/components/schemas/EPCISEventTypes"
+            },
+            {
+              "$ref": "#/components/schemas/AllEvent"
+            }
+          ]
+        }
+      },
+      "QueryNames": {
+        "in": "path",
+        "name": "queryNames",
+        "description": "Unique name of a named query",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "PerPage": {
+        "in": "query",
+        "name": "perPage",
+        "description": "Parameter to control pagination. perPage specifies the maximum number of events returned in one batch.",
+        "schema": {
+          "type": "integer",
+          "default": 30
+        }
+      },
+      "NextPageToken": {
+        "in": "query",
+        "name": "nextPageToken",
+        "description": "Paramter that point to the next list of results when requesting a list of events that is larger than the value specified with the perPage parameter.",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "TopLevelResources": {
+        "in": "path",
+        "name": "topLevelResources",
+        "description": "A top-level resource to access events.",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "epcs",
+            "bizSteps",
+            "bizLocations",
+            "readPoints",
+            "dispositions"
+          ]
+        }
+      },
       "GS1-EPCIS-version": {
         "in": "header",
         "name": "GS1-EPCIS-version",

@@ -22,6 +22,7 @@ paths:
         - $ref: '#/components/parameters/GS1-CAPTURE-file-size-limit'
       responses:
         '200':
+
           description: Server can comply with the GS1-EPCIS-related requirements from the client.
           content:
             application/json:
@@ -60,26 +61,12 @@ paths:
                         type: string
                         format: uri
                         enum:
-                          - epcisExceptions:ValidationException
+                          - epcisException:ValidationException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
         '401':
-          description: Authorization information is missing or invalid.
-          content:
-            application/problem+json:
-              schema:
-                allOf:
-                  - properties:
-                      status:
-                        type: integer
-                        enum:
-                          - 401
-                        default: 401
-                      type:
-                        type: string
-                        format: uri
-                        enum:
-                          - epcisExceptions:SecurityException
-                  - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+          $ref: '#/components/responses/401AuthorizationInformationMissing'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
         '413':
           description: The client exceeded the limit, set in GS1-CAPTURE-limit, of events that can be captured per call.
           headers:
@@ -99,16 +86,23 @@ paths:
                         enum:
                           - 413
                         default: 413
+                      type:
+                        type: string
+                        format: uri
+                        enum:
+                          - epcisException:CaptureException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
 
   /capture/{captureID}:
     parameters:
+      - $ref: '#/components/parameters/PerPage'
+      - $ref:  '#/components/parameters/NextPageToken'
       - in: path
         name: captureID
         required: true
         schema:
           type: string
-          format: uuid
+
     options:
       summary: Query supported EPCIS version and related vocabularies/standards.
       parameters:
@@ -121,6 +115,7 @@ paths:
         - $ref: '#/components/parameters/GS1-Vendor-version'
       responses:
         '200':
+
           description: Server can comply with the GS1-EPCIS-related requirements from the client.
           content:
             application/json:
@@ -153,10 +148,14 @@ paths:
                         type: string
                         format: uri
                         enum:
-                          - epcisExceptions:ValidationException
+                          - epcisException:ValidationException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
         '401':
-          description: Authorization information is missing or invalid.
+          $ref: '#/components/responses/401AuthorizationInformationMissing'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '404':
+          description: Capture ID not found
           content:
             application/problem+json:
               schema:
@@ -165,50 +164,24 @@ paths:
                       status:
                         type: integer
                         enum:
-                          - 401
-                        default: 401
+                          - 404
+                        default: 404
                       type:
                         type: string
                         format: uri
                         enum:
-                          - epcisExceptions:SecurityException
+                          - epcisException:NoSuchNameException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-
         '500':
-          description: This is a server-side problem caused by an exception.
-          content:
-            application/problem+json:
-              schema:
-                allOf:
-                  - properties:
-                      status:
-                        type: integer
-                        enum:
-                          - 500
-                        default: 500
-                      type:
-                        type: string
-                        format: uri
-                        enum:
-                          - epcisExceptions:ImplementationException
-                  - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+          $ref: '#/components/responses/500ImplementationException'
 
 
-  /{optionalTopLevelResource}/events:
+  /{topLevelResources}/events:
     parameters:
-      - in: query
-        name: perPage
-        description: Parameter to control pagination. perPage specifies the maximum number of events returned in one batch.
-        schema:
-          type: integer
-          default: 30
-      - in: path
-        name: optionalTopLevelResource
-        description: An optional top-level resource to access events.
-        required: true
-        schema:
-          type: string
-          pattern: ^((epcs|bizSteps|bizLocations|readPoints|dispositions)\/([^/\n\r]+))?$
+
+      - $ref: '#/components/parameters/PerPage'
+      - $ref:  '#/components/parameters/NextPageToken'
+      - $ref: '#/components/parameters/TopLevelResources'
 
     options:
       summary: Query supported EPCIS version and related vocabularies/standards.
@@ -229,73 +202,26 @@ paths:
                 {}
     get:
       responses:
+        '401':
+          $ref: '#/components/responses/401AuthorizationInformationMissing'
         '200':
           description: Returns all supported EPCIS event types.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/EPCISEventTypes'
-
-        '401':
-          description: Authorization information is missing or invalid.
-          content:
-            application/problem+json:
-              schema:
-                allOf:
-                  - properties:
-                      status:
-                        type: integer
-                        enum:
-                          - 401
-                        default: 401
-                      type:
-                        type: string
-                        format: uri
-                        enum:
-                          - epcisExceptions:SecurityException
-                  - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '404':
+          $ref: '#/components/responses/404EventTypeOrTopLevelNotFound'
         '500':
-          description: This is a server-side problem caused by an exception.
-          content:
-            application/problem+json:
-              schema:
-                allOf:
-                  - properties:
-                      status:
-                        type: integer
-                        enum:
-                          - 500
-                        default: 500
-                      type:
-                        type: string
-                        format: uri
-                        enum:
-                          - epcisExceptions:ImplementationException
-                  - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+          $ref: '#/components/responses/500ImplementationException'
 
-  /{optionalTopLevelResource}/events/{eventType}:
+  /{topLevelResources}/events/{eventTypes}:
     parameters:
-      - in: query
-        name: perPage
-        description: Parameter to control pagination. perPage specifies the maximum number of events returned in one batch.
-        schema:
-          type: integer
-          default: 30
-      - name: eventType
-        in: path
-        required: true
-        schema:
-          oneOf:
-            - $ref: '#/components/schemas/EPCISEventTypes'
-            - $ref: '#/components/schemas/AllEvent'
-      - in: path
-        name: optionalTopLevelResource
-        description: An optional top-level resource to access events.
-        required: true
-        schema:
-          type: string
-          pattern: ^((epcs|bizSteps|bizLocations|readPoints|dispositions)\/([^/\n\r]+))?$
+      - $ref: '#/components/parameters/PerPage'
+      - $ref: '#/components/parameters/TopLevelResources'
+      - $ref: '#/components/parameters/EventTypes'
     options:
       summary: Query supported EPCIS version and related vocabularies/standards
       parameters:
@@ -309,6 +235,179 @@ paths:
       responses:
         '200':
           description: Server can comply with the GS1-EPCIS-related requirements from the client
+          content:
+            application/json:
+              schema:
+                {}
+    get:
+      description: Returns all EPCIS events of a specific type, if specified.
+      responses:
+        '200':
+          description: Returns a list of EPCIS events of the type specified in the path.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object # TODO: LINK NEEDED: They're currently in the GS1 GitHub repository in JSON Schema.   The final reference should point to a stable URL within the gs1.org/epcis site.
+                uniqueItems: true
+        '400':
+          description: Query exceptions defined in EPCIS
+          content:
+            application/problem+json:
+              schema:
+                allOf:
+                  - properties:
+                      status:
+                        type: integer
+                        enum:
+                          - 400
+                        default: 400
+                      type:
+                        type: string
+                        format: uri
+                        enum:
+                          - epcisException:QueryValidationException
+                          - epcisException:QueryParameterException
+                          - epcisException:QueryTooComplexException
+                  - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+        '401':
+          $ref: '#/components/responses/401AuthorizationInformationMissing'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '404':
+          $ref: '#/components/responses/404EventTypeOrTopLevelNotFound'
+        '414':
+          description: Query too long, if the total URL length exceeds 2000 characters.
+          content:
+            application/problem+json:
+              schema:
+                allOf:
+                  - properties:
+                      status:
+                        type: integer
+                        enum:
+                          - 414
+                        default: 414
+                      type:
+                        type: string
+                        format: uri
+                        enum:
+                          - epcisException:QueryTooComplexException
+                  - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+        '412':
+          description: Mismatch of the event type constraint in the path and in the query.
+          content:
+            application/problem+json:
+              schema:
+                allOf:
+                  - properties:
+                      status:
+                        type: integer
+                        enum:
+                          - 412
+                        default: 412
+                      type:
+                        type: string
+                        format: uri
+                        enum:
+                          - epcisException:QueryParameterException
+                  - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
+  /{topLevelResources}/events/{eventTypes}/{eventID}:
+    parameters:
+      - $ref: '#/components/parameters/TopLevelResources'
+      - $ref: '#/components/parameters/EventTypes'
+      - $ref: '#/components/parameters/EventID'
+    options:
+      summary: Query supported EPCIS version and related vocabularies/standards.
+      parameters:
+        - $ref: '#/components/parameters/GS1-EPCIS-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-min'
+        - $ref: '#/components/parameters/GS1-EPCIS-max'
+        - $ref: '#/components/parameters/GS1-CBV-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
+        - $ref: '#/components/parameters/GS1-CBV-extensions'
+        - $ref: '#/components/parameters/GS1-Vendor-version'
+      responses:
+        '200':
+          description: Server can comply with the GS1-EPCIS-related requirements from the client
+          content:
+            application/json:
+              schema:
+                {}
+    get:
+      responses:
+        '200':
+          description: Accesses the EPCIS event corresponding to the given event URLs.
+          content:
+            application/json:
+              schema: # TODO: LINK NEEDED: They're currently in the GS1 GitHub repository in JSON Schema.   The final reference should point to a stable URL within the gs1.org/epcis site.
+
+                type: object
+        '401':
+          $ref: '#/components/responses/401AuthorizationInformationMissing'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '404':
+          $ref: '#/components/responses/404EventTypeOrTopLevelOrEventIdNotFound'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
+  /events:
+    parameters:
+      - $ref: '#/components/parameters/PerPage'
+
+    options:
+      summary: Query supported EPCIS version and related vocabularies/standards.
+      parameters:
+        - $ref: '#/components/parameters/GS1-EPCIS-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-min'
+        - $ref: '#/components/parameters/GS1-EPCIS-max'
+        - $ref: '#/components/parameters/GS1-CBV-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
+        - $ref: '#/components/parameters/GS1-CBV-extensions'
+        - $ref: '#/components/parameters/GS1-Vendor-version'
+      responses:
+        '200':
+          description: Server can comply with the EPCIS related requirements from the client.
+          content:
+            application/json:
+              schema:
+                {}
+    get:
+      responses:
+        '200':
+          description: Returns all supported EPCIS event types.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EPCISEventTypes'
+        '401':
+          $ref: '#/components/responses/401AuthorizationInformationMissing'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
+
+  /events/{eventTypes}:
+    parameters:
+      - $ref: '#/components/parameters/PerPage'
+      - $ref:  '#/components/parameters/NextPageToken'
+      - $ref: '#/components/parameters/EventTypes'
+    options:
+      summary: Query supported EPCIS version and related vocabularies/standards
+      parameters:
+        - $ref: '#/components/parameters/GS1-EPCIS-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-min'
+        - $ref: '#/components/parameters/GS1-EPCIS-max'
+        - $ref: '#/components/parameters/GS1-CBV-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
+        - $ref: '#/components/parameters/GS1-CBV-extensions'
+        - $ref: '#/components/parameters/GS1-Vendor-version'
+      responses:
+        '200':
+          description: Server can comply with the EPCIS related requirements from the client
           content:
             application/json:
               schema:
@@ -341,46 +440,16 @@ paths:
                         type: string
                         format: uri
                         enum:
-                          - epcisExceptions:QueryValidationException
-                          - epcisExceptions:QueryParameterException
-                          - epcisExceptions:QueryTooComplexException
+                          - epcisException:QueryValidationException
+                          - epcisException:QueryParameterException
+                          - epcisException:QueryTooComplexException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
         '401':
-          description: Authorization information is missing or invalid.
-          content:
-            application/problem+json:
-              schema:
-                allOf:
-                  - properties:
-                      status:
-                        type: integer
-                        enum:
-                          - 401
-                        default: 401
-                      type:
-                        type: string
-                        format: uri
-                        enum:
-                          - epcisExceptions:SecurityException
-                  - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+          $ref: '#/components/responses/401AuthorizationInformationMissing'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
         '404':
-          description: Event type not found
-          content:
-            application/problem+json:
-              schema:
-                allOf:
-                  - properties:
-                      status:
-                        type: integer
-                        enum:
-                          - 404
-                        default: 404
-                      type:
-                        type: string
-                        format: uri
-                        enum:
-                          - epcisExceptions:NoSuchNameException
-                  - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+          $ref: '#/components/responses/404EventTypeNotFound'
         '414':
           description: Query too long, if the total URL length exceeds 2000 characters.
           content:
@@ -397,7 +466,7 @@ paths:
                         type: string
                         format: uri
                         enum:
-                          - epcisExceptions:QueryTooComplexException
+                          - epcisException:QueryTooComplexException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
         '412':
           description: Mismatch of the event type constraint in the path and in the query.
@@ -415,36 +484,15 @@ paths:
                         type: string
                         format: uri
                         enum:
-                          - epcisExceptions:QueryParameterException
+                          - epcisException:QueryParameterException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
 
-
-  /{optionalTopLevelResource}/events/{eventType}/{eventID}:
+  /events/{eventTypes}/{eventID}:
     parameters:
-      - in: query
-        name: perPage
-        description: Parameter to control pagination. perPage specifies the maximum number of events returned in one batch.
-        schema:
-          type: integer
-          default: 30
-      - name: eventType
-        in: path
-        required: true
-        schema:
-          $ref: '#/components/schemas/EPCISEventTypes'
-      - name: eventID
-        in: path
-        required: true
-        schema:
-          type: string
-          format: uuid
-      - in: path
-        name: optionalTopLevelResource
-        description: An optional top-level resource to access events.
-        required: true
-        schema:
-          type: string
-          pattern: ^((epcs|bizSteps|bizLocations|readPoints|dispositions)\/([^/\n\r]+))?$
+      - $ref: '#/components/parameters/EventTypes'
+      - $ref: '#/components/parameters/EventID'
 
 
     options:
@@ -459,7 +507,7 @@ paths:
         - $ref: '#/components/parameters/GS1-Vendor-version'
       responses:
         '200':
-          description: Server can comply with the GS1-EPCIS-related requirements from the client
+          description: Server can comply with the EPCIS related requirements from the client
           content:
             application/json:
               schema:
@@ -470,64 +518,16 @@ paths:
           description: Accesses the EPCIS event corresponding to the given event URLs.
           content:
             application/json:
-              schema: # TODO: LINK NEEDED: They're currently in the GS1 GitHub repository in JSON Schema.   The final reference should point to a stable URL within the gs1.org/epcis site.
-
+              schema: # TODO: Link to real schema when available
                 type: object
         '401':
-          description: Authorization is invalid
-          content:
-            application/problem+json:
-              schema:
-                allOf:
-                  - properties:
-                      status:
-                        type: integer
-                        enum:
-                          - 401
-                        default: 401
-                      type:
-                        type: string
-                        format: uri
-                        enum:
-                          - epcisExceptions:SecurityException
-                  - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+          $ref: '#/components/responses/401AuthorizationInformationMissing'
         '403':
-          description: Client is unauthorized to access this resource.
-          content:
-            application/problem+json:
-              schema:
-                allOf:
-                  - properties:
-                      status:
-                        type: integer
-                        enum:
-                          - 403
-                        default: 403
-                      type:
-                        type: string
-                        format: uri
-                        enum:
-                          - epcisExceptions:SecurityException
-                  - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+          $ref: '#/components/responses/403ClientUnauthorized'
         '404':
-          description: Event type or event URL not found
-          content:
-            application/problem+json:
-              schema:
-                allOf:
-                  - properties:
-                      status:
-                        type: integer
-                        enum:
-                          - 404
-                        default: 404
-                      type:
-                        type: string
-                        format: uri
-                        enum:
-                          - epcisExceptions:NoSuchNameException
-                  - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-
+          $ref: '#/components/responses/404EventTypeNotFound'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
 
   /queries:
     options:
@@ -575,28 +575,17 @@ paths:
                         type: string
                         format: uri
                         enum:
-                          - epcisExceptions:ValidationException
-                          - epcisExceptions:ImplementationException
+                          - epcisException:ValidationException
+                          - epcisException:ImplementationException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
         '401':
-          description: Authorization information is missing or invalid.
-          content:
-            application/problem+json:
-              schema:
-                allOf:
-                  - properties:
-                      status:
-                        type: integer
-                        enum:
-                          - 401
-                        default: 401
-                      type:
-                        type: string
-                        format: uri
-                        enum:
-                          - epcisExceptions:SecurityException
-                  - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-
+          $ref: '#/components/responses/401AuthorizationInformationMissing'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '404':
+          $ref: '#/components/responses/404EventTypeOrEventIdNotFound'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
     post:
       description: Creates a new named query.
       requestBody:
@@ -614,23 +603,7 @@ paths:
                 type: string
                 format: uri
         '401':
-          description: Authorization information is missing or invalid.
-          content:
-            application/problem+json:
-              schema:
-                allOf:
-                  - properties:
-                      status:
-                        type: integer
-                        enum:
-                          - 401
-                        default: 401
-                      type:
-                        type: string
-                        format: uri
-                        enum:
-                          - epcisExceptions:SecurityException
-                  - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+          $ref: '#/components/responses/401AuthorizationInformationMissing'
         '400':
           description: Query exceptions defined in EPCIS
           content:
@@ -647,9 +620,9 @@ paths:
                         type: string
                         format: uri
                         enum:
-                          - epcisExceptions:QueryValidationException
-                          - epcisExceptions:QueryParameterException
-                          - epcisExceptions:QueryTooComplexException
+                          - epcisException:QueryValidationException
+                          - epcisException:QueryParameterException
+                          - epcisException:QueryTooComplexException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
         '414':
           description: Query too long, if the total URL length exceeds 2000 characters.
@@ -667,16 +640,12 @@ paths:
                         type: string
                         format: uri
                         enum:
-                          - epcisExceptions:QueryTooComplexException
+                          - epcisException:QueryTooComplexException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
 
-  /queries/{queryName}:
+  /queries/{queryNames}:
     parameters:
-      - name: queryName
-        in: path
-        required: true
-        schema:
-          type: string
+     - $ref: '#/components/parameters/QueryNames'
     options:
       summary: Query supported EPCIS version and related vocabularies/standards
       parameters:
@@ -695,11 +664,22 @@ paths:
               schema:
                 {}
     delete:
+      description: Removes a named query and disconnects clients
       responses:
-        '201':
-          description: Removes a named query and destroyes all subscriptions and open connections to clients.
-        '400':
-          description: Errors that occur when deleting a named query
+        '204':
+          description: Query deleted and clients disconnected
+          content:
+            application/json:
+              schema:
+                {}
+        '401':
+          $ref: '#/components/responses/401AuthorizationInformationMissing'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '404':
+          $ref: '#/components/responses/404QueryNameNotFound'
+        '414':
+          description: Query too long, if the total URL length exceeds 2000 characters.
           content:
             application/problem+json:
               schema:
@@ -708,18 +688,18 @@ paths:
                       status:
                         type: integer
                         enum:
-                          - 400
-                        default: 400
+                          - 414
+                        default: 414
                       type:
                         type: string
                         format: uri
                         enum:
-                          - InvalidURIException
-                          - SubscriptionControlsException
-                          - ValidationException
+                          - epcisException:QueryTooComplexException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
 
-  /queries/{queryName}/events:
+  /queries/{queryNames}/events:
     parameters:
       - in: header
         name: GS1-QUERY-minRecordTime
@@ -727,17 +707,9 @@ paths:
         schema:
           type: string
           format: time
-      - in: query
-        name: perPage
-        description: Parameter to control pagination. perPage specifies the maximum number of events returned in one batch.
-        schema:
-          type: integer
-          default: 30
-      - name: queryName
-        in: path
-        required: true
-        schema:
-          type: string
+      - $ref: '#/components/parameters/QueryNames'
+      - $ref: '#/components/parameters/PerPage'
+      - $ref:  '#/components/parameters/NextPageToken'
     options:
       summary: Query supported EPCIS version and related vocabularies/standards
       parameters:
@@ -770,18 +742,6 @@ paths:
           schema:
             type: string
             default: upgrade
-        - in: query
-          name: initialRecordTime
-          description: Parameter to specify from when onwards the query subscription applies. The default time is when the subscription was created.
-          schema:
-            type: string
-            format: date-time
-        - in: query
-          name: reportIfEmpty
-          description: Parameter to request notification even when the query result is empty
-          schema:
-            type: boolean
-            default: false
       responses:
         '101':
           description: Create a WebSocket connection to subscribe to queries. Upon subscription, the server SHALL send all new events to subscribing clients. If multiple clients have the same query, each client will receive events which they are authorized to see.
@@ -806,42 +766,12 @@ paths:
                   type: object # TODO: Link to real schema when available
                 uniqueItems: true
         '401':
-          description: Authorization information is missing or invalid.
-          content:
-            application/problem+json:
-              schema:
-                allOf:
-                  - properties:
-                      status:
-                        type: integer
-                        enum:
-                          - 401
-                        default: 401
-                      type:
-                        type: string
-                        format: uri
-                        enum:
-                          - epcisExceptions:SecurityException
-                  - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-
+          $ref: '#/components/responses/401AuthorizationInformationMissing'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
         '404':
-          description: Exceptions defined in EPCIS 1.2, section 8.2.6 for `poll`.
-          content:
-            application/problem+json:
-              schema:
-                allOf:
-                  - properties:
-                      status:
-                        type: integer
-                        enum:
-                          - 401
-                        default: 401
-                      type:
-                        type: string
-                        format: uri
-                        enum:
-                          - epcisExceptions:NoSuchNameException
-                  - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+          $ref: '#/components/responses/404QueryNameNotFound'
+
         '400':
           description: The query is invalid
           content:
@@ -858,26 +788,7 @@ paths:
                         type: string
                         format: uri
                         enum:
-                          - epcisExceptions:ValidationException
-                          - epcisExceptions:SubscriptionControlsException
-                  - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-        '500':
-          description: This is a server-side problem caused when the query was resolved and executed.
-          content:
-            application/problem+json:
-              schema:
-                allOf:
-                  - properties:
-                      status:
-                        type: integer
-                        enum:
-                          - 500
-                        default: 500
-                      type:
-                        type: string
-                        format: uri
-                        enum:
-                          - epcisExceptions:ImplementationException
+                          - epcisException:ValidationException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
         '414':
           description: Query too long, if the total URL length exceeds 2000 characters.
@@ -895,10 +806,159 @@ paths:
                         type: string
                         format: uri
                         enum:
-                          - epcisExceptions:QueryTooComplexException
+                          - epcisException:QueryTooComplexException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
 
 components:
+  responses:
+    '500ImplementationException':
+      description: This is a server-side problem caused when the query was resolved and executed.
+      content:
+        application/problem+json:
+          schema:
+            allOf:
+              - properties:
+                  status:
+                    type: integer
+                    enum:
+                      - 500
+                    default: 500
+                  type:
+                    type: string
+                    format: uri
+                    enum:
+                      - epcisException:ImplementationException
+              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+    '404EventTypeOrTopLevelOrEventIdNotFound':
+      description: Either Top-level resource, event type or event ID not found
+      content:
+        application/problem+json:
+          schema:
+            allOf:
+              - properties:
+                  status:
+                    type: integer
+                    enum:
+                      - 404
+                    default: 404
+                  type:
+                    type: string
+                    format: uri
+                    enum:
+                      - epcisException:NoSuchNameException
+              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+    '404EventTypeOrEventIdNotFound':
+      description: Event type or event ID not found
+      content:
+        application/problem+json:
+          schema:
+            allOf:
+              - properties:
+                  status:
+                    type: integer
+                    enum:
+                      - 404
+                    default: 404
+                  type:
+                    type: string
+                    format: uri
+                    enum:
+                      - epcisException:NoSuchNameException
+              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+
+    '404QueryNameNotFound':
+      description: Exceptions defined in EPCIS 1.2, section 8.2.6 for `poll`.
+      content:
+        application/problem+json:
+          schema:
+            allOf:
+              - properties:
+                  status:
+                    type: integer
+                    enum:
+                      - 404
+                    default: 404
+                  type:
+                    type: string
+                    format: uri
+                    enum:
+                      - epcisException:NoSuchNameException
+              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+    '403ClientUnauthorized':
+      description: Client is unauthorized to access this resource.
+      content:
+        application/problem+json:
+          schema:
+            allOf:
+              - properties:
+                  status:
+                    type: integer
+                    enum:
+                      - 403
+                    default: 403
+                  type:
+                    type: string
+                    format: uri
+                    enum:
+                      - epcisException:SecurityException
+              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+    '404EventTypeOrTopLevelNotFound':
+      description: Top-level resource or event type not found
+      content:
+        application/problem+json:
+          schema:
+            allOf:
+              - properties:
+                  status:
+                    type: integer
+                    enum:
+                      - 404
+                    default: 404
+                  type:
+                    type: string
+                    format: uri
+                    enum:
+                      - epcisException:NoSuchNameException
+              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+    '404EventTypeNotFound':
+      description: Event type not found
+      content:
+        application/problem+json:
+          schema:
+            allOf:
+              - properties:
+                  status:
+                    type: integer
+                    enum:
+                      - 404
+                    default: 404
+                  type:
+                    type: string
+                    format: uri
+                    enum:
+                      - epcisException:NoSuchNameException
+              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+    '401AuthorizationInformationMissing':
+      description: Authorization information is missing or invalid.
+      content:
+        application/problem+json:
+          schema:
+            allOf:
+              - properties:
+                  status:
+                    type: integer
+                    enum:
+                      - 401
+                    default: 401
+                  type:
+                    type: string
+                    format: uri
+                    enum:
+                      - epcisException:SecurityException
+              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+
   schemas:
     RFC7807ProblemResponseBody:
       description: A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)
@@ -953,7 +1013,7 @@ components:
       properties:
         id:
           type: string
-          format: uuid
+
         callbacks:
           $ref: '#/components/schemas/EventCallbackUrls'
 
@@ -968,7 +1028,6 @@ components:
         eventUrl:
           type: string
           format: uri
-
 
 
     AllEvent:
@@ -988,6 +1047,54 @@ components:
         - all
 
   parameters:
+    EventID:
+      name: eventID
+      in: path
+      required: true
+      schema:
+        type: string
+
+    EventTypes:
+      name: eventTypes
+      in: path
+      required: true
+      schema:
+        oneOf:
+          - $ref: '#/components/schemas/EPCISEventTypes'
+          - $ref: '#/components/schemas/AllEvent'
+    QueryNames:
+        in: path
+        name: queryNames
+        description: Unique name of a named query
+        required: true
+        schema:
+          type: string
+    PerPage:
+      in: query
+      name: perPage
+      description: Parameter to control pagination. perPage specifies the maximum number of events returned in one batch.
+      schema:
+        type: integer
+        default: 30
+    NextPageToken:
+      in: query
+      name: nextPageToken
+      description: Paramter that point to the next list of results when requesting a list of events that is larger than the value specified with the perPage parameter.
+      schema:
+        type: string
+    TopLevelResources:
+      in: path
+      name: topLevelResources
+      description: A top-level resource to access events.
+      required: true
+      schema:
+        type: string
+        enum:
+          - epcs
+          - bizSteps
+          - bizLocations
+          - readPoints
+          - dispositions
     GS1-EPCIS-version:
       in: header
       name: GS1-EPCIS-version

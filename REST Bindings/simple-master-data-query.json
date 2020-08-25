@@ -1,0 +1,55 @@
+{
+  "title": "SimpleMasterDataQuery",
+  "type": "object",
+  "vocabularyName": {
+    "type": "array",
+    "items": {
+      "type": "string"
+    }
+  },
+  "includeAttributes": {
+    "type": "boolean"
+  },
+  "includeChildren": {
+    "type": "boolean"
+  },
+  "attributeNames": {
+    "type": "array",
+    "items": {
+      "type": "string"
+    }
+  },
+  "EQ_name": {
+    "type": "array",
+    "items": {
+      "type": "string"
+    }
+  },
+  "WD_name": {
+    "type": "array",
+    "items": {
+      "type": "string"
+    }
+  },
+  "HASATTR": {
+    "type": "array",
+    "items": {
+      "type": "string"
+    }
+  },
+  "EQATTR_attrname": {
+    "type": "array",
+    "items": {
+      "type": "string"
+    }
+  },
+  "maxElementCount": {
+    "type": "integer"
+  },
+  "required": [
+    "includeAttributes","includeChildren"
+  ],
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}
+
