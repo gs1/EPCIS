@@ -21,5 +21,5 @@ ___
 | ---- | ---------------- | ---------------- |
 | 1 | Create an EPCIS document accommodating a set of Association Events considering the above pre-test conditions. | Verify that the created document is in a capture-acceptable form (EPCISDocument or EPCISQueryResponse meeting requirements) and that the document complies with the EPCIS 2.0 requirements. |
 | 2 | Capture an EPCIS document with an `AssociationEvent` where `parentID`  is populated with a physical location identifier. | The capture interface accepts the EPCIS document. Confirm that the system contains the captured event. |
-| 3 | Capture an EPCIS document with with an `AssociationEvent` where `action` is either `ADD` or `DELETE` and the `parentID` field is omitted. | The capture interface does not accept the EPCIS document. |
+| 3 | Capture an EPCIS document with an `AssociationEvent` where `action` is either `ADD` or `DELETE` and the `parentID` field is omitted. | The capture interface does not accept the EPCIS document. |
 | 4 | Capture an EPCIS document with an `AssociationEvent` where `action` is either `ADD` or `OBSERVE` and both `childEPCs` and `childQuantityList` are omitted. | The capture interface does not accept the EPCIS document. |
