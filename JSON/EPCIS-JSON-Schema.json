@@ -67,7 +67,7 @@
 		"errorDeclaration": {
 			"type": "object",
 			"properties": {
-				"declarationtime": {
+				"declarationTime": {
 					"$ref": "#/definitions/time"
 				},
 				"reason": {
@@ -79,7 +79,8 @@
 						"$ref": "#/definitions/eventID"
 					}
 				}
-			}
+			},
+			"required": ["declarationTime", "reason", "correctiveEventIDs"]
 		},
 		"quantityElement": {
 			"type": "object",
@@ -94,7 +95,7 @@
 					"$ref": "#/definitions/uom"
 				}
 			},
-			"required": ["epcClass"]
+			"required": ["epcClass", "quantity"]
 		},
 		"bizTransaction": {
 			"type": "object",
@@ -118,7 +119,7 @@
 					"$ref": "#/definitions/uri"
 				}
 			},
-			"required": ["type"]
+			"required": ["type", "source"]
 		},
 		"destination": {
 			"type": "object",
@@ -130,7 +131,7 @@
 					"$ref": "#/definitions/uri"
 				}
 			},
-			"required": ["type"]
+			"required": ["type", "destination"]
 		},
 		"sensorElement": {
 			"type": "object",
@@ -924,7 +925,19 @@
 						"$ref": "#/definitions/associationEvent"
 					}
 				}
-			]
+			],
+			"properties": {
+				"isA": {
+					"type": "string",
+					"enum": [
+						"AssociationEvent",
+						"ObjectEvent",
+						"AggregationEvent",
+						"TransactionEvent",
+						"TransformationEvent"
+					]
+				}
+			}
 		},
 		"vocabulary": {
 			"type": "object",
