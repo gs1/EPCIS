@@ -42,8 +42,8 @@ ___
 | 18 | Similar to Step 6, for `EQ_hexBinaryValue` and `hexBinaryValue`.| Equivalent to step 6. ||
 | 19 | Similar to Step 6, for `EQ_uriValue` and `uriValue`. | Equivalent to step 6. ||
 | 20 | Similar to Step 6, for `EQ_SENSORELEMENT_fieldname`/ `GT_SENSORELEMENT_fieldname`/ `GE_SENSORELEMENT_fieldname`/ `LT_SENSORELEMENT_fieldname`/ `LE_SENSORELEMENT_fieldname` and a valid value populating the user extension fieldname | Equivalent to step 6.||
-| 21 | Similar to Step 20, for `EQ_SENSORMETADATA_fieldname`/ `GT_SENSORMETADATA_fieldname`/ `GE_SENSORMETADATA_fieldname`/ `LT_SENSORMETADATA_fieldname`/ `LE_SENSORMETADATA_fieldname` and a valid value populating the user extension fieldname | Equivalent to step 20. ||
-| 22 | Similar to Step 20, for `EQ_SENSORREPORT_fieldname`/ `GT_SENSORREPORT_fieldname`/ `GE_SENSORREPORT_fieldname`/  `LT_SENSORREPORT_fieldname`/ `LE_SENSORREPORT_fieldname` and a valid value populating the user extension fieldname | Equivalent to step 20.||
+| 21 | Similar to Step 20, for `EQ_SENSORMETADATA_fieldname`/ `GT_SENSORMETADATA_fieldname`/ `GE_SENSORMETADATA_fieldname`/ `LT_SENSORMETADATA_fieldname`/ `LE_SENSORMETADATA_fieldname` and a valid value populating the user extension fieldname | Equivalent to step 6. ||
+| 22 | Similar to Step 20, for `EQ_SENSORREPORT_fieldname`/ `GT_SENSORREPORT_fieldname`/ `GE_SENSORREPORT_fieldname`/  `LT_SENSORREPORT_fieldname`/ `LE_SENSORREPORT_fieldname` and a valid value populating the user extension fieldname | Equivalent to step 6Adjusted typo.||
 | 23 | Similar to Step 6, for `GE_sDev`/ `LT_sDev` and `sDev`. | Equivalent to step 6. ||
 | 24 | Similar to Step 6, for `GE_percRank`/ `LT_percRank` and `percRank`.| Equivalent to step 6. ||
 | 25 | Similar to Step 6, for `GE_percValue`/ `LT_percValue` and `percValue`. | Equivalent to step 6. ||
