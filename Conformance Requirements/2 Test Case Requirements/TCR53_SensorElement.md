@@ -36,11 +36,10 @@ ___
 | 13 | Similar to Step 6, for `GE_minValue_uom`/ `LT_minValue_uom` and `minValue_uom`. | Equivalent to step 6. |
 | 14 | Similar to Step 6, for `GE_maxValue_uom`/ `LT_maxValue_uom` and `maxValue_uom`. | Equivalent to step 6. |
 | 15 | Similar to Step 6, for `GE_meanValue_uom`/ `LT_meanValue_uom` and `meanValue_uom`.| Equivalent to step 6. |
-| 16 | Similar to Step 6, for `EQ_condition` and `condition`. | Equivalent to step 6. |
-| 17 | Similar to Step 6, for `EQ_stringValue` and `stringValue`. | Equivalent to step 6. |
-| 18 | Similar to Step 6, for `EQ_booleanValue` and `booleanValue`. | Equivalent to step 6. |
-| 19 | Similar to Step 6, for `EQ_hexBinaryValue` and `hexBinaryValue`.| Equivalent to step 6. |
-| 20 | Similar to Step 6, for `EQ_uriValue` and `uriValue`. | Equivalent to step 6. |
+| 16 | Similar to Step 6, for `EQ_stringValue` and `stringValue`. | Equivalent to step 6. |
+| 17 | Similar to Step 6, for `EQ_booleanValue` and `booleanValue`. | Equivalent to step 6. |
+| 18 | Similar to Step 6, for `EQ_hexBinaryValue` and `hexBinaryValue`.| Equivalent to step 6. |
+| 19 | Similar to Step 6, for `EQ_uriValue` and `uriValue`. | Equivalent to step 6. |
 | 20 | Similar to Step 6, for `EQ_SENSORELEMENT_fieldname`/ `GT_SENSORELEMENT_fieldname`/ `GE_SENSORELEMENT_fieldname`/ `LT_SENSORELEMENT_fieldname`/ `LE_SENSORELEMENT_fieldname` and a valid value populating the user extension fieldname | Equivalent to step 6.|
 | 21 | Similar to Step 20, for `EQ_SENSORMETADATA_fieldname`/ `GT_SENSORMETADATA_fieldname`/ `GE_SENSORMETADATA_fieldname`/ `LT_SENSORMETADATA_fieldname`/ `LE_SENSORMETADATA_fieldname` and a valid value populating the user extension fieldname | Equivalent to step 20. |
 | 22 | Similar to Step 20, for `EQ_SENSORREPORT_fieldname`/ `GT_SENSORREPORT_fieldname`/ `GE_SENSORREPORT_fieldname`/  `LT_SENSORREPORT_fieldname`/ `LE_SENSORREPORT_fieldname` and a valid value populating the user extension fieldname | Equivalent to step 20.|
