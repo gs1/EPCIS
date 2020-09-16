@@ -168,13 +168,7 @@ If someone is interested to know whether temperature and air humidity (in this r
 
 Event V9 illustrates how the sensor-related standard extension fields can be used to transmit geographic positions of a given item. In this instance, the EPCIS capturing application triggers an event at the end of each day, thereby inserting the latitude/longitude values in 4-hour intervals. Further, if an accessing client is interested in more granular data, the event also includes a Web URI (which again is a valid GS1 Digital Link Web URI - thereby, '8004' is the GS1 AI for a Global Individual Asset Identifier) pointing to the underlying raw sensor data.
 
-## Example 4: ??? Long-term/fixed associations
 
-TBD  
-o need: visibility which sensor device/assembly/module was built into  which product/asset/building  
-o for instance, if it turns out in retrospect that a given sensor device/model was not exactly calibrated, the organisation most probably requires to identify all objects equipped with the sensor device in question. In addition, this information may also be enquired by customs authorities  
-o visibility data matrix: Association Event  
-o example: asset pool operator, used IDs: GRAI for asset, GIAI for device
 
 ## Example 5: ??? Microorganism/Chemical Substance
 
