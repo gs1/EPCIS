@@ -60,14 +60,14 @@ In such a setting, the 'alert' EPCIS event could be modelled as follows:
 | Why | `bizStep` | `Sensor reporting (CBV)` |
 | How | `sensorElement` |
 | | `sensorMetaData` |
-| | `bizRules` | https://example.org/253/4012345000054987
+| | `bizRules` | GDTI GS1 DL URI
 | | `sensorReport` |
 | | `type` | `Temperature (CBV`) |
 | | `value` | 15.1 |
 | | `uom` | `CEL` |
 | | `sensorReport` |
 | | `type` | `AlarmCondition (CBV`) |
-| | `uriValue` | https://example.com/alarmCodes/temperatureExceeded |
+| | `uriValue` | URI, e.g. https://example.com/alarmCodes/temperatureExceeded |
 
 In contrast to the previous example, the event accommodates the (optional) `sensorMetaData` field, which in turn contains a reference (the Web URI is a valid GS1 Digital Link URI leveraging a custom (here: "example.com) domain, `253` denotes the GS1 Application Identifier for the Global Document Type Identifier) to an electronic document including the business rule(s) upon which the EPCIS event was captured. The company may decide to also insert additional attributes such as `deviceID` or `deviceMetaData` into this element, if applicable.
 
@@ -107,7 +107,7 @@ For instance, if an organisation is interested to ascertain that their products 
 | | `sensorElement` |
 | | `sensorMetaData` |
 | | `time` |  |  |  |  |  |  |  |  | 25 June 02:00 am |  |
-| | `rawData` |  |  |  |  |  |  |  |  | https://example.org/8004/401234599999 |  |
+| | `rawData` |  |  |  |  |  |  |  |  | URI, e.g. https://example.org/8004/401234599999 |  |
 | | `sensorReport` |
 | | `type` |  |  |  |  |  |  |  |  | `Latitude (CBV)` |  |  |
 | | `stringValue` |  |  |  |  |  |  |  |  | 53.553747 |  |  |
@@ -168,11 +168,37 @@ If someone is interested to know whether temperature and air humidity (in this r
 
 Event V9 illustrates how the sensor-related standard extension fields can be used to transmit geographic positions of a given item. In this instance, the EPCIS capturing application triggers an event at the end of each day, thereby inserting the latitude/longitude values in 4-hour intervals. Further, if an accessing client is interested in more granular data, the event also includes a Web URI (which again is a valid GS1 Digital Link Web URI - thereby, '8004' is the GS1 AI for a Global Individual Asset Identifier) pointing to the underlying raw sensor data.
 
+## Example 4: Quality control of contained microorganisms/chemical substances
 
+For consumer safety reasons or due to legal requirements, many organisations need to conduct quality controls. For instance, common practice is to take a control/random sample at goods receipt. As of EPCIS 2.0, organisations can properly capture and document the concentration of potentially harmful bacteria and other microorganisms. What is more, they can also capture the concentration of any chemical substance.
 
-## Example 5: ??? Microorganism/Chemical Substance
+For illustration purposes, let us assume that a retailer wants to document the concentration of Shigella (bacteria that include known pathogens) as well as sugar in a batch/lot of apples. Further, the retailer wants to capture the ID of the device with which the quality control is accomplished (so that in case the latter turns out not to be properly calibrated, the retailer is able to react accordingly). With that in mind, an EPCIS inspecting event could be designed as follows:
 
-TBD  
-o need: quality control of e.g. fresh fruits and vegetables, control/random sample at goods receipt  
-o visibility data matrix: inspecting event with a device that determines sugar content, consistency, check for bacteria (e.g. Lactobacillus)  
-o example: retailer receiving a batch/lot of apples  
+| Dim | Data Element | V1 |
+| --- | ------------ | -- |
+|  | Description | Fresh fruits quality inspection |
+|  | Event Type | Object Event |
+|  | Action | OBSERVE |
+| When | `eventTime` | 10 August, 08:10 am |
+| What | `quantityList` | LGTIN of batch/lot of food |
+| Where | `readPoint` | GLN of cold storage room |
+| Why | `bizStep` | `Inspecting (CBV)` |
+| How | `sensorElement` |
+| | `sensorMetaData` |
+| | `deviceID` | GIAI (EPC URI or GS1 DL URI)
+| | `sensorReport` |
+| | `type` | `Dimensionless_concentration (CBV`) |
+| | `microorganism` | https://wwww.ncbi.nlm.nih.gov/1118236  TBC
+| | `value` | TBD |
+| | `uom` | TBD |
+| | `sensorReport` |
+| | `type` | `Dimensionless_concentration (CBV`) |
+| | `chemicalSubstance` | https://identifiers.org/inchikey:CZMRCDWAGMRECN-UGDNZRGBSA-N
+| | `value` | 10.1 |
+| | `uom` | `J18` |
+
+The above example can be easily applied to all other use cases in which there is a need to capture the concentration of either chemical substances or microorganisms in the objects indicated in the What dimension. Note that for populating the first one, the CBV specifies to use the International Chemical Identifier Key URI. For the second one, it defines to use the NCBI (National Center for Biotechnology Information) Web URI. Both URI schemes ensure uniqueness and are actually resolvable, i.e. can return further information on the respective organic or inorganic subjects.
+
+The `uom` "J18" is the UN/CEFACT common code of degree Brix, a unit of proportion used in measuring the dissolved sugar-to-water mass ratio. 
+
+TO BE COMPLETED: microorganism uom/value --> requires discussion with UN/CEFACT team as e.g. CFU, CFU/g and CFU/ml are missing in the Rec 20 list - however, these uom are common practice in capturing the concentration ob bacteria.
