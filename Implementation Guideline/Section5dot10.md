@@ -1,6 +1,6 @@
 # Long-term/fixed associations
 
-## Example 1: Constructing or installing  or nstallation 
+## Example 1: Installing  or nstallation 
 
 To enable organisation to capture e.g. the construction of assemblies (e.g. a rail wagon) or the installation of devices into 
 
