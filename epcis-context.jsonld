@@ -7,13 +7,28 @@
     "dcterms": "http://purl.org/dc/terms/",
     "epcis": "https://ns.gs1.org/epcis/",
  
+    "time": {"@type":"xsd:dateTime"},
+    "startTime": {"@type":"xsd:dateTime"},
+    "endTime": {"@type":"xsd:dateTime"},
     "eventTime": {"@type":"xsd:dateTime"},
     "recordTime": {"@type":"xsd:dateTime"},
     "declarationTime": {"@type":"xsd:dateTime"},
+
     "eventTimeZoneOffset": {"@type":"xsd:string"},
     "action": {"@type":"xsd:string"},
 
     "quantity": {"@type":"xsd:decimal"},
+    "value" : {"@type": "xsd:float"},
+    "minValue" : {"@type": "xsd:float"},
+    "maxValue" : {"@type": "xsd:float"},
+    "percValue" : {"@type": "xsd:float"},
+    "percRank" : {"@type": "xsd:float"},
+    "meanValue" : {"@type": "xsd:float"},
+    "sDev" : {"@type": "xsd:float"},
+    "stringValue" : {"@type": "xsd:string"},
+    "booleanValue" : {"@type": "xsd:boolean"},
+    "hexBinaryValue" : {"@type": "xsd:hexBinary"},
+    "uriValue" : {"@type": "@id"},
     "uom": {"@type":"xsd:string"},
 
     "epcList": {"@type":"@id"},
@@ -30,7 +45,19 @@
     "destination": {"@type":"@id"},
 
     "type": {"@type":"@id"},
-    
+    "set": {"@type":"@id"},
+    "unset": {"@type":"@id"},
+    "deviceID": {"@type":"@id"},
+    "deviceMetaData": {"@type":"@id"},
+    "rawData": {"@type":"@id"},
+    "bizRules": {"@type":"@id"},
+    "dataProcessingMethod": {"@type":"@id"},
+    "chemicalSubstance": {"@type":"@id"},
+    "microorganism": {"@type":"@id"},
+        
+    "children": {"@type":"@id"},
+	  "vtype": "urn:epcglobal:epcis:vtype:",
+	  "cbvmda": "urn:epcglobal:cbv:mda:",
     
     "isA": "@type",
     "id":"@id",
