@@ -56,8 +56,8 @@
     "microorganism": {"@type":"@id"},
         
     "children": {"@type":"@id"},
-	  "vtype": "urn:epcglobal:epcis:vtype:",
-	  "cbvmda": "urn:epcglobal:cbv:mda:",
+    "vtype": "urn:epcglobal:epcis:vtype:",
+    "cbvmda": "urn:epcglobal:cbv:mda:",
     
     "isA": "@type",
     "id":"@id",
