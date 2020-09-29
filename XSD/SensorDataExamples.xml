@@ -322,7 +322,7 @@
 					</extension>
 				</extension>
 			</TransactionEvent>
-			<!-- Case 12: Transformation Event with all kinds of user extensions -->
+			<!-- Case 12: Transformation Event with all areas in which user extensions can appear -->
 			<extension>
 				<TransformationEvent>
 				    	<eventTime>2020-09-29T14:00:00.000+02:00</eventTime>
