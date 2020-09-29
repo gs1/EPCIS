@@ -38,14 +38,16 @@
         "type": "string"
       }
     },
-    "EQATTR_attrname": {
+    "maxElementCount": {
+      "type": "integer"
+    }
+  },
+  "patternProperties": {
+    "EQATTR_[a-z]+\\:?\\w+$": {
       "type": "array",
       "items": {
         "type": "string"
       }
-    },
-    "maxElementCount": {
-      "type": "integer"
     }
   },
   "required": [
