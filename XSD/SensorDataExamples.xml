@@ -1,4 +1,4 @@
-<epcis:EPCISDocument xmlns:epcis="urn:epcglobal:epcis:xsd:1" schemaVersion="2.0" creationDate="2019-10-07T15:00:00.000+01:00" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:epcglobal:epcis:xsd:1 EPCglobal-epcis-2_0.xsd" xmlns:gs1="https://gs1.org/voc/" xmlns:example="http://ns.example.com/epcis">
+<epcis:EPCISDocument xmlns:epcis="urn:epcglobal:epcis:xsd:1" schemaVersion="2.0" creationDate="2019-10-07T15:00:00.000+01:00" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:epcglobal:epcis:xsd:1 EPCglobal-epcis-2_0.xsd" xmlns:gs1="https://gs1.org/voc/" xmlns:example="https://ns.example.com/epcis" xmlns:example1="https://ns.example1.com/epcis" xmlns:example2="https://ns.example2.com/epcis" xmlns:example3="https://ns.example3.com/epcis" xmlns:example4="https://ns.example4.com/epcis">
 	<EPCISBody>
 		<EventList>
 			<!--  Case 1: capturing various sensor properties in given time intervals (here: 20 minutes) -->
