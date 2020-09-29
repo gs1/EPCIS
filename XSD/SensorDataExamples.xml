@@ -235,8 +235,8 @@
 								<sensorReport type="gs1:Temperature" minValue="12.4" maxValue="13.8" meanValue="13.2" sDev="0.41" uom="CEL" percRank="50" percValue="12.7" example:cv="123"/>
 								<sensorReport type="example:someSensorProperty" stringValue="someSensorOutput"/>
 								<example:furtherSensorData>
-									<measure1>123.5</measure1>
-									<measure2>0.987</measure2>
+									<example:measure1>123.5</example:measure1>
+									<example:measure2>0.987</example:measure2>
 								</example:furtherSensorData>
 							</sensorElement>
 							<sensorElement>
