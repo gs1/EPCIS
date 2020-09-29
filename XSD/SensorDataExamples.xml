@@ -335,7 +335,7 @@
 								<example3:value1>34</example3:value1>
 								<example3:value44>66</example3:value44>
 					    		</example3:errorCodes>
-							<example furtherData="abcd1234"/>
+							<example:field furtherData="abcd1234"/>
 						</errorDeclaration>
 				    </baseExtension>
 				    <inputQuantityList>
