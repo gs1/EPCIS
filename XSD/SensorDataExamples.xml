@@ -322,62 +322,62 @@
 					</extension>
 				</extension>
 			</TransactionEvent>
-			<!-- Case 12: Transformation Event with all kind of user extensions -->
+			<!-- Case 12: Transformation Event with all kinds of user extensions -->
 			<extension>
-			<TransformationEvent>
-			    <eventTime>2020-09-29T14:00:00.000+02:00</eventTime>
-			    <eventTimeZoneOffset>+02:00</eventTimeZoneOffset>
-			    <baseExtension>
-				<errorDeclaration>
-				    <declarationTime>2020-09-29T15:00:00.000+02:00</declarationTime>
-				    <example:issuer>Employee 123</example:issuer>
-				    <example3:errorCodes>
-					<example3:value1>34</example3:value1>
-					<example3:value44>66</example3:value44>
-				    </example3:errorCodes>
-					<example furtherData="abcd1234"/>
-				</errorDeclaration>
-			    </baseExtension>
-			    <inputQuantityList>
-				<quantityElement>
-				    <epcClass>urn:epc:class:lgtin:4023333.055555.ABC123</epcClass>
-				    <quantity>25.0</quantity>
-				    <uom>KGM</uom>
-				</quantityElement>
-			    </inputQuantityList>
-			    <outputEPCList>
-				<epc>urn:epc:id:sgtin:4012345.012345.987</epc>
-				<epc>urn:epc:id:sgtin:4012345.012345.988</epc>
-			    </outputEPCList>
-			    <bizStep>urn:epcglobal:cbv:bizstep:commissioning</bizStep>
-			    <readPoint>
-				<id>urn:epc:id:sgln:4023333.00000.0</id>
-				<example:gs1ES>(414)4023333000000</example:gs1ES>
-			    </readPoint>
-			    <bizLocation>
-				<id>urn:epc:id:sgln:4023333.00001.12</id>
-				<example:gs1ES>(414)4023333000017 (254)12</example:gs1ES>
-			    </bizLocation>
-			    <extension>
-				<sensorElementList>
-					<sensorElement example="abc123">
-						<sensorMetaData startTime="2019-04-01T15:00:00.000+01:00" endTime="2019-04-02T14:59:59.999+01:00" example:someFurtherMetaData="someText"/>
-						<sensorReport type="gs1:Temperature" minValue="12.4" maxValue="13.8" meanValue="13.2" sDev="0.41" uom="CEL" percRank="50" percValue="12.7" example:cv="123"/>
-						<sensorReport type="example:someSensorProperty" stringValue="someSensorOutput"/>
-						<example:furtherSensorData>
-							<example:measure1>123.5</example:measure1>
-							<example:measure2>0.987</example:measure2>
-						</example:furtherSensorData>
-					</sensorElement>
-				</sensorElementList>
-			    </extension>
-			    <example:internalData>
-				<example:machine>urn:epc:id:giai:4012345.ABC</example:machine>
-				<example:procedure>A-1</example:procedure>
-			    </example:internalData>
-			    <example2:furtherData example2:assemblyLine="2" example2:workingShift="1"></example2:furtherData>
-			    <example4:otherThings>some text</example4:otherThings>
-			</TransformationEvent>
+				<TransformationEvent>
+				    	<eventTime>2020-09-29T14:00:00.000+02:00</eventTime>
+				    	<eventTimeZoneOffset>+02:00</eventTimeZoneOffset>
+				    	<baseExtension>
+						<errorDeclaration>
+					    		<declarationTime>2020-09-29T15:00:00.000+02:00</declarationTime>
+					    		<example:issuer>Employee 123</example:issuer>
+					    		<example3:errorCodes>
+								<example3:value1>34</example3:value1>
+								<example3:value44>66</example3:value44>
+					    		</example3:errorCodes>
+							<example furtherData="abcd1234"/>
+						</errorDeclaration>
+				    </baseExtension>
+				    <inputQuantityList>
+						<quantityElement>
+					    		<epcClass>urn:epc:class:lgtin:4023333.055555.ABC123</epcClass>
+					    		<quantity>25.0</quantity>
+					    		<uom>KGM</uom>
+						</quantityElement>
+				    </inputQuantityList>
+				    <outputEPCList>
+						<epc>urn:epc:id:sgtin:4012345.012345.987</epc>
+						<epc>urn:epc:id:sgtin:4012345.012345.988</epc>
+				    </outputEPCList>
+				    <bizStep>urn:epcglobal:cbv:bizstep:commissioning</bizStep>
+				    <readPoint>
+						<id>urn:epc:id:sgln:4023333.00000.0</id>
+						<example:gs1ES>(414)4023333000000</example:gs1ES>
+				    </readPoint>
+				    <bizLocation>
+						<id>urn:epc:id:sgln:4023333.00001.12</id>
+						<example:gs1ES>(414)4023333000017 (254)12</example:gs1ES>
+				    </bizLocation>
+				    <extension>
+						<sensorElementList>
+								<sensorElement example="abc123">
+										<sensorMetaData startTime="2019-04-01T15:00:00.000+01:00" endTime="2019-04-02T14:59:59.999+01:00" example:someFurtherMetaData="someText"/>
+										<sensorReport type="gs1:Temperature" minValue="12.4" maxValue="13.8" meanValue="13.2" sDev="0.41" uom="CEL" percRank="50" percValue="12.7" example:cv="123"/>
+										<sensorReport type="example:someSensorProperty" stringValue="someSensorOutput"/>
+										<example:furtherSensorData>
+												<example:measure1>123.5</example:measure1>
+												<example:measure2>0.987</example:measure2>
+										</example:furtherSensorData>
+								</sensorElement>
+						</sensorElementList>
+				    </extension>
+				    <example:internalData>
+						<example:machine>urn:epc:id:giai:4012345.ABC</example:machine>
+						<example:procedure>A-1</example:procedure>
+				    </example:internalData>
+				    <example2:furtherData example2:assemblyLine="2" example2:workingShift="1"></example2:furtherData>
+				    <example4:otherThings>some text</example4:otherThings>
+			     </TransformationEvent>
 		    </extension>
 		</EventList>
 	</EPCISBody>
