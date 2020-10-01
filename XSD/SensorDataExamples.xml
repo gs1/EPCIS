@@ -358,13 +358,13 @@
 						<id>urn:epc:id:sgln:4023333.00001.12</id>
 						<example:gs1ES>(414)4023333000017 (254)12</example:gs1ES>
 				    </bizLocation>
-					 <ilmd> 
-                        <cbvmda:lotNumber>LOTABC</cbvmda:lotNumber>
-                        <example:grading>A</example:grading>
+				    <ilmd> 
+                        			<cbvmda:lotNumber>LOTABC</cbvmda:lotNumber>
+                        			<example:grading>A</example:grading>
 						<example2:userMasterData>
 							<example2:sizeCode>B-2</example2:sizeCode>
 						</example2:userMasterData>
-                    </ilmd>
+                    		    </ilmd>
 				    <extension>
 						<sensorElementList>
 								<sensorElement example:someUserField="abc123">
