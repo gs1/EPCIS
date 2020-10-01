@@ -335,7 +335,7 @@
 								<example3:value1>34</example3:value1>
 								<example3:value44>66</example3:value44>
 					    		</example3:errorCodes>
-							<example:field furtherData="abcd1234"/>
+							<example:field example:furtherData="abcd1234"/>
 						</errorDeclaration>
 				    </baseExtension>
 				    <inputQuantityList>
@@ -360,7 +360,7 @@
 				    </bizLocation>
 				    <extension>
 						<sensorElementList>
-								<sensorElement example="abc123">
+								<sensorElement example:someUserField="abc123">
 										<sensorMetaData startTime="2019-04-01T15:00:00.000+01:00" endTime="2019-04-02T14:59:59.999+01:00" example:someFurtherMetaData="someText"/>
 										<sensorReport type="gs1:Temperature" minValue="12.4" maxValue="13.8" meanValue="13.2" sDev="0.41" uom="CEL" percRank="50" percValue="12.7" example:cv="123"/>
 										<sensorReport type="example:someSensorProperty" stringValue="someSensorOutput"/>
