@@ -361,6 +361,9 @@
 					 <ilmd> 
                         <cbvmda:lotNumber>LOTABC</cbvmda:lotNumber>
                         <example:grading>A</example:grading>
+						<example2:userMasterData>
+							<example2:sizeCode>B-2</example2:sizeCode>
+						</example2:userMasterData>
                     </ilmd>
 				    <extension>
 						<sensorElementList>
