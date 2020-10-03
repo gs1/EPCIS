@@ -1,4 +1,5 @@
 {
+    "@context": ["https://gs1.github.io/EPCIS/epcis-context.jsonld",{"example": "http://ns.example.com/epcis/"},{"xmda": "http://epcis.example.com/mda"}],
 	"id": "_:example_9.8.1",
 	"isA": "EPCISDocument",
 	"schemaVersion": 2.0,
@@ -89,45 +90,5 @@
 	},
 	"epcisBody": {
 		"eventList": []
-	},
-	"@context": [
-		{
-			"isA": "@type",
-			"creationDate": {
-				"@id": "dcterms:created",
-				"@type": "xsd:dateTime"
-			},
-			"format": {
-				"@id": "dcterms:format",
-				"@type": "xsd:string"
-			},
-			"schemaVersion": {
-				"@id": "owl:versionInfo",
-				"@type": "xsd:string"
-			},
-			"type": {
-				"@type": "@id"
-			},
-			"id": {
-				"@type": "@id"
-			},
-			"children": {
-				"@type": "@id"
-			},
-			"@vocab": "https://ns.gs1.org/epcis-masterdata/",
-			"rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-			"rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-			"xsd": "http://www.w3.org/2001/XMLSchema#",
-			"dcterms": "http://purl.org/dc/terms/",
-			"epcis": "https://ns.gs1.org/epcis/",
-			"vtype": "urn:epcglobal:epcis:vtype",
-			"cbvmda": "urn:epcglobal:cbv:mda"
-		},
-		{
-			"xmda": "http://epcis.example.com/mda"
-		},
-		{
-			"example": "http://ns.example.com/epcis"
-		}
-	]
+	}
 }
