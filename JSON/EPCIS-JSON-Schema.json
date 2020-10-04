@@ -109,6 +109,24 @@
 			},
 			"required": ["bizTransaction"]
 		},
+		"readPoint": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"$ref": "#/definitions/uri"
+				}
+			},
+			"required": ["id"]
+		},
+		"bizLocation": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"$ref": "#/definitions/uri"
+				}
+			},
+			"required": ["id"]
+		},
 		"source": {
 			"type": "object",
 			"properties": {
@@ -307,10 +325,10 @@
 							"$ref": "#/definitions/persistentDisposition"
 						},
 						"readPoint": {
-							"$ref": "#/definitions/uri"
+							"$ref": "#/definitions/readPoint"
 						},
 						"bizLocation": {
-							"$ref": "#/definitions/uri"
+							"$ref": "#/definitions/bizLocation"
 						},
 						"bizTransactionList": {
 							"type": "array",
@@ -451,10 +469,10 @@
 							"$ref": "#/definitions/persistentDisposition"
 						},
 						"readPoint": {
-							"$ref": "#/definitions/uri"
+							"$ref": "#/definitions/readPoint"
 						},
 						"bizLocation": {
-							"$ref": "#/definitions/uri"
+							"$ref": "#/definitions/bizLocation"
 						},
 						"bizTransactionList": {
 							"type": "array",
@@ -550,10 +568,10 @@
 							"$ref": "#/definitions/persistentDisposition"
 						},
 						"readPoint": {
-							"$ref": "#/definitions/uri"
+							"$ref": "#/definitions/readPoint"
 						},
 						"bizLocation": {
-							"$ref": "#/definitions/uri"
+							"$ref": "#/definitions/bizLocation"
 						},
 						"bizTransactionList": {
 							"type": "array",
@@ -656,10 +674,10 @@
 							"$ref": "#/definitions/persistentDisposition"
 						},
 						"readPoint": {
-							"$ref": "#/definitions/uri"
+							"$ref": "#/definitions/readPoint"
 						},
 						"bizLocation": {
-							"$ref": "#/definitions/uri"
+							"$ref": "#/definitions/bizLocation"
 						},
 						"sourceList": {
 							"type": "array",
@@ -746,10 +764,10 @@
 							"$ref": "#/definitions/persistentDisposition"
 						},
 						"readPoint": {
-							"$ref": "#/definitions/uri"
+							"$ref": "#/definitions/readPoint"
 						},
 						"bizLocation": {
-							"$ref": "#/definitions/uri"
+							"$ref": "#/definitions/bizLocation"
 						},
 						"bizTransactionList": {
 							"type": "array",
