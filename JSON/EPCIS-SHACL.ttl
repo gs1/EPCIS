@@ -366,7 +366,7 @@ epcis:Destination_IsMandatory owl:sameAs [
     sh:name "destination is mandatory within an epcis:DestinationList" ;
     sh:minCount 1 ;
     sh:maxCount 1 ;
-    sh:message "destination is a mandatory field within epcis:DestinationList, in which must have a single value." 
+    sh:message "destination is a mandatory field within epcis:DestinationList, in which it must have a single value." 
 ].
 
 epcis:Destination_TypeConstraint owl:sameAs [
