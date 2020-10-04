@@ -12,7 +12,7 @@
 		  "id": "_:event1",
 		  "isA": "ObjectEvent",
 		  "action": "OBSERVE",
-		  "gs1comment:usage": "An ObjectEvent may be used for reporting an observation",
+		  "rdfs:comment": "An ObjectEvent may be used for reporting an observation",
 		  "bizStep": "urn:epcglobal:cbv:bizstep:shipping",
 		  "disposition": "urn:epcglobal:cbv:disp:in_transit",
 		  "epcList": ["urn:epc:id:sgtin:0614141.107346.2017","urn:epc:id:sgtin:0614141.107346.2018"],
