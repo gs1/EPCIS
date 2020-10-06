@@ -1,7 +1,7 @@
 {
   "title": "EPCIS Query parameters",
   "type": "object",
-  "patternProperties": {
+  "properties": {
     "eventType": {
       "type": "array",
       "items": {
@@ -162,6 +162,34 @@
         "format": "uri"
       }
     },
+    "EQ_eventID": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "GE_errorDeclaration_Time": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "LT_errorDeclaration_Time": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "EQ_errorReason": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "EQ_correctiveEventID": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "patternProperties": {
     "^EQ_[a-z]\\w+$": {
       "oneOf": [
         {
@@ -505,32 +533,6 @@
       }
     },
     "^EQ_ATTR_\\w+_attrname$": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "EQ_eventID": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "GE_errorDeclaration_Time": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "LT_errorDeclaration_Time": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "EQ_errorReason": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "EQ_correctiveEventID": {
       "type": "array",
       "items": {
         "type": "string"
