@@ -37,7 +37,7 @@ paths:
             schema:
               type: object
       responses:
-        '201':
+        '202':
           description: Successfully captured one or more EPCIS events. The request returns a unique capture job URL in the Location header.
           headers:
             Location:
