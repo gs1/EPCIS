@@ -1044,7 +1044,6 @@ components:
         - AssociationEvents
         - TransformationEvents
         - TransactionEvents
-        - all
 
   parameters:
     EventID:
