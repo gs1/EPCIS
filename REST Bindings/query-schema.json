@@ -583,6 +583,54 @@
     "^EXISTS_INNER_ERROR_DECLARATION_[a-z]\\w+$": {
       "type": "integer",
       "nullable": true
+    },
+    "^EQ_value_[A-Z0-9]{2,4}$": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      }
+    },
+    "^GE_minValue_[A-Z0-9]{2,4}$": {
+      "type": "number"
+    },
+    "^LT_minValue_[A-Z0-9]{2,4}$": {
+      "type": "number"
+    },
+    "^GE_maxValue_[A-Z0-9]{2,4}$": {
+      "type": "number"
+    },
+    "^LT_maxValue_[A-Z0-9]{2,4}$": {
+      "type": "number"
+    },
+    "^GE_meanValue_[A-Z0-9]{2,4}$": {
+      "type": "number"
+    },
+    "^LT_meanValue_[A-Z0-9]{2,4}$": {
+      "type": "number"
+    },
+    "^GE_value_[A-Z0-9]{2,4}$": {
+      "type": "number"
+    },
+    "^LT_value_[A-Z0-9]{2,4}$": {
+      "type": "number"
+    },
+    "^EQ_quantity_[A-Z0-9]{2,4}$": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      }
+    },
+    "^GE_quantity_[A-Z0-9]{2,4}$": {
+      "type": "number"
+    },
+    "^LT_quantity_[A-Z0-9]{2,4}$": {
+      "type": "number"
+    },
+    "^GT_quantity_[A-Z0-9]{2,4}$": {
+      "type": "number"
+    },
+    "^LE_quantity_[A-Z0-9]{2,4}$": {
+      "type": "number"
     }
   },
   "additionalProperties": false,
