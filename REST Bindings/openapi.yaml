@@ -966,7 +966,6 @@ components:
       required:
         - type
         - title
-        - detail
       properties:
         type:
           type: string
@@ -980,6 +979,11 @@ components:
         instance:
           type: string
           format: uri
+      example:
+        type: "epcisException:SecurityException"
+        title: "Unauthorized to execute query TestQuery"
+        status: 401
+        instance: "/queries/TestQuery"
 
 
     NamedQueryMetaData:
