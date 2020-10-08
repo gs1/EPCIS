@@ -1,0 +1,26 @@
+{
+  "title": "Quantity",
+  "type": "object",
+  "description": "Represents an EPCIS quantity element.",
+  "properties": {
+    "epcClass": {
+      "type": "string",
+      "description": "The EPC class of the quantity",
+      "example": "urn:epc:class:lgtin:4012345.012345.998877"
+    },
+    "quantity": {
+      "type": "integer",
+      "description": "The quantity value",
+      "example": 200
+    },
+    "uom": {
+      "type": "string",
+      "description": "The unit of measure",
+      "example": "KGM"
+    }
+  },
+  "required": [
+    "epcClass",
+    "quantity"
+  ]
+}

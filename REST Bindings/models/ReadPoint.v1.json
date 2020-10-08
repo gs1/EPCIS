@@ -1,0 +1,15 @@
+{
+  "title": "ReadPoint",
+  "type": "object",
+  "description": "Represents an EPCIS read point.",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The read point identifier",
+      "example": "urn:epc:id:sgln:0614141.07346.1234"
+    }
+  },
+  "required": [
+    "id"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "title": "BizTransaction",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "The business transaction type",
+      "example": "urn:epcglobal:cbv:btt:po"
+    },
+    "bizTransaction": {
+      "type": "string",
+      "description": "The URI of the business transaction resource",
+      "format": "uri",
+      "example": "http://transaction.acme.com/po/12345678"
+    }
+  },
+  "required": [
+    "type",
+    "bizTransaction"
+  ],
+  "description": "Represents an EPCIS business transaction."
+}

@@ -1,0 +1,67 @@
+{
+  "title": "TransformationEvent",
+  "type": "object",
+  "description": "Represents an EPCIS transformation event.",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The event identifier"
+    },
+    "isA": {
+      "type": "string",
+      "default": "TransformationEvent",
+      "description": "The object type",
+      "enum": [
+        "TransformationEvent"
+      ]
+    },
+    "eventTime": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2005-04-03T20:33:31.116000-06:00",
+      "description": "The date/time of the event in UTC"
+    },
+    "eventTimeZoneOffset": {
+      "type": "string",
+      "description": "The timezone offset of the event"
+    },
+    "bizStep": {
+      "type": "string",
+      "pattern": "urn:epcglobal:cbv:bizstep:^[A-Za-z0-9 -_]+",
+      "example": "urn:epcglobal:cbv:bizstep:shipping",
+      "description": "The EPCIS business step"
+    },
+    "disposition": {
+      "type": "string",
+      "example": "urn:epcglobal:cbv:disp:in_transit",
+      "pattern": "urn:epcglobal:cbv:disp:^[A-Za-z0-9 -_]+",
+      "description": "The EPCIS disposition"
+    },
+    "readPoint": {
+      "$ref": "../ReadPoint.v1.json"
+    },
+    "inputQuantityList": {
+      "type": "array",
+      "description": "The input quantities for the transformation",
+      "items": {
+        "$ref": "../Quantity.v1.json"
+      }
+    },
+    "outputEPCList": {
+      "type": "array",
+      "description": "The output EPCs of the transformation",
+      "items": {
+        "type": "string",
+        "example": "\"urn:epc:id:sgtin:4012345.077889.25\""
+      }
+    }
+  },
+  "required": [
+    "id",
+    "isA",
+    "eventTime",
+    "eventTimeZoneOffset",
+    "inputQuantityList",
+    "outputEPCList"
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "title": "EPCISDocument",
+  "type": "object",
+  "description": "Represents a collection of EPCIS events.",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The document identifier",
+      "example": "_:document1"
+    },
+    "isA": {
+      "type": "string",
+      "description": "The object type",
+      "default": "EPCISDocument",
+      "enum": [
+        "EPCISDocument"
+      ],
+      "example": "EPCISDocument"
+    },
+    "schemaVersion": {
+      "type": "string",
+      "description": "The EPCIS schema version",
+      "default": "2.0",
+      "example": "2.0"
+    },
+    "creationDate": {
+      "type": "string",
+      "description": "The document creation date",
+      "format": "date-time",
+      "example": "2005-07-11T11:30:47.0Z"
+    },
+    "format": {
+      "type": "string",
+      "description": "The schema format",
+      "default": "application/ld+json",
+      "example": "application/ld+json"
+    },
+    "epcisBody": {
+      "type": "object",
+      "description": "The EPCIS content body",
+      "properties": {
+        "eventList": {
+          "type": "array",
+          "description": "The EPCIS event list",
+          "items": {
+            "anyOf": [
+              {
+                "$ref": "./events/ObjectEvent.v1.json"
+              },
+              {
+                "$ref": "./events/AggregationEvent.v1.json"
+              },
+              {
+                "$ref": "./events/TransformationEvent.v1.json"
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "id",
+    "isA"
+  ]
+}

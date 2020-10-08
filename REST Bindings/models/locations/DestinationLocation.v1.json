@@ -1,0 +1,21 @@
+{
+  "title": "DestinationLocation",
+  "type": "object",
+  "description": "Represents an EPCIS destination location.",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "The destination type",
+      "example": "urn:epcglobal:cbv:sdt:owning_party"
+    },
+    "destination": {
+      "type": "string",
+      "description": "The destination location (GLN)",
+      "example": "urn:epc:id:sgln:0614141.00001.0"
+    }
+  },
+  "required": [
+    "type",
+    "destination"
+  ]
+}

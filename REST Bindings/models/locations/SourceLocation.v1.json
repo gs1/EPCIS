@@ -1,0 +1,21 @@
+{
+  "title": "SourceLocation",
+  "type": "object",
+  "description": "Represents an EPCIS source location.",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "The source type",
+      "example": "urn:epcglobal:cbv:sdt:possessing_party"
+    },
+    "source": {
+      "type": "string",
+      "description": "The source location (GLN)",
+      "example": "urn:epc:id:sgln:4012345.00001.0"
+    }
+  },
+  "required": [
+    "type",
+    "source"
+  ]
+}
