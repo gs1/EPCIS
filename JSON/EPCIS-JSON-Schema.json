@@ -1000,7 +1000,16 @@
 					"$ref": "#/definitions/uri"
 				},
 				"attribute": {
-					"type": "object"
+					"anyOf": [{
+							"type": "number"
+						},
+						{
+							"type": "string"
+						},
+						{
+							"type": "object"
+						}
+                    ]
 				}
 			},
 			"required": ["id"]
