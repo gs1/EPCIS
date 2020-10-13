@@ -201,9 +201,6 @@
         {
           "oneOf": [
             {
-              "type": "integer"
-            },
-            {
               "type": "number"
             },
             {
@@ -217,9 +214,6 @@
     "^GT_[a-z]\\w+$": {
       "oneOf": [
         {
-          "type": "integer"
-        },
-        {
           "type": "number"
         },
         {
@@ -230,9 +224,6 @@
     },
     "^GE_[a-z]\\w+$": {
       "oneOf": [
-        {
-          "type": "integer"
-        },
         {
           "type": "number"
         },
@@ -245,9 +236,6 @@
     "^LT_[a-z]\\w+$": {
       "oneOf": [
         {
-          "type": "integer"
-        },
-        {
           "type": "number"
         },
         {
@@ -258,9 +246,6 @@
     },
     "^LE_[a-z]\\w+$": {
       "oneOf": [
-        {
-          "type": "integer"
-        },
         {
           "type": "number"
         },
@@ -281,9 +266,6 @@
         {
           "oneOf": [
             {
-              "type": "integer"
-            },
-            {
               "type": "number"
             },
             {
@@ -297,9 +279,6 @@
     "^GT_ILMD_[a-z]\\w+$": {
       "oneOf": [
         {
-          "type": "integer"
-        },
-        {
           "type": "number"
         },
         {
@@ -310,9 +289,6 @@
     },
     "^GE_ILMD_[a-z]\\w+$": {
       "oneOf": [
-        {
-          "type": "integer"
-        },
         {
           "type": "number"
         },
@@ -325,9 +301,6 @@
     "^LT_ILMD_[a-z]\\w+$": {
       "oneOf": [
         {
-          "type": "integer"
-        },
-        {
           "type": "number"
         },
         {
@@ -338,9 +311,6 @@
     },
     "^LE_ILMD_[a-z]\\w+$": {
       "oneOf": [
-        {
-          "type": "integer"
-        },
         {
           "type": "number"
         },
@@ -361,9 +331,6 @@
         {
           "oneOf": [
             {
-              "type": "integer"
-            },
-            {
               "type": "number"
             },
             {
@@ -377,9 +344,6 @@
     "^GT_INNER_[a-z]\\w+$": {
       "oneOf": [
         {
-          "type": "integer"
-        },
-        {
           "type": "number"
         },
         {
@@ -390,9 +354,6 @@
     },
     "^GE_INNER_[a-z]\\w+$": {
       "oneOf": [
-        {
-          "type": "integer"
-        },
         {
           "type": "number"
         },
@@ -405,9 +366,6 @@
     "^LT_INNER_[a-z]\\w+$": {
       "oneOf": [
         {
-          "type": "integer"
-        },
-        {
           "type": "number"
         },
         {
@@ -418,9 +376,6 @@
     },
     "^LE_INNER_[a-z]\\w+$": {
       "oneOf": [
-        {
-          "type": "integer"
-        },
         {
           "type": "number"
         },
@@ -441,9 +396,6 @@
         {
           "oneOf": [
             {
-              "type": "integer"
-            },
-            {
               "type": "number"
             },
             {
@@ -457,9 +409,6 @@
     "^GT_INNER_ILMD_[a-z]\\w+$": {
       "oneOf": [
         {
-          "type": "integer"
-        },
-        {
           "type": "number"
         },
         {
@@ -470,9 +419,6 @@
     },
     "^GE_INNER_ILMD_[a-z]\\w+$": {
       "oneOf": [
-        {
-          "type": "integer"
-        },
         {
           "type": "number"
         },
@@ -485,9 +431,6 @@
     "^LT_INNER_ILMD_[a-z]\\w+$": {
       "oneOf": [
         {
-          "type": "integer"
-        },
-        {
           "type": "number"
         },
         {
@@ -498,9 +441,6 @@
     },
     "^LE_INNER_ILMD_[a-z]\\w+$": {
       "oneOf": [
-        {
-          "type": "integer"
-        },
         {
           "type": "number"
         },
@@ -565,9 +505,6 @@
     "^GT_ERROR_DECLARATION_[a-z]\\w+$": {
       "oneOf": [
         {
-          "type": "integer"
-        },
-        {
           "type": "number"
         },
         {
@@ -578,9 +515,6 @@
     },
     "^GE_ERROR_DECLARATION_[a-z]\\w+$": {
       "oneOf": [
-        {
-          "type": "integer"
-        },
         {
           "type": "number"
         },
@@ -593,9 +527,6 @@
     "^LT_ERROR_DECLARATION_[a-z]\\w+$": {
       "oneOf": [
         {
-          "type": "integer"
-        },
-        {
           "type": "number"
         },
         {
@@ -606,9 +537,6 @@
     },
     "^LE_ERROR_DECLARATION_[a-z]\\w+$": {
       "oneOf": [
-        {
-          "type": "integer"
-        },
         {
           "type": "number"
         },
