@@ -37,7 +37,7 @@ paths:
             schema:
               type: object
       responses:
-        '201':
+        '202':
           description: Successfully captured one or more EPCIS events. The request returns a unique capture job URL in the Location header.
           headers:
             Location:
@@ -966,7 +966,6 @@ components:
       required:
         - type
         - title
-        - detail
       properties:
         type:
           type: string
@@ -980,6 +979,11 @@ components:
         instance:
           type: string
           format: uri
+      example:
+        type: "epcisException:SecurityException"
+        title: "Unauthorized to execute query TestQuery"
+        status: 401
+        instance: "/queries/TestQuery"
 
 
     NamedQueryMetaData:
@@ -1044,7 +1048,6 @@ components:
         - AssociationEvents
         - TransformationEvents
         - TransactionEvents
-        - all
 
   parameters:
     EventID:
