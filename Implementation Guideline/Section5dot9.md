@@ -183,6 +183,7 @@ For illustration purposes, let us assume that a retailer wants to document the c
 | What | `quantityList` | LGTIN of batch/lot of food |
 | Where | `readPoint` | GLN of cold storage room |
 | Why | `bizStep` | `Inspecting (CBV)` |
+| | `disposition` | `Conformant (CBV)` |
 | How | `sensorElement` |
 | | `sensorMetaData` |
 | | `deviceID` | GIAI (EPC URI or GS1 DL URI)
