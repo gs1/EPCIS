@@ -24,3 +24,22 @@ For illustration purposes, presume a pool operator of reuseable plastic trays wa
 |  | `childEPCs` | GIAI of sensor device |
 | Where | `readPoint` | GLN of maintenance area |
 | Why | `bizStep` | `Installing (CBV)` |
+
+## Example 2: Installing components/assemblies into physical locations
+
+The `AssociationEvent` is the only EPCIS event type where it is permissible to populate the `parentID` field with a physical location identifier. This feature is especially relevant for companies that need to document which particular item became an integral part of a physical location.
+
+In a way, it is similar to the previous example, but in this situation, items are integrated into buildings or rooms rather than larger assemblies. Note that an `AssociationEvent` is not applicable if, for instance, a room is equipped with pieces of furniture - in such a case, the association is not permanent and organisations should use an `ObjectEvent` instead.
+
+Taking the example of a company that equips a cold storage room with one or several temperature sensor devices, the corresponding EPCIS event may be modelled as follows:
+
+| Dim | Data Element | V1 |
+| --- | ------------ | -- |
+|  | Description | Equipping cold storage room with temperature measuring device |
+|  | Event Type | Association Event |
+|  | Action | ADD |
+| When | `eventTime` | 14 October, 10:55 am |
+| What | `parentID` | GLN of cold storage room |
+|  | `childEPCs` | GIAI(s) of sensor device(s) |
+| Where | `readPoint` | GLN of warehouse location |
+| Why | `bizStep` | `Installing (CBV)` |
