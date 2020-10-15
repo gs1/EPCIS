@@ -1092,16 +1092,30 @@
 					"const": "EPCISDocument"
 				},
 				"@context": {
-					"anyOf": [{
+					"anyOf": [
+						{
 							"type": "string",
 							"format": "uri"
 						},
 						{
 							"type": "object"
+						},
+						{
+							"type": "array",
+							"uniqueItems": true,
+							"items": {
+								"anyOf": [{
+										"type": "string",
+										"format": "uri"
+									},
+									{
+										"type": "object"
+									}
+								]
+							}
 						}
 					]
 				},
-
 				"schemaVersion": {
 					"type": "number"
 				},
@@ -1134,12 +1148,27 @@
 					"const": "EPCISQueryDocument"
 				},
 				"@context": {
-					"anyOf": [{
+					"anyOf": [
+						{
 							"type": "string",
 							"format": "uri"
 						},
 						{
-							"type": "object"
+							"format": "object"
+						},
+						{
+							"type": "array",
+							"uniqueItems": true,
+							"items": {
+								"anyOf": [{
+										"type": "string",
+										"format": "uri"
+									},
+									{
+										"type": "object"
+									}
+								]
+							}
 						}
 					]
 				},
