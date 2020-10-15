@@ -206,4 +206,5 @@ The above example can be easily applied to all other use cases in which there is
 The `uom` "J18" is the UN/CEFACT common code of degree Brix, a unit of proportion used in measuring the dissolved sugar-to-water mass ratio. 
 
 TO BE COMPLETED: microorganism uom/value --> requires discussion with UN/CEFACT team as e.g. CFU, CFU/g and CFU/ml are missing in the Rec 20 list - however, these uom are common practice in capturing the concentration ob bacteria.
-TO BE COMPLETED: Illustration of Hash URI for BTI (testprd) - is there a publicly accessable example (e.g. pdf) we could use for illustratio purposes?
+
+TO BE COMPLETED: Illustration of Hash URI for BTI (testprd) - is there a publicly accessable example (e.g. pdf) we could use for illustration purposes?
