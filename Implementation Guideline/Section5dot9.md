@@ -184,6 +184,9 @@ For illustration purposes, let us assume that a retailer wants to document the c
 | Where | `readPoint` | GLN of cold storage room |
 | Why | `bizStep` | `Inspecting (CBV)` |
 | | `disposition` | `Conformant (CBV)` |
+| | `bizTransactionList` |
+| | _`bizTransactionID` `type`:`testprd (CBV)` | `GDTI` of test procedure |
+| | _`bizTransactionID` `type`:`testres (CBV)` | `GDTI` or test result | 
 | How | `sensorElement` |
 | | `sensorMetaData` |
 | | `deviceID` | GIAI (EPC URI or GS1 DL URI)
