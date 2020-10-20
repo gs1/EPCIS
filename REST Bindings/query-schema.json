@@ -187,6 +187,124 @@
       "items": {
         "type": "string"
       }
+    },
+    "orderBy": {
+      "type": "string"
+    },
+    "orderDirection": {
+      "type": "string"
+    },
+    "eventCountLimit": {
+      "type": "integer"
+    },
+    "maxEventCount": {
+      "type": "integer"
+    },
+    "EXISTS_sensorElementList": {
+      "type": "integer",
+      "nullable": true
+    },
+    "GE_time": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "LT_time": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "GE_startTime": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "LT_startTime": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "GE_endTime": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "LT_endTime": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "EQ_type": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "EQ_deviceID": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "EQ_dataProcessingMethod": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "EQ_microorganism": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "EQ_chemicalSubstance": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "EQ_bizRules": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "EQ_stringValue": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "EQ_booleanValue": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "EQ_hexBinaryValue": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "EQ_uriValue": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "GE_sDev": {
+      "type": "number"
+    },
+    "LT_sDev": {
+      "type": "number"
+    },
+    "GE_percRank": {
+      "type": "number"
+    },
+    "LT_percRank": {
+      "type": "number"
+    },
+    "GE_percValue": {
+      "type": "number"
+    },
+    "LT_percValue": {
+      "type": "number"
     }
   },
   "patternProperties": {
