@@ -11,8 +11,7 @@
           "AggregationEvents",
           "AssociationEvents",
           "TransformationEvents",
-          "TransactionEvents",
-          "all"
+          "TransactionEvents"
         ]
       }
     },
