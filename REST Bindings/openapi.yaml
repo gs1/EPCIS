@@ -178,9 +178,6 @@ paths:
 
   /{topLevelResources}/events:
     parameters:
-
-      - $ref: '#/components/parameters/PerPage'
-      - $ref:  '#/components/parameters/NextPageToken'
       - $ref: '#/components/parameters/TopLevelResources'
 
     options:
@@ -355,8 +352,6 @@ paths:
         '500':
           $ref: '#/components/responses/500ImplementationException'
   /events:
-    parameters:
-      - $ref: '#/components/parameters/PerPage'
 
     options:
       summary: Query supported EPCIS version and related vocabularies/standards.
