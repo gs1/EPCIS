@@ -1,0 +1,107 @@
+    "transactionEvent": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/event"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "isA": {
+              "type": "string",
+              "pattern": "^TransactionEvent$"
+            },
+            "bizTransactionList": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/bizTransaction"
+              },
+              "minItems": 1
+            },
+            "parentID": {
+              "$ref": "#/definitions/uri"
+            },
+            "epcList": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/uri"
+              }
+            },
+            "quantityList": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/quantityElement"
+              }
+            },
+            "action": {
+              "$ref": "#/definitions/action"
+            },
+            "bizStep": {
+              "$ref": "#/definitions/uri"
+            },
+            "disposition": {
+              "$ref": "#/definitions/uri"
+            },
+            "readPoint": {
+              "$ref": "#/definitions/uri"
+            },
+            "bizLocation": {
+              "$ref": "#/definitions/uri"
+            },
+            "sourceList": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/source"
+              }
+            },
+            "destinationList": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/destination"
+              }
+            },
+            "sensorElementList": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/sensorElement"
+              }
+            }
+          },
+          "required": [
+            "isA",
+            "bizTransactionList",
+            "action"
+          ]
+        },
+        {
+          "anyOf": [
+            {
+              "properties": {
+                "epcList": {
+                  "minItems": 0
+                }
+              },
+              "required": [
+                "epcList"
+              ]
+            },
+            {
+              "properties": {
+                "quantityList": {
+                  "minItems": 1
+                }
+              },
+              "required": [
+                "quantityList"
+              ]
+            },
+            {
+              "properties": {
+                "action": {
+                  "pattern": "^DELETE$"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }

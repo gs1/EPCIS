@@ -1,0 +1,147 @@
+    "objectEvent": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/event"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "isA": {
+              "type": "string",
+              "pattern": "^ObjectEvent$"
+            },
+            "epcList": {
+              "$ref": "#/definitions/epcList"
+            },
+            "quantityList": {
+              "$ref": "#/definitions/quantityList"
+            },
+            "action": {
+              "$ref": "#/definitions/action"
+            },
+            "bizStep": {
+              "$ref": "#/definitions/uri"
+            },
+            "disposition": {
+              "$ref": "#/definitions/uri"
+            },
+            "readPoint": {
+              "$ref": "#/definitions/uri"
+            },
+            "bizLocation": {
+              "$ref": "#/definitions/uri"
+            },
+            "bizTransactionList": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/bizTransaction"
+              }
+            },
+            "sourceList": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/source"
+              }
+            },
+            "destinationList": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/destination"
+              }
+            },
+            "sensorElementList": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/sensorElement"
+              }
+            },
+            "ilmd": {
+              "$ref": "#/definitions/ilmd"
+            }
+          },
+          "required": [
+            "isA",
+            "action"
+          ]
+        },
+        {
+          "anyOf": [
+            {
+              "properties": {
+                "epcList": {
+                  "minItems": 0
+                }
+              },
+              "required": [
+                "epcList"
+              ]
+            },
+            {
+              "properties": {
+                "quantityList": {
+                  "minItems": 1
+                }
+              },
+              "required": [
+                "quantityList"
+              ]
+            },
+            {
+              "allOf": [
+                {
+                  "properties": {
+                    "sensorElementList": {
+                      "minItems": 1
+                    }
+                  },
+                  "required": [
+                    "sensorElementList"
+                  ]
+                },
+                {
+                  "properties": {
+                    "readPoint": {
+                      "minItems": 1
+                    }
+                  },
+                  "required": [
+                    "readPoint"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "anyOf": [
+            {
+              "properties": {
+                "ilmd": {
+                  "not": {}
+                },
+                "action": {
+                  "pattern": "^OBSERVE$"
+                }
+              }
+            },
+            {
+              "properties": {
+                "ilmd": {
+                  "not": {}
+                },
+                "action": {
+                  "pattern": "^DELETE$"
+                }
+              }
+            },
+            {
+              "properties": {
+                "action": {
+                  "pattern": "^ADD$"
+                }
+              }
+            }
+          ]
+        }
+      ]
+	}

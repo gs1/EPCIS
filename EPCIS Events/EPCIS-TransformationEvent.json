@@ -1,0 +1,170 @@
+    "transformationEvent": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/event"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "isA": {
+              "type": "string",
+              "pattern": "^TransformationEvent$"
+            },
+            "inputEPCList": {
+              "$ref": "#/definitions/epcList"
+            },
+            "inputQuantityList": {
+              "$ref": "#/definitions/quantityList"
+            },
+            "outputEPCList": {
+              "$ref": "#/definitions/epcList"
+            },
+            "outputQuantityList": {
+              "$ref": "#/definitions/quantityList"
+            },
+            "transformationID": {
+              "$ref": "#/definitions/uri"
+            },
+            "bizStep": {
+              "$ref": "#/definitions/uri"
+            },
+            "disposition": {
+              "$ref": "#/definitions/uri"
+            },
+            "readPoint": {
+              "$ref": "#/definitions/uri"
+            },
+            "bizLocation": {
+              "$ref": "#/definitions/uri"
+            },
+            "sourceList": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/source"
+              }
+            },
+            "destinationList": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/destination"
+              }
+            },
+            "sensorElementList": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/sensorElement"
+              }
+            },
+            "ilmd": {
+              "$ref": "#/definitions/ilmd"
+            }
+          },
+          "required": [
+            "isA"
+          ]
+        },
+        {
+          "anyOf": [
+            {
+              "allOf": [
+                {
+                  "anyOf": [
+                    {
+                      "properties": {
+                        "inputEPCList": {
+                          "minItems": 1
+                        }
+                      },
+                      "required": [
+                        "inputEPCList"
+                      ]
+                    },
+                    {
+                      "properties": {
+                        "inputQuantityList": {
+                          "minItems": 1
+                        }
+                      },
+                      "required": [
+                        "inputQuantityList"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "anyOf": [
+                    {
+                      "properties": {
+                        "outputEPCList": {
+                          "minItems": 1
+                        }
+                      },
+                      "required": [
+                        "outputEPCList"
+                      ]
+                    },
+                    {
+                      "properties": {
+                        "outputQuantityList": {
+                          "minItems": 1
+                        }
+                      },
+                      "required": [
+                        "outputQuantityList"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "anyOf": [
+                {
+                  "properties": {
+                    "inputEPCList": {
+                      "minItems": 1
+                    }
+                  },
+                  "required": [
+                    "inputEPCList"
+                  ]
+                },
+                {
+                  "properties": {
+                    "inputQuantityList": {
+                      "minItems": 1
+                    }
+                  },
+                  "required": [
+                    "inputQuantityList"
+                  ]
+                },
+                {
+                  "properties": {
+                    "outputEPCList": {
+                      "minItems": 1
+                    }
+                  },
+                  "required": [
+                    "outputEPCList"
+                  ]
+                },
+                {
+                  "properties": {
+                    "outputQuantityList": {
+                      "minItems": 1
+                    }
+                  },
+                  "required": [
+                    "outputQuantityList"
+                  ]
+                }
+              ],
+              "required": [
+                "transformationID"
+              ]
+            }
+          ]
+        }
+      ]
+    }
