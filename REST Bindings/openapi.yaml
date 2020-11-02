@@ -6,10 +6,9 @@ info:
     name: Apache2
 
 paths:
-
-  /capture:
+  /:
     options:
-      summary: Query supported EPCIS version and related vocabularies/standards
+      summary: Query server settings, EPCIS version(s) and related vocabularies/standards
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-version'
         - $ref: '#/components/parameters/GS1-EPCIS-min'
@@ -22,12 +21,13 @@ paths:
         - $ref: '#/components/parameters/GS1-CAPTURE-file-size-limit'
       responses:
         '200':
-
           description: Server can comply with the GS1-EPCIS-related requirements from the client.
           content:
             application/json:
               schema:
                 {}
+
+  /capture:
     post:
       description: Captures one or several EPCIS events. The server either accepts or rejects all events.
       requestBody:
@@ -95,32 +95,11 @@ paths:
 
   /capture/{captureID}:
     parameters:
-      - $ref: '#/components/parameters/PerPage'
-      - $ref:  '#/components/parameters/NextPageToken'
       - in: path
         name: captureID
         required: true
         schema:
           type: string
-
-    options:
-      summary: Query supported EPCIS version and related vocabularies/standards.
-      parameters:
-        - $ref: '#/components/parameters/GS1-EPCIS-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-min'
-        - $ref: '#/components/parameters/GS1-EPCIS-max'
-        - $ref: '#/components/parameters/GS1-CBV-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
-        - $ref: '#/components/parameters/GS1-CBV-extensions'
-        - $ref: '#/components/parameters/GS1-Vendor-version'
-      responses:
-        '200':
-
-          description: Server can comply with the GS1-EPCIS-related requirements from the client.
-          content:
-            application/json:
-              schema:
-                {}
     get:
       responses:
         '200':
@@ -180,23 +159,6 @@ paths:
     parameters:
       - $ref: '#/components/parameters/TopLevelResources'
 
-    options:
-      summary: Query supported EPCIS version and related vocabularies/standards.
-      parameters:
-        - $ref: '#/components/parameters/GS1-EPCIS-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-min'
-        - $ref: '#/components/parameters/GS1-EPCIS-max'
-        - $ref: '#/components/parameters/GS1-CBV-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
-        - $ref: '#/components/parameters/GS1-CBV-extensions'
-        - $ref: '#/components/parameters/GS1-Vendor-version'
-      responses:
-        '200':
-          description: Server can comply with the GS1-EPCIS-related requirements from the client.
-          content:
-            application/json:
-              schema:
-                {}
     get:
       responses:
         '401':
@@ -219,23 +181,6 @@ paths:
       - $ref: '#/components/parameters/PerPage'
       - $ref: '#/components/parameters/TopLevelResources'
       - $ref: '#/components/parameters/EventTypes'
-    options:
-      summary: Query supported EPCIS version and related vocabularies/standards
-      parameters:
-        - $ref: '#/components/parameters/GS1-EPCIS-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-min'
-        - $ref: '#/components/parameters/GS1-EPCIS-max'
-        - $ref: '#/components/parameters/GS1-CBV-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
-        - $ref: '#/components/parameters/GS1-CBV-extensions'
-        - $ref: '#/components/parameters/GS1-Vendor-version'
-      responses:
-        '200':
-          description: Server can comply with the GS1-EPCIS-related requirements from the client
-          content:
-            application/json:
-              schema:
-                {}
     get:
       description: Returns all EPCIS events of a specific type, if specified.
       responses:
@@ -312,28 +257,12 @@ paths:
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
         '500':
           $ref: '#/components/responses/500ImplementationException'
+
   /{topLevelResources}/events/{eventTypes}/{eventID}:
     parameters:
       - $ref: '#/components/parameters/TopLevelResources'
       - $ref: '#/components/parameters/EventTypes'
       - $ref: '#/components/parameters/EventID'
-    options:
-      summary: Query supported EPCIS version and related vocabularies/standards.
-      parameters:
-        - $ref: '#/components/parameters/GS1-EPCIS-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-min'
-        - $ref: '#/components/parameters/GS1-EPCIS-max'
-        - $ref: '#/components/parameters/GS1-CBV-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
-        - $ref: '#/components/parameters/GS1-CBV-extensions'
-        - $ref: '#/components/parameters/GS1-Vendor-version'
-      responses:
-        '200':
-          description: Server can comply with the GS1-EPCIS-related requirements from the client
-          content:
-            application/json:
-              schema:
-                {}
     get:
       responses:
         '200':
@@ -351,25 +280,8 @@ paths:
           $ref: '#/components/responses/404EventTypeOrTopLevelOrEventIdNotFound'
         '500':
           $ref: '#/components/responses/500ImplementationException'
-  /events:
 
-    options:
-      summary: Query supported EPCIS version and related vocabularies/standards.
-      parameters:
-        - $ref: '#/components/parameters/GS1-EPCIS-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-min'
-        - $ref: '#/components/parameters/GS1-EPCIS-max'
-        - $ref: '#/components/parameters/GS1-CBV-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
-        - $ref: '#/components/parameters/GS1-CBV-extensions'
-        - $ref: '#/components/parameters/GS1-Vendor-version'
-      responses:
-        '200':
-          description: Server can comply with the EPCIS related requirements from the client.
-          content:
-            application/json:
-              schema:
-                {}
+  /events:
     get:
       responses:
         '200':
@@ -390,23 +302,6 @@ paths:
       - $ref: '#/components/parameters/PerPage'
       - $ref:  '#/components/parameters/NextPageToken'
       - $ref: '#/components/parameters/EventTypes'
-    options:
-      summary: Query supported EPCIS version and related vocabularies/standards
-      parameters:
-        - $ref: '#/components/parameters/GS1-EPCIS-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-min'
-        - $ref: '#/components/parameters/GS1-EPCIS-max'
-        - $ref: '#/components/parameters/GS1-CBV-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
-        - $ref: '#/components/parameters/GS1-CBV-extensions'
-        - $ref: '#/components/parameters/GS1-Vendor-version'
-      responses:
-        '200':
-          description: Server can comply with the EPCIS related requirements from the client
-          content:
-            application/json:
-              schema:
-                {}
     get:
       description: Returns all EPCIS events of a specific type, if specified.
       responses:
@@ -488,25 +383,6 @@ paths:
     parameters:
       - $ref: '#/components/parameters/EventTypes'
       - $ref: '#/components/parameters/EventID'
-
-
-    options:
-      summary: Query supported EPCIS version and related vocabularies/standards.
-      parameters:
-        - $ref: '#/components/parameters/GS1-EPCIS-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-min'
-        - $ref: '#/components/parameters/GS1-EPCIS-max'
-        - $ref: '#/components/parameters/GS1-CBV-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
-        - $ref: '#/components/parameters/GS1-CBV-extensions'
-        - $ref: '#/components/parameters/GS1-Vendor-version'
-      responses:
-        '200':
-          description: Server can comply with the EPCIS related requirements from the client
-          content:
-            application/json:
-              schema:
-                {}
     get:
       responses:
         '200':
@@ -525,24 +401,6 @@ paths:
           $ref: '#/components/responses/500ImplementationException'
 
   /queries:
-    options:
-      summary: Query supported EPCIS version and related vocabularies/standards
-      parameters:
-        - $ref: '#/components/parameters/GS1-EPCIS-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-min'
-        - $ref: '#/components/parameters/GS1-EPCIS-max'
-        - $ref: '#/components/parameters/GS1-CBV-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
-        - $ref: '#/components/parameters/GS1-CBV-extensions'
-        - $ref: '#/components/parameters/GS1-Vendor-version'
-
-      responses:
-        '200':
-          description: Server can comply with the GS1-EPCIS-related requirements from the client
-          content:
-            application/json:
-              schema:
-                {}
     get:
       responses:
         '200':
@@ -641,23 +499,6 @@ paths:
   /queries/{queryNames}:
     parameters:
      - $ref: '#/components/parameters/QueryNames'
-    options:
-      summary: Query supported EPCIS version and related vocabularies/standards
-      parameters:
-        - $ref: '#/components/parameters/GS1-EPCIS-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-min'
-        - $ref: '#/components/parameters/GS1-EPCIS-max'
-        - $ref: '#/components/parameters/GS1-CBV-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
-        - $ref: '#/components/parameters/GS1-CBV-extensions'
-        - $ref: '#/components/parameters/GS1-Vendor-version'
-      responses:
-        '200':
-          description: Server can comply with the GS1-EPCIS-related requirements from the client
-          content:
-            application/json:
-              schema:
-                {}
     delete:
       description: Removes a named query and disconnects clients
       responses:
@@ -705,24 +546,6 @@ paths:
       - $ref: '#/components/parameters/QueryNames'
       - $ref: '#/components/parameters/PerPage'
       - $ref:  '#/components/parameters/NextPageToken'
-    options:
-      summary: Query supported EPCIS version and related vocabularies/standards
-      parameters:
-        - $ref: '#/components/parameters/GS1-EPCIS-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-min'
-        - $ref: '#/components/parameters/GS1-EPCIS-max'
-        - $ref: '#/components/parameters/GS1-CBV-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
-        - $ref: '#/components/parameters/GS1-CBV-extensions'
-        - $ref: '#/components/parameters/GS1-Vendor-version'
-
-      responses:
-        '200':
-          description: Server can comply with the GS1-EPCIS-related requirements from the client
-          content:
-            application/json:
-              schema:
-                {}
     get:
       parameters:
         - in: header
