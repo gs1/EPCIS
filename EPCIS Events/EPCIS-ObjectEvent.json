@@ -1,7 +1,45 @@
     "objectEvent": {
       "allOf": [
         {
-          "$ref": "#/definitions/event"
+		  "type": "object",
+		  "properties": {
+			"eventTime": {
+			  "type": "string",
+              "format": "date-time"
+			},
+			"recordTime": {
+			  "type": "string",
+              "format": "date-time"
+			},
+			"eventTimeZoneOffset": {
+			  "type": "string",
+			  "pattern": "^(\\+|\\-)((0[0-9]|1[0-3]):([0-5][0-9])|14:00)$"
+			},
+			"eventID": { 
+			  "type": "string",
+              "format": "uri" },
+			"errorDeclaration": { 
+			  "type": "object",
+              "properties": {
+              "declarationtime": { 
+			    "type": "string",
+                "format": "date-time" 
+			  },
+              "reason": { "$ref": 
+			    "type": "string",
+                "format": "uri" 
+			  },
+              "correctiveEventIDs": {
+              "type": "array",
+              "items": { 
+			    "type": "string",
+                "format": "uri" 
+			  }
+            }
+      } 
+			}
+		  },
+		  "required": [ "eventTime", "eventTimeZoneOffset" ] 
         },
         {
           "type": "object",
@@ -11,52 +49,237 @@
               "pattern": "^ObjectEvent$"
             },
             "epcList": {
-              "$ref": "#/definitions/epcList"
+              "type": "array",
+              "items": { 
+			    "type": "string",
+                "format": "uri"
+			  }
             },
             "quantityList": {
-              "$ref": "#/definitions/quantityList"
+              "type": "array",
+              "items": { 
+			    "type": "object",
+                "properties": {
+                  "epcClass": { 
+				    "type": "string",
+                    "format": "uri" 
+				  },
+                  "quantity": { 
+				    "type": "number" 
+				  },
+                  "uom": { 
+				    "type": "string",
+                    "pattern": "^[A-Z0-9]{2,3}$" 
+				  }
+                },
+                "required": [ "epcClass" ] }
             },
             "action": {
-              "$ref": "#/definitions/action"
+              "type": "string",
+			  "enum": [
+				"OBSERVE",
+				"ADD",
+				"DELETE"
+			  ]
             },
             "bizStep": {
-              "$ref": "#/definitions/uri"
+              "type": "string",
+              "format": "uri"
             },
             "disposition": {
-              "$ref": "#/definitions/uri"
+              "type": "string",
+              "format": "uri"
             },
             "readPoint": {
-              "$ref": "#/definitions/uri"
+              "type": "string",
+              "format": "uri"
             },
             "bizLocation": {
-              "$ref": "#/definitions/uri"
+              "type": "string",
+              "format": "uri"
             },
             "bizTransactionList": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/bizTransaction"
+                "type": "object",
+                "properties": {
+                  "type": { 
+				    "type": "string",
+                    "format": "uri" 
+				},
+                  "bizTransaction": { 
+				    "type": "string",
+                    "format": "uri" 
+				  }
+                },
+                "required": [ "bizTransaction" ]
               }
             },
             "sourceList": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/source"
+                "type": "object",
+				  "properties": {
+					"type": { 
+					  "type": "string",
+					  "format": "uri" 
+					},
+					"source": { 
+					  "type": "string",
+                      "format": "uri" 
+					}
+				  },
+				  "required": [ "type" ]
               }
             },
             "destinationList": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/destination"
+                "type": "object",
+                "properties": {
+                  "type": { 
+				    "type": "string",
+                    "format": "uri" 
+				  },
+                  "destination": { 
+				    "type": "string",
+                    "format": "uri" 
+				  }
+                },
+                "required": [ "type" ]
               }
             },
             "sensorElementList": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/sensorElement"
+                "type": "object",
+                "properties": {
+                  "sensorMetaData": { 
+				    "type": "object",
+                    "properties": {
+                      "time": { 
+					    "type": "string",
+                        "format": "date-time" 
+					  },
+                      "deviceID": { 
+					    "type": "string",
+                        "format": "uri" 
+					  },
+                      "deviceMetaData": { 
+					    "type": "string",
+                        "format": "uri" 
+					  },
+                      "rawData": { 
+					    "type": "string",
+                        "format": "uri" 
+					  },
+                      "startTime": { 
+					    "type": "string",
+                        "format": "date-time" 
+					  },
+                      "endTime": { 
+					    "type": "string",
+                        "format": "date-time" 
+					  },
+                      "dataProcessingMethod": { 
+					    "type": "string",
+                        "format": "uri" 
+					  },
+                      "bizRules": { 
+					    "type": "string",
+                        "format": "uri" 
+					  }
+                    } 
+				  },
+                  "sensorReport": { 
+				    "type":"array",
+                    "items": { 
+					  "type": "object",
+					  "properties": {
+						"type": { 
+						  "type": "string",
+                          "format": "uri" 
+						},
+						"value": { 
+						  "type": "number" 
+						},
+						"stringValue": { 
+						  "type":"string" 
+						},
+						"uriValue": { 
+						  "type": "string",
+                          "format": "uri" 
+						},
+						"booleanValue": { 
+						  "type": "boolean" 
+						},
+						"hexBinaryValue": { 
+						  "type": "string",
+                          "pattern": "^[A-Fa-f0-9]+$" 
+						},
+						"uom": { 
+						  "type":"string" 
+						},
+						"minValue": { 
+						  "type": "number" 
+						},
+						"maxValue": { 
+						  "type": "number" 
+						},
+						"sDev": { 
+						  "type": "number" 
+						},
+						"chemicalSubstance": { 
+						  "type": "string",
+                          "format": "uri" 
+						},
+						"microorganism": { 
+						  "type": "string",
+                          "format": "uri" 
+						},
+						"deviceID": { 
+						  "type": "string",
+                          "format": "uri" 
+						},
+						"deviceMetaData": { 
+						  "type": "string",
+                          "format": "uri" 
+						},
+						"rawData": { 
+						  "type": "string",
+                          "format": "uri" 
+						},
+						"time": { 
+						  "type": "string",
+                          "format": "date-time" 
+						},
+						"meanValue": { 
+						  "type": "number" 
+						},
+						"percRank": { 
+						  "type": "number" 
+						},
+						"percValue": { 
+						  "type": "number" 
+						},
+						"dataProcessingMethod": { 
+						  "type": "string",
+                          "format": "uri" 
+						},
+						"bizRules": { 
+						  "type": "string",
+                          "format": "uri" 
+						}
+					  },
+					  "required": [ "type" ] 
+					} 
+				  }
+                },
+                "required": [ "sensorReport" ]
               }
             },
             "ilmd": {
-              "$ref": "#/definitions/ilmd"
+              "type": "object"
             }
           },
           "required": [
