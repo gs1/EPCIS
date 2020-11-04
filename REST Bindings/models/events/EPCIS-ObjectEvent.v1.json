@@ -1,8 +1,7 @@
 {
-  "objectEvent": [
-    {
-      "type": "object",
-      "properties": {
+  "title": "EPCIS-ObjectEvent.v3",
+  "type": "object",
+  "properties": {
         "eventTime": {
           "type": "string",
           "format": "date-time"
@@ -298,87 +297,4 @@
         "isA",
         "action"
       ]
-    },
-    {
-      "anyOf": [
-        {
-          "properties": {
-            "epcList": {
-              "minItems": 0
-            }
-          },
-          "required": [
-            "epcList"
-          ]
-        },
-        {
-          "properties": {
-            "quantityList": {
-              "minItems": 1
-            }
-          },
-          "required": [
-            "quantityList"
-          ]
-        },
-        {
-          "allOf": [
-            {
-              "properties": {
-                "sensorElementList": {
-                  "minItems": 1
-                }
-              },
-              "required": [
-                "sensorElementList"
-              ]
-            },
-            {
-              "properties": {
-                "readPoint": {
-                  "minItems": 1
-                }
-              },
-              "required": [
-                "readPoint"
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "anyOf": [
-        {
-          "properties": {
-            "ilmd": {
-              "not": {
-              }
-            },
-            "action": {
-              "pattern": "^OBSERVE$"
-            }
-          }
-        },
-        {
-          "properties": {
-            "ilmd": {
-              "not": {
-              }
-            },
-            "action": {
-              "pattern": "^DELETE$"
-            }
-          }
-        },
-        {
-          "properties": {
-            "action": {
-              "pattern": "^ADD$"
-            }
-          }
-        }
-      ]
     }
-  ]
-}
