@@ -29,7 +29,6 @@ paths:
 
   /capture:
     post:
-      summary: Stores one or more EPCIS events. The server either accepts or rejects all events.
       parameters:
         - $ref: '#/components/parameters/GS1-CAPTURE-limit'
         - $ref: '#/components/parameters/GS1-CAPTURE-file-size-limit'
@@ -785,12 +784,12 @@ components:
       description: The EPCIS version
       type: string
       pattern: ^\d+(\.\d+)?$
-      example: 2.0
+      example: "2.0"
     GS1-EPCIS-min:
       description: The lowest EPCIS version supported
       type: string
       pattern: ^\d+(\.\d+)?$
-      example: 2.0
+      example: "2.0"
     GS1-EPCIS-max:
       description: The highest EPCIS version supported
       type: string
