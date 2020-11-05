@@ -75,27 +75,7 @@ paths:
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '413':
-          description: The client exceeded the limit, set in GS1-CAPTURE-limit, of events that can be captured per call.
-          headers:
-            GS1-CAPTURE-limit:
-              $ref: '#/components/headers/GS1-CAPTURE-limit'
-          content:
-            application/problem+json:
-              schema:
-                allOf:
-                  - properties:
-                      status:
-                        type: integer
-                        enum:
-                          - 413
-                        default: 413
-                      type:
-                        type: string
-                        format: uri
-                        enum:
-                          - epcisException:CaptureException
-                  - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-
+          $ref: '#/components/responses/413QueryBodyTooLarge'
   /capture/{captureID}:
     parameters:
       - in: path
@@ -338,7 +318,7 @@ paths:
           $ref: '#/components/responses/400QueryInvalid'
         '500':
           $ref: '#/components/responses/500ImplementationException'
-          
+
   /queries/{queryNames}:
     parameters:
       - $ref: '#/components/parameters/QueryNames'
