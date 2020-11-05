@@ -330,7 +330,9 @@ paths:
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
-  /queries/{queryName}/masterdata:
+  /queries/{queryNames}/metadata:
+    parameters:
+      - $ref: '#/components/parameters/QueryNames'
     get:
       parameters:
         - $ref: '#/components/parameters/GS1-QUERY-minRecordTime'
@@ -356,7 +358,7 @@ paths:
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
-  /queries/{queryName}:
+  /queries/{queryNames}:
     parameters:
       - $ref: '#/components/parameters/QueryName'
     delete:
@@ -401,7 +403,9 @@ paths:
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
-  /queries/{queryName}/events:
+  /queries/{queryNames}/events:
+    parameters:
+      - $ref: '#/components/parameters/QueryNames'
     get:
       parameters:
         - $ref: '#/components/parameters/GS1-QUERY-minRecordTime'
@@ -426,9 +430,7 @@ paths:
           $ref: '#/components/responses/400QueryInvalid'
         '500':
           $ref: '#/components/responses/500ImplementationException'
-
-  /queries/SimpleMasterDataQuery/masterdata:
-    description: SimpleMasterDataQuery is an endpoint to create anonymous queries. A query is created once and returned to client. Unlike name queries, these queries are not stored.
+  /queries/SimpleMasterDataQuery:
     post:
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-version'
@@ -457,7 +459,7 @@ paths:
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
-  /queries/SimpleEventQuery/events:
+  /queries/SimpleEventQuery:
     description: SimpleEventQuery is an endpoint to create anonymous queries. A query is created once and returned to client. Unlike name queries, these queries are not stored.
     post:
       parameters:
@@ -554,7 +556,10 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/EPCISEventTypes'
+            type: array
+            items:
+              type: object # TODO: LINK NEEDED: They're currently in the GS1 GitHub repository in JSON Schema.   The final reference should point to a stable URL within the gs1.org/epcis site.
+            uniqueItems: true
     201QueryCreated:
       description: A resource was created and the link to the newly created resource is returned in the header.
       content:
