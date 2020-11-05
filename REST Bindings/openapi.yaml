@@ -78,7 +78,7 @@ paths:
           description: The client exceeded the limit, set in GS1-CAPTURE-limit, of events that can be captured per call.
           headers:
             GS1-CAPTURE-limit:
-              $ref: '#/components/schemas/GS1-CAPTURE-limit'
+              $ref: '#/components/headers/GS1-CAPTURE-limit'
           content:
             application/problem+json:
               schema:
@@ -137,23 +137,7 @@ paths:
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
-          description: Capture ID not found
-          content:
-            application/problem+json:
-              schema:
-                allOf:
-                  - properties:
-                      status:
-                        type: integer
-                        enum:
-                          - 404
-                        default: 404
-                      type:
-                        type: string
-                        format: uri
-                        enum:
-                          - epcisException:NoSuchNameException
-                  - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+          $ref: '#/components/responses/404ResourceNotFound'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -170,11 +154,11 @@ paths:
         '401':
           $ref: '#/components/responses/401AuthorizationInformationMissing'
         '200':
-          $ref: '#/components/schemas/EPCISEventTypes'
+          $ref: '#/components/responses/200ReturnEventsOrMetadata'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
-          $ref: '#/components/responses/404EventTypeOrTopLevelNotFound'
+          $ref: '#/components/responses/404ResourceNotFound'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -201,27 +185,11 @@ paths:
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
-          $ref: '#/components/responses/404EventTypeOrTopLevelNotFound'
+          $ref: '#/components/responses/404ResourceNotFound'
         '414':
           $ref: '#/components/responses/414URLTooLong'
         '412':
-          description: Mismatch of the event type constraint in the path and in the query.
-          content:
-            application/problem+json:
-              schema:
-                allOf:
-                  - properties:
-                      status:
-                        type: integer
-                        enum:
-                          - 412
-                        default: 412
-                      type:
-                        type: string
-                        format: uri
-                        enum:
-                          - epcisException:QueryParameterException
-                  - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+          $ref: '#/components/responses/412EventTypeMismatch'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -244,7 +212,7 @@ paths:
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
-          $ref: '#/components/responses/404EventTypeOrTopLevelOrEventIdNotFound'
+          $ref: '#/components/responses/404ResourceNotFound'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -292,43 +260,11 @@ paths:
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
-          $ref: '#/components/responses/404EventTypeNotFound'
-        '414':
-          description: Query too long, if the total URL length exceeds 2000 characters.
-          content:
-            application/problem+json:
-              schema:
-                allOf:
-                  - properties:
-                      status:
-                        type: integer
-                        enum:
-                          - 414
-                        default: 414
-                      type:
-                        type: string
-                        format: uri
-                        enum:
-                          - epcisException:QueryTooComplexException
-                  - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+          $ref: '#/components/responses/404ResourceNotFound'
         '412':
-          description: Mismatch of the event type constraint in the path and in the query.
-          content:
-            application/problem+json:
-              schema:
-                allOf:
-                  - properties:
-                      status:
-                        type: integer
-                        enum:
-                          - 412
-                        default: 412
-                      type:
-                        type: string
-                        format: uri
-                        enum:
-                          - epcisException:QueryParameterException
-                  - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+          $ref: '#/components/responses/412EventTypeMismatch'
+        '414':
+          $ref: '#/components/responses/414URLTooLong'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -349,7 +285,7 @@ paths:
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
-          $ref: '#/components/responses/404EventTypeNotFound'
+          $ref: '#/components/responses/404ResourceNotFound'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -372,7 +308,7 @@ paths:
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
-          $ref: '#/components/responses/404EventTypeOrEventIdNotFound'
+          $ref: '#/components/responses/404ResourceNotFound'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -389,9 +325,9 @@ paths:
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
-          $ref: '#/components/responses/404QueryNameNotFound'
+          $ref: '#/components/responses/404ResourceNotFound'
         '413':
-          $ref: '#/components/responses/413TooManyEventsInResult'
+          $ref: '#/components/responses/413QueryBodyTooLarge'
         '500':
           $ref: '#/components/responses/500ImplementationException'
     post:
@@ -428,7 +364,7 @@ paths:
         - $ref: '#/components/parameters/NextPageToken'
       responses:
         '101':
-         $ref: '#/components/responses/WebsocketCreated'
+         $ref: '#/components/responses/101WebsocketCreated'
         '200':
           $ref: '#/components/responses/200ReturnEventsOrMetadata'
         '401':
@@ -436,7 +372,7 @@ paths:
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
-          $ref: '#/components/responses/404QueryNameNotFound'
+          $ref: '#/components/responses/404ResourceNotFound'
         '400':
           $ref: '#/components/responses/400QueryInvalid'
         '500':
@@ -455,9 +391,9 @@ paths:
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
-          $ref: '#/components/responses/404QueryNameNotFound'
+          $ref: '#/components/responses/404ResourceNotFound'
         '413':
-          $ref: '#/components/responses/413TooManyEventsInResult'
+          $ref: '#/components/responses/413QueryBodyTooLarge'
         '500':
           $ref: '#/components/responses/500ImplementationException'
     post:
@@ -494,7 +430,7 @@ paths:
         - $ref: '#/components/parameters/NextPageToken'
       responses:
         '101':
-         $ref: '#/components/responses/WebsocketCreated'
+         $ref: '#/components/responses/101WebsocketCreated'
         '200':
           $ref: '#/components/responses/200ReturnEventsOrMetadata'
         '401':
@@ -502,7 +438,7 @@ paths:
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
-          $ref: '#/components/responses/404QueryNameNotFound'
+          $ref: '#/components/responses/404ResourceNotFound'
         '400':
           $ref: '#/components/responses/400QueryInvalid'
         '500':
@@ -528,7 +464,7 @@ paths:
               $ref: '#/components/schemas/NamedQueryMetaData'
       responses:
         '101':
-         $ref: '#/components/responses/WebsocketCreated'
+         $ref: '#/components/responses/101WebsocketCreated'
         '200':
           $ref: '#/components/responses/200ReturnEventsOrMetadata'
         '401':
@@ -536,7 +472,7 @@ paths:
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
-          $ref: '#/components/responses/404QueryNameNotFound'
+          $ref: '#/components/responses/404ResourceNotFound'
         '400':
           $ref: '#/components/responses/400QueryInvalid'
         '500':
@@ -563,7 +499,7 @@ paths:
               $ref: '#/components/schemas/NamedQueryMetaData'
       responses:
         '101':
-         $ref: '#/components/responses/WebsocketCreated'
+         $ref: '#/components/responses/101WebsocketCreated'
         '200':
           $ref: '#/components/responses/200ReturnEventsOrMetadata'
         '401':
@@ -571,7 +507,7 @@ paths:
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
-          $ref: '#/components/responses/404QueryNameNotFound'
+          $ref: '#/components/responses/404ResourceNotFound'
         '400':
           $ref: '#/components/responses/400QueryInvalid'
         '500':
@@ -594,29 +530,21 @@ components:
     200ReturnEventsOrMetadata:
       headers:
         GS1-EPCIS-version:
-          schema:
-            $ref: '#/components/headers/GS1-EPCIS-version'
+          $ref: '#/components/headers/GS1-EPCIS-version'
         GS1-EPCIS-min:
-          schema:
-            $ref: '#/components/headers/GS1-EPCIS-min'
+          $ref: '#/components/headers/GS1-EPCIS-min'
         GS1-EPCIS-max:
-          schema:
-            $ref: '#/components/headers/GS1-EPCIS-max'
+          $ref: '#/components/headers/GS1-EPCIS-max'
         GS1-CBV-version:
-          schema:
-            $ref: '#/components/headers/GS1-CBV-version'
+          $ref: '#/components/headers/GS1-CBV-version'
         GS1-EPCIS-extensions:
-          schema:
-            $ref: '#/components/headers/GS1-EPCIS-extensions'
+          $ref: '#/components/headers/GS1-EPCIS-extensions'
         GS1-Vendor-version:
-          schema:
-            $ref: '#/components/headers/GS1-Vendor-version'
+          $ref: '#/components/headers/GS1-Vendor-version'
         GS1-CBV-extensions:
-          schema:
-            $ref: '#/components/headers/GS1-CBV-extensions'
+          $ref: '#/components/headers/GS1-CBV-extensions'
         Location:
-          schema:
-            $ref: '#/components/headers/Location'
+          $ref: '#/components/headers/Location'
       description: Returns a list of EPCIS events of the type specified in the path.
       content:
         application/json:
@@ -637,29 +565,27 @@ components:
       #            $ref: '#/components/schemas/NamedQueryMetaData'
       headers:
         GS1-EPCIS-version:
-          schema:
-            $ref: '#/components/headers/GS1-EPCIS-version'
+          $ref: '#/components/headers/GS1-EPCIS-version'
         GS1-EPCIS-min:
-          schema:
-            $ref: '#/components/headers/GS1-EPCIS-min'
+          $ref: '#/components/headers/GS1-EPCIS-min'
         GS1-EPCIS-max:
-          schema:
-            $ref: '#/components/headers/GS1-EPCIS-max'
+          $ref: '#/components/headers/GS1-EPCIS-max'
         GS1-CBV-version:
-          schema:
-            $ref: '#/components/headers/GS1-CBV-version'
+          $ref: '#/components/headers/GS1-CBV-version'
         GS1-EPCIS-extensions:
-          schema:
-            $ref: '#/components/headers/GS1-EPCIS-extensions'
+          $ref: '#/components/headers/GS1-EPCIS-extensions'
         GS1-Vendor-version:
-          schema:
-            $ref: '#/components/headers/GS1-Vendor-version'
+          $ref: '#/components/headers/GS1-Vendor-version'
         GS1-CBV-extensions:
-          schema:
-            $ref: '#/components/headers/GS1-CBV-extensions'
+          $ref: '#/components/headers/GS1-CBV-extensions'
         Location:
+          $ref: '#/components/headers/Location'
+    '204QueryDeleted':
+      description: Query deleted and clients disconnected
+      content:
+        application/json:
           schema:
-            $ref: '#/components/headers/Location'
+            {}
     '400QueryNameException':
       description: Exceptions defined in EPCIS 1.2, section 8.2.6 for `getQueryNames`
       content:
@@ -697,6 +623,24 @@ components:
                     enum:
                       - epcisException:ValidationException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+    '401AuthorizationInformationMissing':
+      description: Authorization information is missing or invalid.
+      content:
+        application/problem+json:
+          schema:
+            allOf:
+              - properties:
+                  status:
+                    type: integer
+                    enum:
+                      - 401
+                    default: 401
+                  type:
+                    type: string
+                    format: uri
+                    enum:
+                      - epcisException:SecurityException
+              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
     '400QueryException':
       description: Query exceptions defined in EPCIS
       content:
@@ -717,80 +661,6 @@ components:
                       - epcisException:QueryParameterException
                       - epcisException:QueryTooComplexException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-    '414URLTooLong':
-      description: Query too long, if the total URL length exceeds 2000 characters.
-      content:
-        application/problem+json:
-          schema:
-            allOf:
-              - properties:
-                  status:
-                    type: integer
-                    enum:
-                      - 414
-                    default: 414
-                  type:
-                    type: string
-                    format: uri
-                    enum:
-                      - epcisException:QueryTooComplexException
-              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-
-    '404EventTypeOrTopLevelOrEventIdNotFound':
-      description: Either Top-level resource, event type or event ID not found
-      content:
-        application/problem+json:
-          schema:
-            allOf:
-              - properties:
-                  status:
-                    type: integer
-                    enum:
-                      - 404
-                    default: 404
-                  type:
-                    type: string
-                    format: uri
-                    enum:
-                      - epcisException:NoSuchNameException
-              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-    '404EventTypeOrEventIdNotFound':
-      description: Event type or event ID not found
-      content:
-        application/problem+json:
-          schema:
-            allOf:
-              - properties:
-                  status:
-                    type: integer
-                    enum:
-                      - 404
-                    default: 404
-                  type:
-                    type: string
-                    format: uri
-                    enum:
-                      - epcisException:NoSuchNameException
-              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-
-    '404QueryNameNotFound':
-      description: Exceptions defined in EPCIS 1.2, section 8.2.6 for `poll`.
-      content:
-        application/problem+json:
-          schema:
-            allOf:
-              - properties:
-                  status:
-                    type: integer
-                    enum:
-                      - 404
-                    default: 404
-                  type:
-                    type: string
-                    format: uri
-                    enum:
-                      - epcisException:NoSuchNameException
-              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
     '403ClientUnauthorized':
       description: Client is unauthorized to access this resource.
       content:
@@ -809,8 +679,10 @@ components:
                     enum:
                       - epcisException:SecurityException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-    '404EventTypeOrTopLevelNotFound':
-      description: Top-level resource or event type not found
+
+
+    404ResourceNotFound:
+      description: Either Top-level resource, event type or event ID not found
       content:
         application/problem+json:
           schema:
@@ -827,8 +699,8 @@ components:
                     enum:
                       - epcisException:NoSuchNameException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-    '404EventTypeNotFound':
-      description: Event type not found
+    '412EventTypeMismatch':
+      description: Mismatch of the event type constraint in the path and in the query.
       content:
         application/problem+json:
           schema:
@@ -837,35 +709,35 @@ components:
                   status:
                     type: integer
                     enum:
-                      - 404
-                    default: 404
+                      - 412
+                    default: 412
                   type:
                     type: string
                     format: uri
                     enum:
-                      - epcisException:NoSuchNameException
+                      - epcisException:QueryParameterException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-    '401AuthorizationInformationMissing':
-      description: Authorization information is missing or invalid.
-      content:
-        application/problem+json:
-          schema:
-            allOf:
-              - properties:
-                  status:
-                    type: integer
-                    enum:
-                      - 401
-                    default: 401
-                  type:
-                    type: string
-                    format: uri
-                    enum:
-                      - epcisException:SecurityException
-              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-    '413TooManyEventsInResult':
+    413QueryBodyTooLarge:
       # TODO: Query too long means too many events in result set
-      description: Query too long, if the total URL length exceeds 2000 characters.
+      description: Query body too large.
+      content:
+        application/problem+json:
+          schema:
+            allOf:
+              - properties:
+                  status:
+                    type: integer
+                    enum:
+                      - 413
+                    default: 413
+                  type:
+                    type: string
+                    format: uri
+                    enum:
+                      - epcisException:QueryTooComplexException
+              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+    '414URLTooLong':
+      description: URL is too long. This is usually a problem with large EPCIS queries in the URL.
       content:
         application/problem+json:
           schema:
@@ -900,12 +772,6 @@ components:
                     enum:
                       - epcisException:ImplementationException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-    '204QueryDeleted':
-      description: Query deleted and clients disconnected
-      content:
-        application/json:
-          schema:
-            {}
   schemas:
     Location:
       description: Location header of a resource
@@ -1000,14 +866,14 @@ components:
       properties:
         id:
           type: string
-
         createdAt:
           type: string
           format: date-time
     AllEvent:
       type: string
       description: A virtual EPCIS event superset.
-      enum: [ all ]
+      enum:
+        - all
     EPCISEventTypes:
       type: string
       description: The five types of EPCIS events.
