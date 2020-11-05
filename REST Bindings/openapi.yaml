@@ -497,11 +497,7 @@ components:
       content:
         application/json:
           schema:
-            type: array
-            items:
-              type: object # TODO: LINK NEEDED: They're currently in the GS1 GitHub repository in JSON Schema.   The final reference should point to a stable URL within the gs1.org/epcis site.
-            uniqueItems: true
-      #            $ref: '#/components/schemas/NamedQueryMetaData'
+            { }
       headers:
         GS1-EPCIS-version:
           $ref: '#/components/headers/GS1-EPCIS-version'
