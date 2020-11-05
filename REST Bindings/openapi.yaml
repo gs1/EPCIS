@@ -315,45 +315,6 @@ paths:
   /queries/{queryNames}/metadata:
     parameters:
       - $ref: '#/components/parameters/QueryNames'
-    delete:
-      description: Removes a named query and disconnects clients
-      responses:
-        '204':
-          $ref: '#/components/responses/204QueryDeleted'
-        '401':
-          $ref: '#/components/responses/401AuthorizationInformationMissing'
-        '403':
-          $ref: '#/components/responses/403ClientUnauthorized'
-        '404':
-          $ref: '#/components/responses/404ResourceNotFound'
-        '413':
-          $ref: '#/components/responses/413QueryBodyTooLarge'
-        '500':
-          $ref: '#/components/responses/500ImplementationException'
-    post:
-      parameters:
-        - $ref: '#/components/parameters/GS1-EPCIS-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-min'
-        - $ref: '#/components/parameters/GS1-EPCIS-max'
-        - $ref: '#/components/parameters/GS1-CBV-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
-        - $ref: '#/components/parameters/GS1-CBV-extensions'
-      description: Creates a new named query.
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/NamedQueryMetaData'
-      responses:
-        '201':
-          $ref: '#/components/responses/201QueryCreatedAndExecuted'
-        '401':
-          $ref: '#/components/responses/401AuthorizationInformationMissing'
-        '400':
-          $ref: '#/components/responses/400QueryException'
-        '414':
-          $ref: '#/components/responses/414URLTooLong'
     get:
       parameters:
         - $ref: '#/components/parameters/GS1-QUERY-minRecordTime'
@@ -377,8 +338,8 @@ paths:
           $ref: '#/components/responses/400QueryInvalid'
         '500':
           $ref: '#/components/responses/500ImplementationException'
-
-  /queries/{queryNames}/events:
+          
+  /queries/{queryNames}:
     parameters:
       - $ref: '#/components/parameters/QueryNames'
     delete:
@@ -413,13 +374,19 @@ paths:
               $ref: '#/components/schemas/NamedQueryMetaData'
       responses:
         '201':
-          $ref: '#/components/responses/201QueryCreatedAndExecuted'
+          $ref: '#/components/responses/201QueryCreated'
         '401':
           $ref: '#/components/responses/401AuthorizationInformationMissing'
-        '400':
-          $ref: '#/components/responses/400QueryException'
-        '414':
-          $ref: '#/components/responses/414URLTooLong'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '404':
+          $ref: '#/components/responses/404ResourceNotFound'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
+
+  /queries/{queryNames}/events:
+    parameters:
+      - $ref: '#/components/parameters/QueryNames'
     get:
       parameters:
         - $ref: '#/components/parameters/GS1-QUERY-minRecordTime'
@@ -443,7 +410,7 @@ paths:
           $ref: '#/components/responses/400QueryInvalid'
         '500':
           $ref: '#/components/responses/500ImplementationException'
-  /queries/SimpleMasterDataQuery/metadata:
+  /queries/SimpleMasterDataQuery:
     post:
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-version'
@@ -463,22 +430,18 @@ paths:
             schema:
               $ref: '#/components/schemas/NamedQueryMetaData'
       responses:
-        '101':
-         $ref: '#/components/responses/101WebsocketCreated'
-        '200':
-          $ref: '#/components/responses/200ReturnEventsOrMetadata'
+        '201':
+          $ref: '#/components/responses/201QueryCreated'
         '401':
           $ref: '#/components/responses/401AuthorizationInformationMissing'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
-        '400':
-          $ref: '#/components/responses/400QueryInvalid'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
-  /queries/SimpleEventQuery/events:
+  /queries/SimpleEventQuery:
     post:
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-version'
@@ -498,18 +461,14 @@ paths:
             schema:
               $ref: '#/components/schemas/NamedQueryMetaData'
       responses:
-        '101':
-         $ref: '#/components/responses/101WebsocketCreated'
-        '200':
-          $ref: '#/components/responses/200ReturnEventsOrMetadata'
+        '201':
+          $ref: '#/components/responses/201QueryCreated'
         '401':
           $ref: '#/components/responses/401AuthorizationInformationMissing'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
-        '400':
-          $ref: '#/components/responses/400QueryInvalid'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 components:
@@ -553,7 +512,7 @@ components:
             items:
               type: object # TODO: LINK NEEDED: They're currently in the GS1 GitHub repository in JSON Schema.   The final reference should point to a stable URL within the gs1.org/epcis site.
             uniqueItems: true
-    '201QueryCreatedAndExecuted':
+    201QueryCreated:
       description: A resource was created and the link to the newly created resource is returned in the header.
       content:
         application/json:
