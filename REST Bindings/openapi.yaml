@@ -22,6 +22,54 @@ paths:
       responses:
         '200':
           description: Server can comply with the GS1-EPCIS-related requirements from the client.
+          headers:
+            GS1-EPCIS-version:
+              description: The EPCIS version
+              schema:
+                type: string
+                pattern: ^\d+(\.\d+)?$
+                example: "2.0"
+            GS1-EPCIS-min:
+              description: The lowest EPCIS version supported
+              schema:
+                type: string
+                pattern: ^\d+(\.\d+)?$
+                example: "2.0"
+            GS1-EPCIS-max:
+              description: The highest EPCIS version supported
+              schema:
+                type: string
+                pattern: ^\d+(\.\d+)?$
+                example: "2.0"
+            GS1-CBV-version:
+              description: The core business vocabulary version
+              schema:
+                type: string
+            GS1-EPCIS-extensions:
+              description: Specific EPCIS extensions supported (e.g. for FIT)
+              schema:
+                type: object
+            GS1-Vendor-version:
+              description: A versioning scheme that can be freely chosen by the vendor
+              schema:
+                type: array
+                items:
+                  type: string
+                uniqueItems: true
+            GS1-CBV-extensions:
+              description: An optional header to specify the vocabulary for the top-level endpoints
+              schema:
+                type: object
+            GS1-CAPTURE-limit:
+              description: The maximum number of EPCIS events that can be captured per call
+              schema:
+                type: string
+                pattern: ^(\d+|\*)$
+            GS1-CAPTURE-file-size-limit:
+              description: The maximum event document length in octets (8-bit bytes)
+              schema:
+                type: string
+                pattern: ^(\d+|\*)$              
           content:
             application/json:
               schema:
