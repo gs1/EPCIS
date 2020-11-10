@@ -383,6 +383,7 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-version'
         - $ref: '#/components/parameters/GS1-EPCIS-extensions'
         - $ref: '#/components/parameters/GS1-CBV-extensions'
+        - $ref: '#/components/parameters/Location'
       description: Creates a new named query and returns the new query resource in the Location header
       requestBody:
         required: true
