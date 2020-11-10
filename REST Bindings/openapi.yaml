@@ -299,13 +299,13 @@ paths:
       - $ref: '#/components/parameters/QueryNames'
     get:
       parameters:
-        - $ref: '#/components/parameters/GS1-QUERY-minRecordTime'
+        - $ref: '#/components/parameters/GS1QUERYminRecordTime'
         - $ref: '#/components/parameters/Upgrade'
         - $ref: '#/components/parameters/Connection'
         - $ref: '#/components/parameters/QueryNames'
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
-        - $ref: '#/components/parameters/Report-If-Empty'
+        - $ref: '#/components/parameters/ReportIfEmpty'
       responses:
         '101':
          $ref: '#/components/responses/101WebsocketCreated'
@@ -373,13 +373,13 @@ paths:
       - $ref: '#/components/parameters/QueryNames'
     get:
       parameters:
-        - $ref: '#/components/parameters/GS1-QUERY-minRecordTime'
+        - $ref: '#/components/parameters/GS1QUERYminRecordTime'
         - $ref: '#/components/parameters/Upgrade'
         - $ref: '#/components/parameters/Connection'
         - $ref: '#/components/parameters/QueryNames'
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
-        - $ref: '#/components/parameters/Report-If-Empty'
+        - $ref: '#/components/parameters/ReportIfEmpty'
       responses:
         '101':
          $ref: '#/components/responses/101WebsocketCreated'
@@ -405,7 +405,7 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-version'
         - $ref: '#/components/parameters/GS1-EPCIS-extensions'
         - $ref: '#/components/parameters/GS1-CBV-extensions'
-        - $ref: '#/components/parameters/GS1-QUERY-minRecordTime'
+        - $ref: '#/components/parameters/GS1QUERYminRecordTime'
         - $ref: '#/components/parameters/Upgrade'
         - $ref: '#/components/parameters/Connection'
         - $ref: '#/components/parameters/Location'
@@ -438,7 +438,7 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-version'
         - $ref: '#/components/parameters/GS1-EPCIS-extensions'
         - $ref: '#/components/parameters/GS1-CBV-extensions'
-        - $ref: '#/components/parameters/GS1-QUERY-minRecordTime'
+        - $ref: '#/components/parameters/GS1QUERYminRecordTime'
         - $ref: '#/components/parameters/Location'
       description: Executes an anonymous query
       requestBody:
@@ -881,13 +881,13 @@ components:
       example: 2020-04-04T20:33:31.116-06:00
 
   parameters:
-    Report-If-Empty:
+    ReportIfEmpty:
       in: query
       name: reportIfEmpty
       required: false
       schema:
         $ref: 'components/schemas/Report-If-Empty'
-    GS1-QUERY-minRecordTime:
+    GS1QUERYminRecordTime:
       in: header
       name: GS1-QUERY-minRecordTime
       required: false
