@@ -128,7 +128,7 @@ paths:
   /{topLevelResource}/events:
     get:
       summary: >
-        Returns all EPCIS event types currently available in the EPCIS repositor, "under" the
+        Returns all EPCIS event types currently available in the EPCIS repository, "under" the
         specified top-level resource.
       parameters:
         - $ref: '#/components/parameters/TopLevelResource'
@@ -886,7 +886,7 @@ components:
         description: An EPCIS document that must be validated with the [JSON schema](../JSON/EPCIS-JSON-Sschema.json) or [SHACL file](../JSON/EPCIS-SHACL.ttl).
         url: ../JSON/EPCIS-SHACL.ttl
 #    EventList:
-#      description: An collection of EPCIS events. An EPCIS event that must be validated with the [JSON schema](../JSON/EPCIS-JSON-Sschema.json) or [SHACL file](../JSON/EPCIS-SHACL.ttl).
+#      description: An collection of EPCIS events. An EPCIS event that must be validated with the [JSON schema](../JSON/EPCIS-JSON-Schema.json) or [SHACL file](../JSON/EPCIS-SHACL.ttl).
 #      externalDocs:
 #        description: An EPCIS event that must be validated with the [JSON schema](../JSON/EPCIS-JSON-Sschema.json) or [SHACL file](../JSON/EPCIS-SHACL.ttl).
 #        url: ../JSON/EPCIS-SHACL.ttl
@@ -1030,8 +1030,6 @@ components:
       schema:
         type: string
         pattern: ^(\d+|\*)$
-
-
 
   headers:
     GS1-CAPTURE-limit:
