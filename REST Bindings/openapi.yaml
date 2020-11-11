@@ -128,7 +128,7 @@ paths:
   /{topLevelResource}/events:
     get:
       summary: >
-        Returns all EPCIS event types currently available in the EPCIS repositor, "under" the
+        Returns all EPCIS event types currently available in the EPCIS repository, "under" the
         specified top-level resource.
       parameters:
         - $ref: '#/components/parameters/TopLevelResource'
@@ -157,8 +157,9 @@ paths:
     get:
       summary: Returns EPCIS events of a given EPCIS event type for a specific top-level resource.
       parameters:
-        - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/TopLevelResource'
+        - $ref: '#/components/parameters/PerPage'
+        - $ref: '#/components/parameters/NextPageToken'
         - $ref: '#/components/parameters/EventType'
         - $ref: '#/components/parameters/GS1-EPCIS-version'
         - $ref: '#/components/parameters/GS1-EPCIS-min'
@@ -166,13 +167,19 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-version'
         - $ref: '#/components/parameters/GS1-EPCIS-extensions'
         - $ref: '#/components/parameters/GS1-CBV-extensions'
+
       description: >
-        This endpoint helps to navigate EPCIS events by EPCIS event type within a top-level resource. If the EPCIS event
-        type is not needed, use 'all' instead of an EPCIS event type.
+        This endpoint helps to navigate EPCIS events by EPCIS event type within a top-level resource. It returns all
+        EPCIS events of a specific EPCIS event type and "under" the given top-level resource, up to the amount defined
+        in PerPage. The server returns a 'link' header to point to the remaining results. If the EPCIS event type is not
+        needed, 'all' can be used instead of an EPCIS event type.
 
         Optionally, EPCIS events can be further filtered using the EPCIS query language in as query string parameters.
         In this case, ensure that the EPCIS query does not specify the top-level and only filters by
-        EPCIS event type if the EPCIS event type in path is 'all'
+        EPCIS event type if the EPCIS event type in path is 'all'.
+        ```
+
+
       responses:
         '200':
           $ref: '#/components/responses/200EventResults'
@@ -259,11 +266,19 @@ paths:
         - $ref: '#/components/parameters/GS1-EPCIS-extensions'
         - $ref: '#/components/parameters/GS1-CBV-extensions'
       description: >
-        This endpoint returns all EPCIS events of a specific EPCIS event type. If the EPCIS event type is not needed,
-        'all' can be used instead of an EPCIS event type.
+        This endpoint returns all EPCIS events of a specific EPCIS event type up to the amount defined in PerPage.
+        The server returns a 'link' header to point to the remaining results.
+
+        If the EPCIS event type is not needed, 'all' can be used instead of an EPCIS event type.
 
         The client can further restrict the the list of events returned by filtering events using the EPCIS query
         language as URL query string parameters.
+
+        Example:
+
+        ```
+        https://example.com/events/ObjectEvents?EQ_bizStep=urn%3Aepcglobal%3Acbv%3Abizstep%3Ashipping%2Curn%3Aepcglobal%3Acbv%3Abizstep%3Adecommissioning&GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
+
       responses:
         '200':
           $ref: '#/components/responses/200EventResults'
@@ -294,7 +309,8 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-version'
         - $ref: '#/components/parameters/GS1-EPCIS-extensions'
         - $ref: '#/components/parameters/GS1-CBV-extensions'
-      description: This endpoint accesses individual events using their unique id. If the EPCIS event type is not known
+      description: >
+        This endpoint accesses individual events using their unique id. If the EPCIS event type is not known
         or irrelevant, 'all' can be used instead of an EPCIS event type. The response body is an EPCISDocument with
         the unique event. The response body is an EPCISDocument with the unique event.
       responses:
@@ -311,9 +327,12 @@ paths:
 
   /queries:
     get:
+      summary: Returns a list of queries available to that user.
       responses:
         '200':
-          description: Returns a list of active queries available to that user.
+          description: >
+            Queries are like views that are created using the EPCIS query language. Each query object
+            consists of a query name and the query definition.
           content:
             application/json:
               schema:
@@ -331,20 +350,24 @@ paths:
           $ref: '#/components/responses/500ImplementationException'
 
   /queries/{queryName}/masterdata:
+    parameters:
+      - $ref: '#/components/parameters/QueryName'
+      - $ref: '#/components/parameters/PerPage'
     get:
+      summary: Returns the result of a masterdata. This endpoint supports query subscriptions.
       parameters:
         - $ref: '#/components/parameters/GS1-QUERY-minRecordTime'
         - $ref: '#/components/parameters/Upgrade'
         - $ref: '#/components/parameters/Connection'
-        - $ref: '#/components/parameters/QueryName'
-        - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
         - $ref: '#/components/parameters/ReportIfEmpty'
+      description: >
+        The GET endpoint allows to retrieve large results sets and subscribe to queries.
       responses:
         '101':
          $ref: '#/components/responses/101WebsocketCreated'
         '200':
-          $ref: '#/components/responses/200MetadataResults'
+          $ref: '#/components/responses/200MasterDataResults'
         '401':
           $ref: '#/components/responses/401AuthorizationInformationMissing'
         '403':
@@ -355,12 +378,40 @@ paths:
           $ref: '#/components/responses/400QueryInvalid'
         '500':
           $ref: '#/components/responses/500ImplementationException'
+    post:
+      summary: >
+        Creates and executes a named EPCIS masterdata queries and returns
+        results with option to paginate if needed.
+      parameters:
+        - $ref: '#/components/parameters/GS1-EPCIS-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-min'
+        - $ref: '#/components/parameters/GS1-EPCIS-max'
+        - $ref: '#/components/parameters/GS1-CBV-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
+        - $ref: '#/components/parameters/GS1-CBV-extensions'
+      description: >
+        Creating a named query stores a query set that can be accessed by performing a GET on its masterdata subresource.
+        Creating a query also returns masterdata up to the amount defined in PerPage. The server returns a 'link' header
+        to point to the remaining results.
+      requestBody:
+        $ref: '#/components/requestBodies/CreateMasterDataQuery'
+      responses:
+        '200':
+          $ref: '#/components/responses/200MasterDataResults'
+        '401':
+          $ref: '#/components/responses/401AuthorizationInformationMissing'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '404':
+          $ref: '#/components/responses/404ResourceNotFound'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
 
   /queries/{queryName}:
     parameters:
       - $ref: '#/components/parameters/QueryName'
     delete:
-      description: Removes a named query and disconnects clients
+      summary: Removes a named query and disconnects clients
       responses:
         '204':
           $ref: '#/components/responses/204QueryDeleted'
@@ -374,43 +425,21 @@ paths:
           $ref: '#/components/responses/413QueryBodyTooLarge'
         '500':
           $ref: '#/components/responses/500ImplementationException'
-    post:
-      parameters:
-        - $ref: '#/components/parameters/GS1-EPCIS-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-min'
-        - $ref: '#/components/parameters/GS1-EPCIS-max'
-        - $ref: '#/components/parameters/GS1-CBV-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
-        - $ref: '#/components/parameters/GS1-CBV-extensions'
-      description: Creates a new named query and returns the new query resource in the Location header
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/NamedQueryMetaData'
-      responses:
-        '201':
-          $ref: '#/components/responses/201QueryCreated'
-        '401':
-          $ref: '#/components/responses/401AuthorizationInformationMissing'
-        '403':
-          $ref: '#/components/responses/403ClientUnauthorized'
-        '404':
-          $ref: '#/components/responses/404ResourceNotFound'
-        '500':
-          $ref: '#/components/responses/500ImplementationException'
 
   /queries/{queryName}/events:
+    parameters:
+      - $ref: '#/components/parameters/QueryName'
+      - $ref: '#/components/parameters/PerPage'
     get:
+      summary: Returns events with option to paginate if needed. This endpoint supports query subscriptions.
       parameters:
         - $ref: '#/components/parameters/GS1-QUERY-minRecordTime'
         - $ref: '#/components/parameters/Upgrade'
         - $ref: '#/components/parameters/Connection'
-        - $ref: '#/components/parameters/QueryName'
-        - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
         - $ref: '#/components/parameters/ReportIfEmpty'
+      description: >
+        The GET endpoint allows to retrieve large results sets and subscribe to queries.
       responses:
         '101':
          $ref: '#/components/responses/101WebsocketCreated'
@@ -427,9 +456,8 @@ paths:
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
-  /queries/SimpleMasterDataQuery/masterdata:
-    description: SimpleMasterDataQuery is an endpoint to create anonymous queries. A query is created once and returned to client. Unlike name queries, these queries are not stored.
     post:
+      summary: Creates and executes a named EPCIS events queries and returns results with option to paginate if needed.
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-version'
         - $ref: '#/components/parameters/GS1-EPCIS-min'
@@ -437,17 +465,16 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-version'
         - $ref: '#/components/parameters/GS1-EPCIS-extensions'
         - $ref: '#/components/parameters/GS1-CBV-extensions'
-        - $ref: '#/components/parameters/GS1-QUERY-minRecordTime'
-      description: Executes an anonymous query
+        - $ref: '#/components/parameters/PerPage'
+      description: >
+        Creating a named query creates a view on the events in the repository, accessible through it's events resource.
+        Creating a query also returns events up to the amount defined in PerPage. The server returns a 'link' header
+        to point to the remaining results.
       requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/NamedQueryMetaData'
+        $ref: '#/components/requestBodies/CreateEventQuery'
       responses:
-        '201':
-          $ref: '#/components/responses/201QueryCreated'
+        '200':
+          $ref: '#/components/responses/200EventResults'
         '401':
           $ref: '#/components/responses/401AuthorizationInformationMissing'
         '403':
@@ -457,9 +484,12 @@ paths:
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
-  /queries/SimpleEventQuery/events:
-    description: SimpleEventQuery is an endpoint to create anonymous queries. A query is created once and returned to client. Unlike name queries, these queries are not stored.
+  /queries/SimpleMasterDataQuery/masterdata:
+    parameters:
+      - $ref: '#/components/parameters/PerPage'
     post:
+      summary: >
+        Executes anonymous masterdata queries and returns results with option to paginate if needed.
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-version'
         - $ref: '#/components/parameters/GS1-EPCIS-min'
@@ -468,22 +498,99 @@ paths:
         - $ref: '#/components/parameters/GS1-EPCIS-extensions'
         - $ref: '#/components/parameters/GS1-CBV-extensions'
         - $ref: '#/components/parameters/GS1-QUERY-minRecordTime'
-      description: Executes an anonymous query
+      description: >
+        SimpleMasterDataQuery is an endpoint to create anonymous queries.
+        A query is created once and returned to client. Unlike name queries,
+        these queries are not stored.
       requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/NamedQueryMetaData'
+        $ref: '#/components/requestBodies/CreateMasterDataQuery'
       responses:
-        '201':
-          $ref: '#/components/responses/201QueryCreated'
+        '200':
+          $ref: '#/components/responses/200MasterDataResults'
         '401':
           $ref: '#/components/responses/401AuthorizationInformationMissing'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
+    get:
+      summary: Returns the result of a masterdata. This endpoint supports query subscriptions.
+      parameters:
+        - $ref: '#/components/parameters/GS1-QUERY-minRecordTime'
+        - $ref: '#/components/parameters/Upgrade'
+        - $ref: '#/components/parameters/Connection'
+        - $ref: '#/components/parameters/NextPageToken'
+        - $ref: '#/components/parameters/ReportIfEmpty'
+      description: >
+        The GET endpoint allows to retrieve large results sets and subscribe to queries.
+      responses:
+        '101':
+         $ref: '#/components/responses/101WebsocketCreated'
+        '200':
+          $ref: '#/components/responses/200MasterDataResults'
+        '401':
+          $ref: '#/components/responses/401AuthorizationInformationMissing'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '404':
+          $ref: '#/components/responses/404ResourceNotFound'
+        '400':
+          $ref: '#/components/responses/400QueryInvalid'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
+
+  /queries/SimpleEventQuery/events:
+    post:
+      summary: Executes anonymous EPCIS events queries and returns results with option to paginate if needed.
+      parameters:
+        - $ref: '#/components/parameters/GS1-EPCIS-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-min'
+        - $ref: '#/components/parameters/GS1-EPCIS-max'
+        - $ref: '#/components/parameters/GS1-CBV-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
+        - $ref: '#/components/parameters/GS1-CBV-extensions'
+        - $ref: '#/components/parameters/GS1-QUERY-minRecordTime'
+      description: >
+        SimpleEventQuery is an endpoint to execute anonymous queries for EPCIS events.
+        A query is created once and returned to client. Unlike named queries, these queries are not stored.
+      requestBody:
+        $ref: '#/components/requestBodies/CreateEventQuery'
+      responses:
+        '200':
+          $ref: '#/components/responses/200EventResults'
+        '401':
+          $ref: '#/components/responses/401AuthorizationInformationMissing'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '404':
+          $ref: '#/components/responses/404ResourceNotFound'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
+    get:
+      summary: Returns events with option to paginate if needed. This endpoint supports query subscriptions.
+      parameters:
+        - $ref: '#/components/parameters/GS1-QUERY-minRecordTime'
+        - $ref: '#/components/parameters/Upgrade'
+        - $ref: '#/components/parameters/Connection'
+        - $ref: '#/components/parameters/NextPageToken'
+        - $ref: '#/components/parameters/ReportIfEmpty'
+      description: >
+        The GET endpoint allows to retrieve large results sets and subscribe to anonymous queries.
+      responses:
+        '101':
+         $ref: '#/components/responses/101WebsocketCreated'
+        '200':
+          $ref: '#/components/responses/200EventResults'
+        '401':
+          $ref: '#/components/responses/401AuthorizationInformationMissing'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '404':
+          $ref: '#/components/responses/404ResourceNotFound'
+        '400':
+          $ref: '#/components/responses/400QueryInvalid'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 components:
@@ -501,7 +608,7 @@ components:
           schema:
             type: string
             default: upgrade
-    200MetadataResults:
+    200MasterDataResults:
       headers:
         GS1-EPCIS-version:
           $ref: '#/components/headers/GS1-EPCIS-version'
@@ -515,15 +622,17 @@ components:
           $ref: '#/components/headers/GS1-EPCIS-extensions'
         GS1-CBV-extensions:
           $ref: '#/components/headers/GS1-CBV-extensions'
-        Location:
-          $ref: '#/components/headers/Location'
+        Link:
+          $ref: '#/components/headers/Link'
       description: Returns the query result
       content:
         application/json:
           schema:
             type: object
             externalDocs:
-              description: An metadata query result that must be validated with the [JSON schema](../JSON/EPCIS-JSON-Sschema.json) or [SHACL file](../JSON/EPCIS-SHACL.ttl).
+              description: >
+                An metadata query result that must be validated with the
+                [JSON schema](../JSON/EPCIS-JSON-Schema.json) or [SHACL file](../JSON/EPCIS-SHACL.ttl).
               url: ../JSON/EPCIS-SHACL.ttl
     200EventResults:
       headers:
@@ -539,15 +648,17 @@ components:
           $ref: '#/components/headers/GS1-EPCIS-extensions'
         GS1-CBV-extensions:
           $ref: '#/components/headers/GS1-CBV-extensions'
-        Location:
-          $ref: '#/components/headers/Location'
+        Link:
+          $ref: '#/components/headers/Link'
       description: Returns the query result
       content:
         application/json:
           schema:
             type: object
             externalDocs:
-              description: An event query result that must be validated with the [JSON schema](../JSON/EPCIS-JSON-Sschema.json) or [SHACL file](../JSON/EPCIS-SHACL.ttl).
+              description: >
+                An event query result that must be validated with the
+                [JSON schema](../JSON/EPCIS-JSON-Schema.json) or [SHACL file](../JSON/EPCIS-SHACL.ttl).
               url: ../JSON/EPCIS-SHACL.ttl
     200SupportedEventTypes:
       description: Returns all supported EPCIS event types.
@@ -812,6 +923,11 @@ components:
       type: string
       pattern: ^(\d+|\*)$
       example: 500
+    GS1-CAPTURE-file-size-limit:
+      description: The maximum event document length in octets (8-bit bytes)
+      type: string
+      pattern: ^(\d+|\*)$
+      example: 500
     RFC7807ProblemResponseBody:
       description: A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)
       type: object
@@ -837,7 +953,7 @@ components:
         status: 401
         instance: "/queries/TestQuery"
     ReportIfEmpty:
-      description: If true, a query result is always sent to the client, even if the result set is empty
+      description: If true, a query result is always sent to the client, even if the result set is empty.
       type: boolean
     NamedQueryMetaData:
       type: object
@@ -848,7 +964,9 @@ components:
         name:
           type: string
         query:
-          type: string
+          type: array
+          items:
+            $ref: '#/components/schemas/EPCISQuery'
         createdAt:
           type: string
           format: date-time
@@ -860,9 +978,26 @@ components:
             $ref: '#/components/schemas/QuerySubscriptionMetaData'
     EPCISQuery:
       type: array
-      description: An EPCIS query. Either as query string parameter or in a POST payload.
+      description: An EPCIS event query.
+      example:
+        [ {
+          "eventTypes": "ObjectEvent" },
+          {
+            "EQ_bizStep": [
+                "urn:epcglobal:cbv:bizstep:shipping",
+                "urn:epcglobal:cbv:bizstep:decommissioning" ]
+          }, {
+          "GE_eventTime": "2015-03-15T00:00:00.000-04:00" }
+        ]
       externalDocs:
         url: query-schema.json
+      items:
+        type: object
+    EPCISMasterDataQuery:
+      type: array
+      description: An EPCIS master data query.
+      externalDocs:
+        url: https://www.gs1.org/sites/default/files/docs/epc/EPCIS-Standard-1.2-r-2016-09-29.pdf
       items:
         type: object
     QuerySubscriptionMetaData:
@@ -883,16 +1018,27 @@ components:
       description: A container that describes a list of EPCIS events
       type: object
       externalDocs:
-        description: An EPCIS document that must be validated with the [JSON schema](../JSON/EPCIS-JSON-Sschema.json) or [SHACL file](../JSON/EPCIS-SHACL.ttl).
+        description: >
+          An EPCIS document that must be validated with the [JSON schema](../JSON/EPCIS-JSON-Schema.json) or
+          [SHACL file](../JSON/EPCIS-SHACL.ttl).
         url: ../JSON/EPCIS-SHACL.ttl
-#    EventList:
-#      description: An collection of EPCIS events. An EPCIS event that must be validated with the [JSON schema](../JSON/EPCIS-JSON-Sschema.json) or [SHACL file](../JSON/EPCIS-SHACL.ttl).
-#      externalDocs:
-#        description: An EPCIS event that must be validated with the [JSON schema](../JSON/EPCIS-JSON-Sschema.json) or [SHACL file](../JSON/EPCIS-SHACL.ttl).
-#        url: ../JSON/EPCIS-SHACL.ttl
-#      type:
-#        object
-
+    Link:
+      description: >
+        A pagination header link. This header works together with the perPage
+        and NextPageToken query string parameters
+      type: string
+      format: uri
+      example: '<https://example.com/events/all?perPage=30&nextPageToken=3A1550673874978%2Ci%3AU6D7DENAKwM2gQRRwGrataeq>; rel="next"'
+    PerPage:
+      description: Parameter to control pagination. perPage specifies the maximum number of events returned in one batch.
+      type: integer
+      default: 30
+    NextPageToken:
+      description: >
+        Parameter that point to the next list of results when requesting a list of events that is larger than the value
+        specified with the perPage parameter.
+      type: string
+      example: '3A1550673874978%2Ci%3AU6D7DENAKwM2gQRRwGrataeq'
     EPCISEventTypes:
       type: string
       description: The five types of EPCIS events.
@@ -903,12 +1049,47 @@ components:
         - TransformationEvents
         - TransactionEvents
     GS1-QUERY-minRecordTime:
-      description: An optional header to specify the smallest possible record time for EPCIS events in a query subscription
+      description: >
+        An optional header to specify the smallest possible record time for
+        EPCIS events in a query subscription
       type: string
       format: time
-      example: 2020-04-04T20:33:31.116-06:00
+      example: "2020-04-04T20:33:31.116-06:00"
+
+    Upgrade:
+      type: string
+      description: Upgrade and Connection headers are needed to open a Websocket for queries
+      default: websocket
+      example: websocket
+
+    Connection:
+      example: Upgrade
+      description: Upgrade and Connection headrs are needed to open a Websocket for queries
+      type: string
+      default: upgrade
+    TopLevelResource:
+      description: >
+        A top-level resource collection, used to navigate events by EPC, "business step", "business location",
+        "readpoint" or "disposition". Note that these are collections and therefore pluralized.
+      type: string
+      enum:
+        - epcs
+        - bizSteps
+        - bizLocations
+        - readPoints
+        - dispositions
 
   parameters:
+    PerPage:
+      in: query
+      name: perPage
+      schema:
+        $ref: '#/components/schemas/PerPage'
+    NextPageToken:
+      in: query
+      name: nextPageToken
+      schema:
+        $ref: '#/components/schemas/NextPageToken'
     ReportIfEmpty:
       in: query
       name: reportIfEmpty
@@ -926,18 +1107,20 @@ components:
       name: Upgrade
       required: false
       schema:
-        type: string
-        default: websocket
+        $ref: '#/components/schemas/Upgrade'
     Connection:
       in: header
       name: Connection
       required: false
       schema:
-        type: string
-        default: upgrade
+        $ref: '#/components/schemas/Upgrade'
+
     EventID:
       name: eventID
       in: path
+      description: >
+        The ID of an EPCIS event. Because of the 'all' reserved name for EPCIS events,
+        an EPCIS event ID must be unique.
       required: true
       schema:
         type: string
@@ -945,6 +1128,9 @@ components:
       name: eventType
       in: path
       required: true
+      description: >
+        Names of EPCIS event types plus the reserved name 'all',
+        which is the union of all EPCIS event types
       schema:
         oneOf:
           - $ref: '#/components/schemas/EPCISEventTypes'
@@ -956,32 +1142,12 @@ components:
       required: true
       schema:
         type: string
-    PerPage:
-      in: query
-      name: perPage
-      description: Parameter to control pagination. perPage specifies the maximum number of events returned in one batch.
-      schema:
-        type: integer
-        default: 30
-    NextPageToken:
-      in: query
-      name: nextPageToken
-      description: Parameter that point to the next list of results when requesting a list of events that is larger than the value specified with the perPage parameter.
-      schema:
-        type: string
     TopLevelResource:
       in: path
       name: topLevelResource
-      description: A top-level resource to access events.
       required: true
       schema:
-        type: string
-        enum:
-          - epcs
-          - bizSteps
-          - bizLocations
-          - readPoints
-          - dispositions
+        $ref: '#/components/schemas/TopLevelResource'
     GS1-EPCIS-version:
       in: header
       name: GS1-EPCIS-version
@@ -1010,7 +1176,6 @@ components:
     GS1-Vendor-version:
       in: header
       name: GS1-Vendor-version
-      description: A versioning scheme that can be freely chosen by the vendor
       schema:
         $ref: '#/components/schemas/GS1-Vendor-version'
     GS1-CBV-extensions:
@@ -1026,10 +1191,8 @@ components:
     GS1-CAPTURE-file-size-limit:
       in: header
       name: GS1-CAPTURE-file-size-limit
-      description: The maximum event document length in octets (8-bit bytes)
       schema:
-        type: string
-        pattern: ^(\d+|\*)$
+        $ref: '#/components/schemas/GS1-CAPTURE-file-size-limit'
 
 
 
@@ -1064,3 +1227,22 @@ components:
     GS1-QUERY-minRecordTime:
       schema:
         $ref: '#/components/schemas/GS1-QUERY-minRecordTime'
+    Link:
+      schema:
+        $ref: '#/components/schemas/Link'
+  requestBodies:
+    CreateEventQuery:
+      description: Creates and executes an events query
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/EPCISQuery'
+    CreateMasterDataQuery:
+      description: Creates and executes a master data query
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/EPCISMasterDataQuery'
+
