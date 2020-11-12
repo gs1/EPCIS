@@ -380,7 +380,7 @@ paths:
           $ref: '#/components/responses/500ImplementationException'
     post:
       summary: >
-        Creates and executes a named EPCIS masterdata queries and returns
+        Creates and executes a named EPCIS master data queries and returns
         results with option to paginate if needed.
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-version'
@@ -390,8 +390,9 @@ paths:
         - $ref: '#/components/parameters/GS1-EPCIS-extensions'
         - $ref: '#/components/parameters/GS1-CBV-extensions'
       description: >
-        Creating a named query stores a query set that can be accessed by performing a GET on its masterdata subresource.
-        Creating a query also returns masterdata up to the amount defined in PerPage. The server returns a 'link' header
+        Creating a named query stores a query set that can be accessed by performing
+        a GET on its master data subresource. Creating a query also returns master data
+        up to the amount defined in PerPage. The server returns a 'link' header
         to point to the remaining results.
       requestBody:
         $ref: '#/components/requestBodies/CreateMasterDataQuery'
@@ -489,7 +490,7 @@ paths:
       - $ref: '#/components/parameters/PerPage'
     post:
       summary: >
-        Executes anonymous masterdata queries and returns results with option to paginate if needed.
+        Executes anonymous master data queries and returns results with option to paginate if needed.
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-version'
         - $ref: '#/components/parameters/GS1-EPCIS-min'
