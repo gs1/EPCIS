@@ -374,14 +374,14 @@ paths:
          $ref: '#/components/responses/101WebsocketCreated'
         '200':
           $ref: '#/components/responses/200MasterDataResponse'
+        '400':
+          $ref: '#/components/responses/400QueryInvalid'
         '401':
           $ref: '#/components/responses/401AuthorizationInformationMissing'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
-        '400':
-          $ref: '#/components/responses/400QueryInvalid'
         '500':
           $ref: '#/components/responses/500ImplementationException'
     post:
@@ -453,14 +453,14 @@ paths:
          $ref: '#/components/responses/101WebsocketCreated'
         '200':
           $ref: '#/components/responses/200EPCISEventResponse'
+        '400':
+          $ref: '#/components/responses/400QueryInvalid'
         '401':
           $ref: '#/components/responses/401AuthorizationInformationMissing'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
-        '400':
-          $ref: '#/components/responses/400QueryInvalid'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -539,14 +539,14 @@ paths:
          $ref: '#/components/responses/101WebsocketCreated'
         '200':
           $ref: '#/components/responses/200MasterDataResponse'
+        '400':
+          $ref: '#/components/responses/400QueryInvalid'
         '401':
           $ref: '#/components/responses/401AuthorizationInformationMissing'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
-        '400':
-          $ref: '#/components/responses/400QueryInvalid'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -593,14 +593,14 @@ paths:
          $ref: '#/components/responses/101WebsocketCreated'
         '200':
           $ref: '#/components/responses/200EPCISEventResponse'
+        '400':
+          $ref: '#/components/responses/400QueryInvalid'
         '401':
           $ref: '#/components/responses/401AuthorizationInformationMissing'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
-        '400':
-          $ref: '#/components/responses/400QueryInvalid'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 components:
@@ -697,6 +697,7 @@ components:
                     type: string
                     format: uri
                     enum:
+                      - epcisException:SubscriptionControlsException
                       - epcisException:ValidationException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
     '401AuthorizationInformationMissing':
