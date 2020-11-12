@@ -177,8 +177,12 @@ paths:
         Optionally, EPCIS events can be further filtered using the EPCIS query language in as query string parameters.
         In this case, ensure that the EPCIS query does not specify the top-level and only filters by
         EPCIS event type if the EPCIS event type in path is 'all'.
-        ```
 
+        Example:
+
+        ```
+        https://example.com/readPoints/urn:epc:id:sgln:4012345.00005.0/events/ObjectEvents?EQ_bizStep=urn%3Aepcglobal%3Acbv%3Abizstep%3Ashipping%2Curn%3Aepcglobal%3Acbv%3Abizstep%3Adecommissioning&GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
+        ```
 
       responses:
         '200':
@@ -278,6 +282,7 @@ paths:
 
         ```
         https://example.com/events/ObjectEvents?EQ_bizStep=urn%3Aepcglobal%3Acbv%3Abizstep%3Ashipping%2Curn%3Aepcglobal%3Acbv%3Abizstep%3Adecommissioning&GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
+        ```
 
       responses:
         '200':
