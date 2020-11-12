@@ -972,6 +972,9 @@ components:
     EPCISDocument:
       description: A collection of EPCIS resources.
       type: object
+      example:
+        summary: EPCIS document in JSON-LD
+        $ref: 'https://raw.githubusercontent.com/gs1/EPCIS/master/JSON/Example_9.6.1-ObjectEvent.jsonld'
       externalDocs:
         description: >
           An EPCIS document that must be validated with the [JSON schema](../JSON/EPCIS-JSON-Schema.json) or
