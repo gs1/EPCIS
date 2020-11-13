@@ -465,7 +465,7 @@ paths:
           $ref: '#/components/responses/500ImplementationException'
 
     post:
-      summary: Creates and executes a named EPCIS events queries and returns results with option to paginate if needed.
+      summary: Creates and executes a named EPCIS events query and returns results with option to paginate if needed.
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-version'
         - $ref: '#/components/parameters/GS1-EPCIS-min'
