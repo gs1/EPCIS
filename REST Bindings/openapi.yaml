@@ -142,10 +142,10 @@ paths:
         The top-level resource endpoint helps to navigate EPCIS events by top-level resources, such as business location
         or business step. EPCIS 2.0 supports a number of optional top-level resources.
       responses:
-        '401':
-          $ref: '#/components/responses/401AuthorizationInformationMissing'
         '200':
           $ref: '#/components/responses/200SupportedEventTypes'
+        '401':
+          $ref: '#/components/responses/401AuthorizationInformationMissing'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
@@ -638,12 +638,8 @@ components:
       content:
         application/json:
           schema:
-            type: object
-            externalDocs:
-              description: >
-                To validate EPCIS master data, please use [JSON schema](../JSON/EPCIS-JSON-Schema.json)
-                or [SHACL file](../JSON/EPCIS-SHACL.ttl).
-              url: ../JSON
+            $ref: '#/components/schemas/EPCISMasterDataDocument'
+
     200EPCISEventResponse:
       headers:
         GS1-EPCIS-version:
@@ -665,10 +661,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/EPCISDocument'
-          examples:
-            jsonLD:
-              summary: EPCIS document in JSON-LD
-              externalValue: 'https://raw.githubusercontent.com/gs1/EPCIS/master/JSON/Example_9.6.1-ObjectEvent.jsonld'
     200SupportedEventTypes:
       description: Returns all supported EPCIS event types.
       content:
@@ -964,12 +956,106 @@ components:
       description: A virtual EPCIS event type that is the union of all EPCIS event types.
       enum:
         - all
+    EPCISMasterDataDocument:
+      description: A collection of master data resources
+      example:
+        {
+          "@context": [ "https://gs1.github.io/EPCIS/epcis-context.jsonld",{ "example": "http://ns.example.com/epcis/" },{ "xmda": "http://epcis.example.com/mda" } ],
+          "id": "_:example_9.8.1",
+          "isA": "EPCISDocument",
+          "schemaVersion": 2.0,
+          "creationDate": "2005-07-11T11:30:47.0Z",
+          "format": "application/ld+json",
+          "epcisHeader": {
+            "epcisMasterData": {
+              "vocabularyList": [
+
+                {
+                  "vocabularyElementList": [
+                    {
+                      "isA": "urn:epcglobal:epcis:vtype:ReadPoint",
+                      "id": "urn:epc:id:sgln:0037000.00729.8201",
+                      "attributes": [
+                        { "id": "cbvmda:site", "attribute": "0037000007296" },
+                        { "id": "cbvmda:sst", "attribute": 201 }
+                      ]
+                    },
+                    {
+                      "isA": "urn:epcglobal:epcis:vtype:ReadPoint",
+                      "id": "urn:epc:id:sgln:0037000.00729.8202",
+                      "attributes": [
+                        { "id": "cbvmda:site", "attribute": "0037000007296" },
+                        { "id": "cbvmda:sst", "attribute": "202" }
+                      ]
+                    },
+                    {
+                      "isA": "urn:epcglobal:epcis:vtype:ReadPoint",
+                      "id": "urn:epc:id:sgln:0037000.00729.8203",
+                      "attributes": [
+                        { "id": "cbvmda:sst", "attribute": 204 }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "epcisBody": {
+            "eventList": [ ]
+          }
+        }
+      type: object
+      externalDocs:
+        description: >
+          To validate EPCIS master data, please use [JSON schema](../JSON/EPCIS-JSON-Schema.json)
+          or [SHACL file](../JSON/EPCIS-SHACL.ttl).
+        url: ../JSON
     EPCISDocument:
       description: A collection of EPCIS resources.
       type: object
       example:
-        summary: EPCIS document in JSON-LD
-        $ref: 'https://raw.githubusercontent.com/gs1/EPCIS/master/JSON/Example_9.6.1-ObjectEvent.jsonld'
+        {
+          "@context": [ "https://gs1.github.io/EPCIS/epcis-context.jsonld",{ "example": "http://ns.example.com/epcis/" } ],
+
+          "id": "_:document1",
+          "isA": "EPCISDocument",
+          "schemaVersion": 2.0,
+          "creationDate": "2005-07-11T11:30:47.0Z",
+          "format": "application/ld+json",
+          "epcisBody": {
+            "eventList": [
+              {
+                "id": "_:event1",
+                "isA": "ObjectEvent",
+                "action": "OBSERVE",
+                "bizStep": "urn:epcglobal:cbv:bizstep:shipping",
+                "disposition": "urn:epcglobal:cbv:disp:in_transit",
+                "epcList": [ "urn:epc:id:sgtin:0614141.107346.2017","urn:epc:id:sgtin:0614141.107346.2018" ],
+                "eventTime": "2005-04-03T20:33:31.116000-06:00",
+                "eventTimeZoneOffset": "-06:00",
+                "readPoint": { "id": "urn:epc:id:sgln:0614141.07346.1234" },
+                "bizTransactionList": [ { "type": "urn:epcglobal:cbv:btt:po", "bizTransaction": "http://transaction.acme.com/po/12345678" } ]
+              },
+              {
+                "id": "_:event2",
+                "isA": "ObjectEvent",
+                "action": "OBSERVE",
+                "bizStep": "urn:epcglobal:cbv:bizstep:receiving",
+                "disposition": "urn:epcglobal:cbv:disp:in_progress",
+                "epcList": [ "urn:epc:id:sgtin:0614141.107346.2018" ],
+                "eventTime": "2005-04-04T20:33:31.116-06:00",
+                "eventTimeZoneOffset": "-06:00",
+                "readPoint": { "id": "urn:epc:id:sgln:0012345.11111.400" },
+                "bizLocation": { "id": "urn:epc:id:sgln:0012345.11111.0" },
+                "bizTransactionList": [
+                  { "type": "urn:epcglobal:cbv:btt:po", "bizTransaction": "http://transaction.acme.com/po/12345678" },
+                  { "type": "urn:epcglobal:cbv:btt:desadv", "bizTransaction": "urn:epcglobal:cbv:bt:0614141073467:1152" }
+                ],
+                "example:myField": "Example of a vendor/user extension"
+              }
+            ]
+          }
+        }
       externalDocs:
         description: >
           An EPCIS document that must be validated with the [JSON schema](../JSON/EPCIS-JSON-Schema.json) or
@@ -995,6 +1081,12 @@ components:
     EPCISEventTypes:
       type: string
       description: The five types of EPCIS events.
+      example:
+        - ObjectEvents
+        - AggregationEvents
+        - AssociationEvents
+        - TransformationEvents
+        - TransactionEvents
       enum:
         - ObjectEvents
         - AggregationEvents
