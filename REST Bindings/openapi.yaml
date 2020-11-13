@@ -800,7 +800,7 @@ paths:
     parameters:
       - $ref: '#/components/parameters/QueryName'
     delete:
-      summary: Removes a named query and disconnects clients
+      summary: Removes a named query and closes WebSocket connections to subscribed clients.
       responses:
         '204':
           $ref: '#/components/responses/204QueryDeleted'
