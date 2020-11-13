@@ -386,7 +386,7 @@ paths:
           $ref: '#/components/responses/500ImplementationException'
     post:
       summary: >
-        Creates and executes a named EPCIS master data queries and returns
+        Creates and executes a named EPCIS master data query and returns
         results with option to paginate if needed.
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-version'
