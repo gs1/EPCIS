@@ -359,7 +359,7 @@ paths:
       - $ref: '#/components/parameters/QueryName'
       - $ref: '#/components/parameters/PerPage'
     get:
-      summary: Returns the result of a master data. This endpoint supports query subscriptions.
+      summary: Returns the result of a master data query. This endpoint supports query subscriptions.
       parameters:
         - $ref: '#/components/parameters/GS1-QUERY-minRecordTime'
         - $ref: '#/components/parameters/Upgrade'
