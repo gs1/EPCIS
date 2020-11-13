@@ -171,7 +171,7 @@ paths:
       description: >
         This endpoint helps to navigate EPCIS events by EPCIS event type within a top-level resource. It returns all
         EPCIS events of a specific EPCIS event type and "under" the given top-level resource, up to the amount defined
-        in PerPage. The server returns a 'link' header to point to the remaining results. If the EPCIS event type is not
+        in perPage. The server returns a 'link' header to point to the remaining results. If the EPCIS event type is not
         needed, 'all' can be used instead of an EPCIS event type.
 
         Optionally, EPCIS events can be further filtered using the EPCIS query language in as query string parameters.
@@ -270,7 +270,7 @@ paths:
         - $ref: '#/components/parameters/GS1-EPCIS-extensions'
         - $ref: '#/components/parameters/GS1-CBV-extensions'
       description: >
-        This endpoint returns all EPCIS events of a specific EPCIS event type up to the amount defined in PerPage.
+        This endpoint returns all EPCIS events of a specific EPCIS event type up to the amount defined in perPage.
         The server returns a 'link' header to point to the remaining results.
 
         If the EPCIS event type is not needed, 'all' can be used instead of an EPCIS event type.
@@ -398,7 +398,7 @@ paths:
       description: >
         Creating a named query stores a query set that can be accessed by performing
         a GET on its master data subresource. Creating a query also returns master data
-        up to the amount defined in PerPage. The server returns a 'link' header
+        up to the amount defined in perPage. The server returns a 'link' header
         to point to the remaining results.
       requestBody:
         $ref: '#/components/requestBodies/CreateMasterDataQuery'
@@ -476,7 +476,7 @@ paths:
         - $ref: '#/components/parameters/PerPage'
       description: >
         Creating a named query creates a view on the events in the repository, accessible through it's events resource.
-        Creating a query also returns events up to the amount defined in PerPage. The server returns a 'link' header
+        Creating a query also returns events up to the amount defined in perPage. The server returns a 'link' header
         to point to the remaining results.
       requestBody:
         $ref: '#/components/requestBodies/CreateEventQuery'
