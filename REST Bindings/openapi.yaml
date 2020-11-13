@@ -103,7 +103,7 @@ paths:
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '413':
-          $ref: '#/components/responses/413QueryBodyTooLarge'
+          $ref: '#/components/responses/413CapturePayloadTooLarge'
 
   /capture/{captureID}:
     get:
@@ -796,6 +796,25 @@ paths:
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
+  /queries/{queryName}:
+    parameters:
+      - $ref: '#/components/parameters/QueryName'
+    delete:
+      summary: Removes a named query and disconnects clients
+      responses:
+        '204':
+          $ref: '#/components/responses/204QueryDeleted'
+        '401':
+          $ref: '#/components/responses/401AuthorizationInformationMissing'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '404':
+          $ref: '#/components/responses/404ResourceNotFound'
+        '413':
+          $ref: '#/components/responses/413QueryBodyTooLarge'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
+
   /queries/{queryName}/masterdata:
     parameters:
       - $ref: '#/components/parameters/QueryName'
@@ -853,25 +872,6 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
-        '500':
-          $ref: '#/components/responses/500ImplementationException'
-
-  /queries/{queryName}:
-    parameters:
-      - $ref: '#/components/parameters/QueryName'
-    delete:
-      summary: Removes a named query and disconnects clients
-      responses:
-        '204':
-          $ref: '#/components/responses/204QueryDeleted'
-        '401':
-          $ref: '#/components/responses/401AuthorizationInformationMissing'
-        '403':
-          $ref: '#/components/responses/403ClientUnauthorized'
-        '404':
-          $ref: '#/components/responses/404ResourceNotFound'
-        '413':
-          $ref: '#/components/responses/413QueryBodyTooLarge'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -1189,7 +1189,7 @@ components:
 
 
     404ResourceNotFound:
-      description: Either Top-level resource, event type or event ID not found
+      description: The resource was not found. For example, the EPCIS event does not exist or the query does not exist.
       content:
         application/problem+json:
           schema:
@@ -1226,6 +1226,31 @@ components:
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
     413QueryBodyTooLarge:
       description: Query body too large.
+      content:
+        application/problem+json:
+          schema:
+            allOf:
+              - properties:
+                  status:
+                    type: integer
+                    enum:
+                      - 413
+                    default: 413
+                  type:
+                    type: string
+                    format: uri
+                    enum:
+                      - epcisException:QueryTooComplexException
+              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+    413CapturePayloadTooLarge:
+      headers:
+        GS1-CAPTURE-limit:
+          $ref: '#/components/headers/GS1-CAPTURE-limit'
+        GS1-CAPTURE-file-size-limit:
+          $ref: '#/components/headers/GS1-CAPTURE-file-size-limit'
+      description: >
+        The POST request is too large. It exceeds the limits set in GS1-CAPTURE-limit and/or
+        GS1-CAPTURE-file-size-limit.
       content:
         application/problem+json:
           schema:
