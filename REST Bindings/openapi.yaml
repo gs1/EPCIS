@@ -795,7 +795,6 @@ components:
                       - epcisException:QueryParameterException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
     413QueryBodyTooLarge:
-      # TODO: Query too long means too many events in result set
       description: Query body too large.
       content:
         application/problem+json:
