@@ -144,112 +144,6 @@ paths:
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
-  /{topLevelResource}/events:
-    get:
-      summary: >
-        Returns all EPCIS event types currently available in the EPCIS repository, "under" the
-        specified top-level resource.
-      parameters:
-        - $ref: '#/components/parameters/TopLevelResource'
-        - $ref: '#/components/parameters/GS1-EPCIS-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
-        - $ref: '#/components/parameters/GS1-EPCIS-min'
-        - $ref: '#/components/parameters/GS1-EPCIS-max'
-        - $ref: '#/components/parameters/GS1-CBV-version'
-        - $ref: '#/components/parameters/GS1-CBV-extensions'
-      description: >
-        The top-level resource endpoint helps to navigate EPCIS events by top-level resources, such as business location
-        or business step. EPCIS 2.0 supports a number of optional top-level resources.
-      responses:
-        '200':
-          $ref: '#/components/responses/200SupportedEventTypes'
-        '401':
-          $ref: '#/components/responses/401AuthorizationInformationMissing'
-        '403':
-          $ref: '#/components/responses/403ClientUnauthorized'
-        '404':
-          $ref: '#/components/responses/404ResourceNotFound'
-        '500':
-          $ref: '#/components/responses/500ImplementationException'
-
-  /{topLevelResource}/events/{eventType}:
-    get:
-      summary: Returns EPCIS events of a given EPCIS event type for a specific top-level resource.
-      parameters:
-        - $ref: '#/components/parameters/TopLevelResource'
-        - $ref: '#/components/parameters/PerPage'
-        - $ref: '#/components/parameters/NextPageToken'
-        - $ref: '#/components/parameters/EventType'
-        - $ref: '#/components/parameters/GS1-EPCIS-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-min'
-        - $ref: '#/components/parameters/GS1-EPCIS-max'
-        - $ref: '#/components/parameters/GS1-CBV-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
-        - $ref: '#/components/parameters/GS1-CBV-extensions'
-
-      description: >
-        This endpoint helps to navigate EPCIS events by EPCIS event type within a top-level resource. It returns all
-        EPCIS events of a specific EPCIS event type and "under" the given top-level resource, up to the amount defined
-        in perPage. The server returns a 'link' header to point to the remaining results. If the EPCIS event type is not
-        needed, 'all' can be used instead of an EPCIS event type.
-
-        Optionally, EPCIS events can be further filtered using the EPCIS query language in as query string parameters.
-        In this case, ensure that the EPCIS query does not specify the top-level and only filters by
-        EPCIS event type if the EPCIS event type in path is 'all'.
-
-        Example:
-
-        ```
-        https://example.com/readPoints/urn:epc:id:sgln:4012345.00005.0/events/ObjectEvents?EQ_bizStep=urn%3Aepcglobal%3Acbv%3Abizstep%3Ashipping%2Curn%3Aepcglobal%3Acbv%3Abizstep%3Adecommissioning&GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
-        ```
-
-      responses:
-        '200':
-          $ref: '#/components/responses/200EPCISEventResponse'
-        '400':
-          $ref: '#/components/responses/400QueryException'
-        '401':
-          $ref: '#/components/responses/401AuthorizationInformationMissing'
-        '403':
-          $ref: '#/components/responses/403ClientUnauthorized'
-        '404':
-          $ref: '#/components/responses/404ResourceNotFound'
-        '414':
-          $ref: '#/components/responses/414URLTooLong'
-        '412':
-          $ref: '#/components/responses/412EventTypeMismatch'
-        '500':
-          $ref: '#/components/responses/500ImplementationException'
-
-  /{topLevelResource}/events/{eventType}/{eventID}:
-    get:
-      summary: Returns an EPCIS event by event ID.
-      parameters:
-        - $ref: '#/components/parameters/TopLevelResource'
-        - $ref: '#/components/parameters/EventType'
-        - $ref: '#/components/parameters/EventID'
-        - $ref: '#/components/parameters/GS1-EPCIS-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-min'
-        - $ref: '#/components/parameters/GS1-EPCIS-max'
-        - $ref: '#/components/parameters/GS1-CBV-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
-        - $ref: '#/components/parameters/GS1-CBV-extensions'
-      description: >
-        This endpoint accesses individual events "under" a top-level resource. If the EPCIS event type is not known
-        or irrelevant, 'all' can be used instead of an EPCIS event type. The response body is an EPCISDocument with
-        the unique event. The response body is an EPCISDocument with the unique event.
-      responses:
-        '200':
-          $ref: '#/components/responses/200EPCISEventResponse'
-        '401':
-          $ref: '#/components/responses/401AuthorizationInformationMissing'
-        '403':
-          $ref: '#/components/responses/403ClientUnauthorized'
-        '404':
-          $ref: '#/components/responses/404ResourceNotFound'
-        '500':
-          $ref: '#/components/responses/500ImplementationException'
-
   /events:
     get:
       summary: Returns all EPCIS event types currently available in the EPCIS repository.
@@ -349,6 +243,535 @@ paths:
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
+  /epcs/{epc}/events:
+    get:
+      summary: Returns all EPCIS event types of all EPCIS events with the electronic product code (epc) in the path.
+      parameters:
+        - $ref: '#/components/parameters/EPC'
+        - $ref: '#/components/parameters/GS1-EPCIS-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
+        - $ref: '#/components/parameters/GS1-EPCIS-min'
+        - $ref: '#/components/parameters/GS1-EPCIS-max'
+        - $ref: '#/components/parameters/GS1-CBV-version'
+        - $ref: '#/components/parameters/GS1-CBV-extensions'
+      description: >
+        The top-level resource endpoint helps to navigate EPCIS events by electronic product code.
+        An EPCIS event contains a list of electronic product codes in the epcList property. This
+        endpoint returns all available EPCIS event types.
+      responses:
+        '200':
+          $ref: '#/components/responses/200SupportedEventTypes'
+        '401':
+          $ref: '#/components/responses/401AuthorizationInformationMissing'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '404':
+          $ref: '#/components/responses/404ResourceNotFound'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
+
+  /epcs/{epc}/events/{eventType}:
+    get:
+      summary: Returns all EPCIS events with the electronic product code and of the given EPCIS event type.
+      parameters:
+        - $ref: '#/components/parameters/EPC'
+        - $ref: '#/components/parameters/PerPage'
+        - $ref: '#/components/parameters/NextPageToken'
+        - $ref: '#/components/parameters/EventType'
+        - $ref: '#/components/parameters/GS1-EPCIS-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-min'
+        - $ref: '#/components/parameters/GS1-EPCIS-max'
+        - $ref: '#/components/parameters/GS1-CBV-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
+        - $ref: '#/components/parameters/GS1-CBV-extensions'
+
+      description: >
+        This endpoint helps to navigate EPCIS events by EPCIS event type within a top-level resource. It returns all
+        EPCIS events of a specific EPCIS event type and electronic product code, up to the amount defined
+        in perPage. The server returns a 'link' header to point to the remaining results. If the EPCIS event type is not
+        needed, 'all' can be used instead of an EPCIS event type.
+
+        Optionally, EPCIS events can be further filtered using the EPCIS query language in as query string parameters.
+        In this case, ensure that the EPCIS query does not specify an EPCIS event type other than the EPCIS event type
+        in the path. To specify multiple EPCIS event types, use 'all' instead of an EPCIS event type in the path and specify
+        EPCIS event types as query string parameter.
+
+        Example:
+
+        ```
+        https://example.com/epcs/urn:epc:id:sgtin:0614141.107346.2018/events/ObjectEvents?EQ_bizStep=urn%3Aepcglobal%3Acbv%3Abizstep%3Ashipping%2Curn%3Aepcglobal%3Acbv%3Abizstep%3Adecommissioning&GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
+        ```
+
+      responses:
+        '200':
+          $ref: '#/components/responses/200EPCISEventResponse'
+        '400':
+          $ref: '#/components/responses/400QueryException'
+        '401':
+          $ref: '#/components/responses/401AuthorizationInformationMissing'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '404':
+          $ref: '#/components/responses/404ResourceNotFound'
+        '414':
+          $ref: '#/components/responses/414URLTooLong'
+        '412':
+          $ref: '#/components/responses/412EventTypeMismatch'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
+
+  /epcs/{epc}/events/{eventType}/{eventID}:
+    get:
+      summary: Returns an EPCIS event by event ID.
+      parameters:
+        - $ref: '#/components/parameters/EPC'
+        - $ref: '#/components/parameters/EventType'
+        - $ref: '#/components/parameters/EventID'
+        - $ref: '#/components/parameters/GS1-EPCIS-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-min'
+        - $ref: '#/components/parameters/GS1-EPCIS-max'
+        - $ref: '#/components/parameters/GS1-CBV-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
+        - $ref: '#/components/parameters/GS1-CBV-extensions'
+      description: >
+        This endpoint accesses individual events with the electronic product code and EPCIS event type specified
+        in the path. If the EPCIS event type is not known or irrelevant, 'all' can be used instead of an EPCIS event type.
+        The response body is an EPCISDocument with the unique event. The response body is an EPCISDocument with the unique event.
+      responses:
+        '200':
+          $ref: '#/components/responses/200EPCISEventResponse'
+        '401':
+          $ref: '#/components/responses/401AuthorizationInformationMissing'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '404':
+          $ref: '#/components/responses/404ResourceNotFound'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
+
+  /bizSteps/{bizStep}/events:
+    get:
+      summary: >
+        Returns all EPCIS event types of all EPCIS events with the business step in the path.
+      parameters:
+        - $ref: '#/components/parameters/BizStep'
+        - $ref: '#/components/parameters/GS1-EPCIS-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
+        - $ref: '#/components/parameters/GS1-EPCIS-min'
+        - $ref: '#/components/parameters/GS1-EPCIS-max'
+        - $ref: '#/components/parameters/GS1-CBV-version'
+        - $ref: '#/components/parameters/GS1-CBV-extensions'
+      description: >
+        The top-level resource endpoint helps to navigate EPCIS events by business step.
+        An EPCIS event is associated with a single business step, stored in the bizStep property. This endpoint returns all available EPCIS event types.
+      responses:
+        '200':
+          $ref: '#/components/responses/200SupportedEventTypes'
+        '401':
+          $ref: '#/components/responses/401AuthorizationInformationMissing'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '404':
+          $ref: '#/components/responses/404ResourceNotFound'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
+
+  /bizSteps/{bizStep}/events/{eventType}:
+    get:
+      summary: Returns all EPCIS events occurring at that business step and of the given EPCIS event type.
+      parameters:
+        - $ref: '#/components/parameters/BizStep'
+        - $ref: '#/components/parameters/PerPage'
+        - $ref: '#/components/parameters/NextPageToken'
+        - $ref: '#/components/parameters/EventType'
+        - $ref: '#/components/parameters/GS1-EPCIS-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-min'
+        - $ref: '#/components/parameters/GS1-EPCIS-max'
+        - $ref: '#/components/parameters/GS1-CBV-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
+        - $ref: '#/components/parameters/GS1-CBV-extensions'
+
+      description: >
+        This endpoint helps to navigate EPCIS events by EPCIS event type within a top-level resource. It returns all
+        EPCIS events of a specific EPCIS event type and business step, up to the amount defined
+        in perPage. The server returns a 'link' header to point to the remaining results. If the EPCIS event type is not
+        needed, 'all' can be used instead of an EPCIS event type.
+
+        Optionally, EPCIS events can be further filtered using the EPCIS query language in as query string parameters.
+        In this case, ensure that the EPCIS query does not specify an EPCIS event type in the path. To specify multiple
+        EPCIS event types, use 'all' instead of an EPCIS event type in the path and specify
+        EPCIS event types as query string parameter.
+
+        Example:
+
+        ```
+        https://example.com/bizSteps/urn:epcglobal:cbv:bizstep:receiving/events/ObjectEvents?GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
+        ```
+
+      responses:
+        '200':
+          $ref: '#/components/responses/200EPCISEventResponse'
+        '400':
+          $ref: '#/components/responses/400QueryException'
+        '401':
+          $ref: '#/components/responses/401AuthorizationInformationMissing'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '404':
+          $ref: '#/components/responses/404ResourceNotFound'
+        '414':
+          $ref: '#/components/responses/414URLTooLong'
+        '412':
+          $ref: '#/components/responses/412EventTypeMismatch'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
+
+  /bizSteps/{bizStep}/events/{eventType}/{eventID}:
+    get:
+      summary: Returns an EPCIS event by event ID.
+      parameters:
+        - $ref: '#/components/parameters/BizStep'
+        - $ref: '#/components/parameters/EventType'
+        - $ref: '#/components/parameters/EventID'
+        - $ref: '#/components/parameters/GS1-EPCIS-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-min'
+        - $ref: '#/components/parameters/GS1-EPCIS-max'
+        - $ref: '#/components/parameters/GS1-CBV-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
+        - $ref: '#/components/parameters/GS1-CBV-extensions'
+      description: >
+        This endpoint accesses individual events with the business step and EPCIS event type specified
+        in the path. If the EPCIS event type is not known or irrelevant, 'all' can be used instead of an EPCIS event type.
+        The response body is an EPCISDocument with the unique event. The response body is an EPCISDocument with the unique event.
+      responses:
+        '200':
+          $ref: '#/components/responses/200EPCISEventResponse'
+        '401':
+          $ref: '#/components/responses/401AuthorizationInformationMissing'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '404':
+          $ref: '#/components/responses/404ResourceNotFound'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
+
+  /bizLocations/{bizLocation}/events:
+    get:
+      summary: >
+        Returns all EPCIS event types of all EPCIS events with the business location in the path.
+      parameters:
+        - $ref: '#/components/parameters/BizLocation'
+        - $ref: '#/components/parameters/GS1-EPCIS-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
+        - $ref: '#/components/parameters/GS1-EPCIS-min'
+        - $ref: '#/components/parameters/GS1-EPCIS-max'
+        - $ref: '#/components/parameters/GS1-CBV-version'
+        - $ref: '#/components/parameters/GS1-CBV-extensions'
+      description: >
+        The top-level resource endpoint helps to navigate EPCIS events by business location.
+        An EPCIS event is associated with a single business location, stored in the bizLocation property. This endpoint returns all available EPCIS event types.
+      responses:
+        '200':
+          $ref: '#/components/responses/200SupportedEventTypes'
+        '401':
+          $ref: '#/components/responses/401AuthorizationInformationMissing'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '404':
+          $ref: '#/components/responses/404ResourceNotFound'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
+
+  /bizLocations/{bizLocation}/events/{eventType}:
+    get:
+      summary: Returns all EPCIS events occurring at that business location and of the given EPCIS event type.
+      parameters:
+        - $ref: '#/components/parameters/BizLocation'
+        - $ref: '#/components/parameters/PerPage'
+        - $ref: '#/components/parameters/NextPageToken'
+        - $ref: '#/components/parameters/EventType'
+        - $ref: '#/components/parameters/GS1-EPCIS-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-min'
+        - $ref: '#/components/parameters/GS1-EPCIS-max'
+        - $ref: '#/components/parameters/GS1-CBV-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
+        - $ref: '#/components/parameters/GS1-CBV-extensions'
+
+      description: >
+        This endpoint helps to navigate EPCIS events by EPCIS event type within a top-level resource. It returns all
+        EPCIS events of a specific EPCIS event type and business location, up to the amount defined
+        in perPage. The server returns a 'link' header to point to the remaining results. If the EPCIS event type is not
+        needed, 'all' can be used instead of an EPCIS event type.
+
+        Optionally, EPCIS events can be further filtered using the EPCIS query language in as query string parameters.
+        In this case, ensure that the EPCIS query does not specify an EPCIS event type in the path. To specify multiple
+        EPCIS event types, use 'all' instead of an EPCIS event type in the path and specify
+        EPCIS event types as query string parameter.
+
+        Example:
+
+        ```
+        https://example.com/bizLocations/urn:epc:id:sgln:0012345.11111.0/events/ObjectEvents?GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
+        ```
+
+      responses:
+        '200':
+          $ref: '#/components/responses/200EPCISEventResponse'
+        '400':
+          $ref: '#/components/responses/400QueryException'
+        '401':
+          $ref: '#/components/responses/401AuthorizationInformationMissing'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '404':
+          $ref: '#/components/responses/404ResourceNotFound'
+        '414':
+          $ref: '#/components/responses/414URLTooLong'
+        '412':
+          $ref: '#/components/responses/412EventTypeMismatch'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
+
+  /bizLocations/{bizLocation}/events/{eventType}/{eventID}:
+    get:
+      summary: Returns an EPCIS event by event ID.
+      parameters:
+        - $ref: '#/components/parameters/BizLocation'
+        - $ref: '#/components/parameters/EventType'
+        - $ref: '#/components/parameters/EventID'
+        - $ref: '#/components/parameters/GS1-EPCIS-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-min'
+        - $ref: '#/components/parameters/GS1-EPCIS-max'
+        - $ref: '#/components/parameters/GS1-CBV-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
+        - $ref: '#/components/parameters/GS1-CBV-extensions'
+      description: >
+        This endpoint accesses individual events with the business location and EPCIS event type specified
+        in the path. If the EPCIS event type is not known or irrelevant, 'all' can be used instead of an EPCIS event type.
+        The response body is an EPCISDocument with the unique event. The response body is an EPCISDocument with the unique event.
+      responses:
+        '200':
+          $ref: '#/components/responses/200EPCISEventResponse'
+        '401':
+          $ref: '#/components/responses/401AuthorizationInformationMissing'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '404':
+          $ref: '#/components/responses/404ResourceNotFound'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
+
+  /readPoints/{readPoint}/events:
+    get:
+      summary: >
+        Returns all EPCIS event types of all EPCIS events with the read point in the path. A read point is for example a RFID scanner
+      parameters:
+        - $ref: '#/components/parameters/ReadPoint'
+        - $ref: '#/components/parameters/GS1-EPCIS-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
+        - $ref: '#/components/parameters/GS1-EPCIS-min'
+        - $ref: '#/components/parameters/GS1-EPCIS-max'
+        - $ref: '#/components/parameters/GS1-CBV-version'
+        - $ref: '#/components/parameters/GS1-CBV-extensions'
+      description: >
+        The top-level resource endpoint helps to navigate EPCIS events by read point, for example an RFID scanner.
+        An EPCIS event is associated with a single read point, stored in the readPoint property. This endpoint returns all available EPCIS event types.
+      responses:
+        '200':
+          $ref: '#/components/responses/200SupportedEventTypes'
+        '401':
+          $ref: '#/components/responses/401AuthorizationInformationMissing'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '404':
+          $ref: '#/components/responses/404ResourceNotFound'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
+
+  /readPoints/{readPoint}/events/{eventType}:
+    get:
+      summary: Returns all EPCIS events occurring at that read point and of the given EPCIS event type.
+      parameters:
+        - $ref: '#/components/parameters/ReadPoint'
+        - $ref: '#/components/parameters/PerPage'
+        - $ref: '#/components/parameters/NextPageToken'
+        - $ref: '#/components/parameters/EventType'
+        - $ref: '#/components/parameters/GS1-EPCIS-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-min'
+        - $ref: '#/components/parameters/GS1-EPCIS-max'
+        - $ref: '#/components/parameters/GS1-CBV-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
+        - $ref: '#/components/parameters/GS1-CBV-extensions'
+
+      description: >
+        This endpoint helps to navigate EPCIS events by EPCIS event type within a top-level resource. It returns all
+        EPCIS events of a specific EPCIS event type and read point, up to the amount defined
+        in perPage. The server returns a 'link' header to point to the remaining results. If the EPCIS event type is not
+        needed, 'all' can be used instead of an EPCIS event type.
+
+        Optionally, EPCIS events can be further filtered using the EPCIS query language in as query string parameters.
+        In this case, ensure that the EPCIS query does not specify an EPCIS event type in the path. To specify multiple
+        EPCIS event types, use 'all' instead of an EPCIS event type in the path and specify
+        EPCIS event types as query string parameter.
+
+        Example:
+
+        ```
+        https://example.com/readPoints/urn:epc:id:sgln:0012345.11111.400/events/ObjectEvents?GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
+        ```
+
+      responses:
+        '200':
+          $ref: '#/components/responses/200EPCISEventResponse'
+        '400':
+          $ref: '#/components/responses/400QueryException'
+        '401':
+          $ref: '#/components/responses/401AuthorizationInformationMissing'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '404':
+          $ref: '#/components/responses/404ResourceNotFound'
+        '414':
+          $ref: '#/components/responses/414URLTooLong'
+        '412':
+          $ref: '#/components/responses/412EventTypeMismatch'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
+
+  /readPoints/{readPoint}/events/{eventType}/{eventID}:
+    get:
+      summary: Returns an EPCIS event by event ID.
+      parameters:
+        - $ref: '#/components/parameters/ReadPoint'
+        - $ref: '#/components/parameters/EventType'
+        - $ref: '#/components/parameters/EventID'
+        - $ref: '#/components/parameters/GS1-EPCIS-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-min'
+        - $ref: '#/components/parameters/GS1-EPCIS-max'
+        - $ref: '#/components/parameters/GS1-CBV-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
+        - $ref: '#/components/parameters/GS1-CBV-extensions'
+      description: >
+        This endpoint accesses individual events with the read point and EPCIS event type specified
+        in the path. If the EPCIS event type is not known or irrelevant, 'all' can be used instead of an EPCIS event type.
+        The response body is an EPCISDocument with the unique event. The response body is an EPCISDocument with the unique event.
+      responses:
+        '200':
+          $ref: '#/components/responses/200EPCISEventResponse'
+        '401':
+          $ref: '#/components/responses/401AuthorizationInformationMissing'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '404':
+          $ref: '#/components/responses/404ResourceNotFound'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
+
+  /dispositions/{disposition}/events:
+    get:
+      summary: >
+        Returns all EPCIS event types of all EPCIS events with the disposition in the path. A disposition is for example a RFID scanner
+      parameters:
+        - $ref: '#/components/parameters/Disposition'
+        - $ref: '#/components/parameters/GS1-EPCIS-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
+        - $ref: '#/components/parameters/GS1-EPCIS-min'
+        - $ref: '#/components/parameters/GS1-EPCIS-max'
+        - $ref: '#/components/parameters/GS1-CBV-version'
+        - $ref: '#/components/parameters/GS1-CBV-extensions'
+      description: >
+        The top-level resource endpoint helps to navigate EPCIS events by disposition, for example an RFID scanner.
+        An EPCIS event is associated with a single disposition, stored in the disposition property. This endpoint returns all available EPCIS event types.
+      responses:
+        '200':
+          $ref: '#/components/responses/200SupportedEventTypes'
+        '401':
+          $ref: '#/components/responses/401AuthorizationInformationMissing'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '404':
+          $ref: '#/components/responses/404ResourceNotFound'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
+
+  /dispositions/{disposition}/events/{eventType}:
+    get:
+      summary: Returns all EPCIS events occurring at that disposition and of the given EPCIS event type.
+      parameters:
+        - $ref: '#/components/parameters/Disposition'
+        - $ref: '#/components/parameters/PerPage'
+        - $ref: '#/components/parameters/NextPageToken'
+        - $ref: '#/components/parameters/EventType'
+        - $ref: '#/components/parameters/GS1-EPCIS-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-min'
+        - $ref: '#/components/parameters/GS1-EPCIS-max'
+        - $ref: '#/components/parameters/GS1-CBV-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
+        - $ref: '#/components/parameters/GS1-CBV-extensions'
+
+      description: >
+        This endpoint helps to navigate EPCIS events by EPCIS event type within a top-level resource. It returns all
+        EPCIS events of a specific EPCIS event type and disposition, up to the amount defined
+        in perPage. The server returns a 'link' header to point to the remaining results. If the EPCIS event type is not
+        needed, 'all' can be used instead of an EPCIS event type.
+
+        Optionally, EPCIS events can be further filtered using the EPCIS query language in as query string parameters.
+        In this case, ensure that the EPCIS query does not specify an EPCIS event type in the path. To specify multiple
+        EPCIS event types, use 'all' instead of an EPCIS event type in the path and specify
+        EPCIS event types as query string parameter.
+
+        Example:
+
+        ```
+        https://example.com/dispositions/urn:epcglobal:cbv:disp:in_progress/events/ObjectEvents?GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
+        ```
+
+      responses:
+        '200':
+          $ref: '#/components/responses/200EPCISEventResponse'
+        '400':
+          $ref: '#/components/responses/400QueryException'
+        '401':
+          $ref: '#/components/responses/401AuthorizationInformationMissing'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '404':
+          $ref: '#/components/responses/404ResourceNotFound'
+        '414':
+          $ref: '#/components/responses/414URLTooLong'
+        '412':
+          $ref: '#/components/responses/412EventTypeMismatch'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
+
+  /dispositions/{disposition}/events/{eventType}/{eventID}:
+    get:
+      summary: Returns an EPCIS event by event ID.
+      parameters:
+        - $ref: '#/components/parameters/Disposition'
+        - $ref: '#/components/parameters/EventType'
+        - $ref: '#/components/parameters/EventID'
+        - $ref: '#/components/parameters/GS1-EPCIS-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-min'
+        - $ref: '#/components/parameters/GS1-EPCIS-max'
+        - $ref: '#/components/parameters/GS1-CBV-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
+        - $ref: '#/components/parameters/GS1-CBV-extensions'
+      description: >
+        This endpoint accesses individual events with the disposition and EPCIS event type specified
+        in the path. If the EPCIS event type is not known or irrelevant, 'all' can be used instead of an EPCIS event type.
+        The response body is an EPCISDocument with the unique event. The response body is an EPCISDocument with the unique event.
+      responses:
+        '200':
+          $ref: '#/components/responses/200EPCISEventResponse'
+        '401':
+          $ref: '#/components/responses/401AuthorizationInformationMissing'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '404':
+          $ref: '#/components/responses/404ResourceNotFound'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
   /queries:
     get:
       summary: Returns a list of queries available to that user.
@@ -1145,6 +1568,53 @@ components:
       pattern: ^(\d+|\*)$
 
   parameters:
+    # Top-level resource instances
+    EPC:
+      description: An electronic product code value
+      example: urn:epc:id:sgtin:0614141.107346.2018
+      required: true
+      in: path
+      name: epc
+      schema:
+        type: string
+        format: uri
+    BizStep:
+      description: A business step value
+      example: urn:epcglobal:cbv:bizstep:receiving
+      required: true
+      in: path
+      name: bizStep
+      schema:
+        type: string
+        format: uri
+    BizLocation:
+      description: A business location value
+      example: urn:epc:id:sgln:0012345.11111.0
+      required: true
+      in: path
+      name: bizLocation
+      schema:
+        type: string
+        format: uri
+    ReadPoint:
+      description: A read point value
+      example: urn:epc:id:sgln:0012345.11111.400
+      required: true
+      in: path
+      name: readPoint
+      schema:
+        type: string
+        format: uri
+    Disposition:
+      description: A disposition value
+      example: urn:epcglobal:cbv:disp:in_progress
+      required: true
+      in: path
+      name: disposition
+      schema:
+        type: string
+        format: uri
+
     PerPage:
       in: query
       name: perPage
