@@ -677,10 +677,6 @@ components:
             $ref: '#/components/schemas/EPCISEventTypes'
     '204QueryDeleted':
       description: Query deleted and clients disconnected
-      content:
-        application/json:
-          schema:
-            {}
     '400QueryInvalid':
       description: The query is invalid
       content:
