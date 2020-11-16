@@ -801,7 +801,7 @@ paths:
               schema:
                 example:
                   - urn:epc:id:sgln:0012345.11111.400
-                  - urn:epc:id:sgln:0012345.11111.400
+                  - urn:epc:id:sgln:0012346.11111.400
                 type: array
                 items:
                   type: string
