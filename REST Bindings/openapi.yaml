@@ -298,7 +298,6 @@ paths:
           $ref: '#/components/responses/500ImplementationException'
 
   /epcs:
-
     get:
       parameters:
         - $ref: '#/components/parameters/PerPage'
@@ -332,7 +331,7 @@ paths:
             Returns a list of electronic product codes. If there are electronic product codes than specified by the
             perPage parameter, the client will be given the URL to retrieve more electronic product codes in the
             Link header.
-            If the client specifies extension mappings, the response will use them wher they match. Otherwise,
+            If the client specifies extension mappings, the response will use them where they match. Otherwise,
             the full resource address is used.
           content:
             application/json:
@@ -458,6 +457,53 @@ paths:
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
+  /bizSteps:
+    get:
+      parameters:
+        - $ref: '#/components/parameters/PerPage'
+        - $ref: '#/components/parameters/NextPageToken'
+        - $ref: '#/components/parameters/EventType'
+        - $ref: '#/components/parameters/GS1-EPCIS-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-min'
+        - $ref: '#/components/parameters/GS1-EPCIS-max'
+        - $ref: '#/components/parameters/GS1-CBV-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
+        - $ref: '#/components/parameters/GS1-CBV-extensions'
+      summary: Returns known business steps
+      responses:
+        '200':
+          headers:
+            GS1-EPCIS-version:
+              $ref: '#/components/headers/GS1-EPCIS-version'
+            GS1-EPCIS-min:
+              $ref: '#/components/headers/GS1-EPCIS-min'
+            GS1-EPCIS-max:
+              $ref: '#/components/headers/GS1-EPCIS-max'
+            GS1-CBV-version:
+              $ref: '#/components/headers/GS1-CBV-version'
+            GS1-EPCIS-extensions:
+              $ref: '#/components/headers/GS1-EPCIS-extensions'
+            GS1-CBV-extensions:
+              $ref: '#/components/headers/GS1-CBV-extensions'
+            Link:
+              $ref: '#/components/headers/Link'
+          description: >
+            Returns a list of business steps. If there are business steps than specified by the
+            perPage parameter, the client will be given the URL to retrieve more business steps in the Link header.
+            If the client specifies extension mappings, the response will use them where they match. Otherwise,
+            the full resource address is used.
+          content:
+            application/json:
+              schema:
+                example:
+                  - ex1:qualityCheck
+                  - urn:epcglobal:cbv:bizstep:receiving
+                  - vendor2:QA
+                type: array
+                items:
+                  type: string
+                  format: uri
+
   /bizSteps/{bizStep}/events:
     get:
       summary: >
@@ -564,6 +610,52 @@ paths:
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
+  /bizLocations:
+    get:
+      parameters:
+        - $ref: '#/components/parameters/PerPage'
+        - $ref: '#/components/parameters/NextPageToken'
+        - $ref: '#/components/parameters/EventType'
+        - $ref: '#/components/parameters/GS1-EPCIS-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-min'
+        - $ref: '#/components/parameters/GS1-EPCIS-max'
+        - $ref: '#/components/parameters/GS1-CBV-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
+        - $ref: '#/components/parameters/GS1-CBV-extensions'
+      summary: Returns known business locations
+      responses:
+        '200':
+          headers:
+            GS1-EPCIS-version:
+              $ref: '#/components/headers/GS1-EPCIS-version'
+            GS1-EPCIS-min:
+              $ref: '#/components/headers/GS1-EPCIS-min'
+            GS1-EPCIS-max:
+              $ref: '#/components/headers/GS1-EPCIS-max'
+            GS1-CBV-version:
+              $ref: '#/components/headers/GS1-CBV-version'
+            GS1-EPCIS-extensions:
+              $ref: '#/components/headers/GS1-EPCIS-extensions'
+            GS1-CBV-extensions:
+              $ref: '#/components/headers/GS1-CBV-extensions'
+            Link:
+              $ref: '#/components/headers/Link'
+          description: >
+            Returns a list of business locations. If there are business locations than specified by the
+            perPage parameter, the client will be given the URL to retrieve more business locations in the Link header.
+            If the client specifies extension mappings, the response will use them where they match. Otherwise,
+            the full resource address is used.
+          content:
+            application/json:
+              schema:
+                example:
+                  - urn:epc:id:sgln:0012345.11111.0
+                  - https://id.gs1.org/gln/0614141123452
+                type: array
+                items:
+                  type: string
+                  format: uri
+
   /bizLocations/{bizLocation}/events:
     get:
       summary: >
@@ -669,6 +761,51 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '500':
           $ref: '#/components/responses/500ImplementationException'
+  /readPoints:
+    get:
+      parameters:
+        - $ref: '#/components/parameters/PerPage'
+        - $ref: '#/components/parameters/NextPageToken'
+        - $ref: '#/components/parameters/EventType'
+        - $ref: '#/components/parameters/GS1-EPCIS-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-min'
+        - $ref: '#/components/parameters/GS1-EPCIS-max'
+        - $ref: '#/components/parameters/GS1-CBV-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
+        - $ref: '#/components/parameters/GS1-CBV-extensions'
+      summary: Returns known read points
+      responses:
+        '200':
+          headers:
+            GS1-EPCIS-version:
+              $ref: '#/components/headers/GS1-EPCIS-version'
+            GS1-EPCIS-min:
+              $ref: '#/components/headers/GS1-EPCIS-min'
+            GS1-EPCIS-max:
+              $ref: '#/components/headers/GS1-EPCIS-max'
+            GS1-CBV-version:
+              $ref: '#/components/headers/GS1-CBV-version'
+            GS1-EPCIS-extensions:
+              $ref: '#/components/headers/GS1-EPCIS-extensions'
+            GS1-CBV-extensions:
+              $ref: '#/components/headers/GS1-CBV-extensions'
+            Link:
+              $ref: '#/components/headers/Link'
+          description: >
+            Returns a list of read points. If there are read points than specified by the
+            perPage parameter, the client will be given the URL to retrieve more read points in the Link header.
+            If the client specifies extension mappings, the response will use them where they match. Otherwise,
+            the full resource address is used.
+          content:
+            application/json:
+              schema:
+                example:
+                  - urn:epc:id:sgln:0012345.11111.400
+                  - urn:epc:id:sgln:0012345.11111.400
+                type: array
+                items:
+                  type: string
+                  format: uri
 
   /readPoints/{readPoint}/events:
     get:
@@ -776,6 +913,51 @@ paths:
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
+  /dispoitions:
+    get:
+      parameters:
+        - $ref: '#/components/parameters/PerPage'
+        - $ref: '#/components/parameters/NextPageToken'
+        - $ref: '#/components/parameters/EventType'
+        - $ref: '#/components/parameters/GS1-EPCIS-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-min'
+        - $ref: '#/components/parameters/GS1-EPCIS-max'
+        - $ref: '#/components/parameters/GS1-CBV-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
+        - $ref: '#/components/parameters/GS1-CBV-extensions'
+      summary: Returns known dispositions
+      responses:
+        '200':
+          headers:
+            GS1-EPCIS-version:
+              $ref: '#/components/headers/GS1-EPCIS-version'
+            GS1-EPCIS-min:
+              $ref: '#/components/headers/GS1-EPCIS-min'
+            GS1-EPCIS-max:
+              $ref: '#/components/headers/GS1-EPCIS-max'
+            GS1-CBV-version:
+              $ref: '#/components/headers/GS1-CBV-version'
+            GS1-EPCIS-extensions:
+              $ref: '#/components/headers/GS1-EPCIS-extensions'
+            GS1-CBV-extensions:
+              $ref: '#/components/headers/GS1-CBV-extensions'
+            Link:
+              $ref: '#/components/headers/Link'
+          description: >
+            Returns a list of dispositions. If there are dispositions than specified by the
+            perPage parameter, the client will be given the URL to retrieve more dispositions in the Link header.
+            If the client specifies extension mappings, the response will use them where they match. Otherwise,
+            the full resource address is used.
+          content:
+            application/json:
+              schema:
+                example:
+                  - urn:epcglobal:cbv:disp:in_progress
+                  - urn:epcglobal:cbv:disp:in_transit
+                type: array
+                items:
+                  type: string
+                  format: uri
   /dispositions/{disposition}/events:
     get:
       summary: >
