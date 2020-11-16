@@ -297,6 +297,61 @@ paths:
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
+  /epcs:
+
+    get:
+      parameters:
+        - $ref: '#/components/parameters/PerPage'
+        - $ref: '#/components/parameters/NextPageToken'
+        - $ref: '#/components/parameters/EventType'
+        - $ref: '#/components/parameters/GS1-EPCIS-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-min'
+        - $ref: '#/components/parameters/GS1-EPCIS-max'
+        - $ref: '#/components/parameters/GS1-CBV-version'
+        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
+        - $ref: '#/components/parameters/GS1-CBV-extensions'
+      summary: Returns known electronic product codes
+      responses:
+        '200':
+          headers:
+            GS1-EPCIS-version:
+              $ref: '#/components/headers/GS1-EPCIS-version'
+            GS1-EPCIS-min:
+              $ref: '#/components/headers/GS1-EPCIS-min'
+            GS1-EPCIS-max:
+              $ref: '#/components/headers/GS1-EPCIS-max'
+            GS1-CBV-version:
+              $ref: '#/components/headers/GS1-CBV-version'
+            GS1-EPCIS-extensions:
+              $ref: '#/components/headers/GS1-EPCIS-extensions'
+            GS1-CBV-extensions:
+              $ref: '#/components/headers/GS1-CBV-extensions'
+            Link:
+              $ref: '#/components/headers/Link'
+          description: >
+            Returns a list of electronic product codes. If there are electronic product codes than specified by the
+            perPage parameter, the client will be given the URL to retrieve more electronic product codes in the
+            Link header.
+            If the client specifies extension mappings, the response will use them wher they match. Otherwise,
+            the full resource address is used.
+          content:
+            application/json:
+              schema:
+                example:
+                  - urn:epc:id:sgtin:0614141.107346.2018
+                  - https://id.gs1.com/01/04012345123456
+                  - urn:epc:id:sgtin:0614141.107346.2017
+                type: array
+                items:
+                  type: string
+                  format: uri
+        '401':
+          $ref: '#/components/responses/401AuthorizationInformationMissing'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
+
   /epcs/{epc}/events:
     get:
       summary: Returns all EPCIS event types of all EPCIS events with the electronic product code (epc) in the path.
@@ -1157,6 +1212,8 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/EPCISDocument'
+
+
     200SupportedEventTypes:
       description: Returns all supported EPCIS event types.
       content:
@@ -1358,6 +1415,7 @@ components:
                       - epcisException:ImplementationException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
   schemas:
+
     Location:
       description: Location header of a resource
       type: string
@@ -1596,6 +1654,7 @@ components:
         specified with the perPage parameter.
       type: string
       example: '3A1550673874978%2Ci%3AU6D7DENAKwM2gQRRwGrataeq'
+
     EPCISEventTypes:
       type: string
       description: The five types of EPCIS events.
@@ -1630,17 +1689,6 @@ components:
       description: Upgrade and Connection headers are needed to open a Websocket for queries
       type: string
       default: upgrade
-    TopLevelResource:
-      description: >
-        A top-level resource collection, used to navigate events by EPC, "business step", "business location",
-        "readpoint" or "disposition". Note that these are collections and therefore pluralized.
-      type: string
-      enum:
-        - epcs
-        - bizSteps
-        - bizLocations
-        - readPoints
-        - dispositions
 
     # describe header schema
     GS1-EPCIS-version:
@@ -1662,7 +1710,8 @@ components:
       type: string
     GS1-EPCIS-extensions:
       description: Specific EPCIS extensions supported (e.g. for FIT)
-      type: string
+      example: {"example-epc-ext": "http://example.com/epcis/"}
+      type: object
     GS1-Vendor-version:
       description: A versioning scheme that can be freely chosen by the vendor
       type: array
@@ -1671,9 +1720,8 @@ components:
       uniqueItems: true
     GS1-CBV-extensions:
       description: An optional header to specify the vocabulary for the top-level endpoints
-      type: array
-      items:
-        type: string
+      example: {"ex": "http://example.com/vendor1", "vendora": "<https://example.org/defs#"}
+      type: object
       uniqueItems: true
     GS1-CAPTURE-limit:
       description: The maximum number of EPCIS events that can be captured per call
@@ -1795,18 +1843,6 @@ components:
       required: true
       schema:
         $ref: '#/components/schemas/QueryName'
-    TopLevelResource:
-      in: path
-      name: topLevelResource
-      required: true
-      schema:
-        type: string
-        enum:
-          - epcs
-          - bizSteps
-          - bizLocations
-          - readPoints
-          - dispositions
 
     # request headers from schema
     GS1-EPCIS-version:
