@@ -50,8 +50,6 @@ paths:
     post:
       summary: Stores one or more EPCIS events. The server either accepts or rejects all events.
       parameters:
-        - $ref: '#/components/parameters/GS1-CAPTURE-limit'
-        - $ref: '#/components/parameters/GS1-CAPTURE-file-size-limit'
         - $ref: '#/components/parameters/GS1-EPCIS-version'
         - $ref: '#/components/parameters/GS1-EPCIS-min'
         - $ref: '#/components/parameters/GS1-EPCIS-max'
@@ -168,6 +166,14 @@ paths:
           $ref: '#/components/responses/500ImplementationException'
 
   /events/{eventType}:
+    parameters:
+      - $ref: '#/components/parameters/EventType'
+      - $ref: '#/components/parameters/GS1-EPCIS-version'
+      - $ref: '#/components/parameters/GS1-EPCIS-min'
+      - $ref: '#/components/parameters/GS1-EPCIS-max'
+      - $ref: '#/components/parameters/GS1-CBV-version'
+      - $ref: '#/components/parameters/GS1-EPCIS-extensions'
+      - $ref: '#/components/parameters/GS1-CBV-extensions'
     get:
       summary: >
         Returns EPCIS events of a given EPCIS event type. If 'all' is used instead of an EPCIS
@@ -175,13 +181,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
-        - $ref: '#/components/parameters/EventType'
-        - $ref: '#/components/parameters/GS1-EPCIS-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-min'
-        - $ref: '#/components/parameters/GS1-EPCIS-max'
-        - $ref: '#/components/parameters/GS1-CBV-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
-        - $ref: '#/components/parameters/GS1-CBV-extensions'
+
       description: >
         This endpoint returns all EPCIS events of a specific EPCIS event type up to the amount defined in perPage.
         The server returns a 'link' header to point to the remaining results.
@@ -214,6 +214,59 @@ paths:
           $ref: '#/components/responses/414URLTooLong'
         '500':
           $ref: '#/components/responses/500ImplementationException'
+
+    post:
+      summary: Creates an individual EPCIS event.
+
+      description: >
+        An individual EPCIS event can be created by making a POST request to the EPCIS event type of the EPCIS event that
+        is to be captured. Note that the EPCIS event type does not have to exist to capture a new EPCIS event because
+        capturing events also implicitly updates the list of available EPCIS event types.
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewEPCISEvent'
+
+      responses:
+        '201':
+          description: >
+            Successfully created (captured) one EPCIS event. The request return the URL of the newly created
+            EPCIS event in the Location header.
+          headers:
+            Location:
+              $ref: '#/components/headers/Location'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NewEPCISEvent'
+
+        '400':
+          description: An error occurred while creating the EPCIS event. All events are rejected.
+          content:
+            application/problem+json:
+              schema:
+                allOf:
+                  - properties:
+                      status:
+                        type: integer
+                        enum:
+                          - 400
+                        default: 400
+                      type:
+                        type: string
+                        format: uri
+                        enum:
+                          - epcisException:ValidationException
+                  - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+        '401':
+          $ref: '#/components/responses/401AuthorizationInformationMissing'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '413':
+          $ref: '#/components/responses/413CapturePayloadTooLarge'
 
   /events/{eventType}/{eventID}:
     get:
@@ -1436,6 +1489,41 @@ components:
           To validate EPCIS master data, please use [JSON schema](../JSON/EPCIS-JSON-Schema.json)
           or [SHACL file](../JSON/EPCIS-SHACL.ttl).
         url: ../JSON
+    NewEPCISEvent:
+      description: >
+        A single, new EPCIS event. To be compatible with the capture interface, a single EPCIS uses the same
+        document format.
+      type: object
+      externalDocs:
+        description: >
+          An EPCIS document that must be validated with the [JSON schema](../JSON/EPCIS-JSON-Schema.json) or
+          [SHACL file](../JSON/EPCIS-SHACL.ttl).
+        url: ../JSON/EPCIS-SHACL.ttl
+      example:
+        {
+          "@context": [ "https://gs1.github.io/EPCIS/epcis-context.jsonld",{ "example": "http://ns.example.com/epcis/" } ],
+
+          "id": "_:document1",
+          "isA": "EPCISDocument",
+          "schemaVersion": 2.0,
+          "creationDate": "2005-07-11T11:30:47.0Z",
+          "format": "application/ld+json",
+          "epcisBody": {
+            "eventList": [
+              {
+                "id": "_:event1",
+                "isA": "ObjectEvent",
+                "action": "OBSERVE",
+                "bizStep": "urn:epcglobal:cbv:bizstep:shipping",
+                "disposition": "urn:epcglobal:cbv:disp:in_transit",
+                "epcList": [ "urn:epc:id:sgtin:0614141.107346.2017","urn:epc:id:sgtin:0614141.107346.2018" ],
+                "eventTime": "2005-04-03T20:33:31.116000-06:00",
+                "eventTimeZoneOffset": "-06:00",
+                "readPoint": { "id": "urn:epc:id:sgln:0614141.07346.1234" },
+                "bizTransactionList": [ { "type": "urn:epcglobal:cbv:btt:po", "bizTransaction": "http://transaction.acme.com/po/12345678" } ]
+              } ]
+          }
+        }
     EPCISDocument:
       description: A collection of EPCIS resources.
       type: object
