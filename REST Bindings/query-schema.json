@@ -2,6 +2,10 @@
   "title": "EPCIS Query parameters",
   "type": "object",
   "properties": {
+    "@context": {
+      "type": "string",
+      "format": "uri"
+    },
     "eventType": {
       "type": "array",
       "items": {
