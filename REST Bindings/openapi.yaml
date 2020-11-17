@@ -5,6 +5,18 @@ info:
   license:
     name: Apache2
 
+tags:
+- name: default
+  description: Common APIs
+- name: capture
+  description: the Capture APIs
+- name: events
+  description: the Events APIs
+- name: queries
+  description: the Queries APIs
+- name: masterdata
+  description: the MasterData APIs
+
 paths:
   /:
     options:
@@ -48,6 +60,8 @@ paths:
 
   /capture:
     post:
+      tags:
+        - capture
       summary: Stores one or more EPCIS events. The server either accepts or rejects all events.
       parameters:
         - $ref: '#/components/parameters/GS1-CAPTURE-limit'
@@ -107,6 +121,8 @@ paths:
 
   /capture/{captureID}:
     get:
+      tags:
+        - capture
       summary: Returns information about a specific capture job.
       parameters:
         - in: path
@@ -146,6 +162,8 @@ paths:
 
   /events:
     get:
+      tags:
+        - events
       summary: Returns all EPCIS event types currently available in the EPCIS repository.
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-version'
@@ -169,6 +187,8 @@ paths:
 
   /events/{eventType}:
     get:
+      tags:
+        - events
       summary: >
         Returns EPCIS events of a given EPCIS event type. If 'all' is used instead of an EPCIS
         event type, every event in the repository is returned.
@@ -196,7 +216,6 @@ paths:
         ```
         https://example.com/events/ObjectEvents?EQ_bizStep=urn%3Aepcglobal%3Acbv%3Abizstep%3Ashipping%2Curn%3Aepcglobal%3Acbv%3Abizstep%3Adecommissioning&GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
         ```
-
       responses:
         '200':
           $ref: '#/components/responses/200EPCISEventResponse'
@@ -217,6 +236,8 @@ paths:
 
   /events/{eventType}/{eventID}:
     get:
+      tags:
+        - events
       summary: Returns an individual EPCIS event.
       parameters:
         - $ref: '#/components/parameters/EventType'
@@ -245,6 +266,8 @@ paths:
 
   /epcs/{epc}/events:
     get:
+      tags:
+        - events
       summary: Returns all EPCIS event types of all EPCIS events with the electronic product code (epc) in the path.
       parameters:
         - $ref: '#/components/parameters/EPC'
@@ -272,6 +295,8 @@ paths:
 
   /epcs/{epc}/events/{eventType}:
     get:
+      tags:
+        - events
       summary: Returns all EPCIS events with the electronic product code and of the given EPCIS event type.
       parameters:
         - $ref: '#/components/parameters/EPC'
@@ -322,6 +347,8 @@ paths:
 
   /epcs/{epc}/events/{eventType}/{eventID}:
     get:
+      tags:
+        - events
       summary: Returns an EPCIS event by event ID.
       parameters:
         - $ref: '#/components/parameters/EPC'
@@ -351,6 +378,8 @@ paths:
 
   /bizSteps/{bizStep}/events:
     get:
+      tags:
+        - events
       summary: >
         Returns all EPCIS event types of all EPCIS events with the business step in the path.
       parameters:
@@ -378,6 +407,8 @@ paths:
 
   /bizSteps/{bizStep}/events/{eventType}:
     get:
+      tags:
+        - events
       summary: Returns all EPCIS events occurring at that business step and of the given EPCIS event type.
       parameters:
         - $ref: '#/components/parameters/BizStep'
@@ -428,6 +459,8 @@ paths:
 
   /bizSteps/{bizStep}/events/{eventType}/{eventID}:
     get:
+      tags:
+        - events
       summary: Returns an EPCIS event by event ID.
       parameters:
         - $ref: '#/components/parameters/BizStep'
@@ -457,6 +490,8 @@ paths:
 
   /bizLocations/{bizLocation}/events:
     get:
+      tags:
+        - events
       summary: >
         Returns all EPCIS event types of all EPCIS events with the business location in the path.
       parameters:
@@ -484,6 +519,8 @@ paths:
 
   /bizLocations/{bizLocation}/events/{eventType}:
     get:
+      tags:
+        - events
       summary: Returns all EPCIS events occurring at that business location and of the given EPCIS event type.
       parameters:
         - $ref: '#/components/parameters/BizLocation'
@@ -513,7 +550,6 @@ paths:
         ```
         https://example.com/bizLocations/urn:epc:id:sgln:0012345.11111.0/events/ObjectEvents?GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
         ```
-
       responses:
         '200':
           $ref: '#/components/responses/200EPCISEventResponse'
@@ -534,6 +570,8 @@ paths:
 
   /bizLocations/{bizLocation}/events/{eventType}/{eventID}:
     get:
+      tags:
+        - events
       summary: Returns an EPCIS event by event ID.
       parameters:
         - $ref: '#/components/parameters/BizLocation'
@@ -563,6 +601,8 @@ paths:
 
   /readPoints/{readPoint}/events:
     get:
+      tags:
+        - events
       summary: >
         Returns all EPCIS event types of all EPCIS events with the read point in the path. A read point is for example a RFID scanner
       parameters:
@@ -590,6 +630,8 @@ paths:
 
   /readPoints/{readPoint}/events/{eventType}:
     get:
+      tags:
+        - events
       summary: Returns all EPCIS events occurring at that read point and of the given EPCIS event type.
       parameters:
         - $ref: '#/components/parameters/ReadPoint'
@@ -640,6 +682,8 @@ paths:
 
   /readPoints/{readPoint}/events/{eventType}/{eventID}:
     get:
+      tags:
+        - events
       summary: Returns an EPCIS event by event ID.
       parameters:
         - $ref: '#/components/parameters/ReadPoint'
@@ -669,6 +713,8 @@ paths:
 
   /dispositions/{disposition}/events:
     get:
+      tags:
+        - events
       summary: >
         Returns all EPCIS event types of all EPCIS events with the disposition in the path. A disposition is for example a RFID scanner
       parameters:
@@ -696,6 +742,8 @@ paths:
 
   /dispositions/{disposition}/events/{eventType}:
     get:
+      tags:
+        - events
       summary: Returns all EPCIS events occurring at that disposition and of the given EPCIS event type.
       parameters:
         - $ref: '#/components/parameters/Disposition'
@@ -746,6 +794,8 @@ paths:
 
   /dispositions/{disposition}/events/{eventType}/{eventID}:
     get:
+      tags:
+        - events
       summary: Returns an EPCIS event by event ID.
       parameters:
         - $ref: '#/components/parameters/Disposition'
@@ -774,6 +824,8 @@ paths:
           $ref: '#/components/responses/500ImplementationException'
   /queries:
     get:
+      tags:
+        - queries
       summary: Returns a list of queries available to that user.
       responses:
         '200':
@@ -800,6 +852,8 @@ paths:
     parameters:
       - $ref: '#/components/parameters/QueryName'
     delete:
+      tags:
+        - queries
       summary: Removes a named query and closes WebSocket connections to subscribed clients.
       responses:
         '204':
@@ -820,6 +874,9 @@ paths:
       - $ref: '#/components/parameters/QueryName'
       - $ref: '#/components/parameters/PerPage'
     get:
+      tags:
+        - queries
+        - masterdata
       summary: Returns the result of a master data query. This endpoint supports query subscriptions.
       parameters:
         - $ref: '#/components/parameters/GS1-QUERY-minRecordTime'
@@ -880,6 +937,8 @@ paths:
       - $ref: '#/components/parameters/QueryName'
       - $ref: '#/components/parameters/PerPage'
     get:
+      tags:
+        - queries
       summary: Returns events with option to paginate if needed. This endpoint supports query subscriptions.
       parameters:
         - $ref: '#/components/parameters/GS1-QUERY-minRecordTime'
@@ -907,6 +966,8 @@ paths:
           $ref: '#/components/responses/500ImplementationException'
 
     post:
+      tags:
+        - queries
       summary: Creates and executes a named EPCIS events query and returns results with option to paginate if needed.
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-version'
@@ -938,6 +999,9 @@ paths:
     parameters:
       - $ref: '#/components/parameters/PerPage'
     post:
+      tags:
+        - queries
+        - masterdata
       summary: >
         Executes anonymous master data queries and returns results with option to paginate if needed.
       parameters:
@@ -966,6 +1030,8 @@ paths:
         '500':
           $ref: '#/components/responses/500ImplementationException'
     get:
+      tags:
+        - queries
       summary: Returns the result of a master data query. This endpoint supports query subscriptions.
       parameters:
         - $ref: '#/components/parameters/GS1-QUERY-minRecordTime'
@@ -994,6 +1060,8 @@ paths:
 
   /queries/SimpleEventQuery/events:
     post:
+      tags:
+        - queries
       summary: Executes anonymous EPCIS events query and returns results with option to paginate if needed.
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-version'
@@ -1020,6 +1088,8 @@ paths:
         '500':
           $ref: '#/components/responses/500ImplementationException'
     get:
+      tags:
+        - queries
       summary: Returns events with option to paginate if needed. This endpoint supports query subscriptions.
       parameters:
         - $ref: '#/components/parameters/GS1-QUERY-minRecordTime'
