@@ -3,8 +3,30 @@
   "type": "object",
   "properties": {
     "@context": {
-      "type": "string",
-      "format": "uri"
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "type": "object"
+        },
+        {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uri"
+              },
+              {
+                "type": "object"
+              }
+            ]
+          }
+        }
+      ]
     },
     "eventType": {
       "type": "array",
