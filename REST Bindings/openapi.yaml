@@ -7,19 +7,23 @@ info:
 
 tags:
 - name: default
-  description: Common APIs
+  description: Common APIs.
+- name: discovery
+  description: the API to discover which versions and vocabularies are suppported.
 - name: capture
-  description: the Capture APIs
+  description: the Capture APIs.
 - name: events
-  description: the Events APIs
+  description: the Events APIs.
 - name: queries
-  description: the Queries APIs
+  description: the Queries APIs.
 - name: masterdata
-  description: the MasterData APIs
+  description: the MasterData APIs.
 
 paths:
   /:
     options:
+      tags:
+        - discovery
       summary: Query server settings, EPCIS version(s) and related vocabularies/standards.
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-version'
@@ -66,6 +70,8 @@ paths:
 
   /capture:
     options:
+      tags:
+        - discovery
       summary: Discover the settings of the capture interface.
       description: >
         The OPTIONS method is used as a discovery service for /capture. It describes which EPCIS and CBV versions
@@ -121,7 +127,11 @@ paths:
         - $ref: '#/components/parameters/GS1-EPCIS-extensions'
         - $ref: '#/components/parameters/GS1-CBV-extensions'
       description: >
-        EPCIS events are added in bulk using the capture interface. To prevent timeouts for large payloads, the client
+        EPCIS events are added in bulk using the capture interface. To remain compatible with EPCIS 1.2, EPCIS 2.0 makes
+        event ids optional. If event ids are missing, the server should populate the event id with a unique value.
+        Otherwise it won't be possible to retrieve these events.
+
+        To prevent timeouts for large payloads, the client
         potentially has to split the payload into several capture calls. To that end, the server specified a capture
         limit (number of events) and file size limit (payload size).
 
@@ -141,7 +151,6 @@ paths:
           headers:
             Location:
               $ref: '#/components/headers/Location'
-
         '400':
           description: An error occurred while capturing EPCIS events. All events are rejected.
           content:
@@ -177,6 +186,8 @@ paths:
         schema:
           type: string
     options:
+      tags:
+        - discovery
       summary: Query meta data of the query job.
       description: >
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
@@ -254,6 +265,9 @@ paths:
 
   /events:
     options:
+      tags:
+        - discovery
+        - events
       summary: Query meta data related to the /events enpoint.
       description: >
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
@@ -296,6 +310,8 @@ paths:
       - $ref: '#/components/parameters/GS1-EPCIS-extensions'
       - $ref: '#/components/parameters/GS1-CBV-extensions'
     options:
+      tags:
+        - discovery
       summary: Query meta data related to the /events enpoint.
       description: >
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
@@ -367,14 +383,14 @@ paths:
           $ref: '#/components/responses/500ImplementationException'
 
     post:
+      tags:
+        - capture
       summary: Creates an individual EPCIS event.
-
       description: >
         An individual EPCIS event can be created by making a POST request to the EPCIS event type of
         the EPCIS event that is being captured. If the client does not wish to specify the EPCIS event type,
         the /events/all endpoint can be used. Alternatively, the client can also use the /capture interface and
         and capture a single event.
-
       requestBody:
         required: true
         content:
@@ -425,6 +441,8 @@ paths:
       - $ref: '#/components/parameters/EventType'
       - $ref: '#/components/parameters/EventID'
     options:
+      tags:
+        - discovery
       summary: Query meta data related to the /events enpoint.
       description: >
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
@@ -462,6 +480,8 @@ paths:
 
   /epcs:
     options:
+      tags:
+        - discovery
       summary: Query meta data related to the electronic product codes enpoint.
       description: >
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
@@ -469,7 +489,7 @@ paths:
         versions are used.
       responses:
         204:
-          $ref: '#/components/responses/204TopLevelREsorucesOptionsResponse'
+          $ref: '#/components/responses/204TopLevelResourcesOptionsResponse'
 
     get:
       parameters:
@@ -528,6 +548,8 @@ paths:
     parameters:
       - $ref: '#/components/parameters/EPC'
     options:
+      tags:
+        - discovery
       summary: Query meta data related to the electronic product codes enpoint.
       description: >
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
@@ -535,7 +557,7 @@ paths:
         versions are used.
       responses:
         204:
-          $ref: '#/components/responses/204TopLevelREsorucesOptionsResponse'
+          $ref: '#/components/responses/204TopLevelResourcesOptionsResponse'
     get:
       tags:
         - events
@@ -568,6 +590,8 @@ paths:
       - $ref: '#/components/parameters/EPC'
       - $ref: '#/components/parameters/EventType'
     options:
+      tags:
+        - discovery
       summary: Query meta data related to the electronic product codes enpoint.
       description: >
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
@@ -575,7 +599,7 @@ paths:
         versions are used.
       responses:
         204:
-          $ref: '#/components/responses/204TopLevelREsorucesOptionsResponse'
+          $ref: '#/components/responses/204TopLevelResourcesOptionsResponse'
     get:
       tags:
         - events
@@ -598,15 +622,14 @@ paths:
 
         Optionally, EPCIS events can be further filtered using the EPCIS query language in as query string parameters.
         In this case, ensure that the EPCIS query does not specify an EPCIS event type other than the EPCIS event type
-        in the path. To specify multiple EPCIS event types, use 'all' instead of an EPCIS event type in the path and specify
-        EPCIS event types as query string parameter.
+        in the path. To specify multiple EPCIS event types, use 'all' instead of an EPCIS event type in the path and 
+        specify EPCIS event types as query string parameter.
 
         Example:
 
         ```
         https://example.com/epcs/urn:epc:id:sgtin:0614141.107346.2018/events/ObjectEvents?EQ_bizStep=urn%3Aepcglobal%3Acbv%3Abizstep%3Ashipping%2Curn%3Aepcglobal%3Acbv%3Abizstep%3Adecommissioning&GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
         ```
-
       responses:
         '200':
           $ref: '#/components/responses/200EPCISEventResponse'
@@ -631,6 +654,8 @@ paths:
       - $ref: '#/components/parameters/EventType'
       - $ref: '#/components/parameters/EventID'
     options:
+      tags:
+        - discovery
       summary: Query meta data related to the electronic product codes enpoint.
       description: >
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
@@ -638,7 +663,7 @@ paths:
         versions are used.
       responses:
         204:
-          $ref: '#/components/responses/204TopLevelREsorucesOptionsResponse'
+          $ref: '#/components/responses/204TopLevelResourcesOptionsResponse'
     get:
       tags:
         - events
@@ -652,8 +677,9 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-extensions'
       description: >
         This endpoint accesses individual events with the electronic product code and EPCIS event type specified
-        in the path. If the EPCIS event type is not known or irrelevant, 'all' can be used instead of an EPCIS event type.
-        The response body is an EPCISDocument with the unique event. The response body is an EPCISDocument with the unique event.
+        in the path. If the EPCIS event type is not known or irrelevant, 'all' can be used instead of an EPCIS event
+        type. The response body is an EPCISDocument with the unique event. The response body is an EPCISDocument with 
+        the unique event.
       responses:
         '200':
           $ref: '#/components/responses/200EPCISEventResponse'
@@ -668,6 +694,8 @@ paths:
 
   /bizSteps:
     options:
+      tags:
+        - discovery
       summary: Query meta data related to the business steps enpoint.
       description: >
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
@@ -675,7 +703,7 @@ paths:
         versions are used.
       responses:
         204:
-          $ref: '#/components/responses/204TopLevelREsorucesOptionsResponse'
+          $ref: '#/components/responses/204TopLevelResourcesOptionsResponse'
     get:
       parameters:
         - $ref: '#/components/parameters/PerPage'
@@ -726,6 +754,8 @@ paths:
     parameters:
       - $ref: '#/components/parameters/BizStep'
     options:
+      tags:
+        - discovery
       summary: Query meta data related to the business steps enpoint.
       description: >
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
@@ -733,7 +763,7 @@ paths:
         versions are used.
       responses:
         204:
-          $ref: '#/components/responses/204TopLevelREsorucesOptionsResponse'
+          $ref: '#/components/responses/204TopLevelResourcesOptionsResponse'
     get:
       tags:
         - events
@@ -748,7 +778,8 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-extensions'
       description: >
         The top-level resource endpoint helps to navigate EPCIS events by business step.
-        An EPCIS event is associated with a single business step, stored in the bizStep property. This endpoint returns all available EPCIS event types.
+        An EPCIS event is associated with a single business step, stored in the bizStep property. This endpoint returns
+        all available EPCIS event types.
       responses:
         '200':
           $ref: '#/components/responses/200SupportedEventTypes'
@@ -766,6 +797,8 @@ paths:
       - $ref: '#/components/parameters/BizStep'
       - $ref: '#/components/parameters/EventType'
     options:
+      tags:
+        - discovery
       summary: Query meta data related to the business steps enpoint.
       description: >
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
@@ -773,7 +806,7 @@ paths:
         versions are used.
       responses:
         204:
-          $ref: '#/components/responses/204TopLevelREsorucesOptionsResponse'
+          $ref: '#/components/responses/204TopLevelResourcesOptionsResponse'
     get:
       tags:
         - events
@@ -804,7 +837,6 @@ paths:
         ```
         https://example.com/bizSteps/urn:epcglobal:cbv:bizstep:receiving/events/ObjectEvents?GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
         ```
-
       responses:
         '200':
           $ref: '#/components/responses/200EPCISEventResponse'
@@ -829,6 +861,8 @@ paths:
       - $ref: '#/components/parameters/EventType'
       - $ref: '#/components/parameters/EventID'
     options:
+      tags:
+        - discovery
       summary: Query meta data related to the business steps enpoint.
       description: >
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
@@ -836,7 +870,7 @@ paths:
         versions are used.
       responses:
         204:
-          $ref: '#/components/responses/204TopLevelREsorucesOptionsResponse'
+          $ref: '#/components/responses/204TopLevelResourcesOptionsResponse'
     get:
       tags:
         - events
@@ -850,8 +884,9 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-extensions'
       description: >
         This endpoint accesses individual events with the business step and EPCIS event type specified
-        in the path. If the EPCIS event type is not known or irrelevant, 'all' can be used instead of an EPCIS event type.
-        The response body is an EPCISDocument with the unique event. The response body is an EPCISDocument with the unique event.
+        in the path. If the EPCIS event type is not known or irrelevant, 'all' can be used instead of an 
+        EPCIS event type. The response body is an EPCISDocument with the unique event. The response body is an 
+        EPCISDocument with the unique event.
       responses:
         '200':
           $ref: '#/components/responses/200EPCISEventResponse'
@@ -866,6 +901,8 @@ paths:
 
   /bizLocations:
     options:
+      tags:
+        - discovery
       summary: Query meta data related to the business locations enpoint.
       description: >
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
@@ -873,7 +910,7 @@ paths:
         versions are used.
       responses:
         204:
-          $ref: '#/components/responses/204TopLevelREsorucesOptionsResponse'
+          $ref: '#/components/responses/204TopLevelResourcesOptionsResponse'
     get:
       parameters:
         - $ref: '#/components/parameters/PerPage'
@@ -924,6 +961,8 @@ paths:
       - $ref: '#/components/parameters/BizLocation'
       - $ref: '#/components/parameters/EventType'
     options:
+      tags:
+        - discovery
       summary: Query meta data related to the business locations enpoint.
       description: >
           The OPTIONS method allows the client to discover which vocabularies and EPCIS/CBV
@@ -945,7 +984,8 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-extensions'
       description: >
         The top-level resource endpoint helps to navigate EPCIS events by business location.
-        An EPCIS event is associated with a single business location, stored in the bizLocation property. This endpoint returns all available EPCIS event types.
+        An EPCIS event is associated with a single business location, stored in the bizLocation property.
+        This endpoint returns all available EPCIS event types.
       responses:
         '200':
           $ref: '#/components/responses/200SupportedEventTypes'
@@ -963,6 +1003,8 @@ paths:
       - $ref: '#/components/parameters/BizLocation'
       - $ref: '#/components/parameters/EventType'
     options:
+      tags:
+        - discovery
       summary: Query meta data related to the business locations enpoint.
       description: >
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
@@ -970,7 +1012,7 @@ paths:
         versions are used.
       responses:
         204:
-          $ref: '#/components/responses/204TopLevelREsorucesOptionsResponse'
+          $ref: '#/components/responses/204TopLevelResourcesOptionsResponse'
     get:
       tags:
         - events
@@ -1025,6 +1067,8 @@ paths:
       - $ref: '#/components/parameters/EventType'
       - $ref: '#/components/parameters/EventID'
     options:
+      tags:
+        - discovery
       summary: Query meta data related to the business locations enpoint.
       description: >
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
@@ -1032,7 +1076,7 @@ paths:
         versions are used.
       responses:
         204:
-          $ref: '#/components/responses/204TopLevelREsorucesOptionsResponse'
+          $ref: '#/components/responses/204TopLevelResourcesOptionsResponse'
     get:
       summary: Returns an EPCIS event by event ID.
       parameters:
@@ -1044,8 +1088,9 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-extensions'
       description: >
         This endpoint accesses individual events with the business location and EPCIS event type specified
-        in the path. If the EPCIS event type is not known or irrelevant, 'all' can be used instead of an EPCIS event type.
-        The response body is an EPCISDocument with the unique event. The response body is an EPCISDocument with the unique event.
+        in the path. If the EPCIS event type is not known or irrelevant, 'all' can be used instead of an
+        EPCIS event type. The response body is an EPCISDocument with the unique event. The response body is an
+        EPCISDocument with the unique event.
       responses:
         '200':
           $ref: '#/components/responses/200EPCISEventResponse'
@@ -1060,6 +1105,8 @@ paths:
 
   /readPoints:
     options:
+      tags:
+        - discovery
       summary: Query meta data related to the read points enpoint.
       description: >
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
@@ -1067,7 +1114,7 @@ paths:
         versions are used.
       responses:
         204:
-          $ref: '#/components/responses/204TopLevelREsorucesOptionsResponse'
+          $ref: '#/components/responses/204TopLevelResourcesOptionsResponse'
     get:
       tags:
         - events
@@ -1119,6 +1166,8 @@ paths:
     parameters:
       - $ref: '#/components/parameters/ReadPoint'
     options:
+      tags:
+        - discovery
       summary: Query meta data related to the read points enpoint.
       description: >
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
@@ -1126,12 +1175,13 @@ paths:
         versions are used.
       responses:
         204:
-          $ref: '#/components/responses/204TopLevelREsorucesOptionsResponse'
+          $ref: '#/components/responses/204TopLevelResourcesOptionsResponse'
     get:
       tags:
         - events
       summary: >
-        Returns all EPCIS event types of all EPCIS events with the read point in the path. A read point is for example a RFID scanner
+        Returns all EPCIS event types of all EPCIS events with the read point in the path. A read point is for 
+        example a RFID scanner.
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-version'
         - $ref: '#/components/parameters/GS1-EPCIS-extensions'
@@ -1141,7 +1191,8 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-extensions'
       description: >
         The top-level resource endpoint helps to navigate EPCIS events by read point, for example an RFID scanner.
-        An EPCIS event is associated with a single read point, stored in the readPoint property. This endpoint returns all available EPCIS event types.
+        An EPCIS event is associated with a single read point, stored in the readPoint property. This endpoint returns
+        all available EPCIS event types.
       responses:
         '200':
           $ref: '#/components/responses/200SupportedEventTypes'
@@ -1159,6 +1210,8 @@ paths:
       - $ref: '#/components/parameters/ReadPoint'
       - $ref: '#/components/parameters/EventType'
     options:
+      tags:
+        - discovery
       summary: Query meta data related to the read points enpoint.
       description: >
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
@@ -1166,7 +1219,7 @@ paths:
         versions are used.
       responses:
         204:
-          $ref: '#/components/responses/204TopLevelREsorucesOptionsResponse'
+          $ref: '#/components/responses/204TopLevelResourcesOptionsResponse'
     get:
       tags:
         - events
@@ -1197,7 +1250,6 @@ paths:
         ```
         https://example.com/readPoints/urn:epc:id:sgln:0012345.11111.400/events/ObjectEvents?GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
         ```
-
       responses:
         '200':
           $ref: '#/components/responses/200EPCISEventResponse'
@@ -1222,6 +1274,8 @@ paths:
       - $ref: '#/components/parameters/EventType'
       - $ref: '#/components/parameters/EventID'
     options:
+      tags:
+        - discovery
       summary: Query meta data related to the read points enpoint.
       description: >
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
@@ -1229,7 +1283,7 @@ paths:
         versions are used.
       responses:
         204:
-          $ref: '#/components/responses/204TopLevelREsorucesOptionsResponse'
+          $ref: '#/components/responses/204TopLevelResourcesOptionsResponse'
     get:
       tags:
         - events
@@ -1243,8 +1297,9 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-extensions'
       description: >
         This endpoint accesses individual events with the read point and EPCIS event type specified
-        in the path. If the EPCIS event type is not known or irrelevant, 'all' can be used instead of an EPCIS event type.
-        The response body is an EPCISDocument with the unique event. The response body is an EPCISDocument with the unique event.
+        in the path. If the EPCIS event type is not known or irrelevant, 'all' can be used instead of an
+        EPCIS event type. The response body is an EPCISDocument with the unique event. The response body is an 
+        EPCISDocument with the unique event.
       responses:
         '200':
           $ref: '#/components/responses/200EPCISEventResponse'
@@ -1259,6 +1314,8 @@ paths:
 
   /dispositions:
     options:
+      tags:
+        - discovery
       summary: Query meta data related to the dispositions enpoint.
       description: >
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
@@ -1266,7 +1323,7 @@ paths:
         versions are used.
       responses:
         204:
-          $ref: '#/components/responses/204TopLevelREsorucesOptionsResponse'
+          $ref: '#/components/responses/204TopLevelResourcesOptionsResponse'
     get:
       parameters:
         - $ref: '#/components/parameters/PerPage'
@@ -1315,6 +1372,8 @@ paths:
     parameters:
       - $ref: '#/components/parameters/Disposition'
     options:
+      tags:
+        - discovery
       summary: Query meta data related to the dispositions enpoint.
       description: >
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
@@ -1322,12 +1381,13 @@ paths:
         versions are used.
       responses:
         204:
-          $ref: '#/components/responses/204TopLevelREsorucesOptionsResponse'
+          $ref: '#/components/responses/204TopLevelResourcesOptionsResponse'
     get:
       tags:
         - events
       summary: >
-        Returns all EPCIS event types of all EPCIS events with the disposition in the path. A disposition is for example a RFID scanner
+        Returns all EPCIS event types of all EPCIS events with the disposition in the path. A disposition 
+        is for example a RFID scanner/
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-version'
         - $ref: '#/components/parameters/GS1-EPCIS-extensions'
@@ -1337,7 +1397,8 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-extensions'
       description: >
         The top-level resource endpoint helps to navigate EPCIS events by disposition, for example an RFID scanner.
-        An EPCIS event is associated with a single disposition, stored in the disposition property. This endpoint returns all available EPCIS event types.
+        An EPCIS event is associated with a single disposition, stored in the disposition property. 
+        This endpoint returns all available EPCIS event types.
       responses:
         '200':
           $ref: '#/components/responses/200SupportedEventTypes'
@@ -1355,6 +1416,8 @@ paths:
       - $ref: '#/components/parameters/Disposition'
       - $ref: '#/components/parameters/EventType'
     options:
+      tags:
+        - discovery
       summary: Query meta data related to the dispositions enpoint.
       description: >
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
@@ -1362,7 +1425,7 @@ paths:
         versions are used.
       responses:
         204:
-          $ref: '#/components/responses/204TopLevelREsorucesOptionsResponse'
+          $ref: '#/components/responses/204TopLevelResourcesOptionsResponse'
     get:
       tags:
         - events
@@ -1393,7 +1456,6 @@ paths:
         ```
         https://example.com/dispositions/urn:epcglobal:cbv:disp:in_progress/events/ObjectEvents?GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
         ```
-
       responses:
         '200':
           $ref: '#/components/responses/200EPCISEventResponse'
@@ -1418,6 +1480,8 @@ paths:
       - $ref: '#/components/parameters/EventType'
       - $ref: '#/components/parameters/EventID'
     options:
+      tags:
+        - discovery
       summary: Query meta data related to the dispositions enpoint.
       description: >
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
@@ -1425,7 +1489,7 @@ paths:
         versions are used.
       responses:
         204:
-          $ref: '#/components/responses/204TopLevelREsorucesOptionsResponse'
+          $ref: '#/components/responses/204TopLevelResourcesOptionsResponse'
     get:
       tags:
         - events
@@ -1439,8 +1503,9 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-extensions'
       description: >
         This endpoint accesses individual events with the disposition and EPCIS event type specified
-        in the path. If the EPCIS event type is not known or irrelevant, 'all' can be used instead of an EPCIS event type.
-        The response body is an EPCISDocument with the unique event. The response body is an EPCISDocument with the unique event.
+        in the path. If the EPCIS event type is not known or irrelevant, 'all' can be used instead of an 
+        EPCIS event type. The response body is an EPCISDocument with the unique event. The response body 
+        is an EPCISDocument with the unique event.
       responses:
         '200':
           $ref: '#/components/responses/200EPCISEventResponse'
@@ -1454,6 +1519,8 @@ paths:
           $ref: '#/components/responses/500ImplementationException'
   /queries:
     options:
+      tags:
+        - discovery
       summary: Query meta data related to named an anonymous queries.
       description: >
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
@@ -1504,6 +1571,8 @@ paths:
     parameters:
       - $ref: '#/components/parameters/QueryName'
     options:
+      tags:
+        - discovery
       summary: Query meta data related to named an anonymous queries.
       description: >
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
@@ -1542,6 +1611,8 @@ paths:
             GS1-CBV-extensions:
               $ref: '#/components/headers/GS1-CBV-extensions'
     get:
+      tags:
+        - queries
       summary: Returns the EPCIS query body of a named query
       responses:
         '200':
@@ -1586,6 +1657,8 @@ paths:
       - $ref: '#/components/parameters/QueryName'
       - $ref: '#/components/parameters/PerPage'
     options:
+      tags:
+        - discovery
       summary: Query the meta data of an events query
       description: >
         The OPTIONS method is used as a discovery service for named queries. It describes which EPCIS and CBV
@@ -1658,6 +1731,8 @@ paths:
       - $ref: '#/components/parameters/QueryName'
       - $ref: '#/components/parameters/PerPage'
     options:
+      tags:
+        - discovery
       summary: Query the meta data of an events query
       description: >
         The OPTIONS method is used as a discovery service for named queries. It describes which EPCIS and CBV
@@ -1671,6 +1746,7 @@ paths:
     get:
       tags:
         - queries
+        - events
       summary: Returns events with option to paginate if needed. This endpoint supports query subscriptions.
       parameters:
         - $ref: '#/components/parameters/GS1-QUERY-minRecordTime'
@@ -1729,9 +1805,11 @@ paths:
 
   /queries/SimpleMasterDataQuery/masterdata:
     options:
+      tags:
+        - discovery
       summary: Query the meta data of an events query
       description: >
-        The OPTIONS method is used as a discovery service for anonyoous queries. Because anonymous queries
+        The OPTIONS method is used as a discovery service for anonymous queries. Because anonymous queries
         are not stored, query-related meta data cannot be discovered.
         Please note that this dos not apply to anonymous queries, since they are not stored.
       responses:
@@ -1800,9 +1878,11 @@ paths:
 
   /queries/SimpleEventQuery/events:
     options:
+      tags:
+        - discovery
       summary: Query the meta data of an events query
       description: >
-        The OPTIONS method is used as a discovery service for anonyoous queries. Because anonymous queries
+        The OPTIONS method is used as a discovery service for anonymous queries. Because anonymous queries
         are not stored, query-related meta data cannot be discovered.
         Please note that this dos not apply to anonymous queries, since they are not stored.
       responses:
@@ -1811,6 +1891,7 @@ paths:
     post:
       tags:
         - queries
+        - events
       summary: Executes anonymous EPCIS events query and returns results with option to paginate if needed.
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-version'
@@ -1868,7 +1949,10 @@ paths:
 components:
   responses:
     '101WebsocketCreated':
-      description: Create a WebSocket connection to subscribe to queries. Upon subscription, the server SHALL send all new events to subscribing clients. If multiple clients have the same query, each client will receive events which they are authorized to see.
+      description: >
+        Create a WebSocket connection to subscribe to queries. Upon subscription, the server SHALL 
+        send all new events to subscribing clients. If multiple clients have the same query, each client will 
+        receive events which they are authorized to see.
       headers:
         Upgrade:
           required: true
@@ -1931,7 +2015,7 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/EPCISEventTypes'
-    '204TopLevelREsorucesOptionsResponse':
+    204TopLevelResourcesOptionsResponse:
       description: >
         The OPTIONS method is used as a discovery service for top-level resources endpoints. It describes which EPCIS
         and CBV versions are supported and used for the top-level resource as well as EPCIS and CBV extensions.
@@ -2312,7 +2396,10 @@ components:
       description: A collection of master data resources
       example:
         {
-          "@context": [ "https://gs1.github.io/EPCIS/epcis-context.jsonld",{ "example": "http://ns.example.com/epcis/" },{ "xmda": "http://epcis.example.com/mda" } ],
+          "@context": [
+              "https://gs1.github.io/EPCIS/epcis-context.jsonld",
+              { "example": "http://ns.example.com/epcis/" },
+              { "xmda": "http://epcis.example.com/mda" } ],
           "id": "_:example_9.8.1",
           "isA": "EPCISDocument",
           "schemaVersion": 2.0,
@@ -2374,8 +2461,9 @@ components:
         url: ../JSON/EPCIS-SHACL.ttl
       example:
         {
-          "@context": [ "https://gs1.github.io/EPCIS/epcis-context.jsonld",{ "example": "http://ns.example.com/epcis/" } ],
-
+          "@context": [
+              "https://gs1.github.io/EPCIS/epcis-context.jsonld",
+              { "example": "http://ns.example.com/epcis/" } ],
           "id": "_:document1",
           "isA": "EPCISDocument",
           "schemaVersion": 2.0,
@@ -2393,7 +2481,9 @@ components:
                 "eventTime": "2005-04-03T20:33:31.116000-06:00",
                 "eventTimeZoneOffset": "-06:00",
                 "readPoint": { "id": "urn:epc:id:sgln:0614141.07346.1234" },
-                "bizTransactionList": [ { "type": "urn:epcglobal:cbv:btt:po", "bizTransaction": "http://transaction.acme.com/po/12345678" } ]
+                "bizTransactionList": [ 
+                  { "type": "urn:epcglobal:cbv:btt:po",
+                    "bizTransaction": "http://transaction.acme.com/po/12345678" } ]
               } ]
           }
         }
@@ -2402,8 +2492,9 @@ components:
       type: object
       example:
         {
-          "@context": [ "https://gs1.github.io/EPCIS/epcis-context.jsonld",{ "example": "http://ns.example.com/epcis/" } ],
-
+          "@context": [
+              "https://gs1.github.io/EPCIS/epcis-context.jsonld",
+              { "example": "http://ns.example.com/epcis/" } ],
           "id": "_:document1",
           "isA": "EPCISDocument",
           "schemaVersion": 2.0,
@@ -2421,7 +2512,8 @@ components:
                 "eventTime": "2005-04-03T20:33:31.116000-06:00",
                 "eventTimeZoneOffset": "-06:00",
                 "readPoint": { "id": "urn:epc:id:sgln:0614141.07346.1234" },
-                "bizTransactionList": [ { "type": "urn:epcglobal:cbv:btt:po", "bizTransaction": "http://transaction.acme.com/po/12345678" } ]
+                "bizTransactionList": [ 
+                  { "type": "urn:epcglobal:cbv:btt:po", "bizTransaction": "http://transaction.acme.com/po/12345678" } ]
               },
               {
                 "id": "_:event2",
