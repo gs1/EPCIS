@@ -6,18 +6,27 @@ info:
     name: Apache2
 
 tags:
-- name: default
-  description: Common APIs.
 - name: discovery
-  description: the API to discover which versions and vocabularies are suppported.
+  description: >
+    Endpoints to obtain information about the endpoint, such as EPCIS and CBV versions or custom vocabularies.
 - name: capture
-  description: the Capture APIs.
+  description: >
+    Endpoints to capture EPCIS events in bulk or individually.
 - name: events
-  description: the Events APIs.
+  description: >
+    Endpoints that expose EPCIS events as Web resources.
+- name: top-level-resources
+  description: >
+    Endpoints to browse EPCIS events by common top-level resources: electronic product codes, business steps,
+    business locations, read points and dispositions.
 - name: queries
-  description: the Queries APIs.
+  description: >
+    Endpoints to create large named or anonymous queries using the EPCIS query language. Named queries have a custom
+    name and are stored until deleted by the user. Anonymous queries are not persisted and only available to the caller.
+    These endpoints also support query subscription using event triggers or scheduling.
 - name: masterdata
-  description: the MasterData APIs.
+  description: >
+    Endpoints to create master data queries and subscribe to those queries.
 
 paths:
   /:
@@ -492,6 +501,9 @@ paths:
           $ref: '#/components/responses/204TopLevelResourcesOptionsResponse'
 
     get:
+      tags:
+        - events
+        - top-level-resources
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
@@ -561,6 +573,7 @@ paths:
     get:
       tags:
         - events
+        - top-level-resources
       summary: Returns all EPCIS event types of all EPCIS events with the electronic product code (epc) in the path.
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-version'
@@ -603,6 +616,7 @@ paths:
     get:
       tags:
         - events
+        - top-level-resources
       summary: Returns all EPCIS events with the electronic product code and of the given EPCIS event type.
       parameters:
         - $ref: '#/components/parameters/PerPage'
@@ -667,6 +681,7 @@ paths:
     get:
       tags:
         - events
+        - top-level-resources
       summary: Returns an EPCIS event by event ID.
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-version'
@@ -705,6 +720,9 @@ paths:
         204:
           $ref: '#/components/responses/204TopLevelResourcesOptionsResponse'
     get:
+      tags:
+        - events
+        - top-level-resources
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
@@ -767,6 +785,7 @@ paths:
     get:
       tags:
         - events
+        - top-level-resources
       summary: >
         Returns all EPCIS event types of all EPCIS events with the business step in the path.
       parameters:
@@ -810,6 +829,7 @@ paths:
     get:
       tags:
         - events
+        - top-level-resources
       summary: Returns all EPCIS events occurring at that business step and of the given EPCIS event type.
       parameters:
         - $ref: '#/components/parameters/PerPage'
@@ -874,6 +894,7 @@ paths:
     get:
       tags:
         - events
+        - top-level-resources
       summary: Returns an EPCIS event by event ID.
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-version'
@@ -912,6 +933,9 @@ paths:
         204:
           $ref: '#/components/responses/204TopLevelResourcesOptionsResponse'
     get:
+      tags:
+        - events
+        - top-level-resources
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
@@ -973,6 +997,7 @@ paths:
     get:
       tags:
         - events
+        - top-level-resources
       summary: >
         Returns all EPCIS event types of all EPCIS events with the business location in the path.
       parameters:
@@ -1016,6 +1041,7 @@ paths:
     get:
       tags:
         - events
+        - top-level-resources
       summary: Returns all EPCIS events occurring at that business location and of the given EPCIS event type.
       parameters:
         - $ref: '#/components/parameters/PerPage'
@@ -1078,6 +1104,9 @@ paths:
         204:
           $ref: '#/components/responses/204TopLevelResourcesOptionsResponse'
     get:
+      tags:
+        - events
+        - top-level-resources
       summary: Returns an EPCIS event by event ID.
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-version'
@@ -1118,6 +1147,7 @@ paths:
     get:
       tags:
         - events
+        - top-level-resources
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
@@ -1179,6 +1209,7 @@ paths:
     get:
       tags:
         - events
+        - top-level-resources
       summary: >
         Returns all EPCIS event types of all EPCIS events with the read point in the path. A read point is for 
         example a RFID scanner.
@@ -1223,6 +1254,7 @@ paths:
     get:
       tags:
         - events
+        - top-level-resources
       summary: Returns all EPCIS events occurring at that read point and of the given EPCIS event type.
       parameters:
         - $ref: '#/components/parameters/PerPage'
@@ -1287,6 +1319,7 @@ paths:
     get:
       tags:
         - events
+        - top-level-resources
       summary: Returns an EPCIS event by event ID.
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-version'
@@ -1325,6 +1358,9 @@ paths:
         204:
           $ref: '#/components/responses/204TopLevelResourcesOptionsResponse'
     get:
+      tags:
+        - events
+        - top-level-resources
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
@@ -1385,6 +1421,7 @@ paths:
     get:
       tags:
         - events
+        - top-level-resources
       summary: >
         Returns all EPCIS event types of all EPCIS events with the disposition in the path. A disposition 
         is for example a RFID scanner/
@@ -1429,6 +1466,7 @@ paths:
     get:
       tags:
         - events
+        - top-level-resources
       summary: Returns all EPCIS events occurring at that disposition and of the given EPCIS event type.
       parameters:
         - $ref: '#/components/parameters/PerPage'
@@ -1493,6 +1531,7 @@ paths:
     get:
       tags:
         - events
+        - top-level-resources
       summary: Returns an EPCIS event by event ID.
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-version'
@@ -1697,6 +1736,9 @@ paths:
         '500':
           $ref: '#/components/responses/500ImplementationException'
     post:
+      tags:
+        - queries
+        - masterdata
       summary: >
         Creates and executes a named EPCIS master data query and returns
         results with option to paginate if needed.
@@ -1776,6 +1818,7 @@ paths:
     post:
       tags:
         - queries
+        - events
       summary: Creates and executes a named EPCIS events query and returns results with option to paginate if needed.
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-version'
@@ -1849,6 +1892,7 @@ paths:
     get:
       tags:
         - queries
+        - masterdata
       summary: Returns the result of a master data query. This endpoint supports query subscriptions.
       parameters:
         - $ref: '#/components/parameters/GS1-QUERY-minRecordTime'
@@ -1920,6 +1964,7 @@ paths:
     get:
       tags:
         - queries
+        - events
       summary: Returns events with option to paginate if needed. This endpoint supports query subscriptions.
       parameters:
         - $ref: '#/components/parameters/GS1-QUERY-minRecordTime'
