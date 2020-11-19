@@ -1772,12 +1772,12 @@ paths:
             Link:
               $ref: '#/components/headers/Link'
             Location:
-              example: "https://www.example.com/queries/myQuery/masterdata"
               description: >
                 The URL of the created master data query. The URL of the created query. The client can use the
                 Location URL to subscribe to that query. If the client wants to execute the query synchronously,
                 the client should use URL in the Link header to fetch more resources.
               schema:
+                example: "https://www.example.com/queries/myQuery/masterdata"
                 type: string
                 format: uri
           description: Returns the query result
@@ -1809,8 +1809,6 @@ paths:
       responses:
         204:
           $ref: '#/components/responses/204EventEndpointsOptionsResponse'
-
-
     get:
       tags:
         - queries
@@ -1840,7 +1838,6 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '500':
           $ref: '#/components/responses/500ImplementationException'
-
     post:
       tags:
         - queries
@@ -1878,12 +1875,12 @@ paths:
             Link:
               $ref: '#/components/headers/Link'
             Location:
-              example: "https://www.example.com/queries/myQuery/events"
               description: >
                 The URL of the created query. The client can use the Location URL to subscribe to that query.
                 If the client wants to execute the query synchronously, the client should use URL in the Link header
                 to fetch more resources.
               schema:
+                example: "https://www.example.com/queries/myQuery/events"
                 type: string
                 format: uri
           description: Returns the query result
@@ -1950,13 +1947,13 @@ paths:
             Link:
               $ref: '#/components/headers/Link'
             Location:
-              example: "https://www.example.com/queries/SimpleMasterDataQuery-2ac8f3f4-2a67-11eb-0242ac120002-adc1/masterdata"
               description: >
                 The URL of the newly created anonymous master data query. The server will create a new and unique
                 temporary anonymous query for the client's request. The client can use this URL to subscribe to that
                 query. If the client wants to execute the query synchronously, the client should use URL in the Link
                 header to fetch more resources.
               schema:
+                example: "https://www.example.com/queries/SimpleMasterDataQuery-2ac8f3f4-2a67-11eb-0242ac120002-adc1/masterdata"
                 type: string
                 format: uri
           description: Returns the query result
@@ -2051,13 +2048,13 @@ paths:
             Link:
               $ref: '#/components/headers/Link'
             Location:
-              example: "https://www.example.com/queries/SimpleEventQuery-2ac8f3f4-2a67-11eb-adc1-0242ac120002/events"
               description: >
                 The URL of the newly created anonymous query. The server will create a new and unique temporary
                 anonymous query for the client's request. The client can use this URL to subscribe to that query.
                 If the client wants to execute the query synchronously, the client should use URL in the Link header
                 to fetch more resources.
               schema:
+                example: "https://www.example.com/queries/SimpleEventQuery-2ac8f3f4-2a67-11eb-adc1-0242ac120002/events"
                 type: string
                 format: uri
           description: Returns the query result
