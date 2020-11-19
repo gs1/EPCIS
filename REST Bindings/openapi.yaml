@@ -260,8 +260,8 @@ paths:
                   type: string
                   format: uri
                   example:
-                    - /events/ObjectEvents/oa123
-                    - /events/ObjectEvents/oa345
+                    - /events/ObjectEvent/oa123
+                    - /events/ObjectEvent/oa345
                 uniqueItems: true
         '401':
           $ref: '#/components/responses/401AuthorizationInformationMissing'
@@ -371,7 +371,7 @@ paths:
         Example:
 
         ```
-        https://example.com/events/ObjectEvents?EQ_bizStep=urn%3Aepcglobal%3Acbv%3Abizstep%3Ashipping%2Curn%3Aepcglobal%3Acbv%3Abizstep%3Adecommissioning&GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
+        https://example.com/events/ObjectEvent?EQ_bizStep=urn%3Aepcglobal%3Acbv%3Abizstep%3Ashipping%2Curn%3Aepcglobal%3Acbv%3Abizstep%3Adecommissioning&GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
         ```
       responses:
         '200':
@@ -642,7 +642,7 @@ paths:
         Example:
 
         ```
-        https://example.com/epcs/urn:epc:id:sgtin:0614141.107346.2018/events/ObjectEvents?EQ_bizStep=urn%3Aepcglobal%3Acbv%3Abizstep%3Ashipping%2Curn%3Aepcglobal%3Acbv%3Abizstep%3Adecommissioning&GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
+        https://example.com/epcs/urn:epc:id:sgtin:0614141.107346.2018/events/ObjectEvent?EQ_bizStep=urn%3Aepcglobal%3Acbv%3Abizstep%3Ashipping%2Curn%3Aepcglobal%3Acbv%3Abizstep%3Adecommissioning&GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
         ```
       responses:
         '200':
@@ -855,7 +855,7 @@ paths:
         Example:
 
         ```
-        https://example.com/bizSteps/urn:epcglobal:cbv:bizstep:receiving/events/ObjectEvents?GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
+        https://example.com/bizSteps/urn:epcglobal:cbv:bizstep:receiving/events/ObjectEvent?GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
         ```
       responses:
         '200':
@@ -1067,7 +1067,7 @@ paths:
         Example:
 
         ```
-        https://example.com/bizLocations/urn:epc:id:sgln:0012345.11111.0/events/ObjectEvents?GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
+        https://example.com/bizLocations/urn:epc:id:sgln:0012345.11111.0/events/ObjectEvent?GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
         ```
       responses:
         '200':
@@ -1280,7 +1280,7 @@ paths:
         Example:
 
         ```
-        https://example.com/readPoints/urn:epc:id:sgln:0012345.11111.400/events/ObjectEvents?GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
+        https://example.com/readPoints/urn:epc:id:sgln:0012345.11111.400/events/ObjectEvent?GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
         ```
       responses:
         '200':
@@ -1492,7 +1492,7 @@ paths:
         Example:
 
         ```
-        https://example.com/dispositions/urn:epcglobal:cbv:disp:in_progress/events/ObjectEvents?GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
+        https://example.com/dispositions/urn:epcglobal:cbv:disp:in_progress/events/ObjectEvent?GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
         ```
       responses:
         '200':
@@ -2472,7 +2472,7 @@ components:
       description: Location header of a resource
       type: string
       format: uri
-      example: /events/ObjectEvents/eventId123
+      example: /events/ObjectEvent/eventId123
     RFC7807ProblemResponseBody:
       description: A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)
       type: object
@@ -2724,17 +2724,17 @@ components:
       type: string
       description: The five types of EPCIS events.
       example:
-        - ObjectEvents
-        - AggregationEvents
-        - AssociationEvents
-        - TransformationEvents
-        - TransactionEvents
+        - ObjectEvent
+        - AggregationEvent
+        - AssociationEvent
+        - TransformationEvent
+        - TransactionEvent
       enum:
-        - ObjectEvents
-        - AggregationEvents
-        - AssociationEvents
-        - TransformationEvents
-        - TransactionEvents
+        - ObjectEvent
+        - AggregationEvent
+        - AssociationEvent
+        - TransformationEvent
+        - TransactionEvent
     GS1-QUERY-minRecordTime:
       description: >
         An optional header to specify the smallest possible record time for
@@ -2893,7 +2893,7 @@ components:
     EventType:
       name: eventType
       in: path
-      example: ObjectEvents
+      example: ObjectEvent
       required: true
       description: >
         Names of EPCIS event types plus the reserved name 'all',
