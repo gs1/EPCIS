@@ -151,7 +151,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/EPCISDocument'
+              $ref: '#/components/schemas/EPCISEventsDocument'
       responses:
         '202':
           description: >
@@ -1740,8 +1740,7 @@ paths:
         - queries
         - masterdata
       summary: >
-        Creates and executes a named EPCIS master data query and returns
-        results with option to paginate if needed.
+        Creates and executes a named EPCIS master data query and returns results with option to paginate if needed.
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-version'
         - $ref: '#/components/parameters/GS1-EPCIS-min'
@@ -1750,15 +1749,42 @@ paths:
         - $ref: '#/components/parameters/GS1-EPCIS-extensions'
         - $ref: '#/components/parameters/GS1-CBV-extensions'
       description: >
-        Creating a named query stores a query set that can be accessed by performing
-        a GET on its master data subresource. Creating a query also returns master data
-        up to the amount defined in perPage. The server returns a 'link' header
-        to point to the remaining results.
+        Creating a named query stores a query set that can be accessed by performing a GET on its master data
+        subresource. Creating a query also returns master data up to the amount defined in perPage. The server
+        returns a 'link' header to point to the remaining results.
       requestBody:
         $ref: '#/components/requestBodies/CreateMasterDataQuery'
       responses:
         '200':
-          $ref: '#/components/responses/200MasterDataResponse'
+          headers:
+            GS1-EPCIS-version:
+              $ref: '#/components/headers/GS1-EPCIS-version'
+            GS1-EPCIS-min:
+              $ref: '#/components/headers/GS1-EPCIS-min'
+            GS1-EPCIS-max:
+              $ref: '#/components/headers/GS1-EPCIS-max'
+            GS1-CBV-version:
+              $ref: '#/components/headers/GS1-CBV-version'
+            GS1-EPCIS-extensions:
+              $ref: '#/components/headers/GS1-EPCIS-extensions'
+            GS1-CBV-extensions:
+              $ref: '#/components/headers/GS1-CBV-extensions'
+            Link:
+              $ref: '#/components/headers/Link'
+            Location:
+              example: "https://www.example.com/queries/myQuery/masterdata"
+              description: >
+                The URL of the created master data query. The URL of the created query. The client can use the
+                Location URL to subscribe to that query. If the client wants to execute the query synchronously,
+                the client should use URL in the Link header to fetch more resources.
+              schema:
+                type: string
+                format: uri
+          description: Returns the query result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EPCISMasterDataDocument'
         '401':
           $ref: '#/components/responses/401AuthorizationInformationMissing'
         '403':
@@ -1836,7 +1862,35 @@ paths:
         $ref: '#/components/requestBodies/CreateEventQuery'
       responses:
         '200':
-          $ref: '#/components/responses/200EPCISEventResponse'
+          headers:
+            GS1-EPCIS-version:
+              $ref: '#/components/headers/GS1-EPCIS-version'
+            GS1-EPCIS-min:
+              $ref: '#/components/headers/GS1-EPCIS-min'
+            GS1-EPCIS-max:
+              $ref: '#/components/headers/GS1-EPCIS-max'
+            GS1-CBV-version:
+              $ref: '#/components/headers/GS1-CBV-version'
+            GS1-EPCIS-extensions:
+              $ref: '#/components/headers/GS1-EPCIS-extensions'
+            GS1-CBV-extensions:
+              $ref: '#/components/headers/GS1-CBV-extensions'
+            Link:
+              $ref: '#/components/headers/Link'
+            Location:
+              example: "https://www.example.com/queries/myQuery/events"
+              description: >
+                The URL of the created query. The client can use the Location URL to subscribe to that query.
+                If the client wants to execute the query synchronously, the client should use URL in the Link header
+                to fetch more resources.
+              schema:
+                type: string
+                format: uri
+          description: Returns the query result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EPCISEventsDocument'
         '401':
           $ref: '#/components/responses/401AuthorizationInformationMissing'
         '403':
@@ -1880,7 +1934,36 @@ paths:
         $ref: '#/components/requestBodies/CreateMasterDataQuery'
       responses:
         '200':
-          $ref: '#/components/responses/200MasterDataResponse'
+          headers:
+            GS1-EPCIS-version:
+              $ref: '#/components/headers/GS1-EPCIS-version'
+            GS1-EPCIS-min:
+              $ref: '#/components/headers/GS1-EPCIS-min'
+            GS1-EPCIS-max:
+              $ref: '#/components/headers/GS1-EPCIS-max'
+            GS1-CBV-version:
+              $ref: '#/components/headers/GS1-CBV-version'
+            GS1-EPCIS-extensions:
+              $ref: '#/components/headers/GS1-EPCIS-extensions'
+            GS1-CBV-extensions:
+              $ref: '#/components/headers/GS1-CBV-extensions'
+            Link:
+              $ref: '#/components/headers/Link'
+            Location:
+              example: "https://www.example.com/queries/SimpleMasterDataQuery-2ac8f3f4-2a67-11eb-0242ac120002-adc1/masterdata"
+              description: >
+                The URL of the newly created anonymous master data query. The server will create a new and unique
+                temporary anonymous query for the client's request. The client can use this URL to subscribe to that
+                query. If the client wants to execute the query synchronously, the client should use URL in the Link
+                header to fetch more resources.
+              schema:
+                type: string
+                format: uri
+          description: Returns the query result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EPCISMasterDataDocument'
         '401':
           $ref: '#/components/responses/401AuthorizationInformationMissing'
         '403':
@@ -1952,7 +2035,36 @@ paths:
         $ref: '#/components/requestBodies/CreateEventQuery'
       responses:
         '200':
-          $ref: '#/components/responses/200EPCISEventResponse'
+          headers:
+            GS1-EPCIS-version:
+              $ref: '#/components/headers/GS1-EPCIS-version'
+            GS1-EPCIS-min:
+              $ref: '#/components/headers/GS1-EPCIS-min'
+            GS1-EPCIS-max:
+              $ref: '#/components/headers/GS1-EPCIS-max'
+            GS1-CBV-version:
+              $ref: '#/components/headers/GS1-CBV-version'
+            GS1-EPCIS-extensions:
+              $ref: '#/components/headers/GS1-EPCIS-extensions'
+            GS1-CBV-extensions:
+              $ref: '#/components/headers/GS1-CBV-extensions'
+            Link:
+              $ref: '#/components/headers/Link'
+            Location:
+              example: "https://www.example.com/queries/SimpleEventQuery-2ac8f3f4-2a67-11eb-adc1-0242ac120002/events"
+              description: >
+                The URL of the newly created anonymous query. The server will create a new and unique temporary
+                anonymous query for the client's request. The client can use this URL to subscribe to that query.
+                If the client wants to execute the query synchronously, the client should use URL in the Link header
+                to fetch more resources.
+              schema:
+                type: string
+                format: uri
+          description: Returns the query result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EPCISEventsDocument'
         '401':
           $ref: '#/components/responses/401AuthorizationInformationMissing'
         '403':
@@ -2051,7 +2163,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/EPCISDocument'
+            $ref: '#/components/schemas/EPCISEventsDocument'
 
 
     200SupportedEventTypes:
@@ -2532,7 +2644,7 @@ components:
               } ]
           }
         }
-    EPCISDocument:
+    EPCISEventsDocument:
       description: A collection of EPCIS resources.
       type: object
       example:
@@ -2606,10 +2718,11 @@ components:
     NextPageToken:
       description: >
         Parameter that point to the next list of results when requesting a list of events that is larger than the value
-        specified with the perPage parameter.
+        specified with the perPage parameter. Some technologies refer to this as scrolling
+        A nextPageToken may be invalidated through timeout. It is up to the specific implementation to provide
+        the mechanisms for invalidating tokens.
       type: string
       example: '3A1550673874978%2Ci%3AU6D7DENAKwM2gQRRwGrataeq'
-
     EPCISEventTypes:
       type: string
       description: The five types of EPCIS events.
