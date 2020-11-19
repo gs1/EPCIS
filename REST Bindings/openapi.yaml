@@ -276,7 +276,6 @@ paths:
     options:
       tags:
         - discovery
-        - events
       summary: Query meta data related to the /events enpoint.
       description: >
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
