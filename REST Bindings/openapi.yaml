@@ -533,7 +533,7 @@ paths:
               $ref: '#/components/headers/Link'
           description: >
             Returns a list of electronic product codes. If there are electronic product codes than specified by the
-            perPage parameter, the client will be given the URL to retrieve more electronic product codes in the
+            `perPage` parameter, the client will be given the URL to retrieve more electronic product codes in the
             `Link` header.
             If the client specifies extension mappings, the response will use them where they match. Otherwise,
             the full resource address is used.
@@ -630,7 +630,7 @@ paths:
       description: >
         This endpoint helps to navigate EPCIS events by EPCIS event type within a top-level resource. It returns all
         EPCIS events of a specific EPCIS event type and electronic product code, up to the amount defined
-        in perPage. The server returns a `Link` header to point to the remaining results. If the EPCIS event type is not
+        in `perPage`. The server returns a `Link` header to point to the remaining results. If the EPCIS event type is not
         needed, `all` can be used instead of an EPCIS event type.
 
         Optionally, EPCIS events can be further filtered using the EPCIS query language in as query string parameters.
@@ -752,7 +752,7 @@ paths:
               $ref: '#/components/headers/Link'
           description: >
             Returns a list of business steps. If there are business steps than specified by the
-            perPage parameter, the client will be given the URL to retrieve more business steps in the `Link` header.
+            `perPage` parameter, the client will be given the URL to retrieve more business steps in the `Link` header.
             If the client specifies extension mappings, the response will use them where they match. Otherwise,
             the full resource address is used.
           content:
@@ -1177,7 +1177,7 @@ paths:
               $ref: '#/components/headers/Link'
           description: >
             Returns a list of read points. If there are read points than specified by the
-            perPage parameter, the client will be given the URL to retrieve more read points in the `Link` header.
+            `perPage` parameter, the client will be given the URL to retrieve more read points in the `Link` header.
             If the client specifies extension mappings, the response will use them where they match. Otherwise,
             the full resource address is used.
           content:
@@ -1390,7 +1390,7 @@ paths:
               $ref: '#/components/headers/Link'
           description: >
             Returns a list of dispositions. If there are dispositions than specified by the
-            perPage parameter, the client will be given the URL to retrieve more dispositions in the Link header.
+            `perPage` parameter, the client will be given the URL to retrieve more dispositions in the Link header.
             If the client specifies extension mappings, the response will use them where they match. Otherwise,
             the full resource address is used.
           content:
@@ -1853,7 +1853,7 @@ paths:
         - $ref: '#/components/parameters/PerPage'
       description: >
         Creating a named query creates a view on the events in the repository, accessible through it's events resource.
-        Creating a query also returns events up to the amount defined in perPage. To obtain the remaining events,
+        Creating a query also returns events up to the amount defined in `perPage`. To obtain the remaining events,
         the client can use the URL in the `Link` header. When a query is created, the server returns the query URL in the
         `Location` header. The client can use this URL to start a query subscription immediately after creating the query.
       requestBody:
@@ -2700,7 +2700,7 @@ components:
         default: "<https://www.gs1.org/sites/default/files/docs/epc/EPCIS-Standard-2.0.pdf>; type=application/pdf; rel=help'"
     Link:
       description: >
-        A pagination header link. This header works together with the `perPage` and `NextPageToken` query string parameters.
+        A pagination header link. This header works together with the `perPage` and `nextPageToken` query string parameters.
       type: string
       format: uri
       example: '<https://example.com/events/all?perPage=30&nextPageToken=3A1550673874978%2Ci%3AU6D7DENAKwM2gQRRwGrataeq>; rel="next"'
@@ -2708,7 +2708,8 @@ components:
       description: >
         Parameter to control pagination. `perPage` specifies the maximum number of events returned in one batch.
         As long as there are more resources to retrieve, the Link header contains the URL of the next page and
-        the attribute `'rel="next"'`. The last page is indicated by the absence of the `'rel="next"'`.
+        the attribute `'rel="next"'`. The last page is indicated by the absence of the `'rel="next"'`. Depending on the implementation, 
+        there can be an upper limit for the `perPage` value, which should be stated in the documentation.
       type: integer
       default: 30
     NextPageToken:
