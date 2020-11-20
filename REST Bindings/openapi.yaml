@@ -1739,7 +1739,7 @@ paths:
         - queries
         - masterdata
       summary: >
-        Creates and executes a named EPCIS master data query and returns results with option to paginate if needed.
+        Creates and executes a named EPCIS master data query and returns results with the option to use pagination if needed.
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-version'
         - $ref: '#/components/parameters/GS1-EPCIS-min'
@@ -1813,7 +1813,7 @@ paths:
       tags:
         - queries
         - events
-      summary: Returns events with option to paginate if needed. This endpoint supports query subscriptions.
+      summary: Returns events with the option to use pagination if needed. This endpoint supports query subscriptions.
       parameters:
         - $ref: '#/components/parameters/GS1-QUERY-minRecordTime'
         - $ref: '#/components/parameters/Upgrade'
@@ -1842,7 +1842,7 @@ paths:
       tags:
         - queries
         - events
-      summary: Creates and executes a named EPCIS events query and returns results with option to paginate if needed.
+      summary: Creates and executes a named EPCIS events query and returns results with the option to use pagination if needed.
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-version'
         - $ref: '#/components/parameters/GS1-EPCIS-min'
@@ -1915,7 +1915,7 @@ paths:
         - queries
         - masterdata
       summary: >
-        Executes anonymous master data queries and returns results with option to paginate if needed.
+        Executes anonymous master data queries and returns results with the option to use pagination if needed.
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-version'
         - $ref: '#/components/parameters/GS1-EPCIS-min'
@@ -2016,7 +2016,7 @@ paths:
       tags:
         - queries
         - events
-      summary: Executes anonymous EPCIS events query and returns results with option to paginate if needed.
+      summary: Executes anonymous EPCIS events query and returns results with the option to use pagination if needed.
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-version'
         - $ref: '#/components/parameters/GS1-EPCIS-min'
@@ -2074,7 +2074,7 @@ paths:
       tags:
         - queries
         - events
-      summary: Returns events with option to paginate if needed. This endpoint supports query subscriptions.
+      summary: Returns events with the option to use pagination if needed. This endpoint supports query subscriptions.
       parameters:
         - $ref: '#/components/parameters/GS1-QUERY-minRecordTime'
         - $ref: '#/components/parameters/Upgrade'
