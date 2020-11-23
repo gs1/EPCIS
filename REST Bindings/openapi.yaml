@@ -260,8 +260,8 @@ paths:
                   type: string
                   format: uri
                   example:
-                    - /events/ObjectEvent/oa123
-                    - /events/ObjectEvent/oa345
+                    - /eventTypes/ObjectEvent/events/oa123
+                    - /eventTypes/ObjectEvent/events/oa345
                 uniqueItems: true
         '401':
           $ref: '#/components/responses/401AuthorizationInformationMissing'
@@ -370,7 +370,7 @@ paths:
         Example:
 
         ```
-        https://example.com/events/ObjectEvent?EQ_bizStep=urn%3Aepcglobal%3Acbv%3Abizstep%3Ashipping%2Curn%3Aepcglobal%3Acbv%3Abizstep%3Adecommissioning&GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
+        https://example.com/eventTypes/ObjectEvent/events?EQ_bizStep=urn%3Aepcglobal%3Acbv%3Abizstep%3Ashipping%2Curn%3Aepcglobal%3Acbv%3Abizstep%3Adecommissioning&GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
         ```
       responses:
         '200':
@@ -599,7 +599,7 @@ paths:
         Example:
 
         ```
-        https://example.com/epcs/urn:epc:id:sgtin:0614141.107346.2018/events/ObjectEvent?EQ_bizStep=urn%3Aepcglobal%3Acbv%3Abizstep%3Ashipping%2Curn%3Aepcglobal%3Acbv%3Abizstep%3Adecommissioning&GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
+        https://example.com/epcs/urn:epc:id:sgtin:0614141.107346.2018/events?EQ_bizStep=urn%3Aepcglobal%3Acbv%3Abizstep%3Ashipping%2Curn%3Aepcglobal%3Acbv%3Abizstep%3Adecommissioning&GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
         ```
       responses:
         '200':
@@ -767,7 +767,7 @@ paths:
         Example:
 
         ```
-        https://example.com/bizSteps/urn:epcglobal:cbv:bizstep:receiving/events/ObjectEvent?GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
+        https://example.com/bizSteps/urn:epcglobal:cbv:bizstep:receiving/events?GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
         ```
       responses:
         '200':
@@ -936,7 +936,7 @@ paths:
         Example:
 
         ```
-        https://example.com/bizLocations/urn:epc:id:sgln:0012345.11111.0/events/ObjectEvent?GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
+        https://example.com/bizLocations/urn:epc:id:sgln:0012345.11111.0/ /eventTypes/ObjectEvent/events?GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
         ```
       responses:
         '200':
@@ -1105,7 +1105,7 @@ paths:
         Example:
 
         ```
-        https://example.com/readPoints/urn:epc:id:sgln:0012345.11111.400/events/ObjectEvent?GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
+        https://example.com/readPoints/urn:epc:id:sgln:0012345.11111.400/ /eventTypes/ObjectEvent/events?GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
         ```
       responses:
         '200':
@@ -1274,7 +1274,7 @@ paths:
         Example:
 
         ```
-        https://example.com/dispositions/urn:epcglobal:cbv:disp:in_progress/events/ObjectEvent?GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
+        https://example.com/dispositions/urn:epcglobal:cbv:disp:in_progress/events?GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
         ```
       responses:
         '200':
@@ -2217,7 +2217,7 @@ components:
       description: Location header of a resource
       type: string
       format: uri
-      example: /events/ObjectEvent/eventId123
+      example: /eventTypes/ObjectEvent/events/eventId123
     RFC7807ProblemResponseBody:
       description: A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)
       type: object
@@ -2448,7 +2448,7 @@ components:
         A pagination header link. This header works together with the `perPage` and `nextPageToken` query string parameters.
       type: string
       format: uri
-      example: '<https://example.com/events/all?perPage=30&nextPageToken=3A1550673874978%2Ci%3AU6D7DENAKwM2gQRRwGrataeq>; rel="next"'
+      example: '<https://example.com/eventTypes/all/events?perPage=30&nextPageToken=3A1550673874978%2Ci%3AU6D7DENAKwM2gQRRwGrataeq>; rel="next"'
     PerPage:
       description: >
         Parameter to control pagination. `perPage` specifies the maximum number of events returned in one batch.
