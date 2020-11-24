@@ -9,7 +9,7 @@
   "epcisBody": {
    "eventList": [
      {
-		  "id": "_:event1",
+		  "eventID": "_:event1",
 		  "isA": "TransformationEvent",
 		  "eventTime": "2013-10-31T14:58:56.591Z",
 		  "eventTimeZoneOffset": "+02:00",

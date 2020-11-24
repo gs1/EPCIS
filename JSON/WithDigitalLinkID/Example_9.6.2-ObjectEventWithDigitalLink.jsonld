@@ -8,7 +8,7 @@
   "epcisBody": {
     "eventList": [
       {
-        "id": "_:event_example_9_6_2_1",
+        "eventID": "_:event_example_9_6_2_1",
         "isA": "ObjectEvent",
         "eventTime": "2013-06-08T14:58:56.591Z",
         "eventTimeZoneOffset": "+02:00",

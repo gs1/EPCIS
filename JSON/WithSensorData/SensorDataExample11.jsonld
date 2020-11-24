@@ -8,6 +8,7 @@
   "epcisBody": {
     "eventList": [
       {
+		"eventID": "_:event11",
         "isA": "TransactionEvent",
         "eventTime": "2020-07-03T00:05:00-06:00",
         "eventTimeZoneOffset": "-06:00",

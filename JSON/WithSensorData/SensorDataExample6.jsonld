@@ -9,7 +9,7 @@
   "epcisBody": {
   "eventList": [
      {
-		  "id": "_:event6",
+		  "eventID": "_:event6",
 		  "isA": "ObjectEvent",
 		  "action": "OBSERVE",
 		  "bizStep": "urn:epcglobal:cbv:bizstep:inspecting",

@@ -8,7 +8,7 @@
   "epcisBody": {
     "eventList": [
       {
-        "id": "_:event_example_9_6_1_1",
+        "eventID": "_:event_example_9_6_1_1",
         "isA": "ObjectEvent",
         "action": "OBSERVE",
         "bizStep": "urn:epcglobal:cbv:bizstep:shipping",
@@ -22,7 +22,7 @@
         ]
       },
       {
-        "id": "_:event_example_9_6_1_2",
+        "eventID": "_:event_example_9_6_1_2",
         "isA": "ObjectEvent",
         "action": "OBSERVE",
         "bizStep": "urn:epcglobal:cbv:bizstep:receiving",

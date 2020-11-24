@@ -9,7 +9,7 @@
   "epcisBody": {
    "eventList": [
      {
-		  "id": "_:event_d",
+		  "eventID": "_:event_d",
 		  "isA": "AssociationEvent",
 		  "eventTime": "2019-11-04T14:00:00.000+01:00",
 		  "eventTimeZoneOffset": "+01:00",

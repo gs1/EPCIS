@@ -9,7 +9,7 @@
   "epcisBody": {
    "eventList": [
      {
-		  "id": "_:event1",
+		  "eventID": "_:event1",
 		  "isA": "ObjectEvent",
 		  "action": "OBSERVE",
 		  "rdfs:comment": "An ObjectEvent may be used for reporting an observation",
@@ -23,7 +23,7 @@
      },
 
      {
-		  "id": "_:event2",
+		  "eventID": "_:event2",
 		  "isA": "ObjectEvent",
 		  "action": "OBSERVE",
 		  "bizStep": "urn:epcglobal:cbv:bizstep:receiving",

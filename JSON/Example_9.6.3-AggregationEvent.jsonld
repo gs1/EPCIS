@@ -9,7 +9,7 @@
   "epcisBody": {
    "eventList": [
      {
-		  "id": "_:event1",
+		  "eventID": "_:event1",
 		  "isA": "AggregationEvent",
 		  "eventTime": "2013-06-08T14:58:56.591Z",
 		  "eventTimeZoneOffset": "+02:00",
