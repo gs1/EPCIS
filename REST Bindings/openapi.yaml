@@ -1440,7 +1440,7 @@ paths:
           description: >
             The EPCIS query body, either for EPCIS events or master data resources. A GET on a named query
             will not return results. To retrieve EPCIS events or master data, use the `/queries/{queryName}/events`
-            or `/queries/{namedQuery}/masterdata` respectively.
+            or `/queries/{queryName}/masterdata` respectively.
           content:
             application/json:
               schema:
