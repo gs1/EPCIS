@@ -1705,6 +1705,7 @@ paths:
         - $ref: '#/components/parameters/GS1-EPCIS-extensions'
         - $ref: '#/components/parameters/GS1-CBV-extensions'
         - $ref: '#/components/parameters/GS1-QUERY-minRecordTime'
+        - $ref: '#/components/parameters/PerPage'
       description: >
         `SimpleMasterDataQuery` is an endpoint to create anonymous queries. A query is created once and 
         returned to the client. Unlike name queries, these queries are not stored.
@@ -1806,6 +1807,7 @@ paths:
         - $ref: '#/components/parameters/GS1-EPCIS-extensions'
         - $ref: '#/components/parameters/GS1-CBV-extensions'
         - $ref: '#/components/parameters/GS1-QUERY-minRecordTime'
+        - $ref: '#/components/parameters/PerPage'
       description: >
         `SimpleEventQuery` is an endpoint to execute anonymous queries for EPCIS events.
         A query is created once and returned to the client. Unlike named queries, these queries are not stored.
