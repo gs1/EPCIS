@@ -352,7 +352,7 @@ paths:
         - $ref: '#/components/parameters/GS1-query-schedule-dayOfMonth'
         - $ref: '#/components/parameters/GS1-query-schedule-month'
         - $ref: '#/components/parameters/GS1-query-schedule-dayOfWeek'
-        
+
 
       description: >
         This endpoint returns all sub-resources of an EPCIS events, which currently is 'events'. A server may
@@ -382,6 +382,7 @@ paths:
       - $ref: '#/components/parameters/GS1-CBV-version'
       - $ref: '#/components/parameters/GS1-EPCIS-extensions'
       - $ref: '#/components/parameters/GS1-CBV-extensions'
+
     options:
       tags:
         - discovery
@@ -439,8 +440,7 @@ paths:
         - $ref: '#/components/parameters/GS1-query-schedule-dayOfMonth'
         - $ref: '#/components/parameters/GS1-query-schedule-month'
         - $ref: '#/components/parameters/GS1-query-schedule-dayOfWeek'
-        
-
+        - $ref: '#/components/parameters/GS1-query-trigger-event'
       description: >
         This endpoint returns all EPCIS events of a specific EPCIS event type up to the amount defined in `perPage`.
         The server returns a 'link' header to point to the remaining results.
@@ -690,7 +690,7 @@ paths:
         - $ref: '#/components/parameters/GS1-query-schedule-dayOfMonth'
         - $ref: '#/components/parameters/GS1-query-schedule-month'
         - $ref: '#/components/parameters/GS1-query-schedule-dayOfWeek'
-        
+
 
       description: >
         This endpoint returns all sub-resources of an electronic product code, which currently is 'events'.
@@ -746,7 +746,8 @@ paths:
         - $ref: '#/components/parameters/GS1-query-schedule-dayOfMonth'
         - $ref: '#/components/parameters/GS1-query-schedule-month'
         - $ref: '#/components/parameters/GS1-query-schedule-dayOfWeek'
-        
+        - $ref: '#/components/parameters/GS1-query-trigger-event'
+
 
       description: >
         This endpoint helps to navigate EPCIS events by EPCIS event type within a top-level resource. It returns all
@@ -940,7 +941,7 @@ paths:
         - $ref: '#/components/parameters/GS1-query-schedule-dayOfMonth'
         - $ref: '#/components/parameters/GS1-query-schedule-month'
         - $ref: '#/components/parameters/GS1-query-schedule-dayOfWeek'
-        
+
 
       description: >
         This endpoint returns all sub-resources of an business step, which currently is 'events'.
@@ -995,7 +996,8 @@ paths:
         - $ref: '#/components/parameters/GS1-query-schedule-dayOfMonth'
         - $ref: '#/components/parameters/GS1-query-schedule-month'
         - $ref: '#/components/parameters/GS1-query-schedule-dayOfWeek'
-        
+        - $ref: '#/components/parameters/GS1-query-trigger-event'
+
       description: >
         This endpoint helps to navigate EPCIS events by EPCIS event type within a top-level resource. It returns all
         EPCIS events of a specific EPCIS event type and business step, up to the amount defined
@@ -1188,7 +1190,7 @@ paths:
         - $ref: '#/components/parameters/GS1-query-schedule-dayOfMonth'
         - $ref: '#/components/parameters/GS1-query-schedule-month'
         - $ref: '#/components/parameters/GS1-query-schedule-dayOfWeek'
-        
+
 
       description: >
         This endpoint returns all sub-resources of an business location, which currently is 'events'.
@@ -1245,7 +1247,8 @@ paths:
         - $ref: '#/components/parameters/GS1-query-schedule-dayOfMonth'
         - $ref: '#/components/parameters/GS1-query-schedule-month'
         - $ref: '#/components/parameters/GS1-query-schedule-dayOfWeek'
-        
+        - $ref: '#/components/parameters/GS1-query-trigger-event'
+
       description: >
         This endpoint helps to navigate EPCIS events by EPCIS event type within a top-level resource. It returns all
         EPCIS events of a specific EPCIS event type and business location, up to the amount defined
@@ -1437,7 +1440,7 @@ paths:
         - $ref: '#/components/parameters/GS1-query-schedule-dayOfMonth'
         - $ref: '#/components/parameters/GS1-query-schedule-month'
         - $ref: '#/components/parameters/GS1-query-schedule-dayOfWeek'
-        
+
 
       description: >
         This endpoint returns all sub-resources of an read point, which currently is 'events'.
@@ -1493,7 +1496,8 @@ paths:
         - $ref: '#/components/parameters/GS1-query-schedule-dayOfMonth'
         - $ref: '#/components/parameters/GS1-query-schedule-month'
         - $ref: '#/components/parameters/GS1-query-schedule-dayOfWeek'
-        
+        - $ref: '#/components/parameters/GS1-query-trigger-event'
+
       description: >
         This endpoint helps to navigate EPCIS events by EPCIS event type within a top-level resource. It returns all
         EPCIS events of a specific EPCIS event type and read point, up to the amount defined
@@ -1685,7 +1689,7 @@ paths:
         - $ref: '#/components/parameters/GS1-query-schedule-dayOfMonth'
         - $ref: '#/components/parameters/GS1-query-schedule-month'
         - $ref: '#/components/parameters/GS1-query-schedule-dayOfWeek'
-        
+
 
       description: >
         This endpoint returns all sub-resources of an disposition, which currently is 'events'.
@@ -1741,7 +1745,8 @@ paths:
         - $ref: '#/components/parameters/GS1-query-schedule-dayOfMonth'
         - $ref: '#/components/parameters/GS1-query-schedule-month'
         - $ref: '#/components/parameters/GS1-query-schedule-dayOfWeek'
-        
+        - $ref: '#/components/parameters/GS1-query-trigger-event'
+
       description: >
         This endpoint helps to navigate EPCIS events by EPCIS event type within a top-level resource. It returns all
         EPCIS events of a specific EPCIS event type and disposition, up to the amount defined
@@ -2138,7 +2143,7 @@ paths:
                 - $ref: '#/components/schemas/GS1-query-abstract-subscription'
                 - oneOf:
                     - $ref: '#/components/schemas/GS1-query-schedule-subscriptions'
-                    - $ref: '#/components/schemas/GS1-query-rule-subscriptions'
+                    - $ref: '#/components/schemas/GS1-query-trigger-event-subscriptions'
       responses:
         '201':
           headers:
@@ -2343,12 +2348,13 @@ paths:
         - $ref: '#/components/parameters/GS1-query-schedule-dayOfMonth'
         - $ref: '#/components/parameters/GS1-query-schedule-month'
         - $ref: '#/components/parameters/GS1-query-schedule-dayOfWeek'
-        
+        - $ref: '#/components/parameters/GS1-query-trigger-event'
+
       description: >
         The `GET` endpoint is to retrieve large results that don't fit into the response of `POST` request.
         It can also be used to subscribe to anonymous queries.
         Furthermore, this endpoint can also be used to subscribe to queries using Websocket. To do this, the client
-        must specify the query schedule or trigger EPCIS event. Please note that
+        must specify the query schedule or trigger EPCIS event as URL query string parameter. Please note that
         schedule parameters and the trigger event parameter are mutually exclusive.
       responses:
         '101':
