@@ -44,7 +44,7 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-version'
         - $ref: '#/components/parameters/GS1-EPCIS-extensions'
         - $ref: '#/components/parameters/GS1-CBV-extensions'
-        - $ref: '#/components/parameters/GS1-Vendor-version'
+        - $ref: '#/components/parameters/GS1-vendor-version'
         - $ref: '#/components/parameters/GS1-CAPTURE-limit'
         - $ref: '#/components/parameters/GS1-CAPTURE-file-size-limit'
       responses:
@@ -296,6 +296,83 @@ paths:
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
+  /eventTypes/{eventType}:
+    parameters:
+      - $ref: '#/components/parameters/EventType'
+    options:
+      tags:
+        - discovery
+      summary: Query meta data of an event type.
+      description: >
+        EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
+        of EPCIS and CBV. The `OPTIONS` method allows the client to discover which vocabularies and EPCIS and CBV
+        versions are used.
+      responses:
+        204:
+          description: >
+            The `OPTIONS` method is used as a discovery service for EPCIS event type. It describes which EPCIS and CBV
+            versions are supported as well as  EPCIS and CBV extensions.
+            The list of headers is not exhaustive. It only describes the functionality specific to EPCIS 2.0.
+          headers:
+            Allow:
+              schema:
+                example:
+                  - GET
+                  - OPTIONS
+                type: string
+                enum:
+                  - GET
+                  - OPTIONS
+            GS1-EPCIS-version:
+              $ref: '#/components/headers/GS1-EPCIS-version'
+            GS1-EPCIS-min:
+              $ref: '#/components/headers/GS1-EPCIS-min'
+            GS1-EPCIS-max:
+              $ref: '#/components/headers/GS1-EPCIS-max'
+            GS1-CBV-version:
+              $ref: '#/components/headers/GS1-CBV-version'
+            GS1-EPCIS-extensions:
+              $ref: '#/components/headers/GS1-EPCIS-extensions'
+            GS1-Vendor-version:
+              $ref: '#/components/headers/GS1-Vendor-version'
+            GS1-CBV-extensions:
+              $ref: '#/components/headers/GS1-CBV-extensions'
+    get:
+      tags:
+        - events
+      summary: Returns all sub-resources of an EPCIS events. This endpoint does not work with 'all'
+      parameters:
+        - $ref: '#/components/parameters/PerPage'
+        - $ref: '#/components/parameters/NextPageToken'
+        - $ref: '#/components/parameters/GS1-query-reportIfEmpty'
+        - $ref: '#/components/parameters/GS1-query-initialRecordTime'
+        - $ref: '#/components/parameters/GS1-query-schedule-second'
+        - $ref: '#/components/parameters/GS1-query-schedule-minute'
+        - $ref: '#/components/parameters/GS1-query-schedule-hour'
+        - $ref: '#/components/parameters/GS1-query-schedule-dayOfMonth'
+        - $ref: '#/components/parameters/GS1-query-schedule-month'
+        - $ref: '#/components/parameters/GS1-query-schedule-dayOfWeek'
+        
+
+      description: >
+        This endpoint returns all sub-resources of an EPCIS events, which currently is 'events'. A server may
+        add additional endpoints, for example `schema` to access the EPCIS event type schema.
+      responses:
+        '200':
+          $ref: '#/components/responses/200TopLevelOrEventTypeSubResource'
+        '400':
+          $ref: '#/components/responses/400QueryException'
+        '401':
+          $ref: '#/components/responses/401AuthorizationInformationMissing'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '404':
+          $ref: '#/components/responses/404ResourceNotFound'
+        '414':
+          $ref: '#/components/responses/414URLTooLong'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
+
   /eventTypes/{eventType}/events:
     parameters:
       - $ref: '#/components/parameters/EventType'
@@ -362,7 +439,7 @@ paths:
         - $ref: '#/components/parameters/GS1-query-schedule-dayOfMonth'
         - $ref: '#/components/parameters/GS1-query-schedule-month'
         - $ref: '#/components/parameters/GS1-query-schedule-dayOfWeek'
-        - $ref: '#/components/parameters/GS1-query-trigger-event'
+        
 
       description: >
         This endpoint returns all EPCIS events of a specific EPCIS event type up to the amount defined in `perPage`.
@@ -389,7 +466,6 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
-
         '414':
           $ref: '#/components/responses/414URLTooLong'
         '500':
@@ -503,7 +579,6 @@ paths:
       responses:
         204:
           $ref: '#/components/responses/204TopLevelResourcesOptionsResponse'
-
     get:
       tags:
         - events
@@ -559,12 +634,85 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '500':
           $ref: '#/components/responses/500ImplementationException'
+  /epcs/{epc}:
+    parameters:
+      - $ref: '#/components/parameters/EPC'
+    options:
+      tags:
+        - discovery
+      summary: Query meta data of an electronic product code.
+      description: >
+        EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
+        of EPCIS and CBV. The `OPTIONS` method allows the client to discover which vocabularies and EPCIS and CBV
+        versions are used.
+      responses:
+        204:
+          description: >
+            The `OPTIONS` method is used as a discovery service for an electronic product code. It describes which EPCIS
+            and CBV versions are supported as well as EPCIS and CBV extensions.
+            The list of headers is not exhaustive. It only describes the functionality specific to EPCIS 2.0.
+          headers:
+            Allow:
+              schema:
+                example:
+                  - GET
+                  - OPTIONS
+                type: string
+                enum:
+                  - GET
+                  - OPTIONS
+            GS1-EPCIS-version:
+              $ref: '#/components/headers/GS1-EPCIS-version'
+            GS1-EPCIS-min:
+              $ref: '#/components/headers/GS1-EPCIS-min'
+            GS1-EPCIS-max:
+              $ref: '#/components/headers/GS1-EPCIS-max'
+            GS1-CBV-version:
+              $ref: '#/components/headers/GS1-CBV-version'
+            GS1-EPCIS-extensions:
+              $ref: '#/components/headers/GS1-EPCIS-extensions'
+            GS1-Vendor-version:
+              $ref: '#/components/headers/GS1-Vendor-version'
+            GS1-CBV-extensions:
+              $ref: '#/components/headers/GS1-CBV-extensions'
+    get:
+      tags:
+        - events
+      summary: Returns all sub-resources of an electronic product code.
+      parameters:
+        - $ref: '#/components/parameters/PerPage'
+        - $ref: '#/components/parameters/NextPageToken'
+        - $ref: '#/components/parameters/GS1-query-reportIfEmpty'
+        - $ref: '#/components/parameters/GS1-query-initialRecordTime'
+        - $ref: '#/components/parameters/GS1-query-schedule-second'
+        - $ref: '#/components/parameters/GS1-query-schedule-minute'
+        - $ref: '#/components/parameters/GS1-query-schedule-hour'
+        - $ref: '#/components/parameters/GS1-query-schedule-dayOfMonth'
+        - $ref: '#/components/parameters/GS1-query-schedule-month'
+        - $ref: '#/components/parameters/GS1-query-schedule-dayOfWeek'
+        
 
+      description: >
+        This endpoint returns all sub-resources of an electronic product code, which currently is 'events'.
+      responses:
+        '200':
+          $ref: '#/components/responses/200TopLevelOrEventTypeSubResource'
+        '400':
+          $ref: '#/components/responses/400QueryException'
+        '401':
+          $ref: '#/components/responses/401AuthorizationInformationMissing'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '404':
+          $ref: '#/components/responses/404ResourceNotFound'
+        '414':
+          $ref: '#/components/responses/414URLTooLong'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
 
   /epcs/{epc}/events:
     parameters:
       - $ref: '#/components/parameters/EPC'
-
     options:
       tags:
         - discovery
@@ -598,7 +746,7 @@ paths:
         - $ref: '#/components/parameters/GS1-query-schedule-dayOfMonth'
         - $ref: '#/components/parameters/GS1-query-schedule-month'
         - $ref: '#/components/parameters/GS1-query-schedule-dayOfWeek'
-        - $ref: '#/components/parameters/GS1-query-trigger-event'
+        
 
       description: >
         This endpoint helps to navigate EPCIS events by EPCIS event type within a top-level resource. It returns all
@@ -737,11 +885,83 @@ paths:
                 items:
                   type: string
                   format: uri
+  /bizSteps/{bizStep}:
+    parameters:
+      - $ref: '#/components/parameters/BizStep'
+    options:
+      tags:
+        - discovery
+      summary: Query meta data of a business step.
+      description: >
+        EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
+        of EPCIS and CBV. The `OPTIONS` method allows the client to discover which vocabularies and EPCIS and CBV
+        versions are used.
+      responses:
+        204:
+          description: >
+            The `OPTIONS` method is used as a discovery service for an business step. It describes which EPCIS and CBV versions are supported as well as EPCIS and CBV extensions.
+            The list of headers is not exhaustive. It only describes the functionality specific to EPCIS 2.0.
+          headers:
+            Allow:
+              schema:
+                example:
+                  - GET
+                  - OPTIONS
+                type: string
+                enum:
+                  - GET
+                  - OPTIONS
+            GS1-EPCIS-version:
+              $ref: '#/components/headers/GS1-EPCIS-version'
+            GS1-EPCIS-min:
+              $ref: '#/components/headers/GS1-EPCIS-min'
+            GS1-EPCIS-max:
+              $ref: '#/components/headers/GS1-EPCIS-max'
+            GS1-CBV-version:
+              $ref: '#/components/headers/GS1-CBV-version'
+            GS1-EPCIS-extensions:
+              $ref: '#/components/headers/GS1-EPCIS-extensions'
+            GS1-Vendor-version:
+              $ref: '#/components/headers/GS1-Vendor-version'
+            GS1-CBV-extensions:
+              $ref: '#/components/headers/GS1-CBV-extensions'
+    get:
+      tags:
+        - events
+      summary: Returns all sub-resources of a business step.
+      parameters:
+        - $ref: '#/components/parameters/PerPage'
+        - $ref: '#/components/parameters/NextPageToken'
+        - $ref: '#/components/parameters/GS1-query-reportIfEmpty'
+        - $ref: '#/components/parameters/GS1-query-initialRecordTime'
+        - $ref: '#/components/parameters/GS1-query-schedule-second'
+        - $ref: '#/components/parameters/GS1-query-schedule-minute'
+        - $ref: '#/components/parameters/GS1-query-schedule-hour'
+        - $ref: '#/components/parameters/GS1-query-schedule-dayOfMonth'
+        - $ref: '#/components/parameters/GS1-query-schedule-month'
+        - $ref: '#/components/parameters/GS1-query-schedule-dayOfWeek'
+        
 
+      description: >
+        This endpoint returns all sub-resources of an business step, which currently is 'events'.
+      responses:
+        '200':
+          $ref: '#/components/responses/200TopLevelOrEventTypeSubResource'
+        '400':
+          $ref: '#/components/responses/400QueryException'
+        '401':
+          $ref: '#/components/responses/401AuthorizationInformationMissing'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '404':
+          $ref: '#/components/responses/404ResourceNotFound'
+        '414':
+          $ref: '#/components/responses/414URLTooLong'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
   /bizSteps/{bizStep}/events:
     parameters:
       - $ref: '#/components/parameters/BizStep'
-
     options:
       tags:
         - discovery
@@ -775,7 +995,7 @@ paths:
         - $ref: '#/components/parameters/GS1-query-schedule-dayOfMonth'
         - $ref: '#/components/parameters/GS1-query-schedule-month'
         - $ref: '#/components/parameters/GS1-query-schedule-dayOfWeek'
-        - $ref: '#/components/parameters/GS1-query-trigger-event'
+        
       description: >
         This endpoint helps to navigate EPCIS events by EPCIS event type within a top-level resource. It returns all
         EPCIS events of a specific EPCIS event type and business step, up to the amount defined
@@ -873,7 +1093,6 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
-
         - $ref: '#/components/parameters/GS1-EPCIS-version'
         - $ref: '#/components/parameters/GS1-EPCIS-min'
         - $ref: '#/components/parameters/GS1-EPCIS-max'
@@ -914,6 +1133,80 @@ paths:
                   type: string
                   format: uri
 
+  /bizLocations/{bizLocation}:
+    parameters:
+      - $ref: '#/components/parameters/BizLocation'
+    options:
+      tags:
+        - discovery
+      summary: Query meta data of a business location.
+      description: >
+        EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
+        of EPCIS and CBV. The `OPTIONS` method allows the client to discover which vocabularies and EPCIS and CBV
+        versions are used.
+      responses:
+        204:
+          description: >
+            The `OPTIONS` method is used as a discovery service for an business location. It describes which EPCIS and CBV versions are supported as well as EPCIS and CBV extensions.
+            The list of headers is not exhaustive. It only describes the functionality specific to EPCIS 2.0.
+          headers:
+            Allow:
+              schema:
+                example:
+                  - GET
+                  - OPTIONS
+                type: string
+                enum:
+                  - GET
+                  - OPTIONS
+            GS1-EPCIS-version:
+              $ref: '#/components/headers/GS1-EPCIS-version'
+            GS1-EPCIS-min:
+              $ref: '#/components/headers/GS1-EPCIS-min'
+            GS1-EPCIS-max:
+              $ref: '#/components/headers/GS1-EPCIS-max'
+            GS1-CBV-version:
+              $ref: '#/components/headers/GS1-CBV-version'
+            GS1-EPCIS-extensions:
+              $ref: '#/components/headers/GS1-EPCIS-extensions'
+            GS1-Vendor-version:
+              $ref: '#/components/headers/GS1-Vendor-version'
+            GS1-CBV-extensions:
+              $ref: '#/components/headers/GS1-CBV-extensions'
+    get:
+      tags:
+        - events
+      summary: Returns all sub-resources of a business location.
+      parameters:
+        - $ref: '#/components/parameters/PerPage'
+        - $ref: '#/components/parameters/NextPageToken'
+        - $ref: '#/components/parameters/GS1-query-reportIfEmpty'
+        - $ref: '#/components/parameters/GS1-query-initialRecordTime'
+        - $ref: '#/components/parameters/GS1-query-schedule-second'
+        - $ref: '#/components/parameters/GS1-query-schedule-minute'
+        - $ref: '#/components/parameters/GS1-query-schedule-hour'
+        - $ref: '#/components/parameters/GS1-query-schedule-dayOfMonth'
+        - $ref: '#/components/parameters/GS1-query-schedule-month'
+        - $ref: '#/components/parameters/GS1-query-schedule-dayOfWeek'
+        
+
+      description: >
+        This endpoint returns all sub-resources of an business location, which currently is 'events'.
+      responses:
+        '200':
+          $ref: '#/components/responses/200TopLevelOrEventTypeSubResource'
+        '400':
+          $ref: '#/components/responses/400QueryException'
+        '401':
+          $ref: '#/components/responses/401AuthorizationInformationMissing'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '404':
+          $ref: '#/components/responses/404ResourceNotFound'
+        '414':
+          $ref: '#/components/responses/414URLTooLong'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
 
   /bizLocations/{bizLocation}/events:
     parameters:
@@ -952,7 +1245,7 @@ paths:
         - $ref: '#/components/parameters/GS1-query-schedule-dayOfMonth'
         - $ref: '#/components/parameters/GS1-query-schedule-month'
         - $ref: '#/components/parameters/GS1-query-schedule-dayOfWeek'
-        - $ref: '#/components/parameters/GS1-query-trigger-event'
+        
       description: >
         This endpoint helps to navigate EPCIS events by EPCIS event type within a top-level resource. It returns all
         EPCIS events of a specific EPCIS event type and business location, up to the amount defined
@@ -1090,12 +1383,83 @@ paths:
                 items:
                   type: string
                   format: uri
+  /readPoints/{readPoint}:
+    parameters:
+      - $ref: '#/components/parameters/ReadPoint'
+    options:
+      tags:
+        - discovery
+      summary: Query meta data of a read point.
+      description: >
+        EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
+        of EPCIS and CBV. The `OPTIONS` method allows the client to discover which vocabularies and EPCIS and CBV versions are used.
+      responses:
+        204:
+          description: >
+            The `OPTIONS` method is used as a discovery service for an read point. It describes which EPCIS and CBV versions are supported as well as EPCIS and CBV extensions.
+            The list of headers is not exhaustive. It only describes the functionality specific to EPCIS 2.0.
+          headers:
+            Allow:
+              schema:
+                example:
+                  - GET
+                  - OPTIONS
+                type: string
+                enum:
+                  - GET
+                  - OPTIONS
+            GS1-EPCIS-version:
+              $ref: '#/components/headers/GS1-EPCIS-version'
+            GS1-EPCIS-min:
+              $ref: '#/components/headers/GS1-EPCIS-min'
+            GS1-EPCIS-max:
+              $ref: '#/components/headers/GS1-EPCIS-max'
+            GS1-CBV-version:
+              $ref: '#/components/headers/GS1-CBV-version'
+            GS1-EPCIS-extensions:
+              $ref: '#/components/headers/GS1-EPCIS-extensions'
+            GS1-Vendor-version:
+              $ref: '#/components/headers/GS1-Vendor-version'
+            GS1-CBV-extensions:
+              $ref: '#/components/headers/GS1-CBV-extensions'
+    get:
+      tags:
+        - events
+      summary: Returns all sub-resources of a read point.
+      parameters:
+        - $ref: '#/components/parameters/PerPage'
+        - $ref: '#/components/parameters/NextPageToken'
+        - $ref: '#/components/parameters/GS1-query-reportIfEmpty'
+        - $ref: '#/components/parameters/GS1-query-initialRecordTime'
+        - $ref: '#/components/parameters/GS1-query-schedule-second'
+        - $ref: '#/components/parameters/GS1-query-schedule-minute'
+        - $ref: '#/components/parameters/GS1-query-schedule-hour'
+        - $ref: '#/components/parameters/GS1-query-schedule-dayOfMonth'
+        - $ref: '#/components/parameters/GS1-query-schedule-month'
+        - $ref: '#/components/parameters/GS1-query-schedule-dayOfWeek'
+        
 
+      description: >
+        This endpoint returns all sub-resources of an read point, which currently is 'events'.
+      responses:
+        '200':
+          $ref: '#/components/responses/200TopLevelOrEventTypeSubResource'
+        '400':
+          $ref: '#/components/responses/400QueryException'
+        '401':
+          $ref: '#/components/responses/401AuthorizationInformationMissing'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '404':
+          $ref: '#/components/responses/404ResourceNotFound'
+        '414':
+          $ref: '#/components/responses/414URLTooLong'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
 
   /readPoints/{readPoint}/events:
     parameters:
       - $ref: '#/components/parameters/ReadPoint'
-
     options:
       tags:
         - discovery
@@ -1129,7 +1493,7 @@ paths:
         - $ref: '#/components/parameters/GS1-query-schedule-dayOfMonth'
         - $ref: '#/components/parameters/GS1-query-schedule-month'
         - $ref: '#/components/parameters/GS1-query-schedule-dayOfWeek'
-        - $ref: '#/components/parameters/GS1-query-trigger-event'
+        
       description: >
         This endpoint helps to navigate EPCIS events by EPCIS event type within a top-level resource. It returns all
         EPCIS events of a specific EPCIS event type and read point, up to the amount defined
@@ -1267,12 +1631,83 @@ paths:
                 items:
                   type: string
                   format: uri
+  /dispositions/{disposition}:
+    parameters:
+      - $ref: '#/components/parameters/Disposition'
+    options:
+      tags:
+        - discovery
+      summary: Query meta data of a disposition.
+      description: >
+        EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
+        of EPCIS and CBV. The `OPTIONS` method allows the client to discover which vocabularies and EPCIS and CBV versions are used.
+      responses:
+        204:
+          description: >
+            The `OPTIONS` method is used as a discovery service for an disposition. It describes which EPCIS and CBV versions are supported as well as EPCIS and CBV extensions.
+            The list of headers is not exhaustive. It only describes the functionality specific to EPCIS 2.0.
+          headers:
+            Allow:
+              schema:
+                example:
+                  - GET
+                  - OPTIONS
+                type: string
+                enum:
+                  - GET
+                  - OPTIONS
+            GS1-EPCIS-version:
+              $ref: '#/components/headers/GS1-EPCIS-version'
+            GS1-EPCIS-min:
+              $ref: '#/components/headers/GS1-EPCIS-min'
+            GS1-EPCIS-max:
+              $ref: '#/components/headers/GS1-EPCIS-max'
+            GS1-CBV-version:
+              $ref: '#/components/headers/GS1-CBV-version'
+            GS1-EPCIS-extensions:
+              $ref: '#/components/headers/GS1-EPCIS-extensions'
+            GS1-Vendor-version:
+              $ref: '#/components/headers/GS1-Vendor-version'
+            GS1-CBV-extensions:
+              $ref: '#/components/headers/GS1-CBV-extensions'
+    get:
+      tags:
+        - events
+      summary: Returns all sub-resources of a disposition.
+      parameters:
+        - $ref: '#/components/parameters/PerPage'
+        - $ref: '#/components/parameters/NextPageToken'
+        - $ref: '#/components/parameters/GS1-query-reportIfEmpty'
+        - $ref: '#/components/parameters/GS1-query-initialRecordTime'
+        - $ref: '#/components/parameters/GS1-query-schedule-second'
+        - $ref: '#/components/parameters/GS1-query-schedule-minute'
+        - $ref: '#/components/parameters/GS1-query-schedule-hour'
+        - $ref: '#/components/parameters/GS1-query-schedule-dayOfMonth'
+        - $ref: '#/components/parameters/GS1-query-schedule-month'
+        - $ref: '#/components/parameters/GS1-query-schedule-dayOfWeek'
+        
 
+      description: >
+        This endpoint returns all sub-resources of an disposition, which currently is 'events'.
+      responses:
+        '200':
+          $ref: '#/components/responses/200TopLevelOrEventTypeSubResource'
+        '400':
+          $ref: '#/components/responses/400QueryException'
+        '401':
+          $ref: '#/components/responses/401AuthorizationInformationMissing'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '404':
+          $ref: '#/components/responses/404ResourceNotFound'
+        '414':
+          $ref: '#/components/responses/414URLTooLong'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
 
   /dispositions/{disposition}/events:
     parameters:
       - $ref: '#/components/parameters/Disposition'
-
     options:
       tags:
         - discovery
@@ -1306,7 +1741,7 @@ paths:
         - $ref: '#/components/parameters/GS1-query-schedule-dayOfMonth'
         - $ref: '#/components/parameters/GS1-query-schedule-month'
         - $ref: '#/components/parameters/GS1-query-schedule-dayOfWeek'
-        - $ref: '#/components/parameters/GS1-query-trigger-event'
+        
       description: >
         This endpoint helps to navigate EPCIS events by EPCIS event type within a top-level resource. It returns all
         EPCIS events of a specific EPCIS event type and disposition, up to the amount defined
@@ -1703,7 +2138,7 @@ paths:
                 - $ref: '#/components/schemas/GS1-query-abstract-subscription'
                 - oneOf:
                     - $ref: '#/components/schemas/GS1-query-schedule-subscriptions'
-                    - $ref: '#/components/schemas/GS1-query-trigger-event-subscriptions'
+                    - $ref: '#/components/schemas/GS1-query-rule-subscriptions'
       responses:
         '201':
           headers:
@@ -1908,12 +2343,12 @@ paths:
         - $ref: '#/components/parameters/GS1-query-schedule-dayOfMonth'
         - $ref: '#/components/parameters/GS1-query-schedule-month'
         - $ref: '#/components/parameters/GS1-query-schedule-dayOfWeek'
-        - $ref: '#/components/parameters/GS1-query-trigger-event'
+        
       description: >
         The `GET` endpoint is to retrieve large results that don't fit into the response of `POST` request.
         It can also be used to subscribe to anonymous queries.
         Furthermore, this endpoint can also be used to subscribe to queries using Websocket. To do this, the client
-        must specify the query schedule or trigger EPCIS event as URL query string parameter. Please note that
+        must specify the query schedule or trigger EPCIS event. Please note that
         schedule parameters and the trigger event parameter are mutually exclusive.
       responses:
         '101':
@@ -2312,6 +2747,33 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/EPCISMasterDataDocument'
+    200TopLevelOrEventTypeSubResource:
+      headers:
+        GS1-EPCIS-version:
+          $ref: '#/components/headers/GS1-EPCIS-version'
+        GS1-EPCIS-min:
+          $ref: '#/components/headers/GS1-EPCIS-min'
+        GS1-EPCIS-max:
+          $ref: '#/components/headers/GS1-EPCIS-max'
+        GS1-CBV-version:
+          $ref: '#/components/headers/GS1-CBV-version'
+        GS1-EPCIS-extensions:
+          $ref: '#/components/headers/GS1-EPCIS-extensions'
+        GS1-CBV-extensions:
+          $ref: '#/components/headers/GS1-CBV-extensions'
+        Link:
+          $ref: '#/components/headers/Link'
+      description: Returns 'events'
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              format: string
+              example:
+                - events
+              enum:
+                - events
 
     200EPCISEventResponse:
       headers:
@@ -2329,7 +2791,7 @@ components:
           $ref: '#/components/headers/GS1-CBV-extensions'
         Link:
           $ref: '#/components/headers/Link'
-      description: Returns EPCIS data
+      description: Returns EPCIS resources
       content:
         application/json:
           schema:
@@ -3185,7 +3647,7 @@ components:
       name: GS1-EPCIS-extensions
       schema:
         $ref: '#/components/schemas/GS1-EPCIS-extensions'
-    GS1-Vendor-version:
+    GS1-vendor-version:
       in: header
       name: GS1-Vendor-version
       schema:
