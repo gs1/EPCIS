@@ -6,30 +6,30 @@ info:
     name: Apache2
 
 tags:
-- name: queries
-  description: |
-    Endpoints to create large named or anonymous queries using the EPCIS query language. Named queries have a custom
-    name and are stored until deleted by the user. Anonymous queries are not persisted and only available to the caller.
-    EPCIS events queries also support query subscription.
-- name: subscriptions
-  description: |
-    EPCIS 2.0 supports query subscriptions with using Webhooks or Websocket.
-- name: masterdata
-  description: |
-    Endpoints to create master data queries and subscribe to those queries.
-- name: events
-  description: |
-    Endpoints that expose EPCIS events as Web resources.
-- name: top-level-resources
-  description: |
-    Endpoints to browse EPCIS events by common top-level resources: electronic product codes, business steps,
-    business locations, read points and dispositions.
-- name: discovery
-  description: |
-    Endpoints to obtain information about the endpoint, such as EPCIS and CBV versions or custom vocabularies.
-- name: capture
-  description: |
-    Endpoints to capture EPCIS events in bulk or individually.
+  - name: queries
+    description: |
+      Endpoints to create large named or anonymous queries using the EPCIS query language. Named queries have a custom
+      name and are stored until deleted by the user. Anonymous queries are not persisted and only available to the caller.
+      EPCIS events queries also support query subscription.
+  - name: subscriptions
+    description: |
+      EPCIS 2.0 supports query subscriptions with using Webhooks or Websocket.
+  - name: masterdata
+    description: |
+      Endpoints to create master data queries and subscribe to those queries.
+  - name: events
+    description: |
+      Endpoints that expose EPCIS events as Web resources.
+  - name: top-level-resources
+    description: |
+      Endpoints to browse EPCIS events by common top-level resources: electronic product codes, business steps,
+      business locations, read points and dispositions.
+  - name: discovery
+    description: |
+      Endpoints to obtain information about the endpoint, such as EPCIS and CBV versions or custom vocabularies.
+  - name: capture
+    description: |
+      Endpoints to capture EPCIS events in bulk or individually.
 
 paths:
   /:
@@ -432,14 +432,8 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
-        - $ref: '#/components/parameters/GS1-query-reportIfEmpty'
         - $ref: '#/components/parameters/GS1-query-initialRecordTime'
-        - $ref: '#/components/parameters/GS1-query-schedule-second'
-        - $ref: '#/components/parameters/GS1-query-schedule-minute'
-        - $ref: '#/components/parameters/GS1-query-schedule-hour'
-        - $ref: '#/components/parameters/GS1-query-schedule-dayOfMonth'
-        - $ref: '#/components/parameters/GS1-query-schedule-month'
-        - $ref: '#/components/parameters/GS1-query-schedule-dayOfWeek'
+        - $ref: '#/components/parameters/GS1-query-reportIfEmpty'
       description: |
         This endpoint returns all EPCIS events of a specific EPCIS event type up to the amount defined in `perPage`.
         The server returns a 'link' header to point to the remaining results.
@@ -739,13 +733,6 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-extensions'
         - $ref: '#/components/parameters/GS1-query-reportIfEmpty'
         - $ref: '#/components/parameters/GS1-query-initialRecordTime'
-        - $ref: '#/components/parameters/GS1-query-schedule-second'
-        - $ref: '#/components/parameters/GS1-query-schedule-minute'
-        - $ref: '#/components/parameters/GS1-query-schedule-hour'
-        - $ref: '#/components/parameters/GS1-query-schedule-dayOfMonth'
-        - $ref: '#/components/parameters/GS1-query-schedule-month'
-        - $ref: '#/components/parameters/GS1-query-schedule-dayOfWeek'
-
 
       description: |
         This endpoint helps to navigate EPCIS events by EPCIS event type within a top-level resource. It returns all
@@ -843,7 +830,6 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
-
         - $ref: '#/components/parameters/GS1-EPCIS-version'
         - $ref: '#/components/parameters/GS1-EPCIS-min'
         - $ref: '#/components/parameters/GS1-EPCIS-max'
@@ -884,6 +870,7 @@ paths:
                 items:
                   type: string
                   format: uri
+
   /bizSteps/{bizStep}:
     parameters:
       - $ref: '#/components/parameters/BizStep'
@@ -933,14 +920,6 @@ paths:
         - $ref: '#/components/parameters/NextPageToken'
         - $ref: '#/components/parameters/GS1-query-reportIfEmpty'
         - $ref: '#/components/parameters/GS1-query-initialRecordTime'
-        - $ref: '#/components/parameters/GS1-query-schedule-second'
-        - $ref: '#/components/parameters/GS1-query-schedule-minute'
-        - $ref: '#/components/parameters/GS1-query-schedule-hour'
-        - $ref: '#/components/parameters/GS1-query-schedule-dayOfMonth'
-        - $ref: '#/components/parameters/GS1-query-schedule-month'
-        - $ref: '#/components/parameters/GS1-query-schedule-dayOfWeek'
-
-
       description: |
         This endpoint returns all sub-resources of an business step, which currently is 'events'.
       responses:
@@ -958,6 +937,7 @@ paths:
           $ref: '#/components/responses/414URLTooLong'
         '500':
           $ref: '#/components/responses/500ImplementationException'
+
   /bizSteps/{bizStep}/events:
     parameters:
       - $ref: '#/components/parameters/BizStep'
@@ -988,14 +968,6 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-extensions'
         - $ref: '#/components/parameters/GS1-query-reportIfEmpty'
         - $ref: '#/components/parameters/GS1-query-initialRecordTime'
-        - $ref: '#/components/parameters/GS1-query-schedule-second'
-        - $ref: '#/components/parameters/GS1-query-schedule-minute'
-        - $ref: '#/components/parameters/GS1-query-schedule-hour'
-        - $ref: '#/components/parameters/GS1-query-schedule-dayOfMonth'
-        - $ref: '#/components/parameters/GS1-query-schedule-month'
-        - $ref: '#/components/parameters/GS1-query-schedule-dayOfWeek'
-
-
       description: |
         This endpoint helps to navigate EPCIS events by EPCIS event type within a top-level resource. It returns all
         EPCIS events of a specific EPCIS event type and business step, up to the amount defined
@@ -1182,14 +1154,6 @@ paths:
         - $ref: '#/components/parameters/NextPageToken'
         - $ref: '#/components/parameters/GS1-query-reportIfEmpty'
         - $ref: '#/components/parameters/GS1-query-initialRecordTime'
-        - $ref: '#/components/parameters/GS1-query-schedule-second'
-        - $ref: '#/components/parameters/GS1-query-schedule-minute'
-        - $ref: '#/components/parameters/GS1-query-schedule-hour'
-        - $ref: '#/components/parameters/GS1-query-schedule-dayOfMonth'
-        - $ref: '#/components/parameters/GS1-query-schedule-month'
-        - $ref: '#/components/parameters/GS1-query-schedule-dayOfWeek'
-
-
       description: |
         This endpoint returns all sub-resources of an business location, which currently is 'events'.
       responses:
@@ -1239,14 +1203,6 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-extensions'
         - $ref: '#/components/parameters/GS1-query-reportIfEmpty'
         - $ref: '#/components/parameters/GS1-query-initialRecordTime'
-        - $ref: '#/components/parameters/GS1-query-schedule-second'
-        - $ref: '#/components/parameters/GS1-query-schedule-minute'
-        - $ref: '#/components/parameters/GS1-query-schedule-hour'
-        - $ref: '#/components/parameters/GS1-query-schedule-dayOfMonth'
-        - $ref: '#/components/parameters/GS1-query-schedule-month'
-        - $ref: '#/components/parameters/GS1-query-schedule-dayOfWeek'
-
-
       description: |
         This endpoint helps to navigate EPCIS events by EPCIS event type within a top-level resource. It returns all
         EPCIS events of a specific EPCIS event type and business location, up to the amount defined
@@ -1344,7 +1300,6 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
-
         - $ref: '#/components/parameters/GS1-EPCIS-version'
         - $ref: '#/components/parameters/GS1-EPCIS-min'
         - $ref: '#/components/parameters/GS1-EPCIS-max'
@@ -1432,14 +1387,6 @@ paths:
         - $ref: '#/components/parameters/NextPageToken'
         - $ref: '#/components/parameters/GS1-query-reportIfEmpty'
         - $ref: '#/components/parameters/GS1-query-initialRecordTime'
-        - $ref: '#/components/parameters/GS1-query-schedule-second'
-        - $ref: '#/components/parameters/GS1-query-schedule-minute'
-        - $ref: '#/components/parameters/GS1-query-schedule-hour'
-        - $ref: '#/components/parameters/GS1-query-schedule-dayOfMonth'
-        - $ref: '#/components/parameters/GS1-query-schedule-month'
-        - $ref: '#/components/parameters/GS1-query-schedule-dayOfWeek'
-
-
       description: |
         This endpoint returns all sub-resources of an read point, which currently is 'events'.
       responses:
@@ -1488,13 +1435,6 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-extensions'
         - $ref: '#/components/parameters/GS1-query-reportIfEmpty'
         - $ref: '#/components/parameters/GS1-query-initialRecordTime'
-        - $ref: '#/components/parameters/GS1-query-schedule-second'
-        - $ref: '#/components/parameters/GS1-query-schedule-minute'
-        - $ref: '#/components/parameters/GS1-query-schedule-hour'
-        - $ref: '#/components/parameters/GS1-query-schedule-dayOfMonth'
-        - $ref: '#/components/parameters/GS1-query-schedule-month'
-        - $ref: '#/components/parameters/GS1-query-schedule-dayOfWeek'
-
       description: |
         This endpoint helps to navigate EPCIS events by EPCIS event type within a top-level resource. It returns all
         EPCIS events of a specific EPCIS event type and read point, up to the amount defined
@@ -1592,7 +1532,6 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
-
         - $ref: '#/components/parameters/GS1-EPCIS-version'
         - $ref: '#/components/parameters/GS1-EPCIS-min'
         - $ref: '#/components/parameters/GS1-EPCIS-max'
@@ -1680,14 +1619,6 @@ paths:
         - $ref: '#/components/parameters/NextPageToken'
         - $ref: '#/components/parameters/GS1-query-reportIfEmpty'
         - $ref: '#/components/parameters/GS1-query-initialRecordTime'
-        - $ref: '#/components/parameters/GS1-query-schedule-second'
-        - $ref: '#/components/parameters/GS1-query-schedule-minute'
-        - $ref: '#/components/parameters/GS1-query-schedule-hour'
-        - $ref: '#/components/parameters/GS1-query-schedule-dayOfMonth'
-        - $ref: '#/components/parameters/GS1-query-schedule-month'
-        - $ref: '#/components/parameters/GS1-query-schedule-dayOfWeek'
-
-
       description: |
         This endpoint returns all sub-resources of an disposition, which currently is 'events'.
       responses:
@@ -1736,13 +1667,6 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-extensions'
         - $ref: '#/components/parameters/GS1-query-reportIfEmpty'
         - $ref: '#/components/parameters/GS1-query-initialRecordTime'
-        - $ref: '#/components/parameters/GS1-query-schedule-second'
-        - $ref: '#/components/parameters/GS1-query-schedule-minute'
-        - $ref: '#/components/parameters/GS1-query-schedule-hour'
-        - $ref: '#/components/parameters/GS1-query-schedule-dayOfMonth'
-        - $ref: '#/components/parameters/GS1-query-schedule-month'
-        - $ref: '#/components/parameters/GS1-query-schedule-dayOfWeek'
-
       description: |
         This endpoint helps to navigate EPCIS events by EPCIS event type within a top-level resource. It returns all
         EPCIS events of a specific EPCIS event type and disposition, up to the amount defined
@@ -2038,7 +1962,6 @@ paths:
               $ref: '#/components/headers/GS1-Vendor-version'
             GS1-CBV-extensions:
               $ref: '#/components/headers/GS1-CBV-extensions'
-
     delete:
       tags:
         - queries
@@ -2099,7 +2022,6 @@ paths:
         - subscriptions
       summary: Creates a query subscription using Webhooks.
       parameters:
-
         - $ref: '#/components/parameters/GS1-EPCIS-version'
         - $ref: '#/components/parameters/GS1-EPCIS-min'
         - $ref: '#/components/parameters/GS1-EPCIS-max'
@@ -2221,7 +2143,6 @@ paths:
                                 enum:
                                   - epcisException:QueryTooComplexException
                           - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-
 
   '/queries/{queryName}/subscriptions/{subscriptionId}':
     parameters:
@@ -2552,8 +2473,6 @@ paths:
                 createdAt:
                   type: string
                   format: date-time
-
-
       responses:
         '200':
           headers:
