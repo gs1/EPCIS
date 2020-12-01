@@ -14,6 +14,9 @@ tags:
 - name: subscriptions
   description: >
     EPCIS 2.0 supports query subscriptions with using Webhooks or Websocket.
+- name: masterdata
+  description: >
+    Endpoints to create master data queries and subscribe to those queries.
 - name: events
   description: >
     Endpoints that expose EPCIS events as Web resources.
@@ -21,9 +24,6 @@ tags:
   description: >
     Endpoints to browse EPCIS events by common top-level resources: electronic product codes, business steps,
     business locations, read points and dispositions.
-- name: masterdata
-  description: >
-    Endpoints to create master data queries and subscribe to those queries.
 - name: discovery
   description: >
     Endpoints to obtain information about the endpoint, such as EPCIS and CBV versions or custom vocabularies.
@@ -1943,6 +1943,8 @@ paths:
     post:
       tags:
         - queries
+        - events
+        - masterdata
       summary: Creates and executes a named EPCIS events query and returns results with the option to use pagination if needed.
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-version'
@@ -2414,65 +2416,6 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '500':
           $ref: '#/components/responses/500ImplementationException'
-    post:
-      tags:
-        - queries
-        - masterdata
-      summary: >
-        Creates and executes a named EPCIS master data query and returns results with the option to use pagination if needed.
-      parameters:
-        - $ref: '#/components/parameters/GS1-EPCIS-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-min'
-        - $ref: '#/components/parameters/GS1-EPCIS-max'
-        - $ref: '#/components/parameters/GS1-CBV-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
-        - $ref: '#/components/parameters/GS1-CBV-extensions'
-      description: >
-        Creating a named query creates collection of master data resources that is described by the EPCIS query.
-        When a query is first created, it is executed and the result is returned to the client up to the amount
-        defined in `perPage`. The client can retrieve the entire result set using pagination. The client can also
-        create a query subscription using the URL of the query, which is returned in the Location header. For
-      requestBody:
-        $ref: '#/components/requestBodies/CreateQuery'
-      responses:
-        '200':
-          headers:
-            GS1-EPCIS-version:
-              $ref: '#/components/headers/GS1-EPCIS-version'
-            GS1-EPCIS-min:
-              $ref: '#/components/headers/GS1-EPCIS-min'
-            GS1-EPCIS-max:
-              $ref: '#/components/headers/GS1-EPCIS-max'
-            GS1-CBV-version:
-              $ref: '#/components/headers/GS1-CBV-version'
-            GS1-EPCIS-extensions:
-              $ref: '#/components/headers/GS1-EPCIS-extensions'
-            GS1-CBV-extensions:
-              $ref: '#/components/headers/GS1-CBV-extensions'
-            Link:
-              $ref: '#/components/headers/Link'
-            Location:
-              description: >
-                The URL of the created master data query. The URL of the created query. The client can use the
-                `Location` URL to subscribe to that query. If the client wants to execute the query synchronously,
-                the client should use URL in the `Link` header to fetch more resources.
-              schema:
-                example: "https://www.example.com/queries/myQuery/masterdata"
-                type: string
-                format: uri
-          description: Returns the query result
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EPCISMasterDataDocument'
-        '401':
-          $ref: '#/components/responses/401AuthorizationInformationMissing'
-        '403':
-          $ref: '#/components/responses/403ClientUnauthorized'
-        '404':
-          $ref: '#/components/responses/404ResourceNotFound'
-        '500':
-          $ref: '#/components/responses/500ImplementationException'
 
 
   /queries/SimpleMasterDataQuery:
@@ -2557,32 +2500,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EPCISMasterDataDocument'
-        '401':
-          $ref: '#/components/responses/401AuthorizationInformationMissing'
-        '403':
-          $ref: '#/components/responses/403ClientUnauthorized'
-        '404':
-          $ref: '#/components/responses/404ResourceNotFound'
-        '500':
-          $ref: '#/components/responses/500ImplementationException'
-    get:
-      tags:
-        - queries
-        - masterdata
-      summary: Returns the result of a master data query. Master data endpoints do not support subscriptions.
-      parameters:
-        - $ref: '#/components/parameters/NextPageToken'
-        - $ref: '#/components/parameters/GS1-query-reportIfEmpty'
-        - $ref: '#/components/parameters/PerPage'
-      description: >
-        The `GET` endpoint is to retrieve large results that don't fit into the response of `POST` request.
-      responses:
-        '101':
-         $ref: '#/components/responses/101WebsocketCreated'
-        '200':
-          $ref: '#/components/responses/200MasterDataResponse'
-        '400':
-          $ref: '#/components/responses/400QueryInvalid'
         '401':
           $ref: '#/components/responses/401AuthorizationInformationMissing'
         '403':
@@ -2684,36 +2601,7 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '500':
           $ref: '#/components/responses/500ImplementationException'
-    get:
-      tags:
-        - queries
-        - events
-      summary: Returns events with the option to use pagination if needed. This endpoint supports query subscriptions.
-      parameters:
-        - $ref: '#/components/parameters/GS1-query-initialRecordTime'
-        - $ref: '#/components/parameters/Upgrade'
-        - $ref: '#/components/parameters/Connection'
-        - $ref: '#/components/parameters/NextPageToken'
-        - $ref: '#/components/parameters/GS1-query-reportIfEmpty'
-        - $ref: '#/components/parameters/PerPage'
-      description: >
-        The `GET` endpoint is to retrieve large results that don't fit into the response of a `POST` request.
-        It can also be used to subscribe to anonymous queries.
-      responses:
-        '101':
-         $ref: '#/components/responses/101WebsocketCreated'
-        '200':
-          $ref: '#/components/responses/200EPCISEventResponse'
-        '400':
-          $ref: '#/components/responses/400QueryInvalid'
-        '401':
-          $ref: '#/components/responses/401AuthorizationInformationMissing'
-        '403':
-          $ref: '#/components/responses/403ClientUnauthorized'
-        '404':
-          $ref: '#/components/responses/404ResourceNotFound'
-        '500':
-          $ref: '#/components/responses/500ImplementationException'
+
 components:
   responses:
     '101WebsocketCreated':
