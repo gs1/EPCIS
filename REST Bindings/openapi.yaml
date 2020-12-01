@@ -2007,7 +2007,7 @@ paths:
         manner as cron jobs.
 
         For example, this query subscription will is scheduled to trigger every morning at 1.05am. By setting
-        `reportIfEmpty` to true, the client's callback URL will be called even if there are no new events that match
+        `reportIfEmpty` to `true`, the client's callback URL will be called even if there are no new events that match
         the query.
 
         ```
@@ -2025,10 +2025,8 @@ paths:
 
         ## Streaming query subscription: Whenever a captured EPCIS event matches the query criteria
 
-        If no query schedule is specified, the client must explicitly set `stream` to true. This restriction is to
+        If no query schedule is specified, the client must explicitly set `stream` to `true`. This restriction is to
         prevent clients from accidentally subscribe to EPCIS event streams.
-
-        Example:
 
         ```
         POST /queries/MyQuery/subscriptions
@@ -3194,7 +3192,7 @@ components:
 
     GS1-query-stream-subscriptions:
       description: |
-        If no query schedule is specified, the client must explicitly set `stream` to true. This restriction is to
+        If no query schedule is specified, the client must explicitly set `stream` to `true`. This restriction is to
         prevent clients from accidentally subscribe to EPCIS event streams.
 
         Example:
@@ -3221,7 +3219,7 @@ components:
         manner as cron jobs.
 
         For example, this query subscription will is scheduled to trigger every morning at 1.05am. By setting
-        `reportIfEmpty` to true, the client's callback URL will be called even if there are no new events that match
+        `reportIfEmpty` to `true`, the client's callback URL will be called even if there are no new events that match
         the query.
 
         ```
