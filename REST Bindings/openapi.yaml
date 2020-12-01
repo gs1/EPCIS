@@ -1603,7 +1603,7 @@ paths:
         - $ref: '#/components/parameters/ReportIfEmpty'
       description: >
         The `GET` endpoint is to retrieve large results that don't fit into the response of `POST` request.
-        It can also be used to subscribe to anonymous queries.
+        It can also be used to subscribe to named queries.
       responses:
         '101':
          $ref: '#/components/responses/101WebsocketCreated'
