@@ -14,22 +14,22 @@ note over Client, Server:
   "queryType": "events"
 }
 end note
-c->s: GET https://example.com/queries/MyQuery/events?minute=5&hour=1
+c->s: POST https://example.com/queries/MyQuery/subscriptions
 note over Client, Server:
-Host: example.com
-Upgrade: websocket
-Connection: Upgrade
+{
+  "callbackUrl": "https://client.example.com/queryCallback",
+  "secret": "0435ojtojt02",
+  "schedule": {
+    "hour": "1",
+    "minute": "5"
+  }
+}
 end note
-s-->c: HTTP/1.1 101 Switching Protocols
-note over Server, Client:
-Upgrade: websocket
-Connection: Upgrade
-Switch from
-end note
+s-->c: {"subscriptionId": "df5a33e3-5aa3-4403-ae01-99b83234e27b"}
 s->s: CuckooClock()
 note left of s: The time is 01:05h
-s<->c: wss://example.com/queries/MyQuery/events?minute=5&hour=1
+s->c:  POST https://client.example.com/queryCallback?secret=0435ojtojt02
 note over Client, Server:
 {..., "bizStep": "urn:epcglobal:cbv:bizstep:shipping",...}
 end note
-c->s: close() 
+c->s: DELETE  https://client.example.com/queries/MyQuery/subsriptions/df5a33e3-5aa3-4403-ae01-99b83234e27b
