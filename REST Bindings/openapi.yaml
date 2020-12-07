@@ -3752,11 +3752,3 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/QueryDefinition'
-    CreateMasterDataQuery:
-      description: Creates and executes a master data query.
-      required: true
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/EPCISMasterDataQuery'
-
