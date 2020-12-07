@@ -2784,20 +2784,6 @@ components:
           $ref: '#/components/headers/GS1-Vendor-version'
         GS1-CBV-extensions:
           $ref: '#/components/headers/GS1-CBV-extensions'
-    '204QueryResultsOptionsResponse':
-      description: |
-        The `OPTIONS` method is used as a discovery service for `/queries` endpoints. It describes which EPCIS and CBV
-        versions are used in the query result supported as well as  EPCIS and CBV extensions.
-      headers:
-        Allow:
-          example:
-            - GET
-            - OPTIONS
-          schema:
-            type: string
-            enum:
-              - GET
-              - OPTIONS
     '204AnonymousQueriesOptionsResponse':
       description: |
         The `OPTIONS` method is used as a discovery service for anonymous queries endpoints. For named queries,
@@ -3280,13 +3266,7 @@ components:
         - AssociationEvent
         - TransformationEvent
         - TransactionEvent
-    GS1-query-minRecordTime:
-      description: |
-        An optional header to specify the smallest possible record time for
-        EPCIS events in a query subscription
-      type: string
-      format: time
-      example: "2020-04-04T20:33:31.116-06:00"
+
     # New schemas
     GS1-query-initialRecordTime:
       description: |
@@ -3555,13 +3535,6 @@ components:
       name: nextPageToken
       schema:
         $ref: '#/components/schemas/NextPageToken'
-
-    GS1-query-minRecordTime:
-      in: header
-      name: minRecordTime
-      required: false
-      schema:
-        $ref: '#/components/schemas/GS1-query-minRecordTime'
     GS1-query-schedule-second:
       in: query
       name: second
@@ -3626,7 +3599,7 @@ components:
       name: Connection
       required: false
       schema:
-        $ref: '#/components/schemas/Upgrade'
+        $ref: '#/components/schemas/Connection'
     EventID:
       name: eventID
       in: path
@@ -3737,9 +3710,6 @@ components:
     Location:
       schema:
         $ref: '#/components/schemas/Location'
-    GS1-query-minRecordTime:
-      schema:
-        $ref: '#/components/schemas/GS1-query-minRecordTime'
     Link:
       schema:
         $ref: '#/components/schemas/Link'
