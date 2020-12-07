@@ -1751,7 +1751,7 @@ paths:
             consists of a query name and the query definition.
           content:
             application/json:
-              example: {
+              example: [{
                 "query": {
                   "EQ_bizStep": [
                       "urn:epcglobal:cbv:bizstep:shipping",
@@ -1761,7 +1761,7 @@ paths:
                 },
                 "queryType": "events",
                 "name": "myQuery"
-              }
+              }]
               schema:
                 type: array
                 items:
