@@ -56,7 +56,7 @@ paths:
                 type: string
                 enum:
                   - OPTIONS
-            GS1-EPCIS-version: 
+            GS1-EPCIS-version:
               $ref: '#/components/headers/GS1-EPCIS-version'
             GS1-EPCIS-min:
               $ref: '#/components/headers/GS1-EPCIS-min'
@@ -615,6 +615,7 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '500':
           $ref: '#/components/responses/500ImplementationException'
+
   /epcs/{epc}:
     parameters:
       - $ref: '#/components/parameters/EPC'
@@ -1313,6 +1314,7 @@ paths:
                 items:
                   type: string
                   format: uri
+
   /readPoints/{readPoint}:
     parameters:
       - $ref: '#/components/parameters/ReadPoint'
@@ -1543,6 +1545,7 @@ paths:
                 items:
                   type: string
                   format: uri
+
   /dispositions/{disposition}:
     parameters:
       - $ref: '#/components/parameters/Disposition'
@@ -2206,7 +2209,7 @@ paths:
                                   - epcisException:QueryTooComplexException
                           - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
 
-  '/queries/{queryName}/subscriptions/{subscriptionId}':
+  /queries/{queryName}/subscriptions/{subscriptionId}:
     parameters:
       - $ref: '#/components/parameters/QueryName'
       - in: path
@@ -2666,9 +2669,22 @@ paths:
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
+  /nextPageToken/{token}:
+    parameters:
+      - $ref: '#/components/parameters/Token'
+    delete:
+      tags:
+        - queries
+      summary: Optional endpoint that allows on-demand release of any resources associated with nextPageToken
+      responses:
+        '204':
+          $ref: '#/components/responses/204NextPageTokenInvalidated'
+        '501':
+          $ref: '#/components/responses/501NotImplemented'
+
 components:
   responses:
-    '101WebsocketCreated':
+    101WebsocketCreated:
       description: |
         Create a WebSocket connection to subscribe to queries. Upon subscription, the server SHALL send all new events
         to subscribing clients. If multiple clients have the same query, each client will receive events which they are
@@ -2734,7 +2750,6 @@ components:
                 - events
               enum:
                 - events
-
     200EPCISEventResponse:
       headers:
         GS1-EPCIS-version:
@@ -2758,7 +2773,8 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/EPCISEventsDocument'
-
+    204NextPageTokenInvalidated:
+      description: nextPageToken invalidated successfully
     200SupportedEventTypes:
       description: Returns all supported EPCIS event types.
       content:
@@ -2791,7 +2807,7 @@ components:
           $ref: '#/components/headers/GS1-Vendor-version'
         GS1-CBV-extensions:
           $ref: '#/components/headers/GS1-CBV-extensions'
-    '204AnonymousQueriesOptionsResponse':
+    204AnonymousQueriesOptionsResponse:
       description: |
         The `OPTIONS` method is used as a discovery service for anonymous queries endpoints. For named queries,
         `OPTIONS` reveals which vocabularies are used in the query, etc. Anonymous queries are not stored, and
@@ -2821,7 +2837,7 @@ components:
           $ref: '#/components/headers/GS1-Vendor-version'
         GS1-CBV-extensions:
           $ref: '#/components/headers/GS1-CBV-extensions'
-    '204EventEndpointsOptionsResponse':
+    204EventEndpointsOptionsResponse:
       description: |
         The `OPTIONS` method is used as a discovery service for `events` endpoints. It describes which EPCIS and CBV
         versions are supported as well as  EPCIS and CBV extensions.
@@ -2838,9 +2854,9 @@ components:
               - GET
               - OPTIONS
               - POST
-    '204QueryDeleted':
+    204QueryDeleted:
       description: Query deleted and clients disconnected
-    '400QueryInvalid':
+    400QueryInvalid:
       description: The query is invalid
       content:
         application/json:
@@ -2859,8 +2875,7 @@ components:
                       - epcisException:SubscriptionControlsException
                       - epcisException:ValidationException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-
-    '401AuthorizationInformationMissing':
+    401AuthorizationInformationMissing:
       description: Authorization information is missing or invalid.
       content:
         application/problem+json:
@@ -2878,7 +2893,7 @@ components:
                     enum:
                       - epcisException:SecurityException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-    '400QueryException':
+    400QueryException:
       description: Query exceptions defined in EPCIS
       content:
         application/problem+json:
@@ -2898,7 +2913,7 @@ components:
                       - epcisException:QueryParameterException
                       - epcisException:QueryTooComplexException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-    '403ClientUnauthorized':
+    403ClientUnauthorized:
       description: Client is unauthorized to access this resource.
       content:
         application/problem+json:
@@ -2916,8 +2931,6 @@ components:
                     enum:
                       - epcisException:SecurityException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-
-
     404ResourceNotFound:
       description: The resource was not found. For example, the EPCIS event does not exist or the query does not exist.
       content:
@@ -2961,7 +2974,7 @@ components:
                     enum:
                       - epcisException:QueryTooComplexException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-    '414URLTooLong':
+    414URLTooLong:
       description: URL is too long. This is usually a problem with large EPCIS queries in the URL.
       content:
         application/problem+json:
@@ -2979,7 +2992,9 @@ components:
                     enum:
                       - epcisException:QueryTooComplexException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-    '500ImplementationException':
+    501NotImplemented:
+      description: Functionality not supported by server
+    500ImplementationException:
       description: This is a server-side problem caused when the query was resolved and executed.
       content:
         application/problem+json:
@@ -3236,7 +3251,6 @@ components:
           An EPCIS document that must be validated with the [JSON schema](../JSON/EPCIS-JSON-Schema.json) or
           [SHACL file](../JSON/EPCIS-SHACL.ttl).
         url: ../JSON/EPCIS-SHACL.ttl
-
     Link:
       description: |
         A pagination header link. This header works together with the `perPage` and `nextPageToken` query string
@@ -3445,7 +3459,6 @@ components:
       description: The `Upgrade` and `Connection` headers are needed to open a Websocket for queries.
       default: websocket
       example: websocket
-
     Connection:
       example: Upgrade
       description: The `Upgrade` and `Connection` headers are needed to open a Websocket for queries.
@@ -3545,7 +3558,12 @@ components:
       schema:
         type: string
         format: uri
-
+    Token:
+      in: path
+      name: token
+      required: true
+      schema:
+        $ref: '#/components/schemas/NextPageToken'
     PerPage:
       in: query
       name: perPage
@@ -3703,7 +3721,6 @@ components:
         $ref: '#/components/schemas/GS1-nextPageToken-Expires'
 
   headers:
-
     # response headers from schema
     GS1-EPCIS-version:
       schema:
