@@ -6,30 +6,30 @@ info:
     name: Apache2
 
 tags:
-- name: queries
-  description: |
-    Endpoints to create large named or anonymous queries using the EPCIS query language. Named queries have a custom
-    name and are stored until deleted by the user. Anonymous queries are not persisted and only available to the caller.
-    EPCIS events queries also support query subscription.
-- name: subscriptions
-  description: |
-    EPCIS 2.0 supports query subscriptions with using Webhooks or Websocket.
-- name: masterdata
-  description: |
-    Endpoints to create master data queries and subscribe to those queries.
-- name: events
-  description: |
-    Endpoints that expose EPCIS events as Web resources.
-- name: top-level-resources
-  description: |
-    Endpoints to browse EPCIS events by common top-level resources: electronic product codes, business steps,
-    business locations, read points and dispositions.
-- name: discovery
-  description: |
-    Endpoints to obtain information about the endpoint, such as EPCIS and CBV versions or custom vocabularies.
-- name: capture
-  description: |
-    Endpoints to capture EPCIS events in bulk or individually.
+  - name: queries
+    description: |
+      Endpoints to create large named or anonymous queries using the EPCIS query language. Named queries have a custom
+      name and are stored until deleted by the user. Anonymous queries are not persisted and only available to the caller.
+      EPCIS events queries also support query subscription.
+  - name: subscriptions
+    description: |
+      EPCIS 2.0 supports query subscriptions with using Webhooks or Websocket.
+  - name: masterdata
+    description: |
+      Endpoints to create master data queries and subscribe to those queries.
+  - name: events
+    description: |
+      Endpoints that expose EPCIS events as Web resources.
+  - name: top-level-resources
+    description: |
+      Endpoints to browse EPCIS events by common top-level resources: electronic product codes, business steps,
+      business locations, read points and dispositions.
+  - name: discovery
+    description: |
+      Endpoints to obtain information about the endpoint, such as EPCIS and CBV versions or custom vocabularies.
+  - name: capture
+    description: |
+      Endpoints to capture EPCIS events in bulk or individually.
 
 paths:
   /:
@@ -198,7 +198,7 @@ paths:
       responses:
         '204':
           description: |
-            Headers describing the vocabularies and CBV and EPCIS versions used in the capture job
+            Headers describing the vocabularies and CBV and EPCIS versions used in the capture job.
           headers:
             Allow:
               example:
@@ -264,7 +264,7 @@ paths:
     options:
       tags:
         - discovery
-      summary: Query meta data related to the `/events` enpoint.
+      summary: Query meta data related to the `events` enpoint.
       description: |
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
         of EPCIS and CBV. The `OPTIONS` method allows the client to discover which vocabularies and EPCIS and CBV
@@ -341,17 +341,6 @@ paths:
       tags:
         - events
       summary: Returns all sub-resources of an EPCIS events. This endpoint does not work with 'all'
-      parameters:
-        - $ref: '#/components/parameters/PerPage'
-        - $ref: '#/components/parameters/NextPageToken'
-        - $ref: '#/components/parameters/GS1-query-reportIfEmpty'
-        - $ref: '#/components/parameters/GS1-query-initialRecordTime'
-        - $ref: '#/components/parameters/GS1-query-schedule-second'
-        - $ref: '#/components/parameters/GS1-query-schedule-minute'
-        - $ref: '#/components/parameters/GS1-query-schedule-hour'
-        - $ref: '#/components/parameters/GS1-query-schedule-dayOfMonth'
-        - $ref: '#/components/parameters/GS1-query-schedule-month'
-        - $ref: '#/components/parameters/GS1-query-schedule-dayOfWeek'
 
 
       description: |
@@ -394,7 +383,7 @@ paths:
       responses:
         '204':
           description: |
-            The `OPTIONS` method is used as a discovery service for `/events` endpoints. It describes which EPCIS and CBV
+            The `OPTIONS` method is used as a discovery service for `events` endpoints. It describes which EPCIS and CBV
             versions are supported as well as  EPCIS and CBV extensions.
             The list of headers is not exhaustive. It only describes the functionality specific to EPCIS 2.0.
           headers:
@@ -432,14 +421,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
-        - $ref: '#/components/parameters/GS1-query-reportIfEmpty'
         - $ref: '#/components/parameters/GS1-query-initialRecordTime'
-        - $ref: '#/components/parameters/GS1-query-schedule-second'
-        - $ref: '#/components/parameters/GS1-query-schedule-minute'
-        - $ref: '#/components/parameters/GS1-query-schedule-hour'
-        - $ref: '#/components/parameters/GS1-query-schedule-dayOfMonth'
-        - $ref: '#/components/parameters/GS1-query-schedule-month'
-        - $ref: '#/components/parameters/GS1-query-schedule-dayOfWeek'
       description: |
         This endpoint returns all EPCIS events of a specific EPCIS event type up to the amount defined in `perPage`.
         The server returns a 'link' header to point to the remaining results.
@@ -477,8 +459,8 @@ paths:
       description: |
         An individual EPCIS event can be created by making a POST request to the EPCIS event type of
         the EPCIS event that is being captured. If the client does not wish to specify the EPCIS event type,
-        the ` /eventTypes/all/events` endpoint can be used. Alternatively, the client can also use the `/capture` interface and
-        and capture a single event.
+        the ` /eventTypes/all/events` endpoint can be used. Alternatively, the client can also use the `/capture`
+        interface and and capture a single event.
       requestBody:
         required: true
         content:
@@ -531,7 +513,7 @@ paths:
     options:
       tags:
         - discovery
-      summary: Query meta data related to the `/events` enpoint.
+      summary: Query meta data related to the `events` enpoint.
       description: |
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
         of EPCIS and CBV. The `OPTIONS` method allows the client to discover which vocabularies and EPCIS and CBV
@@ -681,15 +663,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
-        - $ref: '#/components/parameters/GS1-query-reportIfEmpty'
         - $ref: '#/components/parameters/GS1-query-initialRecordTime'
-        - $ref: '#/components/parameters/GS1-query-schedule-second'
-        - $ref: '#/components/parameters/GS1-query-schedule-minute'
-        - $ref: '#/components/parameters/GS1-query-schedule-hour'
-        - $ref: '#/components/parameters/GS1-query-schedule-dayOfMonth'
-        - $ref: '#/components/parameters/GS1-query-schedule-month'
-        - $ref: '#/components/parameters/GS1-query-schedule-dayOfWeek'
-
 
       description: |
         This endpoint returns all sub-resources of an electronic product code, which currently is 'events'.
@@ -737,15 +711,7 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-version'
         - $ref: '#/components/parameters/GS1-EPCIS-extensions'
         - $ref: '#/components/parameters/GS1-CBV-extensions'
-        - $ref: '#/components/parameters/GS1-query-reportIfEmpty'
         - $ref: '#/components/parameters/GS1-query-initialRecordTime'
-        - $ref: '#/components/parameters/GS1-query-schedule-second'
-        - $ref: '#/components/parameters/GS1-query-schedule-minute'
-        - $ref: '#/components/parameters/GS1-query-schedule-hour'
-        - $ref: '#/components/parameters/GS1-query-schedule-dayOfMonth'
-        - $ref: '#/components/parameters/GS1-query-schedule-month'
-        - $ref: '#/components/parameters/GS1-query-schedule-dayOfWeek'
-
 
       description: |
         This endpoint helps to navigate EPCIS events by EPCIS event type within a top-level resource. It returns all
@@ -843,7 +809,6 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
-
         - $ref: '#/components/parameters/GS1-EPCIS-version'
         - $ref: '#/components/parameters/GS1-EPCIS-min'
         - $ref: '#/components/parameters/GS1-EPCIS-max'
@@ -884,6 +849,7 @@ paths:
                 items:
                   type: string
                   format: uri
+
   /bizSteps/{bizStep}:
     parameters:
       - $ref: '#/components/parameters/BizStep'
@@ -898,8 +864,9 @@ paths:
       responses:
         '204':
           description: |
-            The `OPTIONS` method is used as a discovery service for an business step. It describes which EPCIS and CBV versions are supported as well as EPCIS and CBV extensions.
-            The list of headers is not exhaustive. It only describes the functionality specific to EPCIS 2.0.
+            The `OPTIONS` method is used as a discovery service for an business step. It describes which EPCIS and CBV
+            versions are supported as well as EPCIS and CBV extensions. The list of headers is not exhaustive. It only
+            describes the functionality specific to EPCIS 2.0.
           headers:
             Allow:
               schema:
@@ -931,16 +898,6 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
-        - $ref: '#/components/parameters/GS1-query-reportIfEmpty'
-        - $ref: '#/components/parameters/GS1-query-initialRecordTime'
-        - $ref: '#/components/parameters/GS1-query-schedule-second'
-        - $ref: '#/components/parameters/GS1-query-schedule-minute'
-        - $ref: '#/components/parameters/GS1-query-schedule-hour'
-        - $ref: '#/components/parameters/GS1-query-schedule-dayOfMonth'
-        - $ref: '#/components/parameters/GS1-query-schedule-month'
-        - $ref: '#/components/parameters/GS1-query-schedule-dayOfWeek'
-
-
       description: |
         This endpoint returns all sub-resources of an business step, which currently is 'events'.
       responses:
@@ -958,6 +915,7 @@ paths:
           $ref: '#/components/responses/414URLTooLong'
         '500':
           $ref: '#/components/responses/500ImplementationException'
+
   /bizSteps/{bizStep}/events:
     parameters:
       - $ref: '#/components/parameters/BizStep'
@@ -986,16 +944,6 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-version'
         - $ref: '#/components/parameters/GS1-EPCIS-extensions'
         - $ref: '#/components/parameters/GS1-CBV-extensions'
-        - $ref: '#/components/parameters/GS1-query-reportIfEmpty'
-        - $ref: '#/components/parameters/GS1-query-initialRecordTime'
-        - $ref: '#/components/parameters/GS1-query-schedule-second'
-        - $ref: '#/components/parameters/GS1-query-schedule-minute'
-        - $ref: '#/components/parameters/GS1-query-schedule-hour'
-        - $ref: '#/components/parameters/GS1-query-schedule-dayOfMonth'
-        - $ref: '#/components/parameters/GS1-query-schedule-month'
-        - $ref: '#/components/parameters/GS1-query-schedule-dayOfWeek'
-
-
       description: |
         This endpoint helps to navigate EPCIS events by EPCIS event type within a top-level resource. It returns all
         EPCIS events of a specific EPCIS event type and business step, up to the amount defined
@@ -1147,8 +1095,9 @@ paths:
       responses:
         '204':
           description: |
-            The `OPTIONS` method is used as a discovery service for an business location. It describes which EPCIS and CBV versions are supported as well as EPCIS and CBV extensions.
-            The list of headers is not exhaustive. It only describes the functionality specific to EPCIS 2.0.
+            The `OPTIONS` method is used as a discovery service for an business location. It describes which EPCIS and
+            CBV versions are supported as well as EPCIS and CBV extensions. The list of headers is not exhaustive.
+            It only describes the functionality specific to EPCIS 2.0.
           headers:
             Allow:
               schema:
@@ -1180,16 +1129,6 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
-        - $ref: '#/components/parameters/GS1-query-reportIfEmpty'
-        - $ref: '#/components/parameters/GS1-query-initialRecordTime'
-        - $ref: '#/components/parameters/GS1-query-schedule-second'
-        - $ref: '#/components/parameters/GS1-query-schedule-minute'
-        - $ref: '#/components/parameters/GS1-query-schedule-hour'
-        - $ref: '#/components/parameters/GS1-query-schedule-dayOfMonth'
-        - $ref: '#/components/parameters/GS1-query-schedule-month'
-        - $ref: '#/components/parameters/GS1-query-schedule-dayOfWeek'
-
-
       description: |
         This endpoint returns all sub-resources of an business location, which currently is 'events'.
       responses:
@@ -1237,16 +1176,7 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-version'
         - $ref: '#/components/parameters/GS1-EPCIS-extensions'
         - $ref: '#/components/parameters/GS1-CBV-extensions'
-        - $ref: '#/components/parameters/GS1-query-reportIfEmpty'
         - $ref: '#/components/parameters/GS1-query-initialRecordTime'
-        - $ref: '#/components/parameters/GS1-query-schedule-second'
-        - $ref: '#/components/parameters/GS1-query-schedule-minute'
-        - $ref: '#/components/parameters/GS1-query-schedule-hour'
-        - $ref: '#/components/parameters/GS1-query-schedule-dayOfMonth'
-        - $ref: '#/components/parameters/GS1-query-schedule-month'
-        - $ref: '#/components/parameters/GS1-query-schedule-dayOfWeek'
-
-
       description: |
         This endpoint helps to navigate EPCIS events by EPCIS event type within a top-level resource. It returns all
         EPCIS events of a specific EPCIS event type and business location, up to the amount defined
@@ -1261,7 +1191,7 @@ paths:
         Example:
 
         ```
-        https://example.com/bizLocations/urn:epc:id:sgln:0012345.11111.0/eventTypes/ObjectEvent/events?GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
+        https://example.com/bizLocations/urn:epc:id:sgln:0012345.11111.0/events?GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
         ```
       responses:
         '200':
@@ -1344,7 +1274,6 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
-
         - $ref: '#/components/parameters/GS1-EPCIS-version'
         - $ref: '#/components/parameters/GS1-EPCIS-min'
         - $ref: '#/components/parameters/GS1-EPCIS-max'
@@ -1393,12 +1322,14 @@ paths:
       summary: Query meta data of a read point.
       description: |
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
-        of EPCIS and CBV. The `OPTIONS` method allows the client to discover which vocabularies and EPCIS and CBV versions are used.
+        of EPCIS and CBV. The `OPTIONS` method allows the client to discover which vocabularies and EPCIS and CBV
+        versions are used.
       responses:
         '204':
           description: |
-            The `OPTIONS` method is used as a discovery service for an read point. It describes which EPCIS and CBV versions are supported as well as EPCIS and CBV extensions.
-            The list of headers is not exhaustive. It only describes the functionality specific to EPCIS 2.0.
+            The `OPTIONS` method is used as a discovery service for an read point. It describes which EPCIS and CBV
+            versions are supported as well as EPCIS and CBV extensions. The list of headers is not exhaustive. It only
+            describes the functionality specific to EPCIS 2.0.
           headers:
             Allow:
               schema:
@@ -1430,16 +1361,6 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
-        - $ref: '#/components/parameters/GS1-query-reportIfEmpty'
-        - $ref: '#/components/parameters/GS1-query-initialRecordTime'
-        - $ref: '#/components/parameters/GS1-query-schedule-second'
-        - $ref: '#/components/parameters/GS1-query-schedule-minute'
-        - $ref: '#/components/parameters/GS1-query-schedule-hour'
-        - $ref: '#/components/parameters/GS1-query-schedule-dayOfMonth'
-        - $ref: '#/components/parameters/GS1-query-schedule-month'
-        - $ref: '#/components/parameters/GS1-query-schedule-dayOfWeek'
-
-
       description: |
         This endpoint returns all sub-resources of an read point, which currently is 'events'.
       responses:
@@ -1486,15 +1407,6 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-version'
         - $ref: '#/components/parameters/GS1-EPCIS-extensions'
         - $ref: '#/components/parameters/GS1-CBV-extensions'
-        - $ref: '#/components/parameters/GS1-query-reportIfEmpty'
-        - $ref: '#/components/parameters/GS1-query-initialRecordTime'
-        - $ref: '#/components/parameters/GS1-query-schedule-second'
-        - $ref: '#/components/parameters/GS1-query-schedule-minute'
-        - $ref: '#/components/parameters/GS1-query-schedule-hour'
-        - $ref: '#/components/parameters/GS1-query-schedule-dayOfMonth'
-        - $ref: '#/components/parameters/GS1-query-schedule-month'
-        - $ref: '#/components/parameters/GS1-query-schedule-dayOfWeek'
-
       description: |
         This endpoint helps to navigate EPCIS events by EPCIS event type within a top-level resource. It returns all
         EPCIS events of a specific EPCIS event type and read point, up to the amount defined
@@ -1509,7 +1421,7 @@ paths:
         Example:
 
         ```
-        https://example.com/readPoints/urn:epc:id:sgln:0012345.11111.400/eventTypes/ObjectEvent/events?GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
+        https://example.com/readPoints/urn:epc:id:sgln:0012345.11111.400/events?GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
         ```
       responses:
         '200':
@@ -1592,7 +1504,6 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
-
         - $ref: '#/components/parameters/GS1-EPCIS-version'
         - $ref: '#/components/parameters/GS1-EPCIS-min'
         - $ref: '#/components/parameters/GS1-EPCIS-max'
@@ -1641,12 +1552,14 @@ paths:
       summary: Query meta data of a disposition.
       description: |
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
-        of EPCIS and CBV. The `OPTIONS` method allows the client to discover which vocabularies and EPCIS and CBV versions are used.
+        of EPCIS and CBV. The `OPTIONS` method allows the client to discover which vocabularies and EPCIS and CBV
+        versions are used.
       responses:
         '204':
           description: |
-            The `OPTIONS` method is used as a discovery service for an disposition. It describes which EPCIS and CBV versions are supported as well as EPCIS and CBV extensions.
-            The list of headers is not exhaustive. It only describes the functionality specific to EPCIS 2.0.
+            The `OPTIONS` method is used as a discovery service for an disposition. It describes which EPCIS and CBV
+            versions are supported as well as EPCIS and CBV extensions. The list of headers is not exhaustive. It only
+            describes the functionality specific to EPCIS 2.0.
           headers:
             Allow:
               schema:
@@ -1678,16 +1591,6 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
-        - $ref: '#/components/parameters/GS1-query-reportIfEmpty'
-        - $ref: '#/components/parameters/GS1-query-initialRecordTime'
-        - $ref: '#/components/parameters/GS1-query-schedule-second'
-        - $ref: '#/components/parameters/GS1-query-schedule-minute'
-        - $ref: '#/components/parameters/GS1-query-schedule-hour'
-        - $ref: '#/components/parameters/GS1-query-schedule-dayOfMonth'
-        - $ref: '#/components/parameters/GS1-query-schedule-month'
-        - $ref: '#/components/parameters/GS1-query-schedule-dayOfWeek'
-
-
       description: |
         This endpoint returns all sub-resources of an disposition, which currently is 'events'.
       responses:
@@ -1734,15 +1637,6 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-version'
         - $ref: '#/components/parameters/GS1-EPCIS-extensions'
         - $ref: '#/components/parameters/GS1-CBV-extensions'
-        - $ref: '#/components/parameters/GS1-query-reportIfEmpty'
-        - $ref: '#/components/parameters/GS1-query-initialRecordTime'
-        - $ref: '#/components/parameters/GS1-query-schedule-second'
-        - $ref: '#/components/parameters/GS1-query-schedule-minute'
-        - $ref: '#/components/parameters/GS1-query-schedule-hour'
-        - $ref: '#/components/parameters/GS1-query-schedule-dayOfMonth'
-        - $ref: '#/components/parameters/GS1-query-schedule-month'
-        - $ref: '#/components/parameters/GS1-query-schedule-dayOfWeek'
-
       description: |
         This endpoint helps to navigate EPCIS events by EPCIS event type within a top-level resource. It returns all
         EPCIS events of a specific EPCIS event type and disposition, up to the amount defined
@@ -1857,10 +1751,28 @@ paths:
             consists of a query name and the query definition.
           content:
             application/json:
+              example: [{
+                "query": {
+                  "EQ_bizStep": [
+                      "urn:epcglobal:cbv:bizstep:shipping",
+                      "urn:epcglobal:cbv:bizstep:receiving"
+                  ],
+                  "eventTypes": "ObjectEvent"
+                },
+                "queryType": "events",
+                "name": "myQuery"
+              }]
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/QueryDefinition'
+                  allOf:
+                    - type: object
+                      required:
+                        - name
+                      properties:
+                        name:
+                          type: string
+                    - $ref: '#/components/schemas/QueryDefinition'
                 uniqueItems: true
         '401':
           $ref: '#/components/responses/401AuthorizationInformationMissing'
@@ -1941,7 +1853,9 @@ paths:
         - queries
         - events
         - masterdata
-      summary: Creates and executes a named EPCIS events or masterdata query and returns results with the option to use pagination if needed.
+      summary: |
+        Creates and executes a named EPCIS events or masterdata query and returns results with the option to use
+        pagination if needed.
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-version'
         - $ref: '#/components/parameters/GS1-EPCIS-min'
@@ -2009,8 +1923,8 @@ paths:
       responses:
         '204':
           description: |
-            The `OPTIONS` method is used as a discovery service for `/queries` endpoints. It describes which EPCIS and CBV
-            versions are supported as well as EPCIS and CBV extensions.
+            The `OPTIONS` method is used as a discovery service for `/queries` endpoints. It describes which EPCIS and
+            CBV versions are supported as well as EPCIS and CBV extensions.
             The list of headers is not exhaustive. It only describes the functionality specific to EPCIS 2.0.
           headers:
             Allow:
@@ -2038,7 +1952,6 @@ paths:
               $ref: '#/components/headers/GS1-Vendor-version'
             GS1-CBV-extensions:
               $ref: '#/components/headers/GS1-CBV-extensions'
-
     delete:
       tags:
         - queries
@@ -2081,7 +1994,59 @@ paths:
         The `GET` endpoint is to list all open Webhook query subscriptions on that query.
       responses:
         '200':
-          $ref: '#/components/responses/200EPCISEventResponse'
+          headers:
+            GS1-EPCIS-version:
+              $ref: '#/components/headers/GS1-EPCIS-version'
+            GS1-EPCIS-min:
+              $ref: '#/components/headers/GS1-EPCIS-min'
+            GS1-EPCIS-max:
+              $ref: '#/components/headers/GS1-EPCIS-max'
+            GS1-CBV-version:
+              $ref: '#/components/headers/GS1-CBV-version'
+            GS1-EPCIS-extensions:
+              $ref: '#/components/headers/GS1-EPCIS-extensions'
+            GS1-CBV-extensions:
+              $ref: '#/components/headers/GS1-CBV-extensions'
+            Link:
+              $ref: '#/components/headers/Link'
+          description: Returns active Webhook subscriptions
+          content:
+            application/json:
+              example: [
+                {
+                  "subscriptionId": "df5a33e3-5aa3-4403-ae01-99b83234e27b",
+                  "createdAt": "2017-08-21T17:32:28Z",
+                  "schedule": {
+                    "hour": "1",
+                    "minute": "5"
+                  }
+                },
+                {
+                  "subscriptionId": "df5a33e3-5aa3-5504-bf12-88c94345f38c",
+                  "createdAt": "2017-07-21T17:32:28Z",
+                  "stream": true
+                }
+              ]
+              schema:
+                type: array
+                items:
+                  allOf:
+                    - type: object
+                      required:
+                        - subscriptionId
+                        - createdAt
+                      properties:
+                        subscriptionId:
+                          example: df5a33e3-5aa3-4403-ae01-99b83234e27b
+                          type: string
+                        createdAt:
+                          example: "2017-08-21T17:32:28Z"
+                          type: string
+                          format: date-time
+                    - oneOf:
+                        - $ref: '#/components/schemas/GS1-query-schedule-subscriptions'
+                        - $ref: '#/components/schemas/GS1-query-stream-subscriptions'
+
         '400':
           $ref: '#/components/responses/400QueryInvalid'
         '401':
@@ -2099,7 +2064,6 @@ paths:
         - subscriptions
       summary: Creates a query subscription using Webhooks.
       parameters:
-
         - $ref: '#/components/parameters/GS1-EPCIS-version'
         - $ref: '#/components/parameters/GS1-EPCIS-min'
         - $ref: '#/components/parameters/GS1-EPCIS-max'
@@ -2115,21 +2079,42 @@ paths:
         in the URL to receive events. If these are missing the query subscription is invalid because the server won't
         know when to notify a client.
 
-        For example, with this this subscription, the client creates a subscription and expects to be notified
-        5 minutes after at 1AM every day on its `queryCallback` endpoint. The client also tells the server to use
-        the one-time secret `0435ojtojt02` to send events.
+        ## Scheduled query: Receive query results at 1.05am
+
+        A scheduled query subscription is a time-based query execution scheduler. EPCIS 2.0 query schedule are scheduled
+        in the same manner as cron jobs.
+
+        For example, this query subscription will is scheduled to trigger every morning at 1.05am. By setting
+        `reportIfEmpty` to `true`, the client's callback URL will be called even if there are no new events that match
+        the query.
 
         ```
-        POST /queries/MyQuery/subscriptions?minute=5&hour=1
+        POST /queries/MyQuery/subscriptions
         {
           "callbackUrl": "https://client.example.com/queryCallback",
           "secret": "0435ojtojt02",
+          "reportIfEmpty": true,
           "schedule": {
             "hour":"1",
             "minute": "5"
           }
         }
         ```
+
+        ## Streaming query subscription: Whenever a captured EPCIS event matches the query criteria
+
+        If no query schedule is specified, the client must explicitly set `stream` to `true`. This restriction is to
+        prevent clients from accidentally subscribe to EPCIS event streams.
+
+        ```
+        POST /queries/MyQuery/subscriptions
+        {
+          "callbackUrl": "https://client.example.com/queryCallback",
+          "secret": "0435ojtojt02",
+          "stream": true
+        }
+        ```
+
       requestBody:
         content:
           application/json:
@@ -2140,10 +2125,10 @@ paths:
             }
             schema:
               allOf:
-                - $ref: '#/components/schemas/GS1-query-abstract-subscription'
+                - $ref: '#/components/schemas/GS1-query-abstract-subscriptions'
                 - oneOf:
                     - $ref: '#/components/schemas/GS1-query-schedule-subscriptions'
-                    - $ref: '#/components/schemas/GS1-query-trigger-event-subscriptions'
+                    - $ref: '#/components/schemas/GS1-query-stream-subscriptions'
       responses:
         '201':
           headers:
@@ -2156,8 +2141,7 @@ paths:
               schema:
                 type: string
                 format: uri
-          description: |
-            Query subscription successful. The subscription is valid until the client unsubscribes
+          description: Query subscription successful. The subscription is valid until the client unsubscribes.
           content:
             application/json:
               schema:
@@ -2196,7 +2180,7 @@ paths:
                         - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
               responses:
                 '200':
-                  description: OK
+                  description: Webhook successfully registered.
                 '401':
                   $ref: '#/components/responses/401AuthorizationInformationMissing'
                 '403':
@@ -2221,7 +2205,6 @@ paths:
                                 enum:
                                   - epcisException:QueryTooComplexException
                           - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-
 
   '/queries/{queryName}/subscriptions/{subscriptionId}':
     parameters:
@@ -2253,10 +2236,25 @@ paths:
             The server could return more information about the subscription, but this is up to the vendor.
           content:
             application/json:
+              example: [
+                {
+                  "createdAt": "2017-07-21T17:32:28Z",
+                  "stream": true
+                }
+              ]
               schema:
-                type: string
-              example:
-                df5a33e3-5aa3-4403-ae01-99b83234e27b
+                allOf:
+                  - type: object
+                    required:
+                      - createdAt
+                    properties:
+                      createdAt:
+                        example: "2017-08-21T17:32:28Z"
+                        type: string
+                        format: date-time
+                  - oneOf:
+                      - $ref: '#/components/schemas/GS1-query-schedule-subscriptions'
+                      - $ref: '#/components/schemas/GS1-query-stream-subscriptions'
         '401':
           $ref: '#/components/responses/401AuthorizationInformationMissing'
         '403':
@@ -2282,7 +2280,6 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '500':
           $ref: '#/components/responses/500ImplementationException'
-
 
   /queries/{queryName}/events:
     parameters:
@@ -2344,13 +2341,52 @@ paths:
         - $ref: '#/components/parameters/GS1-query-schedule-dayOfMonth'
         - $ref: '#/components/parameters/GS1-query-schedule-month'
         - $ref: '#/components/parameters/GS1-query-schedule-dayOfWeek'
+        - $ref: '#/components/parameters/GS1-query-stream'
 
       description: |
         The `GET` endpoint is to retrieve large results that don't fit into the response of `POST` request.
         It can also be used to subscribe to anonymous queries.
         Furthermore, this endpoint can also be used to subscribe to queries using Websocket. To do this, the client
         must specify the query schedule or trigger EPCIS event as URL query string parameter. Please note that
-        schedule parameters and the trigger event parameter are mutually exclusive.
+        `schedule-` parameters and the `stream` parameter are mutually exclusive.
+
+        ## Scheduled query: Receive query results at 1.05am
+
+        Handshake from client for scheduled query:
+
+        ```
+        GET https://example.com/queries/MyQuery/events?minute=5&hour=1
+        Host: example.com
+        Upgrade: websocket
+        Connection: Upgrade
+        ```
+
+        Handshake from the server:
+
+        ```
+        HTTP/1.1 101 Switching Protocols
+        Upgrade: websocket
+        Connection: Upgrade
+        ```
+
+        ## Streaming query subscription: Whenever a captured EPCIS event matches the query criteria
+
+        Handshake from client for streamingy:
+
+        ```
+        GET https://example.com/queries/MyQuery/events?stream=true
+        Host: example.com
+        Upgrade: websocket
+        Connection: Upgrade
+        ```
+
+        Handshake from the server:
+
+        ```
+        HTTP/1.1 101 Switching Protocols
+        Upgrade: websocket
+        Connection: Upgrade
+        ```
       responses:
         '101':
          $ref: '#/components/responses/101WebsocketCreated'
@@ -2381,22 +2417,47 @@ paths:
         Please note that this dos not apply to anonymous queries, since they are not stored.
       responses:
         '204':
-          $ref: '#/components/responses/204EventEndpointsOptionsResponse'
+          description: |
+            The `OPTIONS` method is used as a discovery service for master data queries endpoint. For named queries,
+            `OPTIONS` reveals which vocabularies are used in the query, etc. Anonymous queries are not stored, and
+            therefore such information cannot be discovered.
+            The list of headers is not exhaustive. It only describes the functionality specific to EPCIS 2.0.
+          headers:
+            Allow:
+              example:
+                - GET
+                - OPTIONS
+              schema:
+                type: string
+                enum:
+                  - GET
+                  - OPTIONS
+            GS1-EPCIS-version:
+              $ref: '#/components/headers/GS1-EPCIS-version'
+            GS1-EPCIS-min:
+              $ref: '#/components/headers/GS1-EPCIS-min'
+            GS1-EPCIS-max:
+              $ref: '#/components/headers/GS1-EPCIS-max'
+            GS1-CBV-version:
+              $ref: '#/components/headers/GS1-CBV-version'
+            GS1-EPCIS-extensions:
+              $ref: '#/components/headers/GS1-EPCIS-extensions'
+            GS1-Vendor-version:
+              $ref: '#/components/headers/GS1-Vendor-version'
+            GS1-CBV-extensions:
+              $ref: '#/components/headers/GS1-CBV-extensions'
+
     get:
       tags:
         - queries
         - masterdata
-      summary: Returns the result of a master data query. This endpoint supports query subscriptions.
+      summary: Returns the result of a master data query.
       parameters:
         - $ref: '#/components/parameters/GS1-query-initialRecordTime'
         - $ref: '#/components/parameters/NextPageToken'
-        - $ref: '#/components/parameters/GS1-query-reportIfEmpty'
       description: |
         The GET endpoint is to retrieve large results that don't fit into the response of a `POST` request.
-        It can also be used to subscribe to anonymous queries.
       responses:
-        '101':
-         $ref: '#/components/responses/101WebsocketCreated'
         '200':
           $ref: '#/components/responses/200MasterDataResponse'
         '400':
@@ -2409,7 +2470,6 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '500':
           $ref: '#/components/responses/500ImplementationException'
-
 
   /queries/SimpleMasterDataQuery:
     options:
@@ -2459,6 +2519,7 @@ paths:
                 query:
                   $ref: '#/components/schemas/EPCISMasterDataQuery'
                 createdAt:
+                  example: "2017-08-21T17:32:28Z"
                   type: string
                   format: date-time
       responses:
@@ -2477,15 +2538,17 @@ paths:
             GS1-CBV-extensions:
               $ref: '#/components/headers/GS1-CBV-extensions'
             Link:
-              $ref: '#/components/headers/Link'
+              example: "https://www.example.com/queries/SimpleEventQuery-2ac8f3f4-2a67-11eb-adc1/masterdata?perPage=30&nextPageToken=3A1550673874978%2Ci%3AU6D7DENAKwM2gQRRwGrataeq>; rel=\"next\"'"
+              description: The `Link` header is used for pagination. It contains the URL to the next result set.
+              schema:
+                $ref: '#/components/schemas/Link'
             Location:
               description: |
                 The URL of the newly created anonymous master data query. The server will create a new and unique
-                temporary anonymous query for the client's request. The client can use this URL to subscribe to that
-                query. If the client wants to execute the query synchronously, the client should use URL in the Link
+                temporary anonymous query for the client's request. The client should use URL in the `Link`
                 header to fetch more resources.
               schema:
-                example: "https://www.example.com/queries/SimpleMasterDataQuery-2ac8f3f4-2a67-11eb-0242ac120002-adc1/masterdata"
+                example: "https://www.example.com/queries/SimpleMasterDataQuery-2ac8f3f4-2a67-11eb-0242ac120002-adc1"
                 type: string
                 format: uri
           description: Returns the query result
@@ -2550,10 +2613,9 @@ paths:
                 query:
                   $ref: '#/components/schemas/EPCISEventsQuery'
                 createdAt:
+                  example: "2017-08-21T17:32:28Z"
                   type: string
                   format: date-time
-
-
       responses:
         '200':
           headers:
@@ -2570,7 +2632,10 @@ paths:
             GS1-CBV-extensions:
               $ref: '#/components/headers/GS1-CBV-extensions'
             Link:
-              $ref: '#/components/headers/Link'
+              example: "https://www.example.com/queries/SimpleEventQuery-2ac8f3f4-2a67-11eb-adc1/events?perPage=30&nextPageToken=3A1550673874978%2Ci%3AU6D7DENAKwM2gQRRwGrataeq>; rel=\"next\"'"
+              description: The `Link` header is used for pagination. It contains the URL to the next result set.
+              schema:
+                $ref: '#/components/schemas/Link'
             Location:
               description: |
                 The URL of the newly created anonymous query. The server will create a new and unique temporary
@@ -2578,10 +2643,12 @@ paths:
                 If the client wants to execute the query synchronously, the client should use URL in the `Link` header
                 to fetch more resources.
               schema:
-                example: "https://www.example.com/queries/SimpleEventQuery-2ac8f3f4-2a67-11eb-adc1-0242ac120002/events"
+                example: "https://www.example.com/queries/SimpleEventQuery-2ac8f3f4-2a67-11eb-adc1"
                 type: string
                 format: uri
-          description: Returns the query result
+          description: |
+            Returns the query result. To use pagination, the client should follow the URL returned in the
+            `Link` header.
           content:
             application/json:
               schema:
@@ -2717,35 +2784,21 @@ components:
           $ref: '#/components/headers/GS1-Vendor-version'
         GS1-CBV-extensions:
           $ref: '#/components/headers/GS1-CBV-extensions'
-    '204QueryResultsOptionsResponse':
-      description: |
-        The `OPTIONS` method is used as a discovery service for `/queries` endpoints. It describes which EPCIS and CBV
-        versions are used in the query result supported as well as  EPCIS and CBV extensions.
-      headers:
-        Allow:
-          example:
-            - GET
-            - OPTIONS
-          schema:
-            type: string
-            enum:
-              - GET
-              - OPTIONS
     '204AnonymousQueriesOptionsResponse':
       description: |
-        The `OPTIONS` method is used as a discovery service for queries endpoints. For named queries,
+        The `OPTIONS` method is used as a discovery service for anonymous queries endpoints. For named queries,
         `OPTIONS` reveals which vocabularies are used in the query, etc. Anonymous queries are not stored, and
         therefore such information cannot be discovered.
         The list of headers is not exhaustive. It only describes the functionality specific to EPCIS 2.0.
       headers:
         Allow:
           example:
-            - GET
+            - POST
             - OPTIONS
           schema:
             type: string
             enum:
-              - GET
+              - POST
               - OPTIONS
         GS1-EPCIS-version:
           $ref: '#/components/headers/GS1-EPCIS-version'
@@ -2763,7 +2816,7 @@ components:
           $ref: '#/components/headers/GS1-CBV-extensions'
     '204EventEndpointsOptionsResponse':
       description: |
-        The `OPTIONS` method is used as a discovery service for `/events` endpoints. It describes which EPCIS and CBV
+        The `OPTIONS` method is used as a discovery service for `events` endpoints. It describes which EPCIS and CBV
         versions are supported as well as  EPCIS and CBV extensions.
         The list of headers is not exhaustive. It only describes the functionality specific to EPCIS 2.0.
       headers:
@@ -2969,6 +3022,9 @@ components:
         status: 401
         instance: "/queries/TestQuery"
     QueryDefinition:
+      description: |
+        Creating a new query with query type and query body. The query body can either be for EPCIS events or
+        EPCIS master data.
       type: object
       required:
         - query
@@ -2981,10 +3037,18 @@ components:
             - masterdata
           example: events
         query:
+          example:
+            {
+              "eventTypes": "ObjectEvent" ,
+              "EQ_bizStep": [
+                  "urn:epcglobal:cbv:bizstep:shipping",
+                  "urn:epcglobal:cbv:bizstep:receiving" ]
+            }
           oneOf:
             - $ref: '#/components/schemas/EPCISEventsQuery'
             - $ref: '#/components/schemas/EPCISMasterDataQuery'
         createdAt:
+          example: "2017-08-21T17:32:28Z"
           type: string
           format: date-time
     EPCISEventsQuery:
@@ -3168,10 +3232,11 @@ components:
 
     Link:
       description: |
-        A pagination header link. This header works together with the `perPage` and `nextPageToken` query string parameters.
+        A pagination header link. This header works together with the `perPage` and `nextPageToken` query string
+        parameters.
       type: string
       format: uri
-      example: '<https://example.com/events/all?perPage=30&nextPageToken=3A1550673874978%2Ci%3AU6D7DENAKwM2gQRRwGrataeq>; rel="next"'
+      example: '<https://example.com/eventTypes/all/events?perPage=30&nextPageToken=3A1550673874978%2Ci%3AU6D7DENAKwM2gQRRwGrataeq>; rel="next"'
     PerPage:
       description: |
         This parameter helps to control the amount of data returned to the client through pagination.
@@ -3211,13 +3276,7 @@ components:
         - AssociationEvent
         - TransformationEvent
         - TransactionEvent
-    GS1-query-minRecordTime:
-      description: |
-        An optional header to specify the smallest possible record time for
-        EPCIS events in a query subscription
-      type: string
-      format: time
-      example: "2020-04-04T20:33:31.116-06:00"
+
     # New schemas
     GS1-query-initialRecordTime:
       description: |
@@ -3227,13 +3286,16 @@ components:
       type: string
       format: time
       example: "2020-04-04T20:33:31.116-06:00"
-    GS1-query-abstract-subscription:
+
+    GS1-query-abstract-subscriptions:
       example: {
         "callbackUrl": "https://client.example.com/queryCallback",
         "secret": "0435ojtojt02"
       }
       type: object
-      description: This schema contains shared features of EPCIS query subscriptions.
+      description: |
+        This schema contains shared features of EPCIS query subscriptions. If the schema is used in a rsponse, the
+        `secret` should not be fully reveealed.
       required:
         - callbackUrl
         - secret
@@ -3247,26 +3309,60 @@ components:
           example: '0435ojtojt02'
           type: string
           description: One-time secret generated by the client for the server.
-        reportIfEmpty:
-          $ref: '#/components/schemas/GS1-query-reportIfEmpty'
         initialRecordTime:
           $ref: '#/components/schemas/GS1-query-initialRecordTime'
-    GS1-query-trigger-event-subscriptions:
-      description: The URL of a trigging event used trigger a query subscription.
+
+    GS1-query-stream-subscriptions:
+      description: |
+        If no query schedule is specified, the client must explicitly set `stream` to `true`. This restriction is to
+        prevent clients from accidentally subscribe to EPCIS event streams.
+
+        Example:
+
+        ```
+        POST /queries/MyQuery/subscriptions
+        {
+          "callbackUrl": "https://client.example.com/queryCallback",
+          "secret": "0435ojtojt02",
+          "stream": true
+        }
+        ```
       type: object
+      example: {"stream":true}
       required:
-        - trigger
+        - stream
       properties:
-        trigger:
-          $ref: '#/components/schemas/GS1-query-trigger-event'
+        stream:
+          $ref: '#/components/schemas/GS1-query-stream-flag'
 
     GS1-query-schedule-subscriptions:
-      description: The URL of a trigging event used trigger a query subscription.
+      description: |
+        A scheduled query subscription is a time-based query execution scheduler. EPCIS 2.0 query schedule are scheduled
+        in the same manner as cron jobs.
+
+        For example, this query subscription will is scheduled to trigger every morning at 1.05am. By setting
+        `reportIfEmpty` to `true`, the client's callback URL will be called even if there are no new events that match
+        the query.
+
+        ```
+        POST /queries/MyQuery/subscriptions
+        {
+          "callbackUrl": "https://client.example.com/queryCallback",
+          "secret": "0435ojtojt02",
+          "reportIfEmpty": true,
+          "schedule": {
+            "hour":"1",
+            "minute": "5"
+          }
+        }
+        ```
       type: object
       example: {"schedule": {"hour":"1", "minute": "5"}}
       required:
         - schedule
       properties:
+        reportIfEmpty:
+          $ref: '#/components/schemas/GS1-query-reportIfEmpty-flag'
         schedule:
           type: object
           properties:
@@ -3282,18 +3378,7 @@ components:
               $ref: '#/components/schemas/GS1-query-schedule-month'
             dayOfWeek:
               $ref: '#/components/schemas/GS1-query-schedule-dayOfWeek'
-    GS1-query-rule-subscriptions:
-      description: |
-        This subscription rules generalises trigger event subscriptions. It support trigger rules written
-        in the EPCIS query language.
-        Trigger rule subscriptions are optional.
-      type: object
-      required:
-        - rules
-      properties:
-        rules:
-          type: object
-    GS1-query-reportIfEmpty:
+    GS1-query-reportIfEmpty-flag:
       example: false
       type: boolean
       default: false
@@ -3340,10 +3425,14 @@ components:
       example: 1
       type: string
       pattern: "(\\g<element>,)*\\g<element>|(?<element>(\\g<number>|\\g<range>))|(?<range>(\\[\\g<number>\\-\\g<number>\\]))|(?<number>([1-7]))"
-    GS1-query-trigger-event:
-      type: string
-      format: uri
-      example: 'https://id.gs1.org/01/000123456789/21/12'
+    GS1-query-stream-flag:
+      type: boolean
+      description: |
+        If now schedule is specified and `stream` is `true`, the standing query SHALL report immediately whenever a
+        captured EPCIS event matches the query critera.
+      default: true
+      enum:
+        - true
     Upgrade:
       type: string
       description: The `Upgrade` and `Connection` headers are needed to open a Websocket for queries.
@@ -3456,58 +3545,56 @@ components:
       name: nextPageToken
       schema:
         $ref: '#/components/schemas/NextPageToken'
-
-    GS1-query-minRecordTime:
-      in: header
-      name: GS1-query-minRecordTime
-      required: false
-      schema:
-        $ref: '#/components/schemas/GS1-query-minRecordTime'
     GS1-query-schedule-second:
       in: query
-      name: GS1-query-schedule-second
+      name: second
       required: false
       schema:
         $ref: '#/components/schemas/GS1-query-schedule-second'
     GS1-query-schedule-minute:
       in: query
-      name: GS1-query-schedule-minute
+      name: minute
       required: false
       schema:
         $ref: '#/components/schemas/GS1-query-schedule-minute'
     GS1-query-schedule-hour:
       in: query
-      name: GS1-query-schedule-hour
+      name: hour
       required: false
       schema:
         $ref: '#/components/schemas/GS1-query-schedule-hour'
     GS1-query-schedule-dayOfMonth:
       in: query
-      name: GS1-query-schedule-dayOfMonth
+      name: dayOfMonth
       required: false
       schema:
         $ref: '#/components/schemas/GS1-query-schedule-dayOfMonth'
     GS1-query-schedule-month:
       in: query
-      name: GS1-query-schedule-month
+      name: month
       required: false
       schema:
         $ref: '#/components/schemas/GS1-query-schedule-month'
     GS1-query-schedule-dayOfWeek:
       in: query
-      name: GS1-query-schedule-dayOfWeek
+      name: dayOfWeek
       required: false
       schema:
         $ref: '#/components/schemas/GS1-query-schedule-dayOfWeek'
     GS1-query-reportIfEmpty:
       in: query
-      name: GS1-query-reportIfEmpty
+      name: reportIfEmpty
       required: false
       schema:
-        $ref: '#/components/schemas/GS1-query-reportIfEmpty'
+        $ref: '#/components/schemas/GS1-query-reportIfEmpty-flag'
+    GS1-query-stream:
+      in: query
+      name: stream
+      schema:
+        $ref: '#/components/schemas/GS1-query-stream-flag'
     GS1-query-initialRecordTime:
       in: query
-      name: GS1-query-initialRecordTime
+      name: initialRecordTime
       required: false
       schema:
         $ref: '#/components/schemas/GS1-query-initialRecordTime'
@@ -3522,7 +3609,7 @@ components:
       name: Connection
       required: false
       schema:
-        $ref: '#/components/schemas/Upgrade'
+        $ref: '#/components/schemas/Connection'
     EventID:
       name: eventID
       in: path
@@ -3633,9 +3720,6 @@ components:
     Location:
       schema:
         $ref: '#/components/schemas/Location'
-    GS1-query-minRecordTime:
-      schema:
-        $ref: '#/components/schemas/GS1-query-minRecordTime'
     Link:
       schema:
         $ref: '#/components/schemas/Link'
@@ -3648,11 +3732,3 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/QueryDefinition'
-    CreateMasterDataQuery:
-      description: Creates and executes a master data query.
-      required: true
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/EPCISMasterDataQuery'
-
