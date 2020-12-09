@@ -14,13 +14,13 @@ tags:
   - name: subscriptions
     description: |
       EPCIS 2.0 supports query subscriptions with using Webhooks or Websocket.
-  - name: masterdata
+  - name: masterData
     description: |
       Endpoints to create master data queries and subscribe to those queries.
   - name: events
     description: |
       Endpoints that expose EPCIS events as Web resources.
-  - name: top-level-resources
+  - name: topLevelResources
     description: |
       Endpoints to browse EPCIS events by common top-level resources: electronic product codes, business steps,
       business locations, read points and dispositions.
@@ -561,7 +561,7 @@ paths:
     get:
       tags:
         - events
-        - top-level-resources
+        - topLevelResources
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
@@ -699,7 +699,7 @@ paths:
     get:
       tags:
         - events
-        - top-level-resources
+        - topLevelResources
       summary: Returns all EPCIS events with the electronic product code and of the given EPCIS event type.
       parameters:
         - $ref: '#/components/parameters/PerPage'
@@ -763,7 +763,7 @@ paths:
     get:
       tags:
         - events
-        - top-level-resources
+        - topLevelResources
       summary: Returns an EPCIS event by event ID.
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-version'
@@ -804,7 +804,7 @@ paths:
     get:
       tags:
         - events
-        - top-level-resources
+        - topLevelResources
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
@@ -932,7 +932,7 @@ paths:
     get:
       tags:
         - events
-        - top-level-resources
+        - topLevelResources
       summary: Returns all EPCIS events occurring at that business step and of the given EPCIS event type.
       parameters:
         - $ref: '#/components/parameters/PerPage'
@@ -995,7 +995,7 @@ paths:
     get:
       tags:
         - events
-        - top-level-resources
+        - topLevelResources
       summary: Returns an EPCIS event by event ID.
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-version'
@@ -1036,7 +1036,7 @@ paths:
     get:
       tags:
         - events
-        - top-level-resources
+        - topLevelResources
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
@@ -1164,7 +1164,7 @@ paths:
     get:
       tags:
         - events
-        - top-level-resources
+        - topLevelResources
       summary: Returns all EPCIS events occurring at that business location and of the given EPCIS event type.
       parameters:
         - $ref: '#/components/parameters/PerPage'
@@ -1228,7 +1228,7 @@ paths:
     get:
       tags:
         - events
-        - top-level-resources
+        - topLevelResources
       summary: Returns an EPCIS event by event ID.
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-version'
@@ -1269,7 +1269,7 @@ paths:
     get:
       tags:
         - events
-        - top-level-resources
+        - topLevelResources
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
@@ -1396,7 +1396,7 @@ paths:
     get:
       tags:
         - events
-        - top-level-resources
+        - topLevelResources
       summary: Returns all EPCIS events occurring at that read point and of the given EPCIS event type.
       parameters:
         - $ref: '#/components/parameters/PerPage'
@@ -1459,7 +1459,7 @@ paths:
     get:
       tags:
         - events
-        - top-level-resources
+        - topLevelResources
       summary: Returns an EPCIS event by event ID.
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-version'
@@ -1500,7 +1500,7 @@ paths:
     get:
       tags:
         - events
-        - top-level-resources
+        - topLevelResources
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
@@ -1627,7 +1627,7 @@ paths:
     get:
       tags:
         - events
-        - top-level-resources
+        - topLevelResources
       summary: Returns all EPCIS events occurring at that disposition and of the given EPCIS event type.
       parameters:
         - $ref: '#/components/parameters/PerPage'
@@ -1690,7 +1690,7 @@ paths:
     get:
       tags:
         - events
-        - top-level-resources
+        - topLevelResources
       summary: Returns an EPCIS event by event ID.
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-version'
@@ -1820,7 +1820,7 @@ paths:
                 format: uri
           description: |
             Returns endpoints available to the query. Both queries on EPCIS events and master data have a `subscriptions`
-            resource. A master data query has, in addition, a `masterdata` resource and an EPCIS events query have an
+            resource. A master data query has, in addition, a `masterData` resource and an EPCIS events query have an
             `events` resource.
           content:
             application/json:
@@ -1833,7 +1833,7 @@ paths:
                     oneOf:
                       - enum:
                           - subscriptions
-                          - masterdata
+                          - masterData
                       - enum:
                           - subscriptions
                           - events
@@ -1853,9 +1853,9 @@ paths:
       tags:
         - queries
         - events
-        - masterdata
+        - masterData
       summary: |
-        Creates and executes a named EPCIS events or masterdata query and returns results with the option to use
+        Creates and executes a named EPCIS events or EPCIS master data query and returns results with the option to use
         pagination if needed.
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-version'
@@ -1892,7 +1892,7 @@ paths:
             Location:
               description: |
                 The URL of the created query. The client can use the `Location` URL to obtain more resources
-                synchronously (`events` for EPCIS events and `masterdata` for EPCIS vocabulary elements). The client
+                synchronously (`events` for EPCIS events and `masterData` for EPCIS vocabulary elements). The client
                 may also receive EPCIS events asynchronously by subscribing to a query.
               schema:
                 example: "https://www.example.com/queries/myQuery"
@@ -2421,7 +2421,7 @@ paths:
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
-  /queries/{queryName}/masterdata:
+  /queries/{queryName}/masterData:
     parameters:
       - $ref: '#/components/parameters/QueryName'
     options:
@@ -2466,7 +2466,7 @@ paths:
     get:
       tags:
         - queries
-        - masterdata
+        - masterData
       summary: Returns the result of a master data query.
       parameters:
         - $ref: '#/components/parameters/PerPage'
@@ -2502,7 +2502,7 @@ paths:
     post:
       tags:
         - queries
-        - masterdata
+        - masterData
       summary: >
         Executes anonymous master data queries and returns results with the option to use pagination if needed.
       parameters:
@@ -2530,8 +2530,8 @@ paths:
                 queryType:
                   type: string
                   enum:
-                    - masterdata
-                  example: masterdata
+                    - masterData
+                  example: masterData
                 query:
                   $ref: '#/components/schemas/EPCISMasterDataQuery'
                 createdAt:
@@ -2554,7 +2554,7 @@ paths:
             GS1-CBV-extensions:
               $ref: '#/components/headers/GS1-CBV-extensions'
             Link:
-              example: "https://www.example.com/queries/SimpleMasterDataQuery/masterdata?perPage=30&nextPageToken=3A1550673874978%2Ci%3AU6D7DENAKwM2gQRRwGrataeq>; rel=\"next\"'"
+              example: "https://www.example.com/queries/SimpleMasterDataQuery/masterData?perPage=30&nextPageToken=3A1550673874978%2Ci%3AU6D7DENAKwM2gQRRwGrataeq>; rel=\"next\"'"
               description: The `Link` header is used for pagination. It contains the URL to the next result set.
               schema:
                 $ref: '#/components/schemas/Link'
@@ -2573,11 +2573,11 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '500':
           $ref: '#/components/responses/500ImplementationException'
-  /queries/SimpleMasterDataQuery/masterdata:
+  /queries/SimpleMasterDataQuery/masterData:
     get:
       tags:
         - queries
-        - masterdata
+        - masterData
       summary: Returns the result of a master data query.
       parameters:
         - $ref: '#/components/parameters/NextPageToken'
@@ -3118,7 +3118,7 @@ components:
           type: string
           enum:
             - events
-            - masterdata
+            - masterData
           example: events
         query:
           example:
@@ -3824,7 +3824,7 @@ components:
 
   requestBodies:
     CreateQuery:
-      description: Creates and executes an new EPCIS events or EPCIS masterdata query.
+      description: Creates and executes an new EPCIS events or EPCIS master data query.
       required: true
       content:
         application/json:
