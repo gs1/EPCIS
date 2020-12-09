@@ -33,11 +33,11 @@
       "items": {
         "type": "string",
         "enum": [
-          "ObjectEvents",
-          "AggregationEvents",
-          "AssociationEvents",
-          "TransformationEvents",
-          "TransactionEvents"
+          "ObjectEvent",
+          "AggregationEvent",
+          "AssociationEvent",
+          "TransformationEvent",
+          "TransactionEvent"
         ]
       }
     },
