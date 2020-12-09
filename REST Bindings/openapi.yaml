@@ -3499,6 +3499,10 @@ components:
                   required:
                     - eventList
                   properties:
+                    queryName:
+                      type: string
+                    subscriptionID:
+                      type: string
                     eventList:
                       type: array
                       items:
