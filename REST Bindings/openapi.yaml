@@ -3494,15 +3494,15 @@ components:
             queryResults:
               type: object
               properties:
+                queryName:
+                  type: string
+                subscriptionID:
+                  type: string
                 resultsBody:
                   type: object
                   required:
                     - eventList
                   properties:
-                    queryName:
-                      type: string
-                    subscriptionID:
-                      type: string
                     eventList:
                       type: array
                       items:
