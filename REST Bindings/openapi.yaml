@@ -13,7 +13,7 @@ tags:
       EPCIS events queries also support query subscription.
   - name: subscriptions
     description: |
-      EPCIS 2.0 supports query subscriptions with using Webhooks or Websocket.
+      EPCIS 2.0 supports query subscriptions with using Webhooks or Websockets.
   - name: masterData
     description: |
       Endpoints to create master data queries and subscribe to those queries.
@@ -38,42 +38,45 @@ paths:
         - discovery
       summary: Query server settings, EPCIS version(s) and related vocabularies/standards.
       parameters:
-        - $ref: '#/components/parameters/GS1-EPCIS-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-min'
-        - $ref: '#/components/parameters/GS1-EPCIS-max'
-        - $ref: '#/components/parameters/GS1-CBV-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
-        - $ref: '#/components/parameters/GS1-CBV-extensions'
-        - $ref: '#/components/parameters/GS1-vendor-version'
-        - $ref: '#/components/parameters/GS1-CAPTURE-limit'
-        - $ref: '#/components/parameters/GS1-CAPTURE-file-size-limit'
+        - $ref: '#/components/parameters/GS1-EPCIS-Version'
+        - $ref: '#/components/parameters/GS1-EPCIS-Min'
+        - $ref: '#/components/parameters/GS1-EPCIS-Max'
+        - $ref: '#/components/parameters/GS1-CBV-Version'
+        - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
+        - $ref: '#/components/parameters/GS1-CBV-Extensions'
+        - $ref: '#/components/parameters/GS1-Vendor-Version'
+        - $ref: '#/components/parameters/GS1-Capture-Limit'
+        - $ref: '#/components/parameters/GS1-Capture-FileSizeLimit'
+        - $ref: '#/components/parameters/GS1-NextPageToken-Expires'
       responses:
         '204':
-          description: Server can comply with the GS1-EPCIS-related requirements from the client.
+          description: Server can comply with the GS1-EPCIS--related requirements from the client.
           headers:
             Allow:
               schema:
                 type: string
                 enum:
                   - OPTIONS
-            GS1-EPCIS-version:
-              $ref: '#/components/headers/GS1-EPCIS-version'
-            GS1-EPCIS-min:
-              $ref: '#/components/headers/GS1-EPCIS-min'
-            GS1-EPCIS-max:
-              $ref: '#/components/headers/GS1-EPCIS-max'
-            GS1-CBV-version:
-              $ref: '#/components/headers/GS1-CBV-version'
-            GS1-EPCIS-extensions:
-              $ref: '#/components/headers/GS1-EPCIS-extensions'
-            GS1-Vendor-version:
-              $ref: '#/components/headers/GS1-Vendor-version'
-            GS1-CBV-extensions:
-              $ref: '#/components/headers/GS1-CBV-extensions'
-            GS1-CAPTURE-limit:
-              $ref: '#/components/headers/GS1-CAPTURE-limit'
-            GS1-CAPTURE-file-size-limit:
-              $ref: '#/components/headers/GS1-CAPTURE-file-size-limit'
+            GS1-EPCIS-Version:
+              $ref: '#/components/headers/GS1-EPCIS-Version'
+            GS1-EPCIS-Min:
+              $ref: '#/components/headers/GS1-EPCIS-Min'
+            GS1-EPCIS-Max:
+              $ref: '#/components/headers/GS1-EPCIS-Max'
+            GS1-CBV-Version:
+              $ref: '#/components/headers/GS1-CBV-Version'
+            GS1-EPCIS-Extensions:
+              $ref: '#/components/headers/GS1-EPCIS-Extensions'
+            GS1-Vendor-Version:
+              $ref: '#/components/headers/GS1-Vendor-Version'
+            GS1-CBV-Extensions:
+              $ref: '#/components/headers/GS1-CBV-Extensions'
+            GS1-Capture-Limit:
+              $ref: '#/components/headers/GS1-Capture-Limit'
+            GS1-Capture-FileSizeLimit:
+              $ref: '#/components/headers/GS1-Capture-FileSizeLimit'
+            GS1-NextPageToken-Expires:
+              $ref: '#/components/headers/GS1-NextPageToken-Expires'
 
   /capture:
     options:
@@ -82,8 +85,8 @@ paths:
       summary: Discover the settings of the capture interface.
       description: |
         The `OPTIONS` method is used as a discovery service for `/capture`. It describes which EPCIS and CBV versions
-        are supported, EPCIS and CBV extensions, the payload size as a EPCIS events count (`GS1-CAPTURE-limit header`)
-        or maximum payload size in bytes (`GS1-CAPTURE-file-size-limit`).
+        are supported, EPCIS and CBV extensions, the payload size as a EPCIS events count (`GS1-Capture-Limit header`)
+        or maximum payload size in bytes (`GS1-Capture-FileSizeLimit`).
         The list of headers is not exhaustive. It only describes the functionality specific to EPCIS 2.0.
       responses:
         '204':
@@ -99,35 +102,35 @@ paths:
                 enum:
                   - POST
                   - OPTIONS
-            GS1-EPCIS-version:
-              $ref: '#/components/headers/GS1-EPCIS-version'
-            GS1-EPCIS-min:
-              $ref: '#/components/headers/GS1-EPCIS-min'
-            GS1-EPCIS-max:
-              $ref: '#/components/headers/GS1-EPCIS-max'
-            GS1-CBV-version:
-              $ref: '#/components/headers/GS1-CBV-version'
-            GS1-EPCIS-extensions:
-              $ref: '#/components/headers/GS1-EPCIS-extensions'
-            GS1-Vendor-version:
-              $ref: '#/components/headers/GS1-Vendor-version'
-            GS1-CBV-extensions:
-              $ref: '#/components/headers/GS1-CBV-extensions'
-            GS1-CAPTURE-limit:
-              $ref: '#/components/headers/GS1-CAPTURE-limit'
-            GS1-CAPTURE-file-size-limit:
-              $ref: '#/components/headers/GS1-CAPTURE-file-size-limit'
+            GS1-EPCIS-Version:
+              $ref: '#/components/headers/GS1-EPCIS-Version'
+            GS1-EPCIS-Min:
+              $ref: '#/components/headers/GS1-EPCIS-Min'
+            GS1-EPCIS-Max:
+              $ref: '#/components/headers/GS1-EPCIS-Max'
+            GS1-CBV-Version:
+              $ref: '#/components/headers/GS1-CBV-Version'
+            GS1-EPCIS-Extensions:
+              $ref: '#/components/headers/GS1-EPCIS-Extensions'
+            GS1-Vendor-Version:
+              $ref: '#/components/headers/GS1-Vendor-Version'
+            GS1-CBV-Extensions:
+              $ref: '#/components/headers/GS1-CBV-Extensions'
+            GS1-Capture-Limit:
+              $ref: '#/components/headers/GS1-Capture-Limit'
+            GS1-Capture-FileSizeLimit:
+              $ref: '#/components/headers/GS1-Capture-FileSizeLimit'
     post:
       tags:
         - capture
       summary: Stores one or more EPCIS events. The server either accepts or rejects all events.
       parameters:
-        - $ref: '#/components/parameters/GS1-EPCIS-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-min'
-        - $ref: '#/components/parameters/GS1-EPCIS-max'
-        - $ref: '#/components/parameters/GS1-CBV-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
-        - $ref: '#/components/parameters/GS1-CBV-extensions'
+        - $ref: '#/components/parameters/GS1-EPCIS-Version'
+        - $ref: '#/components/parameters/GS1-EPCIS-Min'
+        - $ref: '#/components/parameters/GS1-EPCIS-Max'
+        - $ref: '#/components/parameters/GS1-CBV-Version'
+        - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
+        - $ref: '#/components/parameters/GS1-CBV-Extensions'
       description: |
         EPCIS events are added in bulk using the capture interface. To remain compatible with EPCIS 1.2, EPCIS 2.0 makes
         event ids optional. If event ids are missing, the server should populate the event id with a unique value.
@@ -209,24 +212,24 @@ paths:
                 enum:
                   - GET
                   - OPTIONS
-            GS1-EPCIS-version:
-              $ref: '#/components/headers/GS1-EPCIS-version'
-            GS1-EPCIS-min:
-              $ref: '#/components/headers/GS1-EPCIS-min'
-            GS1-EPCIS-max:
-              $ref: '#/components/headers/GS1-EPCIS-max'
-            GS1-CBV-version:
-              $ref: '#/components/headers/GS1-CBV-version'
-            GS1-EPCIS-extensions:
-              $ref: '#/components/headers/GS1-EPCIS-extensions'
-            GS1-Vendor-version:
-              $ref: '#/components/headers/GS1-Vendor-version'
-            GS1-CBV-extensions:
-              $ref: '#/components/headers/GS1-CBV-extensions'
-            GS1-CAPTURE-limit:
-              $ref: '#/components/headers/GS1-CAPTURE-limit'
-            GS1-CAPTURE-file-size-limit:
-              $ref: '#/components/headers/GS1-CAPTURE-file-size-limit'
+            GS1-EPCIS-Version:
+              $ref: '#/components/headers/GS1-EPCIS-Version'
+            GS1-EPCIS-Min:
+              $ref: '#/components/headers/GS1-EPCIS-Min'
+            GS1-EPCIS-Max:
+              $ref: '#/components/headers/GS1-EPCIS-Max'
+            GS1-CBV-Version:
+              $ref: '#/components/headers/GS1-CBV-Version'
+            GS1-EPCIS-Extensions:
+              $ref: '#/components/headers/GS1-EPCIS-Extensions'
+            GS1-Vendor-Version:
+              $ref: '#/components/headers/GS1-Vendor-Version'
+            GS1-CBV-Extensions:
+              $ref: '#/components/headers/GS1-CBV-Extensions'
+            GS1-Capture-Limit:
+              $ref: '#/components/headers/GS1-Capture-Limit'
+            GS1-Capture-FileSizeLimit:
+              $ref: '#/components/headers/GS1-Capture-FileSizeLimit'
     get:
       tags:
         - capture
@@ -277,12 +280,12 @@ paths:
         - events
       summary: Returns all EPCIS event types currently available in the EPCIS repository.
       parameters:
-        - $ref: '#/components/parameters/GS1-EPCIS-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
-        - $ref: '#/components/parameters/GS1-EPCIS-min'
-        - $ref: '#/components/parameters/GS1-EPCIS-max'
-        - $ref: '#/components/parameters/GS1-CBV-version'
-        - $ref: '#/components/parameters/GS1-CBV-extensions'
+        - $ref: '#/components/parameters/GS1-EPCIS-Version'
+        - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
+        - $ref: '#/components/parameters/GS1-EPCIS-Min'
+        - $ref: '#/components/parameters/GS1-EPCIS-Max'
+        - $ref: '#/components/parameters/GS1-CBV-Version'
+        - $ref: '#/components/parameters/GS1-CBV-Extensions'
       description: |
         EPCIS events type specifies the context of an event. This endpoint returns all EPCIS types that are
         currently in the repository.
@@ -313,7 +316,7 @@ paths:
     get:
       tags:
         - events
-      summary: Returns all sub-resources of an EPCIS events. This endpoint does not work with 'all'
+      summary: Returns all sub-resources of an EPCIS events. This endpoint does not work with `all`.
       description: |
         This endpoint returns all sub-resources of an EPCIS events, which currently is 'events'. A server may
         add additional endpoints, for example `schema` to access the EPCIS event type schema.
@@ -336,12 +339,12 @@ paths:
   /eventTypes/{eventType}/events:
     parameters:
       - $ref: '#/components/parameters/EventType'
-      - $ref: '#/components/parameters/GS1-EPCIS-version'
-      - $ref: '#/components/parameters/GS1-EPCIS-min'
-      - $ref: '#/components/parameters/GS1-EPCIS-max'
-      - $ref: '#/components/parameters/GS1-CBV-version'
-      - $ref: '#/components/parameters/GS1-EPCIS-extensions'
-      - $ref: '#/components/parameters/GS1-CBV-extensions'
+      - $ref: '#/components/parameters/GS1-EPCIS-Version'
+      - $ref: '#/components/parameters/GS1-EPCIS-Min'
+      - $ref: '#/components/parameters/GS1-EPCIS-Max'
+      - $ref: '#/components/parameters/GS1-CBV-Version'
+      - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
+      - $ref: '#/components/parameters/GS1-CBV-Extensions'
 
     options:
       tags:
@@ -369,30 +372,30 @@ paths:
                   - GET
                   - OPTIONS
                   - POST
-            GS1-EPCIS-version:
-              $ref: '#/components/headers/GS1-EPCIS-version'
-            GS1-EPCIS-min:
-              $ref: '#/components/headers/GS1-EPCIS-min'
-            GS1-EPCIS-max:
-              $ref: '#/components/headers/GS1-EPCIS-max'
-            GS1-CBV-version:
-              $ref: '#/components/headers/GS1-CBV-version'
-            GS1-EPCIS-extensions:
-              $ref: '#/components/headers/GS1-EPCIS-extensions'
-            GS1-Vendor-version:
-              $ref: '#/components/headers/GS1-Vendor-version'
-            GS1-CBV-extensions:
-              $ref: '#/components/headers/GS1-CBV-extensions'
+            GS1-EPCIS-Version:
+              $ref: '#/components/headers/GS1-EPCIS-Version'
+            GS1-EPCIS-Min:
+              $ref: '#/components/headers/GS1-EPCIS-Min'
+            GS1-EPCIS-Max:
+              $ref: '#/components/headers/GS1-EPCIS-Max'
+            GS1-CBV-Version:
+              $ref: '#/components/headers/GS1-CBV-Version'
+            GS1-EPCIS-Extensions:
+              $ref: '#/components/headers/GS1-EPCIS-Extensions'
+            GS1-Vendor-Version:
+              $ref: '#/components/headers/GS1-Vendor-Version'
+            GS1-CBV-Extensions:
+              $ref: '#/components/headers/GS1-CBV-Extensions'
     get:
       tags:
         - events
-      summary: >
-        Returns EPCIS events of a given EPCIS event type. If 'all' is used instead of an EPCIS
+      summary: |
+        Returns EPCIS events of a given EPCIS event type. If `all` is used instead of an EPCIS
         event type, every event in the repository is returned.
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
-        - $ref: '#/components/parameters/GS1-query-initialRecordTime'
+        - $ref: '#/components/parameters/GS1-Query-InitialRecordTime'
       description: |
         This endpoint returns all EPCIS events of a specific EPCIS event type up to the amount defined in `perPage`.
         The server returns a 'link' header to point to the remaining results.
@@ -451,7 +454,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/NewEPCISEvent'
-
         '400':
           description: An error occurred while creating the EPCIS event. All events are rejected.
           content:
@@ -505,31 +507,31 @@ paths:
                 enum:
                   - GET
                   - OPTIONS
-            GS1-EPCIS-version:
-              $ref: '#/components/headers/GS1-EPCIS-version'
-            GS1-EPCIS-min:
-              $ref: '#/components/headers/GS1-EPCIS-min'
-            GS1-EPCIS-max:
-              $ref: '#/components/headers/GS1-EPCIS-max'
-            GS1-CBV-version:
-              $ref: '#/components/headers/GS1-CBV-version'
-            GS1-EPCIS-extensions:
-              $ref: '#/components/headers/GS1-EPCIS-extensions'
-            GS1-Vendor-version:
-              $ref: '#/components/headers/GS1-Vendor-version'
-            GS1-CBV-extensions:
-              $ref: '#/components/headers/GS1-CBV-extensions'
+            GS1-EPCIS-Version:
+              $ref: '#/components/headers/GS1-EPCIS-Version'
+            GS1-EPCIS-Min:
+              $ref: '#/components/headers/GS1-EPCIS-Min'
+            GS1-EPCIS-Max:
+              $ref: '#/components/headers/GS1-EPCIS-Max'
+            GS1-CBV-Version:
+              $ref: '#/components/headers/GS1-CBV-Version'
+            GS1-EPCIS-Extensions:
+              $ref: '#/components/headers/GS1-EPCIS-Extensions'
+            GS1-Vendor-Version:
+              $ref: '#/components/headers/GS1-Vendor-Version'
+            GS1-CBV-Extensions:
+              $ref: '#/components/headers/GS1-CBV-Extensions'
     get:
       tags:
         - events
       summary: Returns an individual EPCIS event.
       parameters:
-        - $ref: '#/components/parameters/GS1-EPCIS-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-min'
-        - $ref: '#/components/parameters/GS1-EPCIS-max'
-        - $ref: '#/components/parameters/GS1-CBV-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
-        - $ref: '#/components/parameters/GS1-CBV-extensions'
+        - $ref: '#/components/parameters/GS1-EPCIS-Version'
+        - $ref: '#/components/parameters/GS1-EPCIS-Min'
+        - $ref: '#/components/parameters/GS1-EPCIS-Max'
+        - $ref: '#/components/parameters/GS1-CBV-Version'
+        - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
+        - $ref: '#/components/parameters/GS1-CBV-Extensions'
       description: |
         This endpoint accesses individual events using their unique id. If the EPCIS event type is not known
         or irrelevant, `all` can be used instead of an EPCIS event type. The response body is an `EPCISDocument` with
@@ -566,28 +568,28 @@ paths:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
 
-        - $ref: '#/components/parameters/GS1-EPCIS-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-min'
-        - $ref: '#/components/parameters/GS1-EPCIS-max'
-        - $ref: '#/components/parameters/GS1-CBV-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
-        - $ref: '#/components/parameters/GS1-CBV-extensions'
-      summary: Returns known electronic product codes
+        - $ref: '#/components/parameters/GS1-EPCIS-Version'
+        - $ref: '#/components/parameters/GS1-EPCIS-Min'
+        - $ref: '#/components/parameters/GS1-EPCIS-Max'
+        - $ref: '#/components/parameters/GS1-CBV-Version'
+        - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
+        - $ref: '#/components/parameters/GS1-CBV-Extensions'
+      summary: Returns known electronic product codes.
       responses:
         '200':
           headers:
-            GS1-EPCIS-version:
-              $ref: '#/components/headers/GS1-EPCIS-version'
-            GS1-EPCIS-min:
-              $ref: '#/components/headers/GS1-EPCIS-min'
-            GS1-EPCIS-max:
-              $ref: '#/components/headers/GS1-EPCIS-max'
-            GS1-CBV-version:
-              $ref: '#/components/headers/GS1-CBV-version'
-            GS1-EPCIS-extensions:
-              $ref: '#/components/headers/GS1-EPCIS-extensions'
-            GS1-CBV-extensions:
-              $ref: '#/components/headers/GS1-CBV-extensions'
+            GS1-EPCIS-Version:
+              $ref: '#/components/headers/GS1-EPCIS-Version'
+            GS1-EPCIS-Min:
+              $ref: '#/components/headers/GS1-EPCIS-Min'
+            GS1-EPCIS-Max:
+              $ref: '#/components/headers/GS1-EPCIS-Max'
+            GS1-CBV-Version:
+              $ref: '#/components/headers/GS1-CBV-Version'
+            GS1-EPCIS-Extensions:
+              $ref: '#/components/headers/GS1-EPCIS-Extensions'
+            GS1-CBV-Extensions:
+              $ref: '#/components/headers/GS1-CBV-Extensions'
             Link:
               $ref: '#/components/headers/Link'
           description: |
@@ -641,20 +643,20 @@ paths:
                 enum:
                   - GET
                   - OPTIONS
-            GS1-EPCIS-version:
-              $ref: '#/components/headers/GS1-EPCIS-version'
-            GS1-EPCIS-min:
-              $ref: '#/components/headers/GS1-EPCIS-min'
-            GS1-EPCIS-max:
-              $ref: '#/components/headers/GS1-EPCIS-max'
-            GS1-CBV-version:
-              $ref: '#/components/headers/GS1-CBV-version'
-            GS1-EPCIS-extensions:
-              $ref: '#/components/headers/GS1-EPCIS-extensions'
-            GS1-Vendor-version:
-              $ref: '#/components/headers/GS1-Vendor-version'
-            GS1-CBV-extensions:
-              $ref: '#/components/headers/GS1-CBV-extensions'
+            GS1-EPCIS-Version:
+              $ref: '#/components/headers/GS1-EPCIS-Version'
+            GS1-EPCIS-Min:
+              $ref: '#/components/headers/GS1-EPCIS-Min'
+            GS1-EPCIS-Max:
+              $ref: '#/components/headers/GS1-EPCIS-Max'
+            GS1-CBV-Version:
+              $ref: '#/components/headers/GS1-CBV-Version'
+            GS1-EPCIS-Extensions:
+              $ref: '#/components/headers/GS1-EPCIS-Extensions'
+            GS1-Vendor-Version:
+              $ref: '#/components/headers/GS1-Vendor-Version'
+            GS1-CBV-Extensions:
+              $ref: '#/components/headers/GS1-CBV-Extensions'
     get:
       tags:
         - events
@@ -662,7 +664,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
-        - $ref: '#/components/parameters/GS1-query-initialRecordTime'
+        - $ref: '#/components/parameters/GS1-Query-InitialRecordTime'
 
       description: |
         This endpoint returns all sub-resources of an electronic product code, which currently is 'events'.
@@ -704,13 +706,13 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
-        - $ref: '#/components/parameters/GS1-EPCIS-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-min'
-        - $ref: '#/components/parameters/GS1-EPCIS-max'
-        - $ref: '#/components/parameters/GS1-CBV-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
-        - $ref: '#/components/parameters/GS1-CBV-extensions'
-        - $ref: '#/components/parameters/GS1-query-initialRecordTime'
+        - $ref: '#/components/parameters/GS1-EPCIS-Version'
+        - $ref: '#/components/parameters/GS1-EPCIS-Min'
+        - $ref: '#/components/parameters/GS1-EPCIS-Max'
+        - $ref: '#/components/parameters/GS1-CBV-Version'
+        - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
+        - $ref: '#/components/parameters/GS1-CBV-Extensions'
+        - $ref: '#/components/parameters/GS1-Query-InitialRecordTime'
 
       description: |
         This endpoint helps to navigate EPCIS events by EPCIS event type within a top-level resource. It returns all
@@ -766,12 +768,12 @@ paths:
         - topLevelResources
       summary: Returns an EPCIS event by event ID.
       parameters:
-        - $ref: '#/components/parameters/GS1-EPCIS-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-min'
-        - $ref: '#/components/parameters/GS1-EPCIS-max'
-        - $ref: '#/components/parameters/GS1-CBV-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
-        - $ref: '#/components/parameters/GS1-CBV-extensions'
+        - $ref: '#/components/parameters/GS1-EPCIS-Version'
+        - $ref: '#/components/parameters/GS1-EPCIS-Min'
+        - $ref: '#/components/parameters/GS1-EPCIS-Max'
+        - $ref: '#/components/parameters/GS1-CBV-Version'
+        - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
+        - $ref: '#/components/parameters/GS1-CBV-Extensions'
       description: |
         This endpoint accesses individual events with the electronic product code and EPCIS event type specified
         in the path. If the EPCIS event type is not known or irrelevant, `all` can be used instead of an EPCIS event
@@ -808,28 +810,28 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
-        - $ref: '#/components/parameters/GS1-EPCIS-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-min'
-        - $ref: '#/components/parameters/GS1-EPCIS-max'
-        - $ref: '#/components/parameters/GS1-CBV-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
-        - $ref: '#/components/parameters/GS1-CBV-extensions'
-      summary: Returns known business steps
+        - $ref: '#/components/parameters/GS1-EPCIS-Version'
+        - $ref: '#/components/parameters/GS1-EPCIS-Min'
+        - $ref: '#/components/parameters/GS1-EPCIS-Max'
+        - $ref: '#/components/parameters/GS1-CBV-Version'
+        - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
+        - $ref: '#/components/parameters/GS1-CBV-Extensions'
+      summary: Returns known business steps.
       responses:
         '200':
           headers:
-            GS1-EPCIS-version:
-              $ref: '#/components/headers/GS1-EPCIS-version'
-            GS1-EPCIS-min:
-              $ref: '#/components/headers/GS1-EPCIS-min'
-            GS1-EPCIS-max:
-              $ref: '#/components/headers/GS1-EPCIS-max'
-            GS1-CBV-version:
-              $ref: '#/components/headers/GS1-CBV-version'
-            GS1-EPCIS-extensions:
-              $ref: '#/components/headers/GS1-EPCIS-extensions'
-            GS1-CBV-extensions:
-              $ref: '#/components/headers/GS1-CBV-extensions'
+            GS1-EPCIS-Version:
+              $ref: '#/components/headers/GS1-EPCIS-Version'
+            GS1-EPCIS-Min:
+              $ref: '#/components/headers/GS1-EPCIS-Min'
+            GS1-EPCIS-Max:
+              $ref: '#/components/headers/GS1-EPCIS-Max'
+            GS1-CBV-Version:
+              $ref: '#/components/headers/GS1-CBV-Version'
+            GS1-EPCIS-Extensions:
+              $ref: '#/components/headers/GS1-EPCIS-Extensions'
+            GS1-CBV-Extensions:
+              $ref: '#/components/headers/GS1-CBV-Extensions'
             Link:
               $ref: '#/components/headers/Link'
           description: |
@@ -876,20 +878,20 @@ paths:
                 enum:
                   - GET
                   - OPTIONS
-            GS1-EPCIS-version:
-              $ref: '#/components/headers/GS1-EPCIS-version'
-            GS1-EPCIS-min:
-              $ref: '#/components/headers/GS1-EPCIS-min'
-            GS1-EPCIS-max:
-              $ref: '#/components/headers/GS1-EPCIS-max'
-            GS1-CBV-version:
-              $ref: '#/components/headers/GS1-CBV-version'
-            GS1-EPCIS-extensions:
-              $ref: '#/components/headers/GS1-EPCIS-extensions'
-            GS1-Vendor-version:
-              $ref: '#/components/headers/GS1-Vendor-version'
-            GS1-CBV-extensions:
-              $ref: '#/components/headers/GS1-CBV-extensions'
+            GS1-EPCIS-Version:
+              $ref: '#/components/headers/GS1-EPCIS-Version'
+            GS1-EPCIS-Min:
+              $ref: '#/components/headers/GS1-EPCIS-Min'
+            GS1-EPCIS-Max:
+              $ref: '#/components/headers/GS1-EPCIS-Max'
+            GS1-CBV-Version:
+              $ref: '#/components/headers/GS1-CBV-Version'
+            GS1-EPCIS-Extensions:
+              $ref: '#/components/headers/GS1-EPCIS-Extensions'
+            GS1-Vendor-Version:
+              $ref: '#/components/headers/GS1-Vendor-Version'
+            GS1-CBV-Extensions:
+              $ref: '#/components/headers/GS1-CBV-Extensions'
     get:
       tags:
         - events
@@ -937,12 +939,12 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
-        - $ref: '#/components/parameters/GS1-EPCIS-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-min'
-        - $ref: '#/components/parameters/GS1-EPCIS-max'
-        - $ref: '#/components/parameters/GS1-CBV-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
-        - $ref: '#/components/parameters/GS1-CBV-extensions'
+        - $ref: '#/components/parameters/GS1-EPCIS-Version'
+        - $ref: '#/components/parameters/GS1-EPCIS-Min'
+        - $ref: '#/components/parameters/GS1-EPCIS-Max'
+        - $ref: '#/components/parameters/GS1-CBV-Version'
+        - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
+        - $ref: '#/components/parameters/GS1-CBV-Extensions'
       description: |
         This endpoint helps to navigate EPCIS events by EPCIS event type within a top-level resource. It returns all
         EPCIS events of a specific EPCIS event type and business step, up to the amount defined
@@ -998,12 +1000,12 @@ paths:
         - topLevelResources
       summary: Returns an EPCIS event by event ID.
       parameters:
-        - $ref: '#/components/parameters/GS1-EPCIS-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-min'
-        - $ref: '#/components/parameters/GS1-EPCIS-max'
-        - $ref: '#/components/parameters/GS1-CBV-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
-        - $ref: '#/components/parameters/GS1-CBV-extensions'
+        - $ref: '#/components/parameters/GS1-EPCIS-Version'
+        - $ref: '#/components/parameters/GS1-EPCIS-Min'
+        - $ref: '#/components/parameters/GS1-EPCIS-Max'
+        - $ref: '#/components/parameters/GS1-CBV-Version'
+        - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
+        - $ref: '#/components/parameters/GS1-CBV-Extensions'
       description: |
         This endpoint accesses individual events with the business step and EPCIS event type specified
         in the path. If the EPCIS event type is not known or irrelevant, `all` can be used instead of an
@@ -1040,28 +1042,28 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
-        - $ref: '#/components/parameters/GS1-EPCIS-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-min'
-        - $ref: '#/components/parameters/GS1-EPCIS-max'
-        - $ref: '#/components/parameters/GS1-CBV-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
-        - $ref: '#/components/parameters/GS1-CBV-extensions'
-      summary: Returns known business locations
+        - $ref: '#/components/parameters/GS1-EPCIS-Version'
+        - $ref: '#/components/parameters/GS1-EPCIS-Min'
+        - $ref: '#/components/parameters/GS1-EPCIS-Max'
+        - $ref: '#/components/parameters/GS1-CBV-Version'
+        - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
+        - $ref: '#/components/parameters/GS1-CBV-Extensions'
+      summary: Returns known business locations.
       responses:
         '200':
           headers:
-            GS1-EPCIS-version:
-              $ref: '#/components/headers/GS1-EPCIS-version'
-            GS1-EPCIS-min:
-              $ref: '#/components/headers/GS1-EPCIS-min'
-            GS1-EPCIS-max:
-              $ref: '#/components/headers/GS1-EPCIS-max'
-            GS1-CBV-version:
-              $ref: '#/components/headers/GS1-CBV-version'
-            GS1-EPCIS-extensions:
-              $ref: '#/components/headers/GS1-EPCIS-extensions'
-            GS1-CBV-extensions:
-              $ref: '#/components/headers/GS1-CBV-extensions'
+            GS1-EPCIS-Version:
+              $ref: '#/components/headers/GS1-EPCIS-Version'
+            GS1-EPCIS-Min:
+              $ref: '#/components/headers/GS1-EPCIS-Min'
+            GS1-EPCIS-Max:
+              $ref: '#/components/headers/GS1-EPCIS-Max'
+            GS1-CBV-Version:
+              $ref: '#/components/headers/GS1-CBV-Version'
+            GS1-EPCIS-Extensions:
+              $ref: '#/components/headers/GS1-EPCIS-Extensions'
+            GS1-CBV-Extensions:
+              $ref: '#/components/headers/GS1-CBV-Extensions'
             Link:
               $ref: '#/components/headers/Link'
           description: |
@@ -1107,20 +1109,20 @@ paths:
                 enum:
                   - GET
                   - OPTIONS
-            GS1-EPCIS-version:
-              $ref: '#/components/headers/GS1-EPCIS-version'
-            GS1-EPCIS-min:
-              $ref: '#/components/headers/GS1-EPCIS-min'
-            GS1-EPCIS-max:
-              $ref: '#/components/headers/GS1-EPCIS-max'
-            GS1-CBV-version:
-              $ref: '#/components/headers/GS1-CBV-version'
-            GS1-EPCIS-extensions:
-              $ref: '#/components/headers/GS1-EPCIS-extensions'
-            GS1-Vendor-version:
-              $ref: '#/components/headers/GS1-Vendor-version'
-            GS1-CBV-extensions:
-              $ref: '#/components/headers/GS1-CBV-extensions'
+            GS1-EPCIS-Version:
+              $ref: '#/components/headers/GS1-EPCIS-Version'
+            GS1-EPCIS-Min:
+              $ref: '#/components/headers/GS1-EPCIS-Min'
+            GS1-EPCIS-Max:
+              $ref: '#/components/headers/GS1-EPCIS-Max'
+            GS1-CBV-Version:
+              $ref: '#/components/headers/GS1-CBV-Version'
+            GS1-EPCIS-Extensions:
+              $ref: '#/components/headers/GS1-EPCIS-Extensions'
+            GS1-Vendor-Version:
+              $ref: '#/components/headers/GS1-Vendor-Version'
+            GS1-CBV-Extensions:
+              $ref: '#/components/headers/GS1-CBV-Extensions'
     get:
       tags:
         - events
@@ -1169,13 +1171,13 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
-        - $ref: '#/components/parameters/GS1-EPCIS-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-min'
-        - $ref: '#/components/parameters/GS1-EPCIS-max'
-        - $ref: '#/components/parameters/GS1-CBV-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
-        - $ref: '#/components/parameters/GS1-CBV-extensions'
-        - $ref: '#/components/parameters/GS1-query-initialRecordTime'
+        - $ref: '#/components/parameters/GS1-EPCIS-Version'
+        - $ref: '#/components/parameters/GS1-EPCIS-Min'
+        - $ref: '#/components/parameters/GS1-EPCIS-Max'
+        - $ref: '#/components/parameters/GS1-CBV-Version'
+        - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
+        - $ref: '#/components/parameters/GS1-CBV-Extensions'
+        - $ref: '#/components/parameters/GS1-Query-InitialRecordTime'
       description: |
         This endpoint helps to navigate EPCIS events by EPCIS event type within a top-level resource. It returns all
         EPCIS events of a specific EPCIS event type and business location, up to the amount defined
@@ -1231,12 +1233,12 @@ paths:
         - topLevelResources
       summary: Returns an EPCIS event by event ID.
       parameters:
-        - $ref: '#/components/parameters/GS1-EPCIS-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-min'
-        - $ref: '#/components/parameters/GS1-EPCIS-max'
-        - $ref: '#/components/parameters/GS1-CBV-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
-        - $ref: '#/components/parameters/GS1-CBV-extensions'
+        - $ref: '#/components/parameters/GS1-EPCIS-Version'
+        - $ref: '#/components/parameters/GS1-EPCIS-Min'
+        - $ref: '#/components/parameters/GS1-EPCIS-Max'
+        - $ref: '#/components/parameters/GS1-CBV-Version'
+        - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
+        - $ref: '#/components/parameters/GS1-CBV-Extensions'
       description: |
         This endpoint accesses individual events with the business location and EPCIS event type specified
         in the path. If the EPCIS event type is not known or irrelevant, `all` can be used instead of an
@@ -1273,28 +1275,28 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
-        - $ref: '#/components/parameters/GS1-EPCIS-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-min'
-        - $ref: '#/components/parameters/GS1-EPCIS-max'
-        - $ref: '#/components/parameters/GS1-CBV-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
-        - $ref: '#/components/parameters/GS1-CBV-extensions'
-      summary: Returns known read points
+        - $ref: '#/components/parameters/GS1-EPCIS-Version'
+        - $ref: '#/components/parameters/GS1-EPCIS-Min'
+        - $ref: '#/components/parameters/GS1-EPCIS-Max'
+        - $ref: '#/components/parameters/GS1-CBV-Version'
+        - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
+        - $ref: '#/components/parameters/GS1-CBV-Extensions'
+      summary: Returns known read points.
       responses:
         '200':
           headers:
-            GS1-EPCIS-version:
-              $ref: '#/components/headers/GS1-EPCIS-version'
-            GS1-EPCIS-min:
-              $ref: '#/components/headers/GS1-EPCIS-min'
-            GS1-EPCIS-max:
-              $ref: '#/components/headers/GS1-EPCIS-max'
-            GS1-CBV-version:
-              $ref: '#/components/headers/GS1-CBV-version'
-            GS1-EPCIS-extensions:
-              $ref: '#/components/headers/GS1-EPCIS-extensions'
-            GS1-CBV-extensions:
-              $ref: '#/components/headers/GS1-CBV-extensions'
+            GS1-EPCIS-Version:
+              $ref: '#/components/headers/GS1-EPCIS-Version'
+            GS1-EPCIS-Min:
+              $ref: '#/components/headers/GS1-EPCIS-Min'
+            GS1-EPCIS-Max:
+              $ref: '#/components/headers/GS1-EPCIS-Max'
+            GS1-CBV-Version:
+              $ref: '#/components/headers/GS1-CBV-Version'
+            GS1-EPCIS-Extensions:
+              $ref: '#/components/headers/GS1-EPCIS-Extensions'
+            GS1-CBV-Extensions:
+              $ref: '#/components/headers/GS1-CBV-Extensions'
             Link:
               $ref: '#/components/headers/Link'
           description: |
@@ -1340,20 +1342,20 @@ paths:
                 enum:
                   - GET
                   - OPTIONS
-            GS1-EPCIS-version:
-              $ref: '#/components/headers/GS1-EPCIS-version'
-            GS1-EPCIS-min:
-              $ref: '#/components/headers/GS1-EPCIS-min'
-            GS1-EPCIS-max:
-              $ref: '#/components/headers/GS1-EPCIS-max'
-            GS1-CBV-version:
-              $ref: '#/components/headers/GS1-CBV-version'
-            GS1-EPCIS-extensions:
-              $ref: '#/components/headers/GS1-EPCIS-extensions'
-            GS1-Vendor-version:
-              $ref: '#/components/headers/GS1-Vendor-version'
-            GS1-CBV-extensions:
-              $ref: '#/components/headers/GS1-CBV-extensions'
+            GS1-EPCIS-Version:
+              $ref: '#/components/headers/GS1-EPCIS-Version'
+            GS1-EPCIS-Min:
+              $ref: '#/components/headers/GS1-EPCIS-Min'
+            GS1-EPCIS-Max:
+              $ref: '#/components/headers/GS1-EPCIS-Max'
+            GS1-CBV-Version:
+              $ref: '#/components/headers/GS1-CBV-Version'
+            GS1-EPCIS-Extensions:
+              $ref: '#/components/headers/GS1-EPCIS-Extensions'
+            GS1-Vendor-Version:
+              $ref: '#/components/headers/GS1-Vendor-Version'
+            GS1-CBV-Extensions:
+              $ref: '#/components/headers/GS1-CBV-Extensions'
     get:
       tags:
         - events
@@ -1401,12 +1403,12 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
-        - $ref: '#/components/parameters/GS1-EPCIS-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-min'
-        - $ref: '#/components/parameters/GS1-EPCIS-max'
-        - $ref: '#/components/parameters/GS1-CBV-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
-        - $ref: '#/components/parameters/GS1-CBV-extensions'
+        - $ref: '#/components/parameters/GS1-EPCIS-Version'
+        - $ref: '#/components/parameters/GS1-EPCIS-Min'
+        - $ref: '#/components/parameters/GS1-EPCIS-Max'
+        - $ref: '#/components/parameters/GS1-CBV-Version'
+        - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
+        - $ref: '#/components/parameters/GS1-CBV-Extensions'
       description: |
         This endpoint helps to navigate EPCIS events by EPCIS event type within a top-level resource. It returns all
         EPCIS events of a specific EPCIS event type and read point, up to the amount defined
@@ -1462,12 +1464,12 @@ paths:
         - topLevelResources
       summary: Returns an EPCIS event by event ID.
       parameters:
-        - $ref: '#/components/parameters/GS1-EPCIS-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-min'
-        - $ref: '#/components/parameters/GS1-EPCIS-max'
-        - $ref: '#/components/parameters/GS1-CBV-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
-        - $ref: '#/components/parameters/GS1-CBV-extensions'
+        - $ref: '#/components/parameters/GS1-EPCIS-Version'
+        - $ref: '#/components/parameters/GS1-EPCIS-Min'
+        - $ref: '#/components/parameters/GS1-EPCIS-Max'
+        - $ref: '#/components/parameters/GS1-CBV-Version'
+        - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
+        - $ref: '#/components/parameters/GS1-CBV-Extensions'
       description: |
         This endpoint accesses individual events with the read point and EPCIS event type specified
         in the path. If the EPCIS event type is not known or irrelevant, `all` can be used instead of an
@@ -1504,28 +1506,28 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
-        - $ref: '#/components/parameters/GS1-EPCIS-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-min'
-        - $ref: '#/components/parameters/GS1-EPCIS-max'
-        - $ref: '#/components/parameters/GS1-CBV-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
-        - $ref: '#/components/parameters/GS1-CBV-extensions'
-      summary: Returns known dispositions
+        - $ref: '#/components/parameters/GS1-EPCIS-Version'
+        - $ref: '#/components/parameters/GS1-EPCIS-Min'
+        - $ref: '#/components/parameters/GS1-EPCIS-Max'
+        - $ref: '#/components/parameters/GS1-CBV-Version'
+        - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
+        - $ref: '#/components/parameters/GS1-CBV-Extensions'
+      summary: Returns known dispositions.
       responses:
         '200':
           headers:
-            GS1-EPCIS-version:
-              $ref: '#/components/headers/GS1-EPCIS-version'
-            GS1-EPCIS-min:
-              $ref: '#/components/headers/GS1-EPCIS-min'
-            GS1-EPCIS-max:
-              $ref: '#/components/headers/GS1-EPCIS-max'
-            GS1-CBV-version:
-              $ref: '#/components/headers/GS1-CBV-version'
-            GS1-EPCIS-extensions:
-              $ref: '#/components/headers/GS1-EPCIS-extensions'
-            GS1-CBV-extensions:
-              $ref: '#/components/headers/GS1-CBV-extensions'
+            GS1-EPCIS-Version:
+              $ref: '#/components/headers/GS1-EPCIS-Version'
+            GS1-EPCIS-Min:
+              $ref: '#/components/headers/GS1-EPCIS-Min'
+            GS1-EPCIS-Max:
+              $ref: '#/components/headers/GS1-EPCIS-Max'
+            GS1-CBV-Version:
+              $ref: '#/components/headers/GS1-CBV-Version'
+            GS1-EPCIS-Extensions:
+              $ref: '#/components/headers/GS1-EPCIS-Extensions'
+            GS1-CBV-Extensions:
+              $ref: '#/components/headers/GS1-CBV-Extensions'
             Link:
               $ref: '#/components/headers/Link'
           description: |
@@ -1571,20 +1573,20 @@ paths:
                 enum:
                   - GET
                   - OPTIONS
-            GS1-EPCIS-version:
-              $ref: '#/components/headers/GS1-EPCIS-version'
-            GS1-EPCIS-min:
-              $ref: '#/components/headers/GS1-EPCIS-min'
-            GS1-EPCIS-max:
-              $ref: '#/components/headers/GS1-EPCIS-max'
-            GS1-CBV-version:
-              $ref: '#/components/headers/GS1-CBV-version'
-            GS1-EPCIS-extensions:
-              $ref: '#/components/headers/GS1-EPCIS-extensions'
-            GS1-Vendor-version:
-              $ref: '#/components/headers/GS1-Vendor-version'
-            GS1-CBV-extensions:
-              $ref: '#/components/headers/GS1-CBV-extensions'
+            GS1-EPCIS-Version:
+              $ref: '#/components/headers/GS1-EPCIS-Version'
+            GS1-EPCIS-Min:
+              $ref: '#/components/headers/GS1-EPCIS-Min'
+            GS1-EPCIS-Max:
+              $ref: '#/components/headers/GS1-EPCIS-Max'
+            GS1-CBV-Version:
+              $ref: '#/components/headers/GS1-CBV-Version'
+            GS1-EPCIS-Extensions:
+              $ref: '#/components/headers/GS1-EPCIS-Extensions'
+            GS1-Vendor-Version:
+              $ref: '#/components/headers/GS1-Vendor-Version'
+            GS1-CBV-Extensions:
+              $ref: '#/components/headers/GS1-CBV-Extensions'
     get:
       tags:
         - events
@@ -1632,12 +1634,12 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
-        - $ref: '#/components/parameters/GS1-EPCIS-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-min'
-        - $ref: '#/components/parameters/GS1-EPCIS-max'
-        - $ref: '#/components/parameters/GS1-CBV-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
-        - $ref: '#/components/parameters/GS1-CBV-extensions'
+        - $ref: '#/components/parameters/GS1-EPCIS-Version'
+        - $ref: '#/components/parameters/GS1-EPCIS-Min'
+        - $ref: '#/components/parameters/GS1-EPCIS-Max'
+        - $ref: '#/components/parameters/GS1-CBV-Version'
+        - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
+        - $ref: '#/components/parameters/GS1-CBV-Extensions'
       description: |
         This endpoint helps to navigate EPCIS events by EPCIS event type within a top-level resource. It returns all
         EPCIS events of a specific EPCIS event type and disposition, up to the amount defined
@@ -1693,12 +1695,12 @@ paths:
         - topLevelResources
       summary: Returns an EPCIS event by event ID.
       parameters:
-        - $ref: '#/components/parameters/GS1-EPCIS-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-min'
-        - $ref: '#/components/parameters/GS1-EPCIS-max'
-        - $ref: '#/components/parameters/GS1-CBV-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
-        - $ref: '#/components/parameters/GS1-CBV-extensions'
+        - $ref: '#/components/parameters/GS1-EPCIS-Version'
+        - $ref: '#/components/parameters/GS1-EPCIS-Min'
+        - $ref: '#/components/parameters/GS1-EPCIS-Max'
+        - $ref: '#/components/parameters/GS1-CBV-Version'
+        - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
+        - $ref: '#/components/parameters/GS1-CBV-Extensions'
       description: |
         This endpoint accesses individual events with the disposition and EPCIS event type specified
         in the path. If the EPCIS event type is not known or irrelevant, `all` can be used instead of an
@@ -1787,7 +1789,6 @@ paths:
   /queries/{queryName}:
     parameters:
       - $ref: '#/components/parameters/QueryName'
-
     get:
       tags:
         - queries
@@ -1795,18 +1796,18 @@ paths:
       responses:
         '200':
           headers:
-            GS1-EPCIS-version:
-              $ref: '#/components/headers/GS1-EPCIS-version'
-            GS1-EPCIS-min:
-              $ref: '#/components/headers/GS1-EPCIS-min'
-            GS1-EPCIS-max:
-              $ref: '#/components/headers/GS1-EPCIS-max'
-            GS1-CBV-version:
-              $ref: '#/components/headers/GS1-CBV-version'
-            GS1-EPCIS-extensions:
-              $ref: '#/components/headers/GS1-EPCIS-extensions'
-            GS1-CBV-extensions:
-              $ref: '#/components/headers/GS1-CBV-extensions'
+            GS1-EPCIS-Version:
+              $ref: '#/components/headers/GS1-EPCIS-Version'
+            GS1-EPCIS-Min:
+              $ref: '#/components/headers/GS1-EPCIS-Min'
+            GS1-EPCIS-Max:
+              $ref: '#/components/headers/GS1-EPCIS-Max'
+            GS1-CBV-Version:
+              $ref: '#/components/headers/GS1-CBV-Version'
+            GS1-EPCIS-Extensions:
+              $ref: '#/components/headers/GS1-EPCIS-Extensions'
+            GS1-CBV-Extensions:
+              $ref: '#/components/headers/GS1-CBV-Extensions'
             Link:
               $ref: '#/components/headers/Link'
             Location:
@@ -1858,12 +1859,12 @@ paths:
         Creates and executes a named EPCIS events or EPCIS master data query and returns results with the option to use
         pagination if needed.
       parameters:
-        - $ref: '#/components/parameters/GS1-EPCIS-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-min'
-        - $ref: '#/components/parameters/GS1-EPCIS-max'
-        - $ref: '#/components/parameters/GS1-CBV-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
-        - $ref: '#/components/parameters/GS1-CBV-extensions'
+        - $ref: '#/components/parameters/GS1-EPCIS-Version'
+        - $ref: '#/components/parameters/GS1-EPCIS-Min'
+        - $ref: '#/components/parameters/GS1-EPCIS-Max'
+        - $ref: '#/components/parameters/GS1-CBV-Version'
+        - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
+        - $ref: '#/components/parameters/GS1-CBV-Extensions'
         - $ref: '#/components/parameters/PerPage'
       description: |
         Creating a named query creates a view on the events in the repository, accessible through it's events resource.
@@ -1875,18 +1876,18 @@ paths:
       responses:
         '200':
           headers:
-            GS1-EPCIS-version:
-              $ref: '#/components/headers/GS1-EPCIS-version'
-            GS1-EPCIS-min:
-              $ref: '#/components/headers/GS1-EPCIS-min'
-            GS1-EPCIS-max:
-              $ref: '#/components/headers/GS1-EPCIS-max'
-            GS1-CBV-version:
-              $ref: '#/components/headers/GS1-CBV-version'
-            GS1-EPCIS-extensions:
-              $ref: '#/components/headers/GS1-EPCIS-extensions'
-            GS1-CBV-extensions:
-              $ref: '#/components/headers/GS1-CBV-extensions'
+            GS1-EPCIS-Version:
+              $ref: '#/components/headers/GS1-EPCIS-Version'
+            GS1-EPCIS-Min:
+              $ref: '#/components/headers/GS1-EPCIS-Min'
+            GS1-EPCIS-Max:
+              $ref: '#/components/headers/GS1-EPCIS-Max'
+            GS1-CBV-Version:
+              $ref: '#/components/headers/GS1-CBV-Version'
+            GS1-EPCIS-Extensions:
+              $ref: '#/components/headers/GS1-EPCIS-Extensions'
+            GS1-CBV-Extensions:
+              $ref: '#/components/headers/GS1-CBV-Extensions'
             Link:
               $ref: '#/components/headers/Link'
             Location:
@@ -1898,7 +1899,7 @@ paths:
                 example: "https://www.example.com/queries/myQuery"
                 type: string
                 format: uri
-          description: Returns the query result
+          description: Returns the query result.
           content:
             application/json:
               schema:
@@ -1939,20 +1940,20 @@ paths:
                   - GET
                   - OPTIONS
                   - DELETE
-            GS1-EPCIS-version:
-              $ref: '#/components/headers/GS1-EPCIS-version'
-            GS1-EPCIS-min:
-              $ref: '#/components/headers/GS1-EPCIS-min'
-            GS1-EPCIS-max:
-              $ref: '#/components/headers/GS1-EPCIS-max'
-            GS1-CBV-version:
-              $ref: '#/components/headers/GS1-CBV-version'
-            GS1-EPCIS-extensions:
-              $ref: '#/components/headers/GS1-EPCIS-extensions'
-            GS1-Vendor-version:
-              $ref: '#/components/headers/GS1-Vendor-version'
-            GS1-CBV-extensions:
-              $ref: '#/components/headers/GS1-CBV-extensions'
+            GS1-EPCIS-Version:
+              $ref: '#/components/headers/GS1-EPCIS-Version'
+            GS1-EPCIS-Min:
+              $ref: '#/components/headers/GS1-EPCIS-Min'
+            GS1-EPCIS-Max:
+              $ref: '#/components/headers/GS1-EPCIS-Max'
+            GS1-CBV-Version:
+              $ref: '#/components/headers/GS1-CBV-Version'
+            GS1-EPCIS-Extensions:
+              $ref: '#/components/headers/GS1-EPCIS-Extensions'
+            GS1-Vendor-Version:
+              $ref: '#/components/headers/GS1-Vendor-Version'
+            GS1-CBV-Extensions:
+              $ref: '#/components/headers/GS1-CBV-Extensions'
     delete:
       tags:
         - queries
@@ -1995,16 +1996,16 @@ paths:
                   - POST
                   - GET
                   - OPTIONS
-            GS1-EPCIS-version:
-              $ref: '#/components/headers/GS1-EPCIS-version'
-            GS1-EPCIS-min:
-              $ref: '#/components/headers/GS1-EPCIS-min'
-            GS1-EPCIS-max:
-              $ref: '#/components/headers/GS1-EPCIS-max'
-            GS1-CBV-version:
-              $ref: '#/components/headers/GS1-CBV-version'
-            GS1-Vendor-version:
-              $ref: '#/components/headers/GS1-Vendor-version'
+            GS1-EPCIS-Version:
+              $ref: '#/components/headers/GS1-EPCIS-Version'
+            GS1-EPCIS-Min:
+              $ref: '#/components/headers/GS1-EPCIS-Min'
+            GS1-EPCIS-Max:
+              $ref: '#/components/headers/GS1-EPCIS-Max'
+            GS1-CBV-Version:
+              $ref: '#/components/headers/GS1-CBV-Version'
+            GS1-Vendor-Version:
+              $ref: '#/components/headers/GS1-Vendor-Version'
     get:
       tags:
         - queries
@@ -2018,21 +2019,21 @@ paths:
       responses:
         '200':
           headers:
-            GS1-EPCIS-version:
-              $ref: '#/components/headers/GS1-EPCIS-version'
-            GS1-EPCIS-min:
-              $ref: '#/components/headers/GS1-EPCIS-min'
-            GS1-EPCIS-max:
-              $ref: '#/components/headers/GS1-EPCIS-max'
-            GS1-CBV-version:
-              $ref: '#/components/headers/GS1-CBV-version'
-            GS1-EPCIS-extensions:
-              $ref: '#/components/headers/GS1-EPCIS-extensions'
-            GS1-CBV-extensions:
-              $ref: '#/components/headers/GS1-CBV-extensions'
+            GS1-EPCIS-Version:
+              $ref: '#/components/headers/GS1-EPCIS-Version'
+            GS1-EPCIS-Min:
+              $ref: '#/components/headers/GS1-EPCIS-Min'
+            GS1-EPCIS-Max:
+              $ref: '#/components/headers/GS1-EPCIS-Max'
+            GS1-CBV-Version:
+              $ref: '#/components/headers/GS1-CBV-Version'
+            GS1-EPCIS-Extensions:
+              $ref: '#/components/headers/GS1-EPCIS-Extensions'
+            GS1-CBV-Extensions:
+              $ref: '#/components/headers/GS1-CBV-Extensions'
             Link:
               $ref: '#/components/headers/Link'
-          description: Returns active Webhook subscriptions
+          description: Returns active Webhook subscriptions.
           content:
             application/json:
               example: [
@@ -2067,8 +2068,8 @@ paths:
                           type: string
                           format: date-time
                     - oneOf:
-                        - $ref: '#/components/schemas/GS1-query-schedule-subscriptions'
-                        - $ref: '#/components/schemas/GS1-query-stream-subscriptions'
+                        - $ref: '#/components/schemas/QueryScheduleSubscription'
+                        - $ref: '#/components/schemas/QueryStreamSubscription'
 
         '400':
           $ref: '#/components/responses/400QueryInvalid'
@@ -2083,16 +2084,15 @@ paths:
     post:
       tags:
         - queries
-        - events
         - subscriptions
       summary: Creates a query subscription using Webhooks.
       parameters:
-        - $ref: '#/components/parameters/GS1-EPCIS-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-min'
-        - $ref: '#/components/parameters/GS1-EPCIS-max'
-        - $ref: '#/components/parameters/GS1-CBV-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
-        - $ref: '#/components/parameters/GS1-CBV-extensions'
+        - $ref: '#/components/parameters/GS1-EPCIS-Version'
+        - $ref: '#/components/parameters/GS1-EPCIS-Min'
+        - $ref: '#/components/parameters/GS1-EPCIS-Max'
+        - $ref: '#/components/parameters/GS1-CBV-Version'
+        - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
+        - $ref: '#/components/parameters/GS1-CBV-Extensions'
       description: |
         Creating query subscription using Webhooks requires the client to provide a single endpoint and to which the
         server will send events and a one-time subscription secret that the client needs to authenticate itself when
@@ -2104,7 +2104,7 @@ paths:
 
         ## Scheduled query: Receive query results at 1.05am
 
-        A scheduled query subscription is a time-based query execution scheduler. EPCIS 2.0 query schedule are scheduled
+        A scheduled query subscription is a time-based query execution. EPCIS 2.0 scheduled query are scheduled
         in the same manner as cron jobs.
 
         For example, this query subscription will is scheduled to trigger every morning at 1.05am. By setting
@@ -2148,10 +2148,10 @@ paths:
             }
             schema:
               allOf:
-                - $ref: '#/components/schemas/GS1-query-abstract-subscriptions'
+                - $ref: '#/components/schemas/AbstractQuerySubscription'
                 - oneOf:
-                    - $ref: '#/components/schemas/GS1-query-schedule-subscriptions'
-                    - $ref: '#/components/schemas/GS1-query-stream-subscriptions'
+                    - $ref: '#/components/schemas/QueryScheduleSubscription'
+                    - $ref: '#/components/schemas/QueryStreamSubscription'
       responses:
         '201':
           headers:
@@ -2186,7 +2186,7 @@ paths:
         querySubscriptionResults:
           '{$request.body#/callbackUrl}?secret={$request.body#/secret}':
             post:
-              summary: Registers this Webhook to subscribe to a query
+              summary: Registers this Webhook to subscribe to a query.
               requestBody:
                 description: |
                   The server sends the query result to the client. There is no pagination for a `POST` request, the
@@ -2254,21 +2254,23 @@ paths:
               example:
                 - GET
                 - OPTIONS
+                - DELETE
               schema:
                 type: string
                 enum:
                   - GET
                   - OPTIONS
-            GS1-EPCIS-version:
-              $ref: '#/components/headers/GS1-EPCIS-version'
-            GS1-EPCIS-min:
-              $ref: '#/components/headers/GS1-EPCIS-min'
-            GS1-EPCIS-max:
-              $ref: '#/components/headers/GS1-EPCIS-max'
-            GS1-CBV-version:
-              $ref: '#/components/headers/GS1-CBV-version'
-            GS1-Vendor-version:
-              $ref: '#/components/headers/GS1-Vendor-version'
+                  - DELETE
+            GS1-EPCIS-Version:
+              $ref: '#/components/headers/GS1-EPCIS-Version'
+            GS1-EPCIS-Min:
+              $ref: '#/components/headers/GS1-EPCIS-Min'
+            GS1-EPCIS-Max:
+              $ref: '#/components/headers/GS1-EPCIS-Max'
+            GS1-CBV-Version:
+              $ref: '#/components/headers/GS1-CBV-Version'
+            GS1-Vendor-Version:
+              $ref: '#/components/headers/GS1-Vendor-Version'
     get:
       tags:
         - queries
@@ -2298,8 +2300,8 @@ paths:
                         type: string
                         format: date-time
                   - oneOf:
-                      - $ref: '#/components/schemas/GS1-query-schedule-subscriptions'
-                      - $ref: '#/components/schemas/GS1-query-stream-subscriptions'
+                      - $ref: '#/components/schemas/QueryScheduleSubscription'
+                      - $ref: '#/components/schemas/QueryStreamSubscription'
         '401':
           $ref: '#/components/responses/401AuthorizationInformationMissing'
         '403':
@@ -2351,15 +2353,15 @@ paths:
         - $ref: '#/components/parameters/Connection'
         - $ref: '#/components/parameters/NextPageToken'
         - $ref: '#/components/parameters/PerPage'
-        - $ref: '#/components/parameters/GS1-query-reportIfEmpty'
-        - $ref: '#/components/parameters/GS1-query-initialRecordTime'
-        - $ref: '#/components/parameters/GS1-query-schedule-second'
-        - $ref: '#/components/parameters/GS1-query-schedule-minute'
-        - $ref: '#/components/parameters/GS1-query-schedule-hour'
-        - $ref: '#/components/parameters/GS1-query-schedule-dayOfMonth'
-        - $ref: '#/components/parameters/GS1-query-schedule-month'
-        - $ref: '#/components/parameters/GS1-query-schedule-dayOfWeek'
-        - $ref: '#/components/parameters/GS1-query-stream'
+        - $ref: '#/components/parameters/GS1-Query-ReportIfEmpty'
+        - $ref: '#/components/parameters/GS1-Query-InitialRecordTime'
+        - $ref: '#/components/parameters/GS1-Query-Second'
+        - $ref: '#/components/parameters/GS1-Query-Minute'
+        - $ref: '#/components/parameters/GS1-Query-Hour'
+        - $ref: '#/components/parameters/GS1-Query-DayOfMonth'
+        - $ref: '#/components/parameters/GS1-Query-Month'
+        - $ref: '#/components/parameters/GS1-Query-DayOfWeek'
+        - $ref: '#/components/parameters/GS1-Query-Stream'
 
       description: |
         The `GET` endpoint is to retrieve large results that don't fit into the response of `POST` request.
@@ -2427,7 +2429,7 @@ paths:
     options:
       tags:
         - discovery
-      summary: Query the meta data of an events query
+      summary: Query the meta data of an events query.
       description: |
         The `OPTIONS` method is used as a discovery service for named queries. It describes which EPCIS and CBV
         versions are used in the query result supported as well as EPCIS and CBV extensions.
@@ -2449,20 +2451,20 @@ paths:
                 enum:
                   - GET
                   - OPTIONS
-            GS1-EPCIS-version:
-              $ref: '#/components/headers/GS1-EPCIS-version'
-            GS1-EPCIS-min:
-              $ref: '#/components/headers/GS1-EPCIS-min'
-            GS1-EPCIS-max:
-              $ref: '#/components/headers/GS1-EPCIS-max'
-            GS1-CBV-version:
-              $ref: '#/components/headers/GS1-CBV-version'
-            GS1-EPCIS-extensions:
-              $ref: '#/components/headers/GS1-EPCIS-extensions'
-            GS1-Vendor-version:
-              $ref: '#/components/headers/GS1-Vendor-version'
-            GS1-CBV-extensions:
-              $ref: '#/components/headers/GS1-CBV-extensions'
+            GS1-EPCIS-Version:
+              $ref: '#/components/headers/GS1-EPCIS-Version'
+            GS1-EPCIS-Min:
+              $ref: '#/components/headers/GS1-EPCIS-Min'
+            GS1-EPCIS-Max:
+              $ref: '#/components/headers/GS1-EPCIS-Max'
+            GS1-CBV-Version:
+              $ref: '#/components/headers/GS1-CBV-Version'
+            GS1-EPCIS-Extensions:
+              $ref: '#/components/headers/GS1-EPCIS-Extensions'
+            GS1-Vendor-Version:
+              $ref: '#/components/headers/GS1-Vendor-Version'
+            GS1-CBV-Extensions:
+              $ref: '#/components/headers/GS1-CBV-Extensions'
     get:
       tags:
         - queries
@@ -2491,7 +2493,7 @@ paths:
     options:
       tags:
         - discovery
-      summary: Query the meta data of an events query
+      summary: Query the meta data of an events query.
       description: |
         The `OPTIONS` method is used as a discovery service for anonymous queries. Because anonymous queries
         are not stored, query-related meta data cannot be discovered.
@@ -2503,15 +2505,14 @@ paths:
       tags:
         - queries
         - masterData
-      summary: >
-        Executes anonymous master data queries and returns results with the option to use pagination if needed.
+      summary: Executes anonymous master data queries and returns results with the option to use pagination if needed.
       parameters:
-        - $ref: '#/components/parameters/GS1-EPCIS-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-min'
-        - $ref: '#/components/parameters/GS1-EPCIS-max'
-        - $ref: '#/components/parameters/GS1-CBV-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
-        - $ref: '#/components/parameters/GS1-CBV-extensions'
+        - $ref: '#/components/parameters/GS1-EPCIS-Version'
+        - $ref: '#/components/parameters/GS1-EPCIS-Min'
+        - $ref: '#/components/parameters/GS1-EPCIS-Max'
+        - $ref: '#/components/parameters/GS1-CBV-Version'
+        - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
+        - $ref: '#/components/parameters/GS1-CBV-Extensions'
         - $ref: '#/components/parameters/PerPage'
       description: |
         `SimpleMasterDataQuery` is an endpoint to create anonymous queries. A query is created with a random name
@@ -2541,26 +2542,26 @@ paths:
       responses:
         '200':
           headers:
-            GS1-EPCIS-version:
-              $ref: '#/components/headers/GS1-EPCIS-version'
-            GS1-EPCIS-min:
-              $ref: '#/components/headers/GS1-EPCIS-min'
-            GS1-EPCIS-max:
-              $ref: '#/components/headers/GS1-EPCIS-max'
-            GS1-CBV-version:
-              $ref: '#/components/headers/GS1-CBV-version'
-            GS1-EPCIS-extensions:
-              $ref: '#/components/headers/GS1-EPCIS-extensions'
-            GS1-CBV-extensions:
-              $ref: '#/components/headers/GS1-CBV-extensions'
+            GS1-EPCIS-Version:
+              $ref: '#/components/headers/GS1-EPCIS-Version'
+            GS1-EPCIS-Min:
+              $ref: '#/components/headers/GS1-EPCIS-Min'
+            GS1-EPCIS-Max:
+              $ref: '#/components/headers/GS1-EPCIS-Max'
+            GS1-CBV-Version:
+              $ref: '#/components/headers/GS1-CBV-Version'
+            GS1-EPCIS-Extensions:
+              $ref: '#/components/headers/GS1-EPCIS-Extensions'
+            GS1-CBV-Extensions:
+              $ref: '#/components/headers/GS1-CBV-Extensions'
             Link:
               example: "https://www.example.com/queries/SimpleMasterDataQuery/masterData?perPage=30&nextPageToken=3A1550673874978%2Ci%3AU6D7DENAKwM2gQRRwGrataeq>; rel=\"next\"'"
               description: The `Link` header is used for pagination. It contains the URL to the next result set.
               schema:
                 $ref: '#/components/schemas/Link'
-            GS1-nextPageToken-Expires:
-              $ref: '#/components/headers/GS1-nextPageToken-Expires'
-          description: Returns the query result
+            GS1-NextPageToken-Expires:
+              $ref: '#/components/headers/GS1-NextPageToken-Expires'
+          description: Returns the query result.
           content:
             application/json:
               schema:
@@ -2601,7 +2602,7 @@ paths:
     options:
       tags:
         - discovery
-      summary: Query the meta data of an events query
+      summary: Query the meta data of an events query.
       description: |
         The `OPTIONS` method is used as a discovery service for anonymous queries. Because anonymous queries
         are not stored, query-related meta data cannot be discovered.
@@ -2614,13 +2615,13 @@ paths:
         - events
       summary: Executes anonymous EPCIS events query and returns results with the option to use pagination if needed.
       parameters:
-        - $ref: '#/components/parameters/GS1-EPCIS-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-min'
-        - $ref: '#/components/parameters/GS1-EPCIS-max'
-        - $ref: '#/components/parameters/GS1-CBV-version'
-        - $ref: '#/components/parameters/GS1-EPCIS-extensions'
-        - $ref: '#/components/parameters/GS1-CBV-extensions'
-        - $ref: '#/components/parameters/GS1-query-initialRecordTime'
+        - $ref: '#/components/parameters/GS1-EPCIS-Version'
+        - $ref: '#/components/parameters/GS1-EPCIS-Min'
+        - $ref: '#/components/parameters/GS1-EPCIS-Max'
+        - $ref: '#/components/parameters/GS1-CBV-Version'
+        - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
+        - $ref: '#/components/parameters/GS1-CBV-Extensions'
+        - $ref: '#/components/parameters/GS1-Query-InitialRecordTime'
         - $ref: '#/components/parameters/PerPage'
       description: |
         `SimpleEventQuery` is an endpoint to execute anonymous queries for EPCIS events.
@@ -2650,25 +2651,25 @@ paths:
       responses:
         '200':
           headers:
-            GS1-EPCIS-version:
-              $ref: '#/components/headers/GS1-EPCIS-version'
-            GS1-EPCIS-min:
-              $ref: '#/components/headers/GS1-EPCIS-min'
-            GS1-EPCIS-max:
-              $ref: '#/components/headers/GS1-EPCIS-max'
-            GS1-CBV-version:
-              $ref: '#/components/headers/GS1-CBV-version'
-            GS1-EPCIS-extensions:
-              $ref: '#/components/headers/GS1-EPCIS-extensions'
-            GS1-CBV-extensions:
-              $ref: '#/components/headers/GS1-CBV-extensions'
+            GS1-EPCIS-Version:
+              $ref: '#/components/headers/GS1-EPCIS-Version'
+            GS1-EPCIS-Min:
+              $ref: '#/components/headers/GS1-EPCIS-Min'
+            GS1-EPCIS-Max:
+              $ref: '#/components/headers/GS1-EPCIS-Max'
+            GS1-CBV-Version:
+              $ref: '#/components/headers/GS1-CBV-Version'
+            GS1-EPCIS-Extensions:
+              $ref: '#/components/headers/GS1-EPCIS-Extensions'
+            GS1-CBV-Extensions:
+              $ref: '#/components/headers/GS1-CBV-Extensions'
             Link:
               example: "https://www.example.com/queries/SimpleEventQuery/events?perPage=30&nextPageToken=3A1550673874978%2Ci%3AU6D7DENAKwM2gQRRwGrataeq>; rel=\"next\"'"
               description: The `Link` header is used for pagination. It contains the URL to the next result set.
               schema:
                 $ref: '#/components/schemas/Link'
-            GS1-nextPageToken-Expires:
-              $ref: '#/components/headers/GS1-nextPageToken-Expires'
+            GS1-NextPageToken-Expires:
+              $ref: '#/components/headers/GS1-NextPageToken-Expires'
           description: |
             Returns the query result. To use pagination, the client should follow the URL returned in the
             `Link` header.
@@ -2689,7 +2690,7 @@ paths:
     options:
       tags:
         - discovery
-      summary: Query the meta data of an events query
+      summary: Query the meta data of an events query.
       description: |
         The `OPTIONS` method is used as a discovery service for anonymous queries. Because anonymous queries
         are not stored, query-related meta data cannot be discovered.
@@ -2726,7 +2727,7 @@ paths:
     delete:
       tags:
         - queries
-      summary: Optional endpoint that allows on-demand release of any resources associated with nextPageToken
+      summary: Optional endpoint that allows on-demand release of any resources associated with `nextPageToken`.
       responses:
         '204':
           $ref: '#/components/responses/204NextPageTokenInvalidated'
@@ -2753,44 +2754,44 @@ components:
             default: upgrade
     200MasterDataResponse:
       headers:
-        GS1-EPCIS-version:
-          $ref: '#/components/headers/GS1-EPCIS-version'
-        GS1-EPCIS-min:
-          $ref: '#/components/headers/GS1-EPCIS-min'
-        GS1-EPCIS-max:
-          $ref: '#/components/headers/GS1-EPCIS-max'
-        GS1-CBV-version:
-          $ref: '#/components/headers/GS1-CBV-version'
-        GS1-EPCIS-extensions:
-          $ref: '#/components/headers/GS1-EPCIS-extensions'
-        GS1-CBV-extensions:
-          $ref: '#/components/headers/GS1-CBV-extensions'
+        GS1-EPCIS-Version:
+          $ref: '#/components/headers/GS1-EPCIS-Version'
+        GS1-EPCIS-Min:
+          $ref: '#/components/headers/GS1-EPCIS-Min'
+        GS1-EPCIS-Max:
+          $ref: '#/components/headers/GS1-EPCIS-Max'
+        GS1-CBV-Version:
+          $ref: '#/components/headers/GS1-CBV-Version'
+        GS1-EPCIS-Extensions:
+          $ref: '#/components/headers/GS1-EPCIS-Extensions'
+        GS1-CBV-Extensions:
+          $ref: '#/components/headers/GS1-CBV-Extensions'
         Link:
           $ref: '#/components/headers/Link'
-        GS1-nextPageToken-Expires:
-          $ref: '#/components/headers/GS1-nextPageToken-Expires'
-      description: Returns the query result
+        GS1-NextPageToken-Expires:
+          $ref: '#/components/headers/GS1-NextPageToken-Expires'
+      description: Returns the query result.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/EPCISMasterDataDocument'
     200TopLevelOrEventTypeSubResource:
       headers:
-        GS1-EPCIS-version:
-          $ref: '#/components/headers/GS1-EPCIS-version'
-        GS1-EPCIS-min:
-          $ref: '#/components/headers/GS1-EPCIS-min'
-        GS1-EPCIS-max:
-          $ref: '#/components/headers/GS1-EPCIS-max'
-        GS1-CBV-version:
-          $ref: '#/components/headers/GS1-CBV-version'
-        GS1-EPCIS-extensions:
-          $ref: '#/components/headers/GS1-EPCIS-extensions'
-        GS1-CBV-extensions:
-          $ref: '#/components/headers/GS1-CBV-extensions'
+        GS1-EPCIS-Version:
+          $ref: '#/components/headers/GS1-EPCIS-Version'
+        GS1-EPCIS-Min:
+          $ref: '#/components/headers/GS1-EPCIS-Min'
+        GS1-EPCIS-Max:
+          $ref: '#/components/headers/GS1-EPCIS-Max'
+        GS1-CBV-Version:
+          $ref: '#/components/headers/GS1-CBV-Version'
+        GS1-EPCIS-Extensions:
+          $ref: '#/components/headers/GS1-EPCIS-Extensions'
+        GS1-CBV-Extensions:
+          $ref: '#/components/headers/GS1-CBV-Extensions'
         Link:
           $ref: '#/components/headers/Link'
-      description: Returns 'events'
+      description: Returns 'events'.
       content:
         application/json:
           schema:
@@ -2803,29 +2804,29 @@ components:
                 - events
     200EPCISEvents:
       headers:
-        GS1-EPCIS-version:
-          $ref: '#/components/headers/GS1-EPCIS-version'
-        GS1-EPCIS-min:
-          $ref: '#/components/headers/GS1-EPCIS-min'
-        GS1-EPCIS-max:
-          $ref: '#/components/headers/GS1-EPCIS-max'
-        GS1-CBV-version:
-          $ref: '#/components/headers/GS1-CBV-version'
-        GS1-EPCIS-extensions:
-          $ref: '#/components/headers/GS1-EPCIS-extensions'
-        GS1-CBV-extensions:
-          $ref: '#/components/headers/GS1-CBV-extensions'
+        GS1-EPCIS-Version:
+          $ref: '#/components/headers/GS1-EPCIS-Version'
+        GS1-EPCIS-Min:
+          $ref: '#/components/headers/GS1-EPCIS-Min'
+        GS1-EPCIS-Max:
+          $ref: '#/components/headers/GS1-EPCIS-Max'
+        GS1-CBV-Version:
+          $ref: '#/components/headers/GS1-CBV-Version'
+        GS1-EPCIS-Extensions:
+          $ref: '#/components/headers/GS1-EPCIS-Extensions'
+        GS1-CBV-Extensions:
+          $ref: '#/components/headers/GS1-CBV-Extensions'
         Link:
           $ref: '#/components/headers/Link'
-        GS1-nextPageToken-Expires:
-          $ref: '#/components/headers/GS1-nextPageToken-Expires'
-      description: Returns EPCIS resources
+        GS1-NextPageToken-Expires:
+          $ref: '#/components/headers/GS1-NextPageToken-Expires'
+      description: Returns EPCIS resources.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/EPCISEventsDocument'
     204NextPageTokenInvalidated:
-      description: nextPageToken invalidated successfully
+      description: nextPageToken invalidated successfully.
     200SupportedEventTypes:
       description: Returns all supported EPCIS event types.
       content:
@@ -2844,20 +2845,20 @@ components:
             enum:
               - GET
               - OPTIONS
-        GS1-EPCIS-version:
-          $ref: '#/components/headers/GS1-EPCIS-version'
-        GS1-EPCIS-min:
-          $ref: '#/components/headers/GS1-EPCIS-min'
-        GS1-EPCIS-max:
-          $ref: '#/components/headers/GS1-EPCIS-max'
-        GS1-CBV-version:
-          $ref: '#/components/headers/GS1-CBV-version'
-        GS1-EPCIS-extensions:
-          $ref: '#/components/headers/GS1-EPCIS-extensions'
-        GS1-Vendor-version:
-          $ref: '#/components/headers/GS1-Vendor-version'
-        GS1-CBV-extensions:
-          $ref: '#/components/headers/GS1-CBV-extensions'
+        GS1-EPCIS-Version:
+          $ref: '#/components/headers/GS1-EPCIS-Version'
+        GS1-EPCIS-Min:
+          $ref: '#/components/headers/GS1-EPCIS-Min'
+        GS1-EPCIS-Max:
+          $ref: '#/components/headers/GS1-EPCIS-Max'
+        GS1-CBV-Version:
+          $ref: '#/components/headers/GS1-CBV-Version'
+        GS1-EPCIS-Extensions:
+          $ref: '#/components/headers/GS1-EPCIS-Extensions'
+        GS1-Vendor-Version:
+          $ref: '#/components/headers/GS1-Vendor-Version'
+        GS1-CBV-Extensions:
+          $ref: '#/components/headers/GS1-CBV-Extensions'
     204AnonymousQueriesDiscovery:
       description: |
         The `OPTIONS` method is used as a discovery service for anonymous queries endpoints.
@@ -2872,20 +2873,20 @@ components:
             enum:
               - POST
               - OPTIONS
-        GS1-EPCIS-version:
-          $ref: '#/components/headers/GS1-EPCIS-version'
-        GS1-EPCIS-min:
-          $ref: '#/components/headers/GS1-EPCIS-min'
-        GS1-EPCIS-max:
-          $ref: '#/components/headers/GS1-EPCIS-max'
-        GS1-CBV-version:
-          $ref: '#/components/headers/GS1-CBV-version'
-        GS1-EPCIS-extensions:
-          $ref: '#/components/headers/GS1-EPCIS-extensions'
-        GS1-Vendor-version:
-          $ref: '#/components/headers/GS1-Vendor-version'
-        GS1-CBV-extensions:
-          $ref: '#/components/headers/GS1-CBV-extensions'
+        GS1-EPCIS-Version:
+          $ref: '#/components/headers/GS1-EPCIS-Version'
+        GS1-EPCIS-Min:
+          $ref: '#/components/headers/GS1-EPCIS-Min'
+        GS1-EPCIS-Max:
+          $ref: '#/components/headers/GS1-EPCIS-Max'
+        GS1-CBV-Version:
+          $ref: '#/components/headers/GS1-CBV-Version'
+        GS1-EPCIS-Extensions:
+          $ref: '#/components/headers/GS1-EPCIS-Extensions'
+        GS1-Vendor-Version:
+          $ref: '#/components/headers/GS1-Vendor-Version'
+        GS1-CBV-Extensions:
+          $ref: '#/components/headers/GS1-CBV-Extensions'
 
     204EventsEndpointDiscovery:
       description: |
@@ -2902,24 +2903,24 @@ components:
             enum:
               - GET
               - OPTIONS
-        GS1-EPCIS-version:
-          $ref: '#/components/headers/GS1-EPCIS-version'
-        GS1-EPCIS-min:
-          $ref: '#/components/headers/GS1-EPCIS-min'
-        GS1-EPCIS-max:
-          $ref: '#/components/headers/GS1-EPCIS-max'
-        GS1-CBV-version:
-          $ref: '#/components/headers/GS1-CBV-version'
-        GS1-EPCIS-extensions:
-          $ref: '#/components/headers/GS1-EPCIS-extensions'
-        GS1-Vendor-version:
-          $ref: '#/components/headers/GS1-Vendor-version'
-        GS1-CBV-extensions:
-          $ref: '#/components/headers/GS1-CBV-extensions'
+        GS1-EPCIS-Version:
+          $ref: '#/components/headers/GS1-EPCIS-Version'
+        GS1-EPCIS-Min:
+          $ref: '#/components/headers/GS1-EPCIS-Min'
+        GS1-EPCIS-Max:
+          $ref: '#/components/headers/GS1-EPCIS-Max'
+        GS1-CBV-Version:
+          $ref: '#/components/headers/GS1-CBV-Version'
+        GS1-EPCIS-Extensions:
+          $ref: '#/components/headers/GS1-EPCIS-Extensions'
+        GS1-Vendor-Version:
+          $ref: '#/components/headers/GS1-Vendor-Version'
+        GS1-CBV-Extensions:
+          $ref: '#/components/headers/GS1-CBV-Extensions'
     204QueryDeleted:
-      description: Query deleted and clients disconnected
+      description: Query deleted and clients disconnected.
     400QueryInvalid:
-      description: The query is invalid
+      description: The query is invalid.
       content:
         application/json:
           schema:
@@ -2936,6 +2937,26 @@ components:
                     enum:
                       - epcisException:SubscriptionControlsException
                       - epcisException:ValidationException
+              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+    400QueryException:
+      description: Query exceptions defined in EPCIS.
+      content:
+        application/problem+json:
+          schema:
+            allOf:
+              - properties:
+                  status:
+                    type: integer
+                    enum:
+                      - 400
+                    default: 400
+                  type:
+                    type: string
+                    format: uri
+                    enum:
+                      - epcisException:QueryValidationException
+                      - epcisException:QueryParameterException
+                      - epcisException:QueryTooComplexException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
     401AuthorizationInformationMissing:
       description: Authorization information is missing or invalid.
@@ -2954,26 +2975,6 @@ components:
                     format: uri
                     enum:
                       - epcisException:SecurityException
-              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-    400QueryException:
-      description: Query exceptions defined in EPCIS
-      content:
-        application/problem+json:
-          schema:
-            allOf:
-              - properties:
-                  status:
-                    type: integer
-                    enum:
-                      - 400
-                    default: 400
-                  type:
-                    type: string
-                    format: uri
-                    enum:
-                      - epcisException:QueryValidationException
-                      - epcisException:QueryParameterException
-                      - epcisException:QueryTooComplexException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
     403ClientUnauthorized:
       description: Client is unauthorized to access this resource.
@@ -3013,13 +3014,13 @@ components:
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
     413CapturePayloadTooLarge:
       headers:
-        GS1-CAPTURE-limit:
-          $ref: '#/components/headers/GS1-CAPTURE-limit'
-        GS1-CAPTURE-file-size-limit:
-          $ref: '#/components/headers/GS1-CAPTURE-file-size-limit'
+        GS1-Capture-Limit:
+          $ref: '#/components/headers/GS1-Capture-Limit'
+        GS1-Capture-FileSizeLimit:
+          $ref: '#/components/headers/GS1-Capture-FileSizeLimit'
       description: |
-        The `POST` request is too large. It exceeds the limits set in `GS1-CAPTURE-limit` and/or
-        `GS1-CAPTURE-file-size-limit`.
+        The `POST` request is too large. It exceeds the limits set in `GS1-Capture-Limit` and/or
+        `GS1-Capture-FileSizeLimit`.
       content:
         application/problem+json:
           schema:
@@ -3054,8 +3055,6 @@ components:
                     enum:
                       - epcisException:QueryTooComplexException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-    501NotImplemented:
-      description: Functionality not supported by server
     500ImplementationException:
       description: This is a server-side problem caused when the query was resolved and executed.
       content:
@@ -3074,15 +3073,32 @@ components:
                     enum:
                       - epcisException:ImplementationException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+    501NotImplemented:
+      description: Functionality not supported by server.
+      content:
+        application/problem+json:
+          schema:
+            allOf:
+              - properties:
+                  status:
+                    type: integer
+                    enum:
+                      - 501
+                    default: 501
+                  type:
+                    type: string
+                    format: uri
+                    enum:
+                      - epcisException:ImplementationException
+              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
   schemas:
-
     Location:
-      description: Location header of a resource
+      description: Location header of a resource.
       type: string
       format: uri
       example: /eventTypes/ObjectEvent/events/eventId123
     RFC7807ProblemResponseBody:
-      description: A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807)
+      description: A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807).
       type: object
       required:
         - type
@@ -3150,7 +3166,7 @@ components:
       items:
         type: object
     QueryName:
-      description: Unique query name
+      description: Unique query name.
       type: string
       example: myQuery
     EPCISMasterDataQuery:
@@ -3166,7 +3182,7 @@ components:
       enum:
         - all
     EPCISMasterDataDocument:
-      description: A collection of master data resources
+      description: A collection of master data resources.
       example:
         {
           "@context": [
@@ -3344,6 +3360,16 @@ components:
         the mechanisms for invalidating tokens.
       type: string
       example: '3A1550673874978%2Ci%3AU6D7DENAKwM2gQRRwGrataeq'
+    Upgrade:
+      type: string
+      description: The `Upgrade` and `Connection` headers are needed to open a Websocket for queries.
+      default: websocket
+      example: websocket
+    Connection:
+      example: Upgrade
+      description: The `Upgrade` and `Connection` headers are needed to open a Websocket for queries.
+      type: string
+      default: upgrade
     EPCISEventTypes:
       type: string
       description: The five types of EPCIS events.
@@ -3360,17 +3386,7 @@ components:
         - TransformationEvent
         - TransactionEvent
 
-    # New schemas
-    GS1-query-initialRecordTime:
-      description: |
-        An optional header to specify a time used to constrain what resources are considered when processing a query
-        subscription. This value only applies the first time a subscriber receives events. If omitted, the default
-        value is the current time.
-      type: string
-      format: time
-      example: "2020-04-04T20:33:31.116-06:00"
-
-    GS1-query-abstract-subscriptions:
+    AbstractQuerySubscription:
       example: {
         "callbackUrl": "https://client.example.com/queryCallback",
         "secret": "0435ojtojt02"
@@ -3384,7 +3400,7 @@ components:
         - secret
       properties:
         callbackUrl:
-          description: Callback to receive EPCIS resources and errors
+          description: Callback to receive EPCIS resources and errors.
           type: string
           format: uri
           example: https://client.example.com/queryCallback
@@ -3393,9 +3409,9 @@ components:
           type: string
           description: One-time secret generated by the client for the server.
         initialRecordTime:
-          $ref: '#/components/schemas/GS1-query-initialRecordTime'
+          $ref: '#/components/schemas/GS1-Query-InitialRecordTime'
 
-    GS1-query-stream-subscriptions:
+    QueryStreamSubscription:
       description: |
         If no query schedule is specified, the client must explicitly set `stream` to `true`. This restriction is to
         prevent clients from accidentally subscribe to EPCIS event streams.
@@ -3416,11 +3432,11 @@ components:
         - stream
       properties:
         stream:
-          $ref: '#/components/schemas/GS1-query-stream-flag'
+          $ref: '#/components/schemas/GS1-Query-Stream'
 
-    GS1-query-schedule-subscriptions:
+    QueryScheduleSubscription:
       description: |
-        A scheduled query subscription is a time-based query execution scheduler. EPCIS 2.0 query schedule are scheduled
+        A scheduled query subscription is a time-based query execution scheduler. EPCIS 2.0 scheduled query are scheduled
         in the same manner as cron jobs.
 
         For example, this query subscription will is scheduled to trigger every morning at 1.05am. By setting
@@ -3445,70 +3461,78 @@ components:
         - schedule
       properties:
         reportIfEmpty:
-          $ref: '#/components/schemas/GS1-query-reportIfEmpty-flag'
+          $ref: '#/components/schemas/GS1-Query-ReportIfEmpty'
         schedule:
           type: object
           properties:
             second:
-              $ref: '#/components/schemas/GS1-query-schedule-second'
+              $ref: '#/components/schemas/GS1-Query-Second'
             minute:
-              $ref: '#/components/schemas/GS1-query-schedule-minute'
+              $ref: '#/components/schemas/GS1-Query-Minute'
             hour:
-              $ref: '#/components/schemas/GS1-query-schedule-hour'
+              $ref: '#/components/schemas/GS1-Query-Hour'
             dayOfMonth:
-              $ref: '#/components/schemas/GS1-query-schedule-dayOfMonth'
+              $ref: '#/components/schemas/GS1-Query-DayOfMonth'
             month:
-              $ref: '#/components/schemas/GS1-query-schedule-month'
+              $ref: '#/components/schemas/GS1-Query-Month'
             dayOfWeek:
-              $ref: '#/components/schemas/GS1-query-schedule-dayOfWeek'
-    GS1-query-reportIfEmpty-flag:
+              $ref: '#/components/schemas/GS1-Query-DayOfWeek'
+    GS1-Query-InitialRecordTime:
+      description: |
+        An optional header to specify a time used to constrain what resources are considered when processing a query
+        subscription. This value only applies the first time a subscriber receives events. If omitted, the default
+        value is the current time.
+      type: string
+      format: time
+      example: "2020-04-04T20:33:31.116-06:00"
+    GS1-Query-ReportIfEmpty:
       example: false
       type: boolean
       default: false
       description: Flag to specify subscribed clients should be notified if the query result is empty.
-    GS1-query-schedule-second:
+    GS1-Query-Second:
       description: |
         Specifies that the query time must have a matching seconds value. The range for this parameter is 0
         through 59, inclusive.
       example: 0
       type: string
       pattern: "(\\g<element>,)*\\g<element>|(?<element>(\\g<number>|\\g<range>))|(?<range>(\\[\\g<number>\\-\\g<number>\\]))|(?<number>([0-59]))"
-    GS1-query-schedule-minute:
+    GS1-Query-Minute:
       description: |
         Specifies that the query time must have a matching minute value. The range for this parameter is 0 through 59,
         inclusive.
       example: 5
       type: string
       pattern: "(\\g<element>,)*\\g<element>|(?<element>(\\g<number>|\\g<range>))|(?<range>(\\[\\g<number>\\-\\g<number>\\]))|(?<number>([0-59]))"
-    GS1-query-schedule-hour:
+    GS1-Query-Hour:
       description: |
         Specifies that the query time must have a matching hour value. The range for this parameter is 0 through 23,
         inclusive, with 0 denoting the hour that begins at midnight, and 23 denoting the hour that ends at midnight.
       example: 1
       type: string
       pattern: "(\\g<element>,)*\\g<element>|(?<element>(\\g<number>|\\g<range>))|(?<range>(\\[\\g<number>\\-\\g<number>\\]))|(?<number>([0-23]))"
-    GS1-query-schedule-dayOfMonth:
+    GS1-Query-DayOfMonth:
       description: |
         Specifies that the query time must have a matching day of month value. The range for this parameter is 1 through
         31, inclusive.
       example: 1
       type: string
       pattern: "(\\g<element>,)*\\g<element>|(?<element>(\\g<number>|\\g<range>))|(?<range>(\\[\\g<number>\\-\\g<number>\\]))|(?<number>([1-31]))"
-    GS1-query-schedule-month:
+    GS1-Query-Month:
       description: |
         Specifies that the query time must have a matching month value. The range for this parameter is 1 through 12,
         inclusive.
       example: 1
       type: string
       pattern: "(\\g<element>,)*\\g<element>|(?<element>(\\g<number>|\\g<range>))|(?<range>(\\[\\g<number>\\-\\g<number>\\]))|(?<number>([1-12]))"
-    GS1-query-schedule-dayOfWeek:
+    GS1-Query-DayOfWeek:
       description: |
         Specifies that the query time must have a matching day of week value. The range for this parameter is 1 through
         7, inclusive, with 1 denoting Monday, 2 denoting Tuesday, and so forth, up to 7 denoting Sunday.
       example: 1
       type: string
       pattern: "(\\g<element>,)*\\g<element>|(?<element>(\\g<number>|\\g<range>))|(?<range>(\\[\\g<number>\\-\\g<number>\\]))|(?<number>([1-7]))"
-    GS1-query-stream-flag:
+    GS1-Query-Stream:
       type: boolean
       description: |
         If now schedule is specified and `stream` is `true`, the standing query SHALL report immediately whenever a
@@ -3516,67 +3540,58 @@ components:
       default: true
       enum:
         - true
-    Upgrade:
-      type: string
-      description: The `Upgrade` and `Connection` headers are needed to open a Websocket for queries.
-      default: websocket
-      example: websocket
-    Connection:
-      example: Upgrade
-      description: The `Upgrade` and `Connection` headers are needed to open a Websocket for queries.
-      type: string
-      default: upgrade
+
 
     # describe header schema
-    GS1-EPCIS-version:
-      description: The EPCIS version
+    GS1-EPCIS-Version:
+      description: The EPCIS version.
       type: string
       pattern: ^\d+(\.\d+)?$
       example: "2.0"
-    GS1-EPCIS-min:
-      description: The lowest EPCIS version supported
+    GS1-EPCIS-Min:
+      description: The lowest EPCIS version supported.
       type: string
       pattern: ^\d+(\.\d+)?$
       example: "2.0"
-    GS1-EPCIS-max:
-      description: The highest EPCIS version supported
+    GS1-EPCIS-Max:
+      description: The highest EPCIS version supported.
       type: string
       pattern: ^\d+(\.\d+)?$
-    GS1-CBV-version:
-      description: The core business vocabulary version
+    GS1-CBV-Version:
+      description: The core business vocabulary version.
       type: string
-    GS1-EPCIS-extensions:
-      description: Specific EPCIS extensions supported (e.g. for FIT)
+    GS1-EPCIS-Extensions:
+      description: Specific EPCIS extensions supported (e.g. for FIT).
       example: {"example-epc-ext": "http://example.com/epcis/"}
       type: object
-    GS1-Vendor-version:
-      description: A versioning scheme that can be freely chosen by the vendor
+    GS1-Vendor-Version:
+      description: A versioning scheme that can be freely chosen by the vendor.
       type: array
       items:
         type: string
       uniqueItems: true
-    GS1-CBV-extensions:
-      description: An optional header to specify the vocabulary for the top-level endpoints
+    GS1-CBV-Extensions:
+      description: An optional header to specify the vocabulary for the top-level endpoints.
       example: {"ex": "http://example.com/vendor1", "vendor": "<https://example.org/defs#"}
       type: object
       uniqueItems: true
-    GS1-CAPTURE-limit:
-      description: The maximum number of EPCIS events that can be captured per call
+    GS1-Capture-Limit:
+      description: The maximum number of EPCIS events that can be captured per call.
       type: string
       pattern: ^(\d+|\*)$
-    GS1-CAPTURE-file-size-limit:
-      description: The maximum event document length in octets (8-bit bytes)
+    GS1-Capture-FileSize-Limit:
+      description: The maximum event document length in octets (8-bit bytes).
       type: string
       pattern: ^(\d+|\*)$
-    GS1-nextPageToken-Expires:
-      description: The expiry time for nextPageToken
+    GS1-NextPageToken-Expires:
+      description: The expiry time for nextPageToken. This header is optional.
       type: string
       format: 'date-time'
 
   parameters:
     # Top-level resource instances
     EPC:
-      description: An electronic product code value
+      description: An electronic product code value.
       example: urn:epc:id:sgtin:0614141.107346.2018
       required: true
       in: path
@@ -3585,7 +3600,7 @@ components:
         type: string
         format: uri
     BizStep:
-      description: A business step value
+      description: A business step value.
       example: urn:epcglobal:cbv:bizstep:receiving
       required: true
       in: path
@@ -3594,7 +3609,7 @@ components:
         type: string
         format: uri
     BizLocation:
-      description: A business location value
+      description: A business location value.
       example: urn:epc:id:sgln:0012345.11111.0
       required: true
       in: path
@@ -3603,7 +3618,7 @@ components:
         type: string
         format: uri
     ReadPoint:
-      description: A read point value
+      description: A read point value.
       example: urn:epc:id:sgln:0012345.11111.400
       required: true
       in: path
@@ -3612,7 +3627,7 @@ components:
         type: string
         format: uri
     Disposition:
-      description: A disposition value
+      description: A disposition value.
       example: urn:epcglobal:cbv:disp:in_progress
       required: true
       in: path
@@ -3620,87 +3635,6 @@ components:
       schema:
         type: string
         format: uri
-    Token:
-      in: path
-      name: token
-      required: true
-      schema:
-        $ref: '#/components/schemas/NextPageToken'
-    PerPage:
-      in: query
-      name: perPage
-      schema:
-        $ref: '#/components/schemas/PerPage'
-    NextPageToken:
-      in: query
-      name: nextPageToken
-      schema:
-        $ref: '#/components/schemas/NextPageToken'
-    GS1-query-schedule-second:
-      in: query
-      name: second
-      required: false
-      schema:
-        $ref: '#/components/schemas/GS1-query-schedule-second'
-    GS1-query-schedule-minute:
-      in: query
-      name: minute
-      required: false
-      schema:
-        $ref: '#/components/schemas/GS1-query-schedule-minute'
-    GS1-query-schedule-hour:
-      in: query
-      name: hour
-      required: false
-      schema:
-        $ref: '#/components/schemas/GS1-query-schedule-hour'
-    GS1-query-schedule-dayOfMonth:
-      in: query
-      name: dayOfMonth
-      required: false
-      schema:
-        $ref: '#/components/schemas/GS1-query-schedule-dayOfMonth'
-    GS1-query-schedule-month:
-      in: query
-      name: month
-      required: false
-      schema:
-        $ref: '#/components/schemas/GS1-query-schedule-month'
-    GS1-query-schedule-dayOfWeek:
-      in: query
-      name: dayOfWeek
-      required: false
-      schema:
-        $ref: '#/components/schemas/GS1-query-schedule-dayOfWeek'
-    GS1-query-reportIfEmpty:
-      in: query
-      name: reportIfEmpty
-      required: false
-      schema:
-        $ref: '#/components/schemas/GS1-query-reportIfEmpty-flag'
-    GS1-query-stream:
-      in: query
-      name: stream
-      schema:
-        $ref: '#/components/schemas/GS1-query-stream-flag'
-    GS1-query-initialRecordTime:
-      in: query
-      name: initialRecordTime
-      required: false
-      schema:
-        $ref: '#/components/schemas/GS1-query-initialRecordTime'
-    Upgrade:
-      in: header
-      name: Upgrade
-      required: false
-      schema:
-        $ref: '#/components/schemas/Upgrade'
-    Connection:
-      in: header
-      name: Connection
-      required: false
-      schema:
-        $ref: '#/components/schemas/Connection'
     EventID:
       name: eventID
       in: path
@@ -3729,98 +3663,178 @@ components:
       required: true
       schema:
         $ref: '#/components/schemas/QueryName'
-
+    Token:
+      in: path
+      name: token
+      required: true
+      schema:
+        $ref: '#/components/schemas/NextPageToken'
+    PerPage:
+      in: query
+      name: perPage
+      schema:
+        $ref: '#/components/schemas/PerPage'
+    NextPageToken:
+      in: query
+      name: nextPageToken
+      schema:
+        $ref: '#/components/schemas/NextPageToken'
+    Upgrade:
+      in: header
+      name: Upgrade
+      required: false
+      schema:
+        $ref: '#/components/schemas/Upgrade'
+    Connection:
+      in: header
+      name: Connection
+      required: false
+      schema:
+        $ref: '#/components/schemas/Connection'
+    GS1-Query-Second:
+      in: query
+      name: second
+      required: false
+      schema:
+        $ref: '#/components/schemas/GS1-Query-Second'
+    GS1-Query-Minute:
+      in: query
+      name: minute
+      required: false
+      schema:
+        $ref: '#/components/schemas/GS1-Query-Minute'
+    GS1-Query-Hour:
+      in: query
+      name: hour
+      required: false
+      schema:
+        $ref: '#/components/schemas/GS1-Query-Hour'
+    GS1-Query-DayOfMonth:
+      in: query
+      name: dayOfMonth
+      required: false
+      schema:
+        $ref: '#/components/schemas/GS1-Query-DayOfMonth'
+    GS1-Query-Month:
+      in: query
+      name: month
+      required: false
+      schema:
+        $ref: '#/components/schemas/GS1-Query-Month'
+    GS1-Query-DayOfWeek:
+      in: query
+      name: dayOfWeek
+      required: false
+      schema:
+        $ref: '#/components/schemas/GS1-Query-DayOfWeek'
+    GS1-Query-ReportIfEmpty:
+      in: query
+      name: reportIfEmpty
+      required: false
+      schema:
+        $ref: '#/components/schemas/GS1-Query-ReportIfEmpty'
+    GS1-Query-Stream:
+      in: query
+      name: stream
+      schema:
+        $ref: '#/components/schemas/GS1-Query-Stream'
+    GS1-Query-InitialRecordTime:
+      in: query
+      name: initialRecordTime
+      required: false
+      schema:
+        $ref: '#/components/schemas/GS1-Query-InitialRecordTime'
     # request headers from schema
-    GS1-EPCIS-version:
+    GS1-EPCIS-Version:
       in: header
-      name: GS1-EPCIS-version
+      name: GS1-EPCIS-Version
       schema:
-        $ref: '#/components/schemas/GS1-EPCIS-version'
-    GS1-EPCIS-min:
+        $ref: '#/components/schemas/GS1-EPCIS-Version'
+    GS1-EPCIS-Min:
       in: header
-      name: GS1-EPCIS-min
+      name: GS1-EPCIS-Min
       schema:
-        $ref: '#/components/schemas/GS1-EPCIS-min'
-    GS1-EPCIS-max:
+        $ref: '#/components/schemas/GS1-EPCIS-Min'
+    GS1-EPCIS-Max:
       in: header
-      name: GS1-EPCIS-max
+      name: GS1-EPCIS-Max
       schema:
-        $ref: '#/components/schemas/GS1-EPCIS-max'
-    GS1-CBV-version:
+        $ref: '#/components/schemas/GS1-EPCIS-Max'
+    GS1-CBV-Version:
       in: header
-      name: GS1-CBV-version
+      name: GS1-CBV-Version
       schema:
-        $ref: '#/components/schemas/GS1-CBV-version'
-    GS1-EPCIS-extensions:
+        $ref: '#/components/schemas/GS1-CBV-Version'
+    GS1-EPCIS-Extensions:
       in: header
-      name: GS1-EPCIS-extensions
+      name: GS1-EPCIS-Extensions
       schema:
-        $ref: '#/components/schemas/GS1-EPCIS-extensions'
-    GS1-vendor-version:
+        $ref: '#/components/schemas/GS1-EPCIS-Extensions'
+    GS1-Vendor-Version:
       in: header
-      name: GS1-Vendor-version
+      name: GS1-Vendor-Version
       schema:
-        $ref: '#/components/schemas/GS1-Vendor-version'
-    GS1-CBV-extensions:
+        $ref: '#/components/schemas/GS1-Vendor-Version'
+    GS1-CBV-Extensions:
       in: header
-      name: GS1-CBV-extensions
+      name: GS1-CBV-Extensions
       schema:
-        $ref: '#/components/schemas/GS1-CBV-extensions'
-    GS1-CAPTURE-limit:
+        $ref: '#/components/schemas/GS1-CBV-Extensions'
+    GS1-Capture-Limit:
       in: header
-      name: GS1-CAPTURE-limit
+      name: GS1-Capture-Limit
       schema:
-        $ref: '#/components/schemas/GS1-CAPTURE-limit'
-    GS1-CAPTURE-file-size-limit:
+        $ref: '#/components/schemas/GS1-Capture-Limit'
+    GS1-Capture-FileSizeLimit:
       in: header
-      name: GS1-CAPTURE-file-size-limit
+      name: GS1-Capture-FileSizeLimit
       schema:
-        $ref: '#/components/schemas/GS1-CAPTURE-file-size-limit'
-    GS1-nextPageToken-Expires:
+        $ref: '#/components/schemas/GS1-Capture-FileSize-Limit'
+    GS1-NextPageToken-Expires:
       in: header
-      name: GS1-nextPageToken-Expires
+      name: GS1-NextPageToken-Expires
+      required: false
       schema:
-        $ref: '#/components/schemas/GS1-nextPageToken-Expires'
+        $ref: '#/components/schemas/GS1-NextPageToken-Expires'
 
   headers:
     # response headers from schema
-    GS1-EPCIS-version:
+    GS1-EPCIS-Version:
       schema:
-        $ref: '#/components/schemas/GS1-EPCIS-version'
-    GS1-EPCIS-min:
+        $ref: '#/components/schemas/GS1-EPCIS-Version'
+    GS1-EPCIS-Min:
       schema:
-        $ref: '#/components/schemas/GS1-EPCIS-min'
-    GS1-EPCIS-max:
+        $ref: '#/components/schemas/GS1-EPCIS-Min'
+    GS1-EPCIS-Max:
       schema:
-        $ref: '#/components/schemas/GS1-EPCIS-max'
-    GS1-CBV-version:
+        $ref: '#/components/schemas/GS1-EPCIS-Max'
+    GS1-CBV-Version:
       schema:
-        $ref: '#/components/schemas/GS1-CBV-version'
-    GS1-EPCIS-extensions:
+        $ref: '#/components/schemas/GS1-CBV-Version'
+    GS1-EPCIS-Extensions:
       schema:
-        $ref: '#/components/schemas/GS1-EPCIS-extensions'
-    GS1-Vendor-version:
+        $ref: '#/components/schemas/GS1-EPCIS-Extensions'
+    GS1-Vendor-Version:
       schema:
-        $ref: '#/components/schemas/GS1-Vendor-version'
-    GS1-CBV-extensions:
+        $ref: '#/components/schemas/GS1-Vendor-Version'
+    GS1-CBV-Extensions:
       schema:
-        $ref: '#/components/schemas/GS1-CBV-extensions'
-    GS1-CAPTURE-limit:
+        $ref: '#/components/schemas/GS1-CBV-Extensions'
+    GS1-Capture-Limit:
       schema:
-        $ref: '#/components/schemas/GS1-CAPTURE-limit'
-    GS1-CAPTURE-file-size-limit:
+        $ref: '#/components/schemas/GS1-Capture-Limit'
+    GS1-Capture-FileSizeLimit:
       schema:
-        $ref: '#/components/schemas/GS1-CAPTURE-file-size-limit'
-
+        $ref: '#/components/schemas/GS1-Capture-FileSize-Limit'
+    GS1-NextPageToken-Expires:
+      schema:
+        $ref: '#/components/schemas/GS1-NextPageToken-Expires'
     Location:
       schema:
         $ref: '#/components/schemas/Location'
     Link:
       schema:
         $ref: '#/components/schemas/Link'
-    GS1-nextPageToken-Expires:
-      schema:
-        $ref: '#/components/schemas/GS1-nextPageToken-Expires'
 
   requestBodies:
     CreateQuery:
