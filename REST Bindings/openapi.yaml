@@ -271,7 +271,7 @@ paths:
         versions are used.
       responses:
         '204':
-          $ref: '#/components/responses/204EventEndpointsOptionsResponse'
+          $ref: '#/components/responses/204TopLevelResourcesDiscovery'
     get:
       tags:
         - events
@@ -309,40 +309,11 @@ paths:
         versions are used.
       responses:
         '204':
-          description: |
-            The `OPTIONS` method is used as a discovery service for EPCIS event type. It describes which EPCIS and CBV
-            versions are supported as well as  EPCIS and CBV extensions.
-            The list of headers is not exhaustive. It only describes the functionality specific to EPCIS 2.0.
-          headers:
-            Allow:
-              schema:
-                example:
-                  - GET
-                  - OPTIONS
-                type: string
-                enum:
-                  - GET
-                  - OPTIONS
-            GS1-EPCIS-version:
-              $ref: '#/components/headers/GS1-EPCIS-version'
-            GS1-EPCIS-min:
-              $ref: '#/components/headers/GS1-EPCIS-min'
-            GS1-EPCIS-max:
-              $ref: '#/components/headers/GS1-EPCIS-max'
-            GS1-CBV-version:
-              $ref: '#/components/headers/GS1-CBV-version'
-            GS1-EPCIS-extensions:
-              $ref: '#/components/headers/GS1-EPCIS-extensions'
-            GS1-Vendor-version:
-              $ref: '#/components/headers/GS1-Vendor-version'
-            GS1-CBV-extensions:
-              $ref: '#/components/headers/GS1-CBV-extensions'
+          $ref: '#/components/responses/204TopLevelResourcesDiscovery'
     get:
       tags:
         - events
       summary: Returns all sub-resources of an EPCIS events. This endpoint does not work with 'all'
-
-
       description: |
         This endpoint returns all sub-resources of an EPCIS events, which currently is 'events'. A server may
         add additional endpoints, for example `schema` to access the EPCIS event type schema.
@@ -438,7 +409,7 @@ paths:
         ```
       responses:
         '200':
-          $ref: '#/components/responses/200EPCISEventResponse'
+          $ref: '#/components/responses/200EPCISEvents'
         '400':
           $ref: '#/components/responses/400QueryException'
         '401':
@@ -520,7 +491,34 @@ paths:
         versions are used.
       responses:
         '204':
-          $ref: '#/components/responses/204EventEndpointsOptionsResponse'
+          description: |
+            The `OPTIONS` method is used as a discovery service for individual EPCIS events endpoints. It describes
+            which EPCIS and CBV versions are supported as well as  EPCIS and CBV extensions.
+            The list of headers is not exhaustive. It only describes the functionality specific to EPCIS 2.0.
+          headers:
+            Allow:
+              schema:
+                example:
+                  - GET
+                  - OPTIONS
+                type: string
+                enum:
+                  - GET
+                  - OPTIONS
+            GS1-EPCIS-version:
+              $ref: '#/components/headers/GS1-EPCIS-version'
+            GS1-EPCIS-min:
+              $ref: '#/components/headers/GS1-EPCIS-min'
+            GS1-EPCIS-max:
+              $ref: '#/components/headers/GS1-EPCIS-max'
+            GS1-CBV-version:
+              $ref: '#/components/headers/GS1-CBV-version'
+            GS1-EPCIS-extensions:
+              $ref: '#/components/headers/GS1-EPCIS-extensions'
+            GS1-Vendor-version:
+              $ref: '#/components/headers/GS1-Vendor-version'
+            GS1-CBV-extensions:
+              $ref: '#/components/headers/GS1-CBV-extensions'
     get:
       tags:
         - events
@@ -538,7 +536,7 @@ paths:
         the unique event. The response body is an `EPCISDocument` with the unique event.
       responses:
         '200':
-          $ref: '#/components/responses/200EPCISEventResponse'
+          $ref: '#/components/responses/200EPCISEvents'
         '401':
           $ref: '#/components/responses/401AuthorizationInformationMissing'
         '403':
@@ -559,7 +557,7 @@ paths:
         versions are used.
       responses:
         '204':
-          $ref: '#/components/responses/204TopLevelResourcesOptionsResponse'
+          $ref: '#/components/responses/204TopLevelResourcesDiscovery'
     get:
       tags:
         - events
@@ -697,7 +695,7 @@ paths:
         versions are used.
       responses:
         '204':
-          $ref: '#/components/responses/204TopLevelResourcesOptionsResponse'
+          $ref: '#/components/responses/204EventsEndpointDiscovery'
     get:
       tags:
         - events
@@ -732,7 +730,7 @@ paths:
         ```
       responses:
         '200':
-          $ref: '#/components/responses/200EPCISEventResponse'
+          $ref: '#/components/responses/200EPCISEvents'
         '400':
           $ref: '#/components/responses/400QueryException'
         '401':
@@ -761,7 +759,7 @@ paths:
         versions are used.
       responses:
         '204':
-          $ref: '#/components/responses/204TopLevelResourcesOptionsResponse'
+          $ref: '#/components/responses/204TopLevelResourcesDiscovery'
     get:
       tags:
         - events
@@ -781,7 +779,7 @@ paths:
         the unique event.
       responses:
         '200':
-          $ref: '#/components/responses/200EPCISEventResponse'
+          $ref: '#/components/responses/200EPCISEvents'
         '401':
           $ref: '#/components/responses/401AuthorizationInformationMissing'
         '403':
@@ -802,7 +800,7 @@ paths:
         versions are used.
       responses:
         '204':
-          $ref: '#/components/responses/204TopLevelResourcesOptionsResponse'
+          $ref: '#/components/responses/204TopLevelResourcesDiscovery'
     get:
       tags:
         - events
@@ -930,7 +928,7 @@ paths:
         versions are used.
       responses:
         '204':
-          $ref: '#/components/responses/204TopLevelResourcesOptionsResponse'
+          $ref: '#/components/responses/204EventsEndpointDiscovery'
     get:
       tags:
         - events
@@ -963,7 +961,7 @@ paths:
         ```
       responses:
         '200':
-          $ref: '#/components/responses/200EPCISEventResponse'
+          $ref: '#/components/responses/200EPCISEvents'
         '400':
           $ref: '#/components/responses/400QueryException'
         '401':
@@ -993,7 +991,7 @@ paths:
         versions are used.
       responses:
         '204':
-          $ref: '#/components/responses/204TopLevelResourcesOptionsResponse'
+          $ref: '#/components/responses/204TopLevelResourcesDiscovery'
     get:
       tags:
         - events
@@ -1013,7 +1011,7 @@ paths:
         `EPCISDocument` with the unique event.
       responses:
         '200':
-          $ref: '#/components/responses/200EPCISEventResponse'
+          $ref: '#/components/responses/200EPCISEvents'
         '401':
           $ref: '#/components/responses/401AuthorizationInformationMissing'
         '403':
@@ -1034,7 +1032,7 @@ paths:
         versions are used.
       responses:
         '204':
-          $ref: '#/components/responses/204TopLevelResourcesOptionsResponse'
+          $ref: '#/components/responses/204TopLevelResourcesDiscovery'
     get:
       tags:
         - events
@@ -1162,7 +1160,7 @@ paths:
         versions are used.
       responses:
         '204':
-          $ref: '#/components/responses/204TopLevelResourcesOptionsResponse'
+          $ref: '#/components/responses/204EventsEndpointDiscovery'
     get:
       tags:
         - events
@@ -1196,7 +1194,7 @@ paths:
         ```
       responses:
         '200':
-          $ref: '#/components/responses/200EPCISEventResponse'
+          $ref: '#/components/responses/200EPCISEvents'
         '400':
           $ref: '#/components/responses/400QueryException'
         '401':
@@ -1226,7 +1224,7 @@ paths:
         versions are used.
       responses:
         '204':
-          $ref: '#/components/responses/204TopLevelResourcesOptionsResponse'
+          $ref: '#/components/responses/204TopLevelResourcesDiscovery'
     get:
       tags:
         - events
@@ -1246,7 +1244,7 @@ paths:
         `EPCISDocument` with the unique event.
       responses:
         '200':
-          $ref: '#/components/responses/200EPCISEventResponse'
+          $ref: '#/components/responses/200EPCISEvents'
         '401':
           $ref: '#/components/responses/401AuthorizationInformationMissing'
         '403':
@@ -1267,7 +1265,7 @@ paths:
         versions are used.
       responses:
         '204':
-          $ref: '#/components/responses/204TopLevelResourcesOptionsResponse'
+          $ref: '#/components/responses/204TopLevelResourcesDiscovery'
     get:
       tags:
         - events
@@ -1394,7 +1392,7 @@ paths:
         versions are used.
       responses:
         '204':
-          $ref: '#/components/responses/204TopLevelResourcesOptionsResponse'
+          $ref: '#/components/responses/204EventsEndpointDiscovery'
     get:
       tags:
         - events
@@ -1427,7 +1425,7 @@ paths:
         ```
       responses:
         '200':
-          $ref: '#/components/responses/200EPCISEventResponse'
+          $ref: '#/components/responses/200EPCISEvents'
         '400':
           $ref: '#/components/responses/400QueryException'
         '401':
@@ -1457,7 +1455,7 @@ paths:
         versions are used.
       responses:
         '204':
-          $ref: '#/components/responses/204TopLevelResourcesOptionsResponse'
+          $ref: '#/components/responses/204TopLevelResourcesDiscovery'
     get:
       tags:
         - events
@@ -1477,7 +1475,7 @@ paths:
         `EPCISDocument` with the unique event.
       responses:
         '200':
-          $ref: '#/components/responses/200EPCISEventResponse'
+          $ref: '#/components/responses/200EPCISEvents'
         '401':
           $ref: '#/components/responses/401AuthorizationInformationMissing'
         '403':
@@ -1498,7 +1496,7 @@ paths:
         versions are used.
       responses:
         '204':
-          $ref: '#/components/responses/204TopLevelResourcesOptionsResponse'
+          $ref: '#/components/responses/204TopLevelResourcesDiscovery'
     get:
       tags:
         - events
@@ -1625,7 +1623,7 @@ paths:
         versions are used.
       responses:
         '204':
-          $ref: '#/components/responses/204TopLevelResourcesOptionsResponse'
+          $ref: '#/components/responses/204EventsEndpointDiscovery'
     get:
       tags:
         - events
@@ -1658,7 +1656,7 @@ paths:
         ```
       responses:
         '200':
-          $ref: '#/components/responses/200EPCISEventResponse'
+          $ref: '#/components/responses/200EPCISEvents'
         '400':
           $ref: '#/components/responses/400QueryException'
         '401':
@@ -1688,7 +1686,7 @@ paths:
         versions are used.
       responses:
         '204':
-          $ref: '#/components/responses/204TopLevelResourcesOptionsResponse'
+          $ref: '#/components/responses/204TopLevelResourcesDiscovery'
     get:
       tags:
         - events
@@ -1708,7 +1706,7 @@ paths:
         is an `EPCISDocument` with the unique event.
       responses:
         '200':
-          $ref: '#/components/responses/200EPCISEventResponse'
+          $ref: '#/components/responses/200EPCISEvents'
         '401':
           $ref: '#/components/responses/401AuthorizationInformationMissing'
         '403':
@@ -1979,12 +1977,34 @@ paths:
         - discovery
       summary: Query the meta data of the subscriptions endpoint.
       description: |
-        The `OPTIONS` method is used as a discovery service for query subscriptions. It describes which EPCIS and CBV
-        versions are used in the query result supported as well as EPCIS and CBV extensions.
-        Please note that this dos not apply to anonymous queries, since they are not stored.
+        The `OPTIONS` method is used as a discovery service for query subscriptions.
       responses:
         '204':
-          $ref: '#/components/responses/204EventEndpointsOptionsResponse'
+          description: |
+            The `OPTIONS` method returns information describing the `subscriptions` endpoint.
+            The list of headers is not exhaustive. It only describes the functionality specific to EPCIS 2.0.
+          headers:
+            Allow:
+              example:
+                - POST
+                - GET
+                - OPTIONS
+              schema:
+                type: string
+                enum:
+                  - POST
+                  - GET
+                  - OPTIONS
+            GS1-EPCIS-version:
+              $ref: '#/components/headers/GS1-EPCIS-version'
+            GS1-EPCIS-min:
+              $ref: '#/components/headers/GS1-EPCIS-min'
+            GS1-EPCIS-max:
+              $ref: '#/components/headers/GS1-EPCIS-max'
+            GS1-CBV-version:
+              $ref: '#/components/headers/GS1-CBV-version'
+            GS1-Vendor-version:
+              $ref: '#/components/headers/GS1-Vendor-version'
     get:
       tags:
         - queries
@@ -2221,12 +2241,34 @@ paths:
     options:
       tags:
         - discovery
-      summary: Query the meta data of the endpoint for individual Webhook subscriptions.
+      summary: Query meta data about an individual subscription.
       description: |
-        The `OPTIONS` method is used as a discovery service for query subscriptions.
+        The `OPTIONS` method is used as a discovery service for a Webhook-based query subscription.
       responses:
         '204':
-          $ref: '#/components/responses/204EventEndpointsOptionsResponse'
+          description: |
+            The `OPTIONS` method returns information describing individual query subscriptions.
+            The list of headers is not exhaustive. It only describes the functionality specific to EPCIS 2.0.
+          headers:
+            Allow:
+              example:
+                - GET
+                - OPTIONS
+              schema:
+                type: string
+                enum:
+                  - GET
+                  - OPTIONS
+            GS1-EPCIS-version:
+              $ref: '#/components/headers/GS1-EPCIS-version'
+            GS1-EPCIS-min:
+              $ref: '#/components/headers/GS1-EPCIS-min'
+            GS1-EPCIS-max:
+              $ref: '#/components/headers/GS1-EPCIS-max'
+            GS1-CBV-version:
+              $ref: '#/components/headers/GS1-CBV-version'
+            GS1-Vendor-version:
+              $ref: '#/components/headers/GS1-Vendor-version'
     get:
       tags:
         - queries
@@ -2297,34 +2339,7 @@ paths:
         Please note that this dos not apply to anonymous queries, since they are not stored.
       responses:
         '204':
-          description: |
-            The `OPTIONS` method is used as a discovery service for `/queries/{queryName}/events` endpoints. It
-            describes which EPCIS and CBV versions are supported as well as  EPCIS and CBV extensions.
-            The list of headers is not exhaustive. It only describes the functionality specific to EPCIS 2.0.
-          headers:
-            Allow:
-              schema:
-                example:
-                  - GET
-                  - OPTIONS
-                type: string
-                enum:
-                  - GET
-                  - OPTIONS
-            GS1-EPCIS-version:
-              $ref: '#/components/headers/GS1-EPCIS-version'
-            GS1-EPCIS-min:
-              $ref: '#/components/headers/GS1-EPCIS-min'
-            GS1-EPCIS-max:
-              $ref: '#/components/headers/GS1-EPCIS-max'
-            GS1-CBV-version:
-              $ref: '#/components/headers/GS1-CBV-version'
-            GS1-EPCIS-extensions:
-              $ref: '#/components/headers/GS1-EPCIS-extensions'
-            GS1-Vendor-version:
-              $ref: '#/components/headers/GS1-Vendor-version'
-            GS1-CBV-extensions:
-              $ref: '#/components/headers/GS1-CBV-extensions'
+          $ref: '#/components/responses/204EventsEndpointDiscovery'
     get:
       tags:
         - queries
@@ -2394,7 +2409,7 @@ paths:
         '101':
          $ref: '#/components/responses/101WebsocketCreated'
         '200':
-          $ref: '#/components/responses/200EPCISEventResponse'
+          $ref: '#/components/responses/200EPCISEvents'
         '400':
           $ref: '#/components/responses/400QueryInvalid'
         '401':
@@ -2409,14 +2424,13 @@ paths:
   /queries/{queryName}/masterdata:
     parameters:
       - $ref: '#/components/parameters/QueryName'
-      - $ref: '#/components/parameters/PerPage'
     options:
       tags:
         - discovery
       summary: Query the meta data of an events query
       description: |
         The `OPTIONS` method is used as a discovery service for named queries. It describes which EPCIS and CBV
-        versions are used in the query result supported as well as  EPCIS and CBV extensions.
+        versions are used in the query result supported as well as EPCIS and CBV extensions.
         Please note that this dos not apply to anonymous queries, since they are not stored.
       responses:
         '204':
@@ -2449,17 +2463,16 @@ paths:
               $ref: '#/components/headers/GS1-Vendor-version'
             GS1-CBV-extensions:
               $ref: '#/components/headers/GS1-CBV-extensions'
-
     get:
       tags:
         - queries
         - masterdata
       summary: Returns the result of a master data query.
       parameters:
-        - $ref: '#/components/parameters/GS1-query-initialRecordTime'
+        - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
       description: |
-        The GET endpoint is to retrieve large results that don't fit into the response of a `POST` request.
+        The `GET` endpoint is to retrieve large results that don't fit into the response of a `POST` request.
       responses:
         '200':
           $ref: '#/components/responses/200MasterDataResponse'
@@ -2485,7 +2498,7 @@ paths:
         Please note that this dos not apply to anonymous queries, since they are not stored.
       responses:
         '204':
-          $ref: '#/components/responses/204AnonymousQueriesOptionsResponse'
+          $ref: '#/components/responses/204AnonymousQueriesDiscovery'
     post:
       tags:
         - queries
@@ -2502,9 +2515,9 @@ paths:
         - $ref: '#/components/parameters/PerPage'
       description: |
         `SimpleMasterDataQuery` is an endpoint to create anonymous queries. A query is created with a random name
-        once and returned to the client. Unlike name queries, these queries are not stored.
+        once and returned to the client. Unlike named queries, these queries are not stored.
       requestBody:
-        description: Creates and executes an an anonymous EPCIS masterdata query.
+        description: Creates and executes an an anonymous EPCIS master data query.
         required: true
         content:
           application/json:
@@ -2541,19 +2554,10 @@ paths:
             GS1-CBV-extensions:
               $ref: '#/components/headers/GS1-CBV-extensions'
             Link:
-              example: "https://www.example.com/queries/SimpleEventQuery-2ac8f3f4-2a67-11eb-adc1/masterdata?perPage=30&nextPageToken=3A1550673874978%2Ci%3AU6D7DENAKwM2gQRRwGrataeq>; rel=\"next\"'"
+              example: "https://www.example.com/queries/SimpleMasterDataQuery/masterdata?perPage=30&nextPageToken=3A1550673874978%2Ci%3AU6D7DENAKwM2gQRRwGrataeq>; rel=\"next\"'"
               description: The `Link` header is used for pagination. It contains the URL to the next result set.
               schema:
                 $ref: '#/components/schemas/Link'
-            Location:
-              description: |
-                The URL of the newly created anonymous master data query. The server will create a new and unique
-                temporary anonymous query for the client's request. The client should use URL in the `Link`
-                header to fetch more resources.
-              schema:
-                example: "https://www.example.com/queries/SimpleMasterDataQuery-2ac8f3f4-2a67-11eb-0242ac120002-adc1"
-                type: string
-                format: uri
             GS1-nextPageToken-Expires:
               $ref: '#/components/headers/GS1-nextPageToken-Expires'
           description: Returns the query result
@@ -2561,6 +2565,29 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EPCISMasterDataDocument'
+        '401':
+          $ref: '#/components/responses/401AuthorizationInformationMissing'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '404':
+          $ref: '#/components/responses/404ResourceNotFound'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
+  /queries/SimpleMasterDataQuery/masterdata:
+    get:
+      tags:
+        - queries
+        - masterdata
+      summary: Returns the result of a master data query.
+      parameters:
+        - $ref: '#/components/parameters/NextPageToken'
+      description: |
+        The GET endpoint is to retrieve large results that don't fit into the response of a `POST` request.
+      responses:
+        '200':
+          $ref: '#/components/responses/200MasterDataResponse'
+        '400':
+          $ref: '#/components/responses/400QueryInvalid'
         '401':
           $ref: '#/components/responses/401AuthorizationInformationMissing'
         '403':
@@ -2578,10 +2605,9 @@ paths:
       description: |
         The `OPTIONS` method is used as a discovery service for anonymous queries. Because anonymous queries
         are not stored, query-related meta data cannot be discovered.
-        Please note that this dos not apply to anonymous queries, since they are not stored.
       responses:
         '204':
-          $ref: '#/components/responses/204AnonymousQueriesOptionsResponse'
+          $ref: '#/components/responses/204AnonymousQueriesDiscovery'
     post:
       tags:
         - queries
@@ -2637,20 +2663,10 @@ paths:
             GS1-CBV-extensions:
               $ref: '#/components/headers/GS1-CBV-extensions'
             Link:
-              example: "https://www.example.com/queries/SimpleEventQuery-2ac8f3f4-2a67-11eb-adc1/events?perPage=30&nextPageToken=3A1550673874978%2Ci%3AU6D7DENAKwM2gQRRwGrataeq>; rel=\"next\"'"
+              example: "https://www.example.com/queries/SimpleEventQuery/events?perPage=30&nextPageToken=3A1550673874978%2Ci%3AU6D7DENAKwM2gQRRwGrataeq>; rel=\"next\"'"
               description: The `Link` header is used for pagination. It contains the URL to the next result set.
               schema:
                 $ref: '#/components/schemas/Link'
-            Location:
-              description: |
-                The URL of the newly created anonymous query. The server will create a new and unique temporary
-                anonymous query for the client's request. The client can use this URL to subscribe to that query.
-                If the client wants to execute the query synchronously, the client should use URL in the `Link` header
-                to fetch more resources.
-              schema:
-                example: "https://www.example.com/queries/SimpleEventQuery-2ac8f3f4-2a67-11eb-adc1"
-                type: string
-                format: uri
             GS1-nextPageToken-Expires:
               $ref: '#/components/headers/GS1-nextPageToken-Expires'
           description: |
@@ -2660,6 +2676,41 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EPCISEventsDocument'
+        '401':
+          $ref: '#/components/responses/401AuthorizationInformationMissing'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '404':
+          $ref: '#/components/responses/404ResourceNotFound'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
+
+  /queries/SimpleEventQuery/events:
+    options:
+      tags:
+        - discovery
+      summary: Query the meta data of an events query
+      description: |
+        The `OPTIONS` method is used as a discovery service for anonymous queries. Because anonymous queries
+        are not stored, query-related meta data cannot be discovered.
+      responses:
+        '204':
+          $ref: '#/components/responses/204EventsEndpointDiscovery'
+    get:
+      tags:
+        - queries
+        - events
+      summary: Returns events with the option to use pagination if needed.
+      parameters:
+        - $ref: '#/components/parameters/NextPageToken'
+        - $ref: '#/components/parameters/PerPage'
+      description: |
+        The `GET` endpoint is to retrieve large results that don't fit into the response of `POST` request.
+      responses:
+        '200':
+          $ref: '#/components/responses/200EPCISEvents'
+        '400':
+          $ref: '#/components/responses/400QueryInvalid'
         '401':
           $ref: '#/components/responses/401AuthorizationInformationMissing'
         '403':
@@ -2750,7 +2801,7 @@ components:
                 - events
               enum:
                 - events
-    200EPCISEventResponse:
+    200EPCISEvents:
       headers:
         GS1-EPCIS-version:
           $ref: '#/components/headers/GS1-EPCIS-version'
@@ -2781,11 +2832,11 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/EPCISEventTypes'
-    204TopLevelResourcesOptionsResponse:
+    204TopLevelResourcesDiscovery:
       description: |
-        The `OPTIONS` method is used as a discovery service for top-level resources endpoints. It describes which EPCIS
-        and CBV versions are supported and used for the top-level resource as well as EPCIS and CBV extensions.
-        The list of headers is not exhaustive. It only describes the functionality specific to EPCIS 2.0.
+        The `OPTIONS` method is used as a discovery service for top-level and EPCIS events resources endpoints.
+        It describes which EPCIS and CBV versions are supported and used for the top-level resource as well as EPCIS and
+        CBV extensions. The list of headers is not exhaustive. It only describes the functionality specific toEPCIS 2.0.
       headers:
         Allow:
           schema:
@@ -2807,11 +2858,9 @@ components:
           $ref: '#/components/headers/GS1-Vendor-version'
         GS1-CBV-extensions:
           $ref: '#/components/headers/GS1-CBV-extensions'
-    204AnonymousQueriesOptionsResponse:
+    204AnonymousQueriesDiscovery:
       description: |
-        The `OPTIONS` method is used as a discovery service for anonymous queries endpoints. For named queries,
-        `OPTIONS` reveals which vocabularies are used in the query, etc. Anonymous queries are not stored, and
-        therefore such information cannot be discovered.
+        The `OPTIONS` method is used as a discovery service for anonymous queries endpoints.
         The list of headers is not exhaustive. It only describes the functionality specific to EPCIS 2.0.
       headers:
         Allow:
@@ -2837,7 +2886,8 @@ components:
           $ref: '#/components/headers/GS1-Vendor-version'
         GS1-CBV-extensions:
           $ref: '#/components/headers/GS1-CBV-extensions'
-    204EventEndpointsOptionsResponse:
+
+    204EventsEndpointDiscovery:
       description: |
         The `OPTIONS` method is used as a discovery service for `events` endpoints. It describes which EPCIS and CBV
         versions are supported as well as  EPCIS and CBV extensions.
@@ -2847,13 +2897,25 @@ components:
           example:
             - GET
             - OPTIONS
-            - POST
           schema:
             type: string
             enum:
               - GET
               - OPTIONS
-              - POST
+        GS1-EPCIS-version:
+          $ref: '#/components/headers/GS1-EPCIS-version'
+        GS1-EPCIS-min:
+          $ref: '#/components/headers/GS1-EPCIS-min'
+        GS1-EPCIS-max:
+          $ref: '#/components/headers/GS1-EPCIS-max'
+        GS1-CBV-version:
+          $ref: '#/components/headers/GS1-CBV-version'
+        GS1-EPCIS-extensions:
+          $ref: '#/components/headers/GS1-EPCIS-extensions'
+        GS1-Vendor-version:
+          $ref: '#/components/headers/GS1-Vendor-version'
+        GS1-CBV-extensions:
+          $ref: '#/components/headers/GS1-CBV-extensions'
     204QueryDeleted:
       description: Query deleted and clients disconnected
     400QueryInvalid:
