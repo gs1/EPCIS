@@ -2551,6 +2551,8 @@ paths:
                 example: "https://www.example.com/queries/SimpleMasterDataQuery-2ac8f3f4-2a67-11eb-0242ac120002-adc1"
                 type: string
                 format: uri
+            GS1-nextPageToken-Expires:
+              $ref: '#/components/headers/GS1-nextPageToken-Expires'
           description: Returns the query result
           content:
             application/json:
@@ -2646,6 +2648,8 @@ paths:
                 example: "https://www.example.com/queries/SimpleEventQuery-2ac8f3f4-2a67-11eb-adc1"
                 type: string
                 format: uri
+            GS1-nextPageToken-Expires:
+              $ref: '#/components/headers/GS1-nextPageToken-Expires'
           description: |
             Returns the query result. To use pagination, the client should follow the URL returned in the
             `Link` header.
@@ -2696,6 +2700,8 @@ components:
           $ref: '#/components/headers/GS1-CBV-extensions'
         Link:
           $ref: '#/components/headers/Link'
+        GS1-nextPageToken-Expires:
+          $ref: '#/components/headers/GS1-nextPageToken-Expires'
       description: Returns the query result
       content:
         application/json:
@@ -2745,12 +2751,13 @@ components:
           $ref: '#/components/headers/GS1-CBV-extensions'
         Link:
           $ref: '#/components/headers/Link'
+        GS1-nextPageToken-Expires:
+          $ref: '#/components/headers/GS1-nextPageToken-Expires'
       description: Returns EPCIS resources
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/EPCISEventsDocument'
-
 
     200SupportedEventTypes:
       description: Returns all supported EPCIS event types.
@@ -3486,6 +3493,10 @@ components:
       description: The maximum event document length in octets (8-bit bytes)
       type: string
       pattern: ^(\d+|\*)$
+    GS1-nextPageToken-Expires:
+      description: The expiry time for nextPageToken
+      type: string
+      format: 'date-time'
 
   parameters:
     # Top-level resource instances
@@ -3685,6 +3696,11 @@ components:
       name: GS1-CAPTURE-file-size-limit
       schema:
         $ref: '#/components/schemas/GS1-CAPTURE-file-size-limit'
+    GS1-nextPageToken-Expires:
+      in: header
+      name: GS1-nextPageToken-Expires
+      schema:
+        $ref: '#/components/schemas/GS1-nextPageToken-Expires'
 
   headers:
 
@@ -3715,7 +3731,7 @@ components:
         $ref: '#/components/schemas/GS1-CAPTURE-limit'
     GS1-CAPTURE-file-size-limit:
       schema:
-        $ref: '#/components/schemas/GS1-CAPTURE-file-size-limit' 
+        $ref: '#/components/schemas/GS1-CAPTURE-file-size-limit'
 
     Location:
       schema:
@@ -3723,6 +3739,9 @@ components:
     Link:
       schema:
         $ref: '#/components/schemas/Link'
+    GS1-nextPageToken-Expires:
+      schema:
+        $ref: '#/components/schemas/GS1-nextPageToken-Expires'
 
   requestBodies:
     CreateQuery:
