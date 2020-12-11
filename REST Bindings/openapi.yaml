@@ -1726,7 +1726,8 @@ paths:
         '200':
           description: |
             Queries are like views that are created using the EPCIS query language. Each query object
-            consists of a query name and the query definition.
+            consists of a query name and the query definition. Performing a `GET` on `/queries` lists all
+            existing queries.
           content:
             application/json:
               example: [{
@@ -1767,7 +1768,7 @@ paths:
     get:
       tags:
         - queries
-      summary: Returns endpoints available for a query.
+      summary: Returns the query definition.
       responses:
         '200':
           headers:
@@ -1785,22 +1786,32 @@ paths:
               $ref: '#/components/headers/GS1-CBV-Extensions'
 
           description: |
-            Returns endpoints available to the query.
+            Queries are like views that are created using the EPCIS query language. Each query object
+            consists of a query name and the query definition.
           content:
             application/json:
+              example: {
+                "query": {
+                  "EQ_bizStep": [
+                      "urn:epcglobal:cbv:bizstep:shipping",
+                      "urn:epcglobal:cbv:bizstep:receiving"
+                  ],
+                  "eventTypes": "ObjectEvent"
+                },
+                "queryType": "events",
+                "name": "myQuery"
+              }
               schema:
                 type: array
                 items:
-                  type: string
-                  oneOf:
-                    - enum:
-                        - masterData
-                    - enum:
-                        - subscriptions
-                        - events
-                  example:
-                    - subscriptions
-                    - events
+                  allOf:
+                    - type: object
+                      required:
+                        - name
+                      properties:
+                        name:
+                          type: string
+                    - $ref: '#/components/schemas/QueryDefinition'
         '401':
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
