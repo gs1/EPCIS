@@ -14,22 +14,6 @@ note over Client, Server:
   "queryType": "events"
 }
 end note
-c->s: POST https://example.com/queries/MyQuery/subscriptions
-note over Client, Server:
-{
-  "callbackUrl": "https://client.example.com/queryCallback",
-  "secret": "0435ojtojt02",
-  "schedule": {
-    "hour": "1",
-    "minute": "5"
-  }
-}
-end note
-s-->c: {"subscriptionId": "df5a33e3-5aa3-4403-ae01-99b83234e27b"}
-s->s: CuckooClock()
-note left of s: The time is 01:05h
-s->c:  POST https://client.example.com/queryCallback?secret=0435ojtojt02
-note over Client, Server:
-{..., "bizStep": "urn:epcglobal:cbv:bizstep:shipping",...}
-end note
-c->s: DELETE  https://client.example.com/queries/MyQuery/subsriptions/df5a33e3-5aa3-4403-ae01-99b83234e27b
+s-->c: \n Location: https://www.example.com/queries/myQuery \n Link: '<https://example.com/queries/myQuery/events?perPage=30&nextPageToken=3A..eq>; rel="next"' \n EPCISQueryDocument(Many EPCIS Events)
+c->s: GET https://example.com/queries/myQuery/events?perPage=30&nextPageToken=3A...eq
+s-->c: \n Link: '<https://example.com/queries/myQuery/events?perPage=30&nextPageToken=3A...eq>; rel="next"' \n EPCISQueryDocument(Many EPCIS Events)
