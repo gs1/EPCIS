@@ -6,6 +6,22 @@ info:
     name: Apache2
 
 tags:
+  - name: discovery
+    description: |
+      Endpoints to obtain information about the endpoint, such as EPCIS and CBV versions or custom vocabularies..
+  - name: capture
+    description: |
+      Endpoints to capture EPCIS events in bulk or individually.
+  - name: topLevelResources
+    description: |
+      Endpoints to browse EPCIS events by common top-level resources: electronic product codes, business steps,
+      business locations, read points and dispositions.
+  - name: events
+    description: |
+      Endpoints that expose EPCIS events as Web resources.
+  - name: masterData
+    description: |
+      Endpoints to create master data queries and subscribe to those queries.
   - name: queries
     description: |
       Endpoints to create large named or anonymous queries using the EPCIS query language. Named queries have a custom
@@ -14,22 +30,9 @@ tags:
   - name: subscriptions
     description: |
       EPCIS 2.0 supports query subscriptions with using Webhooks or Websockets.
-  - name: masterData
-    description: |
-      Endpoints to create master data queries and subscribe to those queries.
-  - name: events
-    description: |
-      Endpoints that expose EPCIS events as Web resources.
-  - name: topLevelResources
-    description: |
-      Endpoints to browse EPCIS events by common top-level resources: electronic product codes, business steps,
-      business locations, read points and dispositions.
-  - name: discovery
-    description: |
-      Endpoints to obtain information about the endpoint, such as EPCIS and CBV versions or custom vocabularies.
-  - name: capture
-    description: |
-      Endpoints to capture EPCIS events in bulk or individually.
+
+
+
 
 paths:
   /:
@@ -45,18 +48,18 @@ paths:
         - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
         - $ref: '#/components/parameters/GS1-CBV-Extensions'
         - $ref: '#/components/parameters/GS1-Vendor-Version'
-        - $ref: '#/components/parameters/GS1-Capture-Limit'
-        - $ref: '#/components/parameters/GS1-Capture-FileSizeLimit'
-        - $ref: '#/components/parameters/GS1-NextPageToken-Expires'
+        - $ref: '#/components/parameters/GS1-EPCIS-Capture-Limit'
+        - $ref: '#/components/parameters/GS1-EPCIS-Capture-File-Size-Limit'
+        - $ref: '#/components/parameters/GS1-Next-Page-Token-Expires'
       responses:
         '204':
           description: Server can comply with the GS1-EPCIS--related requirements from the client.
           headers:
             Allow:
               schema:
+                example: OPTIONS
                 type: string
-                enum:
-                  - OPTIONS
+                default: OPTIONS
             GS1-EPCIS-Version:
               $ref: '#/components/headers/GS1-EPCIS-Version'
             GS1-EPCIS-Min:
@@ -71,10 +74,10 @@ paths:
               $ref: '#/components/headers/GS1-Vendor-Version'
             GS1-CBV-Extensions:
               $ref: '#/components/headers/GS1-CBV-Extensions'
-            GS1-Capture-Limit:
-              $ref: '#/components/headers/GS1-Capture-Limit'
-            GS1-Capture-FileSizeLimit:
-              $ref: '#/components/headers/GS1-Capture-FileSizeLimit'
+            GS1-EPCIS-Capture-Limit:
+              $ref: '#/components/headers/GS1-EPCIS-Capture-Limit'
+            GS1-EPCIS-Capture-File-Size-Limit:
+              $ref: '#/components/headers/GS1-EPCIS-Capture-File-Size-Limit'
             GS1-NextPageToken-Expires:
               $ref: '#/components/headers/GS1-NextPageToken-Expires'
 
@@ -85,23 +88,19 @@ paths:
       summary: Discover the settings of the capture interface.
       description: |
         The `OPTIONS` method is used as a discovery service for `/capture`. It describes which EPCIS and CBV versions
-        are supported, EPCIS and CBV extensions, the payload size as a EPCIS events count (`GS1-Capture-Limit header`)
-        or maximum payload size in bytes (`GS1-Capture-FileSizeLimit`).
+        are supported, EPCIS and CBV extensions, the payload size as a EPCIS events count (`GS1-EPCIS-Capture-Limit header`)
+        or maximum payload size in bytes (`GS1-EPCIS-Capture-File-Size-Limit`).
         The list of headers is not exhaustive. It only describes the functionality specific to EPCIS 2.0.
       responses:
         '204':
           description: |
-            Header describing how to use the the capture endpoint.
+            Header describing how to use the capture endpoint.
           headers:
             Allow:
-              example:
-                - POST
-                - OPTIONS
               schema:
+                example: OPTIONS, POST
                 type: string
-                enum:
-                  - POST
-                  - OPTIONS
+                default: OPTIONS, POST
             GS1-EPCIS-Version:
               $ref: '#/components/headers/GS1-EPCIS-Version'
             GS1-EPCIS-Min:
@@ -116,10 +115,10 @@ paths:
               $ref: '#/components/headers/GS1-Vendor-Version'
             GS1-CBV-Extensions:
               $ref: '#/components/headers/GS1-CBV-Extensions'
-            GS1-Capture-Limit:
-              $ref: '#/components/headers/GS1-Capture-Limit'
-            GS1-Capture-FileSizeLimit:
-              $ref: '#/components/headers/GS1-Capture-FileSizeLimit'
+            GS1-EPCIS-Capture-Limit:
+              $ref: '#/components/headers/GS1-EPCIS-Capture-Limit'
+            GS1-EPCIS-Capture-File-Size-Limit:
+              $ref: '#/components/headers/GS1-EPCIS-Capture-File-Size-Limit'
     post:
       tags:
         - capture
@@ -155,7 +154,10 @@ paths:
             capture job URL in the Location header.
           headers:
             Location:
-              $ref: '#/components/headers/Location'
+              example: "https://example.com/capture/id9261379075"
+              schema:
+                $ref: '#/components/schemas/Location'
+
         '400':
           description: An error occurred while capturing EPCIS events. All events are rejected.
           content:
@@ -175,7 +177,7 @@ paths:
                           - epcisException:ValidationException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
         '401':
-          $ref: '#/components/responses/401AuthorizationInformationMissing'
+          $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '413':
@@ -185,7 +187,7 @@ paths:
     parameters:
       - in: path
         name: captureID
-        example: /capture/id9261379075
+        example: id9261379075
         description: A unique value identifying a capture job generated by the server.
         required: true
         schema:
@@ -204,14 +206,10 @@ paths:
             Headers describing the vocabularies and CBV and EPCIS versions used in the capture job.
           headers:
             Allow:
-              example:
-                - GET
-                - OPTIONS
               schema:
+                example: OPTIONS, GET
                 type: string
-                enum:
-                  - GET
-                  - OPTIONS
+                default: OPTIONS, GET
             GS1-EPCIS-Version:
               $ref: '#/components/headers/GS1-EPCIS-Version'
             GS1-EPCIS-Min:
@@ -226,10 +224,10 @@ paths:
               $ref: '#/components/headers/GS1-Vendor-Version'
             GS1-CBV-Extensions:
               $ref: '#/components/headers/GS1-CBV-Extensions'
-            GS1-Capture-Limit:
-              $ref: '#/components/headers/GS1-Capture-Limit'
-            GS1-Capture-FileSizeLimit:
-              $ref: '#/components/headers/GS1-Capture-FileSizeLimit'
+            GS1-EPCIS-Capture-Limit:
+              $ref: '#/components/headers/GS1-EPCIS-Capture-Limit'
+            GS1-EPCIS-Capture-File-Size-Limit:
+              $ref: '#/components/headers/GS1-EPCIS-Capture-File-Size-Limit'
     get:
       tags:
         - capture
@@ -255,7 +253,7 @@ paths:
                     - /eventTypes/ObjectEvent/events/oa345
                 uniqueItems: true
         '401':
-          $ref: '#/components/responses/401AuthorizationInformationMissing'
+          $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
@@ -293,7 +291,7 @@ paths:
         '200':
           $ref: '#/components/responses/200SupportedEventTypes'
         '401':
-          $ref: '#/components/responses/401AuthorizationInformationMissing'
+          $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '500':
@@ -324,9 +322,9 @@ paths:
         '200':
           $ref: '#/components/responses/200TopLevelOrEventTypeSubResource'
         '400':
-          $ref: '#/components/responses/400QueryException'
+          $ref: '#/components/responses/400QueryIssues'
         '401':
-          $ref: '#/components/responses/401AuthorizationInformationMissing'
+          $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
@@ -362,15 +360,9 @@ paths:
           headers:
             Allow:
               schema:
-                example:
-                  - GET
-                  - OPTIONS
-                  - POST
+                example: OPTIONS, POST, GET
                 type: string
-                enum:
-                  - GET
-                  - OPTIONS
-                  - POST
+                default: OPTIONS, POST, GET
             GS1-EPCIS-Version:
               $ref: '#/components/headers/GS1-EPCIS-Version'
             GS1-EPCIS-Min:
@@ -413,9 +405,9 @@ paths:
         '200':
           $ref: '#/components/responses/200EPCISDocument'
         '400':
-          $ref: '#/components/responses/400QueryException'
+          $ref: '#/components/responses/400QueryIssues'
         '401':
-          $ref: '#/components/responses/401AuthorizationInformationMissing'
+          $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
@@ -433,7 +425,7 @@ paths:
         An individual EPCIS event can be created by making a `POST` request to the EPCIS event type of
         the EPCIS event that is being captured. If the client does not wish to specify the EPCIS event type,
         the `/eventTypes/all/events` endpoint can be used. Alternatively, the client can also use the `/capture`
-        interface and and capture a single event.
+        interface and capture a single event.
       requestBody:
         required: true
         description: A EPCIS document with a single EPCIS event.
@@ -449,13 +441,15 @@ paths:
             EPCIS event in the Location header.
           headers:
             Location:
-              $ref: '#/components/headers/Location'
+              example: "https://example.com/eventTypes/ObjectEvent/events/eventId123"
+              schema:
+                $ref: '#/components/schemas/Location'
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/EPCISDocumentSingleEvent'
         '400':
-          description: An error occurred while creating the EPCIS event. All events are rejected.
+          description: An error occurred while creating the EPCIS event. The event was rejected.
           content:
             application/problem+json:
               schema:
@@ -473,7 +467,7 @@ paths:
                           - epcisException:ValidationException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
         '401':
-          $ref: '#/components/responses/401AuthorizationInformationMissing'
+          $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '413':
@@ -500,13 +494,10 @@ paths:
           headers:
             Allow:
               schema:
-                example:
-                  - GET
-                  - OPTIONS
+                example: OPTIONS, GET
                 type: string
-                enum:
-                  - GET
-                  - OPTIONS
+                default: OPTIONS, GET
+
             GS1-EPCIS-Version:
               $ref: '#/components/headers/GS1-EPCIS-Version'
             GS1-EPCIS-Min:
@@ -540,7 +531,7 @@ paths:
         '200':
           $ref: '#/components/responses/200EPCISDocumentSingleEvent'
         '401':
-          $ref: '#/components/responses/401AuthorizationInformationMissing'
+          $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
@@ -567,7 +558,6 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
-
         - $ref: '#/components/parameters/GS1-EPCIS-Version'
         - $ref: '#/components/parameters/GS1-EPCIS-Min'
         - $ref: '#/components/parameters/GS1-EPCIS-Max'
@@ -591,7 +581,9 @@ paths:
             GS1-CBV-Extensions:
               $ref: '#/components/headers/GS1-CBV-Extensions'
             Link:
-              $ref: '#/components/headers/Link'
+              example: '<https://example.com/epcs?perPage=30&nextPageToken=3A1550673874978%2Ci%3AU6D7DENAKwM2gQRRwGrataeq>; rel="next"'
+              schema:
+                $ref: '#/components/schemas/Link'
           description: |
             Returns a list of electronic product codes. If there are electronic product codes than specified by the
             `perPage` parameter, the client will be given the URL to retrieve more electronic product codes in the
@@ -610,7 +602,7 @@ paths:
                   type: string
                   format: uri
         '401':
-          $ref: '#/components/responses/401AuthorizationInformationMissing'
+          $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '500':
@@ -636,13 +628,9 @@ paths:
           headers:
             Allow:
               schema:
-                example:
-                  - GET
-                  - OPTIONS
+                example: OPTIONS, GET
                 type: string
-                enum:
-                  - GET
-                  - OPTIONS
+                default: OPTIONS, GET
             GS1-EPCIS-Version:
               $ref: '#/components/headers/GS1-EPCIS-Version'
             GS1-EPCIS-Min:
@@ -671,9 +659,9 @@ paths:
         '200':
           $ref: '#/components/responses/200TopLevelOrEventTypeSubResource'
         '400':
-          $ref: '#/components/responses/400QueryException'
+          $ref: '#/components/responses/400QueryIssues'
         '401':
-          $ref: '#/components/responses/401AuthorizationInformationMissing'
+          $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
@@ -733,9 +721,9 @@ paths:
         '200':
           $ref: '#/components/responses/200EPCISDocument'
         '400':
-          $ref: '#/components/responses/400QueryException'
+          $ref: '#/components/responses/400QueryIssues'
         '401':
-          $ref: '#/components/responses/401AuthorizationInformationMissing'
+          $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
@@ -782,7 +770,7 @@ paths:
         '200':
           $ref: '#/components/responses/200EPCISDocumentSingleEvent'
         '401':
-          $ref: '#/components/responses/401AuthorizationInformationMissing'
+          $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
@@ -832,7 +820,9 @@ paths:
             GS1-CBV-Extensions:
               $ref: '#/components/headers/GS1-CBV-Extensions'
             Link:
-              $ref: '#/components/headers/Link'
+              example: '<https://example.com/bizSteps?perPage=30&nextPageToken=3A1550673874978%2Ci%3AU6D7DENAKwM2gQRRwGrataeq>; rel="next"'
+              schema:
+                $ref: '#/components/schemas/Link'
           description: |
             Returns a list of business steps. If there are business steps than specified by the
             `perPage` parameter, the client will be given the URL to retrieve more business steps in the `Link` header.
@@ -870,13 +860,9 @@ paths:
           headers:
             Allow:
               schema:
-                example:
-                  - GET
-                  - OPTIONS
+                example: OPTIONS, GET
                 type: string
-                enum:
-                  - GET
-                  - OPTIONS
+                default: OPTIONS, GET
             GS1-EPCIS-Version:
               $ref: '#/components/headers/GS1-EPCIS-Version'
             GS1-EPCIS-Min:
@@ -904,9 +890,9 @@ paths:
         '200':
           $ref: '#/components/responses/200TopLevelOrEventTypeSubResource'
         '400':
-          $ref: '#/components/responses/400QueryException'
+          $ref: '#/components/responses/400QueryIssues'
         '401':
-          $ref: '#/components/responses/401AuthorizationInformationMissing'
+          $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
@@ -964,9 +950,9 @@ paths:
         '200':
           $ref: '#/components/responses/200EPCISDocument'
         '400':
-          $ref: '#/components/responses/400QueryException'
+          $ref: '#/components/responses/400QueryIssues'
         '401':
-          $ref: '#/components/responses/401AuthorizationInformationMissing'
+          $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
@@ -1013,7 +999,7 @@ paths:
         '200':
           $ref: '#/components/responses/200EPCISDocumentSingleEvent'
         '401':
-          $ref: '#/components/responses/401AuthorizationInformationMissing'
+          $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
@@ -1063,7 +1049,9 @@ paths:
             GS1-CBV-Extensions:
               $ref: '#/components/headers/GS1-CBV-Extensions'
             Link:
-              $ref: '#/components/headers/Link'
+              example: '<https://example.com/bizLocations?perPage=30&nextPageToken=3A1550673874978%2Ci%3AU6D7DENAKwM2gQRRwGrataeq>; rel="next"'
+              schema:
+                $ref: '#/components/schemas/Link'
           description: |
             Returns a list of business locations. If there are business locations than specified by the
             `perPage` parameter, the client will be given the URL to retrieve more business locations in the `Link` header.
@@ -1100,13 +1088,9 @@ paths:
           headers:
             Allow:
               schema:
-                example:
-                  - GET
-                  - OPTIONS
+                example: OPTIONS, GET
                 type: string
-                enum:
-                  - GET
-                  - OPTIONS
+                default: OPTIONS, GET
             GS1-EPCIS-Version:
               $ref: '#/components/headers/GS1-EPCIS-Version'
             GS1-EPCIS-Min:
@@ -1134,9 +1118,9 @@ paths:
         '200':
           $ref: '#/components/responses/200TopLevelOrEventTypeSubResource'
         '400':
-          $ref: '#/components/responses/400QueryException'
+          $ref: '#/components/responses/400QueryIssues'
         '401':
-          $ref: '#/components/responses/401AuthorizationInformationMissing'
+          $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
@@ -1196,9 +1180,9 @@ paths:
         '200':
           $ref: '#/components/responses/200EPCISDocument'
         '400':
-          $ref: '#/components/responses/400QueryException'
+          $ref: '#/components/responses/400QueryIssues'
         '401':
-          $ref: '#/components/responses/401AuthorizationInformationMissing'
+          $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
@@ -1246,7 +1230,7 @@ paths:
         '200':
           $ref: '#/components/responses/200EPCISDocumentSingleEvent'
         '401':
-          $ref: '#/components/responses/401AuthorizationInformationMissing'
+          $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
@@ -1296,7 +1280,9 @@ paths:
             GS1-CBV-Extensions:
               $ref: '#/components/headers/GS1-CBV-Extensions'
             Link:
-              $ref: '#/components/headers/Link'
+              example: '<https://example.com/readPoints?perPage=30&nextPageToken=3A1550673874978%2Ci%3AU6D7DENAKwM2gQRRwGrataeq>; rel="next"'
+              schema:
+                $ref: '#/components/schemas/Link'
           description: |
             Returns a list of read points. If there are read points than specified by the
             `perPage` parameter, the client will be given the URL to retrieve more read points in the `Link` header.
@@ -1333,13 +1319,9 @@ paths:
           headers:
             Allow:
               schema:
-                example:
-                  - GET
-                  - OPTIONS
+                example: OPTIONS, GET
                 type: string
-                enum:
-                  - GET
-                  - OPTIONS
+                default: OPTIONS, GET
             GS1-EPCIS-Version:
               $ref: '#/components/headers/GS1-EPCIS-Version'
             GS1-EPCIS-Min:
@@ -1367,9 +1349,9 @@ paths:
         '200':
           $ref: '#/components/responses/200TopLevelOrEventTypeSubResource'
         '400':
-          $ref: '#/components/responses/400QueryException'
+          $ref: '#/components/responses/400QueryIssues'
         '401':
-          $ref: '#/components/responses/401AuthorizationInformationMissing'
+          $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
@@ -1427,9 +1409,9 @@ paths:
         '200':
           $ref: '#/components/responses/200EPCISDocument'
         '400':
-          $ref: '#/components/responses/400QueryException'
+          $ref: '#/components/responses/400QueryIssues'
         '401':
-          $ref: '#/components/responses/401AuthorizationInformationMissing'
+          $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
@@ -1477,7 +1459,7 @@ paths:
         '200':
           $ref: '#/components/responses/200EPCISDocumentSingleEvent'
         '401':
-          $ref: '#/components/responses/401AuthorizationInformationMissing'
+          $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
@@ -1527,10 +1509,12 @@ paths:
             GS1-CBV-Extensions:
               $ref: '#/components/headers/GS1-CBV-Extensions'
             Link:
-              $ref: '#/components/headers/Link'
+              example: '<https://example.com/dispositions?perPage=30&nextPageToken=3A1550673874978%2Ci%3AU6D7DENAKwM2gQRRwGrataeq>; rel="next"'
+              schema:
+                $ref: '#/components/schemas/Link'
           description: |
             Returns a list of dispositions. If there are dispositions than specified by the
-            `perPage` parameter, the client will be given the URL to retrieve more dispositions in the Link header.
+            `perPage` parameter, the client will be given the URL to retrieve more dispositions in the `Link` header.
             If the client specifies extension mappings, the response will use them where they match. Otherwise,
             the full resource address is used.
           content:
@@ -1564,13 +1548,9 @@ paths:
           headers:
             Allow:
               schema:
-                example:
-                  - GET
-                  - OPTIONS
+                example: OPTIONS, GET
                 type: string
-                enum:
-                  - GET
-                  - OPTIONS
+                default: OPTIONS, GET
             GS1-EPCIS-Version:
               $ref: '#/components/headers/GS1-EPCIS-Version'
             GS1-EPCIS-Min:
@@ -1598,9 +1578,9 @@ paths:
         '200':
           $ref: '#/components/responses/200TopLevelOrEventTypeSubResource'
         '400':
-          $ref: '#/components/responses/400QueryException'
+          $ref: '#/components/responses/400QueryIssues'
         '401':
-          $ref: '#/components/responses/401AuthorizationInformationMissing'
+          $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
@@ -1659,9 +1639,9 @@ paths:
         '200':
           $ref: '#/components/responses/200EPCISDocument'
         '400':
-          $ref: '#/components/responses/400QueryException'
+          $ref: '#/components/responses/400QueryIssues'
         '401':
-          $ref: '#/components/responses/401AuthorizationInformationMissing'
+          $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
@@ -1709,7 +1689,7 @@ paths:
         '200':
           $ref: '#/components/responses/200EPCISDocumentSingleEvent'
         '401':
-          $ref: '#/components/responses/401AuthorizationInformationMissing'
+          $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
@@ -1734,14 +1714,10 @@ paths:
             The list of headers is not exhaustive. It only describes the functionality specific to EPCIS 2.0.
           headers:
             Allow:
-              example:
-                - GET
-                - OPTIONS
               schema:
+                example: OPTIONS, GET
                 type: string
-                enum:
-                  - GET
-                  - OPTIONS
+                default: OPTIONS, GET
     get:
       tags:
         - queries
@@ -1777,7 +1753,7 @@ paths:
                     - $ref: '#/components/schemas/QueryDefinition'
                 uniqueItems: true
         '401':
-          $ref: '#/components/responses/401AuthorizationInformationMissing'
+          $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
@@ -1807,17 +1783,7 @@ paths:
               $ref: '#/components/headers/GS1-EPCIS-Extensions'
             GS1-CBV-Extensions:
               $ref: '#/components/headers/GS1-CBV-Extensions'
-            Link:
-              $ref: '#/components/headers/Link'
-            Location:
-              description: |
-                The URL of the created query. The client can use the `Location` URL to subscribe to that query.
-                If the client wants to execute the query synchronously, the client should use URL in the Link header
-                to fetch more resources.
-              schema:
-                example: "https://www.example.com/queries/myQuery"
-                type: string
-                format: uri
+
           description: |
             Returns endpoints available to the query.
           content:
@@ -1836,11 +1802,13 @@ paths:
                     - subscriptions
                     - events
         '401':
-          $ref: '#/components/responses/401AuthorizationInformationMissing'
+          $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
+        '413':
+          $ref: '#/components/responses/413QueryScopeOrSize'
         '500':
           $ref: '#/components/responses/500ImplementationException'
     post:
@@ -1882,7 +1850,9 @@ paths:
             GS1-CBV-Extensions:
               $ref: '#/components/headers/GS1-CBV-Extensions'
             Link:
-              $ref: '#/components/headers/Link'
+              example: '<https://example.com/queries/myQuery/events?perPage=30&nextPageToken=3A1550673874978%2Ci%3AU6D7DENAKwM2gQRRwGrataeq>; rel="next"'
+              schema:
+                $ref: '#/components/schemas/Link'
             Location:
               description: |
                 The URL of the created query. The client can use the `Location` URL to obtain more resources
@@ -1900,7 +1870,7 @@ paths:
                   - $ref: '#/components/schemas/EPCISQueryDocument'
                   - $ref: '#/components/schemas/EPCISMasterDataDocument'
         '401':
-          $ref: '#/components/responses/401AuthorizationInformationMissing'
+          $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
@@ -1923,16 +1893,10 @@ paths:
             The list of headers is not exhaustive. It only describes the functionality specific to EPCIS 2.0.
           headers:
             Allow:
-              example:
-                - GET
-                - OPTIONS
-                - DELETE
               schema:
+                example: OPTIONS, GET, DELETE
                 type: string
-                enum:
-                  - GET
-                  - OPTIONS
-                  - DELETE
+                default: OPTIONS, GET, DELETE
             GS1-EPCIS-Version:
               $ref: '#/components/headers/GS1-EPCIS-Version'
             GS1-EPCIS-Min:
@@ -1955,7 +1919,7 @@ paths:
         '204':
           $ref: '#/components/responses/204QueryDeleted'
         '401':
-          $ref: '#/components/responses/401AuthorizationInformationMissing'
+          $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
@@ -1979,16 +1943,10 @@ paths:
             The list of headers is not exhaustive. It only describes the functionality specific to EPCIS 2.0.
           headers:
             Allow:
-              example:
-                - POST
-                - GET
-                - OPTIONS
               schema:
+                example: OPTIONS, POST, GET
                 type: string
-                enum:
-                  - POST
-                  - GET
-                  - OPTIONS
+                default: OPTIONS, POST, GET
             GS1-EPCIS-Version:
               $ref: '#/components/headers/GS1-EPCIS-Version'
             GS1-EPCIS-Min:
@@ -2025,7 +1983,9 @@ paths:
             GS1-CBV-Extensions:
               $ref: '#/components/headers/GS1-CBV-Extensions'
             Link:
-              $ref: '#/components/headers/Link'
+              example: '<https://example.com/queries/myQuery/subscriptions?perPage=30&nextPageToken=3A1550673874978%2Ci%3AU6D7DENAKwM2gQRRwGrataeq>; rel="next"'
+              schema:
+                $ref: '#/components/schemas/Link'
           description: Returns active Webhook subscriptions.
           content:
             application/json:
@@ -2066,9 +2026,9 @@ paths:
                         - $ref: '#/components/schemas/QueryStreamSubscription'
 
         '400':
-          $ref: '#/components/responses/400QueryInvalid'
+          $ref: '#/components/responses/400SubscriptionIssues'
         '401':
-          $ref: '#/components/responses/401AuthorizationInformationMissing'
+          $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
@@ -2088,9 +2048,9 @@ paths:
         - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
         - $ref: '#/components/parameters/GS1-CBV-Extensions'
       description: |
-        Creating query subscription using Webhooks requires the client to provide a single endpoint and to which the
-        server will send events and a one-time subscription secret that the client needs to authenticate itself when
-        sending events. The one-time subscription secret must be generated by the client.
+        Creating query subscription using Webhooks requires the client to provide a single endpoint to which the
+        server will send events and a subscription secret that the client needs to authenticate itself when
+        sending events. The subscription secret must be generated by the client.
 
         When the client subscribes to a query, it must either specify an EPCIS trigger event or an EPCIS schedule
         in the URL to receive events. If these are missing the query subscription is invalid because the server won't
@@ -2098,10 +2058,10 @@ paths:
 
         ## Scheduled query: Receive query results at 1.05am
 
-        A scheduled query subscription is a time-based query execution. EPCIS 2.0 scheduled query are scheduled
+        A scheduled query subscription is a time-based query execution. EPCIS 2.0 scheduled queries are scheduled
         in the same manner as cron jobs.
 
-        For example, this query subscription will is scheduled to trigger every morning at 1.05am. By setting
+        For example, this query subscription is scheduled to trigger every morning at 1.05am. By setting
         `reportIfEmpty` to `true`, the client's callback URL will be called even if there are no new events that match
         the query.
 
@@ -2167,7 +2127,7 @@ paths:
                   subscriptionId:
                     $ref: '#/components/schemas/SubscriptionID'
         '401':
-          $ref: '#/components/responses/401AuthorizationInformationMissing'
+          $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
@@ -2198,7 +2158,7 @@ paths:
                 '200':
                   description: Webhook successfully registered.
                 '401':
-                  $ref: '#/components/responses/401AuthorizationInformationMissing'
+                  $ref: '#/components/responses/401UnauthorizedRequest'
                 '403':
                   $ref: '#/components/responses/403ClientUnauthorized'
                 '413':
@@ -2244,16 +2204,10 @@ paths:
             The list of headers is not exhaustive. It only describes the functionality specific to EPCIS 2.0.
           headers:
             Allow:
-              example:
-                - GET
-                - OPTIONS
-                - DELETE
               schema:
+                example: OPTIONS, GET, DELETE
                 type: string
-                enum:
-                  - GET
-                  - OPTIONS
-                  - DELETE
+                default: OPTIONS, GET, DELETE
             GS1-EPCIS-Version:
               $ref: '#/components/headers/GS1-EPCIS-Version'
             GS1-EPCIS-Min:
@@ -2297,7 +2251,7 @@ paths:
                       - $ref: '#/components/schemas/QueryScheduleSubscription'
                       - $ref: '#/components/schemas/QueryStreamSubscription'
         '401':
-          $ref: '#/components/responses/401AuthorizationInformationMissing'
+          $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
@@ -2314,7 +2268,7 @@ paths:
         '204':
           description: Client unsubscribed from query.
         '401':
-          $ref: '#/components/responses/401AuthorizationInformationMissing'
+          $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
@@ -2341,7 +2295,9 @@ paths:
         - queries
         - events
         - subscriptions
-      summary: Returns events with the option to use pagination if needed. This endpoint supports query subscriptions.
+      summary: |
+        Returns events with the option to use pagination if needed. This endpoint supports query subscriptions
+        using WebSockets.
       parameters:
         - $ref: '#/components/parameters/Upgrade'
         - $ref: '#/components/parameters/Connection'
@@ -2358,11 +2314,10 @@ paths:
         - $ref: '#/components/parameters/GS1-Query-Stream'
 
       description: |
-        The `GET` endpoint is to retrieve large results that don't fit into the response of `POST` request.
-        It can also be used to subscribe to anonymous queries.
+        The `GET` endpoint  is to retrieve results of a named query.
         Furthermore, this endpoint can also be used to subscribe to queries using Websocket. To do this, the client
         must specify the query schedule or trigger EPCIS event as URL query string parameter. Please note that
-        `schedule-` parameters and the `stream` parameter are mutually exclusive.
+        scheduling parameters and the `stream` parameter are mutually exclusive.
 
         ## Scheduled query: Receive query results at 1.05am
 
@@ -2385,7 +2340,7 @@ paths:
 
         ## Streaming query subscription: Whenever a captured EPCIS event matches the query criteria
 
-        Handshake from client for streamingy:
+        Handshake from client for streaming:
 
         ```
         GET https://example.com/queries/MyQuery/events?stream=true
@@ -2407,13 +2362,15 @@ paths:
         '200':
           $ref: '#/components/responses/200EPCISQueryDocument'
         '400':
-          $ref: '#/components/responses/400QueryInvalid'
+          $ref: '#/components/responses/400SubscriptionIssues'
         '401':
-          $ref: '#/components/responses/401AuthorizationInformationMissing'
+          $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
+        '413':
+          $ref: '#/components/responses/413QueryScopeOrSize'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -2437,14 +2394,10 @@ paths:
             The list of headers is not exhaustive. It only describes the functionality specific to EPCIS 2.0.
           headers:
             Allow:
-              example:
-                - GET
-                - OPTIONS
               schema:
+                example: OPTIONS, GET
                 type: string
-                enum:
-                  - GET
-                  - OPTIONS
+                default: OPTIONS, GET
             GS1-EPCIS-Version:
               $ref: '#/components/headers/GS1-EPCIS-Version'
             GS1-EPCIS-Min:
@@ -2468,18 +2421,20 @@ paths:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
       description: |
-        The `GET` endpoint is to retrieve large results that don't fit into the response of a `POST` request.
+        The `GET` endpoint is to retrieve vocabulary elements.
       responses:
         '200':
           $ref: '#/components/responses/200EPCISMasterDataDocument'
         '400':
-          $ref: '#/components/responses/400QueryInvalid'
+          $ref: '#/components/responses/400SubscriptionIssues'
         '401':
-          $ref: '#/components/responses/401AuthorizationInformationMissing'
+          $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
+        '413':
+          $ref: '#/components/responses/413QueryScopeOrSize'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -2509,8 +2464,8 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-Extensions'
         - $ref: '#/components/parameters/PerPage'
       description: |
-        `SimpleMasterDataQuery` is an endpoint to create anonymous queries. A query is created with a random name
-        once and returned to the client. Unlike named queries, these queries are not stored.
+        `SimpleMasterDataQuery` is an endpoint to create anonymous queries. Unlike named
+        queries, these queries are not stored.
       requestBody:
         description: Creates and executes an an anonymous EPCIS master data query.
         required: true
@@ -2561,13 +2516,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/EPCISMasterDataDocument'
         '401':
-          $ref: '#/components/responses/401AuthorizationInformationMissing'
+          $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
+        '413':
+          $ref: '#/components/responses/413QueryScopeOrSize'
         '500':
           $ref: '#/components/responses/500ImplementationException'
+
   /queries/SimpleMasterDataQuery/masterData:
     get:
       tags:
@@ -2577,18 +2535,20 @@ paths:
       parameters:
         - $ref: '#/components/parameters/NextPageToken'
       description: |
-        The GET endpoint is to retrieve large results that don't fit into the response of a `POST` request.
+        The `GET` endpoint is to retrieve EPCIS vocabulary elements.
       responses:
         '200':
           $ref: '#/components/responses/200EPCISMasterDataDocument'
         '400':
-          $ref: '#/components/responses/400QueryInvalid'
+          $ref: '#/components/responses/400QueryIssues'
         '401':
-          $ref: '#/components/responses/401AuthorizationInformationMissing'
+          $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
+        '413':
+          $ref: '#/components/responses/413QueryScopeOrSize'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -2618,7 +2578,7 @@ paths:
         - $ref: '#/components/parameters/PerPage'
       description: |
         `SimpleEventQuery` is an endpoint to execute anonymous queries for EPCIS events.
-        A query is created once and returned to the client. Unlike named queries, these queries are not stored.
+        Unlike named queries, these queries are not stored.
       requestBody:
         description: Creates and executes an an anonymous EPCIS events query.
         required: true
@@ -2671,11 +2631,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/EPCISDocument'
         '401':
-          $ref: '#/components/responses/401AuthorizationInformationMissing'
+          $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
+        '413':
+          $ref: '#/components/responses/413QueryScopeOrSize'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -2699,18 +2661,43 @@ paths:
         - $ref: '#/components/parameters/NextPageToken'
         - $ref: '#/components/parameters/PerPage'
       description: |
-        The `GET` endpoint is to retrieve large results that don't fit into the response of `POST` request.
+        The `GET` endpoint is to retrieve EPCIS events synchronously.
       responses:
         '200':
-          $ref: '#/components/responses/200EPCISQueryDocument'
+          headers:
+            GS1-EPCIS-Version:
+              $ref: '#/components/headers/GS1-EPCIS-Version'
+            GS1-EPCIS-Min:
+              $ref: '#/components/headers/GS1-EPCIS-Min'
+            GS1-EPCIS-Max:
+              $ref: '#/components/headers/GS1-EPCIS-Max'
+            GS1-CBV-Version:
+              $ref: '#/components/headers/GS1-CBV-Version'
+            GS1-EPCIS-Extensions:
+              $ref: '#/components/headers/GS1-EPCIS-Extensions'
+            GS1-CBV-Extensions:
+              $ref: '#/components/headers/GS1-CBV-Extensions'
+            Link:
+              example: '<https://example.com/queries/SimpleEventQuery/events?perPage=30&nextPageToken=3A1550673874978%2Ci%3AU6D7DENAKwM2gQRRwGrataeq>; rel="next"'
+              schema:
+                $ref: '#/components/schemas/Link'
+            GS1-NextPageToken-Expires:
+              $ref: '#/components/headers/GS1-NextPageToken-Expires'
+          description: Contains EPCIS query results.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EPCISQueryDocument'
         '400':
-          $ref: '#/components/responses/400QueryInvalid'
+          $ref: '#/components/responses/400QueryIssues'
         '401':
-          $ref: '#/components/responses/401AuthorizationInformationMissing'
+          $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
+        '413':
+          $ref: '#/components/responses/413QueryScopeOrSize'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -2804,7 +2791,13 @@ components:
         GS1-CBV-Extensions:
           $ref: '#/components/headers/GS1-CBV-Extensions'
         Link:
-          $ref: '#/components/headers/Link'
+          description: |
+            A pagination header link. This header works together with the `perPage` and `nextPageToken` query string
+            parameters, e.g. `?perPage=30&nextPageToken=3A1550673874978%2Ci%3AU6D7DENAKwM2gQRRwGrataeq>; rel="next"`.
+            As long as there are more resources to retrieve, the `Link` header contains the URL of the next page and
+            the attribute `'rel="next"'`. The last page is indicated by the absence of the `'rel="next"'`.
+          schema:
+            $ref: '#/components/schemas/Link'
         GS1-NextPageToken-Expires:
           $ref: '#/components/headers/GS1-NextPageToken-Expires'
       description: Returns the EPCIS vocabulary elements.
@@ -2827,7 +2820,13 @@ components:
         GS1-CBV-Extensions:
           $ref: '#/components/headers/GS1-CBV-Extensions'
         Link:
-          $ref: '#/components/headers/Link'
+          description: |
+            A pagination header link. This header works together with the `perPage` and `nextPageToken` query string
+            parameters, e.g. `?perPage=30&nextPageToken=3A1550673874978%2Ci%3AU6D7DENAKwM2gQRRwGrataeq>; rel="next"`.
+            As long as there are more resources to retrieve, the `Link` header contains the URL of the next page and
+            the attribute `'rel="next"'`. The last page is indicated by the absence of the `'rel="next"'`.
+          schema:
+            $ref: '#/components/schemas/Link'
         GS1-NextPageToken-Expires:
           $ref: '#/components/headers/GS1-NextPageToken-Expires'
       description: Contains EPCIS query results.
@@ -2850,7 +2849,14 @@ components:
         GS1-CBV-Extensions:
           $ref: '#/components/headers/GS1-CBV-Extensions'
         Link:
-          $ref: '#/components/headers/Link'
+          description: |
+            A pagination header link. This header works together with the `perPage` and `nextPageToken` query string
+            parameters, e.g. `?perPage=30&nextPageToken=3A1550673874978%2Ci%3AU6D7DENAKwM2gQRRwGrataeq>; rel="next"`.
+            As long as there are more resources to retrieve, the `Link` header contains the URL of the next page and
+            the attribute `'rel="next"'`. The last page is indicated by the absence of the `'rel="next"'`.
+          schema:
+            $ref: '#/components/schemas/Link'
+
         GS1-NextPageToken-Expires:
           $ref: '#/components/headers/GS1-NextPageToken-Expires'
       description: Returns EPCIS events.
@@ -2870,14 +2876,13 @@ components:
       description: |
         The `OPTIONS` method is used as a discovery service for top-level and EPCIS events resources endpoints.
         It describes which EPCIS and CBV versions are supported and used for the top-level resource as well as EPCIS and
-        CBV extensions. The list of headers is not exhaustive. It only describes the functionality specific toEPCIS 2.0.
+        CBV extensions. The list of headers is not exhaustive. It only describes the functionality specific to EPCIS 2.0.
       headers:
         Allow:
           schema:
+            example: OPTIONS, GET
             type: string
-            enum:
-              - GET
-              - OPTIONS
+            default: OPTIONS, GET
         GS1-EPCIS-Version:
           $ref: '#/components/headers/GS1-EPCIS-Version'
         GS1-EPCIS-Min:
@@ -2898,14 +2903,10 @@ components:
         The list of headers is not exhaustive. It only describes the functionality specific to EPCIS 2.0.
       headers:
         Allow:
-          example:
-            - POST
-            - OPTIONS
           schema:
+            example: OPTIONS, POST
             type: string
-            enum:
-              - POST
-              - OPTIONS
+            default: OPTIONS, POST
         GS1-EPCIS-Version:
           $ref: '#/components/headers/GS1-EPCIS-Version'
         GS1-EPCIS-Min:
@@ -2928,14 +2929,10 @@ components:
         The list of headers is not exhaustive. It only describes the functionality specific to EPCIS 2.0.
       headers:
         Allow:
-          example:
-            - GET
-            - OPTIONS
           schema:
+            example: OPTIONS, GET
             type: string
-            enum:
-              - GET
-              - OPTIONS
+            default: OPTIONS, GET
         GS1-EPCIS-Version:
           $ref: '#/components/headers/GS1-EPCIS-Version'
         GS1-EPCIS-Min:
@@ -2952,11 +2949,15 @@ components:
           $ref: '#/components/headers/GS1-CBV-Extensions'
     204QueryDeleted:
       description: Query deleted and clients disconnected.
-    400QueryInvalid:
-      description: The query is invalid.
+    400SubscriptionIssues:
+      description: An issue with a subscription occurred.
       content:
         application/json:
           schema:
+            example:
+              type: "epcisException:SubscriptionControlsException"
+              title: "Subscription error"
+              status: 400
             allOf:
               - properties:
                   status:
@@ -2971,11 +2972,15 @@ components:
                       - epcisException:SubscriptionControlsException
                       - epcisException:ValidationException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-    400QueryException:
+    400QueryIssues:
       description: Query exceptions defined in EPCIS.
       content:
         application/problem+json:
           schema:
+            example:
+              type: "epcisException:QueryValidationException"
+              title: "EPCIS query exception"
+              status: 400
             allOf:
               - properties:
                   status:
@@ -2990,12 +2995,17 @@ components:
                       - epcisException:QueryValidationException
                       - epcisException:QueryParameterException
                       - epcisException:QueryTooComplexException
+                      - epcisException:ValidationException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-    401AuthorizationInformationMissing:
+    401UnauthorizedRequest:
       description: Authorization information is missing or invalid.
       content:
         application/problem+json:
           schema:
+            example:
+              type: "epcisException:SecurityException"
+              title: "Unauthorised request"
+              status: 401
             allOf:
               - properties:
                   status:
@@ -3014,6 +3024,10 @@ components:
       content:
         application/problem+json:
           schema:
+            example:
+              type: "epcisException:SecurityException"
+              title: "Access to resource forbidden"
+              status: 403
             allOf:
               - properties:
                   status:
@@ -3032,6 +3046,10 @@ components:
       content:
         application/problem+json:
           schema:
+            example:
+              type: "epcisException:NoSuchNameException"
+              title: "Resource not found"
+              status: 404
             allOf:
               - properties:
                   status:
@@ -3047,16 +3065,20 @@ components:
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
     413CapturePayloadTooLarge:
       headers:
-        GS1-Capture-Limit:
-          $ref: '#/components/headers/GS1-Capture-Limit'
-        GS1-Capture-FileSizeLimit:
-          $ref: '#/components/headers/GS1-Capture-FileSizeLimit'
+        GS1-EPCIS-Capture-Limit:
+          $ref: '#/components/headers/GS1-EPCIS-Capture-Limit'
+        GS1-EPCIS-Capture-File-Size-Limit:
+          $ref: '#/components/headers/GS1-EPCIS-Capture-File-Size-Limit'
       description: |
-        The `POST` request is too large. It exceeds the limits set in `GS1-Capture-Limit` and/or
-        `GS1-Capture-FileSizeLimit`.
+        The `POST` request is too large. It exceeds the limits set in `GS1-EPCIS-Capture-Limit` and/or
+        `GS1-EPCIS-Capture-File-Size-Limit`.
       content:
         application/problem+json:
           schema:
+            example:
+              type: "epcisException:NoSuchNameException"
+              title: "Capture Payload too large"
+              status: 413
             allOf:
               - properties:
                   status:
@@ -3068,6 +3090,29 @@ components:
                     type: string
                     format: uri
                     enum:
+                      - epcisException:CaptureLimitExceeded
+              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+    413QueryScopeOrSize:
+      description: Query result is too large.
+      content:
+        application/problem+json:
+          schema:
+            example:
+              type: "epcisException:QueryTooComplexException"
+              title: "Capture Payload too large"
+              status: 413
+            allOf:
+              - properties:
+                  status:
+                    type: integer
+                    enum:
+                      - 413
+                    default: 413
+                  type:
+                    type: string
+                    format: uri
+                    enum:
+                      - epcisException:QueryTooLargeException
                       - epcisException:QueryTooComplexException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
     414URLTooLong:
@@ -3075,6 +3120,10 @@ components:
       content:
         application/problem+json:
           schema:
+            example:
+              type: "epcisException:URITooLong"
+              title: "URI Too Long"
+              status: 414
             allOf:
               - properties:
                   status:
@@ -3086,13 +3135,17 @@ components:
                     type: string
                     format: uri
                     enum:
-                      - epcisException:QueryTooComplexException
+                      - epcisException:URITooLong
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
     500ImplementationException:
       description: This is a server-side problem caused when the query was resolved and executed.
       content:
         application/problem+json:
           schema:
+            example:
+              type: "epcisException:ImplementationException"
+              title: "A server-side occurred"
+              status: 500
             allOf:
               - properties:
                   status:
@@ -3111,6 +3164,10 @@ components:
       content:
         application/problem+json:
           schema:
+            example:
+              type: "epcisException:ImplementationException"
+              title: "Functionality not supported by server"
+              status: 501
             allOf:
               - properties:
                   status:
@@ -3149,11 +3206,7 @@ components:
         instance:
           type: string
           format: uri
-      example:
-        type: "epcisException:SecurityException"
-        title: "Unauthorized to execute query TestQuery"
-        status: 401
-        instance: "/queries/TestQuery"
+
     QueryDefinition:
       description: |
         Creating a new query with query type and query body. The query body can either be for EPCIS events or
@@ -3620,7 +3673,7 @@ components:
         large, the server can decide to return fewer events to avoid creating an error because the response body is too
         large.
 
-        As long as there are more resources to retrieve, the Link header contains the URL of the next page and
+        As long as there are more resources to retrieve, the `Link` header contains the URL of the next page and
         the attribute `'rel="next"'`. The last page is indicated by the absence of the `'rel="next"'`. Depending on the
         implementation, there can be a global upper limit for the `perPage` value that the client cannot overwrite,
         which should be stated in the documentation.
@@ -3681,7 +3734,7 @@ components:
         secret:
           example: '0435ojtojt02'
           type: string
-          description: One-time secret generated by the client for the server.
+          description: Secret generated by the client for the server.
         initialRecordTime:
           $ref: '#/components/schemas/GS1-Query-InitialRecordTime'
 
@@ -3710,10 +3763,10 @@ components:
 
     QueryScheduleSubscription:
       description: |
-        A scheduled query subscription is a time-based query execution scheduler. EPCIS 2.0 scheduled query are scheduled
+        A scheduled query subscription is a time-based query execution scheduler. EPCIS 2.0 scheduled queries are scheduled
         in the same manner as cron jobs.
 
-        For example, this query subscription will is scheduled to trigger every morning at 1.05am. By setting
+        For example, this query subscription is scheduled to trigger every morning at 1.05am. By setting
         `reportIfEmpty` to `true`, the client's callback URL will be called even if there are no new events that match
         the query.
 
@@ -3828,37 +3881,44 @@ components:
       pattern: ^\d+(\.\d+)?$
       example: "2.0"
     GS1-EPCIS-Max:
+      example: "1.0"
       description: The highest EPCIS version supported.
       type: string
       pattern: ^\d+(\.\d+)?$
     GS1-CBV-Version:
+      example: '2.0'
       description: The core business vocabulary version.
       type: string
+      pattern: ^\d+(\.\d+)?$
     GS1-EPCIS-Extensions:
       description: Specific EPCIS extensions supported (e.g. for FIT).
       example: {"example-epc-ext": "http://example.com/epcis/"}
       type: object
     GS1-Vendor-Version:
+      example: example-version-1.0
       description: A versioning scheme that can be freely chosen by the vendor.
-      type: array
-      items:
-        type: string
+      anyOf:
+        - type: string
+        - type: object
     GS1-CBV-Extensions:
       description: An optional header to specify the vocabulary for the top-level endpoints.
       example: {"ex": "http://example.com/vendor1", "vendor": "<https://example.org/defs#"}
       type: object
-    GS1-Capture-Limit:
+    GS1-EPCIS-Capture-Limit:
+      example: 500
       description: The maximum number of EPCIS events that can be captured per call.
       type: string
       pattern: ^(\d+|\*)$
-    GS1-Capture-FileSize-Limit:
+    GS1-EPCIS-Capture-FileSize-Limit:
+      example: 1024
       description: The maximum event document length in octets (8-bit bytes).
       type: string
       pattern: ^(\d+|\*)$
     GS1-NextPageToken-Expires:
+      example: '2017-07-21T17:32:28Z'
       description: The expiry time for nextPageToken. This header is optional.
       type: string
-      format: 'date-time'
+      format: date-time
 
   parameters:
     # Top-level resource instances
@@ -4053,17 +4113,17 @@ components:
       name: GS1-CBV-Extensions
       schema:
         $ref: '#/components/schemas/GS1-CBV-Extensions'
-    GS1-Capture-Limit:
+    GS1-EPCIS-Capture-Limit:
       in: header
-      name: GS1-Capture-Limit
+      name: GS1-EPCIS-Capture-Limit
       schema:
-        $ref: '#/components/schemas/GS1-Capture-Limit'
-    GS1-Capture-FileSizeLimit:
+        $ref: '#/components/schemas/GS1-EPCIS-Capture-Limit'
+    GS1-EPCIS-Capture-File-Size-Limit:
       in: header
-      name: GS1-Capture-FileSizeLimit
+      name: GS1-EPCIS-Capture-File-Size-Limit
       schema:
-        $ref: '#/components/schemas/GS1-Capture-FileSize-Limit'
-    GS1-NextPageToken-Expires:
+        $ref: '#/components/schemas/GS1-EPCIS-Capture-FileSize-Limit'
+    GS1-Next-Page-Token-Expires:
       in: header
       name: GS1-NextPageToken-Expires
       required: false
@@ -4093,21 +4153,15 @@ components:
     GS1-CBV-Extensions:
       schema:
         $ref: '#/components/schemas/GS1-CBV-Extensions'
-    GS1-Capture-Limit:
+    GS1-EPCIS-Capture-Limit:
       schema:
-        $ref: '#/components/schemas/GS1-Capture-Limit'
-    GS1-Capture-FileSizeLimit:
+        $ref: '#/components/schemas/GS1-EPCIS-Capture-Limit'
+    GS1-EPCIS-Capture-File-Size-Limit:
       schema:
-        $ref: '#/components/schemas/GS1-Capture-FileSize-Limit'
+        $ref: '#/components/schemas/GS1-EPCIS-Capture-FileSize-Limit'
     GS1-NextPageToken-Expires:
       schema:
         $ref: '#/components/schemas/GS1-NextPageToken-Expires'
-    Location:
-      schema:
-        $ref: '#/components/schemas/Location'
-    Link:
-      schema:
-        $ref: '#/components/schemas/Link'
 
   requestBodies:
     CreateQuery:
