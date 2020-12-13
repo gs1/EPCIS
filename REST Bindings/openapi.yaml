@@ -3017,7 +3017,6 @@ components:
                     enum:
                       - epcisException:QueryValidationException
                       - epcisException:QueryParameterException
-                      - epcisException:QueryTooComplexException
                       - epcisException:ValidationException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
     401UnauthorizedRequest:
@@ -3113,7 +3112,7 @@ components:
                     type: string
                     format: uri
                     enum:
-                      - epcisException:CaptureLimitExceeded
+                      - epcisException:CaptureLimitExceededException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
     413QueryScopeOrSize:
       description: Query result is too large.
@@ -3144,7 +3143,7 @@ components:
         application/problem+json:
           schema:
             example:
-              type: "epcisException:URITooLong"
+              type: "epcisException:URITooLongException"
               title: "URI Too Long"
               status: 414
             allOf:
@@ -3158,7 +3157,7 @@ components:
                     type: string
                     format: uri
                     enum:
-                      - epcisException:URITooLong
+                      - epcisException:URITooLongException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
     500ImplementationException:
       description: This is a server-side problem caused when the query was resolved and executed.
