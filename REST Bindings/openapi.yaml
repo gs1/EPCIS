@@ -828,6 +828,12 @@ paths:
                 items:
                   type: string
                   format: uri
+        '401':
+          $ref: '#/components/responses/401UnauthorizedRequest'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
 
   /bizSteps/{bizStep}:
     parameters:
@@ -1048,6 +1054,12 @@ paths:
                 items:
                   type: string
                   format: uri
+        '401':
+          $ref: '#/components/responses/401UnauthorizedRequest'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
 
   /bizLocations/{bizLocation}:
     parameters:
@@ -1271,6 +1283,12 @@ paths:
                 items:
                   type: string
                   format: uri
+        '401':
+          $ref: '#/components/responses/401UnauthorizedRequest'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
 
   /readPoints/{readPoint}:
     parameters:
@@ -1492,6 +1510,12 @@ paths:
                 items:
                   type: string
                   format: uri
+        '401':
+          $ref: '#/components/responses/401UnauthorizedRequest'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
 
   /dispositions/{disposition}:
     parameters:
@@ -1714,8 +1738,6 @@ paths:
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
-        '404':
-          $ref: '#/components/responses/404ResourceNotFound'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -4089,12 +4111,6 @@ components:
       required: false
       schema:
         $ref: '#/components/schemas/GS1-Query-InitialRecordTime'
-    GS1-Query-Min-Record-Time:
-      in: header
-      name: GS1-Query-Min-Record-Time
-      required: false
-      schema:
-        $ref: '#/components/schemas/GS1-Query-Min-Record-Time'
     # request headers from schema
     GS1-EPCIS-Version:
       in: header
@@ -4121,32 +4137,11 @@ components:
       name: GS1-EPCIS-Extensions
       schema:
         $ref: '#/components/schemas/GS1-EPCIS-Extensions'
-    GS1-Vendor-Version:
-      in: header
-      name: GS1-Vendor-Version
-      schema:
-        $ref: '#/components/schemas/GS1-Vendor-Version'
     GS1-CBV-Extensions:
       in: header
       name: GS1-CBV-Extensions
       schema:
         $ref: '#/components/schemas/GS1-CBV-Extensions'
-    GS1-EPCIS-Capture-Limit:
-      in: header
-      name: GS1-EPCIS-Capture-Limit
-      schema:
-        $ref: '#/components/schemas/GS1-EPCIS-Capture-Limit'
-    GS1-EPCIS-Capture-File-Size-Limit:
-      in: header
-      name: GS1-EPCIS-Capture-File-Size-Limit
-      schema:
-        $ref: '#/components/schemas/GS1-EPCIS-Capture-File-Size-Limit'
-    GS1-Next-Page-Token-Expires:
-      in: header
-      name: GS1-Next-Page-Token-Expires
-      required: false
-      schema:
-        $ref: '#/components/schemas/GS1-Next-Page-Token-Expires'
 
   headers:
     # response headers from schema
