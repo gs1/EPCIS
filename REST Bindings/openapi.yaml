@@ -3708,7 +3708,7 @@ components:
       default: 30
     NextPageToken:
       description: |
-        Parameter that point to the next list of results when requesting a list of events that is larger than the value
+        Parameter that points to the next list of results when requesting a list of events that is larger than the value
         specified with the `perPage` parameter. Some technologies refer to this as scrolling.
         A `nextPageToken` may be invalidated through timeout. It is up to the specific implementation to provide
         the mechanisms for invalidating tokens.
