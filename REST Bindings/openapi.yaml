@@ -6,13 +6,13 @@ info:
     name: Apache2
 
 tags:
-  - name: discovery
+  - name: 'Discovery'
     description: |
       Endpoints to obtain information about the endpoint, such as EPCIS and CBV versions or custom vocabularies..
-  - name: capture
+  - name: 'Capture'
     description: |
       Endpoints to capture EPCIS events in bulk or individually.
-  - name: topLevelResources
+  - name: 'Top-level Resources'
     description: |
       Endpoints to browse EPCIS events by six common top-level resources:
 
@@ -22,18 +22,18 @@ tags:
       - read points
       - dispositions
       
-  - name: events
+  - name: 'Events'
     description: |
       Endpoints that expose EPCIS events as Web resources.
-  - name: masterData
+  - name: 'Master Data'
     description: |
       Endpoints to create master data queries and subscribe to those queries.
-  - name: queries
+  - name: 'Queries'
     description: |
       Endpoints to create large named or anonymous queries using the EPCIS query language. Named queries have a custom
       name and are stored until deleted by the user. Anonymous queries are not persisted and only available to the caller.
       EPCIS events queries also support query subscription.
-  - name: subscriptions
+  - name: 'Subscriptions'
     description: |
       EPCIS 2.0 supports query subscriptions with using Webhooks or Websockets.
 
@@ -41,7 +41,7 @@ paths:
   /:
     options:
       tags:
-        - discovery
+        - 'Discovery'
       summary: Query server settings, EPCIS version(s) and related vocabularies/standards.
       description: |
         `OPTIONS` on the root path gives the client an overview of the server's EPCIS-related configurations.
@@ -80,7 +80,7 @@ paths:
   /capture:
     options:
       tags:
-        - discovery
+        - 'Discovery'
       summary: Discover the settings of the capture interface.
       description: |
         The `OPTIONS` method is used as a discovery service for `/capture`. It describes which EPCIS and CBV versions
@@ -117,7 +117,7 @@ paths:
               $ref: '#/components/headers/GS1-EPCIS-Capture-File-Size-Limit'
     post:
       tags:
-        - capture
+        - 'Capture'
       summary: Stores one or more EPCIS events. The server either accepts or rejects all events.
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-Version'
@@ -190,7 +190,7 @@ paths:
           type: string
     options:
       tags:
-        - discovery
+        - 'Discovery'
       summary: Query the meta data of the capture job endpoint.
       description: |
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
@@ -226,7 +226,7 @@ paths:
               $ref: '#/components/headers/GS1-EPCIS-Capture-File-Size-Limit'
     get:
       tags:
-        - capture
+        - 'Capture'
       summary: Returns information about a specific capture job.
 
       description: |
@@ -260,7 +260,7 @@ paths:
   /eventTypes:
     options:
       tags:
-        - discovery
+        - 'Discovery'
       summary: Query meta data for the EPCIS event types endpoint.
       description: |
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
@@ -271,7 +271,7 @@ paths:
           $ref: '#/components/responses/204TopLevelResourcesDiscovery'
     get:
       tags:
-        - events
+        - 'Events'
       summary: Returns all EPCIS event types currently available in the EPCIS repository.
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-Version'
@@ -298,7 +298,7 @@ paths:
       - $ref: '#/components/parameters/EventType'
     options:
       tags:
-        - discovery
+        - 'Discovery'
       summary: Query meta data of the EPCIS event type endpoint.
       description: |
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
@@ -309,7 +309,7 @@ paths:
           $ref: '#/components/responses/204TopLevelResourcesDiscovery'
     get:
       tags:
-        - events
+        - 'Events'
       summary: Returns all sub-resources of an EPCIS event type.
       description: |
         This endpoint returns all sub-resources of an EPCIS event type, which currently is `events`. A server may
@@ -341,7 +341,7 @@ paths:
       - $ref: '#/components/parameters/GS1-CBV-Extensions'
     options:
       tags:
-        - discovery
+        - 'Discovery'
       summary: Query the meta data of the endpoint to access EPCIS events.
       description: |
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
@@ -375,7 +375,7 @@ paths:
               $ref: '#/components/headers/GS1-CBV-Extensions'
     get:
       tags:
-        - events
+        - 'Events'
       summary: |
         Returns EPCIS events of a given EPCIS event type. If `all` is used instead of an EPCIS
         event type, every event in the repository is returned.
@@ -415,7 +415,8 @@ paths:
 
     post:
       tags:
-        - capture
+        - 'Capture'
+        - 'Events'
       summary: Creates an individual EPCIS event.
       description: |
         An individual EPCIS event can be created by making a `POST` request to the EPCIS event type of
@@ -475,7 +476,7 @@ paths:
       - $ref: '#/components/parameters/EventID'
     options:
       tags:
-        - discovery
+        - 'Discovery'
       summary: Query meta data for the endpoint to access an individual EPCIS event.
       description: |
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
@@ -510,7 +511,7 @@ paths:
               $ref: '#/components/headers/GS1-CBV-Extensions'
     get:
       tags:
-        - events
+        - 'Events'
       summary: Returns an individual EPCIS event.
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-Version'
@@ -538,7 +539,7 @@ paths:
   /epcs:
     options:
       tags:
-        - discovery
+        - 'Discovery'
       summary: Query meta data related to the electronic product codes endpoint.
       description: |
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
@@ -549,7 +550,7 @@ paths:
           $ref: '#/components/responses/204TopLevelResourcesDiscovery'
     get:
       tags:
-        - topLevelResources
+        - 'Top-level Resources'
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
@@ -611,7 +612,7 @@ paths:
       - $ref: '#/components/parameters/EPC'
     options:
       tags:
-        - discovery
+        - 'Discovery'
       summary: Query meta data of the electronic product code.
       description: |
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
@@ -645,7 +646,7 @@ paths:
               $ref: '#/components/headers/GS1-CBV-Extensions'
     get:
       tags:
-        - topLevelResources
+        - 'Top-level Resources'
       summary: Returns all sub-resources of an electronic product code.
       parameters:
         - $ref: '#/components/parameters/PerPage'
@@ -674,7 +675,7 @@ paths:
       - $ref: '#/components/parameters/EPC'
     options:
       tags:
-        - discovery
+        - 'Discovery'
       summary: Query the meta data of the endpoint to access EPCIS events.
       description: |
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
@@ -685,7 +686,7 @@ paths:
           $ref: '#/components/responses/204EventsEndpointDiscovery'
     get:
       tags:
-        - events
+        - 'Events'
       summary: Returns EPCIS events with the electronic product code.
       parameters:
         - $ref: '#/components/parameters/PerPage'
@@ -727,11 +728,10 @@ paths:
   /epcs/{epc}/events/{eventID}:
     parameters:
       - $ref: '#/components/parameters/EPC'
-
       - $ref: '#/components/parameters/EventID'
     options:
       tags:
-        - discovery
+        - 'Discovery'
       summary: Query meta data for the endpoint to access an individual EPCIS event.
       description: |
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
@@ -742,7 +742,7 @@ paths:
           $ref: '#/components/responses/204TopLevelResourcesDiscovery'
     get:
       tags:
-        - events
+        - 'Events'
       summary: Returns an individual EPCIS event.
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-Version'
@@ -768,7 +768,7 @@ paths:
   /bizSteps:
     options:
       tags:
-        - discovery
+        - 'Discovery'
       summary: Query meta data related to the business steps endpoint.
       description: |
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
@@ -779,7 +779,7 @@ paths:
           $ref: '#/components/responses/204TopLevelResourcesDiscovery'
     get:
       tags:
-        - topLevelResources
+        - 'Top-level Resources'
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
@@ -834,7 +834,7 @@ paths:
       - $ref: '#/components/parameters/BizStep'
     options:
       tags:
-        - discovery
+        - 'Discovery'
       summary: Query meta data of the endpoint to access an individual business step.
       description: |
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
@@ -868,7 +868,7 @@ paths:
               $ref: '#/components/headers/GS1-CBV-Extensions'
     get:
       tags:
-        - topLevelResources
+        - 'Top-level Resources'
       summary: Returns all sub-resources of a business step.
       parameters:
         - $ref: '#/components/parameters/PerPage'
@@ -896,7 +896,7 @@ paths:
       - $ref: '#/components/parameters/BizStep'
     options:
       tags:
-        - discovery
+        - 'Discovery'
       summary: Query the meta data of the endpoint to access EPCIS events.
       description: |
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
@@ -907,7 +907,7 @@ paths:
           $ref: '#/components/responses/204EventsEndpointDiscovery'
     get:
       tags:
-        - events
+        - 'Events'
       summary: Returns all EPCIS events related to the business step.
       parameters:
         - $ref: '#/components/parameters/PerPage'
@@ -952,7 +952,7 @@ paths:
       - $ref: '#/components/parameters/EventID'
     options:
       tags:
-        - discovery
+        - 'Discovery'
       summary: Query the meta data for the endpoint to access an individual EPCIS event.
       description: |
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
@@ -963,7 +963,7 @@ paths:
           $ref: '#/components/responses/204TopLevelResourcesDiscovery'
     get:
       tags:
-        - events
+        - 'Events'
       summary: Returns an individual EPCIS event.
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-Version'
@@ -989,7 +989,7 @@ paths:
   /bizLocations:
     options:
       tags:
-        - discovery
+        - 'Discovery'
       summary: Query the meta data related to the business locations endpoint.
       description: |
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
@@ -1000,7 +1000,7 @@ paths:
           $ref: '#/components/responses/204TopLevelResourcesDiscovery'
     get:
       tags:
-        - topLevelResources
+        - 'Top-level Resources'
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
@@ -1054,7 +1054,7 @@ paths:
       - $ref: '#/components/parameters/BizLocation'
     options:
       tags:
-        - discovery
+        - 'Discovery'
       summary: Query the meta data of the endpoint to access an individual business location.
       description: |
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
@@ -1088,7 +1088,7 @@ paths:
               $ref: '#/components/headers/GS1-CBV-Extensions'
     get:
       tags:
-        - topLevelResources
+        - 'Top-level Resources'
       summary: Returns all sub-resources of a business location.
       parameters:
         - $ref: '#/components/parameters/PerPage'
@@ -1117,7 +1117,7 @@ paths:
 
     options:
       tags:
-        - discovery
+        - 'Discovery'
       summary: Query the meta data of the endpoint to access EPCIS events.
       description: |
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
@@ -1128,7 +1128,7 @@ paths:
           $ref: '#/components/responses/204EventsEndpointDiscovery'
     get:
       tags:
-        - events
+        - 'Events'
 
       summary: Returns all EPCIS events at the business location.
       parameters:
@@ -1172,11 +1172,10 @@ paths:
   /bizLocations/{bizLocation}/events/{eventID}:
     parameters:
       - $ref: '#/components/parameters/BizLocation'
-
       - $ref: '#/components/parameters/EventID'
     options:
       tags:
-        - discovery
+        - 'Discovery'
       summary: Query the meta data for the endpoint to access an individual EPCIS event.
       description: |
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
@@ -1187,7 +1186,7 @@ paths:
           $ref: '#/components/responses/204TopLevelResourcesDiscovery'
     get:
       tags:
-        - events
+        - 'Events'
       summary: Returns an individual EPCIS event.
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-Version'
@@ -1213,7 +1212,7 @@ paths:
   /readPoints:
     options:
       tags:
-        - discovery
+        - 'Discovery'
       summary: Query the meta data related to the read points endpoint.
       description: |
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
@@ -1224,7 +1223,7 @@ paths:
           $ref: '#/components/responses/204TopLevelResourcesDiscovery'
     get:
       tags:
-        - topLevelResources
+        - 'Top-level Resources'
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
@@ -1278,7 +1277,7 @@ paths:
       - $ref: '#/components/parameters/ReadPoint'
     options:
       tags:
-        - discovery
+        - 'Discovery'
       summary: Query the meta data of the endpoint to access an individual read point.
       description: |
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
@@ -1312,7 +1311,7 @@ paths:
               $ref: '#/components/headers/GS1-CBV-Extensions'
     get:
       tags:
-        - topLevelResources
+        - 'Top-level Resources'
       summary: Returns all sub-resources of a read point.
       parameters:
         - $ref: '#/components/parameters/PerPage'
@@ -1340,7 +1339,7 @@ paths:
       - $ref: '#/components/parameters/ReadPoint'
     options:
       tags:
-        - discovery
+        - 'Discovery'
       summary: Query the meta data of the endpoint to access EPCIS events.
       description: |
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
@@ -1351,7 +1350,7 @@ paths:
           $ref: '#/components/responses/204EventsEndpointDiscovery'
     get:
       tags:
-        - events
+        - 'Events'
       summary: Returns all EPCIS events related to the read point.
       parameters:
         - $ref: '#/components/parameters/PerPage'
@@ -1394,11 +1393,10 @@ paths:
   /readPoints/{readPoint}/events/{eventID}:
     parameters:
       - $ref: '#/components/parameters/ReadPoint'
-
       - $ref: '#/components/parameters/EventID'
     options:
       tags:
-        - discovery
+        - 'Discovery'
       summary: Query the meta data for the endpoint to access an individual EPCIS event.
       description: |
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
@@ -1409,7 +1407,7 @@ paths:
           $ref: '#/components/responses/204TopLevelResourcesDiscovery'
     get:
       tags:
-        - events
+        - 'Events'
       summary: Returns an individual EPCIS event.
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-Version'
@@ -1435,7 +1433,7 @@ paths:
   /dispositions:
     options:
       tags:
-        - discovery
+        - 'Discovery'
       summary: Query the meta data related to the dispositions endpoint.
       description: |
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
@@ -1446,7 +1444,7 @@ paths:
           $ref: '#/components/responses/204TopLevelResourcesDiscovery'
     get:
       tags:
-        - topLevelResources
+        - 'Top-level Resources'
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
@@ -1500,7 +1498,7 @@ paths:
       - $ref: '#/components/parameters/Disposition'
     options:
       tags:
-        - discovery
+        - 'Discovery'
       summary: Query the meta data of the endpoint to access an individual disposition.
       description: |
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
@@ -1534,7 +1532,7 @@ paths:
               $ref: '#/components/headers/GS1-CBV-Extensions'
     get:
       tags:
-        - topLevelResources
+        - 'Top-level Resources'
       summary: Returns all sub-resources of a disposition.
       parameters:
         - $ref: '#/components/parameters/PerPage'
@@ -1562,7 +1560,7 @@ paths:
       - $ref: '#/components/parameters/Disposition'
     options:
       tags:
-        - discovery
+        - 'Discovery'
       summary: Query the meta data of the endpoint to access EPCIS events.
       description: |
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
@@ -1573,7 +1571,7 @@ paths:
           $ref: '#/components/responses/204EventsEndpointDiscovery'
     get:
       tags:
-        - events
+        - 'Events'
       summary: Returns all EPCIS events related to the disposition.
       parameters:
         - $ref: '#/components/parameters/PerPage'
@@ -1616,11 +1614,10 @@ paths:
   /dispositions/{disposition}/events/{eventID}:
     parameters:
       - $ref: '#/components/parameters/Disposition'
-
       - $ref: '#/components/parameters/EventID'
     options:
       tags:
-        - discovery
+        - 'Discovery'
       summary: Query the meta data for the endpoint to access an individual EPCIS event.
       description: |
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
@@ -1631,7 +1628,7 @@ paths:
           $ref: '#/components/responses/204TopLevelResourcesDiscovery'
     get:
       tags:
-        - events
+        - 'Events'
       summary: Returns an individual EPCIS event.
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-Version'
@@ -1657,7 +1654,7 @@ paths:
   /queries:
     options:
       tags:
-        - discovery
+        - 'Discovery'
       summary: Query the meta data of the EPCIS queries endpoint.
       description: |
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
@@ -1677,7 +1674,7 @@ paths:
                 default: OPTIONS, GET
     get:
       tags:
-        - queries
+        - 'Queries'
       summary: Returns a list of queries available.
       description: |
         An endpoint to list named queries.
@@ -1727,7 +1724,7 @@ paths:
       - $ref: '#/components/parameters/QueryName'
     get:
       tags:
-        - queries
+        - 'Queries'
       summary: Returns the query definition.
       responses:
         '200':
@@ -1784,9 +1781,9 @@ paths:
           $ref: '#/components/responses/500ImplementationException'
     post:
       tags:
-        - queries
-        - events
-        - masterData
+        - 'Queries'
+        - 'Events'
+        - 'Master Data'
       summary: |
         Creates and executes a named EPCIS events or EPCIS master data query and returns results with the option to use
         pagination if needed.
@@ -1857,7 +1854,7 @@ paths:
           $ref: '#/components/responses/500ImplementationException'
     options:
       tags:
-        - discovery
+        - 'Discovery'
       summary: Query the meta data of the naemd queries endpoint.
       description: |
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
@@ -1891,7 +1888,7 @@ paths:
               $ref: '#/components/headers/GS1-CBV-Extensions'
     delete:
       tags:
-        - queries
+        - 'Queries'
       summary: Removes a named query and terminates open WebSocket connections.
       responses:
         '204':
@@ -1910,7 +1907,7 @@ paths:
       - $ref: '#/components/parameters/QueryName'
     options:
       tags:
-        - discovery
+        - 'Discovery'
       summary: Query the meta data of the subscriptions endpoint.
       description: |
         The `OPTIONS` method is used as a discovery service for query subscriptions.
@@ -1937,8 +1934,8 @@ paths:
               $ref: '#/components/headers/GS1-Vendor-Version'
     get:
       tags:
-        - queries
-        - subscriptions
+        - 'Queries'
+        - 'Subscriptions'
       summary: Returns active Webhook subscriptions with the option to use pagination if needed.
       parameters:
         - $ref: '#/components/parameters/NextPageToken'
@@ -2017,8 +2014,8 @@ paths:
           $ref: '#/components/responses/500ImplementationException'
     post:
       tags:
-        - queries
-        - subscriptions
+        - 'Queries'
+        - 'Subscriptions'
       summary: Creates a query subscription using Webhooks.
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-Version'
@@ -2173,7 +2170,7 @@ paths:
           $ref: '#/components/schemas/SubscriptionID'
     options:
       tags:
-        - discovery
+        - 'Discovery'
       summary: Query the meta data of the endpoint for an individual subscription.
       description: |
         The `OPTIONS` method is used as a discovery service for a Webhook-based query subscription.
@@ -2200,8 +2197,8 @@ paths:
               $ref: '#/components/headers/GS1-Vendor-Version'
     get:
       tags:
-        - queries
-        - subscriptions
+        - 'Queries'
+        - 'Subscriptions'
       summary: Returns the subscription Id. This method is useful to verify if a subscription is still active.
       responses:
         '200':
@@ -2243,8 +2240,8 @@ paths:
     delete:
       operationId: unsubscribe
       tags:
-        - queries
-        - subscriptions
+        - 'Queries'
+        - 'Subscriptions'
       summary: Unsubscribes a client by deleting the query subscription.
       responses:
         '204':
@@ -2263,7 +2260,7 @@ paths:
       - $ref: '#/components/parameters/QueryName'
     options:
       tags:
-        - discovery
+        - 'Discovery'
       summary: Query the meta data of the EPCIS events query result endpoint.
       description: |
         The `OPTIONS` method is used as a discovery service for named queries. It describes which EPCIS and CBV
@@ -2274,9 +2271,9 @@ paths:
           $ref: '#/components/responses/204EventsEndpointDiscovery'
     get:
       tags:
-        - queries
-        - events
-        - subscriptions
+        - 'Queries'
+        - 'Events'
+        - 'Master Data'
       summary: |
         Returns EPCIS events with the option to use pagination if needed. This endpoint supports query subscriptions
         using WebSockets.
@@ -2361,7 +2358,7 @@ paths:
       - $ref: '#/components/parameters/QueryName'
     options:
       tags:
-        - discovery
+        - 'Discovery'
       summary: Query the meta data of the EPCIS master data query endpoint.
       description: |
         The `OPTIONS` method is used as a discovery service for named queries. It describes which EPCIS and CBV
@@ -2396,8 +2393,8 @@ paths:
               $ref: '#/components/headers/GS1-CBV-Extensions'
     get:
       tags:
-        - queries
-        - masterData
+        - 'Queries'
+        - 'Master Data'
       summary: Returns the result of an EPCIS master data query.
       parameters:
         - $ref: '#/components/parameters/PerPage'
@@ -2423,7 +2420,7 @@ paths:
   /queries/SimpleMasterDataQuery:
     options:
       tags:
-        - discovery
+        - 'Discovery'
       summary: Query the meta data of the anonymous EPCIS master data query endpoint.
       description: |
         The `OPTIONS` method is used as a discovery service for anonymous queries. Because anonymous queries
@@ -2434,8 +2431,8 @@ paths:
           $ref: '#/components/responses/204AnonymousQueriesDiscovery'
     post:
       tags:
-        - queries
-        - masterData
+        - 'Queries'
+        - 'Master Data'
       summary: Executes anonymous EPCIS master data queries and returns results with the option to use pagination if needed.
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-Version'
@@ -2515,8 +2512,8 @@ paths:
   /queries/SimpleMasterDataQuery/masterData:
     get:
       tags:
-        - queries
-        - masterData
+        - 'Queries'
+        - 'Master Data'
       summary: Returns the result of an EPCIS master data query.
       parameters:
         - $ref: '#/components/parameters/NextPageToken'
@@ -2539,7 +2536,7 @@ paths:
           $ref: '#/components/responses/500ImplementationException'
     options:
       tags:
-        - discovery
+        - 'Discovery'
       summary: Query the meta data of the EPCIS master data query endpoint.
       description: |
         The `OPTIONS` method is used as a discovery service for anonymous EPCIS master data query results.
@@ -2572,7 +2569,7 @@ paths:
   /queries/SimpleEventQuery:
     options:
       tags:
-        - discovery
+        - 'Discovery'
       summary: Query the meta data of the anonymous EPCIS events query endpoint.
       description: |
         The `OPTIONS` method is used as a discovery service for anonymous queries. Because anonymous queries
@@ -2582,8 +2579,8 @@ paths:
           $ref: '#/components/responses/204AnonymousQueriesDiscovery'
     post:
       tags:
-        - queries
-        - events
+        - 'Queries'
+        - 'Events'
       summary: Executes anonymous EPCIS events query and returns results with the option to use pagination if needed.
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-Version'
@@ -2664,7 +2661,7 @@ paths:
   /queries/SimpleEventQuery/events:
     options:
       tags:
-        - discovery
+        - 'Discovery'
       summary: Query the meta data of the anonymous EPCIS events query result.
       description: |
         The `OPTIONS` method is used as a discovery service for anonymous queries. Because anonymous queries
@@ -2674,8 +2671,8 @@ paths:
           $ref: '#/components/responses/204EventsEndpointDiscovery'
     get:
       tags:
-        - queries
-        - events
+        - 'Queries'
+        - 'Events'
       summary: Returns EPCIS events with the option to use pagination if needed.
       parameters:
         - $ref: '#/components/parameters/NextPageToken'
@@ -2726,7 +2723,7 @@ paths:
       - $ref: '#/components/parameters/Token'
     delete:
       tags:
-        - queries
+        - 'Queries'
       summary: Optional endpoint that allows on-demand release of any resources associated with `nextPageToken`.
       responses:
         '204':
