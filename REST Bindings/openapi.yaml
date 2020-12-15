@@ -1825,7 +1825,7 @@ paths:
       requestBody:
         $ref: '#/components/requestBodies/CreateQuery'
       responses:
-        '200':
+        '201':
           headers:
             GS1-EPCIS-Version:
               $ref: '#/components/headers/GS1-EPCIS-Version'
