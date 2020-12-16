@@ -3679,7 +3679,7 @@ components:
               type: string
             running:
               description: |
-                If the the job is still running, the state is `true`, otherwise `false`.
+                If the job is still running, the state is `true`, otherwise `false`.
               type: boolean
               example: true
             success:
