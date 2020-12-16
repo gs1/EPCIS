@@ -287,8 +287,37 @@ paths:
       summary: Returns information about the capture job.
 
       description: |
-        This endpoint provides information about a capture job. Each time EPCIS events are captured, the server generates
-        a unique capture id. The capture job exposes the state of the asynchronous capture job.
+
+        When EPCIS events are added through the capture interface, the capture process runs asynchronously. If the payload
+        is syntactically correct and the client is allowed to call `/capture`, the server returns a `204`. This
+        does not guarantee successful storage of all EPCIS events. The capture job endpoint exposes the state
+        of the capture job to the client.
+
+        A capture job document has at least the following properties:
+
+        - `running`: whether or not the capture job is still active
+        - `success`: whether or not at least one error occurred,
+        - `errors` or `errorFile`: with the errors if `success` is `false`.
+
+        ### GS1-Capture-Error-Behaviour header value is `rollback`
+
+        | Capture job `running` | Capture job `success` | Capture job outcome |
+        |:--------|:---------|:---------|
+        | `true` | `true` | Still capturing EPCIS events. No errors occurred so far. |
+        | `true` | `false` | At least one error occurred. Rollback is in progress. |
+        | `false` | `true` | All EPCIS events are captured. |
+        | `false` | `false` | All EPCIS events rejected. |
+
+        ### GS1-Capture-Error-Behaviour header value is `proceed`
+
+        | Capture job `running` | Capture job `success` | Capture job outcome |
+        |:--------|:---------|:---------|
+        | `true` | `true` | Still capturing EPCIS events. No errors occurred so far. |
+        | `true` | `false` | At least one error occurred but more EPCIS events are currently being captured. |
+        | `false` | `true` | All EPCIS events were captured without an error. |
+        | `false` | `false` | Some EPCIS events were captured but errors occurred. |
+
+        If `success` is `false`, check the `errors` or `errorFile` property for details.
       responses:
         '200':
           headers:
@@ -3628,7 +3657,7 @@ components:
         does not guarantee successful storage of all EPCIS events. The capture job endpoint exposes the state
         of the capture job to the client.
 
-        A capture job document SHALL have at least the following properties:
+        A capture job document has at least the following properties:
 
         - `running`: whether or not the capture job is still active
         - `success`: whether or not at least one error occurred,
@@ -4090,6 +4119,7 @@ components:
         - `proceed`: "Greedy capture". The capture interface tries to capture as many EPCIS events as possible, even if there are errors.
 
         The default behaviour is `rollback`, as in EPCIS 1.2.
+
 
       example: 'rollback'
       type: string
