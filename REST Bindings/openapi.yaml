@@ -92,9 +92,13 @@ paths:
         - 'Discovery'
       summary: Discover the settings of the capture interface.
       description: |
-        The `OPTIONS` method is used as a discovery service for `/capture`. It describes which EPCIS and CBV versions
-        are supported, EPCIS and CBV extensions, the payload size as a EPCIS events count (`GS1-EPCIS-Capture-Limit` header)
-        or maximum payload size in bytes (`GS1-EPCIS-Capture-File-Size-Limit` header).
+        The `OPTIONS` method is used as a discovery service for `/capture`. It describes
+
+        - which EPCIS and CBV versions are supported,
+        - the EPCIS and CBV extensions,
+        - the payload size as a EPCIS events count (`GS1-EPCIS-Capture-Limit` header) or maximum payload size in bytes (`GS1-EPCIS-Capture-File-Size-Limit` header)
+        - what to do if an error occurred during capture (`GS1-Capture-Error-Behaviour` header).
+
         The list of headers is not exhaustive. It only describes the functionality specific to EPCIS 2.0.
       responses:
         '204':
@@ -137,7 +141,7 @@ paths:
     post:
       tags:
         - 'Capture'
-      summary: Stores one or more EPCIS events. The server either accepts or rejects all events.
+      summary: Asynchronous capture interface for one or more EPCIS events.
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-Version'
         - $ref: '#/components/parameters/GS1-EPCIS-Min'
@@ -152,16 +156,18 @@ paths:
             $ref: '#/components/schemas/GS1-Capture-Error-Behaviour'
 
       description: |
-        EPCIS events are added in bulk using the capture interface. To remain compatible with EPCIS 1.2, EPCIS 2.0 makes
-        event ids optional. If event ids are missing, the server should populate the event id with a unique value.
-        Otherwise it won't be possible to retrieve these events.
+        EPCIS events are added in bulk using the capture interface. Two design considerations were made to remain compatible with EPCIS 1.2:
 
-        To prevent timeouts for large payloads, the client
-        potentially has to split the payload into several capture calls. To that end, the server specified a capture
-        limit (number of events) and file size limit (payload size).
+        - EPCIS 2.0 makes event ids optional. If event ids are missing, the server should populate the event id with a unique value.
+        Otherwise, it won't be possible to retrieve these events.
+        - By default, EPCIS events are only stored if the entire capture job was successful. This behaviour can be changed with the `GS1-Capture-Error-Behaviour` header.
+
+        To prevent timeouts for large payloads, the client potentially has to split the payload into several capture calls. To that end, the server specified a capture
+        limit (number of EPCIS events) and file size limit (payload size).
 
         A successful capturing of events does not guarantee that events will be stored. Instead, the server returns a
         capture id, which the client can use to obtain information about the capture job.
+
       requestBody:
         required: true
         content:
@@ -200,7 +206,9 @@ paths:
                 $ref: '#/components/schemas/Location'
 
         '400':
-          description: An error occurred while receiving EPCIS events. All events are rejected.
+          description: |
+            An error occurred while receiving EPCIS events. All events are rejected. This is not to be confused with
+            an error while capturing EPCIS events. To monitor the capture job, use the `/capture/{captureID}` endpoint.
           content:
             application/problem+json:
               schema:
@@ -276,10 +284,10 @@ paths:
     get:
       tags:
         - 'Capture'
-      summary: Returns information about a specific capture job.
+      summary: Returns information about the capture job.
 
       description: |
-        This endpoint provides information about a capture job. Each time events are captured, the server generates
+        This endpoint provides information about a capture job. Each time EPCIS events are captured, the server generates
         a unique capture id. The capture job exposes the state of the asynchronous capture job.
       responses:
         '200':
@@ -479,7 +487,7 @@ paths:
       tags:
         - 'Capture'
         - 'Events'
-      summary: Creates an individual EPCIS event.
+      summary: Synchronous capture interface for a single EPCIS event.
       description: |
         An individual EPCIS event can be created by making a `POST` request to the EPCIS event type of
         the EPCIS event that is being captured. If the client does not wish to specify the EPCIS event type,
@@ -3617,8 +3625,8 @@ components:
       description: |
         When EPCIS events are added through the capture interface, the capture process runs asynchronously. If the payload
         is syntactically correct and the client is allowed to call `/capture`, the server returns a `204`. This
-        does not guarantee successful storage of all EPCIS events. The status of the capture job endpoint exposes the state
-        of the capture job to the client, to let the client know if the job is still running and if there were errors.
+        does not guarantee successful storage of all EPCIS events. The capture job endpoint exposes the state
+        of the capture job to the client.
 
         A capture job document SHALL have at least the following properties:
 
@@ -3647,8 +3655,8 @@ components:
               example: true
             success:
               description: |
-                Is `true` if there were no errors. `false` means there was at least one error while processing this
-                job. if the header value of `GS1-Capture-Error-Behaviour` is `rollback` and `success` is `false`, the
+                `success` is `true` if there were no errors. If `success` is `false`, means at least one error.
+                If the header value of `GS1-Capture-Error-Behaviour` is `rollback` and `success` is `false`, the
                 capture job was aboarded and all EPCIS events in that job were rejected.
                 If `GS1-Capture-Error-Behaviour` is `proceed`, some EPCIS events might still be captured even
                 if `success` is `false`.
@@ -3966,7 +3974,7 @@ components:
       format: date-time
       example: "2020-04-04T20:33:31.116-06:00"
     GS1-Query-Min-Record-Time:
-      example: 2020-04-04T20:33:31.116-06:00
+      example: "2020-04-04T20:33:31.116-06:00"
       description: |
         An optional header to specify the smallest possible record time for EPCIS events in a
         query subscription.
@@ -4076,15 +4084,14 @@ components:
       pattern: ^(\d+|\*)$
     GS1-Capture-Error-Behaviour:
       description: |
-        A header for the server to expose to the client how the capture interface will behave in case of an error:
+        A header to control how the capture interface will behave in case of an error:
 
-        - `rollback`: "All or nothing". Either the capture job is entirely successful or all EPCIS events are rejected
-        - `proceed`: The capture interface tries to capture as many EPCIS events as possible, even if there are errors.
-        - `rollback | proceed`: The server supports both options, the client can select which one to take. This option is added in the `capture` endpoint.
+        - `rollback`: "All or nothing". Either the capture job is entirely successful or all EPCIS events are rejected.
+        - `proceed`: "Greedy capture". The capture interface tries to capture as many EPCIS events as possible, even if there are errors.
 
-        The default behaviour is `rollback`, the same way the capture interface behaves in EPCIS 1.2.
+        The default behaviour is `rollback`, as in EPCIS 1.2.
 
-      example: rollback
+      example: 'rollback'
       type: string
       default: 'rollback'
       enum:
