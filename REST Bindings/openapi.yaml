@@ -3684,10 +3684,10 @@ components:
               example: true
             success:
               description: |
-                `success` is `true` if there were no errors. If `success` is `false`, means at least one error.
-                If the header value of `GS1-Capture-Error-Behaviour` is `rollback` and `success` is `false`, the
-                capture job was aboarded and all EPCIS events in that job were rejected.
-                If `GS1-Capture-Error-Behaviour` is `proceed`, some EPCIS events might still be captured even
+                If `success` is `false`, there was at least one error. Otherwise, `success` is `true`.
+                If the `GS1-Capture-Error-Behaviour` header is `rollback`, `success` being `false` aboards the capture
+                job and rejects all EPCIS events related to the job.
+                If `GS1-Capture-Error-Behaviour` header is `proceed`, some EPCIS events might still be captured, even
                 if `success` is `false`.
               type: boolean
               example: false
