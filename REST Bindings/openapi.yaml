@@ -231,6 +231,8 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '413':
           $ref: '#/components/responses/413CapturePayloadTooLarge'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -353,6 +355,8 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -389,6 +393,8 @@ paths:
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -426,6 +432,8 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '414':
           $ref: '#/components/responses/414URLTooLong'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -509,6 +517,8 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '414':
           $ref: '#/components/responses/414URLTooLong'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -568,6 +578,10 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '413':
           $ref: '#/components/responses/413CapturePayloadTooLarge'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
 
   /eventTypes/{eventType}/events/{eventID}:
     parameters:
@@ -632,6 +646,8 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -703,6 +719,8 @@ paths:
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -766,6 +784,8 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '414':
           $ref: '#/components/responses/414URLTooLong'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -821,6 +841,8 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '414':
           $ref: '#/components/responses/414URLTooLong'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -861,6 +883,8 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -931,6 +955,8 @@ paths:
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -993,6 +1019,8 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '414':
           $ref: '#/components/responses/414URLTooLong'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -1045,6 +1073,8 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '414':
           $ref: '#/components/responses/414URLTooLong'
 
@@ -1088,6 +1118,8 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -1157,6 +1189,8 @@ paths:
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -1219,6 +1253,8 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '414':
           $ref: '#/components/responses/414URLTooLong'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -1276,7 +1312,8 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '414':
           $ref: '#/components/responses/414URLTooLong'
-
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -1317,6 +1354,8 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -1386,6 +1425,8 @@ paths:
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -1448,6 +1489,8 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '414':
           $ref: '#/components/responses/414URLTooLong'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -1503,7 +1546,8 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '414':
           $ref: '#/components/responses/414URLTooLong'
-
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -1544,6 +1588,8 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -1613,6 +1659,8 @@ paths:
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -1675,6 +1723,8 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '414':
           $ref: '#/components/responses/414URLTooLong'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -1730,7 +1780,8 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '414':
           $ref: '#/components/responses/414URLTooLong'
-
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -1771,6 +1822,8 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -1837,6 +1890,8 @@ paths:
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -1898,6 +1953,8 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '413':
           $ref: '#/components/responses/413QueryScopeOrSize'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
     post:
@@ -1971,6 +2028,8 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
     options:
@@ -2020,6 +2079,8 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -2131,6 +2192,8 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
     post:
@@ -2230,6 +2293,8 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -2356,6 +2421,8 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
     delete:
@@ -2373,6 +2440,8 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -2471,6 +2540,8 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '413':
           $ref: '#/components/responses/413QueryScopeOrSize'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -2535,6 +2606,8 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '413':
           $ref: '#/components/responses/413QueryScopeOrSize'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -2627,6 +2700,8 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '413':
           $ref: '#/components/responses/413QueryScopeOrSize'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -2653,6 +2728,8 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '413':
           $ref: '#/components/responses/413QueryScopeOrSize'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
     options:
@@ -2776,6 +2853,8 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '413':
           $ref: '#/components/responses/413QueryScopeOrSize'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -2836,6 +2915,8 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '413':
           $ref: '#/components/responses/413QueryScopeOrSize'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -3278,6 +3359,28 @@ components:
                     format: uri
                     enum:
                       - epcisException:URITooLongException
+              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+    415UnsupportedMediaType:
+      description: The client requests a media type that the server does not support.
+      content:
+        application/problem+json:
+          schema:
+            example:
+              type: "epcisException:ImplementationException"
+              title: "Unsupported Media Type"
+              status: 415
+            allOf:
+              - properties:
+                  status:
+                    type: integer
+                    enum:
+                      - 415
+                    default: 415
+                  type:
+                    type: string
+                    format: uri
+                    enum:
+                      - epcisException:ImplementationException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
     500ImplementationException:
       description: An error occurred on the backend.
