@@ -289,7 +289,7 @@ paths:
       description: |
 
         When EPCIS events are added through the capture interface, the capture process runs asynchronously. If the payload
-        is syntactically correct and the client is allowed to call `/capture`, the server returns a `204`. This
+        is syntactically correct and the client is allowed to call `/capture`, the server returns a `202`. This
         does not guarantee successful storage of all EPCIS events. The capture job endpoint exposes the state
         of the capture job to the client.
 
@@ -3653,7 +3653,7 @@ components:
     CaptureJob:
       description: |
         When EPCIS events are added through the capture interface, the capture process runs asynchronously. If the payload
-        is syntactically correct and the client is allowed to call `/capture`, the server returns a `204`. This
+        is syntactically correct and the client is allowed to call `/capture`, the server returns a `202`. This
         does not guarantee successful storage of all EPCIS events. The capture job endpoint exposes the state
         of the capture job to the client.
 
