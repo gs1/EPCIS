@@ -1869,7 +1869,7 @@ paths:
                       "urn:epcglobal:cbv:bizstep:shipping",
                       "urn:epcglobal:cbv:bizstep:receiving"
                   ],
-                  "eventTypes": "ObjectEvent"
+                  "eventType": ["ObjectEvent"]
                 },
                 "queryType": "events",
                 "name": "myQuery"
@@ -1929,7 +1929,7 @@ paths:
                       "urn:epcglobal:cbv:bizstep:shipping",
                       "urn:epcglobal:cbv:bizstep:receiving"
                   ],
-                  "eventTypes": "ObjectEvent"
+                  "eventType": ["ObjectEvent"]
                 },
                 "queryType": "events",
                 "name": "myQuery"
@@ -3470,7 +3470,7 @@ components:
         query:
           example:
             { "query": {
-              "eventTypes": "ObjectEvent" ,
+              "eventType": ["ObjectEvent"] ,
               "EQ_bizStep": [
                   "urn:epcglobal:cbv:bizstep:shipping",
                   "urn:epcglobal:cbv:bizstep:receiving" ]
@@ -3486,7 +3486,7 @@ components:
       description: An EPCIS event query.
       example:
         {
-          "eventTypes": "ObjectEvent" ,
+          "eventType": ["ObjectEvent"],
           "EQ_bizStep": [
               "urn:epcglobal:cbv:bizstep:shipping",
               "urn:epcglobal:cbv:bizstep:receiving" ]
