@@ -2034,6 +2034,8 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '406':
           $ref: '#/components/responses/406NotAcceptable'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
     options:
@@ -2299,6 +2301,8 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '406':
           $ref: '#/components/responses/406NotAcceptable'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -2348,7 +2352,8 @@ paths:
                                 enum:
                                   - epcisException:QueryTooComplexException
                           - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-
+                '415':
+                  $ref: '#/components/responses/415UnsupportedMediaType'
   /queries/{queryName}/subscriptions/{subscriptionID}:
     parameters:
       - $ref: '#/components/parameters/QueryName'
@@ -2706,6 +2711,8 @@ paths:
           $ref: '#/components/responses/413QueryScopeOrSize'
         '406':
           $ref: '#/components/responses/406NotAcceptable'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -2859,6 +2866,8 @@ paths:
           $ref: '#/components/responses/413QueryScopeOrSize'
         '406':
           $ref: '#/components/responses/406NotAcceptable'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -3390,7 +3399,7 @@ components:
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
     415UnsupportedMediaType:
       description: |
-        The client sent one or more EPCIS events in a format that is not supported by the server.
+        The client sent data in a format that is not supported by the server.
       content:
         application/problem+json:
           schema:
