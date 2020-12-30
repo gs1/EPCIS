@@ -378,7 +378,7 @@ paths:
         | `true` | `true` | Still capturing EPCIS events. No errors occurred so far. |
         | `true` | `false` | At least one error occurred. Rollback is in progress. |
         | `false` | `true` | All EPCIS events are captured. |
-        | `false` | `false` | All EPCIS events rejected. |
+        | `false` | `false` | All EPCIS events are rejected. |
 
         ### GS1-Capture-Error-Behaviour header value is `proceed`
 
