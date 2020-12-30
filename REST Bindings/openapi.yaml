@@ -2717,7 +2717,31 @@ paths:
         This endpoint returns `masterData`, to be fully HATEOAS compliant.
       responses:
         '200':
-          $ref: '#/components/responses/200TopLevelOrEventTypeSubResource'
+          headers:
+            GS1-EPCIS-Version:
+              $ref: '#/components/headers/GS1-EPCIS-Version'
+            GS1-EPCIS-Min:
+              $ref: '#/components/headers/GS1-EPCIS-Min'
+            GS1-EPCIS-Max:
+              $ref: '#/components/headers/GS1-EPCIS-Max'
+            GS1-CBV-Version:
+              $ref: '#/components/headers/GS1-CBV-Version'
+            GS1-EPCIS-Extensions:
+              $ref: '#/components/headers/GS1-EPCIS-Extensions'
+            GS1-CBV-Extensions:
+              $ref: '#/components/headers/GS1-CBV-Extensions'
+
+          description: Returns `masterData`.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  format: string
+                  example:
+                    - masterData
+                  enum:
+                    - masterData
         '400':
           $ref: '#/components/responses/400QueryIssues'
         '401':
@@ -2896,7 +2920,30 @@ paths:
         This endpoint returns `events`, to be fully HATEOAS compliant.
       responses:
         '200':
-          $ref: '#/components/responses/200TopLevelOrEventTypeSubResource'
+          headers:
+            GS1-EPCIS-Version:
+              $ref: '#/components/headers/GS1-EPCIS-Version'
+            GS1-EPCIS-Min:
+              $ref: '#/components/headers/GS1-EPCIS-Min'
+            GS1-EPCIS-Max:
+              $ref: '#/components/headers/GS1-EPCIS-Max'
+            GS1-CBV-Version:
+              $ref: '#/components/headers/GS1-CBV-Version'
+            GS1-EPCIS-Extensions:
+              $ref: '#/components/headers/GS1-EPCIS-Extensions'
+            GS1-CBV-Extensions:
+              $ref: '#/components/headers/GS1-CBV-Extensions'
+          description: Returns `events`.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  format: string
+                  example:
+                    - events
+                  enum:
+                    - events
         '400':
           $ref: '#/components/responses/400QueryIssues'
         '401':
