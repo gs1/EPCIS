@@ -107,9 +107,9 @@ paths:
           headers:
             Allow:
               schema:
-                example: OPTIONS, POST
+                example: OPTIONS, POST, GET
                 type: string
-                default: OPTIONS, POST
+                default: OPTIONS, POST, GET
             GS1-EPCIS-Version:
               $ref: '#/components/headers/GS1-EPCIS-Version'
             GS1-EPCIS-Min:
@@ -237,7 +237,75 @@ paths:
           $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
-
+    get:
+      tags:
+        - 'Capture'
+      parameters:
+        - $ref: '#/components/parameters/NextPageToken'
+        - $ref: '#/components/parameters/PerPage'
+      summary: Returns a list of capture jobs.
+      description: |
+        An endpoint to list capture jobs.
+        This endpoint supports pagination.
+      responses:
+        '200':
+          headers:
+            GS1-EPCIS-Version:
+              $ref: '#/components/headers/GS1-EPCIS-Version'
+            GS1-EPCIS-Min:
+              $ref: '#/components/headers/GS1-EPCIS-Min'
+            GS1-EPCIS-Max:
+              $ref: '#/components/headers/GS1-EPCIS-Max'
+            GS1-CBV-Version:
+              $ref: '#/components/headers/GS1-CBV-Version'
+            GS1-EPCIS-Extensions:
+              $ref: '#/components/headers/GS1-EPCIS-Extensions'
+            GS1-CBV-Extensions:
+              $ref: '#/components/headers/GS1-CBV-Extensions'
+            Link:
+              description: |
+                A pagination header link. This header works together with the `perPage` and `nextPageToken` query string
+                parameters.
+                As long as there are more resources to retrieve, the `Link` header contains the URL of the next page and
+                the attribute `rel="next"`. The last page is indicated by the absence of the `rel="next"`.
+              schema:
+                $ref: '#/components/schemas/Link'
+            GS1-Next-Page-Token-Expires:
+              $ref: '#/components/headers/GS1-Next-Page-Token-Expires'
+          description: |
+            When EPCIS events are added through the capture interface, the capture process can run asynchronously.
+            A capture job resource exposes the state of the capture job to the client. This endpoint returns all
+            capture jobs that were created.
+          content:
+            application/json:
+              example: [
+                {
+                  "captureId": "id261378658356",
+                  "createdAt": "2021-07-21T17:32:28Z",
+                  "running": false,
+                  "success": true,
+                  "errors": [ ]
+                },
+                {
+                  "captureId": "id9261379075",
+                  "createdAt": "2021-08-21T17:32:28Z",
+                  "running": true,
+                  "success": true,
+                  "errors": [ ]
+                }]
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CaptureJob'
+                uniqueItems: true
+        '401':
+          $ref: '#/components/responses/401UnauthorizedRequest'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
   /capture/{captureID}:
     parameters:
       - in: path
@@ -1845,12 +1913,38 @@ paths:
     get:
       tags:
         - 'Queries'
+      parameters:
+        - $ref: '#/components/parameters/NextPageToken'
+        - $ref: '#/components/parameters/PerPage'
       summary: Returns a list of queries available.
       description: |
         An endpoint to list named queries.
         This endpoint supports pagination.
       responses:
         '200':
+          headers:
+            GS1-EPCIS-Version:
+              $ref: '#/components/headers/GS1-EPCIS-Version'
+            GS1-EPCIS-Min:
+              $ref: '#/components/headers/GS1-EPCIS-Min'
+            GS1-EPCIS-Max:
+              $ref: '#/components/headers/GS1-EPCIS-Max'
+            GS1-CBV-Version:
+              $ref: '#/components/headers/GS1-CBV-Version'
+            GS1-EPCIS-Extensions:
+              $ref: '#/components/headers/GS1-EPCIS-Extensions'
+            GS1-CBV-Extensions:
+              $ref: '#/components/headers/GS1-CBV-Extensions'
+            Link:
+              description: |
+                A pagination header link. This header works together with the `perPage` and `nextPageToken` query string
+                parameters.
+                As long as there are more resources to retrieve, the `Link` header contains the URL of the next page and
+                the attribute `rel="next"`. The last page is indicated by the absence of the `rel="next"`.
+              schema:
+                $ref: '#/components/schemas/Link'
+            GS1-Next-Page-Token-Expires:
+              $ref: '#/components/headers/GS1-Next-Page-Token-Expires'
           description: |
             Queries are like views that are created using the EPCIS query language. Each query object
             consists of a query name and the query definition. Performing a `GET` on `/queries` lists all
@@ -2734,12 +2828,12 @@ paths:
           description: Returns `masterData`.
           content:
             application/json:
+              example:
+                - masterData
               schema:
                 type: array
                 items:
                   format: string
-                  example:
-                    - masterData
                   enum:
                     - masterData
         '400':
@@ -2762,6 +2856,7 @@ paths:
       summary: Returns the result of an EPCIS master data query.
       parameters:
         - $ref: '#/components/parameters/NextPageToken'
+        - $ref: '#/components/parameters/PerPage'
       description: |
         The `GET` endpoint is to retrieve EPCIS vocabulary elements.
       responses:
@@ -2936,12 +3031,12 @@ paths:
           description: Returns `events`.
           content:
             application/json:
+              example:
+                - events
               schema:
                 type: array
                 items:
                   format: string
-                  example:
-                    - events
                   enum:
                     - events
         '400':
@@ -3071,12 +3166,12 @@ components:
       description: Returns `events`.
       content:
         application/json:
+          example:
+            - events
           schema:
             type: array
             items:
               format: string
-              example:
-                - events
               enum:
                 - events
     200EPCISDocumentSingleEvent:
@@ -3226,9 +3321,9 @@ components:
       headers:
         Allow:
           schema:
-            example: OPTIONS, POST
+            example: OPTIONS, POST, GET
             type: string
-            default: OPTIONS, POST
+            default: OPTIONS, POST, GET
         GS1-EPCIS-Version:
           $ref: '#/components/headers/GS1-EPCIS-Version'
         GS1-EPCIS-Min:
