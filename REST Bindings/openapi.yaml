@@ -233,6 +233,8 @@ paths:
           $ref: '#/components/responses/413CapturePayloadTooLarge'
         '406':
           $ref: '#/components/responses/406NotAcceptable'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -580,6 +582,8 @@ paths:
           $ref: '#/components/responses/413CapturePayloadTooLarge'
         '406':
           $ref: '#/components/responses/406NotAcceptable'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -3378,6 +3382,29 @@ components:
                     enum:
                       - 406
                     default: 406
+                  type:
+                    type: string
+                    format: uri
+                    enum:
+                      - epcisException:ImplementationException
+              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+    415UnsupportedMediaType:
+      description: |
+        The client sent one or more EPCIS events in a format that is not supported by the server.
+      content:
+        application/problem+json:
+          schema:
+            example:
+              type: "epcisException:ImplementationException"
+              title: "Unsupported Media Type"
+              status: 415
+            allOf:
+              - properties:
+                  status:
+                    type: integer
+                    enum:
+                      - 415
+                    default: 415
                   type:
                     type: string
                     format: uri
