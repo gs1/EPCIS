@@ -1963,6 +1963,7 @@ paths:
                 "name": "myQuery"
               }]
               schema:
+                description: The query name.
                 type: array
                 items:
                   allOf:
@@ -1971,7 +1972,7 @@ paths:
                         - name
                       properties:
                         name:
-                          type: string
+                          $ref: '#/components/schemas/QueryName'
                     - $ref: '#/components/schemas/QueryDefinition'
                 uniqueItems: true
         '401':
@@ -2737,6 +2738,14 @@ paths:
         required: true
         content:
           application/json:
+            example:
+              { "query": {
+                "includeAttributes": true,
+                "EQ_name": "urn:epcglobal:epcis:vtype:ReadPoint",
+                "includeChildren": true
+              },
+                "queryType": "masterData"
+              }
             schema:
               type: object
               required:
@@ -2940,6 +2949,15 @@ paths:
         required: true
         content:
           application/json:
+            example:
+              { "query": {
+                "eventType": [ "ObjectEvent" ] ,
+                "EQ_bizStep": [
+                    "urn:epcglobal:cbv:bizstep:shipping",
+                    "urn:epcglobal:cbv:bizstep:receiving" ]
+              },
+                "queryType": "events"
+              }
             schema:
               type: object
               required:
@@ -3671,6 +3689,15 @@ components:
           format: uri
 
     QueryDefinition:
+      example:
+        { "query": {
+          "eventType": [ "ObjectEvent" ] ,
+          "EQ_bizStep": [
+              "urn:epcglobal:cbv:bizstep:shipping",
+              "urn:epcglobal:cbv:bizstep:receiving" ]
+        },
+          "queryType": "events"
+        }
       description: |
         Creating a new query with query type and query body. The query body can either be for EPCIS events or
         EPCIS master data.
@@ -3686,15 +3713,6 @@ components:
             - masterData
           example: events
         query:
-          example:
-            { "query": {
-              "eventType": ["ObjectEvent"] ,
-              "EQ_bizStep": [
-                  "urn:epcglobal:cbv:bizstep:shipping",
-                  "urn:epcglobal:cbv:bizstep:receiving" ]
-              },
-              "queryType": "events"
-            }
           oneOf:
             - $ref: '#/components/schemas/EPCISEventsQuery'
             - $ref: '#/components/schemas/EPCISMasterDataQuery'
