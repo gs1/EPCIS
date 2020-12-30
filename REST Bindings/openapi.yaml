@@ -2557,7 +2557,6 @@ paths:
       tags:
         - 'Queries'
         - 'Events'
-        - 'Master Data'
       summary: |
         Returns EPCIS events with the option to use pagination if needed. This endpoint supports query subscriptions
         using WebSockets.
