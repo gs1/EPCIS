@@ -8,7 +8,7 @@ info:
 tags:
   - name: 'Discovery'
     description: |
-      Endpoints to obtain information about the endpoint, such as EPCIS and CBV versions or custom vocabularies..
+      Endpoints to obtain information about the endpoint, such as EPCIS and CBV versions or custom vocabularies.
   - name: 'Capture'
     description: |
       Endpoints to capture EPCIS events in bulk or individually.
@@ -76,6 +76,15 @@ paths:
               $ref: '#/components/headers/GS1-Next-Page-Token-Expires'
             GS1-Query-Min-Record-Time:
               $ref: '#/components/headers/GS1-Query-Min-Record-Time'
+            GS1-Capture-Error-Behaviour:
+              schema:
+                default: 'rollback'
+                example: 'rollback'
+                oneOf:
+                  - type: string
+                    enum:
+                      - 'rollback | proceed'
+                  - $ref: '#/components/schemas/GS1-Capture-Error-Behaviour'
 
   /capture:
     options:
@@ -83,9 +92,13 @@ paths:
         - 'Discovery'
       summary: Discover the settings of the capture interface.
       description: |
-        The `OPTIONS` method is used as a discovery service for `/capture`. It describes which EPCIS and CBV versions
-        are supported, EPCIS and CBV extensions, the payload size as a EPCIS events count (`GS1-EPCIS-Capture-Limit` header)
-        or maximum payload size in bytes (`GS1-EPCIS-Capture-File-Size-Limit` header).
+        The `OPTIONS` method is used as a discovery service for `/capture`. It describes
+
+        - which EPCIS and CBV versions are supported,
+        - the EPCIS and CBV extensions,
+        - the payload size as a EPCIS events count (`GS1-EPCIS-Capture-Limit` header) or maximum payload size in bytes (`GS1-EPCIS-Capture-File-Size-Limit` header)
+        - what to dowhat the server will do if an error occurred during capture (`GS1-Capture-Error-Behaviour` header).
+
         The list of headers is not exhaustive. It only describes the functionality specific to EPCIS 2.0.
       responses:
         '204':
@@ -115,10 +128,20 @@ paths:
               $ref: '#/components/headers/GS1-EPCIS-Capture-Limit'
             GS1-EPCIS-Capture-File-Size-Limit:
               $ref: '#/components/headers/GS1-EPCIS-Capture-File-Size-Limit'
+            GS1-Capture-Error-Behaviour:
+              schema:
+                default: 'rollback'
+                example: 'rollback'
+                oneOf:
+                  - type: string
+                    enum:
+                      - 'rollback | proceed'
+                  - $ref: '#/components/schemas/GS1-Capture-Error-Behaviour'
+
     post:
       tags:
         - 'Capture'
-      summary: Stores one or more EPCIS events. The server either accepts or rejects all events.
+      summary: Asynchronous capture interface for one or more EPCIS events.
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-Version'
         - $ref: '#/components/parameters/GS1-EPCIS-Min'
@@ -126,17 +149,25 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-Version'
         - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
         - $ref: '#/components/parameters/GS1-CBV-Extensions'
-      description: |
-        EPCIS events are added in bulk using the capture interface. To remain compatible with EPCIS 1.2, EPCIS 2.0 makes
-        event ids optional. If event ids are missing, the server should populate the event id with a unique value.
-        Otherwise it won't be possible to retrieve these events.
+        - name: GS1-Capture-Error-Behaviour
+          in: header
+          required: false
+          schema:
+            $ref: '#/components/schemas/GS1-Capture-Error-Behaviour'
 
-        To prevent timeouts for large payloads, the client
-        potentially has to split the payload into several capture calls. To that end, the server specified a capture
-        limit (number of events) and file size limit (payload size).
+      description: |
+        EPCIS events are added in bulk using the capture interface. Two design considerations were made to remain compatible with EPCIS 1.2:
+
+        - EPCIS 2.0 makes event IDs optional. If event IDs are missing, the server should populate the event id with a unique value.
+        Otherwise, it won't be possible to retrieve these events.
+        - By default, EPCIS events are only stored if the entire capture job was successful. This behaviour can be changed with the `GS1-Capture-Error-Behaviour` header.
+
+        To prevent timeouts for large payloads, the client potentially has to split the payload into several capture calls. To that end, the server specified a capture
+        limit (number of EPCIS events) and file size limit (payload size).
 
         A successful capturing of events does not guarantee that events will be stored. Instead, the server returns a
         capture id, which the client can use to obtain information about the capture job.
+
       requestBody:
         required: true
         content:
@@ -146,16 +177,38 @@ paths:
       responses:
         '202':
           description: |
-            Successfully captured one or more EPCIS events. The request returns a unique
+            Successfully received one or more EPCIS events. The request returns a unique
             capture job URL in the Location header.
           headers:
+            GS1-EPCIS-Version:
+              $ref: '#/components/headers/GS1-EPCIS-Version'
+            GS1-EPCIS-Min:
+              $ref: '#/components/headers/GS1-EPCIS-Min'
+            GS1-EPCIS-Max:
+              $ref: '#/components/headers/GS1-EPCIS-Max'
+            GS1-CBV-Version:
+              $ref: '#/components/headers/GS1-CBV-Version'
+            GS1-EPCIS-Extensions:
+              $ref: '#/components/headers/GS1-EPCIS-Extensions'
+            GS1-Vendor-Version:
+              $ref: '#/components/headers/GS1-Vendor-Version'
+            GS1-CBV-Extensions:
+              $ref: '#/components/headers/GS1-CBV-Extensions'
+            GS1-EPCIS-Capture-Limit:
+              $ref: '#/components/headers/GS1-EPCIS-Capture-Limit'
+            GS1-EPCIS-Capture-File-Size-Limit:
+              $ref: '#/components/headers/GS1-EPCIS-Capture-File-Size-Limit'
+            GS1-Capture-Error-Behaviour:
+              $ref: '#/components/headers/GS1-Capture-Error-Behaviour'
             Location:
               example: "https://example.com/capture/id9261379075"
               schema:
                 $ref: '#/components/schemas/Location'
 
         '400':
-          description: An error occurred while capturing EPCIS events. All events are rejected.
+          description: |
+            An error occurred while receiving EPCIS events. All events are rejected. This is not to be confused with
+            an error while capturing EPCIS events. To monitor the capture job, use the `/capture/{captureID}` endpoint.
           content:
             application/problem+json:
               schema:
@@ -178,6 +231,10 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '413':
           $ref: '#/components/responses/413CapturePayloadTooLarge'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
 
   /capture/{captureID}:
     parameters:
@@ -224,36 +281,82 @@ paths:
               $ref: '#/components/headers/GS1-EPCIS-Capture-Limit'
             GS1-EPCIS-Capture-File-Size-Limit:
               $ref: '#/components/headers/GS1-EPCIS-Capture-File-Size-Limit'
+            GS1-Capture-Error-Behaviour:
+              $ref: '#/components/headers/GS1-Capture-Error-Behaviour'
     get:
       tags:
         - 'Capture'
-      summary: Returns information about a specific capture job.
+      summary: Returns information about the capture job.
 
       description: |
-        This endpoint provides information about a capture job. Each time events are captured, the server generates
-        a unique capture id.
+
+        When EPCIS events are added through the capture interface, the capture process can run asynchronously. If the payload
+        is syntactically correct and the client is allowed to call `/capture`, the server returns a `202`. This
+        does not guarantee successful storage of all EPCIS events. The capture job endpoint exposes the state
+        of the capture job to the client.
+
+        A capture job document has at least the following properties:
+
+        - `running`: whether or not the capture job is still active
+        - `success`: whether or not at least one error occurred,
+        - `errors` or `errorFile`: with the errors if `success` is `false`.
+
+        ### GS1-Capture-Error-Behaviour header value is `rollback`
+
+        | Capture job `running` | Capture job `success` | Capture job outcome |
+        |:--------|:---------|:---------|
+        | `true` | `true` | Still capturing EPCIS events. No errors occurred so far. |
+        | `true` | `false` | At least one error occurred. Rollback is in progress. |
+        | `false` | `true` | All EPCIS events are captured. |
+        | `false` | `false` | All EPCIS events rejected. |
+
+        ### GS1-Capture-Error-Behaviour header value is `proceed`
+
+        | Capture job `running` | Capture job `success` | Capture job outcome |
+        |:--------|:---------|:---------|
+        | `true` | `true` | Still capturing EPCIS events. No errors occurred so far. |
+        | `true` | `false` | At least one error occurred but more EPCIS events are currently being captured. |
+        | `false` | `true` | All EPCIS events were captured without an error. |
+        | `false` | `false` | Some EPCIS events were captured but errors occurred. |
+
+        If `success` is `false`, check the `errors` or `errorFile` property for details.
       responses:
         '200':
+          headers:
+            GS1-EPCIS-Version:
+              $ref: '#/components/headers/GS1-EPCIS-Version'
+            GS1-EPCIS-Min:
+              $ref: '#/components/headers/GS1-EPCIS-Min'
+            GS1-EPCIS-Max:
+              $ref: '#/components/headers/GS1-EPCIS-Max'
+            GS1-CBV-Version:
+              $ref: '#/components/headers/GS1-CBV-Version'
+            GS1-EPCIS-Extensions:
+              $ref: '#/components/headers/GS1-EPCIS-Extensions'
+            GS1-Vendor-Version:
+              $ref: '#/components/headers/GS1-Vendor-Version'
+            GS1-CBV-Extensions:
+              $ref: '#/components/headers/GS1-CBV-Extensions'
+            GS1-EPCIS-Capture-Limit:
+              $ref: '#/components/headers/GS1-EPCIS-Capture-Limit'
+            GS1-EPCIS-Capture-File-Size-Limit:
+              $ref: '#/components/headers/GS1-EPCIS-Capture-File-Size-Limit'
+            GS1-Capture-Error-Behaviour:
+              $ref: '#/components/headers/GS1-Capture-Error-Behaviour'
           description: |
-            If the job was successful, a list of absolute, endpoint-specific URLs of all events, in the sequence
-            in which they were submitted by the client.
+            Returns the state of the capture job.
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: string
-                  format: uri
-                  example:
-                    - /eventTypes/ObjectEvent/events/oa123
-                    - /eventTypes/ObjectEvent/events/oa345
-                uniqueItems: true
+                $ref: '#/components/schemas/CaptureJob'
         '401':
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -290,6 +393,8 @@ paths:
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -327,6 +432,8 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '414':
           $ref: '#/components/responses/414URLTooLong'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -410,6 +517,8 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '414':
           $ref: '#/components/responses/414URLTooLong'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -417,7 +526,7 @@ paths:
       tags:
         - 'Capture'
         - 'Events'
-      summary: Creates an individual EPCIS event.
+      summary: Synchronous capture interface for a single EPCIS event.
       description: |
         An individual EPCIS event can be created by making a `POST` request to the EPCIS event type of
         the EPCIS event that is being captured. If the client does not wish to specify the EPCIS event type,
@@ -469,6 +578,10 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '413':
           $ref: '#/components/responses/413CapturePayloadTooLarge'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
 
   /eventTypes/{eventType}/events/{eventID}:
     parameters:
@@ -533,6 +646,8 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -604,6 +719,8 @@ paths:
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -667,6 +784,8 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '414':
           $ref: '#/components/responses/414URLTooLong'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -722,6 +841,8 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '414':
           $ref: '#/components/responses/414URLTooLong'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -762,6 +883,8 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -832,6 +955,8 @@ paths:
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -894,6 +1019,8 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '414':
           $ref: '#/components/responses/414URLTooLong'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -946,6 +1073,8 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '414':
           $ref: '#/components/responses/414URLTooLong'
 
@@ -989,6 +1118,8 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -1058,6 +1189,8 @@ paths:
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -1120,6 +1253,8 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '414':
           $ref: '#/components/responses/414URLTooLong'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -1177,7 +1312,8 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '414':
           $ref: '#/components/responses/414URLTooLong'
-
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -1218,6 +1354,8 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -1287,6 +1425,8 @@ paths:
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -1349,6 +1489,8 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '414':
           $ref: '#/components/responses/414URLTooLong'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -1404,7 +1546,8 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '414':
           $ref: '#/components/responses/414URLTooLong'
-
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -1445,6 +1588,8 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -1514,6 +1659,8 @@ paths:
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -1576,6 +1723,8 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '414':
           $ref: '#/components/responses/414URLTooLong'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -1631,7 +1780,8 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '414':
           $ref: '#/components/responses/414URLTooLong'
-
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -1672,6 +1822,8 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -1717,7 +1869,7 @@ paths:
                       "urn:epcglobal:cbv:bizstep:shipping",
                       "urn:epcglobal:cbv:bizstep:receiving"
                   ],
-                  "eventTypes": "ObjectEvent"
+                  "eventType": ["ObjectEvent"]
                 },
                 "queryType": "events",
                 "name": "myQuery"
@@ -1738,6 +1890,8 @@ paths:
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -1775,7 +1929,7 @@ paths:
                       "urn:epcglobal:cbv:bizstep:shipping",
                       "urn:epcglobal:cbv:bizstep:receiving"
                   ],
-                  "eventTypes": "ObjectEvent"
+                  "eventType": ["ObjectEvent"]
                 },
                 "queryType": "events",
                 "name": "myQuery"
@@ -1799,6 +1953,8 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '413':
           $ref: '#/components/responses/413QueryScopeOrSize'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
     post:
@@ -1872,6 +2028,8 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
     options:
@@ -1921,6 +2079,8 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -1936,7 +2096,7 @@ paths:
       responses:
         '204':
           description: |
-            The `OPTIONS` method returns information describing the `subscriptions` endpoint.
+            The `OPTIONS` method returns information describing the  `subscriptions`  endpoint.
             The list of headers is not exhaustive. It only describes the functionality specific to EPCIS 2.0.
           headers:
             Allow:
@@ -2032,6 +2192,8 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
     post:
@@ -2131,6 +2293,8 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -2257,6 +2421,8 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
     delete:
@@ -2274,6 +2440,8 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -2317,7 +2485,7 @@ paths:
       description: |
         The `GET` endpoint  is to retrieve results of a named query.
         Furthermore, this endpoint can also be used to subscribe to queries using Websocket. To do this, the client
-        must specify the query schedule or set the `stream` parameter to `true`as URL query string parameter. Please
+        must specify the query schedule or set the `stream` parameter to `true` as a URL query string parameter. Please
         note that scheduling parameters and the `stream` parameter are mutually exclusive.
 
         ## Scheduled query: Receive query results at 1.05am
@@ -2372,6 +2540,8 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '413':
           $ref: '#/components/responses/413QueryScopeOrSize'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -2436,6 +2606,8 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '413':
           $ref: '#/components/responses/413QueryScopeOrSize'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -2528,6 +2700,8 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '413':
           $ref: '#/components/responses/413QueryScopeOrSize'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -2554,6 +2728,8 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '413':
           $ref: '#/components/responses/413QueryScopeOrSize'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
     options:
@@ -2677,6 +2853,8 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '413':
           $ref: '#/components/responses/413QueryScopeOrSize'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -2737,6 +2915,8 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '413':
           $ref: '#/components/responses/413QueryScopeOrSize'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -3180,6 +3360,28 @@ components:
                     enum:
                       - epcisException:URITooLongException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+    415UnsupportedMediaType:
+      description: The client requests a media type that the server does not support.
+      content:
+        application/problem+json:
+          schema:
+            example:
+              type: "epcisException:ImplementationException"
+              title: "Unsupported Media Type"
+              status: 415
+            allOf:
+              - properties:
+                  status:
+                    type: integer
+                    enum:
+                      - 415
+                    default: 415
+                  type:
+                    type: string
+                    format: uri
+                    enum:
+                      - epcisException:ImplementationException
+              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
     500ImplementationException:
       description: An error occurred on the backend.
       content:
@@ -3268,7 +3470,7 @@ components:
         query:
           example:
             { "query": {
-              "eventTypes": "ObjectEvent" ,
+              "eventType": ["ObjectEvent"] ,
               "EQ_bizStep": [
                   "urn:epcglobal:cbv:bizstep:shipping",
                   "urn:epcglobal:cbv:bizstep:receiving" ]
@@ -3284,7 +3486,7 @@ components:
       description: An EPCIS event query.
       example:
         {
-          "eventTypes": "ObjectEvent" ,
+          "eventType": ["ObjectEvent"],
           "EQ_bizStep": [
               "urn:epcglobal:cbv:bizstep:shipping",
               "urn:epcglobal:cbv:bizstep:receiving" ]
@@ -3551,6 +3753,70 @@ components:
           An EPCIS document that must be validated with the [JSON schema](../JSON/EPCIS-JSON-Schema.json) or
           [SHACL file](../JSON/EPCIS-SHACL.ttl).
         url: ../JSON/EPCIS-SHACL.ttl
+    CaptureJob:
+      description: |
+        When EPCIS events are added through the capture interface, the capture process can run asynchronously. If the payload
+        is syntactically correct and the client is allowed to call `/capture`, the server returns a `202`. This
+        does not guarantee successful storage of all EPCIS events. The capture job endpoint exposes the state
+        of the capture job to the client.
+
+        A capture job document has at least the following properties:
+
+        - `running`: whether or not the capture job is still active
+        - `success`: whether or not at least one error occurred,
+        - `errors` or `errorFile`: with the errors if `success` is `false`.
+
+      example: {
+        "captureId": "id9261379075",
+        "createdAt": "2021-08-21T17:32:28Z",
+        "running": true,
+        "success": true,
+        "errors": [ ]
+      }
+      type: object
+      allOf:
+        - properties:
+            captureID:
+              example: id9261379075
+              description: A unique value identifying a capture job generated by the server.
+              type: string
+            running:
+              description: |
+                If the job is still running, the state is `true`, otherwise `false`.
+              type: boolean
+              example: true
+            success:
+              description: |
+                If `success` is `false`, there was at least one error. Otherwise, `success` is `true`.
+                If the `GS1-Capture-Error-Behaviour` header is `rollback`, `success` being `false` aboards the capture
+                job and rejects all EPCIS events related to the job.
+                If `GS1-Capture-Error-Behaviour` header is `proceed`, some EPCIS events might still be captured, even
+                if `success` is `false`.
+              type: boolean
+              example: false
+            createdAt:
+              description: "When the capture job started"
+              example: "2021-08-21T17:32:28Z"
+              type: string
+              format: date-time
+        - oneOf:
+            - properties:
+                errors:
+                  description: |
+                    If the job was successful, the array is empty.
+                  default: []
+                  example: []
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+            - properties:
+                errorFile:
+                  description: |
+                    Instead of returning errors in the `errors` property, the server can also write errors to a logfile,
+                    and shere the URL with the client.
+                  example: ''
+                  type: string
+                  format: uri
     EPCISQueryDocument:
       description: A collection of EPCIS resources.
       type: object
@@ -3840,7 +4106,7 @@ components:
       format: date-time
       example: "2020-04-04T20:33:31.116-06:00"
     GS1-Query-Min-Record-Time:
-      example: 2020-04-04T20:33:31.116-06:00
+      example: "2020-04-04T20:33:31.116-06:00"
       description: |
         An optional header to specify the smallest possible record time for EPCIS events in a
         query subscription.
@@ -3948,6 +4214,22 @@ components:
       description: The maximum event document length in octets (8-bit bytes).
       type: string
       pattern: ^(\d+|\*)$
+    GS1-Capture-Error-Behaviour:
+      description: |
+        A header to control how the capture interface will behave in case of an error:
+
+        - `rollback`: "All or nothing". Either the capture job is entirely successful or all EPCIS events are rejected.
+        - `proceed`: "Greedy capture". The capture interface tries to capture as many EPCIS events as possible, even if there are errors.
+
+        The default behaviour is `rollback`, as in EPCIS 1.2.
+
+
+      example: 'rollback'
+      type: string
+      default: 'rollback'
+      enum:
+        - 'rollback'
+        - 'proceed'
     GS1-Next-Page-Token-Expires:
       example: '2017-07-21T17:32:28Z'
       description: The expiry time for nextPageToken. This header is optional.
@@ -4170,10 +4452,14 @@ components:
       schema:
         $ref: '#/components/schemas/GS1-EPCIS-Capture-Limit'
     GS1-Query-Min-Record-Time:
-      $ref: '#/components/schemas/GS1-Query-Min-Record-Time'
+      schema:
+        $ref: '#/components/schemas/GS1-Query-Min-Record-Time'
     GS1-EPCIS-Capture-File-Size-Limit:
       schema:
         $ref: '#/components/schemas/GS1-EPCIS-Capture-File-Size-Limit'
+    GS1-Capture-Error-Behaviour:
+      schema:
+        $ref: '#/components/schemas/GS1-Capture-Error-Behaviour'
     GS1-Next-Page-Token-Expires:
       schema:
         $ref: '#/components/schemas/GS1-Next-Page-Token-Expires'
