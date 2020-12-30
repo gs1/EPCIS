@@ -97,7 +97,7 @@ paths:
         - which EPCIS and CBV versions are supported,
         - the EPCIS and CBV extensions,
         - the payload size as a EPCIS events count (`GS1-EPCIS-Capture-Limit` header) or maximum payload size in bytes (`GS1-EPCIS-Capture-File-Size-Limit` header)
-        - what to do if an error occurred during capture (`GS1-Capture-Error-Behaviour` header).
+        - what to dowhat the server will do if an error occurred during capture (`GS1-Capture-Error-Behaviour` header).
 
         The list of headers is not exhaustive. It only describes the functionality specific to EPCIS 2.0.
       responses:
@@ -158,7 +158,7 @@ paths:
       description: |
         EPCIS events are added in bulk using the capture interface. Two design considerations were made to remain compatible with EPCIS 1.2:
 
-        - EPCIS 2.0 makes event ids optional. If event ids are missing, the server should populate the event id with a unique value.
+        - EPCIS 2.0 makes event IDs optional. If event IDs are missing, the server should populate the event id with a unique value.
         Otherwise, it won't be possible to retrieve these events.
         - By default, EPCIS events are only stored if the entire capture job was successful. This behaviour can be changed with the `GS1-Capture-Error-Behaviour` header.
 
@@ -290,7 +290,7 @@ paths:
 
       description: |
 
-        When EPCIS events are added through the capture interface, the capture process runs asynchronously. If the payload
+        When EPCIS events are added through the capture interface, the capture process can run asynchronously. If the payload
         is syntactically correct and the client is allowed to call `/capture`, the server returns a `202`. This
         does not guarantee successful storage of all EPCIS events. The capture job endpoint exposes the state
         of the capture job to the client.
@@ -3755,7 +3755,7 @@ components:
         url: ../JSON/EPCIS-SHACL.ttl
     CaptureJob:
       description: |
-        When EPCIS events are added through the capture interface, the capture process runs asynchronously. If the payload
+        When EPCIS events are added through the capture interface, the capture process can run asynchronously. If the payload
         is syntactically correct and the client is allowed to call `/capture`, the server returns a `202`. This
         does not guarantee successful storage of all EPCIS events. The capture job endpoint exposes the state
         of the capture job to the client.
