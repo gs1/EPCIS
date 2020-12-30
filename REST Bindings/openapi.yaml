@@ -432,8 +432,6 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
-        '414':
-          $ref: '#/components/responses/414URLTooLong'
         '406':
           $ref: '#/components/responses/406NotAcceptable'
         '500':
@@ -786,8 +784,6 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
-        '414':
-          $ref: '#/components/responses/414URLTooLong'
         '406':
           $ref: '#/components/responses/406NotAcceptable'
         '500':
@@ -1021,8 +1017,6 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
-        '414':
-          $ref: '#/components/responses/414URLTooLong'
         '406':
           $ref: '#/components/responses/406NotAcceptable'
         '500':
@@ -1255,8 +1249,6 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
-        '414':
-          $ref: '#/components/responses/414URLTooLong'
         '406':
           $ref: '#/components/responses/406NotAcceptable'
         '500':
@@ -1491,8 +1483,6 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
-        '414':
-          $ref: '#/components/responses/414URLTooLong'
         '406':
           $ref: '#/components/responses/406NotAcceptable'
         '500':
@@ -2715,7 +2705,31 @@ paths:
           $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
-
+    get:
+      tags:
+        - 'Queries'
+        - 'Master Data'
+      summary: Returns the sub-resource `masterData`.
+      parameters:
+        - $ref: '#/components/parameters/PerPage'
+        - $ref: '#/components/parameters/NextPageToken'
+      description: |
+        This endpoint returns `masterData`, to be fully HATEOAS compliant.
+      responses:
+        '200':
+          $ref: '#/components/responses/200TopLevelOrEventTypeSubResource'
+        '400':
+          $ref: '#/components/responses/400QueryIssues'
+        '401':
+          $ref: '#/components/responses/401UnauthorizedRequest'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '404':
+          $ref: '#/components/responses/404ResourceNotFound'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
   /queries/SimpleMasterDataQuery/masterData:
     get:
       tags:
@@ -2870,7 +2884,31 @@ paths:
           $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
-
+    get:
+      tags:
+        - 'Queries'
+        - 'Events'
+      summary: Returns the sub-resource `events`.
+      parameters:
+        - $ref: '#/components/parameters/PerPage'
+        - $ref: '#/components/parameters/NextPageToken'
+      description: |
+        This endpoint returns `events`, to be fully HATEOAS compliant.
+      responses:
+        '200':
+          $ref: '#/components/responses/200TopLevelOrEventTypeSubResource'
+        '400':
+          $ref: '#/components/responses/400QueryIssues'
+        '401':
+          $ref: '#/components/responses/401UnauthorizedRequest'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '404':
+          $ref: '#/components/responses/404ResourceNotFound'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
   /queries/SimpleEventQuery/events:
     options:
       tags:
