@@ -3889,7 +3889,7 @@ components:
           "epcisBody": {
             "event":
               {
-                "id": "_:event1",
+                "eventID": "_:event1",
                 "isA": "ObjectEvent",
                 "action": "OBSERVE",
                 "bizStep": "urn:epcglobal:cbv:bizstep:shipping",
@@ -3951,7 +3951,7 @@ components:
           "epcisBody": {
             "eventList": [
               {
-                "id": "_:event1",
+                "eventID": "_:event1",
                 "isA": "ObjectEvent",
                 "action": "OBSERVE",
                 "bizStep": "urn:epcglobal:cbv:bizstep:shipping",
@@ -3964,7 +3964,7 @@ components:
                   { "type": "urn:epcglobal:cbv:btt:po", "bizTransaction": "http://transaction.acme.com/po/12345678" } ]
               },
               {
-                "id": "_:event2",
+                "eventID": "_:event2",
                 "isA": "ObjectEvent",
                 "action": "OBSERVE",
                 "bizStep": "urn:epcglobal:cbv:bizstep:receiving",
@@ -4125,7 +4125,7 @@ components:
               "resultsBody": {
                 "eventList": [
                   {
-                    "id": "_:event1",
+                    "eventID": "_:event1",
                     "isA": "ObjectEvent",
                     "action": "OBSERVE",
                     "bizStep": "urn:epcglobal:cbv:bizstep:shipping",
@@ -4147,7 +4147,7 @@ components:
                     ]
                   },
                   {
-                    "id": "_:event2",
+                    "eventID": "_:event2",
                     "isA": "ObjectEvent",
                     "action": "OBSERVE",
                     "bizStep": "urn:epcglobal:cbv:bizstep:receiving",
