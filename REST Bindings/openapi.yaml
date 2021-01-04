@@ -107,9 +107,9 @@ paths:
           headers:
             Allow:
               schema:
-                example: OPTIONS, POST
+                example: OPTIONS, POST, GET
                 type: string
-                default: OPTIONS, POST
+                default: OPTIONS, POST, GET
             GS1-EPCIS-Version:
               $ref: '#/components/headers/GS1-EPCIS-Version'
             GS1-EPCIS-Min:
@@ -231,11 +231,81 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '413':
           $ref: '#/components/responses/413CapturePayloadTooLarge'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
         '415':
           $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
-
+    get:
+      tags:
+        - 'Capture'
+      parameters:
+        - $ref: '#/components/parameters/NextPageToken'
+        - $ref: '#/components/parameters/PerPage'
+      summary: Returns a list of capture jobs.
+      description: |
+        An endpoint to list capture jobs.
+        This endpoint supports pagination.
+      responses:
+        '200':
+          headers:
+            GS1-EPCIS-Version:
+              $ref: '#/components/headers/GS1-EPCIS-Version'
+            GS1-EPCIS-Min:
+              $ref: '#/components/headers/GS1-EPCIS-Min'
+            GS1-EPCIS-Max:
+              $ref: '#/components/headers/GS1-EPCIS-Max'
+            GS1-CBV-Version:
+              $ref: '#/components/headers/GS1-CBV-Version'
+            GS1-EPCIS-Extensions:
+              $ref: '#/components/headers/GS1-EPCIS-Extensions'
+            GS1-CBV-Extensions:
+              $ref: '#/components/headers/GS1-CBV-Extensions'
+            Link:
+              description: |
+                A pagination header link. This header works together with the `perPage` and `nextPageToken` query string
+                parameters.
+                As long as there are more resources to retrieve, the `Link` header contains the URL of the next page and
+                the attribute `rel="next"`. The last page is indicated by the absence of the `rel="next"`.
+              schema:
+                $ref: '#/components/schemas/Link'
+            GS1-Next-Page-Token-Expires:
+              $ref: '#/components/headers/GS1-Next-Page-Token-Expires'
+          description: |
+            When EPCIS events are added through the capture interface, the capture process can run asynchronously.
+            A capture job resource exposes the state of the capture job to the client. This endpoint returns all
+            capture jobs that were created.
+          content:
+            application/json:
+              example: [
+                {
+                  "captureId": "id261378658356",
+                  "createdAt": "2021-07-21T17:32:28Z",
+                  "running": false,
+                  "success": true,
+                  "errors": [ ]
+                },
+                {
+                  "captureId": "id9261379075",
+                  "createdAt": "2021-08-21T17:32:28Z",
+                  "running": true,
+                  "success": true,
+                  "errors": [ ]
+                }]
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CaptureJob'
+                uniqueItems: true
+        '401':
+          $ref: '#/components/responses/401UnauthorizedRequest'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
   /capture/{captureID}:
     parameters:
       - in: path
@@ -308,7 +378,7 @@ paths:
         | `true` | `true` | Still capturing EPCIS events. No errors occurred so far. |
         | `true` | `false` | At least one error occurred. Rollback is in progress. |
         | `false` | `true` | All EPCIS events are captured. |
-        | `false` | `false` | All EPCIS events rejected. |
+        | `false` | `false` | All EPCIS events are rejected. |
 
         ### GS1-Capture-Error-Behaviour header value is `proceed`
 
@@ -355,8 +425,8 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
-        '415':
-          $ref: '#/components/responses/415UnsupportedMediaType'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -393,8 +463,8 @@ paths:
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
-        '415':
-          $ref: '#/components/responses/415UnsupportedMediaType'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -430,10 +500,8 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
-        '414':
-          $ref: '#/components/responses/414URLTooLong'
-        '415':
-          $ref: '#/components/responses/415UnsupportedMediaType'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -517,8 +585,8 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '414':
           $ref: '#/components/responses/414URLTooLong'
-        '415':
-          $ref: '#/components/responses/415UnsupportedMediaType'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -578,6 +646,8 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '413':
           $ref: '#/components/responses/413CapturePayloadTooLarge'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
         '415':
           $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
@@ -646,8 +716,8 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
-        '415':
-          $ref: '#/components/responses/415UnsupportedMediaType'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -719,8 +789,8 @@ paths:
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
-        '415':
-          $ref: '#/components/responses/415UnsupportedMediaType'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -782,10 +852,8 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
-        '414':
-          $ref: '#/components/responses/414URLTooLong'
-        '415':
-          $ref: '#/components/responses/415UnsupportedMediaType'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -841,8 +909,8 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '414':
           $ref: '#/components/responses/414URLTooLong'
-        '415':
-          $ref: '#/components/responses/415UnsupportedMediaType'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -883,8 +951,8 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
-        '415':
-          $ref: '#/components/responses/415UnsupportedMediaType'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -955,8 +1023,8 @@ paths:
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
-        '415':
-          $ref: '#/components/responses/415UnsupportedMediaType'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -1017,10 +1085,8 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
-        '414':
-          $ref: '#/components/responses/414URLTooLong'
-        '415':
-          $ref: '#/components/responses/415UnsupportedMediaType'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -1073,8 +1139,8 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
-        '415':
-          $ref: '#/components/responses/415UnsupportedMediaType'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
         '414':
           $ref: '#/components/responses/414URLTooLong'
 
@@ -1118,8 +1184,8 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
-        '415':
-          $ref: '#/components/responses/415UnsupportedMediaType'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -1189,8 +1255,8 @@ paths:
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
-        '415':
-          $ref: '#/components/responses/415UnsupportedMediaType'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -1251,10 +1317,8 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
-        '414':
-          $ref: '#/components/responses/414URLTooLong'
-        '415':
-          $ref: '#/components/responses/415UnsupportedMediaType'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -1312,8 +1376,8 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '414':
           $ref: '#/components/responses/414URLTooLong'
-        '415':
-          $ref: '#/components/responses/415UnsupportedMediaType'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -1354,8 +1418,8 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
-        '415':
-          $ref: '#/components/responses/415UnsupportedMediaType'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -1425,8 +1489,8 @@ paths:
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
-        '415':
-          $ref: '#/components/responses/415UnsupportedMediaType'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -1487,10 +1551,8 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
-        '414':
-          $ref: '#/components/responses/414URLTooLong'
-        '415':
-          $ref: '#/components/responses/415UnsupportedMediaType'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -1546,8 +1608,8 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '414':
           $ref: '#/components/responses/414URLTooLong'
-        '415':
-          $ref: '#/components/responses/415UnsupportedMediaType'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -1588,8 +1650,8 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
-        '415':
-          $ref: '#/components/responses/415UnsupportedMediaType'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -1659,8 +1721,8 @@ paths:
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
-        '415':
-          $ref: '#/components/responses/415UnsupportedMediaType'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -1723,8 +1785,8 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '414':
           $ref: '#/components/responses/414URLTooLong'
-        '415':
-          $ref: '#/components/responses/415UnsupportedMediaType'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -1780,8 +1842,8 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '414':
           $ref: '#/components/responses/414URLTooLong'
-        '415':
-          $ref: '#/components/responses/415UnsupportedMediaType'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -1822,8 +1884,8 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
-        '415':
-          $ref: '#/components/responses/415UnsupportedMediaType'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -1851,12 +1913,38 @@ paths:
     get:
       tags:
         - 'Queries'
+      parameters:
+        - $ref: '#/components/parameters/NextPageToken'
+        - $ref: '#/components/parameters/PerPage'
       summary: Returns a list of queries available.
       description: |
         An endpoint to list named queries.
         This endpoint supports pagination.
       responses:
         '200':
+          headers:
+            GS1-EPCIS-Version:
+              $ref: '#/components/headers/GS1-EPCIS-Version'
+            GS1-EPCIS-Min:
+              $ref: '#/components/headers/GS1-EPCIS-Min'
+            GS1-EPCIS-Max:
+              $ref: '#/components/headers/GS1-EPCIS-Max'
+            GS1-CBV-Version:
+              $ref: '#/components/headers/GS1-CBV-Version'
+            GS1-EPCIS-Extensions:
+              $ref: '#/components/headers/GS1-EPCIS-Extensions'
+            GS1-CBV-Extensions:
+              $ref: '#/components/headers/GS1-CBV-Extensions'
+            Link:
+              description: |
+                A pagination header link. This header works together with the `perPage` and `nextPageToken` query string
+                parameters.
+                As long as there are more resources to retrieve, the `Link` header contains the URL of the next page and
+                the attribute `rel="next"`. The last page is indicated by the absence of the `rel="next"`.
+              schema:
+                $ref: '#/components/schemas/Link'
+            GS1-Next-Page-Token-Expires:
+              $ref: '#/components/headers/GS1-Next-Page-Token-Expires'
           description: |
             Queries are like views that are created using the EPCIS query language. Each query object
             consists of a query name and the query definition. Performing a `GET` on `/queries` lists all
@@ -1875,6 +1963,7 @@ paths:
                 "name": "myQuery"
               }]
               schema:
+                description: The query name.
                 type: array
                 items:
                   allOf:
@@ -1883,15 +1972,15 @@ paths:
                         - name
                       properties:
                         name:
-                          type: string
+                          $ref: '#/components/schemas/QueryName'
                     - $ref: '#/components/schemas/QueryDefinition'
                 uniqueItems: true
         '401':
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
-        '415':
-          $ref: '#/components/responses/415UnsupportedMediaType'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -1953,8 +2042,8 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '413':
           $ref: '#/components/responses/413QueryScopeOrSize'
-        '415':
-          $ref: '#/components/responses/415UnsupportedMediaType'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
         '500':
           $ref: '#/components/responses/500ImplementationException'
     post:
@@ -2028,6 +2117,8 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
         '415':
           $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
@@ -2079,8 +2170,8 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
-        '415':
-          $ref: '#/components/responses/415UnsupportedMediaType'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -2192,8 +2283,8 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
-        '415':
-          $ref: '#/components/responses/415UnsupportedMediaType'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
         '500':
           $ref: '#/components/responses/500ImplementationException'
     post:
@@ -2293,6 +2384,8 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
         '415':
           $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
@@ -2344,7 +2437,8 @@ paths:
                                 enum:
                                   - epcisException:QueryTooComplexException
                           - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-
+                '415':
+                  $ref: '#/components/responses/415UnsupportedMediaType'
   /queries/{queryName}/subscriptions/{subscriptionID}:
     parameters:
       - $ref: '#/components/parameters/QueryName'
@@ -2421,8 +2515,8 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
-        '415':
-          $ref: '#/components/responses/415UnsupportedMediaType'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
         '500':
           $ref: '#/components/responses/500ImplementationException'
     delete:
@@ -2440,8 +2534,8 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
-        '415':
-          $ref: '#/components/responses/415UnsupportedMediaType'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -2463,7 +2557,6 @@ paths:
       tags:
         - 'Queries'
         - 'Events'
-        - 'Master Data'
       summary: |
         Returns EPCIS events with the option to use pagination if needed. This endpoint supports query subscriptions
         using WebSockets.
@@ -2540,8 +2633,8 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '413':
           $ref: '#/components/responses/413QueryScopeOrSize'
-        '415':
-          $ref: '#/components/responses/415UnsupportedMediaType'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -2606,8 +2699,8 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '413':
           $ref: '#/components/responses/413QueryScopeOrSize'
-        '415':
-          $ref: '#/components/responses/415UnsupportedMediaType'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -2644,6 +2737,14 @@ paths:
         required: true
         content:
           application/json:
+            example:
+              { "query": {
+                "includeAttributes": true,
+                "EQ_name": "urn:epcglobal:epcis:vtype:ReadPoint",
+                "includeChildren": true
+              },
+                "queryType": "masterData"
+              }
             schema:
               type: object
               required:
@@ -2700,11 +2801,61 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '413':
           $ref: '#/components/responses/413QueryScopeOrSize'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
         '415':
           $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
+    get:
+      tags:
+        - 'Queries'
+        - 'Master Data'
+      summary: Returns the sub-resource `masterData`.
+      parameters:
+        - $ref: '#/components/parameters/PerPage'
+        - $ref: '#/components/parameters/NextPageToken'
+      description: |
+        This endpoint returns `masterData`, to be fully HATEOAS compliant.
+      responses:
+        '200':
+          headers:
+            GS1-EPCIS-Version:
+              $ref: '#/components/headers/GS1-EPCIS-Version'
+            GS1-EPCIS-Min:
+              $ref: '#/components/headers/GS1-EPCIS-Min'
+            GS1-EPCIS-Max:
+              $ref: '#/components/headers/GS1-EPCIS-Max'
+            GS1-CBV-Version:
+              $ref: '#/components/headers/GS1-CBV-Version'
+            GS1-EPCIS-Extensions:
+              $ref: '#/components/headers/GS1-EPCIS-Extensions'
+            GS1-CBV-Extensions:
+              $ref: '#/components/headers/GS1-CBV-Extensions'
 
+          description: Returns `masterData`.
+          content:
+            application/json:
+              example:
+                - masterData
+              schema:
+                type: array
+                items:
+                  format: string
+                  enum:
+                    - masterData
+        '400':
+          $ref: '#/components/responses/400QueryIssues'
+        '401':
+          $ref: '#/components/responses/401UnauthorizedRequest'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '404':
+          $ref: '#/components/responses/404ResourceNotFound'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
   /queries/SimpleMasterDataQuery/masterData:
     get:
       tags:
@@ -2713,6 +2864,7 @@ paths:
       summary: Returns the result of an EPCIS master data query.
       parameters:
         - $ref: '#/components/parameters/NextPageToken'
+        - $ref: '#/components/parameters/PerPage'
       description: |
         The `GET` endpoint is to retrieve EPCIS vocabulary elements.
       responses:
@@ -2728,8 +2880,8 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '413':
           $ref: '#/components/responses/413QueryScopeOrSize'
-        '415':
-          $ref: '#/components/responses/415UnsupportedMediaType'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
         '500':
           $ref: '#/components/responses/500ImplementationException'
     options:
@@ -2796,6 +2948,15 @@ paths:
         required: true
         content:
           application/json:
+            example:
+              { "query": {
+                "eventType": [ "ObjectEvent" ] ,
+                "EQ_bizStep": [
+                    "urn:epcglobal:cbv:bizstep:shipping",
+                    "urn:epcglobal:cbv:bizstep:receiving" ]
+              },
+                "queryType": "events"
+              }
             schema:
               type: object
               required:
@@ -2853,11 +3014,60 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '413':
           $ref: '#/components/responses/413QueryScopeOrSize'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
         '415':
           $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
           $ref: '#/components/responses/500ImplementationException'
-
+    get:
+      tags:
+        - 'Queries'
+        - 'Events'
+      summary: Returns the sub-resource `events`.
+      parameters:
+        - $ref: '#/components/parameters/PerPage'
+        - $ref: '#/components/parameters/NextPageToken'
+      description: |
+        This endpoint returns `events`, to be fully HATEOAS compliant.
+      responses:
+        '200':
+          headers:
+            GS1-EPCIS-Version:
+              $ref: '#/components/headers/GS1-EPCIS-Version'
+            GS1-EPCIS-Min:
+              $ref: '#/components/headers/GS1-EPCIS-Min'
+            GS1-EPCIS-Max:
+              $ref: '#/components/headers/GS1-EPCIS-Max'
+            GS1-CBV-Version:
+              $ref: '#/components/headers/GS1-CBV-Version'
+            GS1-EPCIS-Extensions:
+              $ref: '#/components/headers/GS1-EPCIS-Extensions'
+            GS1-CBV-Extensions:
+              $ref: '#/components/headers/GS1-CBV-Extensions'
+          description: Returns `events`.
+          content:
+            application/json:
+              example:
+                - events
+              schema:
+                type: array
+                items:
+                  format: string
+                  enum:
+                    - events
+        '400':
+          $ref: '#/components/responses/400QueryIssues'
+        '401':
+          $ref: '#/components/responses/401UnauthorizedRequest'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '404':
+          $ref: '#/components/responses/404ResourceNotFound'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
   /queries/SimpleEventQuery/events:
     options:
       tags:
@@ -2915,8 +3125,8 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '413':
           $ref: '#/components/responses/413QueryScopeOrSize'
-        '415':
-          $ref: '#/components/responses/415UnsupportedMediaType'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
@@ -2973,12 +3183,12 @@ components:
       description: Returns `events`.
       content:
         application/json:
+          example:
+            - events
           schema:
             type: array
             items:
               format: string
-              example:
-                - events
               enum:
                 - events
     200EPCISDocumentSingleEvent:
@@ -3128,9 +3338,9 @@ components:
       headers:
         Allow:
           schema:
-            example: OPTIONS, POST
+            example: OPTIONS, POST, GET
             type: string
-            default: OPTIONS, POST
+            default: OPTIONS, POST, GET
         GS1-EPCIS-Version:
           $ref: '#/components/headers/GS1-EPCIS-Version'
         GS1-EPCIS-Min:
@@ -3360,8 +3570,33 @@ components:
                     enum:
                       - epcisException:URITooLongException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+    406NotAcceptable:
+      description: |
+        The client cannot return the response as requested. For example, the client requested a HTML response
+        but the server does not suport this.
+      content:
+        application/problem+json:
+          schema:
+            example:
+              type: "epcisException:ImplementationException"
+              title: "Cannot reproduce response in a desired content type"
+              status: 406
+            allOf:
+              - properties:
+                  status:
+                    type: integer
+                    enum:
+                      - 406
+                    default: 406
+                  type:
+                    type: string
+                    format: uri
+                    enum:
+                      - epcisException:ImplementationException
+              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
     415UnsupportedMediaType:
-      description: The client requests a media type that the server does not support.
+      description: |
+        The client sent data in a format that is not supported by the server.
       content:
         application/problem+json:
           schema:
@@ -3453,6 +3688,15 @@ components:
           format: uri
 
     QueryDefinition:
+      example:
+        { "query": {
+          "eventType": [ "ObjectEvent" ] ,
+          "EQ_bizStep": [
+              "urn:epcglobal:cbv:bizstep:shipping",
+              "urn:epcglobal:cbv:bizstep:receiving" ]
+        },
+          "queryType": "events"
+        }
       description: |
         Creating a new query with query type and query body. The query body can either be for EPCIS events or
         EPCIS master data.
@@ -3468,15 +3712,6 @@ components:
             - masterData
           example: events
         query:
-          example:
-            { "query": {
-              "eventType": ["ObjectEvent"] ,
-              "EQ_bizStep": [
-                  "urn:epcglobal:cbv:bizstep:shipping",
-                  "urn:epcglobal:cbv:bizstep:receiving" ]
-              },
-              "queryType": "events"
-            }
           oneOf:
             - $ref: '#/components/schemas/EPCISEventsQuery'
             - $ref: '#/components/schemas/EPCISMasterDataQuery'
