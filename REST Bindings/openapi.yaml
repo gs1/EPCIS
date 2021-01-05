@@ -280,14 +280,14 @@ paths:
             application/json:
               example: [
                 {
-                  "captureId": "id261378658356",
+                  "captureID": "id261378658356",
                   "createdAt": "2021-07-21T17:32:28Z",
                   "running": false,
                   "success": true,
                   "errors": [ ]
                 },
                 {
-                  "captureId": "id9261379075",
+                  "captureID": "id9261379075",
                   "createdAt": "2021-08-21T17:32:28Z",
                   "running": true,
                   "success": true,
@@ -2239,7 +2239,7 @@ paths:
             application/json:
               example: [
                 {
-                  "subscriptionId": "df5a33e3-5aa3-4403-ae01-99b83234e27b",
+                  "subscriptionID": "df5a33e3-5aa3-4403-ae01-99b83234e27b",
                   "createdAt": "2017-08-21T17:32:28Z",
                   "schedule": {
                     "hour": "1",
@@ -2247,7 +2247,7 @@ paths:
                   }
                 },
                 {
-                  "subscriptionId": "df5a33e3-5aa3-5504-bf12-88c94345f38c",
+                  "subscriptionID": "df5a33e3-5aa3-5504-bf12-88c94345f38c",
                   "createdAt": "2017-07-21T17:32:28Z",
                   "stream": true
                 }
@@ -2258,15 +2258,15 @@ paths:
                   allOf:
                     - type: object
                       required:
-                        - subscriptionId
+                        - subscriptionID
                         - createdAt
                       properties:
                         minRecordTime:
                           $ref: '#/components/schemas/GS1-Query-Min-Record-Time'
                         initialRecordTime:
                           $ref: '#/components/schemas/GS1-Query-InitialRecordTime'
-                        subscriptionId:
-                          $ref: '#/components/schemas/SubscriptionID'
+                        subscriptionID:
+                          $ref: '#/components/schemas/subscriptionID'
                         createdAt:
                           example: "2017-08-21T17:32:28Z"
                           type: string
@@ -2365,7 +2365,7 @@ paths:
               example: 'https://www.example.com/queries/MyQuery/subscriptions/df5a33e3-5aa3-4403-ae01-99b83234e27b'
               description: |
                 The server creates a new subscription for each client and query subscription. The client needs that URL
-                to unsubscribe by deleting this resource. The `Location` URL must point to the `subscriptionId` returned
+                to unsubscribe by deleting this resource. The `Location` URL must point to the `subscriptionID` returned
                 in the response body.
               schema:
                 type: string
@@ -2376,8 +2376,8 @@ paths:
               schema:
                 type: object
                 properties:
-                  subscriptionId:
-                    $ref: '#/components/schemas/SubscriptionID'
+                  subscriptionID:
+                    $ref: '#/components/schemas/subscriptionID'
         '401':
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
@@ -2447,7 +2447,7 @@ paths:
         required: true
         example: df5a33e3-5aa3-4403-ae01-99b83234e27b
         schema:
-          $ref: '#/components/schemas/SubscriptionID'
+          $ref: '#/components/schemas/subscriptionID'
     options:
       tags:
         - 'Discovery'
@@ -3730,7 +3730,7 @@ components:
         url: query-schema.json
       items:
         type: object
-    SubscriptionID:
+    subscriptionID:
       description: The ID of a WebHook subscription.
       example: df5a33e3-5aa3-4403-ae01-99b83234e27b
       type: string
@@ -3889,7 +3889,7 @@ components:
           "epcisBody": {
             "event":
               {
-                "id": "_:event1",
+                "eventID": "_:event1",
                 "isA": "ObjectEvent",
                 "action": "OBSERVE",
                 "bizStep": "urn:epcglobal:cbv:bizstep:shipping",
@@ -3951,7 +3951,7 @@ components:
           "epcisBody": {
             "eventList": [
               {
-                "id": "_:event1",
+                "eventID": "_:event1",
                 "isA": "ObjectEvent",
                 "action": "OBSERVE",
                 "bizStep": "urn:epcglobal:cbv:bizstep:shipping",
@@ -3964,7 +3964,7 @@ components:
                   { "type": "urn:epcglobal:cbv:btt:po", "bizTransaction": "http://transaction.acme.com/po/12345678" } ]
               },
               {
-                "id": "_:event2",
+                "eventID": "_:event2",
                 "isA": "ObjectEvent",
                 "action": "OBSERVE",
                 "bizStep": "urn:epcglobal:cbv:bizstep:receiving",
@@ -4002,7 +4002,7 @@ components:
         - `errors` or `errorFile`: with the errors if `success` is `false`.
 
       example: {
-        "captureId": "id9261379075",
+        "captureID": "id9261379075",
         "createdAt": "2021-08-21T17:32:28Z",
         "running": true,
         "success": true,
@@ -4085,8 +4085,8 @@ components:
               properties:
                 queryName:
                   $ref: '#/components/schemas/QueryName'
-                subscriptionId:
-                  $ref: '#/components/schemas/SubscriptionID'
+                subscriptionID:
+                  $ref: '#/components/schemas/subscriptionID'
                 resultsBody:
                   type: object
                   required:
@@ -4125,7 +4125,7 @@ components:
               "resultsBody": {
                 "eventList": [
                   {
-                    "id": "_:event1",
+                    "eventID": "_:event1",
                     "isA": "ObjectEvent",
                     "action": "OBSERVE",
                     "bizStep": "urn:epcglobal:cbv:bizstep:shipping",
@@ -4147,7 +4147,7 @@ components:
                     ]
                   },
                   {
-                    "id": "_:event2",
+                    "eventID": "_:event2",
                     "isA": "ObjectEvent",
                     "action": "OBSERVE",
                     "bizStep": "urn:epcglobal:cbv:bizstep:receiving",
