@@ -2685,7 +2685,8 @@ paths:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
       description: |
-        The `GET` endpoint is to retrieve vocabulary elements.
+        The `GET` endpoint is to retrieve EPCIS vocabulary elements synchronously that did not fit inside the response
+        of an anonymous query. If this endpoint is called without creating an anonymous query first, it will fail.
       responses:
         '200':
           $ref: '#/components/responses/200EPCISMasterDataDocument'
@@ -3088,7 +3089,8 @@ paths:
         - $ref: '#/components/parameters/NextPageToken'
         - $ref: '#/components/parameters/PerPage'
       description: |
-        The `GET` endpoint is to retrieve EPCIS events synchronously.
+        The `GET` endpoint is to retrieve EPCIS events synchronously that did not fit inside the response of an
+        anonymous query. If this endpoint is called without creating an anonymous query first, it will fail.
       responses:
         '200':
           headers:
