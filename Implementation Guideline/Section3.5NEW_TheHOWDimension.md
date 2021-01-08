@@ -48,3 +48,7 @@ Both contain a set of pertinent attributes, which can be outlined as follows:
 | | `sDev` | Standard deviation of quantitative property values |
 | | `percRank` | Percentile rank |
 | | `percValue` | Percentile value |
+
+TO BE COMPLETED once figure at the beginning of chapter 2.2/3 is updated. Depending on the outcome of the discussion, section 3.7 should contain a second visibility matrix with an EPCIS event comprising a How dimension.
+
+In Step ??? in the figure at the beginning of section 3, the following values might populate the How dimension of the EPCIS event:
