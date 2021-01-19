@@ -3046,7 +3046,7 @@ paths:
               $ref: '#/components/headers/GS1-EPCIS-Extensions'
             GS1-CBV-Extensions:
               $ref: '#/components/headers/GS1-CBV-Extensions'
-          description: Returns `events`.
+          description: Returns the relative path `events`.
           content:
             application/json:
               example:
@@ -3182,7 +3182,7 @@ components:
         GS1-CBV-Extensions:
           $ref: '#/components/headers/GS1-CBV-Extensions'
 
-      description: Returns `events`.
+      description: Returns the relative path `events`.
       content:
         application/json:
           example:
