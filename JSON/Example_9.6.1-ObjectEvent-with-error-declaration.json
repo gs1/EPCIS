@@ -17,6 +17,14 @@
 		  "epcList": ["urn:epc:id:sgtin:0614141.107346.2017","urn:epc:id:sgtin:0614141.107346.2018"],
 		  "eventTime": "2005-04-03T20:33:31.116000-06:00",
 		  "eventTimeZoneOffset": "-06:00",
+	          "errorDeclaration": { 
+	          	"declarationTime" : "2021-02-01T22:46:31.117000+00:00",
+			"reason" : "urn:epcglobal:cbv:er:incorrect-data",
+			"correctiveEventIDs": [
+			   "ni:///sha-256;c6407ffcac52ec159528f2b556ba4ac3844c5aa48485c1fd61643e94f0a2d678?ver=CBV2.0",
+			   "urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6"
+			]
+		  }
 		  "readPoint": {"id": "urn:epc:id:sgln:0614141.07346.1234"},
 		  "bizTransactionList": [  {"type": "urn:epcglobal:cbv:btt:po", "bizTransaction": "http://transaction.acme.com/po/12345678" }  ]
      },
