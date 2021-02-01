@@ -24,7 +24,7 @@
 			   "ni:///sha-256;c6407ffcac52ec159528f2b556ba4ac3844c5aa48485c1fd61643e94f0a2d678?ver=CBV2.0",
 			   "urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6"
 			]
-		  }
+		  },
 		  "readPoint": {"id": "urn:epc:id:sgln:0614141.07346.1234"},
 		  "bizTransactionList": [  {"type": "urn:epcglobal:cbv:btt:po", "bizTransaction": "http://transaction.acme.com/po/12345678" }  ]
      },
