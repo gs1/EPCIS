@@ -46,6 +46,9 @@
     "source": {"@type":"@id"},
     "destination": {"@type":"@id"},
 
+    "reason": {"@type":"@id"},
+    "correctiveEventIDs": {"@type":"@id"},
+    
     "type": {"@type":"@id"},
     "set": {"@type":"@id"},
     "unset": {"@type":"@id"},
