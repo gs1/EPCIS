@@ -33,7 +33,7 @@
 		  ],
 		  "sensorElementList": [
 		   {
-		    "sensorMetaData" : {"startTime":"2019-11-06T13:55:00.000+01:00", "endTime":"2019-11-06T13:57:00.000+01:00"},
+		    "sensorMetadata" : {"startTime":"2019-11-06T13:55:00.000+01:00", "endTime":"2019-11-06T13:57:00.000+01:00"},
 		    "sensorReport" : [
 			 { "type": "gs1:Humidity" , "minValue" : 12.1 , "maxValue" : 12.2 , "uom": "A93"}
 		     ]

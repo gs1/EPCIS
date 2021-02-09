@@ -154,8 +154,8 @@
 		"sensorElement": {
 			"type": "object",
 			"properties": {
-				"sensorMetaData": {
-					"$ref": "#/definitions/sensorMetaData"
+				"sensorMetadata": {
+					"$ref": "#/definitions/sensorMetadata"
 				},
 				"sensorReport": {
 					"$ref": "#/definitions/sensorReportList"
@@ -238,7 +238,7 @@
 			},
 			"required": ["type"]
 		},
-		"sensorMetaData": {
+		"sensorMetadata": {
 			"type": "object",
 			"properties": {
 				"time": {

@@ -706,18 +706,18 @@ epcis:SensorReport_IsMandatory    owl:sameAs [
 ].
 
 epcis:SensorMetaData_IsOptional    owl:sameAs [
-    sh:path epcis:sensorMetaData ;
-    sh:name "sensorMetaData is optional within each element of sensorElementList" ;
+    sh:path epcis:sensorMetadata ;
+    sh:name "sensorMetadata is optional within each element of sensorElementList" ;
     sh:minCount 0;
     sh:maxCount 1;
-    sh:message "sensorMetaData is optional within each element of sensorElementList." 
+    sh:message "sensorMetadata is optional within each element of sensorElementList." 
 ].
 
 epcis:SensorMetaData_TypeConstraint  owl:sameAs [
-    sh:path epcis:sensorMetaData ;
+    sh:path epcis:sensorMetadata ;
     sh:node epcis:SensorMetaDataShape ;
-    sh:name "sensorMetaData type constraint" ;
-    sh:message "sensorMetaData expects 0 or 1 of epcis:SensorMetaData" 
+    sh:name "sensorMetadata type constraint" ;
+    sh:message "sensorMetadata expects 0 or 1 of epcis:SensorMetaData" 
 ].
 
 epcis:SensorReport_TypeConstraint  owl:sameAs [
