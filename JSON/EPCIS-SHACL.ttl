@@ -917,10 +917,10 @@ epcis:SensorDeviceID_TypeConstraint owl:sameAs [
 ].
 
 epcis:SensorDeviceMetaData_TypeConstraint owl:sameAs [
-    sh:path epcis:deviceMetaData ;
+    sh:path epcis:deviceMetadata ;
     sh:nodeKind sh:IRI ;
-    sh:name "deviceMetaData type constraint" ;
-    sh:message "deviceMetaData must be an xsd:anyURI.  Please refer to the EPCIS 2.0 standard." 
+    sh:name "deviceMetadata type constraint" ;
+    sh:message "deviceMetadata must be an xsd:anyURI.  Please refer to the EPCIS 2.0 standard." 
 ].
 
 epcis:SensorRawData_TypeConstraint owl:sameAs [

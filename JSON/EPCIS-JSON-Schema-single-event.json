@@ -198,7 +198,7 @@
         "deviceID": {
           "$ref": "#/definitions/uri"
         },
-        "deviceMetaData": {
+        "deviceMetadata": {
           "$ref": "#/definitions/uri"
         },
         "rawData": {
@@ -269,7 +269,7 @@
         "deviceID": {
           "$ref": "#/definitions/uri"
         },
-        "deviceMetaData": {
+        "deviceMetadata": {
           "$ref": "#/definitions/uri"
         },
         "rawData": {

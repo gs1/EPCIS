@@ -469,7 +469,7 @@ GS1 retains the right to make changes to this document at any time, without noti
         <xsd:extension base="xsd:string">
           <xsd:attribute type="xsd:dateTime" name="time" use="optional"/>
           <xsd:attribute type="xsd:anyURI" name="deviceID" use="optional"/>
-          <xsd:attribute type="xsd:anyURI" name="deviceMetaData" use="optional"/>
+          <xsd:attribute type="xsd:anyURI" name="deviceMetadata" use="optional"/>
           <xsd:attribute type="xsd:anyURI" name="rawData" use="optional"/>
           <xsd:attribute type="xsd:dateTime" name="startTime" use="optional"/>
           <xsd:attribute type="xsd:dateTime" name="endTime" use="optional"/>
@@ -497,7 +497,7 @@ GS1 retains the right to make changes to this document at any time, without noti
 			  <xsd:attribute type="xsd:anyURI" name="chemicalSubstance" use="optional"/>
 			  <xsd:attribute type="xsd:anyURI" name="microorganism" use="optional"/>
 			  <xsd:attribute type="xsd:anyURI" name="deviceID" use="optional"/>
-			  <xsd:attribute type="xsd:anyURI" name="deviceMetaData" use="optional"/>
+			  <xsd:attribute type="xsd:anyURI" name="deviceMetadata" use="optional"/>
 			  <xsd:attribute type="xsd:anyURI" name="rawData" use="optional"/>
 			  <xsd:attribute type="xsd:dateTime" name="time" use="optional"/>
 			  <xsd:attribute type="xsd:float" name="meanValue" use="optional"/>
