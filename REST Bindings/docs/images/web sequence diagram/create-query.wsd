@@ -1,0 +1,19 @@
+participant Client as c
+participant Server as s
+
+c->s: POST https://example.com/queries/MyQuery
+note over Client, Server:
+{
+  "query": {
+    "EQ_bizStep": [
+      "urn:epcglobal:cbv:bizstep:shipping",
+      "urn:epcglobal:cbv:bizstep:receiving"
+    ],
+    "eventTypes": "ObjectEvent"
+  },
+  "queryType": "events"
+}
+end note
+s-->c: \n Location: https://www.example.com/queries/myQuery \n Link: '<https://example.com/queries/myQuery/events?perPage=30&nextPageToken=3A..eq>; rel="next"' \n EPCISQueryDocument(Many EPCIS Events)
+c->s: GET https://example.com/queries/myQuery/events?perPage=30&nextPageToken=3A...eq
+s-->c: \n Link: '<https://example.com/queries/myQuery/events?perPage=30&nextPageToken=3A...eq>; rel="next"' \n EPCISQueryDocument(Many EPCIS Events)

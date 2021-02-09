@@ -1,18 +1,35 @@
 participant Client as c
 participant Server as s
-c->s: GET /queries/AnEPCISQuery/events?bizStep=EQ_bizStep=urn:epcglobal:cbv:bizstep:shipping HTTP/1.1 
+
+c->s: POST https://example.com/queries/MyQuery
+note over Client, Server:
+{
+  "query": {
+    "EQ_bizStep": [
+      "urn:epcglobal:cbv:bizstep:shipping",
+      "urn:epcglobal:cbv:bizstep:receiving"
+    ],
+    "eventTypes": "ObjectEvent"
+  },
+  "queryType": "events"
+}
+end note
+c->s: GET https://example.com/queries/MyQuery/events?minute=5&hour=1
 note over Client, Server:
 Host: example.com
 Upgrade: websocket
 Connection: Upgrade
-...
 end note
 s-->c: HTTP/1.1 101 Switching Protocols
 note over Server, Client:
 Upgrade: websocket
 Connection: Upgrade
-...
+Switch from
 end note
-s->s: capture({..., "bizStep": "urn:epcglobal:cbv:bizstep:shipping",...})
-s->c: {..., "bizStep": "urn:epcglobal:cbv:bizstep:shipping",...}
+s->s: CuckooClock()
+note left of s: The time is 01:05h
+s<->c: wss://example.com/queries/MyQuery/events?minute=5&hour=1
+note over Client, Server:
+{..., "bizStep": "urn:epcglobal:cbv:bizstep:shipping",...}
+end note
 c->s: close() 
