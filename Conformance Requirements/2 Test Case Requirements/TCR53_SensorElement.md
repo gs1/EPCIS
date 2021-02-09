@@ -10,7 +10,7 @@ ___
 n.n.
 ___
 ## Pre-test conditions
-* Create an EPCIS Document ('set1') with several events accommodating a `SensorElement` extension. Ensure that set1 collectively covers all `SensorElement` attributes. Ensure that at least one event has a user extension at the `SensorElement`, `SensorMetaData` and `SensorReport` level. Ensure that one event does not include a `SensorElement`. Ensure that one event conveys a sensor reading of `type` "gs1:Temperature" with a `value` expressed in `uom` "CEL".
+* Create an EPCIS Document ('set1') with several events accommodating a `SensorElement` extension. Ensure that set1 collectively covers all `SensorElement` attributes. Ensure that at least one event has a user extension at the `SensorElement`, `SensorMetadata` and `SensorReport` level. Ensure that one event does not include a `SensorElement`. Ensure that one event conveys a sensor reading of `type` "gs1:Temperature" with a `value` expressed in `uom` "CEL".
 * Create an EPCIS Document ('set2') with two events accommodating a `SensorElement` extension. In the first one, the inline attributes `dataProcessingMethod`, `deviceID`, `deviceMetadata`, `rawData`and `time` appear in the `sensorMetadata` element, while in the second one, the inline attributes are present in the `sensorReport` element. Ensure that the respective values are distinguishable from each other.
 * Create an EPCIS Document ('set3') with one event accommodating a `SensorElement` extension, where one or several of the inline attributes `dataProcessingMethod`, `deviceID`, `deviceMetadata`, `rawData`and `time` appear both in the `sensorMetadata` element as well as in the `sensorReport`element.
 * Document passes XML/JSON validation
