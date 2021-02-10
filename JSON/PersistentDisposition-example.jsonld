@@ -9,7 +9,7 @@
   "epcisBody": {
    "eventList": [
      {
-		  "id": "_:event1",
+		  "id": "ni:///sha-256;56ba4f355c57456b41c3fb60b22d8342e759de503e3e618940ca3b6ad1bf9b00?ver=CBV2.0",
 		  "isA": "AggregationEvent",
 		  "eventTime": "2020-06-07T17:10:16Z",
 		  "eventTimeZoneOffset": "+02:00",
@@ -48,7 +48,7 @@
      },
      
      {
-		  "id": "_:event2",
+		  "id": "ni:///sha-256;dae7b481207bb87f1d981c5f169b8138368ae152a41b002eaf36eca1f67d56f5?ver=CBV2.0",
 		  "isA": "AggregationEvent",
 		  "eventTime": "2020-06-08T18:11:16Z",
 		  "eventTimeZoneOffset": "+02:00",

@@ -8,7 +8,7 @@
   "epcisBody": {
     "eventList": [
       {
-        "eventID": "_:event_example_9_6_4_1",
+        "eventID": "ni:///sha-256;4f143d1adf7b2950a34f5e82a240ce5280530b06a9f3c2b9cfe49f5ca5001815?ver=CBV2.0",
         "isA": "TransformationEvent",
         "eventTime": "2013-10-31T14:58:56.591Z",
         "eventTimeZoneOffset": "+02:00",
