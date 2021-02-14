@@ -9,7 +9,7 @@
   "epcisBody": {
    "eventList": [
      {
-		  "eventID": "_:event1",
+		  "eventID": "ni:///sha-256;87b5f18a69993f0052046d4687dfacdf48f7c988cfabda2819688c86b4066a49?ver=CBV2.0",
 		  "isA": "AggregationEvent",
 		  "eventTime": "2013-06-08T14:58:56.591Z",
 		  "eventTimeZoneOffset": "+02:00",

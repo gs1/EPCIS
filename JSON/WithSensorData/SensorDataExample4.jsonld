@@ -9,7 +9,7 @@
   "epcisBody": {
   "eventList": [
      {
-		  "eventID": "_:event4",
+		  "eventID": "ni:///sha-256;7ff1501099b3f5890d310d703fb9f57e251bba0c57d3c049fab590b50323a8e7?ver=CBV2.0",
 		  "isA": "ObjectEvent",
 		  "action": "OBSERVE",
 		  "bizStep": "urn:epcglobal:cbv:bizstep:inspecting",

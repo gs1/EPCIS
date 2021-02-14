@@ -9,7 +9,7 @@
   "epcisBody": {
    "eventList": [
      {
-		  "eventID": "_:event_h",
+		  "eventID": "ni:///sha-256;fec9667280c4710a3fa9558b7bc8ddc2ced0dc442d87f82becae24bb6ca6a46f?ver=CBV2.0",
 		  "isA": "AssociationEvent",
 		  "eventTime": "2019-11-04T14:00:00.000+01:00",
 		  "eventTimeZoneOffset": "+01:00",

@@ -9,7 +9,7 @@
   "epcisBody": {
   "eventList": [
      {
-		  "eventID": "_:event8",
+		  "eventID": "ni:///sha-256;18454584ed96fbb533e4a69b01eefd1bff3edd1e80ef8598957111f4477a0a64?ver=CBV2.0",
 		  "isA": "AggregationEvent",
 		  "action": "ADD",
 		  "bizStep": "urn:epcglobal:cbv:bizstep:packing",
