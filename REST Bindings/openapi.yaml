@@ -3208,9 +3208,8 @@ components:
         GS1-CBV-Extensions:
           $ref: '#/components/headers/GS1-CBV-Extensions'
       description: |
-        An EPCIS document with a single EPCIS event. Please note that retrieving an EPCIS event using the `eventID` may identify
-        the context of that EPCIS event and return multiple EPCIS events, not only the EPCIS event with the matching
-        `eventID`. This is the case when an error occurred at the supply chain level.
+        Query endpoints ending with `/events/{eventID}` may return more than one event if the eventID is present in
+        subsequent events that include an ErrorDeclaration to indicate that the original event was in error.
       content:
         application/json:
           example:
