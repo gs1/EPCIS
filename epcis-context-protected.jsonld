@@ -36,12 +36,12 @@
     "uom": {"@type":"xsd:string"},
     "component": {"@type":"xsd:string"},
 
-    "epcList": {"@type":"@id"},
+    "epcList": {"@type":"@id","@container":"@set"},
     "epcClass": {"@type":"@id"},
     "parentID": {"@type":"@id"},
-    "childEPCs": {"@type":"@id"},
-    "inputEPCList": {"@type":"@id"},
-    "outputEPCList": {"@type":"@id"},
+    "childEPCs": {"@type":"@id","@container":"@set"},
+    "inputEPCList": {"@type":"@id","@container":"@set"},
+    "outputEPCList": {"@type":"@id","@container":"@set"},
 
     "bizStep": {"@type":"@id"},
     "disposition": {"@type":"@id"},
@@ -55,12 +55,20 @@
     "destination": {"@type":"@id"},
 
     "reason": {"@type":"@id"},
-    "correctiveEventIDs": {"@type":"@id"},
+    "correctiveEventIDs": {"@type":"@id","@container":"@set"},
     
     "certificationInfo": {"@type":"@id"},
     
-    "set": {"@type":"@id"},
-    "unset": {"@type":"@id"},
+    "sensorReport":  {"@container":"@set"},
+    "sensorElementList":  {"@container":"@set"},
+    "quantityList":  {"@container":"@set"},
+    "childQuantityList":  {"@container":"@set"},
+    "inputQuantityList":  {"@container":"@set"},
+    "outputQuantityList":  {"@container":"@set"},
+    
+    
+    "set": {"@type":"@id","@container":"@set"},
+    "unset": {"@type":"@id","@container":"@set"},
     "deviceID": {"@type":"@id"},
     "deviceMetadata": {"@type":"@id"},
     "rawData": {"@type":"@id"},
@@ -79,4 +87,5 @@
     "format": {"@id":"dcterms:format", "@type":"xsd:string"},
     "schemaVersion": {"@id":"owl:versionInfo", "@type":"xsd:string"}
   }
+
 }
