@@ -34,6 +34,7 @@
     "hexBinaryValue" : {"@type": "xsd:hexBinary"},
     "uriValue" : {"@type": "@id"},
     "uom": {"@type":"xsd:string"},
+    "component": {"@type":"xsd:string"},
 
     "epcList": {"@type":"@id"},
     "epcClass": {"@type":"@id"},
@@ -55,6 +56,8 @@
 
     "reason": {"@type":"@id"},
     "correctiveEventIDs": {"@type":"@id"},
+    
+    "certificationInfo": {"@type":"@id"},
     
     "set": {"@type":"@id"},
     "unset": {"@type":"@id"},
