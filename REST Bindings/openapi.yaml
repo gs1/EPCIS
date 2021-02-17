@@ -156,11 +156,12 @@ paths:
             $ref: '#/components/schemas/GS1-Capture-Error-Behaviour'
 
       description: |
-        EPCIS events are added in bulk using the capture interface. Two design considerations were made to remain compatible with EPCIS 1.2:
+        EPCIS events are added in bulk using the capture interface. Three design considerations were made to remain compatible with EPCIS 1.2:
 
         - EPCIS 2.0 makes event IDs optional. If event IDs are missing, the server should populate the event id with a unique value.
         Otherwise, it won't be possible to retrieve these events.
         - By default, EPCIS events are only stored if the entire capture job was successful. This behaviour can be changed with the `GS1-Capture-Error-Behaviour` header.
+        - EPCIS master data can be captured in the header (`epcisHeader`) of an `EPCISDocument`.
 
         To prevent timeouts for large payloads, the client potentially has to split the payload into several capture calls. To that end, the server specified a capture
         limit (number of EPCIS events) and file size limit (payload size).
@@ -4030,6 +4031,18 @@ components:
                 type: object
           required:
             - eventList
+        epcisHeader:
+          type: object
+          properties:
+            epcisMasterData:
+              type: object
+              properties:
+                vocabularyList:
+                  type: array
+                  uniqueItems: true
+                  items:
+                    type: object
+
       example:
         {
           "@context": [
@@ -4114,7 +4127,7 @@ components:
             success:
               description: |
                 If `success` is `false`, there was at least one error. Otherwise, `success` is `true`.
-                If the `GS1-Capture-Error-Behaviour` header is `rollback`, `success` being `false` aboards the capture
+                If the `GS1-Capture-Error-Behaviour` header is `rollback`, `success` being `false` aborts the capture
                 job and rejects all EPCIS events related to the job.
                 If `GS1-Capture-Error-Behaviour` header is `proceed`, some EPCIS events might still be captured, even
                 if `success` is `false`.
