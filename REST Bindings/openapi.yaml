@@ -3326,7 +3326,7 @@ components:
             $ref: '#/components/schemas/Link'
         GS1-Next-Page-Token-Expires:
           $ref: '#/components/headers/GS1-Next-Page-Token-Expires'
-      description: Returns the EPCIS vocabulary elements.
+      description: Returns EPCIS vocabulary elements.
       content:
         application/json:
           schema:
@@ -3846,21 +3846,68 @@ components:
       enum:
         - all
     EPCISMasterDataDocument:
-      description: A collection of master data resources.
+      description: |
+        A collection of master data resources. This is only a simplified schema. Please use the schema in the
+        JSON section to validate `EPCISMasterDataDocument`.
       example:
         {
-          "@context": [
-              "https://gs1.github.io/EPCIS/epcis-context.jsonld",
-              { "example": "http://ns.example.com/epcis/" },
-              { "mda": "http://epcis.example.com/mda" } ],
-          "isA": "EPCISMasterDataDocument",
+          "@context": [ "https://gs1.github.io/EPCIS/epcis-context.jsonld",{ "example": "http://ns.example.com/epcis/" },{ "xmda": "http://epcis.example.com/mda" } ],
+          "id": "_:example_9.8.1",
+          "isA": "EPCISDocument",
           "schemaVersion": 2.0,
           "creationDate": "2005-07-11T11:30:47.0Z",
           "format": "application/ld+json",
           "epcisHeader": {
             "epcisMasterData": {
               "vocabularyList": [
-
+                {
+                  "vocabularyElementList": [
+                    {
+                      "isA": "urn:epcglobal:epcis:vtype:BusinessLocation",
+                      "id": "urn:epc:id:sgln:0037000.00729.0",
+                      "attributes": [
+                        { "id": "xmda:latitude", "attribute": "+18.0000" },
+                        { "id": "xmda:longitude", "attribute": "-70.0000" },
+                        {
+                          "id": "xmda:address",
+                          "attribute": {
+                            "@context": {
+                              "@vocab": "http://epcis.example.com/ns/"
+                            },
+                            "isA": "Address",
+                            "street": "100 Nowhere Street",
+                            "city": "Fancy",
+                            "state": "DC",
+                            "zip": "99999"
+                          }
+                        }
+                      ],
+                      "children": [
+                          "urn:epc:id:sgln:0037000.00729.8201",
+                          "urn:epc:id:sgln:0037000.00729.8202",
+                          "urn:epc:id:sgln:0037000.00729.8203"
+                      ]
+                    },
+                    {
+                      "isA": "urn:epcglobal:epcis:vtype:BusinessLocation",
+                      "id": "urn:epc:id:sgln:0037000.00729.8202",
+                      "attributes": [
+                        { "id": "cbvmda:sst", "attribute": "202" }
+                      ],
+                      "children": [
+                          "urn:epc:id:sgln:0037000.00729.8203"
+                      ]
+                    },
+                    {
+                      "isA": "urn:epcglobal:epcis:vtype:BusinessLocation",
+                      "id": "urn:epc:id:sgln:0037000.00729.8203",
+                      "attributes": [
+                        { "id": "cbvmda:sst", "attribute": "202" },
+                        { "id": "cbvmda:ssa", "attribute": "402" }
+                      ]
+                    }
+                  ]
+                },
                 {
                   "vocabularyElementList": [
                     {
@@ -3869,6 +3916,21 @@ components:
                       "attributes": [
                         { "id": "cbvmda:site", "attribute": "0037000007296" },
                         { "id": "cbvmda:sst", "attribute": 201 }
+                      ]
+                    },
+                    {
+                      "isA": "urn:epcglobal:epcis:vtype:ReadPoint",
+                      "id": "urn:epc:id:sgln:0037000.00729.8202",
+                      "attributes": [
+                        { "id": "cbvmda:site", "attribute": "0037000007296" },
+                        { "id": "cbvmda:sst", "attribute": "202" }
+                      ]
+                    },
+                    {
+                      "isA": "urn:epcglobal:epcis:vtype:ReadPoint",
+                      "id": "urn:epc:id:sgln:0037000.00729.8203",
+                      "attributes": [
+                        { "id": "cbvmda:sst", "attribute": 204 }
                       ]
                     }
                   ]
@@ -3880,58 +3942,38 @@ components:
             "eventList": [ ]
           }
         }
+
       type: object
       required:
+        - schemaVersion
+        - creationDate
         - epcisBody
-        - epcisHeader
       properties:
         '@context':
-          type: array
-          items:
-            anyOf:
-              - type: string
-                format: uri
-              - type: object
+           type: array
+           items:
+             anyOf:
+               - type: string
+                 format: uri
+               - type: object
         isA:
           type: string
           default: EPCISMasterDataDocument
           example: EPCISMasterDataDocument
         schemaVersion:
-          type: string
-          pattern: ^\d+(\.\d+)?$
-          example: "2.0"
-        format:
-          type: string
-          example: "application/ld+json"
+          type: number
+          example: 2.0
         creationDate:
           type: string
           format: date-time
-        epcisBody:
-          type: object
-          properties:
-            eventList:
-              type: array
-              uniqueItems: true
-              items:
-                type: object
-          required:
-            - eventList
+        format:
+          type: string
+          example: "application/ld+json"
         epcisHeader:
           type: object
-          properties:
-            epcisMasterData:
-              type: object
-              properties:
-                vocabularyList:
-                  type: array
-                  uniqueItems: true
-                  items:
-                    type: object
-      externalDocs:
-        description: |
-          To validate EPCIS master data, please use [JSON schema](../JSON/EPCIS-JSON-Schema.json)
-          or [SHACL file](../JSON/EPCIS-SHACL.ttl).
-        url: ../JSON
+        epcisBody:
+          type: object
+
     EPCISDocumentSingleEvent:
       description: |
         A single EPCIS event. The full schema is specified in the external JSON-LD and JSON-Schema documentation.
