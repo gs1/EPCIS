@@ -35,7 +35,7 @@ On this basis, the organisation has an unbroken chain of events documenting the 
 
 As to V4, note that as of as of EPCIS/CBV 2.0, a CBV-compliant EPCIS event is allowed to have an empty WHAT dimension, if a non-empty Sensor Element is present. In such a case, the object of observation is the physical location indicated in the WHERE dimension (i.e. populating either readPoint or bizLocation). Also, V4 leverages bizStep 'sensor_reporting' which is an appropriate choice when no actual business process step is ongoing.
 
-With regard to designing the HOW dimension, the organisation has ample flexibility. For instance, they *could* have included a pointer to the underlying raw sensor data (rawData), indicated the ID of the respective sensor devices (deviceID) or inserted a reference to the meta data of a given sensor device (deviceMetaData). For simplicity, we assume that the business need consists in controlling that the ambient temperature did not exceed a specific minimum or maximum value. For this purpose, the company can get by with a very concise set of attributes: the start and end time of a related sensor reading as well as the highest and lowermost temperature value within that period, expressed in degree Celsius.
+With regard to designing the HOW dimension, the organisation has ample flexibility. For instance, they *could* have included a pointer to the underlying raw sensor data (rawData), indicated the ID of the respective sensor devices (deviceID) or inserted a reference to the meta data of a given sensor device (deviceMetadata). For simplicity, we assume that the business need consists in controlling that the ambient temperature did not exceed a specific minimum or maximum value. For this purpose, the company can get by with a very concise set of attributes: the start and end time of a related sensor reading as well as the highest and lowermost temperature value within that period, expressed in degree Celsius.
 
 In this context, the company could also have chosen another appropriate unit of measure listed in UN/ECE Recommendation 20 (i.e. Kelvin, degrees Fahrenheit or Rankine).
 
@@ -59,7 +59,7 @@ In such a setting, the 'alert' EPCIS event could be modelled as follows:
 | Where | `readPoint` | GLN of cold storage room |
 | Why | `bizStep` | `Sensor reporting (CBV)` |
 | How | `sensorElement` |
-| | `sensorMetaData` |
+| | `sensorMetadata` |
 | | `bizRules` | GDTI GS1 DL URI
 | | `sensorReport` |
 | | `type` | `Temperature (CBV`) |
@@ -69,7 +69,7 @@ In such a setting, the 'alert' EPCIS event could be modelled as follows:
 | | `type` | `AlarmCondition (CBV`) |
 | | `uriValue` | URI, e.g. https://example.com/alarmCodes/temperatureExceeded |
 
-In contrast to the previous example, the event accommodates the (optional) `sensorMetaData` field, which in turn contains a reference (the Web URI is a valid GS1 Digital Link URI leveraging a custom (here: "example.com) domain, `253` denotes the GS1 Application Identifier for the Global Document Type Identifier) to an electronic document including the business rule(s) upon which the EPCIS event was captured. The company may decide to also insert additional attributes such as `deviceID` or `deviceMetaData` into this element, if applicable.
+In contrast to the previous example, the event accommodates the (optional) `sensorMetadata` field, which in turn contains a reference (the Web URI is a valid GS1 Digital Link URI leveraging a custom (here: "example.com) domain, `253` denotes the GS1 Application Identifier for the Global Document Type Identifier) to an electronic document including the business rule(s) upon which the EPCIS event was captured. The company may decide to also insert additional attributes such as `deviceID` or `deviceMetadata` into this element, if applicable.
 
 Apart from the actual temperature value (exceeding the predefined threshold), the `sensorElement` contains a second `sensorReport` element accommodating an alarm value, expressed as a URI. The latter consists of a custom value - a future GS1 working group may define standard vocabulary for alarm/error code values for this application domain.
 
@@ -91,7 +91,7 @@ For instance, if an organisation is interested to ascertain that their products 
 | Where | `readPoint` | GLN of warehouse | GLN of warehouse | GLN of warehouse | GLN of port | GLN of port | GLN of port | GLN of port |  |  |
 | Why | `bizStep` | `Packing (CBV)` | `Loading (CBV)` | `Loading (CBV)` | `Arriving (CBV)` | `Unloading (CBV)` | `Loading (CBV)` | `Departing (CBV)`| `Sensor reporting (CBV)` |  `Sensor reporting (CBV)` | `Sensor reporting (CBV)` |
 | How | `sensorElement` |
-|  |  `sensorMetaData` |
+|  |  `sensorMetadata` |
 | | `startTime` |  |  |  |  |  |  |  | 23 June 11:59 pm |  | 24 June 11:59 pm |
 | | `endTime` |  |  |  |  |  |  |  | 24 June 11:59 pm |  | 25 June 11:59 pm |
 | | `sensorReport` |
@@ -105,7 +105,7 @@ For instance, if an organisation is interested to ascertain that their products 
 | | `maxValue` |  |  |  |  |  |  |  | 8.2 | | 3.3 |
 | | `uom` |  |  |  |  |  |  |  | `A93` |  | `A93` |
 | | `sensorElement` |
-| | `sensorMetaData` |
+| | `sensorMetadata` |
 | | `time` |  |  |  |  |  |  |  |  | 25 June 02:00 am |  |
 | | `rawData` |  |  |  |  |  |  |  |  | URI, e.g. https://example.org/8004/401234599999 |  |
 | | `sensorReport` |
@@ -115,7 +115,7 @@ For instance, if an organisation is interested to ascertain that their products 
 | | `type` |  |  |  |  |  |  |  |  | `Longitude (CBV)` |  |  |
 | | `stringValue` |  |  |  |  |  |  |  |  | 8.562372 |  |  |
 | | `sensorElement` |
-| | `sensorMetaData` |
+| | `sensorMetadata` |
 | | `time` |  |  |  |  |  |  |  |  | 25 June 06:00 am |  |
 | | `sensorReport` |
 | | `type` |  |  |  |  |  |  |  |  | `Latitude (CBV)` |  |  |
@@ -124,7 +124,7 @@ For instance, if an organisation is interested to ascertain that their products 
 | | `type` |  |  |  |  |  |  |  |  | `Longitude (CBV)` |  |  |
 | | `stringValue` |  |  |  |  |  |  |  |  | 8.099310 |  |  |
 | | `sensorElement` |
-| | `sensorMetaData` |
+| | `sensorMetadata` |
 | | `time` |  |  |  |  |  |  |  |  | 25 June 10:00 am |  |
 | | `sensorReport` |
 | | `type` |  |  |  |  |  |  |  |  | `Latitude (CBV)` |  |  |
@@ -133,7 +133,7 @@ For instance, if an organisation is interested to ascertain that their products 
 | | `type` |  |  |  |  |  |  |  |  | `Longitude (CBV)` |  |  |
 | | `stringValue` |  |  |  |  |  |  |  |  | 7.094428 |  |  |
 | | `sensorElement` |
-| | `sensorMetaData` |
+| | `sensorMetadata` |
 | | `time` |  |  |  |  |  |  |  |  | 25 June 02:00 pm |  |
 | | `sensorReport` |
 | | `type` |  |  |  |  |  |  |  |  | `Latitude (CBV)` |  |  |
@@ -142,7 +142,7 @@ For instance, if an organisation is interested to ascertain that their products 
 | | `type` |  |  |  |  |  |  |  |  | `Longitude (CBV)` |  |  |
 | | `stringValue` |  |  |  |  |  |  |  |  | 5.753072 |  |  |
 | | `sensorElement` |
-| | `sensorMetaData` |
+| | `sensorMetadata` |
 | | `time` |  |  |  |  |  |  |  |  | 25 June 06:00 pm |  |
 | | `sensorReport` |
 | | `type` |  |  |  |  |  |  |  |  | `Latitude (CBV)` |  |  |
@@ -151,7 +151,7 @@ For instance, if an organisation is interested to ascertain that their products 
 | | `type` |  |  |  |  |  |  |  |  | `Longitude (CBV)` |  |  |
 | | `stringValue` |  |  |  |  |  |  |  |  | 3.407863 |  |  |
 | | `sensorElement` |
-| | `sensorMetaData` |
+| | `sensorMetadata` |
 | | `time` |  |  |  |  |  |  |  |  | 25 June 10:00 pm |  |
 | | `sensorReport` |
 | | `type` |  |  |  |  |  |  |  |  | `Latitude (CBV)` |  |  |
@@ -188,7 +188,7 @@ For illustration purposes, let us assume that a retailer wants to document the c
 | | _`bizTransactionID` `type`:`testprd (CBV)` | `GDTI` of test procedure |
 | | _`bizTransactionID` `type`:`testres (CBV)` | `GDTI` or test result | 
 | How | `sensorElement` |
-| | `sensorMetaData` |
+| | `sensorMetadata` |
 | | `deviceID` | GIAI (EPC URI or GS1 DL URI)
 | | `sensorReport` |
 | | `type` | `Dimensionless_concentration (CBV`) |

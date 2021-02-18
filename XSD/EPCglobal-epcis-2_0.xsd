@@ -464,12 +464,12 @@ GS1 retains the right to make changes to this document at any time, without noti
     <xsd:anyAttribute processContents="lax"/>
   </xsd:complexType>
 
-    <xsd:complexType name="SensorMetaDataType">
+    <xsd:complexType name="SensorMetadataType">
       <xsd:simpleContent>
         <xsd:extension base="xsd:string">
           <xsd:attribute type="xsd:dateTime" name="time" use="optional"/>
           <xsd:attribute type="xsd:anyURI" name="deviceID" use="optional"/>
-          <xsd:attribute type="xsd:anyURI" name="deviceMetaData" use="optional"/>
+          <xsd:attribute type="xsd:anyURI" name="deviceMetadata" use="optional"/>
           <xsd:attribute type="xsd:anyURI" name="rawData" use="optional"/>
           <xsd:attribute type="xsd:dateTime" name="startTime" use="optional"/>
           <xsd:attribute type="xsd:dateTime" name="endTime" use="optional"/>
@@ -497,7 +497,7 @@ GS1 retains the right to make changes to this document at any time, without noti
 			  <xsd:attribute type="xsd:anyURI" name="chemicalSubstance" use="optional"/>
 			  <xsd:attribute type="xsd:anyURI" name="microorganism" use="optional"/>
 			  <xsd:attribute type="xsd:anyURI" name="deviceID" use="optional"/>
-			  <xsd:attribute type="xsd:anyURI" name="deviceMetaData" use="optional"/>
+			  <xsd:attribute type="xsd:anyURI" name="deviceMetadata" use="optional"/>
 			  <xsd:attribute type="xsd:anyURI" name="rawData" use="optional"/>
 			  <xsd:attribute type="xsd:dateTime" name="time" use="optional"/>
 			  <xsd:attribute type="xsd:float" name="meanValue" use="optional"/>
@@ -511,7 +511,7 @@ GS1 retains the right to make changes to this document at any time, without noti
 
     <xsd:complexType name="SensorElementType">
       <xsd:sequence>
-        <xsd:element name="sensorMetaData" type="epcis:SensorMetaDataType" minOccurs="0"/>
+        <xsd:element name="sensorMetadata" type="epcis:SensorMetadataType" minOccurs="0"/>
         <xsd:element name="sensorReport" type="epcis:SensorReportType" minOccurs="1" maxOccurs="unbounded"/>
     	<xsd:element name="extension" type="epcis:SensorElementExtensionType" minOccurs="0"/>
 	    <xsd:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>

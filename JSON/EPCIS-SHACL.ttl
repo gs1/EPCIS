@@ -642,12 +642,12 @@ epcis:SourceDest_TypeConstraint owl:sameAs [
     sh:message "type must be an xsd:anyURI" 
 ].
 
-epcis:SensorMetaDataShape
+epcis:SensorMetadataShape
     a sh:NodeShape;
-    sh:targetClass epcis:SensorMetaData ;
+    sh:targetClass epcis:SensorMetadata ;
     sh:property epcis:SensorTime_TypeConstraint ;
-    sh:property epcis:SensorMetaDataStartTime_TypeConstraint ;
-    sh:property epcis:SensorMetaDataEndTime_TypeConstraint ;
+    sh:property epcis:SensorMetadataStartTime_TypeConstraint ;
+    sh:property epcis:SensorMetadataEndTime_TypeConstraint ;
     sh:property epcis:SensorDeviceID_TypeConstraint ;
     sh:property epcis:SensorDeviceMetaData_TypeConstraint ;
     sh:property epcis:SensorRawData_TypeConstraint ;
@@ -693,8 +693,8 @@ epcis:SensorElementList_TypeConstraint  owl:sameAs [
 
 epcis:SensorElementListShape
     a sh:NodeShape;
-    sh:property epcis:SensorMetaData_TypeConstraint;
-    sh:property epcis:SensorMetaData_IsOptional;
+    sh:property epcis:SensorMetadata_TypeConstraint;
+    sh:property epcis:SensorMetadata_IsOptional;
     sh:property epcis:SensorReport_TypeConstraint;
     sh:property epcis:SensorReport_IsMandatory.
 
@@ -705,19 +705,19 @@ epcis:SensorReport_IsMandatory    owl:sameAs [
     sh:message "sensorReport is mandatory within each element of sensorElementList." 
 ].
 
-epcis:SensorMetaData_IsOptional    owl:sameAs [
-    sh:path epcis:sensorMetaData ;
-    sh:name "sensorMetaData is optional within each element of sensorElementList" ;
+epcis:SensorMetadata_IsOptional    owl:sameAs [
+    sh:path epcis:sensorMetadata ;
+    sh:name "sensorMetadata is optional within each element of sensorElementList" ;
     sh:minCount 0;
     sh:maxCount 1;
-    sh:message "sensorMetaData is optional within each element of sensorElementList." 
+    sh:message "sensorMetadata is optional within each element of sensorElementList." 
 ].
 
-epcis:SensorMetaData_TypeConstraint  owl:sameAs [
-    sh:path epcis:sensorMetaData ;
-    sh:node epcis:SensorMetaDataShape ;
-    sh:name "sensorMetaData type constraint" ;
-    sh:message "sensorMetaData expects 0 or 1 of epcis:SensorMetaData" 
+epcis:SensorMetadata_TypeConstraint  owl:sameAs [
+    sh:path epcis:sensorMetadata ;
+    sh:node epcis:SensorMetadataShape ;
+    sh:name "sensorMetadata type constraint" ;
+    sh:message "sensorMetadata expects 0 or 1 of epcis:SensorMetadata" 
 ].
 
 epcis:SensorReport_TypeConstraint  owl:sameAs [
@@ -787,14 +787,14 @@ epcis:SensorTime_TypeConstraint owl:sameAs [
     sh:message "time must be an xsd:dateTime" 
 ].
 
-epcis:SensorMetaDataStartTime_TypeConstraint owl:sameAs [
+epcis:SensorMetadataStartTime_TypeConstraint owl:sameAs [
     sh:path epcis:startTime ;
     sh:datatype xsd:dateTime ;
     sh:name "startTime type constraint" ;
     sh:message "startTime must be an xsd:dateTime" 
 ].
 
-epcis:SensorMetaDataEndTime_TypeConstraint owl:sameAs [
+epcis:SensorMetadataEndTime_TypeConstraint owl:sameAs [
     sh:path epcis:endTime ;
     sh:datatype xsd:dateTime ;
     sh:name "endTime type constraint" ;
@@ -917,10 +917,10 @@ epcis:SensorDeviceID_TypeConstraint owl:sameAs [
 ].
 
 epcis:SensorDeviceMetaData_TypeConstraint owl:sameAs [
-    sh:path epcis:deviceMetaData ;
+    sh:path epcis:deviceMetadata ;
     sh:nodeKind sh:IRI ;
-    sh:name "deviceMetaData type constraint" ;
-    sh:message "deviceMetaData must be an xsd:anyURI.  Please refer to the EPCIS 2.0 standard." 
+    sh:name "deviceMetadata type constraint" ;
+    sh:message "deviceMetadata must be an xsd:anyURI.  Please refer to the EPCIS 2.0 standard." 
 ].
 
 epcis:SensorRawData_TypeConstraint owl:sameAs [

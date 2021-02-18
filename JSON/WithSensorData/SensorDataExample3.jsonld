@@ -9,7 +9,7 @@
   "epcisBody": {
    "eventList": [
      {
-		  "eventID": "_:event3",
+		  "eventID": "ni:///sha-256;b507b2720c96cd99855eabb101e8617d48622eff4ceaad0a416b3c10dfd316ee?ver=CBV2.0",
 		  "isA": "ObjectEvent",
 		  "action": "OBSERVE",
 		  "bizStep": "urn:epcglobal:cbv:bizstep:inspecting",
@@ -19,7 +19,7 @@
 		  "readPoint": {"id": "urn:epc:id:sgln:4012345.00005.0"},
 		  "sensorElementList": [
 		   {
-		    "sensorMetaData" : {"startTime":"2019-04-01T15:00:00.000+01:00", "endTime":"2019-04-02T14:59:59.999+01:00"},
+		    "sensorMetadata" : {"startTime":"2019-04-01T15:00:00.000+01:00", "endTime":"2019-04-02T14:59:59.999+01:00"},
 		    "sensorReport" : [
 			 { "type": "gs1:MeasurementType-Temperature" , "minValue" : 12.4, "maxValue":13.8, "uom": "CEL" },
 			 { "type": "gs1:MeasurementType-Humidity" , "minValue" : 69.2 , "maxValue":72.5, "uom": "A93"}

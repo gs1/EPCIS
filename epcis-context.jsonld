@@ -46,11 +46,14 @@
     "source": {"@type":"@id"},
     "destination": {"@type":"@id"},
 
+    "reason": {"@type":"@id"},
+    "correctiveEventIDs": {"@type":"@id"},
+    
     "type": {"@type":"@id"},
     "set": {"@type":"@id"},
     "unset": {"@type":"@id"},
     "deviceID": {"@type":"@id"},
-    "deviceMetaData": {"@type":"@id"},
+    "deviceMetadata": {"@type":"@id"},
     "rawData": {"@type":"@id"},
     "bizRules": {"@type":"@id"},
     "dataProcessingMethod": {"@type":"@id"},

@@ -9,7 +9,7 @@
   "epcisBody": {
   "eventList": [
      {
-		  "eventID": "_:event4",
+		  "eventID": "ni:///sha-256;7ff1501099b3f5890d310d703fb9f57e251bba0c57d3c049fab590b50323a8e7?ver=CBV2.0",
 		  "isA": "ObjectEvent",
 		  "action": "OBSERVE",
 		  "bizStep": "urn:epcglobal:cbv:bizstep:inspecting",
@@ -20,7 +20,7 @@
 		  "quantityList": [{"epcClass":"urn:epc:class:lgtin:4023333.002000.2019-10-07","quantity":150,"uom":"KGM"}],
 		  "sensorElementList": [
 		   {
-		    "sensorMetaData" : {"time":"2019-04-02T14:55:00.000+01:00"},
+		    "sensorMetadata" : {"time":"2019-04-02T14:55:00.000+01:00"},
 		    "sensorReport" : [
 			 { "type": "gs1:MeasurementType-Temperature" , "value" : 26.0, "uom": "CEL", "deviceID":"urn:epc:id:giai:4000001.111", "deviceMetaData":"https://id.gs1.org/giai/4000001111", "rawData":"https://example.org/giai/401234599999" },
 			 { "type": "gs1:MeasurementType-Humidity" , "value" : 12.1 , "uom": "A93", "deviceID":"urn:epc:id:giai:4000001.222", "deviceMetaData":"https://id.gs1.org/giai/4000001222", "rawData":"https://example.org/giai/401234599999"},

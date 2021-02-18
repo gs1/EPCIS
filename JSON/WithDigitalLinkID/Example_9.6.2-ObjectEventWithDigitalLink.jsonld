@@ -8,7 +8,7 @@
   "epcisBody": {
     "eventList": [
       {
-        "eventID": "_:event_example_9_6_2_1",
+        "eventID": "ni:///sha-256;115b14983df54a9bcc3dd6a00dc4ebcab000bd52fda0abdd8996907e01dccc23?ver=CBV2.0",
         "isA": "ObjectEvent",
         "eventTime": "2013-06-08T14:58:56.591Z",
         "eventTimeZoneOffset": "+02:00",

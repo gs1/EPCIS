@@ -18,7 +18,7 @@ Both contain a set of pertinent attributes, which can be outlined as follows:
 | | `startTime` | Earliest time of observation period |
 | | `endTime` | Most recent time of observation period |
 | source | `deviceID` | Device from which data originates |
-| | `deviceMetaData` | Location of document specifying device meta data |
+| | `deviceMetadata` | Location of document specifying device meta data |
 | | `rawData` | Location of raw sensor data |
 | | `dataProcessingMethod` | Location of document specifying data processing method |
 | | `bizRules` | Location of document specifying business rules |
@@ -29,7 +29,7 @@ Both contain a set of pertinent attributes, which can be outlined as follows:
 | --- | ------------ | -- |
 | time | `time` | Time of observation |
 | source | `deviceID` | Device from which data originates |
-| | `deviceMetaData` | Location of document specifying device meta data |
+| | `deviceMetadata` | Location of document specifying device meta data |
 | | `rawData` | Location of raw sensor data |
 | | `dataProcessingMethod` | Location of document specifying data processing method |
 | type | `type` | Property identifier |

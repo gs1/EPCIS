@@ -9,7 +9,7 @@
   "epcisBody": {
    "eventList": [
      {
-		  "eventID": "_:event_f",
+		  "eventID": "ni:///sha-256;5f7c472bc4905de27a19b2efc8e4a9c6dc195139669b80b515f12218ff07cf65?ver=CBV2.0",
 		  "isA": "AssociationEvent",
 		  "eventTime": "2019-11-06T14:00:00.000+01:00",
 		  "recordTime": "2019-11-06T14:05:00.000+01:00",
@@ -33,7 +33,7 @@
 		  ],
 		  "sensorElementList": [
 		   {
-		    "sensorMetaData" : {"startTime":"2019-11-06T13:55:00.000+01:00", "endTime":"2019-11-06T13:57:00.000+01:00"},
+		    "sensorMetadata" : {"startTime":"2019-11-06T13:55:00.000+01:00", "endTime":"2019-11-06T13:57:00.000+01:00"},
 		    "sensorReport" : [
 			 { "type": "gs1:Humidity" , "minValue" : 12.1 , "maxValue" : 12.2 , "uom": "A93"}
 		     ]

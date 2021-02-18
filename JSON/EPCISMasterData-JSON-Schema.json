@@ -154,8 +154,8 @@
 		"sensorElement": {
 			"type": "object",
 			"properties": {
-				"sensorMetaData": {
-					"$ref": "#/definitions/sensorMetaData"
+				"sensorMetadata": {
+					"$ref": "#/definitions/sensorMetadata"
 				},
 				"sensorReport": {
 					"$ref": "#/definitions/sensorReportList"
@@ -178,7 +178,7 @@
 				"deviceID": {
 					"$ref": "#/definitions/uri"
 				},
-				"deviceMetaData": {
+				"deviceMetadata": {
 					"$ref": "#/definitions/uri"
 				},
 				"rawData": {
@@ -238,7 +238,7 @@
 			},
 			"required": ["type"]
 		},
-		"sensorMetaData": {
+		"sensorMetadata": {
 			"type": "object",
 			"properties": {
 				"time": {
@@ -247,7 +247,7 @@
 				"deviceID": {
 					"$ref": "#/definitions/uri"
 				},
-				"deviceMetaData": {
+				"deviceMetadata": {
 					"$ref": "#/definitions/uri"
 				},
 				"rawData": {
