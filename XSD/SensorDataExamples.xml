@@ -263,8 +263,8 @@
 					<extension>
 						<sensorElementList>
 							<sensorElement>
-								<sensorReport type="gs1:ErrorCondition" uriValue="https://example.com/ErrorCode-A827"/>
-                                <sensorReport type="gs1:AlarmCondition" booleanValue="true"/>
+								<sensorReport type="gs1:MeasurementType-ErrorCondition" uriValue="https://example.com/ErrorCode-A827"/>
+                                <sensorReport type="gs1:MeasurementType-AlarmCondition" booleanValue="true"/>
 							</sensorElement>
 						</sensorElementList>
 					</extension>
