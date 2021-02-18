@@ -3601,7 +3601,7 @@ components:
         application/problem+json:
           schema:
             example:
-              type: "epcisException:NoSuchNameException"
+              type: "epcisException:CaptureLimitExceededException"
               title: "Capture Payload too large"
               status: 413
             allOf:
