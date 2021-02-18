@@ -3664,8 +3664,8 @@ components:
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
     406NotAcceptable:
       description: |
-        The client cannot return the response as requested. For example, the client requested a HTML response
-        but the server does not suport this.
+        The server cannot return the response as requested. For example, the client requested an HTML response
+        but the server does not support this.
       content:
         application/problem+json:
           schema:
@@ -4629,9 +4629,10 @@ components:
         The ID of an EPCIS event. Because of the `all` reserved value for EPCIS event types,
         an EPCIS event ID must be unique across all events in the system.
       required: true
-      example: "_:event1"
+      example: "ni:///sha-256;df7bb3c352fef055578554f09f5e2aa41782150ced7bd0b8af24dd3ccb30ba69?ver=CBV2.0"
       schema:
         type: string
+        format: uri
     EventType:
       name: eventType
       in: path
