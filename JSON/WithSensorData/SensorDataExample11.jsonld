@@ -30,7 +30,7 @@
           {
             "sensorReport": [
               {
-                "type": "gs1:EffectiveDoseRate",
+                "type": "gs1:MeasurementType-EffectiveDoseRate",
                 "value": 0.005,
                 "uom": "P71"
               }
