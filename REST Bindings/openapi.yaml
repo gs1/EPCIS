@@ -575,7 +575,7 @@ paths:
         ```
       responses:
         '200':
-          $ref: '#/components/responses/200EPCISDocument'
+          $ref: '#/components/responses/200EPCISQueryDocumentEventsEndpoint'
         '400':
           $ref: '#/components/responses/400QueryIssues'
         '401':
@@ -710,7 +710,7 @@ paths:
         the unique event.
       responses:
         '200':
-          $ref: '#/components/responses/200EPCISDocumentSingleEvent'
+          $ref: '#/components/responses/200EPCISQueryDocumentSingleEvent'
         '401':
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
@@ -899,7 +899,7 @@ paths:
         ```
       responses:
         '200':
-          $ref: '#/components/responses/200EPCISDocument'
+          $ref: '#/components/responses/200EPCISQueryDocumentEventsEndpoint'
         '400':
           $ref: '#/components/responses/400QueryIssues'
         '401':
@@ -945,7 +945,7 @@ paths:
         This endpoint accesses individual events with the electronic product code.
       responses:
         '200':
-          $ref: '#/components/responses/200EPCISDocumentSingleEvent'
+          $ref: '#/components/responses/200EPCISQueryDocumentSingleEvent'
         '401':
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
@@ -1131,7 +1131,7 @@ paths:
         ```
       responses:
         '200':
-          $ref: '#/components/responses/200EPCISDocument'
+          $ref: '#/components/responses/200EPCISQueryDocumentEventsEndpoint'
         '400':
           $ref: '#/components/responses/400QueryIssues'
         '401':
@@ -1178,7 +1178,7 @@ paths:
         This endpoint accesses individual events with the business step.
       responses:
         '200':
-          $ref: '#/components/responses/200EPCISDocumentSingleEvent'
+          $ref: '#/components/responses/200EPCISQueryDocumentSingleEvent'
         '401':
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
@@ -1366,7 +1366,7 @@ paths:
         ```
       responses:
         '200':
-          $ref: '#/components/responses/200EPCISDocument'
+          $ref: '#/components/responses/200EPCISQueryDocumentEventsEndpoint'
         '400':
           $ref: '#/components/responses/400QueryIssues'
         '401':
@@ -1412,7 +1412,7 @@ paths:
         This endpoint accesses individual events with the business location.
       responses:
         '200':
-          $ref: '#/components/responses/200EPCISDocumentSingleEvent'
+          $ref: '#/components/responses/200EPCISQueryDocumentSingleEvent'
         '401':
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
@@ -1598,7 +1598,7 @@ paths:
         ```
       responses:
         '200':
-          $ref: '#/components/responses/200EPCISDocument'
+          $ref: '#/components/responses/200EPCISQueryDocumentEventsEndpoint'
         '400':
           $ref: '#/components/responses/400QueryIssues'
         '401':
@@ -1644,7 +1644,7 @@ paths:
         This endpoint accesses individual events with the read point.
       responses:
         '200':
-          $ref: '#/components/responses/200EPCISDocumentSingleEvent'
+          $ref: '#/components/responses/200EPCISQueryDocumentSingleEvent'
         '401':
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
@@ -1832,7 +1832,7 @@ paths:
         ```
       responses:
         '200':
-          $ref: '#/components/responses/200EPCISDocument'
+          $ref: '#/components/responses/200EPCISQueryDocumentEventsEndpoint'
         '400':
           $ref: '#/components/responses/400QueryIssues'
         '401':
@@ -1878,7 +1878,7 @@ paths:
         This endpoint accesses individual events with the disposition.
       responses:
         '200':
-          $ref: '#/components/responses/200EPCISDocumentSingleEvent'
+          $ref: '#/components/responses/200EPCISQueryDocumentSingleEvent'
         '401':
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
@@ -3194,7 +3194,7 @@ components:
               format: string
               enum:
                 - events
-    200EPCISDocumentSingleEvent:
+    200EPCISQueryDocumentSingleEvent:
       headers:
         GS1-EPCIS-Version:
           $ref: '#/components/headers/GS1-EPCIS-Version'
@@ -3222,7 +3222,7 @@ components:
                 }
               ],
               "id": "_:document1",
-              "isA": "EPCISDocument",
+              "isA": "EPCISQueryDocument",
               "creationDate": "2020-01-15T07:47:21.677+00:00",
               "schemaVersion": 1.2,
               "format": "application/ld+json",
@@ -3301,7 +3301,7 @@ components:
             }
 
           schema:
-            $ref: '#/components/schemas/EPCISDocumentSingleEvent'
+            $ref: '#/components/schemas/EPCISQueryDocument'
     200EPCISMasterDataDocument:
       headers:
         GS1-EPCIS-Version:
@@ -3360,7 +3360,7 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/EPCISQueryDocument'
-    200EPCISDocument:
+    200EPCISQueryDocumentEventsEndpoint:
       headers:
         GS1-EPCIS-Version:
           $ref: '#/components/headers/GS1-EPCIS-Version'
@@ -3389,7 +3389,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/EPCISDocument'
+            $ref: '#/components/schemas/EPCISQueryDocument'
     204NextPageTokenInvalidated:
       description: nextPageToken invalidated successfully.
     200SupportedEventTypes:
