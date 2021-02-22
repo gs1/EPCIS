@@ -4,11 +4,11 @@
       "@vocab": "https://ns.gs1.org/epcis/",
       "@protected": true,
       "epcis": "https://ns.gs1.org/epcis/",
-      "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-      "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-      "owl": "http://www.w3.org/2002/07/owl#",
-      "xsd": "http://www.w3.org/2001/XMLSchema#",
-      "dcterms": "http://purl.org/dc/terms/",
+      "rdf": "https://www.w3.org/1999/02/22-rdf-syntax-ns#",
+      "rdfs": "https://www.w3.org/2000/01/rdf-schema#",
+      "owl": "https://www.w3.org/2002/07/owl#",
+      "xsd": "https://www.w3.org/2001/XMLSchema#",
+      "dcterms": "https://purl.org/dc/terms/",
       "gs1": "https://gs1.org/voc/",
       "isA": "@type",
       "eventTime": {
@@ -21,7 +21,7 @@
         "@type": "xsd:string"
       },
       "action": {
-        "@type": "xsd:string"
+        "@type": "@vocab"
       },
       "epcList": {
         "@type": "@id",
@@ -106,10 +106,10 @@
         }
       },
       "bizStep": {
-        "@type": "@id"
+        "@type": "@vocab"
       },
       "disposition": {
-        "@type": "@id"
+        "@type": "@vocab"
       },
       "bizTransactionList": {
         "@container": "@set",
@@ -282,22 +282,13 @@
         }
       },
       "bizLocation": {
-        "@context": {
-          "@protected": true,
-          "id": {
-            "@type": "@id"
-          }
-        }
+        "@type": "@id"
       },
       "readPoint": {
-        "@context": {
-          "@protected": true,
-          "id": {
-            "@type": "@id"
-          }
-        }
+        "@type": "@id"
       },
       "children": {
+        "@container": "@set",
         "@type": "@id"
       },
       "vtype": "urn:epcglobal:epcis:vtype:",
