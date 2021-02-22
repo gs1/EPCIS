@@ -156,11 +156,12 @@ paths:
             $ref: '#/components/schemas/GS1-Capture-Error-Behaviour'
 
       description: |
-        EPCIS events are added in bulk using the capture interface. Two design considerations were made to remain compatible with EPCIS 1.2:
+        EPCIS events are added in bulk using the capture interface. Three design considerations were made to remain compatible with EPCIS 1.2:
 
         - EPCIS 2.0 makes event IDs optional. If event IDs are missing, the server should populate the event id with a unique value.
         Otherwise, it won't be possible to retrieve these events.
         - By default, EPCIS events are only stored if the entire capture job was successful. This behaviour can be changed with the `GS1-Capture-Error-Behaviour` header.
+        - EPCIS master data can be captured in the header (`epcisHeader`) of an `EPCISDocument`.
 
         To prevent timeouts for large payloads, the client potentially has to split the payload into several capture calls. To that end, the server specified a capture
         limit (number of EPCIS events) and file size limit (payload size).
@@ -574,7 +575,7 @@ paths:
         ```
       responses:
         '200':
-          $ref: '#/components/responses/200EPCISDocument'
+          $ref: '#/components/responses/200EPCISQueryDocumentEventsEndpoint'
         '400':
           $ref: '#/components/responses/400QueryIssues'
         '401':
@@ -709,7 +710,7 @@ paths:
         the unique event.
       responses:
         '200':
-          $ref: '#/components/responses/200EPCISDocumentSingleEvent'
+          $ref: '#/components/responses/200EPCISQueryDocumentSingleEvent'
         '401':
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
@@ -898,7 +899,7 @@ paths:
         ```
       responses:
         '200':
-          $ref: '#/components/responses/200EPCISDocument'
+          $ref: '#/components/responses/200EPCISQueryDocumentEventsEndpoint'
         '400':
           $ref: '#/components/responses/400QueryIssues'
         '401':
@@ -944,7 +945,7 @@ paths:
         This endpoint accesses individual events with the electronic product code.
       responses:
         '200':
-          $ref: '#/components/responses/200EPCISDocumentSingleEvent'
+          $ref: '#/components/responses/200EPCISQueryDocumentSingleEvent'
         '401':
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
@@ -1130,7 +1131,7 @@ paths:
         ```
       responses:
         '200':
-          $ref: '#/components/responses/200EPCISDocument'
+          $ref: '#/components/responses/200EPCISQueryDocumentEventsEndpoint'
         '400':
           $ref: '#/components/responses/400QueryIssues'
         '401':
@@ -1177,7 +1178,7 @@ paths:
         This endpoint accesses individual events with the business step.
       responses:
         '200':
-          $ref: '#/components/responses/200EPCISDocumentSingleEvent'
+          $ref: '#/components/responses/200EPCISQueryDocumentSingleEvent'
         '401':
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
@@ -1365,7 +1366,7 @@ paths:
         ```
       responses:
         '200':
-          $ref: '#/components/responses/200EPCISDocument'
+          $ref: '#/components/responses/200EPCISQueryDocumentEventsEndpoint'
         '400':
           $ref: '#/components/responses/400QueryIssues'
         '401':
@@ -1411,7 +1412,7 @@ paths:
         This endpoint accesses individual events with the business location.
       responses:
         '200':
-          $ref: '#/components/responses/200EPCISDocumentSingleEvent'
+          $ref: '#/components/responses/200EPCISQueryDocumentSingleEvent'
         '401':
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
@@ -1597,7 +1598,7 @@ paths:
         ```
       responses:
         '200':
-          $ref: '#/components/responses/200EPCISDocument'
+          $ref: '#/components/responses/200EPCISQueryDocumentEventsEndpoint'
         '400':
           $ref: '#/components/responses/400QueryIssues'
         '401':
@@ -1643,7 +1644,7 @@ paths:
         This endpoint accesses individual events with the read point.
       responses:
         '200':
-          $ref: '#/components/responses/200EPCISDocumentSingleEvent'
+          $ref: '#/components/responses/200EPCISQueryDocumentSingleEvent'
         '401':
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
@@ -1831,7 +1832,7 @@ paths:
         ```
       responses:
         '200':
-          $ref: '#/components/responses/200EPCISDocument'
+          $ref: '#/components/responses/200EPCISQueryDocumentEventsEndpoint'
         '400':
           $ref: '#/components/responses/400QueryIssues'
         '401':
@@ -1877,7 +1878,7 @@ paths:
         This endpoint accesses individual events with the disposition.
       responses:
         '200':
-          $ref: '#/components/responses/200EPCISDocumentSingleEvent'
+          $ref: '#/components/responses/200EPCISQueryDocumentSingleEvent'
         '401':
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
@@ -3193,7 +3194,7 @@ components:
               format: string
               enum:
                 - events
-    200EPCISDocumentSingleEvent:
+    200EPCISQueryDocumentSingleEvent:
       headers:
         GS1-EPCIS-Version:
           $ref: '#/components/headers/GS1-EPCIS-Version'
@@ -3221,7 +3222,7 @@ components:
                 }
               ],
               "id": "_:document1",
-              "isA": "EPCISDocument",
+              "isA": "EPCISQueryDocument",
               "creationDate": "2020-01-15T07:47:21.677+00:00",
               "schemaVersion": 1.2,
               "format": "application/ld+json",
@@ -3300,7 +3301,7 @@ components:
             }
 
           schema:
-            $ref: '#/components/schemas/EPCISDocumentSingleEvent'
+            $ref: '#/components/schemas/EPCISQueryDocument'
     200EPCISMasterDataDocument:
       headers:
         GS1-EPCIS-Version:
@@ -3325,7 +3326,7 @@ components:
             $ref: '#/components/schemas/Link'
         GS1-Next-Page-Token-Expires:
           $ref: '#/components/headers/GS1-Next-Page-Token-Expires'
-      description: Returns the EPCIS vocabulary elements.
+      description: Returns EPCIS vocabulary elements.
       content:
         application/json:
           schema:
@@ -3359,7 +3360,7 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/EPCISQueryDocument'
-    200EPCISDocument:
+    200EPCISQueryDocumentEventsEndpoint:
       headers:
         GS1-EPCIS-Version:
           $ref: '#/components/headers/GS1-EPCIS-Version'
@@ -3388,7 +3389,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/EPCISDocument'
+            $ref: '#/components/schemas/EPCISQueryDocument'
     204NextPageTokenInvalidated:
       description: nextPageToken invalidated successfully.
     200SupportedEventTypes:
@@ -3600,7 +3601,7 @@ components:
         application/problem+json:
           schema:
             example:
-              type: "epcisException:NoSuchNameException"
+              type: "epcisException:CaptureLimitExceededException"
               title: "Capture Payload too large"
               status: 413
             allOf:
@@ -3663,8 +3664,8 @@ components:
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
     406NotAcceptable:
       description: |
-        The client cannot return the response as requested. For example, the client requested a HTML response
-        but the server does not suport this.
+        The server cannot return the response as requested. For example, the client requested an HTML response
+        but the server does not support this.
       content:
         application/problem+json:
           schema:
@@ -3845,21 +3846,68 @@ components:
       enum:
         - all
     EPCISMasterDataDocument:
-      description: A collection of master data resources.
+      description: |
+        A collection of master data resources. This is only a simplified schema. Please use the schema in the
+        JSON section to validate `EPCISMasterDataDocument`.
       example:
         {
-          "@context": [
-              "https://gs1.github.io/EPCIS/epcis-context.jsonld",
-              { "example": "http://ns.example.com/epcis/" },
-              { "mda": "http://epcis.example.com/mda" } ],
-          "isA": "EPCISMasterDataDocument",
+          "@context": [ "https://gs1.github.io/EPCIS/epcis-context.jsonld",{ "example": "http://ns.example.com/epcis/" },{ "xmda": "http://epcis.example.com/mda" } ],
+          "id": "_:example_9.8.1",
+          "isA": "EPCISDocument",
           "schemaVersion": 2.0,
           "creationDate": "2005-07-11T11:30:47.0Z",
           "format": "application/ld+json",
           "epcisHeader": {
             "epcisMasterData": {
               "vocabularyList": [
-
+                {
+                  "vocabularyElementList": [
+                    {
+                      "isA": "urn:epcglobal:epcis:vtype:BusinessLocation",
+                      "id": "urn:epc:id:sgln:0037000.00729.0",
+                      "attributes": [
+                        { "id": "xmda:latitude", "attribute": "+18.0000" },
+                        { "id": "xmda:longitude", "attribute": "-70.0000" },
+                        {
+                          "id": "xmda:address",
+                          "attribute": {
+                            "@context": {
+                              "@vocab": "http://epcis.example.com/ns/"
+                            },
+                            "isA": "Address",
+                            "street": "100 Nowhere Street",
+                            "city": "Fancy",
+                            "state": "DC",
+                            "zip": "99999"
+                          }
+                        }
+                      ],
+                      "children": [
+                          "urn:epc:id:sgln:0037000.00729.8201",
+                          "urn:epc:id:sgln:0037000.00729.8202",
+                          "urn:epc:id:sgln:0037000.00729.8203"
+                      ]
+                    },
+                    {
+                      "isA": "urn:epcglobal:epcis:vtype:BusinessLocation",
+                      "id": "urn:epc:id:sgln:0037000.00729.8202",
+                      "attributes": [
+                        { "id": "cbvmda:sst", "attribute": "202" }
+                      ],
+                      "children": [
+                          "urn:epc:id:sgln:0037000.00729.8203"
+                      ]
+                    },
+                    {
+                      "isA": "urn:epcglobal:epcis:vtype:BusinessLocation",
+                      "id": "urn:epc:id:sgln:0037000.00729.8203",
+                      "attributes": [
+                        { "id": "cbvmda:sst", "attribute": "202" },
+                        { "id": "cbvmda:ssa", "attribute": "402" }
+                      ]
+                    }
+                  ]
+                },
                 {
                   "vocabularyElementList": [
                     {
@@ -3868,6 +3916,21 @@ components:
                       "attributes": [
                         { "id": "cbvmda:site", "attribute": "0037000007296" },
                         { "id": "cbvmda:sst", "attribute": 201 }
+                      ]
+                    },
+                    {
+                      "isA": "urn:epcglobal:epcis:vtype:ReadPoint",
+                      "id": "urn:epc:id:sgln:0037000.00729.8202",
+                      "attributes": [
+                        { "id": "cbvmda:site", "attribute": "0037000007296" },
+                        { "id": "cbvmda:sst", "attribute": "202" }
+                      ]
+                    },
+                    {
+                      "isA": "urn:epcglobal:epcis:vtype:ReadPoint",
+                      "id": "urn:epc:id:sgln:0037000.00729.8203",
+                      "attributes": [
+                        { "id": "cbvmda:sst", "attribute": 204 }
                       ]
                     }
                   ]
@@ -3879,58 +3942,38 @@ components:
             "eventList": [ ]
           }
         }
+
       type: object
       required:
+        - schemaVersion
+        - creationDate
         - epcisBody
-        - epcisHeader
       properties:
         '@context':
-          type: array
-          items:
-            anyOf:
-              - type: string
-                format: uri
-              - type: object
+           type: array
+           items:
+             anyOf:
+               - type: string
+                 format: uri
+               - type: object
         isA:
           type: string
           default: EPCISMasterDataDocument
           example: EPCISMasterDataDocument
         schemaVersion:
-          type: string
-          pattern: ^\d+(\.\d+)?$
-          example: "2.0"
-        format:
-          type: string
-          example: "application/ld+json"
+          type: number
+          example: 2.0
         creationDate:
           type: string
           format: date-time
-        epcisBody:
-          type: object
-          properties:
-            eventList:
-              type: array
-              uniqueItems: true
-              items:
-                type: object
-          required:
-            - eventList
+        format:
+          type: string
+          example: "application/ld+json"
         epcisHeader:
           type: object
-          properties:
-            epcisMasterData:
-              type: object
-              properties:
-                vocabularyList:
-                  type: array
-                  uniqueItems: true
-                  items:
-                    type: object
-      externalDocs:
-        description: |
-          To validate EPCIS master data, please use [JSON schema](../JSON/EPCIS-JSON-Schema.json)
-          or [SHACL file](../JSON/EPCIS-SHACL.ttl).
-        url: ../JSON
+        epcisBody:
+          type: object
+
     EPCISDocumentSingleEvent:
       description: |
         A single EPCIS event. The full schema is specified in the external JSON-LD and JSON-Schema documentation.
@@ -4030,6 +4073,18 @@ components:
                 type: object
           required:
             - eventList
+        epcisHeader:
+          type: object
+          properties:
+            epcisMasterData:
+              type: object
+              properties:
+                vocabularyList:
+                  type: array
+                  uniqueItems: true
+                  items:
+                    type: object
+
       example:
         {
           "@context": [
@@ -4114,7 +4169,7 @@ components:
             success:
               description: |
                 If `success` is `false`, there was at least one error. Otherwise, `success` is `true`.
-                If the `GS1-Capture-Error-Behaviour` header is `rollback`, `success` being `false` aboards the capture
+                If the `GS1-Capture-Error-Behaviour` header is `rollback`, `success` being `false` aborts the capture
                 job and rejects all EPCIS events related to the job.
                 If `GS1-Capture-Error-Behaviour` header is `proceed`, some EPCIS events might still be captured, even
                 if `success` is `false`.
@@ -4616,9 +4671,10 @@ components:
         The ID of an EPCIS event. Because of the `all` reserved value for EPCIS event types,
         an EPCIS event ID must be unique across all events in the system.
       required: true
-      example: "_:event1"
+      example: "ni:///sha-256;df7bb3c352fef055578554f09f5e2aa41782150ced7bd0b8af24dd3ccb30ba69?ver=CBV2.0"
       schema:
         type: string
+        format: uri
     EventType:
       name: eventType
       in: path
