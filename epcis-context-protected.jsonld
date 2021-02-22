@@ -282,10 +282,20 @@
         }
       },
       "bizLocation": {
-        "@type": "@id"
+        "@context": {
+          "@protected": true,
+          "id": {
+            "@type": "@id"
+          }
+        }
       },
       "readPoint": {
-        "@type": "@id"
+        "@context": {
+          "@protected": true,
+          "id": {
+            "@type": "@id"
+          }
+        }
       },
       "children": {
         "@container": "@set",
