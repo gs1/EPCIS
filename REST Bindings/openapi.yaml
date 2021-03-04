@@ -549,6 +549,10 @@ paths:
               $ref: '#/components/headers/GS1-Vendor-Version'
             GS1-CBV-Extensions:
               $ref: '#/components/headers/GS1-CBV-Extensions'
+            GS1-EPCIS-Capture-Limit:
+              $ref: '#/components/headers/GS1-EPCIS-Capture-Limit'
+            GS1-EPCIS-Capture-File-Size-Limit:
+              $ref: '#/components/headers/GS1-EPCIS-Capture-File-Size-Limit'
     get:
       tags:
         - 'Events'
@@ -615,6 +619,24 @@ paths:
             Successfully created (captured) one EPCIS event. The request returns the URL of the newly created
             EPCIS event in the Location header.
           headers:
+            GS1-EPCIS-Version:
+              $ref: '#/components/headers/GS1-EPCIS-Version'
+            GS1-EPCIS-Min:
+              $ref: '#/components/headers/GS1-EPCIS-Min'
+            GS1-EPCIS-Max:
+              $ref: '#/components/headers/GS1-EPCIS-Max'
+            GS1-CBV-Version:
+              $ref: '#/components/headers/GS1-CBV-Version'
+            GS1-EPCIS-Extensions:
+              $ref: '#/components/headers/GS1-EPCIS-Extensions'
+            GS1-Vendor-Version:
+              $ref: '#/components/headers/GS1-Vendor-Version'
+            GS1-CBV-Extensions:
+              $ref: '#/components/headers/GS1-CBV-Extensions'
+            GS1-EPCIS-Capture-Limit:
+              $ref: '#/components/headers/GS1-EPCIS-Capture-Limit'
+            GS1-EPCIS-Capture-File-Size-Limit:
+              $ref: '#/components/headers/GS1-EPCIS-Capture-File-Size-Limit'
             Location:
               example: "https://example.com/eventTypes/ObjectEvent/events/eventId123"
               schema:
