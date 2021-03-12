@@ -22,10 +22,10 @@
 		   {
 		    "sensorMetadata" : {"time":"2019-04-02T14:55:00.000+01:00"},
 		    "sensorReport" : [
-			 { "type": "gs1:MeasurementType-Temperature" , "value" : 26.0, "uom": "CEL", "deviceID":"urn:epc:id:giai:4000001.111", "deviceMetadata":"https://id.gs1.org/giai/4000001111", "rawData":"https://example.org/giai/401234599999" },
-			 { "type": "gs1:MeasurementType-Humidity" , "value" : 12.1 , "uom": "A93", "deviceID":"urn:epc:id:giai:4000001.222", "deviceMetadata":"https://id.gs1.org/giai/4000001222", "rawData":"https://example.org/giai/401234599999"},
-			 { "type": "gs1:MeasurementType-Speed" , "value" : 160 , "uom": "KMH", "deviceID":"urn:epc:id:giai:4000001.333", "deviceMetadata":"https://id.gs1.org/giai/4000001333", "rawData":"https://example.org/giai/401234599999"},
-			 { "type": "gs1:MeasurementType-Illuminance" , "value" : 800 , "uom": "LUX", "deviceID":"urn:epc:id:giai:4000001.444", "deviceMetadata":"https://id.gs1.org/giai/4000001444", "rawData":"https://example.org/giai/401234599999"}
+			 { "type": "gs1:MT-Temperature" , "value" : 26.0, "uom": "CEL", "deviceID":"urn:epc:id:giai:4000001.111", "deviceMetadata":"https://id.gs1.org/giai/4000001111", "rawData":"https://example.org/giai/401234599999" },
+			 { "type": "gs1:MT-Humidity" , "value" : 12.1 , "uom": "A93", "deviceID":"urn:epc:id:giai:4000001.222", "deviceMetadata":"https://id.gs1.org/giai/4000001222", "rawData":"https://example.org/giai/401234599999"},
+			 { "type": "gs1:MT-Speed" , "value" : 160 , "uom": "KMH", "deviceID":"urn:epc:id:giai:4000001.333", "deviceMetadata":"https://id.gs1.org/giai/4000001333", "rawData":"https://example.org/giai/401234599999"},
+			 { "type": "gs1:MT-Illuminance" , "value" : 800 , "uom": "LUX", "deviceID":"urn:epc:id:giai:4000001.444", "deviceMetadata":"https://id.gs1.org/giai/4000001444", "rawData":"https://example.org/giai/401234599999"}
 		     ]
 		    }	    
 		  ]

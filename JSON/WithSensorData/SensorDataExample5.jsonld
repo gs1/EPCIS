@@ -21,12 +21,12 @@
 		   {
 		    "sensorMetadata" : {"deviceID":"urn:epc:id:giai:4000001.111", "deviceMetadata":"https://id.gs1.org/giai/4000001111"},
 		    "sensorReport" : [
-			 { "type": "gs1:MeasurementType-Temperature" , "time":"2019-04-02T14:05:00.000+01:00", "value" : 26.0, "uom": "CEL"},
-			 { "type": "gs1:MeasurementType-Temperature" , "time":"2019-04-02T14:15:00.000+01:00", "value" : 26.1, "uom": "CEL"},
-			 { "type": "gs1:MeasurementType-Temperature" , "time":"2019-04-02T14:25:00.000+01:00", "value" : 26.2, "uom": "CEL"},
-			 { "type": "gs1:MeasurementType-Temperature" , "time":"2019-04-02T14:35:00.000+01:00", "value" : 26.3, "uom": "CEL"},
-			 { "type": "gs1:MeasurementType-Temperature" , "time":"2019-04-02T14:45:00.000+01:00", "value" : 26.4, "uom": "CEL"},
-			 { "type": "gs1:MeasurementType-Temperature" , "time":"2019-04-02T14:55:00.000+01:00", "value" : 26.5, "uom": "CEL"}
+			 { "type": "gs1:MT-Temperature" , "time":"2019-04-02T14:05:00.000+01:00", "value" : 26.0, "uom": "CEL"},
+			 { "type": "gs1:MT-Temperature" , "time":"2019-04-02T14:15:00.000+01:00", "value" : 26.1, "uom": "CEL"},
+			 { "type": "gs1:MT-Temperature" , "time":"2019-04-02T14:25:00.000+01:00", "value" : 26.2, "uom": "CEL"},
+			 { "type": "gs1:MT-Temperature" , "time":"2019-04-02T14:35:00.000+01:00", "value" : 26.3, "uom": "CEL"},
+			 { "type": "gs1:MT-Temperature" , "time":"2019-04-02T14:45:00.000+01:00", "value" : 26.4, "uom": "CEL"},
+			 { "type": "gs1:MT-Temperature" , "time":"2019-04-02T14:55:00.000+01:00", "value" : 26.5, "uom": "CEL"}
 		     ]
 		    }	    
 		  ]
