@@ -13,7 +13,7 @@
         "eventTime": "2013-06-08T14:58:56.591Z",
         "eventTimeZoneOffset": "+02:00",
         "parentID": "urn:epc:id:sscc:0614141.1234567890",
-        "childEPCs": [ "https://id.gs1.org/01/70614141123451/21/2017", "https://id.gs1.org/21/2018/01/70614141123451" ],
+        "childEPCs": [ "https://id.gs1.org/01/70614141123451/21/2017", "https://id.gs1.org/01/70614141123451/21/2018" ],
         "action": "OBSERVE",
         "bizStep": "urn:epcglobal:cbv:bizstep:receiving",
         "disposition": "urn:epcglobal:cbv:disp:in_progress",
