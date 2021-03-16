@@ -4228,11 +4228,13 @@ components:
         - No_Preference: The client (if a request header) or server (if a response header or `OPTIONS` discovery) chooses the representation.
         - Always_DL: URIs are returned as GS1 Digital Link.
         - Always_EPC_URN: URIs are returned as URN.
+        - Never_Translates: The original format is kept.
       type: string
       enum:
         - Client_Chooses
         - Always_DL
         - Always_EPC_URN
+        - Never_Translates
     GS1-EPCIS-Extensions:
       description: Specific EPCIS extensions supported (e.g. for FIT).
       example: {"example-epc-ext": "http://example.com/epcis/"}
