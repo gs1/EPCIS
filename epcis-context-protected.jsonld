@@ -53,7 +53,7 @@
             "@type": "@id"
           },
           "quantity": {
-            "@type": "xsd:decimal"
+            "@type": "xsd:float"
           },
           "uom": {
             "@type": "xsd:string"
@@ -68,7 +68,7 @@
             "@type": "@id"
           },
           "quantity": {
-            "@type": "xsd:decimal"
+            "@type": "xsd:float"
           },
           "uom": {
             "@type": "xsd:string"
@@ -83,7 +83,7 @@
             "@type": "@id"
           },
           "quantity": {
-            "@type": "xsd:decimal"
+            "@type": "xsd:float"
           },
           "uom": {
             "@type": "xsd:string"
@@ -98,7 +98,7 @@
             "@type": "@id"
           },
           "quantity": {
-            "@type": "xsd:decimal"
+            "@type": "xsd:float"
           },
           "uom": {
             "@type": "xsd:string"
