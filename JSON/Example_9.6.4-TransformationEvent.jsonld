@@ -3,7 +3,7 @@
 
   "id": "_:document1",
   "isA": "EPCISDocument",
-  "schemaVersion":2.0,
+  "schemaVersion": "2.0",
   "creationDate":"2013-06-04T14:59:02.099+02:00",
   "format":"application/ld+json",
   "epcisBody": {
