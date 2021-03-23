@@ -19,7 +19,7 @@
     "eventTimeZoneOffset": {"@type":"xsd:string"},
     "action": {"@type":"xsd:string"},
 
-    "quantity": {"@type":"xsd:decimal"},
+    "quantity": {"@type":"xsd:float"},
     "value" : {"@type": "xsd:float"},
     "minValue" : {"@type": "xsd:float"},
     "maxValue" : {"@type": "xsd:float"},
