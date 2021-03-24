@@ -1,0 +1,27 @@
+@prefix epcis: <https://ns.gs1.org/epcis/> .
+@prefix gs1:   <https://gs1.org/voc/> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix vtype: <urn:epcglobal:epcis:vtype:> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix example: <http://ns.example.com/epcis/> .
+@prefix cbvmda: <urn:epcglobal:cbv:mda:> .
+
+[ a                epcis:EPCISDocument ;
+  dcterms:created  "2019-11-02T14:00:00.000+01:00"^^xsd:dateTime ;
+  dcterms:format   "application/ld+json" ;
+  owl:versionInfo  "2.0" ;
+  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;a15e0b457cfc95305b6d530978c4cd7965bb29c0b8c312310fc7210c9ef123d9?ver=CBV2.0> ]
+] .
+
+<ni:///sha-256;a15e0b457cfc95305b6d530978c4cd7965bb29c0b8c312310fc7210c9ef123d9?ver=CBV2.0>
+        a                          epcis:AssociationEvent ;
+        epcis:action               "ADD" ;
+        epcis:bizStep              <urn:epcglobal:cbv:bizstep:installing> ;
+        epcis:childEPCs            <urn:epc:id:giai:4000001.12346> ;
+        epcis:eventTime            "2019-11-02T14:00:00.000+01:00"^^xsd:dateTime ;
+        epcis:eventTimeZoneOffset  "+01:00" ;
+        epcis:parentID             <urn:epc:id:sgln:4012345.00002.12> ;
+        epcis:readPoint            <urn:epc:id:sgln:4012345.00002.0> .

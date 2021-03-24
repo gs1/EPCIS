@@ -1,0 +1,32 @@
+@prefix epcis: <https://ns.gs1.org/epcis/> .
+@prefix gs1:   <https://gs1.org/voc/> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix vtype: <urn:epcglobal:epcis:vtype:> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix example: <http://ns.example.com/epcis/> .
+@prefix cbvmda: <urn:epcglobal:cbv:mda:> .
+
+[ a                epcis:EPCISDocument ;
+  dcterms:created  "2019-11-05T14:00:00.000+01:00"^^xsd:dateTime ;
+  dcterms:format   "application/ld+json" ;
+  owl:versionInfo  "2.0" ;
+  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;8bbf932aa86072c4e5e6e58666b9344447c3811e07823677c336a00d7db67e5a?ver=CBV2.0> ]
+] .
+
+<ni:///sha-256;8bbf932aa86072c4e5e6e58666b9344447c3811e07823677c336a00d7db67e5a?ver=CBV2.0>
+        a                          epcis:AssociationEvent ;
+        epcis:action               "ADD" ;
+        epcis:bizStep              <urn:epcglobal:cbv:bizstep:assembling> ;
+        epcis:childQuantityList    [ epcis:epcClass  <urn:epc:class:lgtin:4012345.005555.456> ;
+                                     epcis:quantity  "600"^^xsd:decimal
+                                   ] ;
+        epcis:childQuantityList    [ epcis:epcClass  <urn:epc:class:lgtin:4023333.002000.123> ;
+                                     epcis:quantity  "600"^^xsd:decimal
+                                   ] ;
+        epcis:eventTime            "2019-11-05T14:00:00.000+01:00"^^xsd:dateTime ;
+        epcis:eventTimeZoneOffset  "+01:00" ;
+        epcis:parentID             <urn:epc:id:grai:4012345.55555.987> ;
+        epcis:readPoint            <urn:epc:id:sgln:4012345.00001.0> .
