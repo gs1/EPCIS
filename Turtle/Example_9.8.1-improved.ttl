@@ -1,0 +1,48 @@
+@prefix epcis: <https://ns.gs1.org/epcis/> .
+@prefix gs1:   <https://gs1.org/voc/> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix vtype: <urn:epcglobal:epcis:vtype:> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix example: <http://ns.example.com/epcis/> .
+@prefix cbvmda: <urn:epcglobal:cbv:mda:> .
+
+<urn:epc:id:sgln:0037000.00729.8201>
+        a            vtype:ReadPoint , vtype:BusinessLocation ;
+        cbvmda:site  "0037000007296" ;
+        cbvmda:sst   "201" .
+
+<urn:epc:id:sgln:0037000.00729.8202>
+        a            vtype:ReadPoint , vtype:BusinessLocation ;
+        <https://ns.gs1.org/epcismd/children>
+                <urn:epc:id:sgln:0037000.00729.8203> ;
+        cbvmda:site  "0037000007296" ;
+        cbvmda:sst   "202" .
+
+<urn:epc:id:sgln:0037000.00729.0>
+        a       vtype:BusinessLocation ;
+        <http://epcis.example.com/mda/address>
+                [ a       <http://epcis.example.com/mda/Address> ;
+                  <http://epcis.example.com/mda/City>
+                          "Fancy" ;
+                  <http://epcis.example.com/mda/State>
+                          "DC" ;
+                  <http://epcis.example.com/mda/Street>
+                          "100 Nowhere Street" ;
+                  <http://epcis.example.com/mda/Zip>
+                          "99999"
+                ] ;
+        <http://epcis.example.com/mda/latitude>
+                "+18.000"^^xsd:float ;
+        <http://epcis.example.com/mda/longitude>
+                "-70.000"^^xsd:float ;
+        <https://ns.gs1.org/epcismd/children>
+                <urn:epc:id:sgln:0037000.00729.8203> , <urn:epc:id:sgln:0037000.00729.8202> , <urn:epc:id:sgln:0037000.00729.8201> .
+
+<urn:epc:id:sgln:0037000.00729.8203>
+        a            vtype:ReadPoint , vtype:BusinessLocation ;
+        cbvmda:site  "0037000007296" ;
+        cbvmda:ssa   "402" ;
+        cbvmda:sst   "203" , "202" .
