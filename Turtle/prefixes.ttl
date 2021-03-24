@@ -8,4 +8,5 @@
 @prefix owl:     <http://www.w3.org/2002/07/owl#> .
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix example: <http://ns.example.com/epcis/> .
+@prefix example1: <http://ns.example.com/epcis/> .
+@prefix example2: <http://epcis.example.com/ns/> .
