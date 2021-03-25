@@ -1,4 +1,5 @@
 @prefix epcis:   <https://ns.gs1.org/epcis/> .
+@prefix md:      <https://ns.gs1.org/epcismd/> .
 @prefix vtype:   <urn:epcglobal:epcis:vtype:> .
 @prefix cbvmda:  <urn:epcglobal:cbv:mda:> .
 
@@ -10,3 +11,4 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix example1: <http://ns.example.com/epcis/> .
 @prefix example2: <http://epcis.example.com/ns/> .
+@prefix example-mda: <http://epcis.example.com/mda/> .
