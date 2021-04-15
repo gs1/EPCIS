@@ -22,11 +22,11 @@
 		    "sensorMetadata" : {"time":"2019-07-19T14:00:00.000+01:00"},
 		    "sensorReport" : [
 			 { "type": "gs1:MT-Temperature" , "value":26.0, "uom":"CEL", "deviceID":"urn:epc:id:giai:4000001.111"},
-			 { "type": "rail:Abc" , "stringValue":"111100001111000011110000", "deviceID":"urn:epc:id:giai:4000001.112"},
-			 { "type": "rail:Def" , "booleanValue":true, "deviceID":"urn:epc:id:giai:4000001.113"},
+			 { "type": "example:Abc" , "stringValue":"111100001111000011110000", "deviceID":"urn:epc:id:giai:4000001.112"},
+			 { "type": "example:Def" , "booleanValue":true, "deviceID":"urn:epc:id:giai:4000001.113"},
 			 { "type": "example:Ghi" , "stringValue":"SomeString", "deviceID":"urn:epc:id:giai:4000001.114"},
 			 { "type": "example:Jkl" , "hexBinaryValue":"F0F0F0", "deviceID":"urn:epc:id:giai:4000001.115"},
-			 { "type": "rail:Mno" , "uriValue":"https://example.org/rail/someSectorSpecificValue", "deviceID":"urn:epc:id:giai:4000001.116"}
+			 { "type": "example:Mno" , "uriValue":"https://example.org/example/someSectorSpecificValue", "deviceID":"urn:epc:id:giai:4000001.116"}
 		     ]
 		    }	    
 		  ]
