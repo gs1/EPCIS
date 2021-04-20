@@ -19,16 +19,14 @@ epcis:EPCISEvent  a       owl:Class , rdfs:Class ;
         rdfs:label        "EPCISEvent"@en ;
         sw:term_status    "stable" .
 
-epcis:AggregationEvent
-        a                 owl:Class , rdfs:Class ;
+epcis:AggregationEvent   a owl:Class , rdfs:Class ;
         rdfs:comment      "The event type AggregationEvent describes events that apply to objects that have been aggregated to one another. In such an event, there is a set of 'contained' objects that have been aggregated within a 'containing' entity that's meant to identify the aggregation itself.  This event type is intended to be used for 'aggregations', meaning an association where there is a strong physical relationship between the containing and the contained objects such that they will all occupy the same location at the same time, until such time as they are disaggregated."@en ;
         rdfs:isDefinedBy  epcis: ;
         rdfs:label        "AggregationEvent"@en ;
         rdfs:subClassOf   epcis:EPCISEvent ;
         sw:term_status    "stable" .
 
-epcis:AssociationEvent
-        a                 owl:Class , rdfs:Class ;
+epcis:AssociationEvent   a owl:Class , rdfs:Class ;
         rdfs:comment      "The event type AssociationEvent describes the association or disassociation of one or several physical objects with a parent object or a specific physical location.  Like the AggregationEvent, the AssociationEvent is also used to capture associations where there is a strong physical relationship between the containing and the contained objects such that they will all occupy the same location at the same time, until such time as they are disaggregated. However, the AggregationEvent does not allow for associations of objects with physical locations;  if action is DELETE while omitting the childEPC and childQuantityList field, all contained children are disaggregated from the containing parent. Because there are situations in which associations are more permanent, i.e. beyond the physical flow of goods (e.g. packing/unpacking and loading/unloading), an AssociationEvent SHOULD be used: (a) when objects need to be associated with a physical location or (b) when the parent object could also be subject to other, more temporary associations (i.e. captured using AggregationEvent)."@en ;
         rdfs:isDefinedBy  epcis: ;
         rdfs:label        "AssociationEvent"@en ;
@@ -42,16 +40,14 @@ epcis:ObjectEvent  a      owl:Class , rdfs:Class ;
         rdfs:subClassOf   epcis:EPCISEvent ;
         sw:term_status    "stable" .
 
-epcis:TransactionEvent
-        a                 owl:Class , rdfs:Class ;
+epcis:TransactionEvent   a owl:Class , rdfs:Class ;
         rdfs:comment      "The event type TransactionEvent describes the association or disassociation of physical or digital objects to one or more business transactions. While other event types have an optional bizTransactionList field that may be used to provide context for an event, the TransactionEvent is used to declare in an unequivocal way that certain objects have been associated or disassociated with one or more business transactions as part of the event."@en ;
         rdfs:isDefinedBy  epcis: ;
         rdfs:label        "TransactionEvent"@en ;
         rdfs:subClassOf   epcis:EPCISEvent ;
         sw:term_status    "stable" .
 
-epcis:TransformationEvent
-        a                 owl:Class , rdfs:Class ;
+epcis:TransformationEvent        a owl:Class , rdfs:Class ;
         rdfs:comment      "A TransformationEvent captures information about an event in which one or more physical or digital objects identified by instance-level (EPC) or class-level (EPC Class) identifiers are fully or partially consumed as inputs and one or more objects identified by instance-level (EPC) or class-level (EPC Class) identifiers are produced as outputs. The TransformationEvent captures the relationship between the inputs and the outputs, such that any of the inputs may have contributed in some way to each of the outputs."@en ;
         rdfs:isDefinedBy  epcis: ;
         rdfs:label        "TransformationEvent"@en ;
@@ -78,8 +74,13 @@ epcis:Destination  a      owl:Class , rdfs:Class ;
         rdfs:label        "Source"@en ;
         sw:term_status    "stable" .
 
-epcis:ErrorDeclaration
-        a                 owl:Class , rdfs:Class ;
+epcis:EPCISDocument a      owl:Class , rdfs:Class ;
+        rdfs:comment      "TODO. Includes a list of events (epcis:eventList) and some metadata: dcterms:created, dcterms:format (MIME type), owl:versionInfo (fixed to '2.0')"@en ;
+        rdfs:isDefinedBy  epcis: ;
+        rdfs:label        "EPCISDocument"@en ;
+        sw:term_status    "stable" .
+
+epcis:ErrorDeclaration   a owl:Class , rdfs:Class ;
         rdfs:comment      "When an event contains an ErrorDeclaration element, it indicates that this event has special semantics: instead of the normal semantics which assert that various things happened and that various things are true following the event, the semantics of this event assert that those prior assertions are in error. An event containing an ErrorDeclaration element SHALL be otherwise identical to a prior event, 'otherwise identical' meaning that all fields of the event other than the ErrorDeclaration element and the value of recordTime are exactly equal to the prior event. (Note that includes the eventID field: the eventID of the error declaration will be equal to the eventID of the prior event or null if the eventID of the prior event is null. This is the sole case where the same non-null eventID may appear in two events.) The semantics of an event containing the ErrorDeclaration element are that all assertions implied by the prior event are considered to be erroneous, as of the specified declarationTime. The prior event is not modified in any way, and subsequent queries will return both the prior event and the error declaration."@en ;
         rdfs:isDefinedBy  epcis: ;
         rdfs:label        "ErrorDeclaration"@en ;
@@ -97,15 +98,13 @@ epcis:ILMD  a             owl:Class , rdfs:Class ;
         rdfs:label        "ILMD"@en ;
         sw:term_status    "stable" .
 
-epcis:PersistentDisposition
-        a                 owl:Class , rdfs:Class ;
+epcis:PersistentDisposition      a owl:Class , rdfs:Class ;
         rdfs:comment      "The persistentDisposition field of an event specifies one or more business conditions of the event's objects, subsequent to the event. One or more persistentDisposition values can be set or unset, independently of each other. Values that are set are considered to remain valid until explicity unset. Like disposition, persistentDisposition leverages the DispositionID Standard Vocabulary."@en ;
         rdfs:isDefinedBy  epcis: ;
         rdfs:label        "PersistentDisposition"@en ;
         sw:term_status    "stable" .
 
-epcis:QuantityElement
-        a                 owl:Class , rdfs:Class ;
+epcis:QuantityElement    a owl:Class , rdfs:Class ;
         rdfs:comment      "A QuantityElement is a structure that identifies objects identified by a specific class-level identifier, either a specific quantity or an unspecified quantity."@en ;
         rdfs:isDefinedBy  epcis: ;
         rdfs:label        "QuantityElement"@en ;
@@ -194,8 +193,7 @@ epcis:bizTransaction  a   owl:DatatypeProperty , rdf:Property ;
         schema:rangeIncludes xsd:anyURI ;
         sw:term_status    "stable" .
 
-epcis:bizTransactionList
-        a                 owl:ObjectProperty , rdf:Property ;
+epcis:bizTransactionList a owl:ObjectProperty , rdf:Property ;
         rdfs:comment      "(Optional) An unordered list of business transactions that define the context of this event."@en ;
         rdfs:domain       epcis:EPCISEvent ;
         schema:domainIncludes epcis:EPCISEvent ;
@@ -215,8 +213,7 @@ epcis:booleanValue  a     owl:DatatypeProperty , rdf:Property ;
         schema:rangeIncludes xsd:boolean ;
         sw:term_status    "stable" .
 
-epcis:chemicalSubstance
-        a                 owl:DatatypeProperty , rdf:Property ;
+epcis:chemicalSubstance  a owl:DatatypeProperty , rdf:Property ;
         rdfs:comment      "(Optional) Identifies a specific chemical substance.  If chemicalSubstance is present, a sensorReport element SHALL NOT include microorganism."@en ;
         rdfs:domain       epcis:SensorReport ;
         schema:domainIncludes epcis:SensorReport ;
@@ -237,8 +234,7 @@ epcis:childEPCs  a        owl:DatatypeProperty , rdf:Property ;
         schema:rangeIncludes xsd:anyURI ;
         sw:term_status    "stable" .
 
-epcis:childQuantityList
-        a                 owl:ObjectProperty , rdf:Property ;
+epcis:childQuantityList  a owl:ObjectProperty , rdf:Property ;
         rdfs:comment      "(Optional) An unordered list of one or more QuantityElements identifying (at the class level) contained objects. An AggregationEvent SHALL contain either a nonempty childEPCs, a non-empty childQuantityList, or both, except that both childEPCs and childQuantityList MAY be empty if action is DELETE, indicating that all children are disaggregated from the parent.  An AssociationEvent SHALL contain either a non-empty childEPCs, a non-empty childQuantityList, or both, except that both childEPCs and childQuantityList MAY be empty if action is DELETE, indicating that all children are disaggregated from the parent."@en ;
         rdfs:domain       [a owl:Class ;
                            owl:unionOf (epcis:AggregationEvent epcis:AssociationEvent)] ;
@@ -259,8 +255,7 @@ epcis:component  a        owl:DatatypeProperty , rdf:Property ;
         schema:rangeIncludes xsd:string ;
         sw:term_status    "stable" .
 
-epcis:correctiveEventIDs
-        a                 owl:DatatypeProperty , rdf:Property ;
+epcis:correctiveEventIDs         a owl:DatatypeProperty , rdf:Property ;
         rdfs:comment      "(Optional) If present, indicates that the events having the specified URIs as the value of their eventID fields are to be considered as 'corrections' to the event declared erroneous by this event. This provides a means to link an error declaration event to one or more events that are intended to replace the erroneous event."@en ;
         rdfs:domain       epcis:ErrorDeclaration ;
         schema:domainIncludes epcis:ErrorDeclaration ;
@@ -270,8 +265,7 @@ epcis:correctiveEventIDs
         schema:rangeIncludes xsd:anyURI ;
         sw:term_status    "stable" .
 
-epcis:dataProcessingMethod
-        a                 owl:DatatypeProperty , rdf:Property ;
+epcis:dataProcessingMethod       a owl:DatatypeProperty , rdf:Property ;
         rdfs:comment      "(Optional) Storage location of an electronic document accommodating the data processing method of the contained sensor data, if applicable.  For instance, before sensor data is captured in an EPCIS event, the latter might be redacted or refined by means of specific algorithms."@en ;
         rdfs:domain       [a owl:Class ;
                            owl:unionOf (epcis:SensorMetadata epcis:SensorReport)] ;
@@ -282,8 +276,7 @@ epcis:dataProcessingMethod
         schema:rangeIncludes xsd:anyURI ;
         sw:term_status    "stable" .
 
-epcis:declarationTime
-        a                 owl:DatatypeProperty , rdf:Property ;
+epcis:declarationTime    a owl:DatatypeProperty , rdf:Property ;
         rdfs:comment      "The date and time at which the declaration of error is made. (Note that the eventTime of this event must match the eventTime of the prior event being declared erroneous, so the declarationTime field is required to indicate the time at which this event is asserted.)"@en ;
         rdfs:domain       epcis:ErrorDeclaration ;
         schema:domainIncludes epcis:ErrorDeclaration ;
@@ -303,8 +296,7 @@ epcis:destination  a      owl:DatatypeProperty , rdf:Property ;
         schema:rangeIncludes xsd:anyURI ;
         sw:term_status    "stable" .
 
-epcis:destinationList
-        a                 owl:ObjectProperty , rdf:Property ;
+epcis:destinationList    a owl:ObjectProperty , rdf:Property ;
         rdfs:comment      "(Optional) An unordered list of Destination elements that provide context about the terminating endpoint of a business transfer of which this event is a part."@en ;
         rdfs:domain       epcis:EPCISEvent ;
         schema:domainIncludes epcis:EPCISEvent ;
@@ -367,8 +359,7 @@ epcis:epcList  a          owl:DatatypeProperty , rdf:Property ;
         schema:rangeIncludes xsd:anyURI ;
         sw:term_status    "stable" .
 
-epcis:errorDeclaration
-        a                 owl:ObjectProperty , rdf:Property ;
+epcis:errorDeclaration   a owl:ObjectProperty , rdf:Property ;
         rdfs:comment      "(Optional) If present, indicates that this event serves to assert that the assertions made by a prior event are in error."@en ;
         rdfs:domain       epcis:EPCISEvent ;
         schema:domainIncludes epcis:EPCISEvent ;
@@ -388,6 +379,16 @@ epcis:eventID  a          owl:ObjectProperty , rdf:Property ;
         schema:rangeIncludes epcis:EventID ;
         sw:term_status    "stable" .
 
+epcis:eventList  a        owl:ObjectProperty , rdf:Property ;
+        rdfs:comment      "TODO"@en ;
+        rdfs:domain       epcis:EPCISDocument ;
+        schema:domainIncludes epcis:EPCISDocument ;
+        rdfs:isDefinedBy  epcis: ;
+        rdfs:label        "eventList"@en ;
+        rdfs:range        epcis:EPCISEvent ;
+        schema:rangeIncludes epcis:EPCISEvent ;
+        sw:term_status    "stable" .
+
 epcis:eventTime  a        owl:DatatypeProperty , rdf:Property ;
         rdfs:comment      "The date and time at which the EPCIS Capturing Applications asserts the event occurred."@en ;
         rdfs:domain       epcis:EPCISEvent ;
@@ -398,8 +399,7 @@ epcis:eventTime  a        owl:DatatypeProperty , rdf:Property ;
         schema:rangeIncludes xsd:dateTimeStamp ;
         sw:term_status    "stable" .
 
-epcis:eventTimeZoneOffset
-        a                 owl:DatatypeProperty , rdf:Property ;
+epcis:eventTimeZoneOffset        a owl:DatatypeProperty , rdf:Property ;
         rdfs:comment      "The time zone offset in effect at the time and place the event occurred, expressed as an offset from UTC. The value of this field SHALL be a string consisting of the character '+' or the character '-', followed by two digits whose value is within the range 00 through 14 (inclusive), followed by a colon character ':', followed by two digits whose value is within the range 00 through 59 (inclusive), except that if the value of the first two digits is 14, the value of the second two digits must be 00. For example, the value +05:30 specifies that where the event occurred, local time was five hours and 30 minutes later than UTC (that is, midnight UTC was 5:30am local time)."@en ;
         rdfs:domain       epcis:EPCISEvent ;
         schema:domainIncludes epcis:EPCISEvent ;
@@ -451,8 +451,7 @@ epcis:inputEPCList  a     owl:DatatypeProperty , rdf:Property ;
         schema:rangeIncludes xsd:anyURI ;
         sw:term_status    "stable" .
 
-epcis:inputQuantityList
-        a                 owl:ObjectProperty , rdf:Property ;
+epcis:inputQuantityList  a owl:ObjectProperty , rdf:Property ;
         rdfs:comment      "(Optional) An unordered list of one or more QuantityElements identifying (at the class level) objects that were inputs to the transformation. See below for constraints on when inputQuantityList may be omitted."@en ;
         rdfs:domain       epcis:TransformationEvent ;
         schema:domainIncludes epcis:TransformationEvent ;
@@ -512,8 +511,7 @@ epcis:outputEPCList  a    owl:DatatypeProperty , rdf:Property ;
         schema:rangeIncludes xsd:anyURI ;
         sw:term_status    "stable" .
 
-epcis:outputQuantityList
-        a                 owl:ObjectProperty , rdf:Property ;
+epcis:outputQuantityList         a owl:ObjectProperty , rdf:Property ;
         rdfs:comment      "(Optional) An unordered list of one or more QuantityElements identifying (at the class level) objects that were outputs from the transformation. See below for constraints on when outputQuantityList may be omitted."@en ;
         rdfs:domain       epcis:TransformationEvent ;
         schema:domainIncludes epcis:TransformationEvent ;
@@ -554,8 +552,7 @@ epcis:percValue  a        owl:DatatypeProperty , rdf:Property ;
         schema:rangeIncludes xsd:decimal ;
         sw:term_status    "stable" .
 
-epcis:persistentDisposition
-        a                 owl:ObjectProperty , rdf:Property ;
+epcis:persistentDisposition a owl:ObjectProperty , rdf:Property ;
         rdfs:comment      "(Optional) One or more business conditions of the objects associated with the EPCs.  Each persistentDisposition is explicitly set and unset independently of other persistentDisposition values."@en ;
         rdfs:domain       epcis:EPCISEvent ;
         schema:domainIncludes epcis:EPCISEvent ;
