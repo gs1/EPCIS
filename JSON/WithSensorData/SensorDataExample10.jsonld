@@ -1,0 +1,43 @@
+{
+	"@context": [
+		"https://gs1.github.io/EPCIS/epcis-context.jsonld",
+		{
+			"example": "http://ns.example.com/epcis/"
+		},
+		{
+			"gs1": "https://gs1.org/voc/"
+		}
+	],
+	"id": "_:document1",
+	"isA": "EPCISDocument",
+	"schemaVersion": 2.0,
+	"creationDate": "2019-10-07T15:00:00.000+01:00",
+	"format": "application/ld+json",
+	"epcisBody": {
+		"eventList": [
+			{
+				"eventID": "ni:///sha-256;b09bef93ea538b80df8f11d6ddf2a99b31c861e763b2a25bce9cab2da4054f61?ver=CBV2.0",
+				"isA": "ObjectEvent",
+				"eventTime": "2020-05-08T15:00:00+01:00",
+				"eventTimeZoneOffset": "+01:00",
+				"epcList": [
+					"urn:epc:id:sgtin:4012345.022222.1234"
+				],
+				"action": "OBSERVE",
+				"bizStep": "urn:epcglobal:cbv:bizstep:sensor_reporting",
+				"readPoint": {
+					"id": "urn:epc:id:sgln:4012345.00005.0"
+				},
+				"sensorElementList": [
+					{
+						"sensorReport": [
+							{"type": "gs1:MT-Speed", "value": 4.5, "component": "example:x", "example:feature": "example:velocity", "uom": "MTS"},
+							{"type": "gs1:MT-Speed", "value": 12.8, "component": "example:y", "example:feature": "example:velocity", "uom": "MTS"},
+							{"type": "gs1:MT-Speed", "value": 0, "component": "example:z", "example:feature": "example:velocity", "uom": "MTS"}
+						]
+					}
+				]
+			}
+		]
+	}
+}
