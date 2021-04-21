@@ -288,8 +288,8 @@
 						<sensorElementList>
 							<sensorElement>
 								<sensorReport type="gs1:MT-Speed" value="4.5" component="example:x" uom="MTS"/>
-                                				<sensorReport type="gs1:MT-Speed" value="12.8" component="example:y" uom="MTS"/>
-                                				<sensorReport type="gs1:MT-Speed" value="0" component="example:z" uom="MTS"/>
+                                <sensorReport type="gs1:MT-Speed" value="12.8" component="example:y" uom="MTS"/>
+                                <sensorReport type="gs1:MT-Speed" value="0" component="example:z" uom="MTS"/>
 							</sensorElement>
 						</sensorElementList>
 					</extension>
