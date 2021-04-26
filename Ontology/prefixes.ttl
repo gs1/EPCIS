@@ -1,0 +1,11 @@
+@prefix epcis:    <https://ns.gs1.org/epcis/> .
+@prefix cbv:      <https://ns.gs1.org/cbv/> .
+@prefix gs1:      <https://gs1.org/gdd/> .
+
+@prefix owl:      <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema:   <http://schema.org/> .
+@prefix skos:     <http://www.w3.org/2004/02/skos/core#> .
+@prefix sw:       <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
