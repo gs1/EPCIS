@@ -9,7 +9,7 @@
   "epcisBody": {
    "eventList": [
      {
-		  "eventID": "_:event1",
+		  "eventID": "ni:///sha-256;36abb3a2c0a726de32ac4beafd6b8bc4ba0b1d2de244490312e5cbec7b5ddece?ver=CBV2.0",
 		  "isA": "ObjectEvent",
 		  "action": "OBSERVE",
 		  "rdfs:comment": "An ObjectEvent may be used for reporting an observation",
@@ -23,7 +23,7 @@
      },
 
      {
-		  "eventID": "_:event2",
+		  "eventID": "ni:///sha-256;59b0e6c6777da8128617f541585e25ef7a89f98909a4543fa5c742b363c79d3d?ver=CBV2.0",
 		  "isA": "ObjectEvent",
 		  "action": "OBSERVE",
 		  "bizStep": "urn:epcglobal:cbv:bizstep:receiving",
