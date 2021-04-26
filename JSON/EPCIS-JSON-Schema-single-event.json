@@ -1089,7 +1089,7 @@
           ]
         },
         "schemaVersion": {
-          "type": "number"
+          "type": "string"
         },
         "creationDate": {
           "type": "string",

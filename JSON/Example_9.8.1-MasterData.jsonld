@@ -3,7 +3,7 @@
 
 	"id": "_:example_9.8.1",
 	"isA": "EPCISMasterDataDocument",
-	"schemaVersion": 2.0,
+	"schemaVersion": "2.0",
 	"creationDate": "2005-07-11T11:30:47.0Z",
 	"format": "application/ld+json",
 	"epcisBody": {
