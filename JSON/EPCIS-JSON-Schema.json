@@ -1123,9 +1123,6 @@
 					"type": "string",
 					"format": "date-time"
 				},
-				"format": {
-					"type": "string"
-				},
 				"epcisHeader": {
 					"$ref": "#/definitions/epcisHeader"
 				},
