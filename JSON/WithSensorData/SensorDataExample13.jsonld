@@ -1,0 +1,42 @@
+{
+	"@context": [
+		"https://gs1.github.io/EPCIS/epcis-context.jsonld",
+		{
+			"ex": "http://ns.example.com/epcis/"
+		},
+		{
+			"gs1": "https://gs1.org/voc/"
+		}
+	],
+	"id": "_:document1",
+	"isA": "EPCISDocument",
+	"schemaVersion": 2.0,
+	"creationDate": "2021-04-27T15:00:00+01:00",
+	"format": "application/ld+json",
+	"epcisBody": {
+		"eventList": [
+			{
+				"eventID": "ni:///sha-256;e1f630b9c84c84020eb9bc73f082324a420f4472dd6c14edb1f1ab98ea279f24?ver=CBV2.0",
+				"isA": "ObjectEvent",
+				"eventTime": "2021-04-27T15:00:00+01:00",
+				"eventTimeZoneOffset": "+01:00",
+				"epcList": [
+					"https://id.gs1.org/01/09506000134352"
+				],
+				"action": "OBSERVE",
+				"bizStep": "https://ns.gs1.org/cbv/Bizstep-sensor_reporting",
+				"readPoint": {
+					"id": "https://id.gs1.org/414/9506000134307"
+				},
+				"sensorElementList": [
+					{
+						"sensorReport": [
+							{"type": "gs1:MT-Temperature", "value": 20.9, "ex:feature": "ex:ambiance", "uom": "CEL"},
+							{"type": "gs1:MT-Temperature", "value": 20.7, "ex:feature": "ex:outerPackage", "uom": "CEL"}
+						]
+					}
+				]
+			}
+		]
+	}
+}
