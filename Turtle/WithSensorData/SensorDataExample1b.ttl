@@ -85,7 +85,6 @@
 
 [ a                epcis:EPCISDocument ;
   dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
-  dcterms:format   "application/ld+json" ;
   owl:versionInfo  "2.0" ;
   epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;e84840e98e15b9c86168ce85ca277af4241dddd3b658f9650a00096c2a09c2f3?ver=CBV2.0> ]
 ] .

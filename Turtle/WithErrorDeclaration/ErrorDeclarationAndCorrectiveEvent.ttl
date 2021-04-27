@@ -11,7 +11,6 @@
 
 [ a                epcis:EPCISDocument ;
   dcterms:created  "2020-01-15T07:47:21.677+00:00"^^xsd:dateTime ;
-  dcterms:format   "application/ld+json" ;
   owl:versionInfo  "1.2E0" ;
   epcis:epcisBody  [ epcis:eventList  <urn:uuid:404d95fc-9457-4a51-bd6a-0bba133845a8> , <urn:uuid:374d95fc-9457-4a51-bd6a-0bba133845a8> ]
 ] .

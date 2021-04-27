@@ -25,7 +25,6 @@
 
 [ a                epcis:EPCISMasterDataDocument ;
   dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
-  dcterms:format   "application/ld+json" ;
   owl:versionInfo  "2" ;
   epcis:epcisBody  [ epcis:vocabularyList  [ a                            epcis:Vocabulary ;
                                              epcis:type                   vtype:ReadPoint ;
