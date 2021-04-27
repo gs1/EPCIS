@@ -5,7 +5,6 @@
 	"isA": "EPCISMasterDataDocument",
 	"schemaVersion": "2.0",
 	"creationDate": "2005-07-11T11:30:47.0Z",
-	"format": "application/ld+json",
 	"epcisBody": {
 		"vocabularyList": [{
 				"isA": "Vocabulary",
