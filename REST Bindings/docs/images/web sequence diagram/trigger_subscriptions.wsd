@@ -24,8 +24,7 @@ note over Server, Client:
     "isA": "EPCISDocument",
     "creationDate": "2019-07-11T11:30:47+00:00",
     "schemaVersion": 1.2,
-    "format": "application/ld+json",
-    "epcisBody": {
+      "epcisBody": {
       "eventList": [
         {
           "eventID": "oe1",

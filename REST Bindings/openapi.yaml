@@ -3037,8 +3037,7 @@ components:
               "isA": "EPCISQueryDocument",
               "creationDate": "2020-01-15T07:47:21.677+00:00",
               "schemaVersion": 1.2,
-              "format": "application/ld+json",
-              "epcisBody": {
+                          "epcisBody": {
                 "eventList": [
                   {
                     "isA": "TransformationEvent",
@@ -3742,8 +3741,7 @@ components:
           "isA": "EPCISDocument",
           "schemaVersion": 2.0,
           "creationDate": "2005-07-11T11:30:47.0Z",
-          "format": "application/ld+json",
-          "epcisBody": {
+                  "epcisBody": {
             "eventList": [
               {
                 "eventID": "_:event1",
@@ -3914,8 +3912,7 @@ components:
           "isA": "EPCISQueryDocument",
           "schemaVersion": 2.0,
           "creationDate": "2005-07-11T11:30:47.0Z",
-          "format": "application/ld+json",
-          "epcisBody": {
+                  "epcisBody": {
             "queryResults": {
               "resultsBody": {
                 "eventList": [

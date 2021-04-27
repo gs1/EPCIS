@@ -36,8 +36,7 @@ Content-Length: 2051
     "@context": "https://example.com/epcis-context.jsonld",
     "isA": "EPCISDocument",
     "creationDate": "2019-13-06T11:30:47+00:00",
-    "format": "application/ld+json",
-    "epcisBody": {
+      "epcisBody": {
       "eventList": [
         {
           "eventID": "oe1",
