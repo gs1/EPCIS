@@ -31,7 +31,6 @@ cbvmda:site  epcis:attribute  "0037000007296" .
 
 [ a                  epcis:EPCISDocument ;
   dcterms:created    "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
-  dcterms:format     "application/ld+json" ;
   owl:versionInfo    "2" ;
   epcis:epcisBody    []  ;
   epcis:epcisHeader  [ epcis:epcisMasterData
