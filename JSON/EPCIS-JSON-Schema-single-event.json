@@ -1095,9 +1095,6 @@
           "type": "string",
           "format": "date-time"
         },
-        "format": {
-          "type": "string"
-        },
         "epcisBody": {
           "type": "object",
           "properties": {
