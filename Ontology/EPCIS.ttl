@@ -197,6 +197,16 @@ epcis:bizTransactionList a owl:ObjectProperty , rdf:Property ;
         schema:rangeIncludes epcis:BizTransaction ;
         sw:term_status    "stable" .
 
+epcis:bizTransactionType a owl:ObjectProperty , rdf:Property ;
+        rdfs:comment      "An identifier that indicates the type of BizTransaction document (eg Purchase Order, Despatch Advice)."@en ;
+        rdfs:domain        epcis:BizTransaction;
+        schema:domainIncludes epcis:BizTransaction;
+        rdfs:isDefinedBy  epcis: ;
+        rdfs:label        "type"@en ;
+        rdfs:range        cbv:BTT;
+        schema:rangeIncludes cbv:BTT;
+        sw:term_status    "stable" .
+
 epcis:booleanValue  a     owl:DatatypeProperty , rdf:Property ;
         rdfs:comment      "(Optional) Similar to stringValue, for Boolean value."@en ;
         rdfs:domain       epcis:SensorReport ;
@@ -477,6 +487,16 @@ epcis:meanValue  a        owl:DatatypeProperty , rdf:Property ;
         schema:rangeIncludes xsd:double ;
         sw:term_status    "stable" .
 
+epcis:measurementType a owl:ObjectProperty , rdf:Property ;
+        rdfs:comment      "An identifier that indicates what kind of measurement the SensorReport pertains to (eg Length, Mass, Temperature)."@en ;
+        rdfs:domain       epcis:SensorReport;
+        schema:domainIncludes epcis:SensorReport;
+        rdfs:isDefinedBy  epcis: ;
+        rdfs:label        "measurement type"@en ;
+        rdfs:range        gs1:MeasurementType;
+        schema:rangeIncludes gs1:MeasurementType;
+        sw:term_status    "stable" .
+
 epcis:microorganism  a    owl:DatatypeProperty , rdf:Property ;
         rdfs:comment      "(Optional) Identifies a specific microorganism species.  If microorganism is present, a sensorReport element SHALL NOT include chemicalSubstance."@en ;
         rdfs:domain       epcis:SensorReport ;
@@ -652,7 +672,7 @@ epcis:set  a              owl:DatatypeProperty , rdf:Property ;
 
 epcis:source  a           owl:ObjectProperty , rdf:Property ;
         rdfs:comment      """An identifier that denotes the specific source of a business transfer.
-Its type (gs1:Organization or gs1:Place) must correlate with sourceOrDestinationType."""@en ;
+Its type (gs1:Organization or gs1:Place) must correlate with sourceOrDestinationType."@en ;
         rdfs:domain       epcis:SourceOrDestination ;
         schema:domainIncludes epcis:SourceOrDestination ;
         rdfs:isDefinedBy  epcis: ;
@@ -670,6 +690,17 @@ epcis:sourceList  a       owl:ObjectProperty , rdf:Property ;
         rdfs:label        "sourceList"@en ;
         rdfs:range        epcis:SourceOrDestination ;
         schema:rangeIncludes epcis:SourceOrDestination ;
+        sw:term_status    "stable" .
+
+epcis:sourceOrDestinationType a owl:ObjectProperty , rdf:Property ;
+        rdfs:comment      """An identifier that indicates the role of SourceOrDestination in a transfer (eg Owning Party, Possessing Party; or Location). 
+Must correlate with the type of bizLocation: gs1:Organization for the first tow; gs1:Place for the last one."""@en ;
+        rdfs:domain       epcis:SourceOrDestination;
+        schema:domainIncludes epcis:SourceOrDestination;
+        rdfs:isDefinedBy  epcis: ;
+        rdfs:label        "source or destination type"@en ;
+        rdfs:range        cbv:SDT;
+        schema:rangeIncludes cbv:SDT;
         sw:term_status    "stable" .
 
 epcis:startTime  a        owl:DatatypeProperty , rdf:Property ;
@@ -701,37 +732,6 @@ epcis:time  a             owl:DatatypeProperty , rdf:Property ;
         rdfs:label        "time"@en ;
         rdfs:range        xsd:dateTimeStamp ;
         schema:rangeIncludes xsd:dateTimeStamp ;
-        sw:term_status    "stable" .
-
-epcis:sourceOrDestinationType a owl:ObjectProperty , rdf:Property ;
-        rdfs:comment      """An identifier that indicates the role of SourceOrDestination in a transfer (eg Owning Party, Possessing Party; or Location). 
-Must correlate with the type of bizLocation: gs1:Organization for the first tow; gs1:Place for the last one."""@en ;
-        rdfs:domain       epcis:SourceOrDestination;
-        schema:domainIncludes epcis:SourceOrDestination;
-        rdfs:isDefinedBy  epcis: ;
-        rdfs:label        "source or destination type"@en ;
-        rdfs:range        cbv:SDT;
-        schema:rangeIncludes cbv:SDT;
-        sw:term_status    "stable" .
-
-epcis:measurementType a owl:ObjectProperty , rdf:Property ;
-        rdfs:comment      "An identifier that indicates what kind of measurement the SensorReport pertains to (eg Length, Mass, Temperature)."@en ;
-        rdfs:domain       epcis:SensorReport;
-        schema:domainIncludes epcis:SensorReport;
-        rdfs:isDefinedBy  epcis: ;
-        rdfs:label        "measurement type"@en ;
-        rdfs:range        gs1:MeasurementType;
-        schema:rangeIncludes gs1:MeasurementType;
-        sw:term_status    "stable" .
-
-epcis:bizTransactionType a owl:ObjectProperty , rdf:Property ;
-        rdfs:comment      "An identifier that indicates the type of BizTransaction document (eg Purchase Order, Despatch Advice)."@en ;
-        rdfs:domain        epcis:BizTransaction;
-        schema:domainIncludes epcis:BizTransaction;
-        rdfs:isDefinedBy  epcis: ;
-        rdfs:label        "type"@en ;
-        rdfs:range        cbv:BTT;
-        schema:rangeIncludes cbv:BTT;
         sw:term_status    "stable" .
 
 epcis:unset  a            owl:DatatypeProperty , rdf:Property ;
