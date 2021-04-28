@@ -383,7 +383,7 @@
 						<example:machine>urn:epc:id:giai:4012345.ABC</example:machine>
 						<example:procedure>A-1</example:procedure>
 				    </example:internalData>
-				    <example2:furtherData example2:assemblyLine="2" example2:workingShift="1"></example2:furtherData>
+				    <example2:furtherData example2:assemblyLine="2" example2:workingShift="1"/>
 				    <example4:otherThings>some text</example4:otherThings>
 			     </TransformationEvent>
 		    </extension>
