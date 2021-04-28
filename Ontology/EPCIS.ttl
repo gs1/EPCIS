@@ -63,15 +63,9 @@ epcis:BizLocation  a      owl:Class , rdfs:Class ;
         sw:term_status    "stable" .
 
 epcis:BizTransaction  a   owl:Class , rdfs:Class ;
-        rdfs:comment      "A BusinessTransaction identifies a particular business transaction. An example of a business transaction is a specific purchase order. Business Transaction information may be included in EPCIS events to record an event's participation in particular business transactions."@en ;
+        rdfs:comment      "Document that describes a particular business transaction. An example is a specific Purchase Order or Despatch Advice. Business Transaction information may be included in EPCIS events to record an event's participation in particular business transactions."@en ;
         rdfs:isDefinedBy  epcis: ;
         rdfs:label        "BizTransaction"@en ;
-        sw:term_status    "stable" .
-
-epcis:Destination  a      owl:Class , rdfs:Class ;
-        rdfs:comment      "A Destination is used to provide additional business context when an EPCIS event is part of a business transfer; that is, a process in which there is a transfer of ownership, responsibility, and/or custody of physical or digital objects.  Within a specified type of transfer, the business transfer is from the Source to the Destination."@en ;
-        rdfs:isDefinedBy  epcis: ;
-        rdfs:label        "Source"@en ;
         sw:term_status    "stable" .
 
 epcis:EPCISDocument a      owl:Class , rdfs:Class ;
@@ -134,10 +128,10 @@ epcis:SensorReport  a     owl:Class , rdfs:Class ;
         rdfs:label        "SensorReport"@en ;
         sw:term_status    "stable" .
 
-epcis:Source  a           owl:Class , rdfs:Class ;
-        rdfs:comment      "A Source is used to provide additional business context when an EPCIS event is part of a business transfer; that is, a process in which there is a transfer of ownership, responsibility, and/or custody of physical or digital objects.  Within a specified type of transfer, the business transfer is from the Source to the Destination."@en ;
+epcis:SourceOrDestination a owl:Class , rdfs:Class ;
+        rdfs:comment      "Provides additional business context when an EPCIS event is part of a business transfer; that is, a process in which there is a change of location, or transfer of ownership, or transfer of possession (responsibility and/or custody) of physical or digital objects.  Within a specified type of transfer (indicated by sourceOrDestinationType), the business transfer is from the Source to the Destination."@en ;
         rdfs:isDefinedBy  epcis: ;
-        rdfs:label        "Source"@en ;
+        rdfs:label        "Source or Destination"@en ;
         sw:term_status    "stable" .
 
 #################### Properties
@@ -286,14 +280,16 @@ epcis:declarationTime    a owl:DatatypeProperty , rdf:Property ;
         schema:rangeIncludes xsd:dateTimeStamp ;
         sw:term_status    "stable" .
 
-epcis:destination  a      owl:DatatypeProperty , rdf:Property ;
-        rdfs:comment      "An identifier that denotes a specific destination."@en ;
-        rdfs:domain       epcis:Destination ;
-        schema:domainIncludes epcis:Destination ;
+epcis:destination  a      owl:ObjectProperty , rdf:Property ;
+        rdfs:comment      """An identifier that denotes the specific destination of a business transfer."@en ;
+Its type (gs1:Organization or gs1:Place) must correlate with sourceOrDestinationType."""@en ;
+        rdfs:domain       epcis:SourceOrDestination ;
+        schema:domainIncludes epcis:SourceOrDestination ;
         rdfs:isDefinedBy  epcis: ;
         rdfs:label        "destination"@en ;
-        rdfs:range        xsd:anyURI ;
-        schema:rangeIncludes xsd:anyURI ;
+        rdfs:range        [a owl:Class ;
+                           owl:unionOf (gs1:Organization gs1:Place)] ;
+        schema:rangeIncludes gs1:Organization, gs1:Place ;
         sw:term_status    "stable" .
 
 epcis:destinationList    a owl:ObjectProperty , rdf:Property ;
@@ -302,8 +298,8 @@ epcis:destinationList    a owl:ObjectProperty , rdf:Property ;
         schema:domainIncludes epcis:EPCISEvent ;
         rdfs:isDefinedBy  epcis: ;
         rdfs:label        "destinationList"@en ;
-        rdfs:range        epcis:Destination ;
-        schema:rangeIncludes epcis:Destination ;
+        rdfs:range        epcis:SourceOrDestination ;
+        schema:rangeIncludes epcis:SourceOrDestination ;
         sw:term_status    "stable" .
 
 epcis:deviceID  a         owl:DatatypeProperty , rdf:Property ;
@@ -654,14 +650,16 @@ epcis:set  a              owl:DatatypeProperty , rdf:Property ;
         schema:rangeIncludes xsd:anyURI ;
         sw:term_status    "stable" .
 
-epcis:source  a           owl:DatatypeProperty , rdf:Property ;
-        rdfs:comment      "An identifier that denotes a specific source."@en ;
-        rdfs:domain       epcis:Source ;
-        schema:domainIncludes epcis:Source ;
+epcis:source  a           owl:ObjectProperty , rdf:Property ;
+        rdfs:comment      """An identifier that denotes the specific source of a business transfer.
+Its type (gs1:Organization or gs1:Place) must correlate with sourceOrDestinationType."""@en ;
+        rdfs:domain       epcis:SourceOrDestination ;
+        schema:domainIncludes epcis:SourceOrDestination ;
         rdfs:isDefinedBy  epcis: ;
         rdfs:label        "source"@en ;
-        rdfs:range        xsd:anyURI ;
-        schema:rangeIncludes xsd:anyURI ;
+        rdfs:range        [a owl:Class ;
+                           owl:unionOf (gs1:Organization gs1:Place)] ;
+        schema:rangeIncludes gs1:Organization, gs1:Place ;
         sw:term_status    "stable" .
 
 epcis:sourceList  a       owl:ObjectProperty , rdf:Property ;
@@ -670,8 +668,8 @@ epcis:sourceList  a       owl:ObjectProperty , rdf:Property ;
         schema:domainIncludes epcis:EPCISEvent ;
         rdfs:isDefinedBy  epcis: ;
         rdfs:label        "sourceList"@en ;
-        rdfs:range        epcis:Source ;
-        schema:rangeIncludes epcis:Source ;
+        rdfs:range        epcis:SourceOrDestination ;
+        schema:rangeIncludes epcis:SourceOrDestination ;
         sw:term_status    "stable" .
 
 epcis:startTime  a        owl:DatatypeProperty , rdf:Property ;
@@ -705,16 +703,35 @@ epcis:time  a             owl:DatatypeProperty , rdf:Property ;
         schema:rangeIncludes xsd:dateTimeStamp ;
         sw:term_status    "stable" .
 
-epcis:type  a             owl:DatatypeProperty , rdf:Property ;
-        rdfs:comment      "An identifier that indicates what kind of source or destination or business transaction this Source or Destination or BizTransaction (respectively) denotes."@en ;
-        rdfs:domain       [a owl:Class ;
-                           owl:unionOf (epcis:Source epcis:Destination epcis:BizTransaction)] ;
-        schema:domainIncludes epcis:Source, epcis:Destination, epcis:BizTransaction;
+epcis:sourceOrDestinationType a owl:ObjectProperty , rdf:Property ;
+        rdfs:comment      """An identifier that indicates the role of SourceOrDestination in a transfer (eg Owning Party, Possessing Party; or Location). 
+Must correlate with the type of bizLocation: gs1:Organization for the first tow; gs1:Place for the last one."""@en ;
+        rdfs:domain       epcis:SourceOrDestination;
+        schema:domainIncludes epcis:SourceOrDestination;
+        rdfs:isDefinedBy  epcis: ;
+        rdfs:label        "source or destination type"@en ;
+        rdfs:range        cbv:SDT;
+        schema:rangeIncludes cbv:SDT;
+        sw:term_status    "stable" .
+
+epcis:measurementType a owl:ObjectProperty , rdf:Property ;
+        rdfs:comment      "An identifier that indicates what kind of measurement the SensorReport pertains to (eg Length, Mass, Temperature)."@en ;
+        rdfs:domain       epcis:SensorReport;
+        schema:domainIncludes epcis:SensorReport;
+        rdfs:isDefinedBy  epcis: ;
+        rdfs:label        "measurement type"@en ;
+        rdfs:range        gs1:MeasurementType;
+        schema:rangeIncludes gs1:MeasurementType;
+        sw:term_status    "stable" .
+
+epcis:bizTransactionType a owl:ObjectProperty , rdf:Property ;
+        rdfs:comment      "An identifier that indicates the type of BizTransaction document (eg Purchase Order, Despatch Advice)."@en ;
+        rdfs:domain        epcis:BizTransaction;
+        schema:domainIncludes epcis:BizTransaction;
         rdfs:isDefinedBy  epcis: ;
         rdfs:label        "type"@en ;
-        rdfs:range        [a owl:Class ;
-                           owl:unionOf (cbv:SDT cbv:BTT)];
-        schema:rangeIncludes cbv:SDT, cbv:BTT;
+        rdfs:range        cbv:BTT;
+        schema:rangeIncludes cbv:BTT;
         sw:term_status    "stable" .
 
 epcis:unset  a            owl:DatatypeProperty , rdf:Property ;
@@ -728,7 +745,7 @@ epcis:unset  a            owl:DatatypeProperty , rdf:Property ;
         sw:term_status    "stable" .
 
 epcis:uom  a              owl:DatatypeProperty , rdf:Property ;
-        rdfs:comment      "(Optional) Unit of measure by which the specified value(s) of the property specified by type should be interpreted.  If there is no value, minValue, maxValue, averageValue or percValue field present, uom SHALL be omitted.  When a uom field is present, its value SHALL be the 2- or 3-character code for a physical unit specified in the 'Common Code' column of UN/CEFACT Recommendation'20 [CEFACT20].   Note: GS1 provides a GitHub Repository containing a machine-readable file which enables the automatic conversion between quantitative values expressed using UN/CEFACT common codes. [include URL once the file has been moved into GS1 GitHub Repo]"@en ;
+        rdfs:comment      "(Optional) Unit of measure by which the specified value(s) of the property specified by type should be interpreted.  If there is no value, minValue, maxValue, averageValue or percValue field present, uom SHALL be omitted.  When a uom field is present, its value SHALL be the 2- or 3-character code for a physical unit specified in the 'Common Code' column of UN/CEFACT Recommendation'20 [CEFACT20].   Note: GS1 provides a GitHub Repository containing a machine-readable file which enables the automatic conversion between quantitative values expressed using UN/CEFACT common codes. [TODO include URL once the file has been moved into GS1 GitHub Repo]"@en ;
         rdfs:domain       epcis:SensorReport ;
         schema:domainIncludes epcis:SensorReport ;
         rdfs:isDefinedBy  epcis: ;

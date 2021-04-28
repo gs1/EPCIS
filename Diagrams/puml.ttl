@@ -1,0 +1,9 @@
+epcis:bizStep                  a puml:InlineProperty.
+epcis:disposition              a puml:InlineProperty.
+epcis:reason                   a puml:InlineProperty.
+epcis:readPoint                a puml:InlineProperty.
+epcis:bizLocation              a puml:InlineProperty.
+epcis:epcList                  a puml:InlineProperty.
+epcis:measurementType          a puml:InlineProperty.
+epcis:sourceOrDestinationType  a puml:InlineProperty.
+epcis:bizTransactionType       a puml:InlineProperty.

@@ -66,3 +66,12 @@ Please only edit the existing JSON Schema file or SHACL file if you know what yo
 
 Please only edit the existing JSON / JSON-LD EPCIS examples if you know what you are doing 
 - but feel free to take a copy or contribute additional example files.
+
+# Examples
+
+- `Example-Type-sourceOrDestination,measurement,bizTransaction.jsonld`: 
+  shows the disambiguation of JSON element "type" to different RDF properties:
+  - epcis:bizTransactionType (from epcis:BizTransaction to cbv:BTT)
+  - epcis:measurementType (from epcis:SensorReport to gs1:MeasuremenType)
+  - epcis:sourceOrDestinationType (from epcis:SourceOrDestination to cbv:SDT)
+  - TODO: has the EPCIS context embedded inline (because of context deployment delays), must be changed to a link
