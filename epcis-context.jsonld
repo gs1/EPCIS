@@ -50,7 +50,7 @@
     "outputQuantityList": {"@type": "@id"},
     "childQuantityList": {"@type": "@id"},
 
-    "bizStep": {"@type": "@id"},
+    "bizStep": {"@type": "@vocab"},
     "disposition": {"@type": "@id"},
     "persistentDisposition": {"@type": "@id"},
     "bizTransactionList": {"@type": "@id"},

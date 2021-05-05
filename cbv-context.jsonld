@@ -2,7 +2,7 @@
     "@context": {
         "@protected": true,
         "@version": 1.1,
-        "bizstep": "https://ns.gs1.org/cbv/",
+        "bizstep": "https://ns.gs1.org/cbv/bizstep",
 
         "storing": "bizstep:storing",
         "shipping": "bizstep:shipping"
