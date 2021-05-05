@@ -50,7 +50,10 @@
     "outputQuantityList": {"@type": "@id"},
     "childQuantityList": {"@type": "@id"},
 
-    "bizStep": {"@type": "@vocab"},
+    "bizStep": {
+      "@context": "https://jmcanterafonseca-iota.github.io/EPCIS/bizstep-context.jsonld",
+      "@type": "@vocab"
+    },
     "disposition": {"@type": "@id"},
     "persistentDisposition": {"@type": "@id"},
     "bizTransactionList": {"@type": "@id"},
