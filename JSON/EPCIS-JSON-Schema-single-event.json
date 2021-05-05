@@ -342,7 +342,7 @@
               "$ref": "#/definitions/action"
             },
             "bizStep": {
-              "$ref": "#/definitions/uri"
+              "$ref": "EPCIS-BizSteps-JSON-Schema.json#/definitions/bizStep"
             },
             "disposition": {
               "$ref": "#/definitions/uri"
