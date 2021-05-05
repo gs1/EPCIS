@@ -1,5 +1,8 @@
 {
+    "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "https://ns.gs1.org/epcis-bizstep-schema.json",
+    "title": "BiZ Step Schema",
+    "description": "Business Steps Definition",
     "definitions": {
         "bizStep": {
             "anyOf": [
@@ -10,11 +13,13 @@
                             "format": "uri"
                         },
                         {
+                            "type": "string",
                             "not": {
                                 "pattern": "^cbv:"
                             }
                         },
                         {
+                            "type": "string",
                             "not": {
                                 "pattern": "^https://ns.gs1.org/cbv/"
                             }
@@ -66,5 +71,10 @@
                 }
             ]
         }
-    }
+    },
+    "anyOf": [
+        {
+            "$ref": "#/definitions/bizStep"
+        }
+    ]
 }

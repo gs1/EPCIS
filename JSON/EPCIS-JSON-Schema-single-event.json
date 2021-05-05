@@ -1,5 +1,6 @@
 {
-  "$id": "https://ns.gs1.org/epcis-schema.json",
+  "$id": "http://ns.gs1.org/epcis-schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "definitions": {
     "uri": {
       "type": "string",
