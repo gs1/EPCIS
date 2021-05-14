@@ -672,7 +672,7 @@ epcis:set  a              owl:DatatypeProperty , rdf:Property ;
 
 epcis:source  a           owl:ObjectProperty , rdf:Property ;
         rdfs:comment      """An identifier that denotes the specific source of a business transfer.
-Its type (gs1:Organization or gs1:Place) must correlate with sourceOrDestinationType."@en ;
+Its type (gs1:Organization or gs1:Place) must correlate with sourceOrDestinationType."""@en ;
         rdfs:domain       epcis:SourceOrDestination ;
         schema:domainIncludes epcis:SourceOrDestination ;
         rdfs:isDefinedBy  epcis: ;
