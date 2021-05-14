@@ -18,11 +18,28 @@ These are draft and subject to change
 ### Ontology Checks
 
 #258
-`check-ontology.sh` uses the "paragraph" structure of the 2 ontology Turtle files to do some basic checks and ensure that all ontology terms:
+`ontology-check.sh` uses the "paragraph" structure of the 2 ontology Turtle files to do some basic checks and ensure that all ontology terms:
 - have label,
 - have definition,
 - have isDefinedBy, 
-- don't have TODO
+- have `sw:term_status +"stable"`
+- don't have `TODO`
+
+### Property Checks
+
+`ontology-props.rq` makes a table of all `epcis:` props with their domains and ranges
+
+- load EPCIS.ttl to a repo, eg https://i40kg.ontotext.com/graphdb/sparql (repo EPCIS)
+- run this query and capture the table (eg as tsv)
+- check against [gsheet props](https://docs.google.com/spreadsheets/d/19lseUd1kHiz48VNtrHXy6kafLTlNzS1GsaYiBqdT4UA/edit#gid=606879607)
+
+`ontology-prop-checks.rq` checks for props with:
+
+- mismatching `rdfs:domain` and `schema:domainIncludes`
+- mismatching `rdfs:range` and `schema:rangeIncludes`
+- `rdf:Property` but not `owl:ObjectProperty` or `owl:DatatypeProperty` and vice versa
+- `owl:DatatypeProperty` but range is not a `xsd:` datatype
+- `owl:DatatypeProperty` with range `xsd:anyURI` should be changed to `owl:ObjectProperty`, see #206
 
 ## RDF Shape
 

@@ -1,0 +1,24 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX schema: <http://schema.org/>
+PREFIX epcis: <https://ns.gs1.org/epcis/>
+PREFIX gs1: <https://gs1.org/gdd/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX cbv: <https://ns.gs1.org/cbv/>
+
+select 
+  ?property
+  (group_concat(?domain; separator=", ") as ?domains) 
+  (group_concat(?range; separator=", ") as ?ranges) 
+{
+  ?prop a rdf:Property; rdfs:isDefinedBy epcis: .
+  bind(replace(str(?prop),str(epcis:),"epcis:") as ?property)
+  {
+    ?prop schema:domainIncludes ?dom
+    bind(replace(replace(replace(replace(str(?dom),str(epcis:),"epcis:"),str(cbv:),"cbv:"),str(gs1:),"gs1:"),str(xsd:),"xsd:") as ?domain)
+  }
+  union {
+    ?prop schema:rangeIncludes ?rng
+    bind(replace(replace(replace(replace(str(?rng),str(epcis:),"epcis:"),str(cbv:),"cbv:"),str(gs1:),"gs1:"),str(xsd:),"xsd:") as ?range)
+  }
+} group by ?property order by ?prop

@@ -1,0 +1,46 @@
+PREFIX epcis: <https://ns.gs1.org/epcis/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX schema: <http://schema.org/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+select * {
+  ?prop rdfs:isDefinedBy epcis:
+  {
+    ?prop rdfs:domain/(owl:unionOf/rdf:rest*/rdf:first)? ?domain filter(isIri(?domain))
+    filter not exists {?prop schema:domainIncludes ?domain}
+    bind("rdfs:domain but no schema:domainIncludes" as ?reason)
+  } union {
+    ?prop schema:domainIncludes ?domain
+    filter not exists {?prop rdfs:domain/(owl:unionOf/rdf:rest*/rdf:first)? ?domain}
+    bind("schema:domainIncludes but no rdfs:domain" as ?reason)
+  } union {
+    ?prop rdfs:range/(owl:unionOf/rdf:rest*/rdf:first)? ?range filter(isIri(?range))
+    filter not exists {?prop schema:rangeIncludes ?range}
+    bind("rdfs:range but no schema:rangeIncludes" as ?reason)
+  } union {
+    ?prop schema:rangeIncludes ?range
+    filter not exists {?prop rdfs:range/(owl:unionOf/rdf:rest*/rdf:first)? ?range}
+    bind("schema:rangeIncludes but no rdfs:range" as ?reason)
+  } union {
+    ?prop a rdf:Property
+    filter (!exists {?prop a owl:DatatypeProperty} &&
+            !exists {?prop a owl:ObjectProperty})
+    bind("rdf:Property but not owl:DatatypeProperty or owl:ObjectProperty" as ?reason)
+  } union {
+    {?prop a owl:DatatypeProperty} union {?prop a owl:ObjectProperty}
+    filter (!exists {?prop a rdf:Property})
+    bind("owl:DatatypeProperty or owl:ObjectProperty but not rdf:Property" as ?reason)
+  } union {
+    ?prop a owl:DatatypeProperty
+    filter not exists {
+      ?prop rdfs:range ?range
+      filter(strstarts(str(?range),str(xsd:)))
+    }
+    bind("owl:DatatypeProperty but no range xsd: datatype" as ?reason)
+  } union {
+    ?prop rdfs:range xsd:anyURI
+    bind("change owl:DatatypeProperty xsd:anyURI to owl:ObjectProperty" as ?reason)
+  }
+}
