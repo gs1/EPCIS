@@ -40,6 +40,12 @@ select * {
     }
     bind("owl:DatatypeProperty but no range xsd: datatype" as ?reason)
   } union {
+    ?prop a owl:ObjectProperty; schema:rangeIncludes ?range
+    filter(!strstarts(str(?range),str(epcis:)) &&
+           !strstarts(str(?range),str(cbv:)) &&
+           !strstarts(str(?range),str(gs1:)))
+    bind("owl:ObjectProperty with range not in epcis:, cbv: or gs1:" as ?reason)
+  } union {
     ?prop rdfs:range xsd:anyURI
     bind("change owl:DatatypeProperty xsd:anyURI to owl:ObjectProperty" as ?reason)
   }

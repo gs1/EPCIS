@@ -39,6 +39,7 @@ These are draft and subject to change
 - mismatching `rdfs:range` and `schema:rangeIncludes`
 - `rdf:Property` but not `owl:ObjectProperty` or `owl:DatatypeProperty` and vice versa
 - `owl:DatatypeProperty` but range is not a `xsd:` datatype
+- `owl:ObjectProperty` with range not in `epcis:, cbv:` or `gs1:`
 - `owl:DatatypeProperty` with range `xsd:anyURI` should be changed to `owl:ObjectProperty`, see #206
 
 ## RDF Shape
