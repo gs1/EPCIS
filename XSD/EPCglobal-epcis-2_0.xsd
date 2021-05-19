@@ -169,16 +169,16 @@ GS1 retains the right to make changes to this document at any time, without noti
 
   <!-- EPCIS CORE ELEMENT TYPES -->
   <xsd:complexType name="EventListType">
-    <xsd:choice minOccurs="0" maxOccurs="unbounded">
-      <xsd:element name="ObjectEvent" type="epcis:ObjectEventType" minOccurs="0" maxOccurs="unbounded"/>
-      <xsd:element name="AggregationEvent" type="epcis:AggregationEventType" minOccurs="0" maxOccurs="unbounded"/>
-	<!-- DEPRECATED in 2.0
-      <xsd:element name="QuantityEvent" type="epcis:QuantityEventType" minOccurs="0" maxOccurs="unbounded"/>
-	-->
-      <xsd:element name="TransactionEvent" type="epcis:TransactionEventType" minOccurs="0" maxOccurs="unbounded"/>
-      <xsd:element name="extension" type="epcis:EPCISEventListExtensionType"/>
-      <xsd:any namespace="##other" processContents="lax"/>
-    </xsd:choice>
+    <xsd:sequence>
+        <xsd:element name="ObjectEvent" type="epcis:ObjectEventType" minOccurs="0" maxOccurs="unbounded"/>
+        <xsd:element name="AggregationEvent" type="epcis:AggregationEventType" minOccurs="0" maxOccurs="unbounded"/>
+    <!-- REMOVED in 2.0
+        <xsd:element name="QuantityEvent" type="epcis:QuantityEventType" minOccurs="0" maxOccurs="unbounded"/>
+    -->
+        <xsd:element name="TransactionEvent" type="epcis:TransactionEventType" minOccurs="0" maxOccurs="unbounded"/>
+        <xsd:element name="extension" type="epcis:EPCISEventListExtensionType" minOccurs="0"/>
+        <xsd:any namespace="##other" processContents="lax" minOccurs="0"/>
+  </xsd:sequence>
     <!-- Note: the use of "unbounded" in both the xsd:choice element
                     and the enclosed xsd:element elements is, strictly speaking,
                     redundant. However, this was found to avoid problems with
