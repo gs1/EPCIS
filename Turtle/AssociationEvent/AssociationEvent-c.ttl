@@ -1,0 +1,30 @@
+@prefix epcis: <https://ns.gs1.org/epcis/> .
+@prefix gs1:   <https://gs1.org/voc/> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix vtype: <urn:epcglobal:epcis:vtype:> .
+@prefix example-mda: <http://epcis.example.com/mda/> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix example2: <http://epcis.example.com/ns/> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix cbv:   <https://ns.gs1.org/cbv/> .
+@prefix md:    <https://ns.gs1.org/epcismd/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix example1: <http://ns.example.com/epcis/> .
+@prefix cbvmda: <urn:epcglobal:cbv:mda:> .
+
+[ a                epcis:EPCISDocument ;
+  dcterms:created  "2019-11-03T14:00:00.000+01:00"^^xsd:dateTime ;
+  owl:versionInfo  "2.0" ;
+  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;371c8eb1834fe5bca8722458310287d40d046c5bf032a484a8274299f7be2f59?ver=CBV2.0> ]
+] .
+
+<ni:///sha-256;371c8eb1834fe5bca8722458310287d40d046c5bf032a484a8274299f7be2f59?ver=CBV2.0>
+        a                          epcis:AssociationEvent ;
+        epcis:action               "DELETE" ;
+        epcis:bizStep              <urn:epcglobal:cbv:bizstep:removing> ;
+        epcis:childEPCs            <urn:epc:id:giai:4000001.12345> ;
+        epcis:eventTime            "2019-11-03T14:00:00.000+01:00"^^xsd:dateTime ;
+        epcis:eventTimeZoneOffset  "+01:00" ;
+        epcis:parentID             <urn:epc:id:grai:4012345.55555.987> ;
+        epcis:readPoint            <urn:epc:id:sgln:4012345.00002.0> .

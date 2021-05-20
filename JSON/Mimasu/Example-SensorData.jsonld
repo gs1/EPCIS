@@ -1,7 +1,7 @@
 {
     "@context": "https://gs1.github.io/EPCIS/epcis-context.jsonld",
     "isA": "EPCISDocument",
-    "creationDate": "2019-13-06T11:30:47+00:00",
+    "creationDate": "2019-12-06T11:30:47+00:00",
     "schemaVersion": "2.0",
     "epcisBody": {
       "eventList": [

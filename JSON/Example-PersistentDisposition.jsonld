@@ -9,7 +9,6 @@
   "isA": "EPCISDocument",
   "schemaVersion": "2.0",
   "creationDate": "2020-06-28T13:41:00.000Z",
-  "format": "application/ld+json",
   "epcisBody": {
     "eventList": [
       {

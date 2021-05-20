@@ -30,9 +30,9 @@
 				"sensorElementList": [
 					{
 						"sensorReport": [
-							{"type": "gs1:MT-Speed", "value": 4.5, "component": "ex:x", "ex:feature": "ex:product", "uom": "MTS"},
-							{"type": "gs1:MT-Speed", "value": 12.8, "component": "ex:y", "ex:feature": "ex:product", "uom": "MTS"},
-							{"type": "gs1:MT-Speed", "value": 0, "component": "ex:z", "ex:feature": "ex:product", "uom": "MTS"}
+							{"type": "gs1:MT-Speed", "value": 4.5, "component": "gs1:COMP-X", "ex:feature": "ex:product", "uom": "MTS"},
+							{"type": "gs1:MT-Speed", "value": 12.8, "component": "gs1:COMP-Y", "ex:feature": "ex:product", "uom": "MTS"},
+							{"type": "gs1:MT-Speed", "value": 0, "component": "gs1:COMP-Z", "ex:feature": "ex:product", "uom": "MTS"}
 						]
 					}
 				]

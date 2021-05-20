@@ -13,7 +13,7 @@
 @prefix example1: <http://ns.example.com/epcis/> .
 @prefix cbvmda: <urn:epcglobal:cbv:mda:> .
 
-<ni:///sha-256;59b0e6c6777da8128617f541585e25ef7a89f98909a4543fa5c742b363c79d3d?ver=CBV2.0>
+<ni:///sha-256;00e1e6eba3a7cc6125be4793a631f0af50f8322e0ab5f2c0bab994a11cec1d79?ver=CBV2.0>
         a                          epcis:ObjectEvent ;
         example1:myField           "Example of a vendor/user extension" ;
         epcis:action               "OBSERVE" ;
@@ -34,12 +34,11 @@
 [ a                epcis:EPCISDocument ;
   dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
   owl:versionInfo  "2.0" ;
-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;59b0e6c6777da8128617f541585e25ef7a89f98909a4543fa5c742b363c79d3d?ver=CBV2.0> , <ni:///sha-256;36abb3a2c0a726de32ac4beafd6b8bc4ba0b1d2de244490312e5cbec7b5ddece?ver=CBV2.0> ]
+  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;aa49daa1fe0b773e0437e546078dc87de9c864d5b9babe84488f31478887fdf3?ver=CBV2.0> , <ni:///sha-256;00e1e6eba3a7cc6125be4793a631f0af50f8322e0ab5f2c0bab994a11cec1d79?ver=CBV2.0> ]
 ] .
 
-<ni:///sha-256;36abb3a2c0a726de32ac4beafd6b8bc4ba0b1d2de244490312e5cbec7b5ddece?ver=CBV2.0>
+<ni:///sha-256;aa49daa1fe0b773e0437e546078dc87de9c864d5b9babe84488f31478887fdf3?ver=CBV2.0>
         a                          epcis:ObjectEvent ;
-        rdfs:comment               "An ObjectEvent may be used for reporting an observation" ;
         epcis:action               "OBSERVE" ;
         epcis:bizStep              <urn:epcglobal:cbv:bizstep:shipping> ;
         epcis:bizTransactionList   [ epcis:bizTransaction  <http://transaction.acme.com/po/12345678> ;
@@ -47,6 +46,10 @@
                                    ] ;
         epcis:disposition          <urn:epcglobal:cbv:disp:in_transit> ;
         epcis:epcList              <urn:epc:id:sgtin:0614141.107346.2018> , <urn:epc:id:sgtin:0614141.107346.2017> ;
+        epcis:errorDeclaration     [ epcis:correctiveEventIDs  <urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6> , <ni:///sha-256;c6407ffcac52ec159528f2b556ba4ac3844c5aa48485c1fd61643e94f0a2d678?ver=CBV2.0> ;
+                                     epcis:declarationTime     "2021-02-01T22:46:31.117000+00:00"^^xsd:dateTime ;
+                                     epcis:reason              <urn:epcglobal:cbv:er:incorrect-data>
+                                   ] ;
         epcis:eventTime            "2005-04-03T20:33:31.116000-06:00"^^xsd:dateTime ;
         epcis:eventTimeZoneOffset  "-06:00" ;
         epcis:readPoint            <urn:epc:id:sgln:0614141.07346.1234> .
