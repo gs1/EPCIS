@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<epcis:EPCISDocument xmlns:epcis="urn:epcglobal:epcis:xsd:1" 
-  schemaVersion="1.2" creationDate="2020-07-03T09:00:00.0Z">
+<epcis:EPCISDocument xmlns:epcis="urn:epcglobal:epcis:xsd:1" xmlns:rail="urn:gs1:epcisapp:rail"
+  schemaVersion="2.0" creationDate="2020-07-03T09:00:00.0Z">
   <EPCISBody>
     <EventList>
       <!--
@@ -58,25 +58,25 @@
             <destination type="urn:epcglobal:cbv:sdt:location">urn:epc:id:sgln:952005385.011.0</destination>
           </destinationList>
         </extension>
-        <rail:trainAxleCount xmlns:rail="urn:gs1:epcisapp:rail">12</rail:trainAxleCount>
-        <rail:trainVehicleCount xmlns:rail="urn:gs1:epcisapp:rail">3</rail:trainVehicleCount>
-        <rail:vehicle xmlns:rail="urn:gs1:epcisapp:rail" xmlns="urn:gs1:epcisapp:rail">
-          <vehiclePosition>1</vehiclePosition>
-          <vehicleAxleCount>4</vehicleAxleCount>
-          <vehicleUniquelyIdentified>true</vehicleUniquelyIdentified>
-          <vehicleMasterGIAI>urn:epc:id:giai:952005385.vehicle2</vehicleMasterGIAI>
+        <rail:trainAxleCount>12</rail:trainAxleCount>
+        <rail:trainVehicleCount>3</rail:trainVehicleCount>
+        <rail:vehicle>
+          <rail:vehiclePosition>1</rail:vehiclePosition>
+          <rail:vehicleAxleCount>4</rail:vehicleAxleCount>
+          <rail:vehicleUniquelyIdentified>true</rail:vehicleUniquelyIdentified>
+          <rail:vehicleMasterGIAI>urn:epc:id:giai:952005385.vehicle2</rail:vehicleMasterGIAI>
         </rail:vehicle>
-        <rail:vehicle xmlns:rail="urn:gs1:epcisapp:rail" xmlns="urn:gs1:epcisapp:rail">
-          <vehiclePosition>2</vehiclePosition>
-          <vehicleAxleCount>4</vehicleAxleCount>
-          <vehicleUniquelyIdentified>false</vehicleUniquelyIdentified>
-          <vehicleMasterGIAI/>
+        <rail:vehicle>
+          <rail:vehiclePosition>2</rail:vehiclePosition>
+          <rail:vehicleAxleCount>4</rail:vehicleAxleCount>
+          <rail:vehicleUniquelyIdentified>false</rail:vehicleUniquelyIdentified>
+          <rail:vehicleMasterGIAI/>
         </rail:vehicle>
-        <rail:vehicle xmlns:rail="urn:gs1:epcisapp:rail" xmlns="urn:gs1:epcisapp:rail">
-          <vehiclePosition>3</vehiclePosition>
-          <vehicleAxleCount>4</vehicleAxleCount>
-          <vehicleUniquelyIdentified>true</vehicleUniquelyIdentified>
-          <vehicleMasterGIAI>urn:epc:id:giai:735005385.vehicle1</vehicleMasterGIAI>
+        <rail:vehicle>
+          <rail:vehiclePosition>3</rail:vehiclePosition>
+          <rail:vehicleAxleCount>4</rail:vehicleAxleCount>
+          <rail:vehicleUniquelyIdentified>true</rail:vehicleUniquelyIdentified>
+          <rail:vehicleMasterGIAI>urn:epc:id:giai:735005385.vehicle1</rail:vehicleMasterGIAI>
         </rail:vehicle>   
       </TransactionEvent>
     </EventList>

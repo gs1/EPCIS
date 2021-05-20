@@ -1,0 +1,123 @@
+{
+  "@context": "https://gs1.github.io/EPCIS/epcis-context.jsonld",
+  "isA": "EPCISMasterDataDocument",
+  "creationDate": "2005-07-11T11:30:47+00:00",
+  "schemaVersion": "2.0",
+  "epcisBody": {
+    "vocabularyList": [
+      {
+        "type": "urn:epcglobal:epcis:vtype:BusinessLocation",
+        "vocabularyElementList": [
+          {
+            "id": "urn:epc:id:sgln:0037000.00729.0",
+            "attributes": [
+              {
+                "id": "http://epcis.example.com/mda/latitude",
+                "attribute": "+18.0000"
+              },
+              {
+                "id": "http://epcis.example.com/mda/longitude",
+                "attribute": "-70.0000"
+              },
+              {
+                "id": "http://epcis.example.com/mda/address",
+                "attribute": {
+                  "example:Address": {
+                    "@xmlns:example": "http://epcis.example.com/ns",
+                    "Street": "100 Nowhere Street",
+                    "City": "Fancy",
+                    "State": "DC",
+                    "Zip": "99999"
+                  }
+                }
+              }
+            ],
+            "children": [
+              "urn:epc:id:sgln:0037000.00729.8201",
+              "urn:epc:id:sgln:0037000.00729.8202",
+              "urn:epc:id:sgln:0037000.00729.8203"
+            ]
+          },
+          {
+            "id": "urn:epc:id:sgln:0037000.00729.8201",
+            "attributes": [
+              {
+                "id": "urn:epcglobal:cbv:mda:sst",
+                "attribute": "201"
+              }
+            ]
+          },
+          {
+            "id": "urn:epc:id:sgln:0037000.00729.8202",
+            "attributes": [
+              {
+                "id": "urn:epcglobal:cbv:mda:sst",
+                "attribute": "202"
+              }
+            ],
+            "children": [
+              "urn:epc:id:sgln:0037000.00729.8203"
+            ]
+          },
+          {
+            "id": "urn:epc:id:sgln:0037000.00729.8203",
+            "attributes": [
+              {
+                "id": "urn:epcglobal:cbv:mda:sst",
+                "attribute": "202"
+              },
+              {
+                "id": "urn:epcglobal:cbv:mda:ssa",
+                "attribute": "402"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "urn:epcglobal:epcis:vtype:ReadPoint",
+        "vocabularyElementList": [
+          {
+            "id": "urn:epc:id:sgln:0037000.00729.8201",
+            "attributes": [
+              {
+                "id": "urn:epcglobal:cbv:mda:site",
+                "attribute": "0037000007296"
+              },
+              {
+                "id": "urn:epcglobal:cbv:mda:sst",
+                "attribute": "201"
+              }
+            ]
+          },
+          {
+            "id": "urn:epc:id:sgln:0037000.00729.8202",
+            "attributes": [
+              {
+                "id": "urn:epcglobal:cbv:mda:site",
+                "attribute": "0037000007296"
+              },
+              {
+                "id": "urn:epcglobal:cbv:mda:sst",
+                "attribute": "202"
+              }
+            ]
+          },
+          {
+            "id": "urn:epc:id:sgln:0037000.00729.8203",
+            "attributes": [
+              {
+                "id": "urn:epcglobal:cbv:mda:site",
+                "attribute": "0037000007296"
+              },
+              {
+                "id": "urn:epcglobal:cbv:mda:sst",
+                "attribute": "203"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "@context": "https://gs1.github.io/EPCIS/epcis-context.jsonld",
+  "isA": "EPCISMasterDataDocument",
+  "creationDate": "2020-06-16T11:30:47+00:00",
+  "schemaVersion": "2.0",
+  "epcisBody": {
+    "vocabularyList": [
+      {
+        "type": "urn:epcglobal:epcis:vtype:ReadPoint",
+        "vocabularyElementList": [
+          {
+            "id": "urn:epc:id:sgln:0614141.00300.0",
+            "attributes": [
+              {
+                "id": "urn:epcglobal:cbv:mda:site",
+                "attribute": "0614141003006"
+              }
+            ]
+          },
+          {
+            "id": "urn:epc:id:sgln:0614141.00300.1",
+            "attributes": [
+              {
+                "id": "urn:epcglobal:cbv:mda:site",
+                "attribute": "0614141003006"
+              },
+              {
+                "id": "urn:epcglobal:cbv:mda:ssd",
+                "attribute": "Line #1 at Manufacturing Plant 1"
+              }
+            ]
+          },
+          {
+            "id": "urn:epc:id:sgln:0614141.00300.2",
+            "attributes": [
+              {
+                "id": "urn:epcglobal:cbv:mda:site",
+                "attribute": "0614141003006"
+              },
+              {
+                "id": "urn:epcglobal:cbv:mda:ssd",
+                "attribute": "Line #2 at Manufacturing Plant 1"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

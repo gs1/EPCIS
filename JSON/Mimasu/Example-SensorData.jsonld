@@ -1,0 +1,47 @@
+{
+    "@context": "https://gs1.github.io/EPCIS/epcis-context.jsonld",
+    "isA": "EPCISDocument",
+    "creationDate": "2019-13-06T11:30:47+00:00",
+    "schemaVersion": "2.0",
+    "epcisBody": {
+      "eventList": [
+        {
+           "eventTimeZoneOffset":"-06:00",
+           "eventTime":"2005-04-03T20:33:31.116-06:00",
+           "isA":"ObjectEvent",
+           "epcList":[
+              "urn:epc:id:sgtin:0614141.107346.2017",
+              "urn:epc:id:sgtin:0614141.107346.2018"
+           ],
+           "action":"OBSERVE",
+           "bizStep":"urn:epcglobal:cbv:bizstep:shipping",
+           "disposition":"urn:epcglobal:cbv:disp:in_transit",
+           "readPoint":"urn:epc:id:sgln:0614141.07346.1234",
+           "sensorElementList":[
+              {
+                 "sensorReport":[
+                    {
+                       "type":"gs1:MT-Temperature",
+                       "value":17.0
+                    },
+                    {
+                       "type":"gs1:MT-Latitude",
+                       "stringValue":"53.553747"
+                    },
+                    {
+                       "type":"gs1:MT-Longitude",
+                       "stringValue":"8.562372"
+                    }
+                 ]
+              }
+           ],
+           "bizTransactionList":[
+              {
+                 "type":"urn:epcglobal:cbv:btt:po",
+                 "bizTransaction":"http://transaction.acme.com/po/12345678"
+              }
+           ]
+        }
+      ]
+    }
+  }
