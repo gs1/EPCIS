@@ -1,7 +1,7 @@
 # EPCIS event data with sensorElementList in JSON / JSON-LD format
 
-This directory has example files in JSON / JSON-LD  (JSON-LD with most of the weirdness hidden in the `@context` header, which will eventually be remotely referenced from gs1.org)
-- TODO: These are intended to correspond to the XML examples in the [SensorDataExamples.xml](../../XSD/SensorDataExamples.xml) file, but that file is missing.
+This directory has example files in JSON / JSON-LD  (JSON-LD with most of the weirdness hidden in the `@context` header, which will eventually be remotely referenced from gs1.org).
+Exmaples 1..11 are intended to correspond to the XML examples in the [SensorDataExamples.xml](../../XML/WithErrorDeclaration/SensorDataExamples.xml), and there are a few more added (examples 12, 13).
 
 - `SensorDataExample1.jsonld`:
    3 sensor readings of Temperature, Humidity, Speed and Illuminance of a particular SGTIN at different `time`. Sensor `deviceID` is a GIAI. Includes `deviceMetadata` and `rawData` URLs
