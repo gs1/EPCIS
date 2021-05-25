@@ -23,8 +23,8 @@
 		    "sensorMetadata" : {"time":"2019-07-19T14:00:00.000+01:00", "deviceID":"urn:epc:id:giai:4000001.111", "deviceMetadata":"https://id.gs1.org/giai/4000001111", "rawData":"https://example.org/giai/401234599999", "dataProcessingMethod":"https://example.com/gdti/4012345000054987", "bizRules":"https://example.org/gdti/4012345000054987"},
 		    "sensorReport" : [
 			 { "type": "gs1:MT-Humidity", "value":12.1, "uom":"A93"},
-			 { "type": "gs1:MT-Molar_concentration" , "chemicalSubstance":"https://identifiers.org/inchikey:CZMRCDWAGMRECN-UGDNZRGBSA-N", "value":0.18, "uom":"C35"},
-			 { "type": "gs1:MT-Molar_concentration" , "microorganism":"https://www.ncbi.nlm.nih.gov/taxonomy/1126011", "value":0.05, "uom":"C35"}
+			 { "type": "gs1:MT-AmountOfSubstancePerUnitVolume" , "chemicalSubstance":"https://identifiers.org/inchikey:CZMRCDWAGMRECN-UGDNZRGBSA-N", "value":0.18, "uom":"C35"},
+			 { "type": "gs1:MT-AmountOfSubstancePerUnitVolume" , "microorganism":"https://www.ncbi.nlm.nih.gov/taxonomy/1126011", "value":0.05, "uom":"C35"}
 		     ]
 		    },
 
