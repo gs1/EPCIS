@@ -29,7 +29,7 @@
           {
             "sensorReport": [
               {
-                "type": "gs1:MT-EffectiveDoseRate",
+                "type": "gs1:MT-DoseEquivalentRate",
                 "value": 0.005,
                 "uom": "P71"
               }
