@@ -2,6 +2,19 @@
     "@context": {
         "@protected": true,
         "@version": 1.1,
-        "cbv": "https://ns.gs1.org/cbv/"
+        "cbv": "https://ns.gs1.org/cbv/",
+
+        "bol": "cbv:BTT-bol",	        
+        "cert": "cbv:BTT-cert",	        
+        "desadv": "cbv:BTT-desadv",
+        "inv": "cbv:BTT-inv",        
+        "pedigree": "cbv:BTT-pedigree",        
+        "po": "cbv:BTT-po",	        
+        "poc": "cbv:BTT-poc",        
+        "prodorder": "cbv:BTT-prodorder",        
+        "recadv": "cbv:BTT-recadv",        
+        "rma": "cbv:BTT-rma",        
+        "testprd": "cbv:BTT-testprd",        
+        "testres": "cbv:BTT-testres"
     }
 }
