@@ -19,6 +19,8 @@
         "AssociationEvent": "epcis:AssociationEvent",
         "TransactionEvent": "epcis:TransactionEvent",
 
+        "type": "epcis:type",
+
         "eventTime": {
             "@id": "epcis:eventTime",
             "@type": "xsd:dateTimeStamp"
