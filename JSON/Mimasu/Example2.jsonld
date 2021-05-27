@@ -1,0 +1,55 @@
+{
+  "@context": "https://gs1.github.io/EPCIS/epcis-context.jsonld",
+  "schemaVersion": "2.0",
+  "isA": "EPCISDocument",
+  "creationDate": "2005-07-11T11:30:47+00:00",
+  "epcisBody": {
+    "eventList": [
+      {
+        "isA": "ObjectEvent",
+        "eventTime": "2013-06-08T14:58:56.591+00:00",
+        "eventTimeZoneOffset": "+02:00",
+        "quantityList": [
+          {
+            "epcClass": "urn:epc:class:lgtin:4012345.012345.998877",
+            "quantity": 200,
+            "uom": "KGM"
+          }
+        ],
+        "action": "OBSERVE",
+        "bizStep": "urn:epcglobal:cbv:bizstep:receiving",
+        "disposition": "urn:epcglobal:cbv:disp:in_progress",
+        "readPoint": {
+          "id": "urn:epc:id:sgln:0614141.00777.0"
+        },
+        "bizLocation": {
+          "id": "urn:epc:id:sgln:0614141.00888.0"
+        },
+        "sourceList": [
+          {
+            "type": "urn:epcglobal:cbv:sdt:possessing_party",
+            "source": "urn:epc:id:sgln:4012345.00001.0"
+          },
+          {
+            "type": "urn:epcglobal:cbv:sdt:location",
+            "source": "urn:epc:id:sgln:4012345.00225.0"
+          }
+        ],
+        "destinationList": [
+          {
+            "type": "urn:epcglobal:cbv:sdt:owning_party",
+            "destination": "urn:epc:id:sgln:0614141.00001.0"
+          },
+          {
+            "type": "urn:epcglobal:cbv:sdt:location",
+            "destination": "urn:epc:id:sgln:0614141.00777.0"
+          }
+        ],
+        "example:myField": {
+          "@xmlns:example": "http://ns.example.com/epcis",
+          "#text": "Example of a vendor/user extension"
+        }
+      }
+    ]
+  }
+}

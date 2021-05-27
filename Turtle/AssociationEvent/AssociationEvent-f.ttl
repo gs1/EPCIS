@@ -1,12 +1,16 @@
 @prefix epcis: <https://ns.gs1.org/epcis/> .
 @prefix gs1:   <https://gs1.org/voc/> .
 @prefix owl:   <http://www.w3.org/2002/07/owl#> .
-@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix vtype: <urn:epcglobal:epcis:vtype:> .
+@prefix example-mda: <http://epcis.example.com/mda/> .
 @prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix example: <http://ns.example.com/epcis/> .
+@prefix example2: <http://epcis.example.com/ns/> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix cbv:   <https://ns.gs1.org/cbv/> .
+@prefix md:    <https://ns.gs1.org/epcismd/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix example1: <http://ns.example.com/epcis/> .
 @prefix cbvmda: <urn:epcglobal:cbv:mda:> .
 
 <ni:///sha-256;5f7c472bc4905de27a19b2efc8e4a9c6dc195139669b80b515f12218ff07cf65?ver=CBV2.0>
@@ -19,7 +23,7 @@
                                    ] ;
         epcis:childEPCs            <urn:epc:id:giai:4000001.12345> , <urn:epc:id:giai:4000001.12346> ;
         epcis:childQuantityList    [ epcis:epcClass  <urn:epc:class:lgtin:4023333.002000.998877> ;
-                                     epcis:quantity  "4"^^xsd:decimal
+                                     epcis:quantity  4.0E0
                                    ] ;
         epcis:destinationList      [ epcis:destination  <urn:epc:id:pgln:4012345.00000> ;
                                      epcis:type         <urn:epcglobal:cbv:sdt:possessing_party>
@@ -33,8 +37,8 @@
         epcis:sensorElementList    [ epcis:sensorMetadata  [ epcis:endTime    "2019-11-06T13:57:00.000+01:00"^^xsd:dateTime ;
                                                              epcis:startTime  "2019-11-06T13:55:00.000+01:00"^^xsd:dateTime
                                                            ] ;
-                                     epcis:sensorReport    [ epcis:maxValue  "1.22E1"^^xsd:float ;
-                                                             epcis:minValue  "1.21E1"^^xsd:float ;
+                                     epcis:sensorReport    [ epcis:maxValue  1.22E1 ;
+                                                             epcis:minValue  1.21E1 ;
                                                              epcis:type      gs1:Humidity ;
                                                              epcis:uom       "A93"
                                                            ]

@@ -22,7 +22,7 @@
 				</childEPCs>
 				<action>OBSERVE</action>
 				<bizStep>urn:epcglobal:cbv:bizstep:receiving</bizStep>
-				<disposition>in_progress</disposition>
+				<disposition>urn:epcglobal:cbv:disp:in_progress</disposition>
 				<!--  <persistentDisposition> is indicated in 2nd nested <extension>, below -->
 				<readPoint>
 					<id>urn:epc:id:sgln:9529999.99999.0</id>
@@ -74,7 +74,7 @@
 				</childEPCs>
 				<action>DELETE</action>
 				<bizStep>urn:epcglobal:cbv:bizstep:unpacking</bizStep>
-				<disposition>in_progress</disposition>
+				<disposition>urn:epcglobal:cbv:disp:in_progress</disposition>
 				<!--  <persistentDisposition> is indicated in 2nd nested <extension>, below -->
 				<readPoint>
 					<id>urn:epc:id:sgln:9529999.99999.0</id>

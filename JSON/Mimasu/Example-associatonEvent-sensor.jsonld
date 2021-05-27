@@ -1,0 +1,173 @@
+{
+  "@context": "https://gs1.github.io/EPCIS/epcis-context.jsonld",
+  "isA": "EPCISDocument",
+  "creationDate": "2019-11-28T14:59:02+01:00",
+  "schemaVersion": "2.0",
+  "epcisBody": {
+    "eventList": [
+      {
+        "isA": "AssociationEvent",
+        "eventTime": "2019-11-01T14:00:00+01:00",
+        "eventTimeZoneOffset": "+01:00",
+        "parentID": "urn:epc:id:grai:4012345.55555.987",
+        "childEPCs": [
+          "urn:epc:id:giai:4000001.12345"
+        ],
+        "action": "ADD",
+        "bizStep": "urn:epcglobal:cbv:bizstep:assembling",
+        "readPoint": {
+          "id": "urn:epc:id:sgln:4012345.00001.0"
+        }
+      },
+      {
+        "isA": "AssociationEvent",
+        "eventTime": "2019-11-02T14:00:00+01:00",
+        "eventTimeZoneOffset": "+01:00",
+        "parentID": "urn:epc:id:sgln:4012345.00002.12",
+        "childEPCs": [
+          "urn:epc:id:giai:4000001.12346"
+        ],
+        "action": "ADD",
+        "bizStep": "urn:epcglobal:cbv:bizstep:installing",
+        "readPoint": {
+          "id": "urn:epc:id:sgln:4012345.00002.0"
+        }
+      },
+      {
+        "isA": "AssociationEvent",
+        "eventTime": "2019-11-03T14:00:00+01:00",
+        "eventTimeZoneOffset": "+01:00",
+        "parentID": "urn:epc:id:grai:4012345.55555.987",
+        "childEPCs": [
+          "urn:epc:id:giai:4000001.12345"
+        ],
+        "action": "DELETE",
+        "bizStep": "urn:epcglobal:cbv:bizstep:removing",
+        "readPoint": {
+          "id": "urn:epc:id:sgln:4012345.00002.0"
+        }
+      },
+      {
+        "isA": "AssociationEvent",
+        "eventTime": "2019-11-04T14:00:00+01:00",
+        "eventTimeZoneOffset": "+01:00",
+        "parentID": "urn:epc:id:grai:4012345.55555.987",
+        "action": "DELETE",
+        "bizStep": "urn:epcglobal:cbv:bizstep:disassembling",
+        "readPoint": {
+          "id": "urn:epc:id:sgln:4012345.00002.0"
+        }
+      },
+      {
+        "isA": "AssociationEvent",
+        "eventTime": "2019-11-05T14:00:00+01:00",
+        "eventTimeZoneOffset": "+01:00",
+        "parentID": "urn:epc:id:grai:4012345.55555.987",
+        "childQuantityList": [
+          {
+            "epcClass": "urn:epc:class:lgtin:4023333.002000.123",
+            "quantity": 600
+          },
+          {
+            "epcClass": "urn:epc:class:lgtin:4012345.005555.456",
+            "quantity": 600
+          }
+        ],
+        "action": "ADD",
+        "bizStep": "urn:epcglobal:cbv:bizstep:assembling",
+        "readPoint": {
+          "id": "urn:epc:id:sgln:4012345.00001.0"
+        }
+      },
+      {
+        "isA": "AssociationEvent",
+        "eventTime": "2019-11-06T14:00:00+01:00",
+        "eventTimeZoneOffset": "+01:00",
+        "recordTime": "2019-11-06T14:05:00+01:00",
+        "parentID": "urn:epc:id:grai:4012345.55555.98765",
+        "childEPCs": [
+          "urn:epc:id:giai:4000001.12345",
+          "urn:epc:id:giai:4000001.12346"
+        ],
+        "action": "ADD",
+        "bizStep": "urn:epcglobal:cbv:bizstep:installing",
+        "disposition": "urn:epcglobal:cbv:disp:in_progress",
+        "readPoint": {
+          "id": "urn:epc:id:sgln:4012345.00001.0"
+        },
+        "bizLocation": {
+          "id": "urn:epc:id:sgln:4012345.00002.0"
+        },
+        "bizTransactionList": [
+          {
+            "type": "urn:epcglobal:cbv:btt:inv",
+            "bizTransaction": "urn:epcglobal:cbv:bt:4023333000000:54545"
+          }
+        ],
+        "sourceList": [
+          {
+            "type": "urn:epcglobal:cbv:sdt:possessing_party",
+            "source": "urn:epc:id:pgln:4000001.00012"
+          }
+        ],
+        "destinationList": [
+          {
+            "type": "urn:epcglobal:cbv:sdt:possessing_party",
+            "destination": "urn:epc:id:pgln:4012345.00000"
+          }
+        ],
+        "sensorElementList": [
+          {
+            "sensorMetaData": {
+              "startTime": "2019-11-06T13:55:00+01:00",
+              "endTime": "2019-11-06T13:57:00+01:00"
+            },
+            "sensorReport": [
+              {
+                "type": "gs1:Humidity",
+                "booleanValue": false,
+                "minValue": 12.1,
+                "maxValue": 12.2,
+                "uom": "A93"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "isA": "AssociationEvent",
+        "eventTime": "2019-11-04T14:00:00+01:00",
+        "eventTimeZoneOffset": "+01:00",
+        "parentID": "urn:epc:id:grai:4012345.55555.987",
+        "action": "DELETE",
+        "bizStep": "urn:epcglobal:cbv:bizstep:disassembling",
+        "readPoint": {
+          "id": "urn:epc:id:sgln:4012345.00002.0"
+        },
+        "errorDeclaration": {
+          "declarationTime": "2019-11-07T14:00:00+01:00",
+          "reason": "urn:epcglobal:cbv:er:incorrect_data",
+          "correctiveEventIds": [
+            "urn:uuid:fd338495-0e6d-41dd-afee-a862ecd32518"
+          ]
+        }
+      },
+      {
+        "isA": "AssociationEvent",
+        "eventTime": "2019-11-04T14:00:00+01:00",
+        "eventTimeZoneOffset": "+01:00",
+        "eventID": "urn:uuid:fd338495-0e6d-41dd-afee-a862ecd32518",
+        "parentID": "urn:epc:id:grai:4012345.55555.987",
+        "childEPCs": [
+          "urn:epc:id:giai:4000001.12345",
+          "urn:epc:id:giai:4000001.12346"
+        ],
+        "action": "DELETE",
+        "bizStep": "urn:epcglobal:cbv:bizstep:disassembling",
+        "readPoint": {
+          "id": "urn:epc:id:sgln:4012345.00002.0"
+        }
+      }
+    ]
+  }
+}

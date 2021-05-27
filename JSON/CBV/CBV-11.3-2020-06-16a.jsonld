@@ -1,0 +1,27 @@
+{
+  "@context": "https://gs1.github.io/EPCIS/epcis-context.jsonld",
+  "isA": "EPCISDocument",
+  "creationDate": "2020-06-16T11:30:47+00:00",
+  "schemaVersion": "2.0",
+  "epcisBody": {
+    "eventList": [
+      {
+        "isA": "ObjectEvent",
+        "eventTime": "2020-06-15T21:41:19+00:00",
+        "eventTimeZoneOffset": "-05:00",
+        "epcList": [
+          "urn:epc:id:sgtin:9524141.181335.234"
+        ],
+        "action": "ADD",
+        "bizStep": "urn:example:uservocab:bizstep:quarantined",
+        "disposition": "http://epcis.example.com/user/vocab/disp/contaminated",
+        "readPoint": {
+          "id": "urn:epc:id:sgln:9504141.00300.1"
+        },
+        "bizLocation": {
+          "id": "urn:epc:id:sgln:9504141.00300.0"
+        }
+      }
+    ]
+  }
+}

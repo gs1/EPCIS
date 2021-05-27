@@ -1,0 +1,33 @@
+{
+  "@context": "https://gs1.github.io/EPCIS/epcis-context.jsonld",
+  "isA": "EPCISDocument",
+  "creationDate": "2020-06-16T11:30:47+00:00",
+  "schemaVersion": "2.0",
+  "epcisBody": {
+    "eventList": [
+      {
+        "isA": "ObjectEvent",
+        "eventTime": "2020-06-15T21:41:19+00:00",
+        "eventTimeZoneOffset": "-05:00",
+        "epcList": [
+          "urn:epc:id:sgtin:9524141.181335.234"
+        ],
+        "action": "ADD",
+        "bizStep": "urn:epcglobal:cbv:bizstep:commissioning",
+        "disposition": "urn:epcglobal:cbv:disp:active",
+        "readPoint": {
+          "id": "urn:epc:id:sgln:9524141.00300.1"
+        },
+        "bizLocation": {
+          "id": "urn:epc:id:sgln:9524141.00300.0"
+        },
+        "bizTransactionList": [
+          {
+            "type": "urn:epcglobal:cbv:btt:po",
+            "bizTransaction": "urn:epc:id:gdti:9524141.06012.1234"
+          }
+        ]
+      }
+    ]
+  }
+}

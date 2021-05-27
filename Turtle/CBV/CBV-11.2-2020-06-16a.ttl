@@ -1,0 +1,38 @@
+@prefix epcis: <https://ns.gs1.org/epcis/> .
+@prefix gs1:   <https://gs1.org/voc/> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix vtype: <urn:epcglobal:epcis:vtype:> .
+@prefix example-mda: <http://epcis.example.com/mda/> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix example2: <http://epcis.example.com/ns/> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix cbv:   <https://ns.gs1.org/cbv/> .
+@prefix md:    <https://ns.gs1.org/epcismd/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix example1: <http://ns.example.com/epcis/> .
+@prefix cbvmda: <urn:epcglobal:cbv:mda:> .
+
+[ a                epcis:EPCISDocument ;
+  dcterms:created  "2020-06-16T11:30:47+00:00"^^xsd:dateTime ;
+  owl:versionInfo  "2.0" ;
+  epcis:epcisBody  [ epcis:eventList  [ a                          epcis:ObjectEvent ;
+                                        epcis:action               "ADD" ;
+                                        epcis:bizLocation          <http://epcis.example.com/user/vocabularies/loc/abc.12345> ;
+                                        epcis:bizStep              <urn:epcglobal:cbv:bizstep:commissioning> ;
+                                        epcis:bizTransactionList   [ epcis:bizTransaction  <http://transaction.example.com/prodution/orders/bt/po12345> ;
+                                                                     epcis:type            <urn:epcglobal:cbv:btt:po>
+                                                                   ] ;
+                                        epcis:bizTransactionList   [ epcis:bizTransaction  <urn:example:epcis:bt:inv:12345> ;
+                                                                     epcis:type            <urn:epcglobal:cbv:btt:inv>
+                                                                   ] ;
+                                        epcis:bizTransactionList   [ epcis:bizTransaction  <urn:epcglobal:cbv:bt:9524141000029:asn12345> ;
+                                                                     epcis:type            <urn:epcglobal:cbv:btt:desadv>
+                                                                   ] ;
+                                        epcis:disposition          <urn:epcglobal:cbv:disp:active> ;
+                                        epcis:epcList              <http://epcis.example.com/user/vocab/obj/12345.67890> , <urn:example:epcis:id:obj:Q12345.67890.001> ;
+                                        epcis:eventTime            "2020-06-15T21:41:19+00:00"^^xsd:dateTime ;
+                                        epcis:eventTimeZoneOffset  "-05:00" ;
+                                        epcis:readPoint            <urn:example:epcis:id:loc:warehouse23>
+                                      ] ]
+] .

@@ -1,0 +1,42 @@
+{
+  "@context": "https://gs1.github.io/EPCIS/epcis-context.jsonld",
+  "isA": "EPCISDocument",
+  "creationDate": "2020-06-16T11:30:47+00:00",
+  "schemaVersion": "2.0",
+  "epcisBody": {
+    "eventList": [
+      {
+        "isA": "ObjectEvent",
+        "eventTime": "2020-06-15T21:41:19+00:00",
+        "eventTimeZoneOffset": "-05:00",
+        "epcList": [
+          "urn:example:epcis:id:obj:Q12345.67890.001",
+          "http://epcis.example.com/user/vocab/obj/12345.67890"
+        ],
+        "action": "ADD",
+        "bizStep": "urn:epcglobal:cbv:bizstep:commissioning",
+        "disposition": "urn:epcglobal:cbv:disp:active",
+        "readPoint": {
+          "id": "urn:example:epcis:id:loc:warehouse23"
+        },
+        "bizLocation": {
+          "id": "http://epcis.example.com/user/vocabularies/loc/abc.12345"
+        },
+        "bizTransactionList": [
+          {
+            "type": "urn:epcglobal:cbv:btt:po",
+            "bizTransaction": "http://transaction.example.com/prodution/orders/bt/po12345"
+          },
+          {
+            "type": "urn:epcglobal:cbv:btt:inv",
+            "bizTransaction": "urn:example:epcis:bt:inv:12345"
+          },
+          {
+            "type": "urn:epcglobal:cbv:btt:desadv",
+            "bizTransaction": "urn:epcglobal:cbv:bt:9524141000029:asn12345"
+          }
+        ]
+      }
+    ]
+  }
+}
