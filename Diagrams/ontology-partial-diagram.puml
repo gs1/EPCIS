@@ -1,0 +1,70 @@
+@startuml
+hide empty attributes
+hide empty methods
+hide circle
+skinparam defaultFontName DialogInput
+skinparam shadowing false
+
+legend bottom right
+**Prefixes**
+epcis: <https://ns.gs1.org/epcis/>
+cbv:   <https://ns.gs1.org/cbv/>
+gs1:   <https://gs1.org/voc/>
+xsd:   <http://www.w3.org/2001/XMLSchema#>
+end legend
+
+class EPCISDocument as " " {
+ a                epcis:EPCISDocument
+ dcterms:created  xsd:dateTime
+ dcterms:format   xsd:string [MIME type]
+ owl:versionInfo  xsd:string ["2.0"]
+}
+
+class EPCISEvent as "<ni:...?ver=CBV2.0> or blank" {
+ a                           epcis:EPCISEvent
+ <b>epcis:eventTime</b>             xsd:dateTimeStamp
+ <b>epcis:eventTimeZoneOffset</b>   xsd:string                            
+ epcis:certificationInfo     gs1:CertificationInfo                 [0..1]
+ <color:blue>epcis:errorDeclaration      epcis:ErrorDeclaration</color>                [0..1]
+ ---
+ <<extension point>>
+}
+
+class ErrorDeclaration as " " #line:blue {
+ <b>epcis:declarationTime</b>       xsd:dateTimeStamp
+ epcis:reason                cbv:ER                                [0..1]
+ epcis:correctedEventIDs     epcis:EPCISEvent                      [0..*]
+ ---
+ <<extension point>>
+}
+
+class ObjectEvent as "<ni:...?ver=CBV2.0> or blank" {
+ a                           epcis:ObjectEvent
+ epcis:recordTime            xsd:dateTimeStamp                     [0..1]
+ epcis:epcList               gs1:PhysicalObject                    [0..*]
+ <b>epcis:action</b>                xsd:string ["ADD" "OBSERVE" "DELETE"]
+ epcis:bizStep               cbv:BizStep                           [0..1]
+ epcis:disposition           cbv:Disp                              [0..1]
+ epcis:persistentDisposition epcis:PersistentDisposition           [0..1]
+ epcis:readPoint             epcis:BizLocation                     [0..1]
+ epcis:bizLocation           epcis:BizLocation                     [0..1]
+ <color:green>epcis:bizTransactionList    epcis:BizTransactionDocument</color>          [0..*]
+ epcis:quantityList          epcis:QuantityElement                 [0..*]
+ ---
+ <<extension point>>
+}
+
+
+class BizTransactionDocument as "<urn:epcglobal:cbv:bt:...> or URL" #line:green {
+ a                           epcis:BizTransactionDocument 
+ <b>epcis:type</b>                  cbv:BTT
+}
+
+class blank as "    "
+
+EPCISDocument -->              blank                                     : epcis:epcisBody
+blank         -->      "1..*"  EPCISEvent                                : epcis:eventList 
+EPCISEvent    <|--             ObjectEvent
+EPCISEvent    -right-> "0..1"  ErrorDeclaration       #blue;text:blue    : epcis:errorDeclaration
+ObjectEvent   -->      "0..*"  BizTransactionDocument #green;text:green  : epcis:bizTransactionList
+@enduml

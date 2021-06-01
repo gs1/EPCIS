@@ -13,7 +13,7 @@
     "xsd": "http://www.w3.org/2001/XMLSchema#",
     "dcterms": "http://purl.org/dc/terms/",
     "gs1": "https://gs1.org/voc/",
- 
+    
     "time": {"@type": "xsd:dateTime"},
     "startTime": {"@type": "xsd:dateTime"},
     "endTime": {"@type": "xsd:dateTime"},
@@ -87,12 +87,61 @@
     "dataProcessingMethod": {"@type": "@id"},
     "chemicalSubstance": {"@type": "@id"},
     "microorganism": {"@type": "@id"},
-        
+    
     "isA": "@type",
     "id": "@id",
     "eventID": "@id",
     "creationDate": {"@id": "dcterms:created", "@type": "xsd:dateTime"},
-    "schemaVersion": {"@id": "owl:versionInfo", "@type": "xsd:string"}
+    "format": {"@id": "dcterms:format", "@type": "xsd:string"},
+    "schemaVersion": {"@id": "owl:versionInfo", "@type": "xsd:string"},
+    "example": "http://ns.example.com/epcis/"
+  },
+  "id": "_:document1",
+  "isA": "EPCISDocument",
+  "schemaVersion": "2.0",
+  "creationDate": "2005-07-11T11:30:47.0Z",
+  "format": "application/ld+json",
+  "epcisBody": {
+    "eventList": [
+      {
+        "example:myField": "Example of a vendor/user extension",
+	"eventID": "ni:///sha-256;5f7c472bc4905de27a19b2efc8e4a9c6dc195139669b80b515f12218ff07cf65?ver=CBV2.0",
+	"isA": "AssociationEvent",
+	"eventTime": "2019-11-06T14:00:00.000+01:00",
+	"recordTime": "2019-11-06T14:05:00.000+01:00",
+	"eventTimeZoneOffset": "+01:00",
+	"parentID":"urn:epc:id:grai:4012345.55555.98765",
+	"childEPCs":["urn:epc:id:giai:4000001.12345","urn:epc:id:giai:4000001.12346"],
+	"childQuantityList": [
+	  {"epcClass":"urn:epc:class:lgtin:4023333.002000.998877","quantity":4}
+	],
+	"action": "ADD",
+	"bizStep": "urn:epcglobal:cbv:bizstep:installing",
+	"disposition": "urn:epcglobal:cbv:disp:in_progress",
+	"readPoint": {"id": "urn:epc:id:sgln:4012345.00001.0"},
+	"bizLocation": {"id": "urn:epc:id:sgln:4012345.00002.0"},
+	"bizTransactionList": [
+          {"type":"urn:epcglobal:cbv:btt:inv", "bizTransaction":"urn:epcglobal:cbv:bt:4023333000000:54545"},
+          {"type":"urn:epcglobal:cbv:btt:po", "bizTransaction": "http://transaction.acme.com/po/12345678"},
+          {"type":"urn:epcglobal:cbv:btt:desadv", "bizTransaction": "urn:epcglobal:cbv:bt:0614141073467:1152"}
+        ],
+	"sourceList": [
+	  {"type":"urn:epcglobal:cbv:sdt:possessing_party","source":"urn:epc:id:pgln:4000001.00012"}
+	],
+	"destinationList": [
+	  {"type":"urn:epcglobal:cbv:sdt:possessing_party","destination":"urn:epc:id:pgln:4012345.00000"}
+	],
+	"sensorElementList": [
+	  {
+	    "sensorMetadata" : {"startTime":"2019-11-06T13:55:00.000+01:00", "endTime":"2019-11-06T13:57:00.000+01:00"},
+	    "sensorReport" : [
+	      { "type": "gs1:MT-Humidity" , "minValue" : 12.1 , "maxValue" : 12.2 , "uom": "A93"}
+	    ]
+	  }
+	]
+      }
+    ]
   }
 }
- 
+
+
