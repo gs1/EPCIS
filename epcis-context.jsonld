@@ -3,22 +3,17 @@
         "@protected": true,
         "@version": 1.1,
         "epcis": "https://ns.gs1.org/epcis/",
-        
         "gs1": "https://gs1.org/voc/",
-
         "owl": "http://www.w3.org/2002/07/owl#",
         "xsd": "http://www.w3.org/2001/XMLSchema#",
         "dcterms": "http://purl.org/dc/terms/",
-
         "id": "@id",
         "isA": "@type",
-
         "ObjectEvent": "epcis:ObjectEvent",
         "AggregationEvent": "epcis:AggregationEvent",
         "TransformationEvent": "epcis:TransformationEvent",
         "AssociationEvent": "epcis:AssociationEvent",
         "TransactionEvent": "epcis:TransactionEvent",
-
         "eventTime": {
             "@id": "epcis:eventTime",
             "@type": "xsd:dateTimeStamp"
@@ -65,7 +60,7 @@
                         "@type": "@id"
                     },
                     "type": {
-                        "@id": "epcis:type",
+                        "@id": "epcis:sourceOrDestinationType",
                         "@type": "@vocab"
                     }
                 }
@@ -84,14 +79,14 @@
                         "@type": "@id"
                     },
                     "type": {
-                        "@id": "epcis:type",
+                        "@id": "epcis:sourceOrDestinationType",
                         "@type": "@vocab"
                     }
                 }
             ]
         },
         "persistentDisposition": {
-          "@id": "epcis:PersistentDisposition",
+            "@id": "epcis:PersistentDisposition",
             "@container": "@set",
             "@context": {
                 "@protected": true,
@@ -134,7 +129,7 @@
                         "@type": "xsd:anyURI"
                     },
                     "type": {
-                        "@id": "epcis:type",
+                        "@id": "epcis:bizTransactionType",
                         "@type": "@vocab"
                     }
                 }
@@ -171,7 +166,6 @@
             "@id": "epcis:outputQuantityList",
             "@container": "@set"
         },
-
         "sensorElementList": {
             "@id": "epcis:sensorElementList",
             "@container": "@set",
@@ -182,7 +176,14 @@
                     "@id": "epcis:sensorMetadata"
                 },
                 "sensorReport": {
-                    "@id": "epcis:sensorReport"
+                    "@id": "epcis:sensorReport",
+                    "@context": {
+                        "@protected": true,
+                        "type": {
+                            "@id": "epcis:measurementType",
+                            "@type": "@vocab"
+                        }
+                    }
                 },
                 "deviceID": {
                     "@id": "epcis:deviceID",
@@ -226,61 +227,60 @@
             }
         },
         "sensorReport": {
-          "@id": "epcis:SensorReport",
+            "@id": "epcis:SensorReport",
             "@context": {
                 "@protected": true,
                 "epcis": "https://ns.gs1.org/epcis/",
                 "type": "@type",
-				"microorganism": {
-					"@id": "epcis:microorganism",
+                "microorganism": {
+                    "@id": "epcis:microorganism",
                     "@type": "@id"
-				},
-				"chemicalSubstance": {
-					"@id": "epcis:microorganism",
+                },
+                "chemicalSubstance": {
+                    "@id": "epcis:microorganism",
                     "@type": "@id"
-				},
-				"value": {
-					"@id": "epcis:microorganism",
+                },
+                "value": {
+                    "@id": "epcis:microorganism",
                     "@type": "xsd:double"
-				},
-				"component": "epcis:component",
-				"stringValue": "epcis:stringValue",
-				"booleanValue": {
+                },
+                "component": "epcis:component",
+                "stringValue": "epcis:stringValue",
+                "booleanValue": {
                     "@id": "epcis:booleanValue",
                     "@type": "xsd:boolean"
                 },
-				"hexBinaryValue": "epcis:hexBinaryValue",
-				"uriValue": {
-					"@id": "epcis:uriValue",
+                "hexBinaryValue": "epcis:hexBinaryValue",
+                "uriValue": {
+                    "@id": "epcis:uriValue",
                     "@type": "xsd:anyURI"
-				},
-				"minValue": {
+                },
+                "minValue": {
                     "@id": "epcis:minValue",
-					"@type": "xsd:double"
-				},
-				"maxValue": {
+                    "@type": "xsd:double"
+                },
+                "maxValue": {
                     "@id": "epcis:maxValue",
-					"@type": "xsd:double"
-				},
-				"meanValue": {
+                    "@type": "xsd:double"
+                },
+                "meanValue": {
                     "@id": "epcis:meanValue",
-					"@type": "xsd:double"
-				},
-				"sDev": {
+                    "@type": "xsd:double"
+                },
+                "sDev": {
                     "@id": "epcis:sDev",
-					"@type": "xsd:double"
-				},
-				"percRank": {
+                    "@type": "xsd:double"
+                },
+                "percRank": {
                     "@id": "epcis:percRank",
-					"@type": "xsd:double"
-				},
-				"percValue": {
+                    "@type": "xsd:double"
+                },
+                "percValue": {
                     "@id": "epcis:percValue",
-					"@type": "xsd:double"
-				}
+                    "@type": "xsd:double"
+                }
             }
         },
-       
         "errorDeclaration": {
             "@id": "epcis:errorDeclaration",
             "@context": [
@@ -303,28 +303,22 @@
                 }
             ]
         },
-       
         "eventID": {
             "@id": "epcis:eventID"
         },
-
         "creationDate": "dcterms:created",
         "schemaVersion": "owl:versionInfo",
-
         "ilmd": {
             "@id": "epcis:ilmd",
             "@container": "@graph"
         },
-
         "EPCISDocument": "epcis:EPCISDocument",
         "epcisHeader": "epcis:epcisHeader",
         "epcisBody": "epcis:epcisBody",
-
         "eventList": {
             "@id": "epcis:eventList",
             "@container": "@graph"
         },
-
         "children": {
             "@id": "epcis:children",
             "@container": "@set",
