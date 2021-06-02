@@ -56,12 +56,6 @@ epcis:TransformationEvent        a owl:Class , rdfs:Class ;
 
 #################### Other classes
 
-epcis:BizLocation  a      owl:Class , rdfs:Class ;
-        rdfs:comment      "A Business Location is a uniquely identified and discretely recorded location that is meant to designate the specific place where an object is assumed to be following an EPCIS event until it is reported to be at a different Business Location by a subsequent EPCIS event. As with the Read Point, the EPCIS Capturing Application determines the Business Location based on whatever means it chooses. Conceptually, the Business Location is designed to identify 'where objects are following the EPCIS event'."@en ;
-        rdfs:isDefinedBy  epcis: ;
-        rdfs:label        "BizLocation"@en ;
-        sw:term_status    "stable" .
-
 epcis:BizTransaction  a   owl:Class , rdfs:Class ;
         rdfs:comment      "Document that describes a particular business transaction. An example is a specific Purchase Order or Despatch Advice. Business Transaction information may be included in EPCIS events to record an event's participation in particular business transactions."@en ;
         rdfs:isDefinedBy  epcis: ;
@@ -73,6 +67,12 @@ epcis:EPCISDocument a      owl:Class , rdfs:Class ;
         rdfs:isDefinedBy  epcis: ;
         rdfs:label        "EPCISDocument"@en ;
         sw:term_status    "stable" .
+
+epcis:EPCISDocumentBody a      owl:Class , rdfs:Class ;
+                        rdfs:comment      "Intermediate node that is connected to EPCISDocument using epcisBody, and includes a list of events using eventList"@en ;
+                        rdfs:isDefinedBy  epcis: ;
+                        rdfs:label        "EPCISDocumentBody"@en ;
+                        sw:term_status    "stable" .
 
 epcis:ErrorDeclaration   a owl:Class , rdfs:Class ;
         rdfs:comment      "When an event contains an ErrorDeclaration element, it indicates that this event has special semantics: instead of the normal semantics which assert that various things happened and that various things are true following the event, the semantics of this event assert that those prior assertions are in error. An event containing an ErrorDeclaration element SHALL be otherwise identical to a prior event, 'otherwise identical' meaning that all fields of the event other than the ErrorDeclaration element and the value of recordTime are exactly equal to the prior event. (Note that includes the eventID field: the eventID of the error declaration will be equal to the eventID of the prior event or null if the eventID of the prior event is null. This is the sole case where the same non-null eventID may appear in two events.) The semantics of an event containing the ErrorDeclaration element are that all assertions implied by the prior event are considered to be erroneous, as of the specified declarationTime. The prior event is not modified in any way, and subsequent queries will return both the prior event and the error declaration."@en ;
@@ -104,10 +104,10 @@ epcis:QuantityElement    a owl:Class , rdfs:Class ;
         rdfs:label        "QuantityElement"@en ;
         sw:term_status    "stable" .
 
-epcis:ReadPoint  a        owl:Class , rdfs:Class ;
-        rdfs:comment      "A Read Point is a discretely recorded location that is meant to identify the most specific place at which an EPCIS event took place. Read Points are determined by the EPCIS Capturing Application, perhaps inferred as a function of logical reader if stationary readers are used, perhaps determined overtly by reading a location tag if the reader is mobile, or in general determined by any other means the EPCIS Capturing Application chooses to use. Conceptually, the Read Point is designed to identify 'where objects were at the time of the EPCIS event'."@en ;
+gs1:Place  a        owl:Class , rdfs:Class ;
+        rdfs:comment      "Replace Read Point as class because it's a discretely recorded location that is meant to identify the most specific place at which an EPCIS event took place."@en ;
         rdfs:isDefinedBy  epcis: ;
-        rdfs:label        "ReadPoint"@en ;
+        rdfs:label        "Place"@en ;
         sw:term_status    "stable" .
 
 epcis:SensorElement  a    owl:Class , rdfs:Class ;
@@ -241,8 +241,8 @@ epcis:component  a        owl:DatatypeProperty , rdf:Property ;
         schema:domainIncludes epcis:SensorReport ;
         rdfs:isDefinedBy  epcis: ;
         rdfs:label        "component"@en ;
-        rdfs:range        xsd:string ;
-        schema:rangeIncludes xsd:string ;
+        rdfs:range        cbv:Comp ;
+        schema:rangeIncludes cbv:Comp ;
         sw:term_status    "stable" .
 
 epcis:correctiveEventIDs         a owl:ObjectProperty , rdf:Property ;
@@ -368,14 +368,14 @@ epcis:eventID  a          owl:ObjectProperty , rdf:Property ;
         sw:term_status    "stable" .
 
 epcis:eventList  a        owl:ObjectProperty , rdf:Property ;
-        rdfs:comment      "TODO"@en ;
-        rdfs:domain       epcis:EPCISDocument ;
-        schema:domainIncludes epcis:EPCISDocument ;
-        rdfs:isDefinedBy  epcis: ;
-        rdfs:label        "eventList"@en ;
-        rdfs:range        epcis:EPCISEvent ;
-        schema:rangeIncludes epcis:EPCISEvent ;
-        sw:term_status    "stable" .
+                 rdfs:comment      "List of EPCIS events included in a document: connects EPCISDocumentBody to EPCISEvent"@en ;
+                 rdfs:domain       epcis:EPCISDocumentBody ;
+                 schema:domainIncludes epcis:EPCISDocumentBody ;
+                 rdfs:isDefinedBy  epcis: ;
+                 rdfs:label        "eventList"@en ;
+                 rdfs:range        epcis:EPCISEvent ;
+                 schema:rangeIncludes epcis:EPCISEvent ;
+                 sw:term_status    "stable" .
 
 epcis:eventTime  a        owl:DatatypeProperty , rdf:Property ;
         rdfs:comment      "The date and time at which the EPCIS Capturing Applications asserts the event occurred."@en ;
@@ -524,8 +524,8 @@ epcis:percRank  a         owl:DatatypeProperty , rdf:Property ;
         schema:domainIncludes epcis:SensorReport ;
         rdfs:isDefinedBy  epcis: ;
         rdfs:label        "percRank"@en ;
-        rdfs:range        xsd:decimal ;
-        schema:rangeIncludes xsd:decimal ;
+        rdfs:range        xsd:dobule ;
+        schema:rangeIncludes xsd:double ;
         sw:term_status    "stable" .
 
 epcis:percValue  a        owl:DatatypeProperty , rdf:Property ;
@@ -534,8 +534,8 @@ epcis:percValue  a        owl:DatatypeProperty , rdf:Property ;
         schema:domainIncludes epcis:SensorReport ;
         rdfs:isDefinedBy  epcis: ;
         rdfs:label        "percValue"@en ;
-        rdfs:range        xsd:decimal ;
-        schema:rangeIncludes xsd:decimal ;
+        rdfs:range        xsd:double ;
+        schema:rangeIncludes xsd:double ;
         sw:term_status    "stable" .
 
 epcis:persistentDisposition a owl:ObjectProperty , rdf:Property ;
@@ -584,8 +584,8 @@ epcis:reason  a           owl:ObjectProperty , rdf:Property ;
         schema:domainIncludes epcis:ErrorDeclaration ;
         rdfs:isDefinedBy  epcis: ;
         rdfs:label        "reason"@en ;
-        rdfs:range        epcis:ErrorReasonID ;
-        schema:rangeIncludes epcis:ErrorReasonID ;
+        rdfs:range        cbv:ER ;
+        schema:rangeIncludes cbv:ER ;
         sw:term_status    "stable" .
 
 epcis:recordTime  a       owl:DatatypeProperty , rdf:Property ;
@@ -739,3 +739,63 @@ epcis:value  a            owl:DatatypeProperty , rdf:Property ;
         rdfs:range        xsd:double ;
         schema:rangeIncludes xsd:double ;
         sw:term_status    "stable" .
+
+epcis:eventBody  a        owl:ObjectProperty , rdf:Property ;
+                 rdfs:comment      "Body (EPCISDocumentBody) of an EPCISDocument"@en ;
+                 rdfs:domain       epcis:EPCISDocument ;
+                 schema:domainIncludes epcis:EPCISDocument ;
+                 rdfs:isDefinedBy  epcis: ;
+                 rdfs:label        "eventBody"@en ;
+                 rdfs:range        epcis:EPCISDocumentBody ;
+                 schema:rangeIncludes epcis:EPCISDocumentBody ;
+                 sw:term_status    "stable" .
+
+epcis:transformationID  a    owl:ObjectProperty , rdf:Property ;
+                        rdfs:comment      ""@en ;
+                        rdfs:domain       epcis:TransformationEvent ;
+                        schema:domainIncludes epcis:TransformationEvent ;
+                        rdfs:isDefinedBy  epcis: ;
+                        rdfs:label        "transformationID"@en ;
+                        sw:term_status    "stable" .
+
+epcis:sensorElementList  a           owl:DatatypeProperty , rdf:Property ;
+              rdfs:comment      "Should be one or more IRI that connects event to SensorElement"@en ;
+              rdfs:domain       [a owl:Class ;
+                                 owl:unionOf (epcis:ObjectEvent epcis:AggregationEvent epcis:AssociationEvent epcis:TransactionEvent epcis:TransformationEvent)] ;
+              schema:domainIncludes epcis:ObjectEvent, epcis:AggregationEvent, epcis:AssociationEvent, epcis:TransactionEvent, epcis:TransformationEvent;
+              rdfs:isDefinedBy  epcis: ;
+              rdfs:label        "sensorElementList"@en ;
+              rdfs:range        epcis:SensorElement ;
+              schema:rangeIncludes epcis:SensorElement ;
+              sw:term_status    "stable" .
+
+epcis:epcClass  a           owl:DatatypeProperty , rdf:Property ;
+                rdfs:comment      ""@en ;
+                rdfs:domain       epcis:QuantityElement ;
+                schema:domainIncludes epcis:QuantityElement ;
+                rdfs:isDefinedBy  epcis: ;
+                rdfs:label        "epcClass"@en ;
+                rdfs:range        [a owl:Class ;
+                                   owl:unionOf (gs1:Product gs1:ProductBatch)] ;
+                schema:rangeIncludes gs1:Product, gs1:ProductBatch ;
+                sw:term_status    "stable" .
+
+epcis:quantity  a           owl:DatatypeProperty , rdf:Property ;
+                rdfs:comment      ""@en ;
+                rdfs:domain       epcis:QuantityElement ;
+                schema:domainIncludes epcis:QuantityElement ;
+                rdfs:isDefinedBy  epcis: ;
+                rdfs:label        "quantity"@en ;
+                rdfs:range        xsd:double ;
+                schema:rangeIncludes xsd:double ;
+                sw:term_status    "stable" .
+
+epcis:uom  a           owl:DatatypeProperty , rdf:Property ;
+                rdfs:comment      ""@en ;
+                rdfs:domain       epcis:QuantityElement ;
+                schema:domainIncludes epcis:QuantityElement ;
+                rdfs:isDefinedBy  epcis: ;
+                rdfs:label        "uom"@en ;
+                rdfs:range        xsd:string ;
+                schema:rangeIncludes xsd:string ;
+                sw:term_status    "stable" .
