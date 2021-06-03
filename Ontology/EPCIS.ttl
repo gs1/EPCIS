@@ -760,9 +760,8 @@ epcis:transformationID  a    owl:ObjectProperty , rdf:Property ;
 
 epcis:sensorElementList  a           owl:DatatypeProperty , rdf:Property ;
               rdfs:comment      "Should be one or more IRI that connects event to SensorElement"@en ;
-              rdfs:domain       [a owl:Class ;
-                                 owl:unionOf (epcis:ObjectEvent epcis:AggregationEvent epcis:AssociationEvent epcis:TransactionEvent epcis:TransformationEvent)] ;
-              schema:domainIncludes epcis:ObjectEvent, epcis:AggregationEvent, epcis:AssociationEvent, epcis:TransactionEvent, epcis:TransformationEvent;
+              rdfs:domain       epcis:EPCISEvent ;
+              schema:domainIncludes epcis:EPCISEvent ;
               rdfs:isDefinedBy  epcis: ;
               rdfs:label        "sensorElementList"@en ;
               rdfs:range        epcis:SensorElement ;
