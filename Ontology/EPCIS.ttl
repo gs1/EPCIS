@@ -758,7 +758,7 @@ epcis:transformationID  a    owl:ObjectProperty , rdf:Property ;
                         rdfs:label        "transformationID"@en ;
                         sw:term_status    "stable" .
 
-epcis:sensorElementList  a           owl:DatatypeProperty , rdf:Property ;
+epcis:sensorElementList  a           owl:ObjectProperty , rdf:Property ;
               rdfs:comment      "Should be one or more IRI that connects event to SensorElement"@en ;
               rdfs:domain       epcis:EPCISEvent ;
               schema:domainIncludes epcis:EPCISEvent ;
@@ -768,7 +768,7 @@ epcis:sensorElementList  a           owl:DatatypeProperty , rdf:Property ;
               schema:rangeIncludes epcis:SensorElement ;
               sw:term_status    "stable" .
 
-epcis:epcClass  a           owl:DatatypeProperty , rdf:Property ;
+epcis:epcClass  a           owl:ObjectProperty , rdf:Property ;
                 rdfs:comment      "TODO"@en ;
                 rdfs:domain       epcis:QuantityElement ;
                 schema:domainIncludes epcis:QuantityElement ;
