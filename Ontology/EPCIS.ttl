@@ -751,7 +751,7 @@ epcis:eventBody  a        owl:ObjectProperty , rdf:Property ;
                  sw:term_status    "stable" .
 
 epcis:transformationID  a    owl:ObjectProperty , rdf:Property ;
-                        rdfs:comment      ""@en ;
+                        rdfs:comment      "TODO"@en ;
                         rdfs:domain       epcis:TransformationEvent ;
                         schema:domainIncludes epcis:TransformationEvent ;
                         rdfs:isDefinedBy  epcis: ;
@@ -770,7 +770,7 @@ epcis:sensorElementList  a           owl:DatatypeProperty , rdf:Property ;
               sw:term_status    "stable" .
 
 epcis:epcClass  a           owl:DatatypeProperty , rdf:Property ;
-                rdfs:comment      ""@en ;
+                rdfs:comment      "TODO"@en ;
                 rdfs:domain       epcis:QuantityElement ;
                 schema:domainIncludes epcis:QuantityElement ;
                 rdfs:isDefinedBy  epcis: ;
@@ -781,7 +781,7 @@ epcis:epcClass  a           owl:DatatypeProperty , rdf:Property ;
                 sw:term_status    "stable" .
 
 epcis:quantity  a           owl:DatatypeProperty , rdf:Property ;
-                rdfs:comment      ""@en ;
+                rdfs:comment      "TODO"@en ;
                 rdfs:domain       epcis:QuantityElement ;
                 schema:domainIncludes epcis:QuantityElement ;
                 rdfs:isDefinedBy  epcis: ;
@@ -791,7 +791,7 @@ epcis:quantity  a           owl:DatatypeProperty , rdf:Property ;
                 sw:term_status    "stable" .
 
 epcis:uom  a           owl:DatatypeProperty , rdf:Property ;
-                rdfs:comment      ""@en ;
+                rdfs:comment      "TODO"@en ;
                 rdfs:domain       epcis:QuantityElement ;
                 schema:domainIncludes epcis:QuantityElement ;
                 rdfs:isDefinedBy  epcis: ;
