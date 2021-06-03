@@ -104,12 +104,6 @@ epcis:QuantityElement    a owl:Class , rdfs:Class ;
         rdfs:label        "QuantityElement"@en ;
         sw:term_status    "stable" .
 
-gs1:Place  a        owl:Class , rdfs:Class ;
-        rdfs:comment      "Replace Read Point as class because it's a discretely recorded location that is meant to identify the most specific place at which an EPCIS event took place."@en ;
-        rdfs:isDefinedBy  epcis: ;
-        rdfs:label        "Place"@en ;
-        sw:term_status    "stable" .
-
 epcis:SensorElement  a    owl:Class , rdfs:Class ;
         rdfs:comment      "A SensorElement is a structure that contains an optional sensorMetadata structure and one or several sensorReport structures"@en ;
         rdfs:isDefinedBy  epcis: ;
@@ -661,7 +655,7 @@ epcis:sourceList  a       owl:ObjectProperty , rdf:Property ;
         sw:term_status    "stable" .
 
 epcis:sourceOrDestinationType a owl:ObjectProperty , rdf:Property ;
-        rdfs:comment      """An identifier that indicates the role of SourceOrDestination in a transfer (eg Owning Party, Possessing Party; or Location). 
+        rdfs:comment      """An identifier that indicates the role of SourceOrDestination in a transfer (eg Owning Party, Possessing Party; or Location).
         Must correlate with the type of bizLocation: gs1:Organization for the first tow; gs1:Place for the last one."""@en ;
         rdfs:domain       epcis:SourceOrDestination;
         schema:domainIncludes epcis:SourceOrDestination;
