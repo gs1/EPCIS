@@ -14,3 +14,11 @@ puml.bat temp.puml
 mv temp.png Example-Type-sourceOrDestination,measurement,bizTransaction.png
 rm temp.ttl temp.puml
 ```
+
+Shell script has been created which generates diagrams for all files in Turtle directory.
+To use it, you should have:
+- rdfpuml([Link](https://github.com/VladimirAlexiev/rdf2rml))
+- plantuml([Link](https://plantuml.com/download)) 
+
+After that you set your env variable of the above tools in `diagrams_generator.sh`.
+
