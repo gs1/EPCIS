@@ -16,6 +16,6 @@ check: $(XMLTESTS)
 # Each test depends on the XML file
 # Now we have a pattern on both sides of the generic rule
 %.test: %.xml
-	xmllint --noout --schema ../XSD/EPCglobal-epcis-masterdata-1_2.xsd  $<
+	xmllint --noout --schema ../XSD/EPCglobal-epcis-2_0.xsd  $<
 
 .PHONY: all check
