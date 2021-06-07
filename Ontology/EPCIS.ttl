@@ -792,3 +792,13 @@ epcis:uom  a           owl:DatatypeProperty , rdf:Property ;
       rdfs:range        xsd:string ;
       schema:rangeIncludes xsd:string ;
       sw:term_status    "stable" .
+
+epcis:certificationInfo  a           owl:ObjectProperty , rdf:Property ;
+           rdfs:comment      "TODO"@en ;
+           rdfs:domain       epcis:EPCISEvent ;
+           schema:domainIncludes epcis:EPCISEvent ;
+           rdfs:isDefinedBy  epcis: ;
+           rdfs:label        "certificationInfo"@en ;
+           rdfs:range        gs1:CertificationDetails ;
+           schema:rangeIncludes gs1:CertificationDetails ;
+           sw:term_status    "stable" .
