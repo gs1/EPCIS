@@ -1,0 +1,23 @@
+@startuml
+hide empty attributes
+hide empty methods
+hide circle
+
+class CertificationDetails1 as "gs1:CertificationDetails"
+class CertificationDetails2 as "gs1:CertificationDetails"
+class Place as "gs1:Place"
+class Product as "gs1:Product"
+
+EPCISEvent --> CertificationDetails1 : gs1:certification
+EPCISEvent --> CertificationDetails2 : gs1:certification
+EPCISEvent --> Place : bizLocation
+EPCISEvent --> Product : epcList 
+CertificationDetails1 --> Place : gs1:certificationSubject
+CertificationDetails1 <-- Place : gs1:certification
+CertificationDetails2 --> Product : gs1:certificationSubject
+CertificationDetails2 <-- Product : gs1:certification
+
+CertificationDetails1 : gs1:certificationStandard "Place Fire-Safety Standard"@en
+CertificationDetails2 : gs1:certificationStandard "Product Child-Safety Standard"@en
+
+@enduml

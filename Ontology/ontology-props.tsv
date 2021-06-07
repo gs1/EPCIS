@@ -1,0 +1,63 @@
+?property	?domains	?ranges
+epcis:childEPCs	epcis:AggregationEvent, epcis:AssociationEvent	xsd:anyURI
+epcis:childQuantityList	epcis:AggregationEvent, epcis:AssociationEvent	epcis:QuantityElement
+epcis:action	epcis:AggregationEvent, epcis:AssociationEvent, epcis:ObjectEvent, epcis:TransactionEvent	xsd:string
+epcis:parentID	epcis:AggregationEvent, epcis:AssociationEvent, epcis:TransactionEvent	xsd:anyURI
+epcis:id	epcis:BizLocation, epcis:ReadPoint	xsd:anyURI
+epcis:bizTransaction	epcis:BizTransaction	xsd:anyURI
+epcis:bizTransactionType	epcis:BizTransaction	cbv:BTT
+epcis:eventList	epcis:EPCISDocument	epcis:EPCISEvent
+epcis:bizLocation	epcis:EPCISEvent	epcis:BizLocation
+epcis:bizStep	epcis:EPCISEvent	xsd:anyURI
+epcis:bizTransactionList	epcis:EPCISEvent	epcis:BizTransaction
+epcis:destinationList	epcis:EPCISEvent	epcis:SourceOrDestination
+epcis:disposition	epcis:EPCISEvent	xsd:anyURI
+epcis:errorDeclaration	epcis:EPCISEvent	epcis:ErrorDeclaration
+epcis:eventID	epcis:EPCISEvent	epcis:EventID
+epcis:eventTime	epcis:EPCISEvent	xsd:dateTimeStamp
+epcis:eventTimeZoneOffset	epcis:EPCISEvent	xsd:string
+epcis:persistentDisposition	epcis:EPCISEvent	epcis:PersistentDisposition
+epcis:readPoint	epcis:EPCISEvent	epcis:ReadPoint
+epcis:recordTime	epcis:EPCISEvent	xsd:dateTimeStamp
+epcis:sourceList	epcis:EPCISEvent	epcis:SourceOrDestination
+epcis:correctiveEventIDs	epcis:ErrorDeclaration	xsd:anyURI
+epcis:declarationTime	epcis:ErrorDeclaration	xsd:dateTimeStamp
+epcis:reason	epcis:ErrorDeclaration	epcis:ErrorReasonID
+epcis:epcList	epcis:ObjectEvent, epcis:TransactionEvent	xsd:anyURI
+epcis:quantityList	epcis:ObjectEvent, epcis:TransactionEvent	epcis:QuantityElement
+epcis:ilmd	epcis:ObjectEvent, epcis:TransformationEvent	epcis:ILMD
+epcis:set	epcis:PersistentDisposition	xsd:anyURI
+epcis:unset	epcis:PersistentDisposition	xsd:anyURI
+epcis:sensorMetadata	epcis:SensorElement	epcis:SensorMetadata
+epcis:sensorReport	epcis:SensorElement	epcis:SensorReport
+epcis:bizRules	epcis:SensorMetadata	xsd:anyURI
+epcis:endTime	epcis:SensorMetadata	xsd:dateTimeStamp
+epcis:startTime	epcis:SensorMetadata	xsd:dateTimeStamp
+epcis:dataProcessingMethod	epcis:SensorMetadata, epcis:SensorReport	xsd:anyURI
+epcis:deviceID	epcis:SensorMetadata, epcis:SensorReport	xsd:anyURI
+epcis:deviceMetadata	epcis:SensorMetadata, epcis:SensorReport	xsd:anyURI
+epcis:rawData	epcis:SensorMetadata, epcis:SensorReport	xsd:anyURI
+epcis:time	epcis:SensorMetadata, epcis:SensorReport	xsd:dateTimeStamp
+epcis:booleanValue	epcis:SensorReport	xsd:boolean
+epcis:chemicalSubstance	epcis:SensorReport	xsd:anyURI
+epcis:component	epcis:SensorReport	xsd:string
+epcis:hexBinaryValue	epcis:SensorReport	xsd:hexBinary
+epcis:maxValue	epcis:SensorReport	xsd:double
+epcis:meanValue	epcis:SensorReport	xsd:double
+epcis:measurementType	epcis:SensorReport	gs1:MeasurementType
+epcis:microorganism	epcis:SensorReport	xsd:anyURI
+epcis:minValue	epcis:SensorReport	xsd:double
+epcis:percRank	epcis:SensorReport	xsd:decimal
+epcis:percValue	epcis:SensorReport	xsd:decimal
+epcis:sDev	epcis:SensorReport	xsd:double
+epcis:stringValue	epcis:SensorReport	xsd:string
+epcis:uom	epcis:SensorReport	xsd:string
+epcis:uriValue	epcis:SensorReport	xsd:anyURI
+epcis:value	epcis:SensorReport	xsd:double
+epcis:destination	epcis:SourceOrDestination	gs1:Organization, gs1:Place
+epcis:source	epcis:SourceOrDestination	gs1:Organization, gs1:Place
+epcis:sourceOrDestinationType	epcis:SourceOrDestination	cbv:SDT
+epcis:inputEPCList	epcis:TransformationEvent	xsd:anyURI
+epcis:inputQuantityList	epcis:TransformationEvent	epcis:QuantityElement
+epcis:outputEPCList	epcis:TransformationEvent	xsd:anyURI
+epcis:outputQuantityList	epcis:TransformationEvent	epcis:QuantityElement
