@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema xmlns:epcis="urn:epcglobal:epcis:xsd:1" xmlns:sbdh="http://www.unece.org/cefact/namespaces/StandardBusinessDocumentHeader" xmlns:epcglobal="urn:epcglobal:xsd:1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:epcglobal:epcis:xsd:1" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="1.2">
+<xsd:schema xmlns:epcis="urn:epcglobal:epcis:xsd:1"
+  xmlns:sbdh="http://www.unece.org/cefact/namespaces/StandardBusinessDocumentHeader"
+  xmlns:epcglobal="urn:epcglobal:xsd:1"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:epcglobal:epcis:xsd:1" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="1.2">
   <xsd:annotation>
     <xsd:documentation xml:lang="en">
-      <epcglobal:copyright>Copyright (C) 2006-2016 GS1 AISBL, All Rights Reserved.</epcglobal:copyright>
+      <epcglobal:copyright>Copyright (C) 2006-2021 GS1 AISBL, All Rights Reserved.</epcglobal:copyright>
       <epcglobal:disclaimer>
 THIS DOCUMENT IS PROVIDED “AS IS” WITH NO WARRANTIES WHATSOEVER, INCLUDING ANY WARRANTY OF MERCHANTABILITY, NONINFRINGMENT, FITNESS FOR PARTICULAR PURPOSE, OR ANY WARRANTY OTHER WISE ARISING OUT OF THIS SPECIFICATION. GS1 disclaims all liability for any damages arising from use or misuse of this Standard, whether special, indirect, consequential, or compensatory damages, and including liability for infringement of any intellectual property rights, relating to use of information in or reliance upon this document.
 
 GS1 retains the right to make changes to this document at any time, without notice. GS1 makes no warranty for the use of this document and assumes no responsibility for any errors which may appear in the document, nor does it make a commitment to update the information contained herein.
       </epcglobal:disclaimer>
-      <epcglobal:specification>EPC INFORMATION SERVICE (EPCIS) Version 1.2</epcglobal:specification>
+      <epcglobal:specification>EPC INFORMATION SERVICE (EPCIS) Version 2.0</epcglobal:specification>
     </xsd:documentation>
   </xsd:annotation>
   <xsd:import namespace="urn:epcglobal:xsd:1" schemaLocation="./EPCglobal.xsd"/>
@@ -19,7 +22,7 @@ GS1 retains the right to make changes to this document at any time, without noti
     <xsd:annotation>
       <xsd:documentation xml:lang="en">
       document that contains a Header and a Body.
-              </xsd:documentation>
+      </xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="epcglobal:Document">
@@ -44,7 +47,7 @@ GS1 retains the right to make changes to this document at any time, without noti
     <xsd:annotation>
       <xsd:documentation xml:lang="en">
       specific header(s) including the Standard Business Document Header.
-              </xsd:documentation>
+      </xsd:documentation>
     </xsd:annotation>
     <xsd:sequence>
       <xsd:element ref="sbdh:StandardBusinessDocumentHeader"/>
@@ -151,7 +154,7 @@ GS1 retains the right to make changes to this document at any time, without noti
     <xsd:annotation>
       <xsd:documentation xml:lang="en">
       specific body that contains EPCIS related Events.
-              </xsd:documentation>
+      </xsd:documentation>
     </xsd:annotation>
     <xsd:sequence>
       <xsd:element name="EventList" type="epcis:EventListType" minOccurs="0"/>
@@ -170,15 +173,19 @@ GS1 retains the right to make changes to this document at any time, without noti
   <!-- EPCIS CORE ELEMENT TYPES -->
   <xsd:complexType name="EventListType">
     <xsd:sequence>
+      <xsd:choice minOccurs="0" maxOccurs="unbounded">
         <xsd:element name="ObjectEvent" type="epcis:ObjectEventType" minOccurs="0" maxOccurs="unbounded"/>
         <xsd:element name="AggregationEvent" type="epcis:AggregationEventType" minOccurs="0" maxOccurs="unbounded"/>
-    <!-- REMOVED in 2.0
+        <!-- REMOVED in 2.0
         <xsd:element name="QuantityEvent" type="epcis:QuantityEventType" minOccurs="0" maxOccurs="unbounded"/>
     -->
         <xsd:element name="TransactionEvent" type="epcis:TransactionEventType" minOccurs="0" maxOccurs="unbounded"/>
-        <xsd:element name="extension" type="epcis:EPCISEventListExtensionType" minOccurs="0"/>
-        <xsd:any namespace="##other" processContents="lax" minOccurs="0"/>
-  </xsd:sequence>
+        <xsd:element name="extension" type="epcis:EPCISEventListExtensionType" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:choice>
+      <!--
+        -->
+    </xsd:sequence>
+    <xsd:anyAttribute processContents="lax"/>
     <!-- Note: the use of "unbounded" in both the xsd:choice element
                     and the enclosed xsd:element elements is, strictly speaking,
                     redundant. However, this was found to avoid problems with
@@ -187,18 +194,22 @@ GS1 retains the right to make changes to this document at any time, without noti
   </xsd:complexType>
   <!-- Modified in 1.1 -->
   <xsd:complexType name="EPCISEventListExtensionType">
-    <xsd:choice>
-      <xsd:element name="TransformationEvent" type="epcis:TransformationEventType"/>
-      <xsd:element name="extension" type="epcis:EPCISEventListExtension2Type"/>
-    </xsd:choice>
+    <xsd:sequence>
+      <xsd:choice minOccurs="0" maxOccurs="unbounded">
+        <xsd:element name="TransformationEvent" type="epcis:TransformationEventType" minOccurs="0" maxOccurs="unbounded"/>
+        <xsd:element name="extension" type="epcis:EPCISEventListExtension2Type" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:choice>
+    </xsd:sequence>
   </xsd:complexType>
 
   <!-- Modified in 2.0 -->
   <xsd:complexType name="EPCISEventListExtension2Type">
-    <xsd:choice>
-      <xsd:element name="AssociationEvent" type="epcis:AssociationEventType"/>
-      <xsd:element name="extension" type="epcis:EPCISEventListExtension3Type"/>
-    </xsd:choice>
+    <xsd:sequence>
+      <xsd:choice minOccurs="0" maxOccurs="unbounded">
+        <xsd:element name="AssociationEvent" type="epcis:AssociationEventType" minOccurs="0" maxOccurs="unbounded"/>
+        <xsd:element name="extension" type="epcis:EPCISEventListExtension3Type" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:choice>
+    </xsd:sequence>
   </xsd:complexType>
 
 
@@ -257,7 +268,7 @@ GS1 retains the right to make changes to this document at any time, without noti
     <xsd:sequence>
       <xsd:element name="epcClass" type="epcis:EPCClassType"/>
       <xsd:sequence minOccurs="0">
-        <xsd:element name="quantity" type="xsd:decimal"/>
+        <xsd:element name="quantity" nillable="true" type="xsd:decimal"/>
         <xsd:element name="uom" type="epcis:UOMType" minOccurs="0"/>
       </xsd:sequence>
     </xsd:sequence>
@@ -399,11 +410,13 @@ GS1 retains the right to make changes to this document at any time, without noti
   <!-- Since 1.2 -->
   <xsd:complexType name="ErrorDeclarationType">
     <xsd:sequence>
-      <xsd:element name="declarationTime" type="xsd:dateTime"/>
-      <xsd:element name="reason" type="epcis:ErrorReasonIDType" minOccurs="0"/>
-      <xsd:element name="correctiveEventIDs" type="epcis:CorrectiveEventIDsType" minOccurs="0"/>
-      <xsd:element name="extension" type="epcis:ErrorDeclarationExtensionType" minOccurs="0"/>
-      <xsd:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:choice minOccurs="0" maxOccurs="unbounded">
+        <xsd:element name="declarationTime" type="xsd:dateTime"/>
+        <xsd:element name="reason" type="epcis:ErrorReasonIDType" minOccurs="0"/>
+        <xsd:element name="correctiveEventIDs" type="epcis:CorrectiveEventIDsType" minOccurs="0"/>
+        <xsd:element name="extension" type="epcis:ErrorDeclarationExtensionType" minOccurs="0"/>
+        <xsd:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:choice>
     </xsd:sequence>
     <xsd:anyAttribute processContents="lax"/>
   </xsd:complexType>
@@ -464,59 +477,59 @@ GS1 retains the right to make changes to this document at any time, without noti
     <xsd:anyAttribute processContents="lax"/>
   </xsd:complexType>
 
-    <xsd:complexType name="SensorMetadataType">
-      <xsd:simpleContent>
-        <xsd:extension base="xsd:string">
-          <xsd:attribute type="xsd:dateTime" name="time" use="optional"/>
-          <xsd:attribute type="xsd:anyURI" name="deviceID" use="optional"/>
-          <xsd:attribute type="xsd:anyURI" name="deviceMetadata" use="optional"/>
-          <xsd:attribute type="xsd:anyURI" name="rawData" use="optional"/>
-          <xsd:attribute type="xsd:dateTime" name="startTime" use="optional"/>
-          <xsd:attribute type="xsd:dateTime" name="endTime" use="optional"/>
-          <xsd:attribute type="xsd:anyURI" name="bizRules" use="optional"/>
-          <xsd:attribute type="xsd:anyURI" name="dataProcessingMethod" use="optional"/>
-          <xsd:anyAttribute processContents="lax"/>
-        </xsd:extension>
-      </xsd:simpleContent>
-    </xsd:complexType>
+  <xsd:complexType name="SensorMetadataType">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string">
+        <xsd:attribute type="xsd:dateTime" name="time" use="optional"/>
+        <xsd:attribute type="xsd:anyURI" name="deviceID" use="optional"/>
+        <xsd:attribute type="xsd:anyURI" name="deviceMetadata" use="optional"/>
+        <xsd:attribute type="xsd:anyURI" name="rawData" use="optional"/>
+        <xsd:attribute type="xsd:dateTime" name="startTime" use="optional"/>
+        <xsd:attribute type="xsd:dateTime" name="endTime" use="optional"/>
+        <xsd:attribute type="xsd:anyURI" name="bizRules" use="optional"/>
+        <xsd:attribute type="xsd:anyURI" name="dataProcessingMethod" use="optional"/>
+        <xsd:anyAttribute processContents="lax"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
 
-    <xsd:complexType name="SensorReportType">
-      <xsd:simpleContent>
-        <xsd:extension base="xsd:string">
-			  <xsd:attribute type="xsd:anyURI" name="type" use="required"/>
-			  <xsd:attribute type="xsd:float" name="value" use="optional"/>
-			  <xsd:attribute type="xsd:string" name="component" use="optional"/>
-			  <xsd:attribute type="xsd:string" name="stringValue" use="optional"/>
-			  <xsd:attribute type="xsd:boolean" name="booleanValue" use="optional"/>
-			  <xsd:attribute type="xsd:hexBinary" name="hexBinaryValue" use="optional"/>
-			  <xsd:attribute type="xsd:anyURI" name="uriValue" use="optional"/>
-			  <xsd:attribute type="xsd:string" name="uom" use="optional"/>
-			  <xsd:attribute type="xsd:float" name="minValue" use="optional"/>
-			  <xsd:attribute type="xsd:float" name="maxValue" use="optional"/>
-			  <xsd:attribute type="xsd:float" name="sDev" use="optional"/>
-			  <xsd:attribute type="xsd:anyURI" name="chemicalSubstance" use="optional"/>
-			  <xsd:attribute type="xsd:anyURI" name="microorganism" use="optional"/>
-			  <xsd:attribute type="xsd:anyURI" name="deviceID" use="optional"/>
-			  <xsd:attribute type="xsd:anyURI" name="deviceMetadata" use="optional"/>
-			  <xsd:attribute type="xsd:anyURI" name="rawData" use="optional"/>
-			  <xsd:attribute type="xsd:dateTime" name="time" use="optional"/>
-			  <xsd:attribute type="xsd:float" name="meanValue" use="optional"/>
-			  <xsd:attribute type="xsd:float" name="percRank" use="optional"/>
-			  <xsd:attribute type="xsd:float" name="percValue" use="optional"/>
-			  <xsd:attribute type="xsd:anyURI" name="dataProcessingMethod" use="optional"/>
-		    <xsd:anyAttribute processContents="lax"/>
-        </xsd:extension>
-      </xsd:simpleContent>
-   </xsd:complexType>
+  <xsd:complexType name="SensorReportType">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string">
+        <xsd:attribute type="xsd:anyURI" name="type" use="required"/>
+        <xsd:attribute type="xsd:float" name="value" use="optional"/>
+        <xsd:attribute type="xsd:string" name="component" use="optional"/>
+        <xsd:attribute type="xsd:string" name="stringValue" use="optional"/>
+        <xsd:attribute type="xsd:boolean" name="booleanValue" use="optional"/>
+        <xsd:attribute type="xsd:hexBinary" name="hexBinaryValue" use="optional"/>
+        <xsd:attribute type="xsd:anyURI" name="uriValue" use="optional"/>
+        <xsd:attribute type="xsd:string" name="uom" use="optional"/>
+        <xsd:attribute type="xsd:float" name="minValue" use="optional"/>
+        <xsd:attribute type="xsd:float" name="maxValue" use="optional"/>
+        <xsd:attribute type="xsd:float" name="sDev" use="optional"/>
+        <xsd:attribute type="xsd:anyURI" name="chemicalSubstance" use="optional"/>
+        <xsd:attribute type="xsd:anyURI" name="microorganism" use="optional"/>
+        <xsd:attribute type="xsd:anyURI" name="deviceID" use="optional"/>
+        <xsd:attribute type="xsd:anyURI" name="deviceMetadata" use="optional"/>
+        <xsd:attribute type="xsd:anyURI" name="rawData" use="optional"/>
+        <xsd:attribute type="xsd:dateTime" name="time" use="optional"/>
+        <xsd:attribute type="xsd:float" name="meanValue" use="optional"/>
+        <xsd:attribute type="xsd:float" name="percRank" use="optional"/>
+        <xsd:attribute type="xsd:float" name="percValue" use="optional"/>
+        <xsd:attribute type="xsd:anyURI" name="dataProcessingMethod" use="optional"/>
+        <xsd:anyAttribute processContents="lax"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
 
-    <xsd:complexType name="SensorElementType">
-      <xsd:sequence>
-        <xsd:element name="sensorMetadata" type="epcis:SensorMetadataType" minOccurs="0"/>
-        <xsd:element name="sensorReport" type="epcis:SensorReportType" minOccurs="1" maxOccurs="unbounded"/>
-    	<xsd:element name="extension" type="epcis:SensorElementExtensionType" minOccurs="0"/>
-	    <xsd:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
-      </xsd:sequence>
-    </xsd:complexType>
+  <xsd:complexType name="SensorElementType">
+    <xsd:sequence>
+      <xsd:element name="sensorMetadata" type="epcis:SensorMetadataType" minOccurs="0"/>
+      <xsd:element name="sensorReport" type="epcis:SensorReportType" minOccurs="1" maxOccurs="unbounded"/>
+      <xsd:element name="extension" type="epcis:SensorElementExtensionType" minOccurs="0"/>
+      <xsd:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
 
   <xsd:complexType name="SensorElementExtensionType">
     <xsd:sequence>
@@ -526,12 +539,12 @@ GS1 retains the right to make changes to this document at any time, without noti
   </xsd:complexType>
 
 
-    <xsd:complexType name="SensorElementListType">
-      <xsd:sequence>
-        <xsd:element name="sensorElement" type="epcis:SensorElementType" minOccurs="1" maxOccurs="unbounded"/>
-    	<xsd:element name="extension" type="epcis:SensorElementListExtensionType" minOccurs="0"/>
-     </xsd:sequence>
-    </xsd:complexType>
+  <xsd:complexType name="SensorElementListType">
+    <xsd:sequence>
+      <xsd:element name="sensorElement" type="epcis:SensorElementType" minOccurs="1" maxOccurs="unbounded"/>
+      <xsd:element name="extension" type="epcis:SensorElementListExtensionType" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
 
   <xsd:complexType name="SensorElementListExtensionType">
     <xsd:sequence>
@@ -546,7 +559,7 @@ GS1 retains the right to make changes to this document at any time, without noti
       <xsd:documentation xml:lang="en">
       Object Event captures information about an event pertaining to one or more
       objects identified by EPCs.
-             </xsd:documentation>
+      </xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="epcis:EPCISEventType">
@@ -599,7 +612,7 @@ GS1 retains the right to make changes to this document at any time, without noti
       <xsd:documentation xml:lang="en">
       Aggregation Event captures an event that applies to objects that
       have a physical association with one another.
-             </xsd:documentation>
+      </xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="epcis:EPCISEventType">
@@ -647,7 +660,7 @@ GS1 retains the right to make changes to this document at any time, without noti
     <xsd:anyAttribute processContents="lax"/>
   </xsd:complexType>
 
-<!-- DEPRECATED in 2.0
+  <!-- DEPRECATED in 2.0
   <xsd:complexType name="QuantityEventType">
     <xsd:annotation>
       <xsd:documentation xml:lang="en">
@@ -685,7 +698,7 @@ GS1 retains the right to make changes to this document at any time, without noti
       <xsd:documentation xml:lang="en">
       Transaction Event describes the association or disassociation of physical objects to one or more business
       transactions.
-             </xsd:documentation>
+      </xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="epcis:EPCISEventType">
@@ -739,7 +752,7 @@ GS1 retains the right to make changes to this document at any time, without noti
       <xsd:documentation xml:lang="en">
       Transformation Event captures an event in which inputs are consumed
       and outputs are produced
-             </xsd:documentation>
+      </xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="epcis:EPCISEventType">
@@ -771,7 +784,7 @@ GS1 retains the right to make changes to this document at any time, without noti
       <xsd:element name="sensorElementList" type="epcis:SensorElementListType" minOccurs="0"/>
       <xsd:element name="persistentDisposition" type="epcis:PersistentDispositionType" minOccurs="0" />
       <xsd:element name="extension" type="epcis:TransformationEventExtension2Type" minOccurs="0"/>
-     </xsd:sequence>
+    </xsd:sequence>
     <xsd:anyAttribute processContents="lax"/>
   </xsd:complexType>
 
@@ -790,7 +803,7 @@ GS1 retains the right to make changes to this document at any time, without noti
       Association Event captures an event that applies to objects that
       have a physical association with one another, a physical association being more
       permanent or persistent than a physical aggregation.
-             </xsd:documentation>
+      </xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="epcis:EPCISEventType">
