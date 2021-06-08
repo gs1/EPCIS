@@ -18,7 +18,7 @@
         epcis:eventTimeZoneOffset  "+01:00" ;
         epcis:readPoint            <urn:epc:id:sgln:4012345.00005.0> ;
         epcis:sensorElementList    [ epcis:sensorMetadata  [ epcis:deviceID        <urn:epc:id:giai:4000001.111> ;
-                                                             epcis:deviceMetadata  <https://id.gs1.org/giai/4000001111>
+                                                             epcis:deviceMetadata  <https://id.gs1.org/8004/4000001111>
                                                            ] ;
                                      epcis:sensorReport    [ epcis:time   "2019-04-02T14:55:00.000+01:00"^^xsd:dateTime ;
                                                              epcis:type   gs1:MT-Temperature ;
