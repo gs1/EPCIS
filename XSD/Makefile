@@ -5,9 +5,15 @@ ifeq (, $(shell which xmllint))
  $(error "no xmllint in $(PATH), xmllint is required to run validation")
  endif
 
+all : valid
+.PHONY : all
+
 # xml files to be tested
-EVENT_XMLS:=$(wildcard ../XML/*Event*.xml) $(wildcard ../XML/*/*Event*.xml)
-VOCABULARY_XMLS:=$(wildcard ../XML/*Vocabulary*.xml) $(wildcard ../XML/*/*Vocabulary*.xml)
+EVENT_XMLS:=$(wildcard ../XML/*.xml) $(wildcard ../XML/*Event*/*.xml) $(wildcard ../XML/With*/*.xml) $(wildcard ../XML/Mimasu/Example?.xml) 
+# still struggling with Mimasu Example-associatonEvent-sensor.xml
+# $(wildcard ../XML/Mimasu/*Event*.xml)
+
+VOCABULARY_XMLS:=$(wildcard ../XML/CBV/*.xml) $(wildcard ../XML/Mimasu/*masterData.xml)
 
 # create tests from filenames
 EVENT_XMLTESTS:=$(patsubst %.xml,%.event-test,$(EVENT_XMLS))
@@ -26,5 +32,3 @@ valid: valid-events valid-vocabulary
 
 %.vocabulary-test: %.xml
 	xmllint --noout --schema ./EPCglobal-epcis-masterdata-2_0.xsd  $<
-
-.PHONY: all valid
