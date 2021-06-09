@@ -1,5 +1,5 @@
 {
-  "@context": ["https://gs1.github.io/EPCIS/epcis-context.jsonld",{"example": "http://ns.example.com/epcis/"},{"gs1": "https://gs1.org/voc/"}],
+  "@context": ["https://gs1.github.io/EPCIS/epcis-context.jsonld",{"example": "http://ns.example.com/epcis/"}],
   
   "id": "_:document1",
   "isA": "EPCISDocument",
@@ -18,7 +18,7 @@
 		  "readPoint": {"id": "urn:epc:id:sgln:4012345.00005.0"},
 		  "sensorElementList": [
 		   {
-		    "sensorMetadata" : {"deviceID":"urn:epc:id:giai:4000001.111", "deviceMetadata":"https://id.gs1.org/giai/4000001111"},
+		    "sensorMetadata" : {"deviceID":"urn:epc:id:giai:4000001.111", "deviceMetadata":"https://id.gs1.org/8004/4000001111"},
 		    "sensorReport" : [
 			 { "type": "gs1:MT-Temperature" , "time":"2019-04-02T14:05:00.000+01:00", "value" : 26.0, "uom": "CEL"},
 			 { "type": "gs1:MT-Temperature" , "time":"2019-04-02T14:15:00.000+01:00", "value" : 26.1, "uom": "CEL"},

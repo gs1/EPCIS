@@ -17,8 +17,8 @@
         epcis:eventTimeZoneOffset  "+01:00" ;
         epcis:readPoint            <urn:epc:id:sgln:4012345.00005.0> ;
         epcis:sensorElementList    [ epcis:sensorMetadata  [ epcis:deviceID        <urn:epc:id:giai:4000001.111> ;
-                                                             epcis:deviceMetadata  <https://id.gs1.org/giai/4000001111> ;
-                                                             epcis:rawData         <https://example.org/giai/401234599999> ;
+                                                             epcis:deviceMetadata  <https://id.gs1.org/8004/4000001111> ;
+                                                             epcis:rawData         <https://example.org/8004/401234599999> ;
                                                              epcis:time            "2019-04-02T14:35:00.000+01:00"^^xsd:dateTime
                                                            ] ;
                                      epcis:sensorReport    [ epcis:type   gs1:MT-Illuminance ;
@@ -39,8 +39,8 @@
                                                            ]
                                    ] ;
         epcis:sensorElementList    [ epcis:sensorMetadata  [ epcis:deviceID        <urn:epc:id:giai:4000001.111> ;
-                                                             epcis:deviceMetadata  <https://id.gs1.org/giai/4000001111> ;
-                                                             epcis:rawData         <https://example.org/giai/401234599999> ;
+                                                             epcis:deviceMetadata  <https://id.gs1.org/8004/4000001111> ;
+                                                             epcis:rawData         <https://example.org/8004/401234599999> ;
                                                              epcis:time            "2019-04-02T14:05:00.000+01:00"^^xsd:dateTime
                                                            ] ;
                                      epcis:sensorReport    [ epcis:type   gs1:MT-Illuminance ;
@@ -61,8 +61,8 @@
                                                            ]
                                    ] ;
         epcis:sensorElementList    [ epcis:sensorMetadata  [ epcis:deviceID        <urn:epc:id:giai:4000001.111> ;
-                                                             epcis:deviceMetadata  <https://id.gs1.org/giai/4000001111> ;
-                                                             epcis:rawData         <https://example.org/giai/401234599999> ;
+                                                             epcis:deviceMetadata  <https://id.gs1.org/8004/4000001111> ;
+                                                             epcis:rawData         <https://example.org/8004/401234599999> ;
                                                              epcis:time            "2019-04-02T14:55:00.000+01:00"^^xsd:dateTime
                                                            ] ;
                                      epcis:sensorReport    [ epcis:type   gs1:MT-Illuminance ;

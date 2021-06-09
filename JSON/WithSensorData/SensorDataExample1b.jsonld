@@ -1,5 +1,5 @@
 {
-  "@context": ["https://gs1.github.io/EPCIS/epcis-context.jsonld",{"example": "http://ns.example.com/epcis/"},{"gs1": "https://gs1.org/voc/"}],
+  "@context": ["https://gs1.github.io/EPCIS/epcis-context.jsonld",{"example": "http://ns.example.com/epcis/"}],
   
   "id": "_:document1",
   "isA": "EPCISDocument",
@@ -17,7 +17,7 @@
 		  "readPoint": {"id": "urn:epc:id:sgln:4012345.00005.0"},
 		  "sensorElementList": [
 		   {
-		    "sensorMetadata" : {"time":"2019-04-02T14:05:00.000+01:00", "deviceID": "urn:epc:id:giai:4000001.111", "deviceMetadata": "https://id.gs1.org/giai/4000001111","rawData":"https://example.org/giai/401234599999"},
+		    "sensorMetadata" : {"time":"2019-04-02T14:05:00.000+01:00", "deviceID": "urn:epc:id:giai:4000001.111", "deviceMetadata": "https://id.gs1.org/8004/4000001111","rawData":"https://example.org/8004/401234599999"},
 		    "sensorReport" : [
 			 { "type": "gs1:MT-Temperature" , "value" : 26.0, "uom": "CEL" },
 			 { "type": "gs1:MT-Humidity" , "value" : 12.1 , "uom": "A93"},
@@ -27,7 +27,7 @@
 		    },
 		    
 		   {
-		    "sensorMetadata" : {"time":"2019-04-02T14:35:00.000+01:00", "deviceID": "urn:epc:id:giai:4000001.111", "deviceMetadata": "https://id.gs1.org/giai/4000001111","rawData":"https://example.org/giai/401234599999"},
+		    "sensorMetadata" : {"time":"2019-04-02T14:35:00.000+01:00", "deviceID": "urn:epc:id:giai:4000001.111", "deviceMetadata": "https://id.gs1.org/8004/4000001111","rawData":"https://example.org/8004/401234599999"},
 		    "sensorReport" : [
 			 { "type": "gs1:MT-Temperature" , "value" : 26.1, "uom": "CEL" },
 			 { "type": "gs1:MT-Humidity" , "value" : 12.2 , "uom": "A93"},
@@ -37,7 +37,7 @@
 		    },
 
 		   {
-		    "sensorMetadata" : {"time":"2019-04-02T14:55:00.000+01:00", "deviceID": "urn:epc:id:giai:4000001.111", "deviceMetadata": "https://id.gs1.org/giai/4000001111","rawData":"https://example.org/giai/401234599999"},
+		    "sensorMetadata" : {"time":"2019-04-02T14:55:00.000+01:00", "deviceID": "urn:epc:id:giai:4000001.111", "deviceMetadata": "https://id.gs1.org/8004/4000001111","rawData":"https://example.org/8004/401234599999"},
 		    "sensorReport" : [
 			 { "type": "gs1:MT-Temperature" , "value" : 26.2, "uom": "CEL" },
 			 { "type": "gs1:MT-Humidity" , "value" : 12.2 , "uom": "A93"},
