@@ -1,0 +1,27 @@
+@prefix epcis:       <https://ns.gs1.org/epcis/> .
+@prefix cbv:         <https://ns.gs1.org/cbv/> .
+@prefix md:          <https://ns.gs1.org/epcismd/> .
+@prefix vtype:       <urn:epcglobal:epcis:vtype:> .
+@prefix cbvmda:      <urn:epcglobal:cbv:mda:> .
+
+@prefix gs1:         <https://gs1.org/voc/> .
+@prefix rdf:         <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:        <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:         <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:         <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms:     <http://purl.org/dc/terms/> .
+
+@prefix example1:    <http://ns.example.com/epcis/> .
+@prefix example2:    <http://epcis.example.com/ns/> .
+@prefix example-mda: <http://epcis.example.com/mda/> .
+epcis:bizStep                  a puml:InlineProperty.
+epcis:disposition              a puml:InlineProperty.
+epcis:reason                   a puml:InlineProperty.
+epcis:readPoint                a puml:InlineProperty.
+epcis:bizLocation              a puml:InlineProperty.
+epcis:epcList                  a puml:InlineProperty.
+epcis:measurementType          a puml:InlineProperty.
+epcis:sourceOrDestinationType  a puml:InlineProperty.
+epcis:bizTransactionType       a puml:InlineProperty.
+epcis:parentID                 a puml:InlineProperty.
+epcis:childEPCs                a puml:InlineProperty.

@@ -7,3 +7,5 @@ epcis:epcList                  a puml:InlineProperty.
 epcis:measurementType          a puml:InlineProperty.
 epcis:sourceOrDestinationType  a puml:InlineProperty.
 epcis:bizTransactionType       a puml:InlineProperty.
+epcis:parentID                 a puml:InlineProperty.
+epcis:childEPCs                a puml:InlineProperty.
