@@ -9,9 +9,7 @@ all : valid
 .PHONY : all
 
 # xml files to be tested
-EVENT_XMLS:=$(wildcard ../XML/*.xml) $(wildcard ../XML/*Event*/*.xml) $(wildcard ../XML/With*/*.xml) $(wildcard ../XML/Mimasu/Example?.xml) 
-# still struggling with Mimasu Example-associatonEvent-sensor.xml
-# $(wildcard ../XML/Mimasu/*Event*.xml)
+EVENT_XMLS:=$(wildcard ../XML/*.xml) $(wildcard ../XML/*Event*/*.xml) $(wildcard ../XML/With*/*.xml) $(wildcard ../XML/Mimasu/Example?.xml) $(wildcard ../XML/Mimasu/*Event*.xml)
 
 VOCABULARY_XMLS:=$(wildcard ../XML/CBV/*.xml) $(wildcard ../XML/Mimasu/*masterData.xml)
 
