@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <epcis:EPCISDocument schemaVersion="2.0" creationDate="2013-06-04T14:59:02.099+02:00"
-  xmlns:epcis="urn:epcglobal:epcis:xsd:1"
+  xmlns:epcis="urn:epcglobal:epcis:xsd:2"
   xmlns:example="http://ns.example.com/epcis">
   <EPCISBody>
     <EventList>

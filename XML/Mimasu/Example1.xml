@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <epcis:EPCISDocument
-  xmlns:epcis="urn:epcglobal:epcis:xsd:1"
+  xmlns:epcis="urn:epcglobal:epcis:xsd:2"
   xmlns:example="http://ns.example.com/epcis"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" creationDate="2005-07-11T11:30:47.0Z" schemaVersion="2.0">
   <EPCISBody>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <epcismd:EPCISMasterDataDocument
-  xmlns:epcismd="urn:epcglobal:epcis-masterdata:xsd:1"
+  xmlns:epcismd="urn:epcglobal:epcis-masterdata:xsd:2"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                 schemaVersion="2.0"
                 creationDate="2005-07-11T11:30:47.0Z">

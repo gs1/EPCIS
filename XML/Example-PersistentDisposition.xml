@@ -1,4 +1,4 @@
-<epcis:EPCISDocument xmlns:epcis="urn:epcglobal:epcis:xsd:1"
+<epcis:EPCISDocument xmlns:epcis="urn:epcglobal:epcis:xsd:2"
 	xmlns:cbvmda="urn:epcglobal:cbv:mda" schemaVersion="2.0" creationDate="2020-06-28T13:41:00.000Z">
 	<EPCISBody>
 		<EventList>

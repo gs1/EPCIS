@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <epcis:EPCISDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:xsd="http://www.w3.org/2001/XMLSchema" creationDate="2020-01-15T07:47:21.677+00:00" schemaVersion="1.2"
-    xmlns:epcis="urn:epcglobal:epcis:xsd:1"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" creationDate="2020-01-15T07:47:21.677+00:00" schemaVersion="2.0"
+    xmlns:epcis="urn:epcglobal:epcis:xsd:2"
     xmlns:example="http://ns.example.com/epcis">
     <EPCISBody>
         <EventList>

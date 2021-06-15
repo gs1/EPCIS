@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<epcis:EPCISDocument xmlns:epcis="urn:epcglobal:epcis:xsd:1"
+<epcis:EPCISDocument xmlns:epcis="urn:epcglobal:epcis:xsd:2"
   xmlns:rail="urn:gs1:epcisapp:rail" schemaVersion="2.0" creationDate="2020-07-03T09:00:00.0Z">
   <EPCISBody>
     <EventList>

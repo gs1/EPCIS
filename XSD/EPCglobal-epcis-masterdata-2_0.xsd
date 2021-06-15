@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema xmlns:epcismd="urn:epcglobal:epcis-masterdata:xsd:1" 
+<xsd:schema xmlns:epcismd="urn:epcglobal:epcis-masterdata:xsd:2" 
    xmlns:sbdh="http://www.unece.org/cefact/namespaces/StandardBusinessDocumentHeader" 
    xmlns:epcglobal="urn:epcglobal:xsd:1"
-   xmlns:epcis="urn:epcglobal:epcis:xsd:1"
+   xmlns:epcis="urn:epcglobal:epcis:xsd:2"
    xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
-   targetNamespace="urn:epcglobal:epcis-masterdata:xsd:1" 
+   targetNamespace="urn:epcglobal:epcis-masterdata:xsd:2" 
    elementFormDefault="unqualified" 
    attributeFormDefault="unqualified" 
-   version="1.2">
+   version="2.0">
   <xsd:annotation>
     <xsd:documentation xml:lang="en">
       <epcglobal:copyright> Copyright (C) 2006-2021 GS1 AISBL, All Rights Reserved.</epcglobal:copyright>
@@ -23,7 +23,7 @@ GS1 retains the right to make changes to this document at any time, without noti
      namespace="http://www.unece.org/cefact/namespaces/StandardBusinessDocumentHeader" 
      schemaLocation="./StandardBusinessDocumentHeader.xsd"/>
   <xsd:import 
-    namespace="urn:epcglobal:epcis:xsd:1" 
+    namespace="urn:epcglobal:epcis:xsd:2" 
     schemaLocation="./EPCglobal-epcis-2_0.xsd"/>
 
   <!-- MasterData CORE ELEMENTS -->

@@ -4,7 +4,7 @@
     This file demonstrates demonstrates a CBV-Compliant EPCIS document in XML format containing a single object event, 
     illustrating the use of HTTP URLs and Private or Industry-wide URNs for user vocabulary values.
 -->
-<epcis:EPCISDocument xmlns:epcis="urn:epcglobal:epcis:xsd:1"
+<epcis:EPCISDocument xmlns:epcis="urn:epcglobal:epcis:xsd:2"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" creationDate="2020-06-16T11:30:47.0Z"
     schemaVersion="2.0">
     <EPCISBody>
