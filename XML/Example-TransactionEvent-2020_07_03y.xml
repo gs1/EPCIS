@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<epcis:EPCISDocument xmlns:epcis="urn:epcglobal:epcis:xsd:1" xmlns:rail="urn:gs1:epcisapp:rail"
-  schemaVersion="2.0" creationDate="2020-07-03T09:00:00.0Z">
+<epcis:EPCISDocument xmlns:epcis="urn:epcglobal:epcis:xsd:1"
+  xmlns:rail="urn:gs1:epcisapp:rail" schemaVersion="2.0" creationDate="2020-07-03T09:00:00.0Z">
   <EPCISBody>
     <EventList>
       <!--
@@ -30,7 +30,7 @@
         RAIL PASSAGE
         The example shows a train passage consisting of three rail vehicles.
         Vehicle 2 passes first, followed by an unidentified vehicle, which is followed by vehicle 1.
-        -->        
+        -->
       <TransactionEvent>
         <eventTime>2014-12-12T12:00:00.000+02:00</eventTime>
         <eventTimeZoneOffset>+02:00</eventTimeZoneOffset>
@@ -50,14 +50,12 @@
         <bizLocation>
           <id>urn:epc:id:sgln:952005385.011.scA</id>
         </bizLocation>
-        <extension>
-          <sourceList>
-            <source type="urn:epcglobal:cbv:sdt:location">urn:epc:id:sgln:952005385.481.0</source>
-          </sourceList>
-          <destinationList>
-            <destination type="urn:epcglobal:cbv:sdt:location">urn:epc:id:sgln:952005385.011.0</destination>
-          </destinationList>
-        </extension>
+        <sourceList>
+          <source type="urn:epcglobal:cbv:sdt:location">urn:epc:id:sgln:952005385.481.0</source>
+        </sourceList>
+        <destinationList>
+          <destination type="urn:epcglobal:cbv:sdt:location">urn:epc:id:sgln:952005385.011.0</destination>
+        </destinationList>
         <rail:trainAxleCount>12</rail:trainAxleCount>
         <rail:trainVehicleCount>3</rail:trainVehicleCount>
         <rail:vehicle>
@@ -77,7 +75,7 @@
           <rail:vehicleAxleCount>4</rail:vehicleAxleCount>
           <rail:vehicleUniquelyIdentified>true</rail:vehicleUniquelyIdentified>
           <rail:vehicleMasterGIAI>urn:epc:id:giai:735005385.vehicle1</rail:vehicleMasterGIAI>
-        </rail:vehicle>   
+        </rail:vehicle>
       </TransactionEvent>
     </EventList>
   </EPCISBody>

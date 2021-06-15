@@ -173,21 +173,22 @@ GS1 retains the right to make changes to this document at any time, without noti
   <!-- Modified in 2.0 -->
   <!-- EPCIS CORE ELEMENT TYPES -->
   <xsd:complexType name="EventListType">
+    <!-- sequence/choice introduced to support parsers complaining about the content model not being determinist -->
     <xsd:sequence>
       <xsd:choice minOccurs="0" maxOccurs="unbounded">
         <xsd:element name="ObjectEvent" type="epcis:ObjectEventType" minOccurs="0" maxOccurs="unbounded"/>
         <xsd:element name="AggregationEvent" type="epcis:AggregationEventType" minOccurs="0" maxOccurs="unbounded"/>
-        <!-- DEPRECATED in 2.0
-      <xsd:element name="QuantityEvent" type="epcis:QuantityEventType" minOccurs="0" maxOccurs="unbounded"/>
-	-->
+        <!-- REMOVED in 2.0
+        <xsd:element name="QuantityEvent" type="epcis:QuantityEventType" minOccurs="0" maxOccurs="unbounded"/>
+    -->
         <!-- 2.0 move TransformationEvent to EventListType -->
         <xsd:element name="TransformationEvent" type="epcis:TransformationEventType" minOccurs="0" maxOccurs="unbounded"/>
         <xsd:element name="TransactionEvent" type="epcis:TransactionEventType" minOccurs="0" maxOccurs="unbounded"/>
         <xsd:element name="AssociationEvent" type="epcis:AssociationEventType" minOccurs="0" maxOccurs="unbounded"/>
         <xsd:element name="extension" type="epcis:EPCISEventListExtensionType"/>
       </xsd:choice>
-      <xsd:any namespace="##other" processContents="lax"/>
     </xsd:sequence>
+    <xsd:anyAttribute processContents="lax"/>
     <!-- Note: the use of "unbounded" in both the xsd:choice element
                     and the enclosed xsd:element elements is, strictly speaking,
                     redundant. However, this was found to avoid problems with

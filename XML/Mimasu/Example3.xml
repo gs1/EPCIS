@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<epcis:EPCISDocument
-  xmlns:epcis="urn:epcglobal:epcis:xsd:1"
+<epcis:EPCISDocument xmlns:epcis="urn:epcglobal:epcis:xsd:1"
   xmlns:example="http://ns.example.com/epcis"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" creationDate="2005-07-11T11:30:47.0Z" schemaVersion="2.0">
   <EPCISBody>
@@ -22,21 +21,19 @@
         <bizLocation>
           <id>urn:epc:id:sgln:0614141.00888.0</id>
         </bizLocation>
-        <extension>
-          <childQuantityList>
-            <quantityElement>
-              <epcClass>urn:epc:idpat:sgtin:4012345.098765.*</epcClass>
-              <quantity>10</quantity>
-              <!-- Meaning: 10 units of GTIN '04012345987652' -->
-            </quantityElement>
-            <quantityElement>
-              <epcClass>urn:epc:class:lgtin:4012345.012345.998877</epcClass>
-              <quantity>200.5</quantity>
-              <uom>KGM</uom>
-              <!-- Meaning: 200.5 kg of GTIN '04012345123456' belonging to lot '998877'-->
-            </quantityElement>
-          </childQuantityList>
-        </extension>
+        <childQuantityList>
+          <quantityElement>
+            <epcClass>urn:epc:idpat:sgtin:4012345.098765.*</epcClass>
+            <quantity>10</quantity>
+            <!-- Meaning: 10 units of GTIN '04012345987652' -->
+          </quantityElement>
+          <quantityElement>
+            <epcClass>urn:epc:class:lgtin:4012345.012345.998877</epcClass>
+            <quantity>200.5</quantity>
+            <uom>KGM</uom>
+            <!-- Meaning: 200.5 kg of GTIN '04012345123456' belonging to lot '998877'-->
+          </quantityElement>
+        </childQuantityList>
         <example:myField>Example of a vendor/user extension</example:myField>
       </AggregationEvent>
     </EventList>

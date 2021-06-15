@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<epcis:EPCISDocument
-  xmlns:epcis="urn:epcglobal:epcis:xsd:1"
+<epcis:EPCISDocument xmlns:epcis="urn:epcglobal:epcis:xsd:1"
   xmlns:example="http://ns.example.com/epcis"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" creationDate="2005-07-11T11:30:47.0Z" schemaVersion="2.0">
   <EPCISBody>
@@ -18,29 +17,27 @@
         <bizLocation>
           <id>urn:epc:id:sgln:0614141.00888.0</id>
         </bizLocation>
-        <extension>
-          <quantityList>
-            <quantityElement>
-              <epcClass>urn:epc:class:lgtin:4012345.012345.998877</epcClass>
-              <quantity>200</quantity>
-              <uom>KGM</uom>
-              <!-- Meaning: 200 kg of GTIN '04012345123456' belonging to lot '998877'-->
-            </quantityElement>
-          </quantityList>
-          <sourceList>
-            <source type="urn:epcglobal:cbv:sdt:possessing_party">urn:epc:id:sgln:4012345.00001.0</source>
-            <!-- Party which had physical possession at the originating endpoint of
+        <quantityList>
+          <quantityElement>
+            <epcClass>urn:epc:class:lgtin:4012345.012345.998877</epcClass>
+            <quantity>200</quantity>
+            <uom>KGM</uom>
+            <!-- Meaning: 200 kg of GTIN '04012345123456' belonging to lot '998877'-->
+          </quantityElement>
+        </quantityList>
+        <sourceList>
+          <source type="urn:epcglobal:cbv:sdt:possessing_party">urn:epc:id:sgln:4012345.00001.0</source>
+          <!-- Party which had physical possession at the originating endpoint of
               the business transfer, e.g., a forwarder-->
-            <source type="urn:epcglobal:cbv:sdt:location">urn:epc:id:sgln:4012345.00225.0</source>
-            <!-- Physical location of the originating endpoint, e.g., a distribution centre of the forwarder-->
-          </sourceList>
-          <destinationList>
-            <destination type="urn:epcglobal:cbv:sdt:owning_party">urn:epc:id:sgln:0614141.00001.0</destination>
-            <!-- Party which owns the physical objects at the terminating endpoint, e.g., a retail company -->
-            <destination type="urn:epcglobal:cbv:sdt:location">urn:epc:id:sgln:0614141.00777.0</destination>
-            <!-- Physical location of the terminating endpoint, e.g., a warehouse of the retail company-->
-          </destinationList>
-        </extension>
+          <source type="urn:epcglobal:cbv:sdt:location">urn:epc:id:sgln:4012345.00225.0</source>
+          <!-- Physical location of the originating endpoint, e.g., a distribution centre of the forwarder-->
+        </sourceList>
+        <destinationList>
+          <destination type="urn:epcglobal:cbv:sdt:owning_party">urn:epc:id:sgln:0614141.00001.0</destination>
+          <!-- Party which owns the physical objects at the terminating endpoint, e.g., a retail company -->
+          <destination type="urn:epcglobal:cbv:sdt:location">urn:epc:id:sgln:0614141.00777.0</destination>
+          <!-- Physical location of the terminating endpoint, e.g., a warehouse of the retail company-->
+        </destinationList>
         <example:myField>Example of a vendor/user extension</example:myField>
       </ObjectEvent>
     </EventList>

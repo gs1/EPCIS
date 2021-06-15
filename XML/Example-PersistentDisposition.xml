@@ -1,6 +1,5 @@
 <epcis:EPCISDocument xmlns:epcis="urn:epcglobal:epcis:xsd:1"
-	xmlns:cbvmda="urn:epcglobal:cbv:mda"
-	schemaVersion="2.0" creationDate="2020-06-28T13:41:00.000Z">
+	xmlns:cbvmda="urn:epcglobal:cbv:mda" schemaVersion="2.0" creationDate="2020-06-28T13:41:00.000Z">
 	<EPCISBody>
 		<EventList>
 			<!-- INFERENCE example with COMPLETENESS INFERRED -->
@@ -23,7 +22,6 @@
 				<action>OBSERVE</action>
 				<bizStep>urn:epcglobal:cbv:bizstep:receiving</bizStep>
 				<disposition>urn:epcglobal:cbv:disp:in_progress</disposition>
-				<!--  <persistentDisposition> is indicated in 2nd nested <extension>, below -->
 				<readPoint>
 					<id>urn:epc:id:sgln:9529999.99999.0</id>
 				</readPoint>
@@ -31,29 +29,23 @@
 					<id>urn:epc:id:sgln:9529999.99999.0</id>
 				</bizLocation>
 				<bizTransactionList>
-					<bizTransaction type="urn:epcglobal:cbv:btt:inv"
-						>urn:epcglobal:cbv:bt:9520011111116:A123</bizTransaction>
-					<bizTransaction type="urn:epcglobal:cbv:btt:po"
-						>urn:epcglobal:cbv:bt:9529999999991:XYZ567</bizTransaction>
+					<bizTransaction type="urn:epcglobal:cbv:btt:inv">urn:epcglobal:cbv:bt:9520011111116:A123</bizTransaction>
+					<bizTransaction type="urn:epcglobal:cbv:btt:po">urn:epcglobal:cbv:bt:9529999999991:XYZ567</bizTransaction>
 					<!-- suggestion: allow for reference to packing event(s)
 					<bizTransaction type="urn:epcglobal:cbv:btt:packevent">urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6</bizTransaction>
 					-->
 					<bizTransaction type="urn:epcglobal:cbv:btt:desadv">urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6</bizTransaction>
 				</bizTransactionList>
-				<extension>
-					<sourceList>
-						<source type="urn:epcglobal:cbv:sdt:owning_party">urn:epc:id:pgln:9520001.11111</source>
-					</sourceList>
-					<destinationList>
-						<destination type="urn:epcglobal:cbv:sdt:owning_party">urn:epc:id:pgln:9520999.99999</destination>
-					</destinationList>
-					<extension>
-						<!-- COMPLETENESS INFERRED -->
-						<persistentDisposition>
-							<set>urn:epcglobal:cbv:disp:completeness_inferred</set>
-						</persistentDisposition>
-					</extension>
-				</extension>
+				<sourceList>
+					<source type="urn:epcglobal:cbv:sdt:owning_party">urn:epc:id:pgln:9520001.11111</source>
+				</sourceList>
+				<destinationList>
+					<destination type="urn:epcglobal:cbv:sdt:owning_party">urn:epc:id:pgln:9520999.99999</destination>
+				</destinationList>
+				<!-- COMPLETENESS INFERRED -->
+				<persistentDisposition>
+					<set>urn:epcglobal:cbv:disp:completeness_inferred</set>
+				</persistentDisposition>
 			</AggregationEvent>
 			<!-- UNPACKING event with VERIFICATION of COMPLETENESS -->
 			<AggregationEvent>
@@ -75,7 +67,6 @@
 				<action>DELETE</action>
 				<bizStep>urn:epcglobal:cbv:bizstep:unpacking</bizStep>
 				<disposition>urn:epcglobal:cbv:disp:in_progress</disposition>
-				<!--  <persistentDisposition> is indicated in 2nd nested <extension>, below -->
 				<readPoint>
 					<id>urn:epc:id:sgln:9529999.99999.0</id>
 				</readPoint>
@@ -83,30 +74,24 @@
 					<id>urn:epc:id:sgln:9529999.99999.0</id>
 				</bizLocation>
 				<bizTransactionList>
-					<bizTransaction type="urn:epcglobal:cbv:btt:inv"
-						>urn:epcglobal:cbv:bt:9520011111116:A123</bizTransaction>
-					<bizTransaction type="urn:epcglobal:cbv:btt:po"
-						>urn:epcglobal:cbv:bt:9529999999991:XYZ567</bizTransaction>
+					<bizTransaction type="urn:epcglobal:cbv:btt:inv">urn:epcglobal:cbv:bt:9520011111116:A123</bizTransaction>
+					<bizTransaction type="urn:epcglobal:cbv:btt:po">urn:epcglobal:cbv:bt:9529999999991:XYZ567</bizTransaction>
 					<!-- suggestion: allow for reference to packing event(s)
 					<bizTransaction type="urn:epcglobal:cbv:btt:packevent">urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6</bizTransaction>
 					-->
 					<bizTransaction type="urn:epcglobal:cbv:btt:desadv">urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6</bizTransaction>
 				</bizTransactionList>
-				<extension>
-					<sourceList>
-						<source type="urn:epcglobal:cbv:sdt:owning_party">urn:epc:id:pgln:9520001.11111</source>
-					</sourceList>
-					<destinationList>
-						<destination type="urn:epcglobal:cbv:sdt:owning_party">urn:epc:id:pgln:9520999.99999</destination>
-					</destinationList>
-					<extension>
-						<!-- COMPLETENESS VERIFIED -->
-						<persistentDisposition>
-							<unset>urn:epcglobal:cbv:disp:completeness_inferred</unset>
-							<set>urn:epcglobal:cbv:disp:completeness_verified</set>
-						</persistentDisposition>
-					</extension>
-				</extension>
+				<sourceList>
+					<source type="urn:epcglobal:cbv:sdt:owning_party">urn:epc:id:pgln:9520001.11111</source>
+				</sourceList>
+				<destinationList>
+					<destination type="urn:epcglobal:cbv:sdt:owning_party">urn:epc:id:pgln:9520999.99999</destination>
+				</destinationList>
+				<!-- COMPLETENESS VERIFIED -->
+				<persistentDisposition>
+					<unset>urn:epcglobal:cbv:disp:completeness_inferred</unset>
+					<set>urn:epcglobal:cbv:disp:completeness_verified</set>
+				</persistentDisposition>
 			</AggregationEvent>
 		</EventList>
 	</EPCISBody>
