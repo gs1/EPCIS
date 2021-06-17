@@ -1,51 +1,55 @@
 @prefix epcis: <https://ns.gs1.org/epcis/> .
 @prefix gs1:   <https://gs1.org/voc/> .
 @prefix owl:   <http://www.w3.org/2002/07/owl#> .
-@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix vtype: <urn:epcglobal:epcis:vtype:> .
+@prefix example-mda: <http://epcis.example.com/mda/> .
 @prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix example: <http://ns.example.com/epcis/> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix example2: <http://epcis.example.com/ns/> .
+@prefix cbv:   <https://ns.gs1.org/cbv/> .
+@prefix md:    <https://ns.gs1.org/epcismd/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix example1: <http://ns.example.com/epcis/> .
 @prefix cbvmda: <urn:epcglobal:cbv:mda:> .
 
-[ a                epcis:EPCISDocument ;
-  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
-  owl:versionInfo  "2.0" ;
-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;6aca25c45463182fe3a1ebf60a6b81a165f061b58f4f3c202eb423234386b72e?ver=CBV2.0> ]
-] .
-
 <ni:///sha-256;6aca25c45463182fe3a1ebf60a6b81a165f061b58f4f3c202eb423234386b72e?ver=CBV2.0>
-        a                          epcis:ObjectEvent ;
+        rdf:type                   epcis:ObjectEvent ;
         epcis:action               "OBSERVE" ;
         epcis:bizStep              <urn:epcglobal:cbv:bizstep:inspecting> ;
         epcis:epcList              <urn:epc:id:sgtin:4012345.011111.9876> ;
         epcis:eventTime            "2019-10-07T15:00:00.000+01:00"^^xsd:dateTime ;
         epcis:eventTimeZoneOffset  "+01:00" ;
         epcis:quantityList         [ epcis:epcClass  <urn:epc:class:lgtin:4023333.002000.2019-10-07> ;
-                                     epcis:quantity  "150"^^xsd:decimal ;
+                                     epcis:quantity  1.5E2 ;
                                      epcis:uom       "KGM"
                                    ] ;
         epcis:readPoint            <urn:epc:id:sgln:4012345.00005.0> ;
-        epcis:sensorElementList    [ example:furtherSensorData  [ example:measure2
+        epcis:sensorElementList    [ example1:furtherSensorData  [ example1:measure2
                                                        "0.987" ] ;
-                                     example:furtherSensorData  [ example:measure1
+                                     example1:furtherSensorData  [ example1:measure1
                                                        "123.5" ] ;
-                                     epcis:sensorMetadata       [ example:someFurtherMetaData  "someText" ;
-                                                                  epcis:endTime                "2019-04-02T14:59:59.999+01:00"^^xsd:dateTime ;
-                                                                  epcis:startTime              "2019-04-01T15:00:00.000+01:00"^^xsd:dateTime
-                                                                ] ;
-                                     epcis:sensorReport         [ epcis:stringValue  "someSensorOutput" ;
-                                                                  epcis:type         example:someSensorProperty
-                                                                ] ;
-                                     epcis:sensorReport         [ example:cv       "123" ;
-                                                                  epcis:maxValue   "1.38E1"^^xsd:float ;
-                                                                  epcis:meanValue  "1.32E1"^^xsd:float ;
-                                                                  epcis:minValue   "1.24E1"^^xsd:float ;
-                                                                  epcis:percRank   "50"^^xsd:float ;
-                                                                  epcis:percValue  "1.27E1"^^xsd:float ;
-                                                                  epcis:sDev       "4.1E-1"^^xsd:float ;
-                                                                  epcis:type       gs1:MT-Temperature ;
-                                                                  epcis:uom        "CEL"
-                                                                ]
+                                     epcis:sensorMetadata        [ example1:someFurtherMetaData  "someText" ;
+                                                                   epcis:endTime                 "2019-04-02T14:59:59.999+01:00"^^xsd:dateTime ;
+                                                                   epcis:startTime               "2019-04-01T15:00:00.000+01:00"^^xsd:dateTime
+                                                                 ] ;
+                                     epcis:sensorReport          [ epcis:measurementType  example1:someSensorProperty ;
+                                                                   epcis:stringValue      "someSensorOutput"
+                                                                 ] ;
+                                     epcis:sensorReport          [ example1:cv            "123" ;
+                                                                   epcis:maxValue         1.38E1 ;
+                                                                   epcis:meanValue        1.32E1 ;
+                                                                   epcis:measurementType  gs1:MT-Temperature ;
+                                                                   epcis:minValue         1.24E1 ;
+                                                                   epcis:percRank         5.0E1 ;
+                                                                   epcis:percValue        1.27E1 ;
+                                                                   epcis:sDev             4.1E-1 ;
+                                                                   epcis:uom              "CEL"
+                                                                 ]
                                    ] .
+
+[ rdf:type         epcis:EPCISDocument ;
+  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
+  owl:versionInfo  "2.0" ;
+  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;6aca25c45463182fe3a1ebf60a6b81a165f061b58f4f3c202eb423234386b72e?ver=CBV2.0> ]
+] .

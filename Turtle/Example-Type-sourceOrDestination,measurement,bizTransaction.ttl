@@ -5,32 +5,25 @@
 @prefix example-mda: <http://epcis.example.com/mda/> .
 @prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix example2: <http://epcis.example.com/ns/> .
 @prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix example2: <http://epcis.example.com/ns/> .
 @prefix cbv:   <https://ns.gs1.org/cbv/> .
 @prefix md:    <https://ns.gs1.org/epcismd/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix example1: <http://ns.example.com/epcis/> .
 @prefix cbvmda: <urn:epcglobal:cbv:mda:> .
 
-[ a                epcis:EPCISDocument ;
-  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
-  dcterms:format   "application/ld+json" ;
-  owl:versionInfo  "2.0" ;
-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;5f7c472bc4905de27a19b2efc8e4a9c6dc195139669b80b515f12218ff07cf65?ver=CBV2.0> ]
-] .
-
 <ni:///sha-256;5f7c472bc4905de27a19b2efc8e4a9c6dc195139669b80b515f12218ff07cf65?ver=CBV2.0>
-        a                          epcis:AssociationEvent ;
+        rdf:type                   epcis:AssociationEvent ;
         example1:myField           "Example of a vendor/user extension" ;
         epcis:action               "ADD" ;
         epcis:bizLocation          <urn:epc:id:sgln:4012345.00002.0> ;
         epcis:bizStep              <urn:epcglobal:cbv:bizstep:installing> ;
-        epcis:bizTransactionList   [ epcis:bizTransaction      <http://transaction.acme.com/po/12345678> ;
-                                     epcis:bizTransactionType  <urn:epcglobal:cbv:btt:po>
-                                   ] ;
         epcis:bizTransactionList   [ epcis:bizTransaction      <urn:epcglobal:cbv:bt:0614141073467:1152> ;
                                      epcis:bizTransactionType  <urn:epcglobal:cbv:btt:desadv>
+                                   ] ;
+        epcis:bizTransactionList   [ epcis:bizTransaction      <http://transaction.acme.com/po/12345678> ;
+                                     epcis:bizTransactionType  <urn:epcglobal:cbv:btt:po>
                                    ] ;
         epcis:bizTransactionList   [ epcis:bizTransaction      <urn:epcglobal:cbv:bt:4023333000000:54545> ;
                                      epcis:bizTransactionType  <urn:epcglobal:cbv:btt:inv>
@@ -60,3 +53,10 @@
         epcis:sourceList           [ epcis:source                   <urn:epc:id:pgln:4000001.00012> ;
                                      epcis:sourceOrDestinationType  <urn:epcglobal:cbv:sdt:possessing_party>
                                    ] .
+
+[ rdf:type         epcis:EPCISDocument ;
+  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
+  dcterms:format   "application/ld+json" ;
+  owl:versionInfo  "2.0" ;
+  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;5f7c472bc4905de27a19b2efc8e4a9c6dc195139669b80b515f12218ff07cf65?ver=CBV2.0> ]
+] .

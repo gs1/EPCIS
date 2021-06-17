@@ -1,5 +1,9 @@
 {
-  "@context": ["https://gs1.github.io/EPCIS/epcis-context.jsonld",{"example": "http://ns.example.com/epcis/"}],
+  "@context": ["https://gs1.github.io/EPCIS/epcis-context.jsonld",{
+  "example": "http://ns.example.com/epcis/",
+  "cbv": "https://ns.gs1.org/cbv/",
+  "CBV": "urn:epcglobal:cbv:"
+  }],
   "id": "_:document1",
   "isA": "EPCISDocument",
   "schemaVersion": "2.0",
@@ -14,8 +18,8 @@
         "parentID": "urn:epc:id:sscc:0614141.1234567890",
         "childEPCs": [ "https://id.gs1.org/01/70614141123451/21/2017", "https://id.gs1.org/01/70614141123451/21/2018" ],
         "action": "OBSERVE",
-        "bizStep": "urn:epcglobal:cbv:bizstep:receiving",
-        "disposition": "urn:epcglobal:cbv:disp:in_progress",
+        "bizStep": "cbv:BizStep-receiving",
+        "disposition": "cbv:Disp-in_progress",
         "readPoint": {"id": "urn:epc:id:sgln:0614141.00777.0"},
         "bizLocation": {"id": "urn:epc:id:sgln:0614141.00888.0"},
         "childQuantityList": [

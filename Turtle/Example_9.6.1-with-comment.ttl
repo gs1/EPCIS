@@ -5,8 +5,8 @@
 @prefix example-mda: <http://epcis.example.com/mda/> .
 @prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix example2: <http://epcis.example.com/ns/> .
 @prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix example2: <http://epcis.example.com/ns/> .
 @prefix cbv:   <https://ns.gs1.org/cbv/> .
 @prefix md:    <https://ns.gs1.org/epcismd/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
@@ -14,16 +14,16 @@
 @prefix cbvmda: <urn:epcglobal:cbv:mda:> .
 
 <ni:///sha-256;59b0e6c6777da8128617f541585e25ef7a89f98909a4543fa5c742b363c79d3d?ver=CBV2.0>
-        a                          epcis:ObjectEvent ;
+        rdf:type                   epcis:ObjectEvent ;
         example1:myField           "Example of a vendor/user extension" ;
         epcis:action               "OBSERVE" ;
         epcis:bizLocation          <urn:epc:id:sgln:0012345.11111.0> ;
         epcis:bizStep              <urn:epcglobal:cbv:bizstep:receiving> ;
-        epcis:bizTransactionList   [ epcis:bizTransaction  <http://transaction.acme.com/po/12345678> ;
-                                     epcis:type            <urn:epcglobal:cbv:btt:po>
+        epcis:bizTransactionList   [ epcis:bizTransaction      <urn:epcglobal:cbv:bt:0614141073467:1152> ;
+                                     epcis:bizTransactionType  <urn:epcglobal:cbv:btt:desadv>
                                    ] ;
-        epcis:bizTransactionList   [ epcis:bizTransaction  <urn:epcglobal:cbv:bt:0614141073467:1152> ;
-                                     epcis:type            <urn:epcglobal:cbv:btt:desadv>
+        epcis:bizTransactionList   [ epcis:bizTransaction      <http://transaction.acme.com/po/12345678> ;
+                                     epcis:bizTransactionType  <urn:epcglobal:cbv:btt:po>
                                    ] ;
         epcis:disposition          <urn:epcglobal:cbv:disp:in_progress> ;
         epcis:epcList              <urn:epc:id:sgtin:0614141.107346.2018> ;
@@ -31,23 +31,22 @@
         epcis:eventTimeZoneOffset  "-06:00" ;
         epcis:readPoint            <urn:epc:id:sgln:0012345.11111.400> .
 
-[ a                epcis:EPCISDocument ;
-  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
-  owl:versionInfo  "2.0" ;
-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;59b0e6c6777da8128617f541585e25ef7a89f98909a4543fa5c742b363c79d3d?ver=CBV2.0> , <ni:///sha-256;36abb3a2c0a726de32ac4beafd6b8bc4ba0b1d2de244490312e5cbec7b5ddece?ver=CBV2.0> ] ;
-  epcis:format     "application/ld+json"
-] .
-
 <ni:///sha-256;36abb3a2c0a726de32ac4beafd6b8bc4ba0b1d2de244490312e5cbec7b5ddece?ver=CBV2.0>
-        a                          epcis:ObjectEvent ;
+        rdf:type                   epcis:ObjectEvent ;
         rdfs:comment               "An ObjectEvent may be used for reporting an observation" ;
         epcis:action               "OBSERVE" ;
         epcis:bizStep              <urn:epcglobal:cbv:bizstep:shipping> ;
-        epcis:bizTransactionList   [ epcis:bizTransaction  <http://transaction.acme.com/po/12345678> ;
-                                     epcis:type            <urn:epcglobal:cbv:btt:po>
+        epcis:bizTransactionList   [ epcis:bizTransaction      <http://transaction.acme.com/po/12345678> ;
+                                     epcis:bizTransactionType  <urn:epcglobal:cbv:btt:po>
                                    ] ;
         epcis:disposition          <urn:epcglobal:cbv:disp:in_transit> ;
         epcis:epcList              <urn:epc:id:sgtin:0614141.107346.2018> , <urn:epc:id:sgtin:0614141.107346.2017> ;
         epcis:eventTime            "2005-04-03T20:33:31.116000-06:00"^^xsd:dateTime ;
         epcis:eventTimeZoneOffset  "-06:00" ;
         epcis:readPoint            <urn:epc:id:sgln:0614141.07346.1234> .
+
+[ rdf:type         epcis:EPCISDocument ;
+  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
+  owl:versionInfo  "2.0" ;
+  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;59b0e6c6777da8128617f541585e25ef7a89f98909a4543fa5c742b363c79d3d?ver=CBV2.0> , <ni:///sha-256;36abb3a2c0a726de32ac4beafd6b8bc4ba0b1d2de244490312e5cbec7b5ddece?ver=CBV2.0> ]
+] .
