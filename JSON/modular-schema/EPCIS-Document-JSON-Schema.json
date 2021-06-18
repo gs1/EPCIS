@@ -1,0 +1,210 @@
+{
+    "$id": "https://gs1.github.io/EPCIS/JSON/modular-schema/EPCIS-Document-JSON-Schema.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "definitions": {
+        "vocabulary": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "$ref": "schemas/event-definitions-JSON-Schema.json#/definitions/uri"
+                },
+                "vocabularyElementList": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/vocabularyElement"
+                    }
+                }
+            },
+            "required": [
+                "type"
+            ]
+        },
+        "vocabularyElement": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "$ref": "schemas/event-definitions-JSON-Schema.json#/definitions/uri"
+                },
+                "attributes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/attribute"
+                    }
+                },
+                "children": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "schemas/event-definitions-JSON-Schema.json#/definitions/uri"
+                    }
+                }
+            },
+            "required": [
+                "id"
+            ]
+        },
+        "attribute": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "$ref": "schemas/event-definitions-JSON-Schema.json#/definitions/uri"
+                },
+                "attribute": {
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "object"
+                        }
+                    ]
+                }
+            },
+            "required": [
+                "id"
+            ]
+        },
+        "eventList": {
+            "type": "array",
+            "items": {
+                "$ref": "EPCIS-Event-JSON-Schema.json#/definitions/EPCIS-Document-Event"
+            }
+        },
+        "vocabularyList": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/vocabulary"
+            }
+        },
+        "resultsBody": {
+            "type": "object",
+            "properties": {
+                "eventList": {
+                    "$ref": "#/definitions/eventList"
+                },
+                "vocabularyList": {
+                    "$ref": "#/definitions/vocabularyList"
+                }
+            },
+            "required": [
+                "eventList"
+            ]
+        },
+        "queryResults": {
+            "type": "object",
+            "properties": {
+                "queryName": {
+                    "type": "string"
+                },
+                "subscriptionID": {
+                    "type": "string"
+                },
+                "resultsBody": {
+                    "$ref": "#/definitions/resultsBody"
+                }
+            },
+            "required": [
+                "resultsBody"
+            ]
+        },
+        "epcisQueryDocumentBody": {
+            "type": "object",
+            "properties": {
+                "queryResults": {
+                    "$ref": "#/definitions/queryResults"
+                }
+            },
+            "required": [
+                "queryResults"
+            ]
+        },
+        "epcisHeader": {
+            "type": "object",
+            "properties": {
+                "epcisMasterData": {
+                    "type": "object",
+                    "properties": {
+                        "vocabularyList": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/vocabulary"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "epcisDocument": {
+            "type": "object",
+            "properties": {
+                "isA": {
+                    "type": "string",
+                    "const": "EPCISDocument"
+                },
+                "@context": {
+                    "$ref": "schemas/definitions-JSON-Schema.json#/definitions/@context"
+                },
+                "schemaVersion": {
+                    "type": "string"
+                },
+                "creationDate": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "epcisHeader": {
+                    "$ref": "#/definitions/epcisHeader"
+                },
+                "epcisBody": {
+                    "type": "object",
+                    "properties": {
+                        "eventList": {
+                            "$ref": "#/definitions/eventList"
+                        }
+                    },
+                    "required": [
+                        "eventList"
+                    ]
+                }
+            },
+            "required": [
+                "@context",
+                "schemaVersion",
+                "creationDate",
+                "epcisBody"
+            ]
+        },
+        "epcisQueryDocument": {
+            "type": "object",
+            "properties": {
+                "isA": {
+                    "type": "string",
+                    "const": "EPCISQueryDocument"
+                },
+                "epcisBody": {
+                    "$ref": "#/definitions/epcisQueryDocumentBody"
+                }
+            },
+            "required": [
+                "@context",
+                "epcisBody"
+            ]
+        },
+        "EPCIS-Document": {
+            "oneOf": [
+                {
+                    "$ref": "#/definitions/epcisDocument"
+                },
+                {
+                    "$ref": "#/definitions/epcisQueryDocument"
+                }
+            ]
+        }
+    },
+    "allOf": [
+        {
+            "$ref": "#/definitions/EPCIS-Document"
+        }
+    ]
+}

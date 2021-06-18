@@ -1,0 +1,29 @@
+{
+    "$id": "https://gs1.github.io/EPCIS/JSON/modular-schema/schemas/bizTransaction-type-JSON-Schema.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "definitions": {
+        "bizTransaction-type": {
+            "anyOf": [
+                {
+                    "$ref": "definitions-JSON-Schema.json#/definitions/non-cbv-uri"
+                },
+                {
+                    "enum": [
+                        "bol",
+                        "cert",
+                        "desadv",
+                        "inv",
+                        "pedigree",
+                        "po",
+                        "poc",
+                        "prodorder",
+                        "recadv",
+                        "rma",
+                        "testprd",
+                        "testres"
+                    ]
+                }
+            ]
+        }
+    }
+}

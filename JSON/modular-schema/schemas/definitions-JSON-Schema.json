@@ -1,0 +1,74 @@
+{
+    "$id": "https://gs1.github.io/EPCIS/JSON/modular-schema/schemas/definitions-JSON-Schema.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "definitions": {
+        "@context": {
+            "anyOf": [
+                {
+                    "type": "string",
+                    "format": "uri"
+                },
+                {
+                    "type": "object"
+                },
+                {
+                    "type": "array",
+                    "uniqueItems": true,
+                    "items": {
+                        "anyOf": [
+                            {
+                                "type": "string",
+                                "format": "uri"
+                            },
+                            {
+                                "type": "object"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "non-cbv-uri": {
+            "allOf": [
+                {
+                    "type": "string",
+                    "format": "uri"
+                },
+                {
+                    "type": "string",
+                    "not": {
+                        "pattern": "^cbv:"
+                    }
+                },
+                {
+                    "type": "string",
+                    "not": {
+                        "pattern": "^https://ns.gs1.org/cbv/"
+                    }
+                },
+                {
+                    "type": "string",
+                    "not": {
+                        "pattern": "^urn:epcglobal:cbv"
+                    }
+                },
+                {
+                    "type": "string",
+                    "not": {
+                        "pattern": "^epcis:"
+                    }
+                },
+                {
+                    "type": "string",
+                    "not": {
+                        "pattern": "^https://ns.gs1.org/epcis/"
+                    }
+                }
+            ]
+        },
+        "required-ld-context": {
+            "type": "object",
+            "required": ["@context"]
+        }
+    }
+}

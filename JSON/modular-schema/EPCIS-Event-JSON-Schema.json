@@ -1,0 +1,98 @@
+{
+    "$id": "https://gs1.github.io/EPCIS/JSON/modular-schema/EPCIS-Event-JSON-Schema.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "definitions": {
+        "EPCIS-Document-Event": {
+            "oneOf": [
+                {
+                    "$ref": "schemas/ObjectEvent-JSON-Schema.json#/definitions/ObjectEvent"
+                },
+                {
+                    "$ref": "schemas/AggregationEvent-JSON-Schema.json#/definitions/AggregationEvent"
+                },
+                {
+                    "$ref": "schemas/AssociationEvent-JSON-Schema.json#/definitions/AssociationEvent"
+                },
+                {
+                    "$ref": "schemas/TransformationEvent-JSON-Schema.json#/definitions/TransformationEvent"
+                },
+                {
+                    "$ref": "schemas/TransactionEvent-JSON-Schema.json#/definitions/TransactionEvent"
+                },
+                {
+                    "$ref": "schemas/event-definitions-JSON-Schema.json#/definitions/Extended-Event"
+                }
+            ]
+        },
+        "EPCIS-Event": {
+            "oneOf": [
+                {
+                    "allOf": [
+                        {
+                            "$ref": "schemas/ObjectEvent-JSON-Schema.json#/definitions/ObjectEvent"
+                        },
+                        {
+                            "$ref": "schemas/definitions-JSON-Schema.json#/definitions/required-ld-context"
+                        }
+                    ]
+                },
+                {
+                    "allOf": [
+                        {
+                            "$ref": "schemas/AggregationEvent-JSON-Schema.json#/definitions/AggregationEvent"
+                        },
+                        {
+                            "$ref": "schemas/definitions-JSON-Schema.json#/definitions/required-ld-context"
+                        }
+                    ]
+                },
+                {
+                    "allOf": [
+                        {
+                            "$ref": "schemas/AssociationEvent-JSON-Schema.json#/definitions/AssociationEvent"
+                        },
+                        {
+                            "$ref": "schemas/definitions-JSON-Schema.json#/definitions/required-ld-context"
+                        }
+                    ]
+                    
+                },
+                {
+                    "allOf": [
+                        {
+                            "$ref": "schemas/TransformationEvent-JSON-Schema.json#/definitions/TransformationEvent"
+                        },
+                        {
+                            "$ref": "schemas/definitions-JSON-Schema.json#/definitions/required-ld-context"
+                        }
+                    ]
+                },
+                {
+                    "allOf": [
+                        {
+                            "$ref": "schemas/TransactionEvent-JSON-Schema.json#/definitions/TransactionEvent"
+                        },
+                        {
+                            "$ref": "schemas/definitions-JSON-Schema.json#/definitions/required-ld-context"
+                        }
+                    ]
+                },
+                {
+                    "allOf": [
+                        {
+                            "$ref": "schemas/event-definitions-JSON-Schema.json#/definitions/Extended-Event"
+                        },
+                        {
+                            "$ref": "schemas/definitions-JSON-Schema.json#/definitions/required-ld-context"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "allOf": [
+        {
+            "$ref": "#/definitions/EPCIS-Event"
+        }
+    ]
+}
