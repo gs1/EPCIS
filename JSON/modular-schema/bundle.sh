@@ -28,7 +28,7 @@ swagger-cli bundle -r -o EPCIS-JSON-Schema-bundled-wrapped.json epcis-wrapper.js
 # Generate the final bundle schema. Template
 cat <<EOF > EPCIS-JSON-Schema-bundled.template.json
 {
-    "\$id": "https://jmcanterafonseca-iota.github.io/EPCIS/JSON/modular-schema/EPCIS-JSON-Schema-bundled.json",
+    "\$id": "https://gs1.github.io/EPCIS/JSON/modular-schema/EPCIS-JSON-Schema-bundled.json",
     "\$schema": "http://json-schema.org/draft-07/schema#",
     "oneOf": .components.schemas.schemaWrapper.oneOf
 }
