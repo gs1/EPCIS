@@ -145,8 +145,8 @@
 			</extension>
 		</xsl:if>
 		<!-- copy user-defined extensions -->
-		<xsl:apply-templates mode="copy-nodes" select="*[not(name()='eventTime' or name()='recordTime' or name()='eventtimeZoneOffset' or name()='eventID' or name()='errorDeclaration' 
-			or name()='bizStep' or name()='action' or name()='disposition' or name()='readPoint' or name()='bizLocation' or name()='bizTransactionList'
+		<xsl:apply-templates mode="copy-nodes" select="*[not(name()='eventTime' or name()='recordTime' or name()='eventTimeZoneOffset' or name()='eventID' or name()='errorDeclaration' 
+			or name()='epcList' or name()='bizStep' or name()='action' or name()='disposition' or name()='readPoint' or name()='bizLocation' or name()='bizTransactionList'
 			or name()='quantityList' or name()='sourceList' or name()='destinationList' or name()='persistentDisposition' or name()='sensorElementList' or name()='ilmd' or name()='extension')]"/>
 	</xsl:template>
 
@@ -186,8 +186,8 @@
 			</extension>
 		</xsl:if>
 		<!-- copy user-defined extensions -->
-		<xsl:apply-templates mode="copy-nodes" select="*[not(name()='eventTime' or name()='recordTime' or name()='eventtimeZoneOffset' or name()='eventID' or name()='errorDeclaration' 
-		or name()='bizStep' or name()='action' or name()='disposition' or name()='readPoint' or name()='bizLocation' or name()='bizTransactionList' 
+		<xsl:apply-templates mode="copy-nodes" select="*[not(name()='eventTime' or name()='recordTime' or name()='eventTimeZoneOffset' or name()='eventID' or name()='errorDeclaration' 
+		or name()='parentID' or name()='childEPCs' or name()='bizStep' or name()='action' or name()='disposition' or name()='readPoint' or name()='bizLocation' or name()='bizTransactionList' 
 		or name()='childQuantityList' or name()='sourceList' or name()='destinationList' or name()='persistentDisposition' or name()='sensorElementList' or name()='ilmd' or name()='extension')]"/>
 	</xsl:template>
 
@@ -218,7 +218,7 @@
 			</extension>
 		</xsl:if>
 		<!-- copy user-defined extensions -->
-		<xsl:apply-templates mode="copy-nodes" select="*[not(name()='eventTime' or name()='recordTime' or name()='eventtimeZoneOffset' or name()='eventID' or name()='errorDeclaration' 
+		<xsl:apply-templates mode="copy-nodes" select="*[not(name()='eventTime' or name()='recordTime' or name()='eventTimeZoneOffset' or name()='eventID' or name()='errorDeclaration' 
 		or name()='bizStep' or name()='disposition' or name()='readPoint' or name()='bizLocation' or name()='bizTransactionList' 
 		or name()='inputEPCList' or name()='inputQuantityList' or name()='outputEPCList' or name()='outputQuantityList' or name()='transformationID' 
 		or name()='sourceList' or name()='destinationList' or name()='persistentDisposition' or name()='sensorElementList' or name()='ilmd' or name()='extension')]"/>
