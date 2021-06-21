@@ -1,0 +1,112 @@
+{
+  "@context": {
+    "epcis": "https://ns.gs1.org/epcis/",
+    "gs1": "https://gs1.org/voc/",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "vtype": "urn:epcglobal:epcis:vtype:",
+    "example-mda": "http://epcis.example.com/mda/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "example2": "http://epcis.example.com/ns/",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "cbv": "https://ns.gs1.org/cbv/",
+    "md": "https://ns.gs1.org/epcismd/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "example1": "http://ns.example.com/epcis/",
+    "cbvmda": "urn:epcglobal:cbv:mda:"
+  },
+  "@graph": [
+    {
+      "@id": "ni:///sha-256;77c5b495d391767b1d3b8e7c669c9fee3965a778a9bfe793e85602c971b98436?ver=CBV2.0",
+      "@type": "epcis:ObjectEvent",
+      "epcis:action": "OBSERVE",
+      "epcis:bizStep": {
+        "@id": "urn:epcglobal:cbv:bizstep:sensor_reporting"
+      },
+      "epcis:epcList": {
+        "@id": "urn:epc:id:sgtin:4012345.022222.1234"
+      },
+      "epcis:eventTime": {
+        "@value": "2021-05-18T12:23:34+00:00",
+        "@type": "xsd:dateTime"
+      },
+      "epcis:eventTimeZoneOffset": "+01:00",
+      "epcis:readPoint": {
+        "@id": "urn:epc:id:sgln:4012345.00005.0"
+      },
+      "epcis:sensorElementList": {
+        "epcis:sensorMetadata": [
+          {
+            "epcis:time": {
+              "@value": "2021-05-20T12:23:34+00:00",
+              "@type": "xsd:dateTime"
+            }
+          },
+          {
+            "epcis:time": {
+              "@value": "2021-05-20T12:23:34+00:00",
+              "@type": "xsd:dateTime"
+            }
+          }
+        ],
+        "epcis:sensorReport": [
+          {
+            "epcis:type": "Angle",
+            "epcis:component": "Latitude",
+            "epcis:value": {
+              "@value": "42.698334",
+              "@type": "http://www.w3.org/2001/XMLSchema#decimal"
+            },
+            "epcis:uom": "DD"
+          },
+          {
+            "epcis:type": "Angle",
+            "epcis:component": "Longitude",
+            "epcis:value": {
+              "@value": "23.319941",
+              "@type": "http://www.w3.org/2001/XMLSchema#decimal"
+            },
+            "epcis:uom": "DD"
+          },
+          {
+            "example1:feature": "ex:outerPackage",
+            "epcis:type": {
+              "@id": "gs1:MT-Temperature"
+            },
+            "epcis:uom": "CEL",
+            "epcis:value": {
+              "@value": "2.07E1",
+              "@type": "http://www.w3.org/2001/XMLSchema#double"
+            }
+          },
+          {
+            "example1:feature": "ex:product",
+            "epcis:component": "ex:x",
+            "epcis:type": {
+              "@id": "gs1:MT-Speed"
+            },
+            "epcis:uom": "MTS",
+            "epcis:value": {
+              "@value": "4.5E0",
+              "@type": "http://www.w3.org/2001/XMLSchema#double"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "epcis:EPCISDocument",
+      "dcterms:created": {
+        "@value": "2021-05-21T15:00:00.000+01:00",
+        "@type": "xsd:dateTime"
+      },
+      "owl:versionInfo": "2",
+      "epcis:epcisBody": {
+        "epcis:eventList": {
+          "@id": "ni:///sha-256;77c5b495d391767b1d3b8e7c669c9fee3965a778a9bfe793e85602c971b98436?ver=CBV2.0"
+        }
+      },
+      "epcis:format": "application/ld+json"
+    }
+  ]
+}

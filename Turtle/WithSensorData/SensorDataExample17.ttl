@@ -12,7 +12,7 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix example1: <http://ns.example.com/epcis/> .
 @prefix cbvmda: <urn:epcglobal:cbv:mda:> .
-@prefix geo: <https://en.wikipedia.org/wiki/Geo_URI_scheme>
+@prefix geo: <https://en.wikipedia.org/wiki/Geo_URI_scheme> .
 
 <ni:///sha-256;77c5b495d391767b1d3b8e7c669c9fee3965a778a9bfe793e85602c971b98436?ver=CBV2.0>
     a                          epcis:ObjectEvent ;
