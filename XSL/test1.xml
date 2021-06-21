@@ -20,6 +20,9 @@
         <bizTransactionList>
           <bizTransaction type="urn:epcglobal:cbv:btt:po">http://transaction.acme.com/po/12345678</bizTransaction>
         </bizTransactionList>
+        <example:userObjectEventExtension>
+          <example:someElement>foo</example:someElement>
+        </example:userObjectEventExtension>
       </ObjectEvent>
       <ObjectEvent>
         <eventTime>2005-04-04T20:33:31.116-06:00</eventTime>
