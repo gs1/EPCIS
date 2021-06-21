@@ -239,7 +239,7 @@ GS1 retains the right to make changes to this document at any time, without noti
     <xsd:sequence>
       <xsd:element name="epcClass" type="epcis:EPCClassType"/>
       <xsd:sequence minOccurs="0">
-        <xsd:element name="quantity" type="xsd:decimal"/>
+        <xsd:element name="quantity" type="xsd:decimal" nillable="true" />
         <xsd:element name="uom" type="epcis:UOMType" minOccurs="0"/>
       </xsd:sequence>
     </xsd:sequence>

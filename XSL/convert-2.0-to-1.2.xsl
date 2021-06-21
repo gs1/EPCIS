@@ -102,7 +102,21 @@
 		<xsl:apply-templates mode="copy-nodes" select="eventTimeZoneOffset"/>
 		<xsl:if test="eventID or errorDeclaration or extension">
 			<baseExtension>
-				<xsl:apply-templates mode="copy-nodes" select="eventID|errorDeclaration"/>
+				<xsl:apply-templates mode="copy-nodes" select="eventID"/>
+				<!-- adding errorDeclaration explicitly because it must respect sequence of elements in EPCIS 1.2 -->
+				<xsl:if test="errorDeclaration">
+					<errorDeclaration>
+						<xsl:apply-templates mode="copy-nodes" select="errorDeclaration/@*"/>
+						<xsl:apply-templates mode="copy-nodes" select="errorDeclaration/declarationTime"/>
+						<xsl:apply-templates mode="copy-nodes" select="errorDeclaration/reason"/>
+						<xsl:apply-templates mode="copy-nodes" select="errorDeclaration/correctiveEventIDs"/>
+						<xsl:apply-templates mode="copy-nodes" select="errorDeclaration/extension"/>
+						<!-- copy user-defined extension -->
+						<xsl:if test="errorDeclaration/*[not(name()='declarationTime' or name()='reason' or name()='correctiveEventIDs' or name()='extension')]">
+							<xsl:apply-templates mode="copy-nodes" select="errorDeclaration/*[not(name()='declarationTime' or name()='reason' or name()='correctiveEventIDs' or name()='extension')]"/>
+						</xsl:if>
+					</errorDeclaration>
+				</xsl:if>
 				<!-- adding extension explicitly because it's excluded from copy-nodes mode -->
 				<xsl:if test="extension">
 					<xsl:apply-templates mode="copy-nodes" select="extension"/>
