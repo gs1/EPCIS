@@ -70,12 +70,10 @@
 									</xsl:if>
 									<xsl:if test="name() = 'AssociationEvent' and $includeAssociationEvent = 'yes'">
 										<extension>
-											<extension>
-												<AssociationEvent>
-													<xsl:apply-templates mode="copy-nodes" select="@*"/>
-													<xsl:call-template name="convert-AssociationEvent" />
-												</AssociationEvent>
-											</extension>
+											<AssociationEvent>
+												<xsl:apply-templates mode="copy-nodes" select="@*"/>
+												<xsl:call-template name="convert-AssociationEvent" />
+											</AssociationEvent>
 										</extension>
 									</xsl:if>
 								</xsl:for-each>
@@ -124,7 +122,7 @@
 				<epcList/>
 			</xsl:otherwise>
 		</xsl:choose>
-		<xsl:apply-templates mode="copy-nodes" select="bizStep|disposition|readPoint|bizLocation|bizTransactionList"/>
+		<xsl:apply-templates mode="copy-nodes" select="bizStep|action|disposition|readPoint|bizLocation|bizTransactionList"/>
 		<xsl:if test="quantityList or sourceList or destinationList or persistentDisposition or sensorElementList or ilmd">
 			<extension>
 				<xsl:apply-templates mode="copy-nodes" select="quantityList|sourceList|destinationList"/>

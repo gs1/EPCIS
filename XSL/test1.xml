@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<epcis:EPCISDocument
-  xmlns:epcis="urn:epcglobal:epcis:xsd:2"
+<epcis:EPCISDocument xmlns:epcis="urn:epcglobal:epcis:xsd:2"
   xmlns:example="http://ns.example.com/epcis"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" creationDate="2005-07-11T11:30:47.0Z" schemaVersion="2.0">
   <EPCISBody userAttribute="222">
-    <user1></user1>
     <EventList userAttribute="dkod">
-      <user1 xmlns:example="http://ns.example.com/epcis">
-        <example:test>my example</example:test>
-      </user1>
       <ObjectEvent>
         <eventTime>2005-04-03T20:33:31.116-06:00</eventTime>
         <eventTimeZoneOffset>-06:00</eventTimeZoneOffset>
@@ -82,9 +77,10 @@
           <!-- Physical location of the terminating endpoint, e.g., a warehouse of the retail company-->
         </destinationList>
         <example:myField>Example of a vendor/user extension</example:myField>
-      </ObjectEvent>      
+      </ObjectEvent>
     </EventList>
-    <userBodyElement>
-    </userBodyElement>
+    <example:user1 xmlns:example="http://ns.example.com/epcis">
+      <example:test>my example</example:test>
+    </example:user1>
   </EPCISBody>
 </epcis:EPCISDocument>
