@@ -128,6 +128,11 @@
 	<!-- convert EPCIS 2.0 ObjectEvent to 1.2 -->
 	<xsl:template name="convert-ObjectEvent">
 		<xsl:call-template name="convert-EPCISEvent" />
+		<!-- variable user-defined extensions -->
+		<xsl:variable name="userExtensionAtRoot" select="*[not(name()='eventTime' or name()='recordTime' or name()='eventTimeZoneOffset' or name()='eventID' or name()='errorDeclaration'
+			or name()='epcList' or name()='bizStep' or name()='action' or name()='disposition' or name()='readPoint' or name()='bizLocation' or name()='bizTransactionList'
+			or name()='quantityList' or name()='sourceList' or name()='destinationList' or name()='persistentDisposition' or name()='sensorElementList' or name()='ilmd' or name()='extension')]"/>
+
 		<xsl:choose>
 			<xsl:when test="epcList">
 				<xsl:apply-templates mode="copy-nodes" select="epcList"/>
@@ -136,52 +141,15 @@
 				<epcList/>
 			</xsl:otherwise>
 		</xsl:choose>
-		<xsl:apply-templates mode="copy-nodes" select="bizStep|action|disposition|readPoint|bizLocation|bizTransactionList"/>
-		<xsl:if test="quantityList or sourceList or destinationList or persistentDisposition or sensorElementList or ilmd">
+		<xsl:apply-templates mode="copy-nodes" select="action|bizStep|disposition|readPoint|bizLocation|bizTransactionList"/>
+		<xsl:if test="quantityList or sourceList or destinationList or persistentDisposition or sensorElementList or ilmd or $userExtensionAtRoot">
 			<extension>
 				<xsl:apply-templates mode="copy-nodes" select="quantityList|sourceList|destinationList"/>
-				<!-- only include persistentDisposition if configured -->
-				<xsl:if test="persistentDisposition and $includePersistentDisposition = 'yes'">
-					<xsl:apply-templates mode="copy-nodes" select="persistentDisposition"/>
-				</xsl:if>
-				<!-- only include sensorElementList if configured -->
-				<xsl:if test="sensorElementList and $includeSensorElementList = 'yes'">
-					<xsl:apply-templates mode="copy-nodes" select="sensorElementList"/>
-				</xsl:if>
 				<!-- adding ilmd explicitly because it's excluded from copy-nodes mode -->
 				<xsl:if test="ilmd">
 					<xsl:apply-templates mode="copy-nodes" select="ilmd"/>
 				</xsl:if>
-				<!-- adding extension explicitly because it's excluded from copy-nodes mode -->
-				<xsl:if test="extension">
-					<xsl:apply-templates mode="copy-nodes" select="extension/*"/>
-				</xsl:if>
-			</extension>
-		</xsl:if>
-		<!-- copy user-defined extensions -->
-		<xsl:apply-templates mode="copy-nodes" select="*[not(name()='eventTime' or name()='recordTime' or name()='eventTimeZoneOffset' or name()='eventID' or name()='errorDeclaration' 
-			or name()='epcList' or name()='bizStep' or name()='action' or name()='disposition' or name()='readPoint' or name()='bizLocation' or name()='bizTransactionList'
-			or name()='quantityList' or name()='sourceList' or name()='destinationList' or name()='persistentDisposition' or name()='sensorElementList' or name()='ilmd' or name()='extension')]"/>
-	</xsl:template>
-
-	<!-- convert EPCIS 2.0 AggregationEvent to 1.2 -->
-	<xsl:template name="convert-AggregationEvent">
-		<xsl:call-template name="convert-EPCISEvent" />
-		<!-- TODO: add specific elements -->
-		<xsl:apply-templates mode="copy-nodes" select="parentID"/>
-		<xsl:choose>
-			<xsl:when test="childEPCs">
-				<xsl:apply-templates mode="copy-nodes" select="childEPCs"/>
-			</xsl:when>
-			<xsl:otherwise>
-				<childEPCs/>
-			</xsl:otherwise>
-		</xsl:choose>
-		<xsl:apply-templates mode="copy-nodes" select="action|bizStep|disposition|readPoint|bizLocation|bizTransactionList"/>
-		<xsl:if test="childQuantityList or sourceList or destinationList or persistentDisposition or sensorElementList">
-			<extension>
-				<xsl:apply-templates mode="copy-nodes" select="childQuantityList|sourceList|destinationList"/>
-				<xsl:if test="persistentDisposition or sensorElementList">
+				<xsl:if test="persistentDisposition or sensorElementList or $userExtensionAtRoot">
 					<extension>
 						<!-- only include sensorElementList if configured -->
 						<xsl:if test="sensorElementList and $includeSensorElementList = 'yes'">
@@ -192,26 +160,77 @@
 							<xsl:apply-templates mode="copy-nodes" select="persistentDisposition"/>
 						</xsl:if>
 						<!-- adding extension explicitly because it's excluded from copy-nodes mode -->
-						<xsl:if test="extension">
-							<xsl:apply-templates mode="copy-nodes" select="extension/*"/>
+						<xsl:if test="$userExtensionAtRoot">
+							<extension>
+								<xsl:apply-templates mode="copy-nodes" select="$userExtensionAtRoot"/>
+							</extension>
 						</xsl:if>
 					</extension>
 				</xsl:if>
 			</extension>
 		</xsl:if>
-		<!-- copy user-defined extensions -->
-		<xsl:apply-templates mode="copy-nodes" select="*[not(name()='eventTime' or name()='recordTime' or name()='eventTimeZoneOffset' or name()='eventID' or name()='errorDeclaration' 
-		or name()='parentID' or name()='childEPCs' or name()='bizStep' or name()='action' or name()='disposition' or name()='readPoint' or name()='bizLocation' or name()='bizTransactionList' 
-		or name()='childQuantityList' or name()='sourceList' or name()='destinationList' or name()='persistentDisposition' or name()='sensorElementList' or name()='ilmd' or name()='extension')]"/>
+	</xsl:template>
+
+	<!-- convert EPCIS 2.0 AggregationEvent to 1.2 -->
+	<xsl:template name="convert-AggregationEvent">
+		<xsl:call-template name="convert-EPCISEvent" />
+		<!-- TODO: add specific elements -->
+		<!-- variable user-defined extensions -->
+		<xsl:variable name="userExtensionAtRoot" select="*[not(name()='eventTime' or name()='recordTime' or name()='eventTimeZoneOffset' or name()='eventID' or name()='errorDeclaration'
+		or name()='parentID' or name()='childEPCs' or name()='bizStep' or name()='action' or name()='disposition' or name()='readPoint' or name()='bizLocation' or name()='bizTransactionList'
+		or name()='childQuantityList' or name()='sourceList' or name()='destinationList' or name()='persistentDisposition' or name()='sensorElementList' or name()='extension')]"/>
+
+		<xsl:apply-templates mode="copy-nodes" select="parentID"/>
+		<xsl:choose>
+			<xsl:when test="childEPCs">
+				<xsl:apply-templates mode="copy-nodes" select="childEPCs"/>
+			</xsl:when>
+			<xsl:otherwise>
+				<childEPCs/>
+			</xsl:otherwise>
+		</xsl:choose>
+		<xsl:apply-templates mode="copy-nodes" select="action|bizStep|disposition|readPoint|bizLocation|bizTransactionList"/>
+		<xsl:if test="childQuantityList or sourceList or destinationList or persistentDisposition or sensorElementList or $userExtensionAtRoot">
+			<extension>
+				<xsl:apply-templates mode="copy-nodes" select="childQuantityList|sourceList|destinationList"/>
+				<xsl:if test="persistentDisposition or sensorElementList or $userExtensionAtRoot">
+					<extension>
+						<!-- only include sensorElementList if configured -->
+						<xsl:if test="sensorElementList and $includeSensorElementList = 'yes'">
+							<xsl:apply-templates mode="copy-nodes" select="sensorElementList"/>
+						</xsl:if>
+						<!-- only include persistentDisposition if configured -->
+						<xsl:if test="persistentDisposition and $includePersistentDisposition = 'yes'">
+							<xsl:apply-templates mode="copy-nodes" select="persistentDisposition"/>
+						</xsl:if>
+						<!-- adding extension explicitly because it's excluded from copy-nodes mode -->
+						<xsl:if test="$userExtensionAtRoot">
+							<extension>
+								<xsl:apply-templates mode="copy-nodes" select="$userExtensionAtRoot"/>
+							</extension>
+						</xsl:if>
+					</extension>
+				</xsl:if>
+			</extension>
+		</xsl:if>
 	</xsl:template>
 
 	<!-- convert EPCIS 2.0 TransformationEvent to 1.2 -->
 	<xsl:template name="convert-TransformationEvent">
 		<xsl:call-template name="convert-EPCISEvent" />
 		<!-- TODO: add specific elements -->
+		<xsl:variable name="userExtensionAtRoot" select="*[not(name()='eventTime' or name()='recordTime' or name()='eventTimeZoneOffset' or name()='eventID' or name()='errorDeclaration'
+		    or name()='bizStep' or name()='action' or name()='disposition' or name()='readPoint' or name()='bizLocation' or name()='bizTransactionList'
+		    or name()='sourceList' or name()='destinationList' or name()='persistentDisposition' or name()='sensorElementList' or name()='extension'
+			or name()='inputEPCList' or name()='inputQuantityList' or name()='outputEPCList' or name()='outputQuantityList' or name()='transformationID' or name()='ilmd')]"/>
+
 		<xsl:apply-templates mode="copy-nodes" select="inputEPCList|inputQuantityList|outputEPCList|outputQuantityList|transformationID|
         bizStep|disposition|readPoint|bizLocation|bizTransactionList|sourceList|destinationList"/>
-		<xsl:if test="persistentDisposition or sensorElementList">
+		<!-- adding ilmd explicitly because it's excluded from copy-nodes mode -->
+		<xsl:if test="ilmd">
+			<xsl:apply-templates mode="copy-nodes" select="ilmd"/>
+		</xsl:if>
+		<xsl:if test="persistentDisposition or sensorElementList or $userExtensionAtRoot">
 			<extension>
 				<!-- only include sensorElementList if configured -->
 				<xsl:if test="sensorElementList and $includeSensorElementList = 'yes'">
@@ -221,33 +240,94 @@
 				<xsl:if test="persistentDisposition and $includePersistentDisposition = 'yes'">
 					<xsl:apply-templates mode="copy-nodes" select="persistentDisposition"/>
 				</xsl:if>
-				<!-- adding ilmd explicitly because it's excluded from copy-nodes mode -->
-				<xsl:if test="ilmd">
-					<xsl:apply-templates mode="copy-nodes" select="ilmd"/>
-				</xsl:if>
 				<!-- adding extension explicitly because it's excluded from copy-nodes mode -->
-				<xsl:if test="extension">
-					<xsl:apply-templates mode="copy-nodes" select="extension/*"/>
+				<xsl:if test="$userExtensionAtRoot">
+					<extension>
+						<xsl:apply-templates mode="copy-nodes" select="$userExtensionAtRoot"/>
+					</extension>
 				</xsl:if>
 			</extension>
 		</xsl:if>
-		<!-- copy user-defined extensions -->
-		<xsl:apply-templates mode="copy-nodes" select="*[not(name()='eventTime' or name()='recordTime' or name()='eventTimeZoneOffset' or name()='eventID' or name()='errorDeclaration' 
-		or name()='bizStep' or name()='disposition' or name()='readPoint' or name()='bizLocation' or name()='bizTransactionList' 
-		or name()='inputEPCList' or name()='inputQuantityList' or name()='outputEPCList' or name()='outputQuantityList' or name()='transformationID' 
-		or name()='sourceList' or name()='destinationList' or name()='persistentDisposition' or name()='sensorElementList' or name()='ilmd' or name()='extension')]"/>
 	</xsl:template>
 
 	<!-- convert EPCIS 2.0 TransactionEvent to 1.2 -->
 	<xsl:template name="convert-TransactionEvent">
 		<xsl:call-template name="convert-EPCISEvent" />
 		<!-- TODO: add specific elements -->
+
+		<!-- variable user-defined extensions -->
+		<xsl:variable name="userExtensionAtRoot" select="*[not(name()='eventTime' or name()='recordTime' or name()='eventTimeZoneOffset' or name()='eventID' or name()='errorDeclaration'
+			or name()='parentID' or name()='epcList' or name()='action' or name()='bizStep' or name()='disposition' or name()='readPoint' or name()='bizTransactionList'
+			or name()='bizLocation' or name()='quantityList' or name()='sourceList' or name()='destinationList' or name()='sensorElementList' or name()='persistentDisposition'
+			or name()='extension')]"/>
+
+		<xsl:choose>
+			<xsl:when test="bizTransactionList">
+				<xsl:apply-templates mode="copy-nodes" select="bizTransactionList"/>
+			</xsl:when>
+			<xsl:otherwise>
+				<epcList/>
+			</xsl:otherwise>
+		</xsl:choose>
+		<xsl:apply-templates mode="copy-nodes" select="parentID"/>
+		<xsl:choose>
+			<xsl:when test="epcList">
+				<xsl:apply-templates mode="copy-nodes" select="epcList"/>
+			</xsl:when>
+			<xsl:otherwise>
+				<epcList/>
+			</xsl:otherwise>
+		</xsl:choose>
+		<xsl:apply-templates mode="copy-nodes" select="action|bizStep|disposition|readPoint|bizLocation"/>
+		<xsl:if test="quantityList or sourceList or destinationList or persistentDisposition or sensorElementList or $userExtensionAtRoot">
+			<extension>
+				<xsl:apply-templates mode="copy-nodes" select="quantityList|sourceList|destinationList"/>
+				<xsl:if test="persistentDisposition or sensorElementList or $userExtensionAtRoot">
+					<extension>
+						<!-- only include sensorElementList if configured -->
+						<xsl:if test="sensorElementList and $includeSensorElementList = 'yes'">
+							<xsl:apply-templates mode="copy-nodes" select="sensorElementList"/>
+						</xsl:if>
+						<!-- only include persistentDisposition if configured -->
+						<xsl:if test="persistentDisposition and $includePersistentDisposition = 'yes'">
+							<xsl:apply-templates mode="copy-nodes" select="persistentDisposition"/>
+						</xsl:if>
+						<!-- adding extension explicitly because it's excluded from copy-nodes mode -->
+						<xsl:if test="$userExtensionAtRoot">
+							<extension>
+								<xsl:apply-templates mode="copy-nodes" select="$userExtensionAtRoot"/>
+							</extension>
+						</xsl:if>
+					</extension>
+				</xsl:if>
+			</extension>
+		</xsl:if>
 	</xsl:template>
 
 	<!-- convert EPCIS 2.0 AssociationEvent to 1.2 -->
 	<xsl:template name="convert-AssociationEvent">
 		<xsl:call-template name="convert-EPCISEvent" />
 		<!-- TODO: add specific elements -->
+		<!-- variable user-defined extensions -->
+		<xsl:variable name="userExtensionAtRoot" select="*[not(name()='eventTime' or name()='recordTime' or name()='eventTimeZoneOffset' or name()='eventID' or name()='errorDeclaration'
+			or name()='parentID' or name()='childEPCs' or name()='childQuantityList' or name()='action' or name()='bizStep' or name()='disposition' or name()='readPoint'
+			or name()='bizLocation' or name()='bizTransactionList' or name()='sourceList' or name()='destinationList' or name()='sensorElementList' or name()='persistentDisposition'
+			or name()='extension')]"/>
+
+		<xsl:apply-templates mode="copy-nodes" select="parentID|childEPCs|childQuantityList|action|bizStep|disposition|readPoint|bizLocation|bizTransactionList"/>
+		<!-- only include sensorElementList if configured -->
+		<xsl:if test="sensorElementList and $includeSensorElementList = 'yes'">
+			<xsl:apply-templates mode="copy-nodes" select="sensorElementList"/>
+		</xsl:if>
+		<!-- only include persistentDisposition if configured -->
+		<xsl:if test="persistentDisposition and $includePersistentDisposition = 'yes'">
+			<xsl:apply-templates mode="copy-nodes" select="persistentDisposition"/>
+		</xsl:if>
+		<xsl:if test="$userExtensionAtRoot">
+			<extension>
+				<xsl:apply-templates mode="copy-nodes" select="$userExtensionAtRoot"/>
+			</extension>
+		</xsl:if>
 	</xsl:template>
 
 	<!-- node copy template to prevent unwanted attributes -->
