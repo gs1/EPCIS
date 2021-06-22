@@ -2033,7 +2033,6 @@ paths:
                   ],
                   "eventType": ["ObjectEvent"]
                 },
-                "queryType": "events",
                 "name": "myQuery"
               }]
               schema:
@@ -2085,7 +2084,7 @@ paths:
 
           description: |
             Queries are like views that are created using the EPCIS query language. Each query object
-            consists of a query name, query type (EPCIS events) and the query definition.
+            consists of a query name and the query definition.
           content:
             application/json:
               example: {
@@ -2096,7 +2095,6 @@ paths:
                   ],
                   "eventType": ["ObjectEvent"]
                 },
-                "queryType": "events",
                 "name": "myQuery"
               }
               schema:
@@ -2758,20 +2756,13 @@ paths:
                 "EQ_bizStep": [
                     "urn:epcglobal:cbv:bizstep:shipping",
                     "urn:epcglobal:cbv:bizstep:receiving" ]
-              },
-                "queryType": "events"
+                }
               }
             schema:
               type: object
               required:
                 - query
-                - queryType
               properties:
-                queryType:
-                  type: string
-                  enum:
-                    - events
-                  example: events
                 query:
                   $ref: '#/components/schemas/EPCISEventsQuery'
 
@@ -3576,21 +3567,14 @@ components:
           "EQ_bizStep": [
               "urn:epcglobal:cbv:bizstep:shipping",
               "urn:epcglobal:cbv:bizstep:receiving" ]
-        },
-          "queryType": "events"
+          }
         }
       description: |
-        Creating a new query with query type and query body.
+        Creating a new query with query body.
       type: object
       required:
         - query
-        - queryType
       properties:
-        queryType:
-          type: string
-          enum:
-            - events
-          example: events
         query:
           $ref: '#/components/schemas/EPCISEventsQuery'
 
