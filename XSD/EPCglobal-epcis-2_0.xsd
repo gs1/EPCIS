@@ -47,7 +47,7 @@ GS1 retains the right to make changes to this document at any time, without noti
               </xsd:documentation>
     </xsd:annotation>
     <xsd:sequence>
-      <xsd:element ref="sbdh:StandardBusinessDocumentHeader"/>
+      <xsd:element ref="sbdh:StandardBusinessDocumentHeader" minOccurs="0"/>
       <xsd:element name="extension" type="epcis:EPCISHeaderExtensionType" minOccurs="0"/>
       <xsd:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
     </xsd:sequence>
