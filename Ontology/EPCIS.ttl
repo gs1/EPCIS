@@ -351,15 +351,6 @@ epcis:errorDeclaration   a owl:ObjectProperty , rdf:Property ;
         schema:rangeIncludes epcis:ErrorDeclaration ;
         sw:term_status    "stable" .
 
-epcis:eventID  a          owl:ObjectProperty , rdf:Property ;
-        rdfs:comment      "(Optional) An identifier for this event as specified by the capturing application, globally unique across all events other than error declarations. 'Globally unique' means different from the eventID on any other EPCIS event across any implementation of EPCIS, not merely across the events captured by a single capturing application or by a single capture server. (The Core Business Vocabulary standard [CBV1.2] specifies the use of a UUID URI for this purpose.) Note that in the case of an error declaration, the event ID will be equal to the event ID of the erroneous event (or null if the event ID of the erroneous event is null), and in that sense is not unique."@en ;
-        rdfs:domain       epcis:EPCISEvent ;
-        schema:domainIncludes epcis:EPCISEvent ;
-        rdfs:isDefinedBy  epcis: ;
-        rdfs:label        "eventID"@en ;
-        rdfs:range        epcis:EventID ;
-        schema:rangeIncludes epcis:EventID ;
-        sw:term_status    "stable" .
 
 epcis:eventList  a        owl:ObjectProperty , rdf:Property ;
         rdfs:comment      "List of EPCIS events included in a document: connects EPCISDocumentBody to EPCISEvent"@en ;
@@ -734,12 +725,12 @@ epcis:value  a            owl:DatatypeProperty , rdf:Property ;
         schema:rangeIncludes xsd:double ;
         sw:term_status    "stable" .
 
-epcis:eventBody  a        owl:ObjectProperty , rdf:Property ;
+epcis:epcisBody  a        owl:ObjectProperty , rdf:Property ;
        rdfs:comment      "Body (EPCISDocumentBody) of an EPCISDocument"@en ;
        rdfs:domain       epcis:EPCISDocument ;
        schema:domainIncludes epcis:EPCISDocument ;
        rdfs:isDefinedBy  epcis: ;
-       rdfs:label        "eventBody"@en ;
+       rdfs:label        "epcisBody"@en ;
        rdfs:range        epcis:EPCISDocumentBody ;
        schema:rangeIncludes epcis:EPCISDocumentBody ;
        sw:term_status    "stable" .
@@ -794,11 +785,11 @@ epcis:uom  a           owl:DatatypeProperty , rdf:Property ;
       sw:term_status    "stable" .
 
 epcis:certificationInfo  a           owl:ObjectProperty , rdf:Property ;
-           rdfs:comment      "TODO"@en ;
-           rdfs:domain       epcis:EPCISEvent ;
-           schema:domainIncludes epcis:EPCISEvent ;
-           rdfs:isDefinedBy  epcis: ;
-           rdfs:label        "certificationInfo"@en ;
-           rdfs:range        gs1:CertificationDetails ;
-           schema:rangeIncludes gs1:CertificationDetails ;
-           sw:term_status    "stable" .
+      rdfs:comment      "TODO"@en ;
+      rdfs:domain       epcis:EPCISEvent ;
+      schema:domainIncludes epcis:EPCISEvent ;
+      rdfs:isDefinedBy  epcis: ;
+      rdfs:label        "certificationInfo"@en ;
+      rdfs:range        gs1:CertificationDetails ;
+      schema:rangeIncludes gs1:CertificationDetails ;
+      sw:term_status    "stable" .
