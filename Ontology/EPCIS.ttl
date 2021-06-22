@@ -414,7 +414,7 @@ epcis:hexBinaryValue  a   owl:DatatypeProperty , rdf:Property ;
         sw:term_status    "stable" .
 
 epcis:transformationID  a owl:ObjectProperty , rdf:Property ;
-        rdfs:comment      "Associates sever TransformationEvents with a longer-running Transformation process, therefore linking them together."@en ;
+        rdfs:comment      "Associates severe TransformationEvents with a longer-running Transformation process, therefore linking them together."@en ;
         rdfs:domain       epcis:TransformationEvent ;
         schema:domainIncludes epcis:TransformationEvent ;
         rdfs:isDefinedBy  epcis: ;
