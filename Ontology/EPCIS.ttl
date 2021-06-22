@@ -739,3 +739,11 @@ epcis:value  a            owl:DatatypeProperty , rdf:Property ;
         rdfs:range        xsd:double ;
         schema:rangeIncludes xsd:double ;
         sw:term_status    "stable" .
+
+epcis:coordinateReferenceSystem       a owl:ObjectProperty , rdf:Property ;
+       rdfs:comment      "TODO."@en ;
+       rdfs:domain       epcis:SensorReport ;
+       schema:domainIncludes epcis:SensorReport ;
+       rdfs:isDefinedBy  epcis: ;
+       rdfs:label        "coordinateReferenceSystem"@en ;
+       sw:term_status    "stable" .

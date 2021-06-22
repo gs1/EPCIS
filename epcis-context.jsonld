@@ -87,6 +87,7 @@
     "dataProcessingMethod": {"@type": "@id"},
     "chemicalSubstance": {"@type": "@id"},
     "microorganism": {"@type": "@id"},
+    "coordinateReferenceSystem": {"@type": "@id"},
         
     "isA": "@type",
     "id": "@id",
