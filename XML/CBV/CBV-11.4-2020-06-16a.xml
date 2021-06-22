@@ -3,7 +3,7 @@
     CBV 2.0 example 11.4
     This file demonstrates demonstrates an EPCIS Master Data document
 -->
-<epcismd:EPCISMasterDataDocument xmlns:epcismd="urn:epcglobal:epcis-masterdata:xsd:1"
+<epcismd:EPCISMasterDataDocument xmlns:epcismd="urn:epcglobal:epcis-masterdata:xsd:2"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" schemaVersion="2.0"
     creationDate="2020-06-16T11:30:47.0Z">
     <EPCISBody>
@@ -18,15 +18,13 @@
                     <!-- Section ‎10.3 - Location Master Data Names -->
                     <VocabularyElement id="urn:epc:id:sgln:0614141.00300.1">
                         <attribute id="urn:epcglobal:cbv:mda:site">0614141003006</attribute>
-                        <attribute id="urn:epcglobal:cbv:mda:ssd">Line #1 at Manufacturing Plant
-                            1</attribute>
+                        <attribute id="urn:epcglobal:cbv:mda:ssd">Line #1 at Manufacturing Plant 1</attribute>
                     </VocabularyElement>
 
                     <!-- Section ‎10.3 - Location Master Data Names -->
                     <VocabularyElement id="urn:epc:id:sgln:0614141.00300.2">
                         <attribute id="urn:epcglobal:cbv:mda:site">0614141003006</attribute>
-                        <attribute id="urn:epcglobal:cbv:mda:ssd">Line #2 at Manufacturing Plant
-                            1</attribute>
+                        <attribute id="urn:epcglobal:cbv:mda:ssd">Line #2 at Manufacturing Plant 1</attribute>
                     </VocabularyElement>
                 </VocabularyElementList>
             </Vocabulary>
