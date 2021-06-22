@@ -1,0 +1,24 @@
+@startuml
+hide empty attributes
+hide empty methods
+hide circle
+
+class EPCISEvent             as "epcis:EPCISEvent"
+class CertificationDetails1  as "gs1:CertificationDetails"
+class CertificationDetails2  as "gs1:CertificationDetails"
+class Place                  as "gs1:Place"
+class Product                as "gs1:IndividualProduct"
+
+EPCISEvent --> CertificationDetails1 : epcis:certificationInfo
+EPCISEvent --> CertificationDetails2 : epcis:certificationInfo
+EPCISEvent --> Place : bizLocation
+EPCISEvent --> Product : epcList 
+CertificationDetails1 --> Place : gs1:certificationSubject
+CertificationDetails1 <-- Place : gs1:certificationInfo
+CertificationDetails2 --> Product : gs1:certificationSubject
+CertificationDetails2 <-- Product : gs1:certificationInfo
+
+CertificationDetails1 : gs1:certificationStandard "Place Fire-Safety Standard"@en
+CertificationDetails2 : gs1:certificationStandard "Product Child-Safety Standard"@en
+
+@enduml
