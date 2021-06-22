@@ -70,10 +70,12 @@
 									</xsl:if>
 									<xsl:if test="name() = 'AssociationEvent' and $includeAssociationEvent = 'yes'">
 										<extension>
-											<AssociationEvent>
-												<xsl:apply-templates mode="copy-nodes" select="@*"/>
-												<xsl:call-template name="convert-AssociationEvent" />
-											</AssociationEvent>
+											<extension>
+												<AssociationEvent>
+													<xsl:apply-templates mode="copy-nodes" select="@*"/>
+													<xsl:call-template name="convert-AssociationEvent" />
+												</AssociationEvent>
+											</extension>
 										</extension>
 									</xsl:if>
 								</xsl:for-each>
