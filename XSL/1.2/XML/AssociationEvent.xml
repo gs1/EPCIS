@@ -1,0 +1,190 @@
+<epcis:EPCISDocument
+        xmlns:epcis="urn:epcglobal:epcis:xsd:1" schemaVersion="1.2" creationDate="2019-11-28T14:59:02.000+01:00"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:epcglobal:epcis:xsd:1 EPCglobal-epcis-2_0.xsd">
+    <EPCISBody>
+        <EventList>
+            <!-- Association event - case (a): for phyiscal objects such as assets and products  -->
+            <extension>
+                <extension>
+                    <AssociationEvent>
+                        <eventTime>2019-11-01T14:00:00.000+01:00</eventTime>
+                        <eventTimeZoneOffset>+01:00</eventTimeZoneOffset>
+                        <parentID>urn:epc:id:grai:4012345.55555.987</parentID>
+                        <!-- reusable asset to which one or more sensors are attached. Other appropriate IDs: e.g. GIAI, SGTIN, CPID, ITIP, SSCC EPC URIs  -->
+                        <childEPCs>
+                            <epc>urn:epc:id:giai:4000001.12345</epc>
+                            <!-- sensor which is mounted on/integrated into the asset -->
+                        </childEPCs>
+                        <action>ADD</action>
+                        <bizStep>urn:epcglobal:cbv:bizstep:assembling</bizStep>
+                        <readPoint>
+                            <id>urn:epc:id:sgln:4012345.00001.0</id>
+                        </readPoint>
+                    </AssociationEvent>
+                </extension>
+            </extension>
+            <!-- Association event - case (b): for physical locations (identified via SGLN EPC URIs) equipped with ambient sensors  -->
+            <extension>
+                <extension>
+                    <AssociationEvent>
+                        <eventTime>2019-11-02T14:00:00.000+01:00</eventTime>
+                        <eventTimeZoneOffset>+01:00</eventTimeZoneOffset>
+                        <parentID>urn:epc:id:sgln:4012345.00002.12</parentID>
+                        <!-- location to which one or more sensors are associated to, e.g. in a cold storage room. -->
+                        <childEPCs>
+                            <epc>urn:epc:id:giai:4000001.12346</epc>
+                        </childEPCs>
+                        <action>ADD</action>
+                        <bizStep>urn:epcglobal:cbv:bizstep:installing</bizStep>
+                        <readPoint>
+                            <id>urn:epc:id:sgln:4012345.00002.0</id>
+                        </readPoint>
+                    </AssociationEvent>
+                </extension>
+            </extension>
+            <!-- Association event - case (c): removing/unpairing sensor device from asset, see case (a)  -->
+            <extension>
+                <extension>
+                    <AssociationEvent>
+                        <eventTime>2019-11-03T14:00:00.000+01:00</eventTime>
+                        <eventTimeZoneOffset>+01:00</eventTimeZoneOffset>
+                        <parentID>urn:epc:id:grai:4012345.55555.987</parentID>
+                        <childEPCs>
+                            <epc>urn:epc:id:giai:4000001.12345</epc>
+                        </childEPCs>
+                        <action>DELETE</action>
+                        <bizStep>urn:epcglobal:cbv:bizstep:removing</bizStep>
+                        <readPoint>
+                            <id>urn:epc:id:sgln:4012345.00002.0</id>
+                        </readPoint>
+                    </AssociationEvent>
+                </extension>
+            </extension>
+            <!-- Association event - case (d): like (c), but disassembling all objects incl. indicating no child IDs at all  -->
+            <extension>
+                <extension>
+                    <AssociationEvent>
+                        <eventTime>2019-11-04T14:00:00.000+01:00</eventTime>
+                        <eventTimeZoneOffset>+01:00</eventTimeZoneOffset>
+                        <parentID>urn:epc:id:grai:4012345.55555.987</parentID>
+                        <action>DELETE</action>
+                        <bizStep>urn:epcglobal:cbv:bizstep:disassembling</bizStep>
+                        <readPoint>
+                            <id>urn:epc:id:sgln:4012345.00002.0</id>
+                        </readPoint>
+                    </AssociationEvent>
+                </extension>
+            </extension>
+            <!-- Association event - case (e): with non-serialised IDs -->
+            <extension>
+                <extension>
+                    <AssociationEvent>
+                        <eventTime>2019-11-05T14:00:00.000+01:00</eventTime>
+                        <eventTimeZoneOffset>+01:00</eventTimeZoneOffset>
+                        <parentID>urn:epc:id:grai:4012345.55555.987</parentID>
+                        <action>ADD</action>
+                        <bizStep>urn:epcglobal:cbv:bizstep:assembling</bizStep>
+                        <readPoint>
+                            <id>urn:epc:id:sgln:4012345.00001.0</id>
+                        </readPoint>
+                        <childQuantityList>
+                            <quantityElement>
+                                <epcClass>urn:epc:class:lgtin:4023333.002000.123</epcClass>
+                                <quantity>600</quantity>
+                            </quantityElement>
+                            <quantityElement>
+                                <epcClass>urn:epc:class:lgtin:4012345.005555.456</epcClass>
+                                <quantity>600</quantity>
+                            </quantityElement>
+                        </childQuantityList>
+                    </AssociationEvent>
+                </extension>
+            </extension>
+            <!-- Association event - case (f): containing all fields of an ordinary event -->
+            <extension>
+                <extension>
+                    <AssociationEvent>
+                        <eventTime>2019-11-06T14:00:00.000+01:00</eventTime>
+                        <recordTime>2019-11-06T14:05:00.000+01:00</recordTime>
+                        <eventTimeZoneOffset>+01:00</eventTimeZoneOffset>
+                        <parentID>urn:epc:id:grai:4012345.55555.98765</parentID>
+                        <childEPCs>
+                            <epc>urn:epc:id:giai:4000001.12345</epc>
+                            <epc>urn:epc:id:giai:4000001.12346</epc>
+                        </childEPCs>
+                        <action>ADD</action>
+                        <bizStep>urn:epcglobal:cbv:bizstep:installing</bizStep>
+                        <disposition>urn:epcglobal:cbv:disp:in_progress</disposition>
+                        <readPoint>
+                            <id>urn:epc:id:sgln:4012345.00001.0</id>
+                        </readPoint>
+                        <bizLocation>
+                            <id>urn:epc:id:sgln:4012345.00002.0</id>
+                        </bizLocation>
+                        <bizTransactionList>
+                            <bizTransaction type="urn:epcglobal:cbv:btt:inv">urn:epcglobal:cbv:bt:4023333000000:54545</bizTransaction>
+                        </bizTransactionList>
+                        <sourceList>
+                            <source type="urn:epcglobal:cbv:sdt:possessing_party">urn:epc:id:pgln:4000001.00012</source>
+                        </sourceList>
+                        <destinationList>
+                            <destination type="urn:epcglobal:cbv:sdt:possessing_party">urn:epc:id:pgln:4012345.00000</destination>
+                        </destinationList>
+                        <sensorElementList>
+                            <sensorElement>
+                                <sensorMetaData startTime="2019-11-06T13:55:00.000+01:00" endTime="2019-11-06T13:57:00.000+01:00"/>
+                                <sensorReport type="gs1:Humidity" minValue="12.1" maxValue="12.2" uom="A93"/>
+                            </sensorElement>
+                        </sensorElementList>
+                    </AssociationEvent>
+                </extension>
+            </extension>
+            <!-- Association event - case (g) with error declaration -->
+            <extension>
+                <extension>
+                    <AssociationEvent>
+                        <eventTime>2019-11-04T14:00:00.000+01:00</eventTime>
+                        <eventTimeZoneOffset>+01:00</eventTimeZoneOffset>
+                        <baseExtension>
+                            <errorDeclaration>
+                                <declarationTime>2019-11-07T14:00:00.000+01:00</declarationTime>
+                                <reason>urn:epcglobal:cbv:er:incorrect_data</reason>
+                                <correctiveEventIDs>
+                                    <correctiveEventID>urn:uuid:fd338495-0e6d-41dd-afee-a862ecd32518</correctiveEventID>
+                                </correctiveEventIDs>
+                            </errorDeclaration>
+                        </baseExtension>
+                        <parentID>urn:epc:id:grai:4012345.55555.987</parentID>
+                        <action>DELETE</action>
+                        <bizStep>urn:epcglobal:cbv:bizstep:disassembling</bizStep>
+                        <readPoint>
+                            <id>urn:epc:id:sgln:4012345.00002.0</id>
+                        </readPoint>
+                    </AssociationEvent>
+                </extension>
+            </extension>
+            <!-- Association event - case (h) corrective event -->
+            <extension>
+                <extension>
+                    <AssociationEvent>
+                        <eventTime>2019-11-04T14:00:00.000+01:00</eventTime>
+                        <eventTimeZoneOffset>+01:00</eventTimeZoneOffset>
+                        <baseExtension>
+                            <eventID>urn:uuid:fd338495-0e6d-41dd-afee-a862ecd32518</eventID>
+                        </baseExtension>
+                        <parentID>urn:epc:id:grai:4012345.55555.987</parentID>
+                        <childEPCs>
+                            <epc>urn:epc:id:giai:4000001.12345</epc>
+                            <epc>urn:epc:id:giai:4000001.12346</epc>
+                        </childEPCs>
+                        <action>DELETE</action>
+                        <bizStep>urn:epcglobal:cbv:bizstep:disassembling</bizStep>
+                        <readPoint>
+                            <id>urn:epc:id:sgln:4012345.00002.0</id>
+                        </readPoint>
+                    </AssociationEvent>
+                </extension>
+            </extension>
+        </EventList>
+    </EPCISBody>
+</epcis:EPCISDocument>
