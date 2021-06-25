@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<epcis:EPCISDocument xmlns:epcis="urn:epcglobal:epcis:xsd:2"
+    xmlns:example="http://ns.example.com/epcis"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" creationDate="2005-07-11T11:30:47.0Z" schemaVersion="2.0">
+    <EPCISBody>
+        <EventList>
+			<TransactionEvent>
+				<eventTime>2020-07-03T00:05:00-06:00</eventTime>
+				<eventTimeZoneOffset>-06:00</eventTimeZoneOffset>
+				<bizTransactionList>
+					<bizTransaction type="urn:epcglobal:cbv:btt:po">urn:epcglobal:cbv:bt:4012345123456:RE100099</bizTransaction>
+				</bizTransactionList>
+				<epcList>
+					<epc>urn:epc:id:sgtin:0614141.107340.1</epc>
+					<epc>urn:epc:id:sgtin:0614141.107340.2</epc>
+				</epcList>
+				<action>ADD</action>
+				<bizStep>urn:epcglobal:cbv:bizstep:inspecting</bizStep>
+				<disposition>urn:epcglobal:cbv:disp:needs_replacement</disposition>
+				<readPoint>
+					<id>urn:epc:id:sgln:4012345.00000.5</id>
+				</readPoint>
+				<sensorElementList>
+					<sensorElement>
+						<sensorReport type="gs1:MT-EffectiveDoseRate" value="0.005" uom="P71" />
+					</sensorElement>
+				</sensorElementList>
+                <extension>
+                    <extension>
+                        <moreExtensions>
+                            <futureExtension>
+                                <tag1>1</tag1>
+                                <tag2>2</tag2>
+                                <tag3>3</tag3>
+                            </futureExtension>
+                        </moreExtensions>
+                    </extension>
+                </extension>
+                <example:myField>Example of a vendor/user extension</example:myField>
+			</TransactionEvent>        
+        </EventList>
+    </EPCISBody>
+</epcis:EPCISDocument>

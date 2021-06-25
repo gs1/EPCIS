@@ -14,22 +14,22 @@ all : valid
 .PHONY : all
 
 # xml files to be tested
-EVENT_XMLS:=$(wildcard ../XML/*.xml) $(wildcard ../XML/*Event*/*.xml) $(wildcard ../XML/With*/*.xml) $(wildcard ../XML/Mimasu/Example?.xml) $(wildcard ../XML/Mimasu/*Event*.xml)
+EVENT_XMLS:=$(wildcard ../XML/*.xml) $(wildcard ../XML/*Event*/*.xml) $(wildcard ../XML/With*/*.xml) $(wildcard ../XML/Mimasu/Example?.xml) $(wildcard ../XML/Mimasu/*Event*.xml) $(wildcard ../XML/WithExtension/*.xml)
 
 # ObjectEvents only
-OBJECTEVENT_XMLS:=../XML/CBV/CBV-11.1-2020-06-16a.xml ../XML/CBV/CBV-11.2-2020-06-16a.xml ../XML/CBV/CBV-11.3-2020-06-16a.xml ../XML/Example_9.6.1-ObjectEvent-2020_06_18a.xml ../XML/Mimasu/Example1.xml ../XML/Mimasu/Example2.xml 
+OBJECTEVENT_XMLS:=../XML/CBV/CBV-11.1-2020-06-16a.xml ../XML/CBV/CBV-11.2-2020-06-16a.xml ../XML/CBV/CBV-11.3-2020-06-16a.xml ../XML/Example_9.6.1-ObjectEvent-2020_06_18a.xml ../XML/Mimasu/Example1.xml ../XML/Mimasu/Example2.xml ../XML/WithExtension/ObjectEvent.xml
 
 # TransformationEvents only
-TRANSFORMATIONEVENT_XMLS:=../XML/Mimasu/Example4.xml ../XML/WithErrorDeclaration/ErrorDeclarationAndCorrectiveEvent.xml
+TRANSFORMATIONEVENT_XMLS:=../XML/Mimasu/Example4.xml ../XML/WithErrorDeclaration/ErrorDeclarationAndCorrectiveEvent.xml ../XML/WithExtension/TransformationEvent.xml
 
 # TransformationEvents only
-AGGREGATIONEVENT_XMLS:=../XML/Mimasu/Example3.xml
+AGGREGATIONEVENT_XMLS:=../XML/Mimasu/Example3.xml ../XML/WithExtension/AggregationEvent.xml
 
 # TransactionEvents only
-TRANSACTIONEVENT_XMLS:=../XML/Example-TransactionEvent-2020_07_03y.xml
+TRANSACTIONEVENT_XMLS:=../XML/Example-TransactionEvent-2020_07_03y.xml ../XML/WithExtension/TransactionEvent.xml
 
 # AssociationEvent only
-ASSOCIATIONEVENT_XMLS:=../XML/AssociationEvent/AssociationEventExamples.xml ../XML/Mimasu/Example-associatonEvent-sensor.xml
+ASSOCIATIONEVENT_XMLS:=../XML/AssociationEvent/AssociationEventExamples.xml ../XML/Mimasu/Example-associatonEvent-sensor.xml ../XML/WithExtension/AssociationEvent.xml
 
 # AssociationEvent only
 WITHSENSORDATA_XMLS:=../XML/WithSensorData/SensorDataExamples.xml
