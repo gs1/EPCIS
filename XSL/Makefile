@@ -34,6 +34,9 @@ ASSOCIATIONEVENT_XMLS:=../XML/AssociationEvent/AssociationEventExamples.xml ../X
 # AssociationEvent only
 WITHSENSORDATA_XMLS:=../XML/WithSensorData/SensorDataExamples.xml
 
+# xml files to be tested
+EVENT_XMLS_1_2:=1.2/XML/AggregationEvent.xml 1.2/XML/AssociationEvent.xml 1.2/XML/ObjectEvent.xml 1.2/XML/TransformationEvent.xml 1.2/XML/TransactionEvent.xml
+
 
 
 # create tests 
@@ -47,6 +50,9 @@ TRANSACTIONEVENT_TESTS:=$(patsubst %.xml,%.transaction-event-test,$(TRANSACTIONE
 ASSOCIATIONEVENT_TESTS:=$(patsubst %.xml,%.association-event-test,$(ASSOCIATIONEVENT_XMLS))
 WITHSENSORDATA_TESTS:=$(patsubst %.xml,%.withsensordata-test,$(WITHSENSORDATA_XMLS))
 
+# create tests for 1.2 to 2.0
+EVENT_TESTS_1_2:=$(patsubst %.xml,%.event-test-1-2,$(EVENT_XMLS_1_2))
+
 events: $(EVENT_TESTS)
 object-events: $(OBJECTEVENT_TESTS)
 transformation-events: $(TRANSFORMATIONEVENT_TESTS)
@@ -54,8 +60,10 @@ aggregation-events: $(AGGREGATIONEVENT_TESTS)
 transaction-events: $(TRANSACTIONEVENT_TESTS)
 association-events: $(ASSOCIATIONEVENT_TESTS)
 with-sensor-data: $(WITHSENSORDATA_TESTS)
+events-1-2: $(EVENT_TESTS_1_2)
 
 valid: events
+valid: events-1-2
 #valid: object-events transformation-events aggregation-events transaction-events association-events with-sensor-data
 
 
@@ -86,3 +94,6 @@ valid: events
 %.withsensordata-test: %.xml
 	Xalan  $< ./convert-2.0-to-1.2.xsl | xmllint --format - | xmllint --schema ./1.2/XSD/EPCglobal-epcis-1_2.xsd -
 #	Xalan  $< ./convert-2.0-to-1.2.xsl | xmllint --noout --schema ./1.2/XSD/EPCglobal-epcis-1_2.xsd -
+
+%.event-test-1-2: %.xml
+	Xalan  $< ./convert-1.2-to-2.0.xsl | xmllint --format - | xmllint --schema ../XSD/EPCglobal-epcis-2_0.xsd -

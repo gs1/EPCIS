@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<epcis:EPCISDocument xmlns:epcis="urn:epcglobal:epcis:xsd:1"
+                     xmlns:rail="urn:gs1:epcisapp:rail" schemaVersion="1.2" creationDate="2020-07-03T09:00:00.0Z">
+    <EPCISBody>
+        <EventList>
+            <!--
+              Example:
+              Creation of a Hospital DISCHARGE SUMMARY
+              or a new version of a discharge summary:
+            -->
+            <TransactionEvent>
+                <eventTime>2019-10-04T14:12:00.000+01:00</eventTime>
+                <eventTimeZoneOffset>+01:00</eventTimeZoneOffset>
+                <bizTransactionList>
+                    <!--Discharge Summary, identified by GDTI -->
+                    <bizTransaction>urn:epc:id:gdti:95252084.0001.0003555480001000</bizTransaction>
+                </bizTransactionList>
+                <epcList>
+                    <!--Patient / Care Recipient / SoC (Subject of Care) / (8018) 505520840000000010-->
+                    <epc>urn:epc:id:gsrn:95252084.000000001</epc>
+                </epcList>
+                <action>ADD</action>
+                <bizStep>http://epcis.example.org/hc/bizstep/summarising_discharge</bizStep>
+                <readPoint>
+                    <id>urn:epc:id:sgln:9524567.98765.0</id>
+                </readPoint>
+            </TransactionEvent>
+            <!--
+              Example:
+              RAIL PASSAGE
+              The example shows a train passage consisting of three rail vehicles.
+              Vehicle 2 passes first, followed by an unidentified vehicle, which is followed by vehicle 1.
+              -->
+            <TransactionEvent>
+                <eventTime>2014-12-12T12:00:00.000+02:00</eventTime>
+                <eventTimeZoneOffset>+02:00</eventTimeZoneOffset>
+                <bizTransactionList>
+                    <bizTransaction type="urn:gs1:epcisapp:rail:btt:passage">
+                        http://transaction.examplerail.com/passage/xyz12345
+                    </bizTransaction>
+                </bizTransactionList>
+                <epcList>
+                    <epc>urn:epc:id:giai:952005385.w2</epc>
+                </epcList>
+                <action>ADD</action>
+                <bizStep>urn:epcglobal:cbv:bizstep:transporting</bizStep>
+                <disposition>urn:epcglobal:cbv:disp:in_transit</disposition>
+                <readPoint>
+                    <id>urn:epc:id:sgln:952005385.011.ts4711</id>
+                </readPoint>
+                <bizLocation>
+                    <id>urn:epc:id:sgln:952005385.011.scA</id>
+                </bizLocation>
+                <extension>
+                    <sourceList>
+                        <source type="urn:epcglobal:cbv:sdt:location">urn:epc:id:sgln:952005385.481.0</source>
+                    </sourceList>
+                    <destinationList>
+                        <destination type="urn:epcglobal:cbv:sdt:location">urn:epc:id:sgln:952005385.011.0</destination>
+                    </destinationList>
+                </extension>
+                <rail:trainAxleCount>12</rail:trainAxleCount>
+                <rail:trainVehicleCount>3</rail:trainVehicleCount>
+                <rail:vehicle>
+                    <rail:vehiclePosition>1</rail:vehiclePosition>
+                    <rail:vehicleAxleCount>4</rail:vehicleAxleCount>
+                    <rail:vehicleUniquelyIdentified>true</rail:vehicleUniquelyIdentified>
+                    <rail:vehicleMasterGIAI>urn:epc:id:giai:952005385.vehicle2</rail:vehicleMasterGIAI>
+                </rail:vehicle>
+                <rail:vehicle>
+                    <rail:vehiclePosition>2</rail:vehiclePosition>
+                    <rail:vehicleAxleCount>4</rail:vehicleAxleCount>
+                    <rail:vehicleUniquelyIdentified>false</rail:vehicleUniquelyIdentified>
+                    <rail:vehicleMasterGIAI/>
+                </rail:vehicle>
+                <rail:vehicle>
+                    <rail:vehiclePosition>3</rail:vehiclePosition>
+                    <rail:vehicleAxleCount>4</rail:vehicleAxleCount>
+                    <rail:vehicleUniquelyIdentified>true</rail:vehicleUniquelyIdentified>
+                    <rail:vehicleMasterGIAI>urn:epc:id:giai:735005385.vehicle1</rail:vehicleMasterGIAI>
+                </rail:vehicle>
+            </TransactionEvent>
+        </EventList>
+    </EPCISBody>
+</epcis:EPCISDocument>
