@@ -344,7 +344,7 @@
                     ]
                 },
                 {
-                    "$ref": "definitions-JSON-Schema.json#/definitions/non-cbv-uri"
+                    "$ref": "definitions-JSON-Schema.json#/definitions/vocab-uri"
                 }
             ]
         },
@@ -357,7 +357,7 @@
                     "type": "object",
                     "properties": {
                         "isA": {
-                            "$ref": "definitions-JSON-Schema.json#/definitions/non-cbv-uri"
+                            "$ref": "definitions-JSON-Schema.json#/definitions/vocab-uri"
                         }
                     },
                     "required": ["isA"]

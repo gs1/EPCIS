@@ -5,7 +5,7 @@
         "error-reason": {
             "anyOf": [
                 {
-                    "$ref": "definitions-JSON-Schema.json#/definitions/non-cbv-uri"
+                    "$ref": "definitions-JSON-Schema.json#/definitions/vocab-uri"
                 },
                 {
                     "enum": [
