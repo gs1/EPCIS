@@ -1,5 +1,5 @@
 {
-    "$id": "https://gs1.github.io/EPCIS/JSON/modular-schema/schemas/event-definitions-JSON-Schema.json",
+    "$id": "https://gs1.github.io/EPCIS/JSON-Schema/schemas/event-definitions-JSON-Schema.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "definitions": {
         "uri": {
