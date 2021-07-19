@@ -8,8 +8,9 @@ function loadJson (fileName) {
   return JSON.parse(fs.readFileSync(fileName, 'utf8'));
 }
 
-function inline (fileName) {
+function inline (fileName, schemaId) {
   const inputJson = loadJson(fileName);
+  inputJson.$id = schemaId;
 
   // We visit and inline the input Json
   visit(null, null, null, inputJson);
@@ -66,8 +67,9 @@ function loadChildSchema (definitionPointer) {
 
 function main () {
   const inputFile = process.argv[2];
+  const schemaId = process.argv[3];
 
-  const inlinedJsonSchema = inline(inputFile);
+  const inlinedJsonSchema = inline(inputFile, schemaId);
 
   console.log(JSON.stringify(inlinedJsonSchema, null, 2));
 }
