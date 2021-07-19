@@ -11,7 +11,7 @@
   ],
   "definitions": {
     "EPCIS-Document-Event": {
-      "anyOf": [
+      "oneOf": [
         {
           "$ref": "#/definitions/ObjectEvent"
         },
