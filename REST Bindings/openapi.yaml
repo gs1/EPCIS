@@ -4282,9 +4282,8 @@ components:
     GS1-EPC-Format:
       example: Always_DL
       description: |
-        Request or response header to express how URIs are represented. Either using the GS1 Digital Link
-        format as as URN. If both server and client set `GS1-EPC-Format` to `No_Preference`, the default
-        value is `Always_DL`:
+        Request or response header to indicate whether EPCs are expressed as GS1 Digital Link URIs or as EPC URNs.
+        If both server and client set `GS1-EPC-Format` to `No_Preference`, the default value is `Always_DL`:
 
         - No_Preference: The client (if a request header) or server (if a response header or `OPTIONS` discovery) chooses the representation.
         - Always_DL: URIs are returned as GS1 Digital Link.
@@ -4299,7 +4298,7 @@ components:
     GS1-CBV-Format:
       example: Always_URL
       description: |
-        Request or response header to express how any CBV is expressed as URI (i.e.,either as URL or URN).
+        Request or response header to indicate whether CBV URI fields are expressed as URLs or URNs.
         If server has set GS1-CBV-Format to Client_Chooses then the absence of the `GS1-CBV-Format` header will be treated as "the client has no preference", and the default value is `Always_URL`
 
         - No_Preference: The client (if a request header) or server (if a response header or `OPTIONS` discovery) chooses the representation.
