@@ -620,16 +620,16 @@ paths:
         interface and capture a single event.
       requestBody:
         required: true
-        description: A EPCIS document with a single EPCIS event.
+        description: A single EPCIS event with optional JSON-LD context.
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/EPCISDocumentSingleEvent'
+              $ref: '#/components/schemas/SingleEvent'
 
       responses:
         '201':
           description: |
-            Successfully created (captured) one EPCIS event. The request returns the URL of the newly created
+            Successfully created (captured) the EPCIS event. The request returns the URL of newly created
             EPCIS event in the Location header.
           headers:
             GS1-EPCIS-Version:
@@ -659,7 +659,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EPCISDocumentSingleEvent'
+                $ref: '#/components/schemas/SingleEvent'
         '400':
           description: An error occurred while creating the EPCIS event. The event was rejected.
           content:
@@ -3605,13 +3605,12 @@ components:
       description: A virtual EPCIS event type that is the union of all EPCIS event types.
       enum:
         - all
-
-    EPCISDocumentSingleEvent:
+    SingleEvent:
       description: |
-        A single EPCIS event. The full schema is specified in the external JSON-LD and JSON-Schema documentation.
+        A single EPCIS event. The full schema is specified in the JSON-Schema documentation.
       type: object
       required:
-        - epcisBody
+        - isA
       properties:
         '@context':
            type: array
@@ -3622,50 +3621,117 @@ components:
                - type: object
         isA:
           type: string
-          default: EPCISDocument
-          example: EPCISDocument
-        schemaVersion:
-          type: number
-          example: 2.0
-        creationDate:
-          type: string
-          format: date-time
-        epcisBody:
-          type: object
-          properties:
-            event:
-              type: object
-          required:
-            - event
+          example: ObjectEvent
       externalDocs:
         description: |
-          An EPCIS document that must be validated with the external JSON Schema.
-        url: ../JSON/EPCIS-JSON-Schema-single-event.json
+          A SingleEvent that must be validated with the external JSON Schema.
+        url: ../JSON/EPCIS-JSON-Schema.json
       example:
         {
-          "@context": [
-              "https://gs1.github.io/EPCIS/epcis-context.jsonld",
-              { "example": "http://ns.example.com/epcis/" } ],
-          "isA": "EPCISDocument",
-          "schemaVersion": 2.0,
-          "creationDate": "2005-07-11T11:30:47.0Z",
-          "epcisBody": {
-            "event":
-              {
-                "eventID": "_:event1",
-                "isA": "ObjectEvent",
-                "action": "OBSERVE",
-                "bizStep": "urn:epcglobal:cbv:bizstep:shipping",
-                "disposition": "urn:epcglobal:cbv:disp:in_transit",
-                "epcList": [ "urn:epc:id:sgtin:0614141.107346.2017","urn:epc:id:sgtin:0614141.107346.2018" ],
-                "eventTime": "2005-04-03T20:33:31.116000-06:00",
-                "eventTimeZoneOffset": "-06:00",
-                "readPoint": { "id": "urn:epc:id:sgln:0614141.07346.1234" },
-                "bizTransactionList": [
-                  { "type": "urn:epcglobal:cbv:btt:po",
-                    "bizTransaction": "http://transaction.acme.com/po/12345678" } ]
-              }
-          }
+          "@context": "https://gs1.github.io/EPCIS/epcis-context.jsonld",
+          "isA": "ObjectEvent",
+          "action": "OBSERVE",
+          "bizStep": "inspecting",
+          "eventTime": "2021-05-05T15:00:00.000+01:00",
+          "eventTimeZoneOffset": "+01:00",
+          "readPoint": {
+            "id": "urn:epc:id:sgln:4012345.00005.0"
+          },
+          "epcList": [
+              "urn:epc:id:sgtin:4012345.011111.9876"
+          ],
+          "sensorElementList": [
+            {
+              "sensorMetadata": {
+                "time": "2019-04-02T14:05:00.000+01:00",
+                "deviceID": "urn:epc:id:giai:4000001.111",
+                "deviceMetadata": "https://id.gs1.org/8004/4000001111",
+                "rawData": "https://example.org/8004/401234599999"
+              },
+              "sensorReport": [
+                {
+                  "type": "gs1:MT-Temperature",
+                  "value": 26.0,
+                  "uom": "CEL"
+                },
+                {
+                  "type": "gs1:MT-Humidity",
+                  "value": 12.1,
+                  "uom": "A93"
+                },
+                {
+                  "type": "gs1:MT-Speed",
+                  "value": 160.0,
+                  "uom": "KMH"
+                },
+                {
+                  "type": "gs1:MT-Illuminance",
+                  "value": 800.0,
+                  "uom": "LUX"
+                }
+              ]
+            },
+            {
+              "sensorMetadata": {
+                "time": "2019-04-02T14:35:00.000+01:00",
+                "deviceID": "urn:epc:id:giai:4000001.111",
+                "deviceMetadata": "https://id.gs1.org/8004/4000001111",
+                "rawData": "https://example.org/8004/401234599999"
+              },
+              "sensorReport": [
+                {
+                  "type": "gs1:MT-Temperature",
+                  "value": 26.1,
+                  "uom": "CEL"
+                },
+                {
+                  "type": "gs1:MT-Humidity",
+                  "value": 12.2,
+                  "uom": "A93"
+                },
+                {
+                  "type": "gs1:MT-Speed",
+                  "value": 161.0,
+                  "uom": "KMH"
+                },
+                {
+                  "type": "gs1:MT-Illuminance",
+                  "value": 801.0,
+                  "uom": "LUX"
+                }
+              ]
+            },
+            {
+              "sensorMetadata": {
+                "time": "2019-04-02T14:55:00.000+01:00",
+                "deviceID": "urn:epc:id:giai:4000001.111",
+                "deviceMetadata": "https://id.gs1.org/8004/4000001111",
+                "rawData": "https://example.org/8004/401234599999"
+              },
+              "sensorReport": [
+                {
+                  "type": "gs1:MT-Temperature",
+                  "value": 26.2,
+                  "uom": "CEL"
+                },
+                {
+                  "type": "gs1:MT-Humidity",
+                  "value": 12.2,
+                  "uom": "A93"
+                },
+                {
+                  "type": "gs1:MT-Speed",
+                  "value": 162.0,
+                  "uom": "KMH"
+                },
+                {
+                  "type": "gs1:MT-Illuminance",
+                  "value": 802.0,
+                  "uom": "LUX"
+                }
+              ]
+            }
+          ]
         }
     EPCISDocument:
       description: A collection of EPCIS resources.
