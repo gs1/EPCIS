@@ -1151,7 +1151,7 @@
 							"format": "uri"
 						},
 						{
-							"format": "object"
+							"type": "object"
 						},
 						{
 							"type": "array",
