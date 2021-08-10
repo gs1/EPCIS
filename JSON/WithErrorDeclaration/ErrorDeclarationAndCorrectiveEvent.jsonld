@@ -4,7 +4,7 @@
   "id": "_:document1",
   "isA": "EPCISDocument",
   "creationDate": "2020-01-15T07:47:21.677+00:00",
-  "schemaVersion": 1.2,
+  "schemaVersion": "1.2",
   "epcisBody": {
     "eventList": [
       {
