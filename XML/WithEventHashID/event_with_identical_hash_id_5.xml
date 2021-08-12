@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE project>
+<epcis:EPCISDocument schemaVersion="2.0"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:ext2="http://ext.com/ext1"
+	creationDate="2013-06-04T14:59:02.099+02:00"
+	xmlns:epcis="urn:epcglobal:epcis:xsd:2">
+	<EPCISBody>
+		<EventList>
+			<!-- difference namespace used -->
+			<ObjectEvent>
+				<eventTime>2005-04-04T20:33:31.116-06:00</eventTime>
+				<eventTimeZoneOffset>-06:00</eventTimeZoneOffset>
+				<epcList>
+					<epc>urn:epc:id:sgtin:0614141.107346.2016</epc>
+					<epc>urn:epc:id:sgtin:0614141.107346.2017</epc>
+					<epc>urn:epc:id:sgtin:0614141.107346.2018</epc>
+				</epcList>
+				<action>ADD</action>
+				<bizStep>urn:epcglobal:cbv:bizstep:receiving</bizStep>
+				<disposition>urn:epcglobal:cbv:disp:in_progress</disposition>
+				<readPoint>
+					<id>urn:epc:id:sgln:0012345.11111.400</id>
+				</readPoint>
+				<bizLocation>
+					<id>urn:epc:id:sgln:0012345.11111.0</id>
+				</bizLocation>
+				<bizTransactionList>
+					<bizTransaction type="urn:epcglobal:cbv:btt:po">urn:epc:id:gdti:0614141.00001.1618034</bizTransaction>
+				</bizTransactionList>
+				<quantityList>
+					<quantityElement>
+						<epcClass>urn:epc:class:lgtin:4012345.012345.998876</epcClass>
+						<quantity>300</quantity>
+						<uom>KGM</uom>
+					</quantityElement>
+					<quantityElement>
+						<epcClass>urn:epc:class:lgtin:4012345.012345.998877</epcClass>
+						<quantity>200</quantity>
+						<uom>KGM</uom>
+					</quantityElement>
+				</quantityList>
+				<sourceList>
+					<source type="urn:epcglobal:cbv:sdt:location">urn:epc:id:sgln:4012345.00225.0</source>
+					<source type="urn:epcglobal:cbv:sdt:possessing_party">urn:epc:id:pgln:4012345.00225</source>
+					<source type="urn:epcglobal:cbv:sdt:owning_party">urn:epc:id:pgln:4012345.00225</source>
+				</sourceList>
+				<destinationList>
+					<destination type="urn:epcglobal:cbv:sdt:location">urn:epc:id:sgln:0614141.00777.0</destination>
+					<destination
+						type="urn:epcglobal:cbv:sdt:possessing_party">urn:epc:id:pgln:0614141.00777</destination>
+					<destination type="urn:epcglobal:cbv:sdt:owning_party">urn:epc:id:pgln:0614141.00777</destination>
+				</destinationList>
+				<sensorElementList>
+					<sensorElement>
+						<sensorMetadata
+							time="2019-04-02T14:05:00.000+01:00"
+							deviceID="urn:epc:id:giai:4000001.111"
+							deviceMetadata="https://id.gs1.org/giai/4000001111"
+							rawData="https://example.org/giai/401234599999"
+							startTime="2019-04-02T13:55:01.000+01:00"
+							endTime="2019-04-02T14:55:00.000+01:00"
+							bizRules="https://example.com/gdti/4012345000054987"
+							dataProcessingMethod="https://example.com/gdti/4012345000054987"
+							ext2:someFurtherMetadata="someText" />
+						<sensorReport value="26.0" type="gs1:Temperature"
+							component="example:x" stringValue="SomeString"
+							booleanValue="true" hexBinaryValue="f0f0f0"
+							uriValue="https://id.gs1.org/giai/4000001111" uom="CEL"
+							minValue="26.0" maxValue="26.2" sDev="0.1"
+							chemicalSubstance="https://identifiers.org/inchikey:CZMRCDWAGMRECN-UGDNZRGBSA-N"
+							microorganism="https://www.ncbi.nlm.nih.gov/taxonomy/1126011"
+							deviceID="urn:epc:id:giai:4000001.111"
+							deviceMetadata="https://id.gs1.org/giai/4000001111"
+							rawData="https://example.org/giai/401234599999"
+							time="2019-07-19T14:00:00.000+01:00" meanValue="13.2"
+							percRank="50" percValue="12.7"
+							dataProcessingMethod="https://example.com/gdti/4012345000054987"
+							ext2:someFurtherReportData="someText" />
+						<ext2:default>stringAsDefaultValue</ext2:default>
+						<ext2:int xsi:type="xsd:integer">10</ext2:int>
+						<ext2:float xsi:type="xsd:double">20</ext2:float>
+					</sensorElement>
+				</sensorElementList>
+				<persistentDisposition>
+					<unset>urn:epcglobal:cbv:disp:completeness_inferred</unset>
+					<set>urn:epcglobal:cbv:disp:completeness_verified</set>
+				</persistentDisposition>
+				<ilmd>
+					<ext2:default>stringAsDefaultValue</ext2:default>
+					<ext2:int xsi:type="xsd:integer">10</ext2:int>
+					<ext2:float xsi:type="xsd:double">20</ext2:float>
+				</ilmd>
+				<ext2:default>stringAsDefaultValue</ext2:default>
+				<ext2:int xsi:type="xsd:integer">10</ext2:int>
+				<ext2:float xsi:type="xsd:double">20</ext2:float>
+			</ObjectEvent>
+		</EventList>
+	</EPCISBody>
+</epcis:EPCISDocument>
