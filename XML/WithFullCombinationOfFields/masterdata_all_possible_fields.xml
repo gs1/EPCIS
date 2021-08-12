@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE project>
+<epcis:EPCISDocument schemaVersion="2.0"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:ext1="http://ext.com/ext1" xmlns:ext2="http://ext.com/ext2"
+	xmlns:ext3="http://ext.com/ext3"
+	creationDate="2013-06-04T14:59:02.099+02:00"
+	xmlns:epcis="urn:epcglobal:epcis:xsd:2">
+	<EPCISHeader>
+		<extension>
+			<EPCISMasterData>
+				<VocabularyList>
+					<Vocabulary
+						type="urn:epcglobal:epcis:vtype:BusinessLocation">
+						<VocabularyElementList>
+							<VocabularyElement
+								id="urn:epc:id:sgln:0037000.00729.0">
+								<attribute id="http://ext.com/ext1#string">stringValue</attribute>
+								<attribute id="http://ext.com/ext1#array">string1InArray</attribute>
+								<attribute id="http://ext.com/ext1#array">string2InArray</attribute>
+								<attribute id="http://ext.com/ext1#object1">
+									<ext1:object2>
+										<inner1 xsi:type="xsd:string">val1</inner1>
+										<inner2 xsi:type="xsd:string">val2</inner2>
+									</ext1:object2>
+									<ext1:string xsi:type="xsd:string">string</ext1:string>
+								</attribute>
+								<attribute id="http://ext.com/ext1#object2">
+									<ext1:default>stringAsDefaultValue</ext1:default>
+									<ext1:int xsi:type="xsd:integer">10</ext1:int>
+									<ext1:float xsi:type="xsd:double">20</ext1:float>
+									<ext1:time xsi:type="xsd:dateTime">2013-06-08T14:58:56.591Z</ext1:time>
+									<ext1:boolean xsi:type="xsd:boolean">true</ext1:boolean>
+									<ext1:string xsi:type="xsd:string">string</ext1:string>
+									<ext1:object>
+										<ext2:string xsi:type="xsd:string">stringInObject</ext2:string>
+										<ext2:array xsi:type="xsd:integer">11</ext2:array>
+										<ext2:array xsi:type="xsd:double">21</ext2:array>
+										<ext2:array xsi:type="xsd:string">stringInArrayInObject</ext2:array>
+										<ext2:object>
+											<ext3:string xsi:type="xsd:string">stringInObjectInObject</ext3:string>
+										</ext2:object>
+									</ext1:object>
+									<ext1:array xsi:type="xsd:integer">12</ext1:array>
+									<ext1:array xsi:type="xsd:double">22</ext1:array>
+									<ext1:array xsi:type="xsd:dateTime">2013-06-08T14:58:56.591Z</ext1:array>
+									<ext1:array xsi:type="xsd:boolean">true</ext1:array>
+									<ext1:array xsi:type="xsd:string">stringInArray</ext1:array>
+									<ext1:array>
+										<ext1:object>
+											<ext2:int xsi:type="xsd:integer">13</ext2:int>
+											<ext2:string xsi:type="xsd:string">stringInObjectInArray</ext2:string>
+											<ext2:array xsi:type="xsd:integer">14</ext2:array>
+											<ext2:array xsi:type="xsd:double">23.0</ext2:array>
+											<ext2:array xsi:type="xsd:string">stringInArrayInObjectInArray</ext2:array>
+											<ext2:object>
+												<ext3:string xsi:type="xsd:string">stringInObjectInObjectInArray</ext3:string>
+											</ext2:object>
+										</ext1:object>
+									</ext1:array>
+								</attribute>
+								<children>
+									<!-- for WD_bizLocation test -->
+									<id>urn:epc:id:sgln:0037000.00729.8201</id>
+								</children>
+							</VocabularyElement>
+						</VocabularyElementList>
+					</Vocabulary>
+					<Vocabulary type="urn:epcglobal:epcis:vtype:ReadPoint">
+						<VocabularyElementList>
+							<VocabularyElement
+								id="urn:epc:id:sgln:0037000.00729.0">
+								<attribute id="http://ext.com/ext1#string">stringValue</attribute>
+								<attribute id="http://ext.com/ext1#array">string1InArray</attribute>
+								<attribute id="http://ext.com/ext1#array">string2InArray</attribute>
+								<attribute id="http://ext.com/ext1#object1">
+									<ext1:object2>
+										<inner1 xsi:type="xsd:string">val1</inner1>
+										<inner2 xsi:type="xsd:string">val2</inner2>
+									</ext1:object2>
+									<ext1:string xsi:type="xsd:string">string</ext1:string>
+								</attribute>
+								<attribute id="http://ext.com/ext1#object2">
+									<ext1:default>stringAsDefaultValue</ext1:default>
+									<ext1:int xsi:type="xsd:integer">10</ext1:int>
+									<ext1:float xsi:type="xsd:double">20</ext1:float>
+									<ext1:time xsi:type="xsd:dateTime">2013-06-08T14:58:56.591Z</ext1:time>
+									<ext1:boolean xsi:type="xsd:boolean">true</ext1:boolean>
+									<ext1:string xsi:type="xsd:string">string</ext1:string>
+									<ext1:object>
+										<ext2:string xsi:type="xsd:string">stringInObject</ext2:string>
+										<ext2:array xsi:type="xsd:integer">11</ext2:array>
+										<ext2:array xsi:type="xsd:double">21</ext2:array>
+										<ext2:array xsi:type="xsd:string">stringInArrayInObject</ext2:array>
+										<ext2:object>
+											<ext3:string xsi:type="xsd:string">stringInObjectInObject</ext3:string>
+										</ext2:object>
+									</ext1:object>
+									<ext1:array xsi:type="xsd:integer">12</ext1:array>
+									<ext1:array xsi:type="xsd:double">22</ext1:array>
+									<ext1:array xsi:type="xsd:dateTime">2013-06-08T14:58:56.591Z</ext1:array>
+									<ext1:array xsi:type="xsd:boolean">true</ext1:array>
+									<ext1:array xsi:type="xsd:string">stringInArray</ext1:array>
+									<ext1:array>
+										<ext1:object>
+											<ext2:int xsi:type="xsd:integer">13</ext2:int>
+											<ext2:string xsi:type="xsd:string">stringInObjectInArray</ext2:string>
+											<ext2:array xsi:type="xsd:integer">14</ext2:array>
+											<ext2:array xsi:type="xsd:double">23.0</ext2:array>
+											<ext2:array xsi:type="xsd:string">stringInArrayInObjectInArray</ext2:array>
+											<ext2:object>
+												<ext3:string xsi:type="xsd:string">stringInObjectInObjectInArray</ext3:string>
+											</ext2:object>
+										</ext1:object>
+									</ext1:array>
+								</attribute>
+								<children>
+									<!-- for WD_bizLocation test -->
+									<id>urn:epc:id:sgln:0037000.00729.8201</id>
+								</children>
+							</VocabularyElement>
+						</VocabularyElementList>
+
+					</Vocabulary>
+				</VocabularyList>
+			</EPCISMasterData>
+		</extension>
+	</EPCISHeader>
+	<EPCISBody>
+		<EventList>
+		</EventList>
+	</EPCISBody>
+</epcis:EPCISDocument>
