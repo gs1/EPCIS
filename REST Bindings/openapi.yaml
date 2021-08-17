@@ -608,7 +608,7 @@ paths:
         ```
       responses:
         '200':
-          $ref: '#/components/responses/200EPCISQueryDocumentEventsEndpoint'
+          $ref: '#/components/responses/200EPCISQueryDocument'
         '400':
           $ref: '#/components/responses/400QueryIssues'
         '401':
@@ -972,7 +972,7 @@ paths:
         ```
       responses:
         '200':
-          $ref: '#/components/responses/200EPCISQueryDocumentEventsEndpoint'
+          $ref: '#/components/responses/200EPCISQueryDocument'
         '400':
           $ref: '#/components/responses/400QueryIssues'
         '401':
@@ -1218,7 +1218,7 @@ paths:
         ```
       responses:
         '200':
-          $ref: '#/components/responses/200EPCISQueryDocumentEventsEndpoint'
+          $ref: '#/components/responses/200EPCISQueryDocument'
         '400':
           $ref: '#/components/responses/400QueryIssues'
         '401':
@@ -1463,7 +1463,7 @@ paths:
         ```
       responses:
         '200':
-          $ref: '#/components/responses/200EPCISQueryDocumentEventsEndpoint'
+          $ref: '#/components/responses/200EPCISQueryDocument'
         '400':
           $ref: '#/components/responses/400QueryIssues'
         '401':
@@ -1709,7 +1709,7 @@ paths:
         ```
       responses:
         '200':
-          $ref: '#/components/responses/200EPCISQueryDocumentEventsEndpoint'
+          $ref: '#/components/responses/200EPCISQueryDocument'
         '400':
           $ref: '#/components/responses/400QueryIssues'
         '401':
@@ -1953,7 +1953,7 @@ paths:
         ```
       responses:
         '200':
-          $ref: '#/components/responses/200EPCISQueryDocumentEventsEndpoint'
+          $ref: '#/components/responses/200EPCISQueryDocument'
         '400':
           $ref: '#/components/responses/400QueryIssues'
         '401':
@@ -3096,41 +3096,7 @@ components:
             $ref: '#/components/schemas/Link'
         GS1-Next-Page-Token-Expires:
           $ref: '#/components/headers/GS1-Next-Page-Token-Expires'
-      description: Contains EPCIS query results.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/EPCISQueryDocument'
-    200EPCISQueryDocumentEventsEndpoint:
-      headers:
-        GS1-EPCIS-Version:
-          $ref: '#/components/headers/GS1-EPCIS-Version'
-        GS1-EPCIS-Min:
-          $ref: '#/components/headers/GS1-EPCIS-Min'
-        GS1-EPCIS-Max:
-          $ref: '#/components/headers/GS1-EPCIS-Max'
-        GS1-CBV-Version:
-          $ref: '#/components/headers/GS1-CBV-Version'
-        GS1-EPC-Format:
-          $ref: '#/components/headers/GS1-EPC-Format'
-        GS1-CBV-Format:
-          $ref: '#/components/headers/GS1-CBV-Format'
-        GS1-EPCIS-Extensions:
-          $ref: '#/components/headers/GS1-EPCIS-Extensions'
-        GS1-CBV-Extensions:
-          $ref: '#/components/headers/GS1-CBV-Extensions'
-        Link:
-          description: |
-            A pagination header link. This header works together with the `perPage` and `nextPageToken` query string
-            parameters.
-            As long as there are more resources to retrieve, the `Link` header contains the URL of the next page and
-            the attribute `rel="next"`. The last page is indicated by the absence of the `rel="next"`.
-          schema:
-            $ref: '#/components/schemas/Link'
-
-        GS1-Next-Page-Token-Expires:
-          $ref: '#/components/headers/GS1-Next-Page-Token-Expires'
-      description: Returns EPCIS events.
+      description: Contains EPCIS events.
       content:
         application/json:
           schema:
