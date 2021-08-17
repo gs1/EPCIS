@@ -771,7 +771,7 @@ paths:
         the unique event.
       responses:
         '200':
-          $ref: '#/components/responses/200EPCISQueryDocumentSingleEvent'
+          $ref: '#/components/responses/200EPCISQueryDocument'
         '401':
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
@@ -1020,7 +1020,7 @@ paths:
         This endpoint accesses individual events with the electronic product code.
       responses:
         '200':
-          $ref: '#/components/responses/200EPCISQueryDocumentSingleEvent'
+          $ref: '#/components/responses/200EPCISQueryDocument'
         '401':
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
@@ -1267,7 +1267,7 @@ paths:
         This endpoint accesses individual events with the business step.
       responses:
         '200':
-          $ref: '#/components/responses/200EPCISQueryDocumentSingleEvent'
+          $ref: '#/components/responses/200EPCISQueryDocument'
         '401':
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
@@ -1511,7 +1511,7 @@ paths:
         This endpoint accesses individual events with the business location.
       responses:
         '200':
-          $ref: '#/components/responses/200EPCISQueryDocumentSingleEvent'
+          $ref: '#/components/responses/200EPCISQueryDocument'
         '401':
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
@@ -1757,7 +1757,7 @@ paths:
         This endpoint accesses individual events with the read point.
       responses:
         '200':
-          $ref: '#/components/responses/200EPCISQueryDocumentSingleEvent'
+          $ref: '#/components/responses/200EPCISQueryDocument'
         '401':
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
@@ -2001,7 +2001,7 @@ paths:
         This endpoint accesses individual events with the disposition.
       responses:
         '200':
-          $ref: '#/components/responses/200EPCISQueryDocumentSingleEvent'
+          $ref: '#/components/responses/200EPCISQueryDocument'
         '401':
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
@@ -3068,7 +3068,7 @@ components:
               format: string
               enum:
                 - events
-    200EPCISQueryDocumentSingleEvent:
+    200EPCISQueryDocument:
       headers:
         GS1-EPCIS-Version:
           $ref: '#/components/headers/GS1-EPCIS-Version'
