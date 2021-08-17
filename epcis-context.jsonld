@@ -349,18 +349,104 @@
           "@id": "epcis:booleanValue",
           "@type": "xsd:boolean"
         },
-        "hexBinaryValue": "epcis:hexBinaryValue",
-        "uriValue": {
-          "@id": "epcis:uriValue",
-          "@type": "xsd:anyURI"
+        "sensorElementList": {
+            "@id": "epcis:sensorElementList",
+            "@container": "@set",
+            "@context": {
+                "@protected": true,
+                "epcis": "https://ns.gs1.org/epcis/",
+                "sensorMetadata": {
+                    "@id": "epcis:sensorMetadata"
+                },
+                "sensorReport": {
+                    "@id": "epcis:sensorReport"
+                },
+                "deviceID": {
+                    "@id": "epcis:deviceID",
+                    "@type": "@id"
+                },
+                "deviceMetadata": {
+                    "@id": "epcis:deviceMetadata",
+                    "@type": "@id"
+                },
+                "rawData": {
+                    "@id": "epcis:rawData",
+                    "@type": "@id"
+                },
+                "dataProcessingMethod": {
+                    "@id": "epcis:dataProcessingMethod",
+                    "@type": "@id"
+                },
+                "time": {
+                    "@id": "epcis:time",
+                    "@type": "xsd:dateTimeStamp"
+                }
+            }
         },
         "minValue": {
           "@id": "epcis:minValue",
           "@type": "xsd:double"
         },
-        "maxValue": {
-          "@id": "epcis:maxValue",
-          "@type": "xsd:double"
+        "sensorReport": {
+            "@id": "epcis:SensorReport",
+            "@context": [
+                "https://gs1.github.io/EPCIS/gs1-context-measurement-type.jsonld",
+                {
+                    "@protected": true,
+                    "epcis": "https://ns.gs1.org/epcis/",
+                    "type": {
+                        "@id": "epcis:type",
+                        "@type": "@vocab"
+                    },
+                    "microorganism": {
+                        "@id": "epcis:microorganism",
+                        "@type": "@id"
+                    },
+                    "chemicalSubstance": {
+                        "@id": "epcis:microorganism",
+                        "@type": "@id"
+                    },
+                    "value": {
+                        "@id": "epcis:value",
+                        "@type": "xsd:double"
+                    },
+                    "component": "epcis:component",
+                    "stringValue": "epcis:stringValue",
+                    "booleanValue": {
+                        "@id": "epcis:booleanValue",
+                        "@type": "xsd:boolean"
+                    },
+                    "hexBinaryValue": "epcis:hexBinaryValue",
+                    "uriValue": {
+                        "@id": "epcis:uriValue",
+                        "@type": "xsd:anyURI"
+                    },
+                    "minValue": {
+                        "@id": "epcis:minValue",
+                        "@type": "xsd:double"
+                    },
+                    "maxValue": {
+                        "@id": "epcis:maxValue",
+                        "@type": "xsd:double"
+                    },
+                    "meanValue": {
+                        "@id": "epcis:meanValue",
+                        "@type": "xsd:double"
+                    },
+                    "sDev": {
+                        "@id": "epcis:sDev",
+                        "@type": "xsd:double"
+                    },
+                    "percRank": {
+                        "@id": "epcis:percRank",
+                        "@type": "xsd:double"
+                    },
+                    "percValue": {
+                        "@id": "epcis:percValue",
+                        "@type": "xsd:double"
+                    }
+                }
+            ]
         },
         "meanValue": {
           "@id": "epcis:meanValue",
@@ -427,5 +513,4 @@
       "@container": "@set",
       "@type": "@id"
     }
-  }
 }
