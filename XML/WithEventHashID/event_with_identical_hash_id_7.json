@@ -1,13 +1,9 @@
 {
-  "@context": ["https://gs1.github.io/EPCIS/epcis-context.jsonld",{"ext1": "http://ext.com/ext1",
-    "ext2": "http://ext.com/ext2",
-    "ext3": "http://ext.com/ext3"}],
+  "@context": ["https://gs1.github.io/EPCIS/epcis-context.jsonld",{"ext1": "http://ext.com/ext1"}],
 
-  "id": "_:document1",
   "isA": "EPCISDocument",
   "schemaVersion": "2.0",
   "creationDate": "2005-07-11T11:30:47.0Z",
-  "format": "application/ld+json",
   "epcisBody": {
     "eventList": [
       {
@@ -40,7 +36,6 @@
         },
         "sensorElementList": [
           {
-            "isA": "epcis:SensorElement",
             "sensorMetadata": {
               "time": "2019-04-02T14:05:00.000+01:00", "deviceID": "urn:epc:id:giai:4000001.111",
               "deviceMetadata": "https://id.gs1.org/giai/4000001111", "rawData": "https://example.org/giai/401234599999",
