@@ -39,7 +39,7 @@
             "@type": "@id"
         },
         "readPoint": {
-            "@id": "epcis:bizLocation",
+            "@id": "epcis:readPoint",
             "@type": "@id"
         },
         "epcList": {
