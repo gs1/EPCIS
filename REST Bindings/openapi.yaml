@@ -4212,25 +4212,25 @@ components:
         - Never_Translates: The original format is kept.
       type: string
       enum:
-        - Client_Chooses
+        - No_Preference
         - Always_DL
         - Always_EPC_URN
         - Never_Translates
     GS1-CBV-Format:
-      example: Always_URL
+      example: Always_A_Term
       description: |
-        Request or response header to indicate whether CBV URI fields are expressed as URLs or URNs.
-        If server has set GS1-CBV-Format to Client_Chooses then the absence of the `GS1-CBV-Format` header will be treated as "the client has no preference", and the default value is `Always_URL`
+        Request or response header to indicate whether CBV URI fields are expressed as URNs or single bare term.
+        If both server and client set `GS1-CBV-Format` to `No_Preference`, and the default value is `Always_A_Term`
 
         - No_Preference: The client (if a request header) or server (if a response header or `OPTIONS` discovery) chooses the representation.
-        - Always_URL: URIs are returned as web URL.
+        - Always_A_Term: CBV is returned as bare string.
         - Always_URN: URIs are returned as URN.
         - Never_Translates: The original format is kept.
       type: string
       enum:
         - No_Preference
+        - Always_A_Term
         - Always_URN
-        - Always_URL
         - Never_Translates
     GS1-EPCIS-Extensions:
       description: Specific EPCIS extensions supported (e.g. for FIT).
