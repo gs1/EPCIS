@@ -1,0 +1,56 @@
+@prefix cbv:         <https://ns.gs1.org/cbv/> .
+@prefix cbvmda:      <urn:epcglobal:cbv:mda:> .
+@prefix dcterms:     <http://purl.org/dc/terms/> .
+@prefix epcis:       <https://ns.gs1.org/epcis/> .
+@prefix example-mda: <http://epcis.example.com/mda/> .
+@prefix example1:    <http://ns.example.com/epcis/> .
+@prefix example2:    <http://epcis.example.com/ns/> .
+@prefix gs1:         <https://gs1.org/voc/> .
+@prefix md:          <https://ns.gs1.org/epcismd/> .
+@prefix owl:         <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:         <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:        <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vtype:       <urn:epcglobal:epcis:vtype:> .
+@prefix xsd:         <http://www.w3.org/2001/XMLSchema#> .
+
+<urn:epc:id:sgln:0037000.00729.8201>
+        rdf:type     epcis:VocabularyElement ;
+        cbvmda:site  "0037000007296" ;
+        cbvmda:sst   201 , "201" .
+
+[ rdf:type         epcis:EPCISMasterDataDocument ;
+  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
+  owl:versionInfo  "2.0" ;
+  epcis:epcisBody  [ epcis:vocabularyList  [ rdf:type                     epcis:Vocabulary ;
+                                             epcis:type                   "vtype:ReadPoint" ;
+                                             epcis:vocabularyElementList  <urn:epc:id:sgln:0037000.00729.8203> , <urn:epc:id:sgln:0037000.00729.8202> , <urn:epc:id:sgln:0037000.00729.8201>
+                                           ] ;
+                     epcis:vocabularyList  [ rdf:type                     epcis:Vocabulary ;
+                                             epcis:type                   "vtype:BusinessLocation" ;
+                                             epcis:vocabularyElementList  <urn:epc:id:sgln:0037000.00729.8203> , <urn:epc:id:sgln:0037000.00729.8202> , <urn:epc:id:sgln:0037000.00729.8201> , <urn:epc:id:sgln:0037000.00729.0>
+                                           ]
+                   ]
+] .
+
+<urn:epc:id:sgln:0037000.00729.8202>
+        rdf:type        epcis:VocabularyElement ;
+        epcis:children  <urn:epc:id:sgln:0037000.00729.8203> ;
+        cbvmda:site     "0037000007296" ;
+        cbvmda:sst      202 , "202" .
+
+<urn:epc:id:sgln:0037000.00729.0>
+        rdf:type          epcis:VocabularyElement ;
+        epcis:children    <urn:epc:id:sgln:0037000.00729.8203> , <urn:epc:id:sgln:0037000.00729.8202> , <urn:epc:id:sgln:0037000.00729.8201> ;
+        <xmda:address>    [ rdf:type         example2:Address ;
+                            example2:city    "Fancy" ;
+                            example2:state   "DC" ;
+                            example2:street  "100 Nowhere Street" ;
+                            example2:zip     "99999"
+                          ] ;
+        <xmda:latitude>   "+18:0000" ;
+        <xmda:longitude>  "-70.0000" .
+
+<urn:epc:id:sgln:0037000.00729.8203>
+        rdf:type    epcis:VocabularyElement ;
+        cbvmda:ssa  "402" ;
+        cbvmda:sst  204 , "202" .

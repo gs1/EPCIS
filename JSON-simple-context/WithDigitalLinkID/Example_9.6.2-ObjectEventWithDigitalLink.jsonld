@@ -1,0 +1,35 @@
+{
+  "@context": ["https://vladimiralexiev.github.io/EPCIS/epcis-context-simple.jsonld",{"example": "http://ns.example.com/epcis/"}],
+  "id": "_:document1",
+  "isA": "EPCISDocument",
+  "schemaVersion": "2.0",
+  "creationDate": "2005-07-11T11:30:47.0Z",
+  "epcisBody": {
+    "eventList": [
+      {
+        "eventID": "ni:///sha-256;115b14983df54a9bcc3dd6a00dc4ebcab000bd52fda0abdd8996907e01dccc23?ver=CBV2.0",
+        "isA": "ObjectEvent",
+        "eventTime": "2013-06-08T14:58:56.591Z",
+        "eventTimeZoneOffset": "+02:00",
+        "action": "OBSERVE",
+        "bizStep": "receiving",
+        "disposition": "in_progress",
+        "readPoint": {"id": "urn:epc:id:sgln:0614141.00777.0"},
+        "bizLocation": {"id": "urn:epc:id:sgln:0614141.00888.0"},
+        "quantityList": [
+          { "epcClass": "https://id.gs1.org/01/70614141123451/10/998877", "quantity": 200, "uom": "KGM" }
+        ],
+        "sourceList": [
+          { "type": "possessing_party", "source": "urn:epc:id:sgln:4012345.00001.0" },
+          { "type": "location", "source": "urn:epc:id:sgln:4012345.00225.0" }
+        ],
+        "destinationList": [
+          { "type": "owning_party", "destination": "urn:epc:id:sgln:0614141.00001.0" },
+          { "type": "location", "destination": "urn:epc:id:sgln:0614141.00777.0" }
+        ],
+        "example:myField": "Example of a vendor/user extension"
+      }
+    ]
+  }
+}
+

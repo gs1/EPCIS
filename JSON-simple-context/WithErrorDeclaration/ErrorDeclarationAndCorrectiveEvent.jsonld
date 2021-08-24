@@ -1,0 +1,76 @@
+{
+  "@context": ["https://vladimiralexiev.github.io/EPCIS/epcis-context-simple.jsonld",{"example": "http://ns.example.com/epcis/"}],
+
+  "id": "_:document1",
+  "isA": "EPCISDocument",
+  "creationDate": "2020-01-15T07:47:21.677+00:00",
+  "schemaVersion": "2.0",
+  "epcisBody": {
+    "eventList": [
+      {
+        "isA": "TransformationEvent",
+        "eventTime": "2020-01-14T00:00:00+01:00",
+        "eventTimeZoneOffset": "+01:00",
+        "eventID": "urn:uuid:374d95fc-9457-4a51-bd6a-0bba133845a8",
+        "inputEPCList": [
+          "urn:epc:id:sgtin:4012345.011111.987"
+        ],
+        "outputEPCList": [
+          "urn:epc:id:sgtin:4012345.033333.AGHFG"
+        ],
+        "inputQuantityList": [
+          {
+            "epcClass": "urn:epc:class:lgtin:4012345.022222.87545GHGH",
+            "quantity": 500,
+            "uom": "KGM"
+          }
+        ],
+        "outputQuantityList": [
+          {
+            "epcClass": "urn:epc:idpat:sgtin:4012345.044444.*",
+            "quantity": 452,
+            "uom": "KGM"
+          }
+        ],
+        "bizStep": "commissioning",
+        "readPoint": {"id": "urn:epc:id:sgln:0614141.07346.1234"},
+        "errorDeclaration": {
+          "declarationTime": "2020-01-15T00:00:00+01:00",
+          "reason": "incorrect_data",
+          "example:vendorExtension": "Test1",
+          "correctiveEventIDs": [
+            "urn:uuid:404d95fc-9457-4a51-bd6a-0bba133845a8"
+          ]
+        }
+      },
+      {
+        "isA": "TransformationEvent",
+        "eventTime": "2021-01-28T00:00:00+01:00",
+        "eventTimeZoneOffset": "+01:00",
+        "eventID": "urn:uuid:404d95fc-9457-4a51-bd6a-0bba133845a8",
+        "inputEPCList": [
+          "urn:epc:id:sgtin:4012345.011111.987"
+        ],
+        "outputEPCList": [
+          "urn:epc:id:sgtin:4012345.033333.AGHFG"
+        ],
+        "inputQuantityList": [
+          {
+            "epcClass": "urn:epc:class:lgtin:4012345.022222.87545GHGH",
+            "quantity": 500,
+            "uom": "KGM"
+          }
+        ],
+        "outputQuantityList": [
+          {
+            "epcClass": "urn:epc:idpat:sgtin:4012345.044444.*",
+            "quantity": 500,
+            "uom": "KGM"
+          }
+        ],
+        "bizStep": "commissioning",
+        "readPoint": {"id": "urn:epc:id:sgln:0614141.07346.1234"}
+      }
+    ]
+  }
+}

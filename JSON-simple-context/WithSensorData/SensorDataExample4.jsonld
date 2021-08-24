@@ -1,0 +1,37 @@
+{
+  "@context": ["https://vladimiralexiev.github.io/EPCIS/epcis-context-simple.jsonld",{"example": "http://ns.example.com/epcis/"}],
+  
+  "id": "_:document1",
+  "isA": "EPCISDocument",
+  "schemaVersion": "2.0",
+  "creationDate":"2005-07-11T11:30:47.0Z",
+  "epcisBody": {
+  "eventList": [
+     {
+		  "eventID": "ni:///sha-256;7ff1501099b3f5890d310d703fb9f57e251bba0c57d3c049fab590b50323a8e7?ver=CBV2.0",
+		  "isA": "ObjectEvent",
+		  "action": "OBSERVE",
+		  "bizStep": "inspecting",
+		  "epcList": [],
+		  "eventTime": "2019-04-02T15:00:00.000+01:00",
+		  "eventTimeZoneOffset": "+01:00",
+		  "readPoint": {"id": "urn:epc:id:sgln:4012345.00005.0"},
+		  "quantityList": [{"epcClass":"urn:epc:class:lgtin:4023333.002000.2019-10-07","quantity":150,"uom":"KGM"}],
+		  "sensorElementList": [
+		   {
+		    "sensorMetadata" : {"time":"2019-04-02T14:55:00.000+01:00"},
+		    "sensorReport" : [
+			 { "type": "Temperature" , "value" : 26.0, "uom": "CEL", "deviceID":"urn:epc:id:giai:4000001.111", "deviceMetadata":"https://id.gs1.org/8004/4000001111", "rawData":"https://example.org/8004/401234599999" },
+			 { "type": "Humidity" , "value" : 12.1 , "uom": "A93", "deviceID":"urn:epc:id:giai:4000001.222", "deviceMetadata":"https://id.gs1.org/8004/4000001222", "rawData":"https://example.org/8004/401234599999"},
+			 { "type": "Speed" , "value" : 160 , "uom": "KMH", "deviceID":"urn:epc:id:giai:4000001.333", "deviceMetadata":"https://id.gs1.org/8004/4000001333", "rawData":"https://example.org/8004/401234599999"},
+			 { "type": "Illuminance" , "value" : 800 , "uom": "LUX", "deviceID":"urn:epc:id:giai:4000001.444", "deviceMetadata":"https://id.gs1.org/8004/4000001444", "rawData":"https://example.org/8004/401234599999"}
+		     ]
+		    }	    
+		  ]
+		  
+     }
+   ]
+  }
+  
+}
+
