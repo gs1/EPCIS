@@ -17,7 +17,7 @@
 		  "readPoint": {"id": "urn:epc:id:sgln:4012345.00005.0"},
 		  "sensorElementList": [
 		   {
-	            "isA":"epcis:SensorElement",
+	            "isA":"SensorElement",
 		    "sensorMetadata" : {"time":"2019-04-02T14:05:00.000+01:00", "deviceID": "urn:epc:id:giai:4000001.111", "deviceMetadata": "https://id.gs1.org/giai/4000001111","rawData":"https://example.org/giai/401234599999"},
 		    "sensorReport" : [
 			 { "type": "gs1:MT-Temperature" , "value" : 26.0, "uom": "CEL" },
@@ -28,7 +28,7 @@
 		    },
 		    
 		   {
-	            "isA":"epcis:SensorElement",
+	            "isA":"SensorElement",
 		    "sensorMetadata" : {"time":"2019-04-02T14:35:00.000+01:00", "deviceID": "urn:epc:id:giai:4000001.111", "deviceMetadata": "https://id.gs1.org/giai/4000001111","rawData":"https://example.org/giai/401234599999"},
 		    "sensorReport" : [
 			 { "type": "gs1:MT-Temperature" , "value" : 26.1, "uom": "CEL" },
@@ -39,7 +39,7 @@
 		    },
 
 		   {
-		    "isA":"epcis:SensorElement",
+		    "isA":"SensorElement",
 		    "sensorMetadata" : {"time":"2019-04-02T14:55:00.000+01:00", "deviceID": "urn:epc:id:giai:4000001.111", "deviceMetadata": "https://id.gs1.org/giai/4000001111","rawData":"https://example.org/giai/401234599999"},
 		    "sensorReport" : [
 			 { "type": "gs1:MT-Temperature" , "value" : 26.2, "uom": "CEL" },
