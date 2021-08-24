@@ -191,128 +191,128 @@
                 "time": {
                     "@id": "epcis:time",
                     "@type": "xsd:dateTimeStamp"
-                }
-            },
-            "sensorMetadata": {
-                "@id": "epcis:sensorMetadata",
-                "@context": {
-                    "@protected": true,
-                    "epcis": "https://ns.gs1.org/epcis/",
-                    "startTime": {
-                        "@id": "epcis:startTime",
-                        "@type": "xsd:dateTimeStamp"
-                    },
-                    "endTime": {
-                        "@id": "epcis:endTime",
-                        "@type": "xsd:dateTimeStamp"
-                    },
-                    "bizRules": {
-                        "@id": "epcis:bizRules",
-                        "@type": "@id"
+                },
+                "sensorMetadata": {
+                    "@id": "epcis:sensorMetadata",
+                    "@context": {
+                        "@protected": true,
+                        "epcis": "https://ns.gs1.org/epcis/",
+                        "startTime": {
+                            "@id": "epcis:startTime",
+                            "@type": "xsd:dateTimeStamp"
+                        },
+                        "endTime": {
+                            "@id": "epcis:endTime",
+                            "@type": "xsd:dateTimeStamp"
+                        },
+                        "bizRules": {
+                            "@id": "epcis:bizRules",
+                            "@type": "@id"
+                        }
                     }
+                },
+                "sensorReport": {
+                    "@id": "epcis:sensorReport",
+                    "@context": [
+                        "https://gs1.github.io/EPCIS/gs1-context-measurement-type.jsonld",
+                        {
+                            "@protected": true,
+                            "epcis": "https://ns.gs1.org/epcis/",
+                            "type": {
+                                "@id": "epcis:type",
+                                "@type": "@vocab"
+                            },
+                            "microorganism": {
+                                "@id": "epcis:microorganism",
+                                "@type": "@id"
+                            },
+                            "chemicalSubstance": {
+                                "@id": "epcis:chemicalSubstance",
+                                "@type": "@id"
+                            },
+                            "value": {
+                                "@id": "epcis:value",
+                                "@type": "xsd:double"
+                            },
+                            "component": "epcis:component",
+                            "stringValue": "epcis:stringValue",
+                            "booleanValue": {
+                                "@id": "epcis:booleanValue",
+                                "@type": "xsd:boolean"
+                            },
+                            "hexBinaryValue": "epcis:hexBinaryValue",
+                            "uriValue": {
+                                "@id": "epcis:uriValue",
+                                "@type": "xsd:anyURI"
+                            },
+                            "minValue": {
+                                "@id": "epcis:minValue",
+                                "@type": "xsd:double"
+                            },
+                            "maxValue": {
+                                "@id": "epcis:maxValue",
+                                "@type": "xsd:double"
+                            },
+                            "meanValue": {
+                                "@id": "epcis:meanValue",
+                                "@type": "xsd:double"
+                            },
+                            "sDev": {
+                                "@id": "epcis:sDev",
+                                "@type": "xsd:double"
+                            },
+                            "percRank": {
+                                "@id": "epcis:percRank",
+                                "@type": "xsd:double"
+                            },
+                            "percValue": {
+                                "@id": "epcis:percValue",
+                                "@type": "xsd:double"
+                            }
+                        }
+                    ]
                 }
             },
-            "sensorReport": {
-                "@id": "epcis:sensorReport",
+            "errorDeclaration": {
+                "@id": "epcis:errorDeclaration",
                 "@context": [
-                    "https://gs1.github.io/EPCIS/gs1-context-measurement-type.jsonld",
+                    "https://gs1.github.io/EPCIS/cbv-context-error-reason.jsonld",
                     {
                         "@protected": true,
                         "epcis": "https://ns.gs1.org/epcis/",
-                        "type": {
-                            "@id": "epcis:type",
+                        "reason": {
+                            "@id": "epcis:reason",
                             "@type": "@vocab"
                         },
-                        "microorganism": {
-                            "@id": "epcis:microorganism",
-                            "@type": "@id"
+                        "correctiveEventIDs": {
+                            "@id": "epcis:correctiveEventIDs",
+                            "@type": "@id",
+                            "@container": "@set"
                         },
-                        "chemicalSubstance": {
-                            "@id": "epcis:chemicalSubstance",
-                            "@type": "@id"
-                        },
-                        "value": {
-                            "@id": "epcis:value",
-                            "@type": "xsd:double"
-                        },
-                        "component": "epcis:component",
-                        "stringValue": "epcis:stringValue",
-                        "booleanValue": {
-                            "@id": "epcis:booleanValue",
-                            "@type": "xsd:boolean"
-                        },
-                        "hexBinaryValue": "epcis:hexBinaryValue",
-                        "uriValue": {
-                            "@id": "epcis:uriValue",
-                            "@type": "xsd:anyURI"
-                        },
-                        "minValue": {
-                            "@id": "epcis:minValue",
-                            "@type": "xsd:double"
-                        },
-                        "maxValue": {
-                            "@id": "epcis:maxValue",
-                            "@type": "xsd:double"
-                        },
-                        "meanValue": {
-                            "@id": "epcis:meanValue",
-                            "@type": "xsd:double"
-                        },
-                        "sDev": {
-                            "@id": "epcis:sDev",
-                            "@type": "xsd:double"
-                        },
-                        "percRank": {
-                            "@id": "epcis:percRank",
-                            "@type": "xsd:double"
-                        },
-                        "percValue": {
-                            "@id": "epcis:percValue",
-                            "@type": "xsd:double"
+                        "declarationTime": {
+                            "@id": "epcis:declarationTime",
+                            "@type": "xsd:dateTimeStamp"
                         }
                     }
                 ]
+            },
+            "eventID": "@id",
+            "creationDate": "dcterms:created",
+            "schemaVersion": "owl:versionInfo",
+            "ilmd": {
+                "@id": "epcis:ilmd"
+            },
+            "EPCISDocument": "epcis:EPCISDocument",
+            "epcisHeader": "epcis:epcisHeader",
+            "epcisBody": "epcis:epcisBody",
+            "eventList": {
+                "@id": "epcis:eventList"
+            },
+            "children": {
+                "@id": "epcis:children",
+                "@container": "@set",
+                "@type": "@id"
             }
-        },
-        "errorDeclaration": {
-            "@id": "epcis:errorDeclaration",
-            "@context": [
-                "https://gs1.github.io/EPCIS/cbv-context-error-reason.jsonld",
-                {
-                    "@protected": true,
-                    "epcis": "https://ns.gs1.org/epcis/",
-                    "reason": {
-                        "@id": "epcis:reason",
-                        "@type": "@vocab"
-                    },
-                    "correctiveEventIDs": {
-                        "@id": "epcis:correctiveEventIDs",
-                        "@type": "@id",
-                        "@container": "@set"
-                    },
-                    "declarationTime": {
-                        "@id": "epcis:declarationTime",
-                        "@type": "xsd:dateTimeStamp"
-                    }
-                }
-            ]
-        },
-        "eventID": "@id",
-        "creationDate": "dcterms:created",
-        "schemaVersion": "owl:versionInfo",
-        "ilmd": {
-            "@id": "epcis:ilmd"
-        },
-        "EPCISDocument": "epcis:EPCISDocument",
-        "epcisHeader": "epcis:epcisHeader",
-        "epcisBody": "epcis:epcisBody",
-        "eventList": {
-            "@id": "epcis:eventList"
-        },
-        "children": {
-            "@id": "epcis:children",
-            "@container": "@set",
-            "@type": "@id"
         }
     }
 }
