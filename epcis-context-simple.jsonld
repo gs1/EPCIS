@@ -26,8 +26,8 @@
     "bizStep": {"@type":"@vocab", "@context":{"@vocab":"https://ns.gs1.org/cbv/BizStep-"}},
     "disposition": {"@type":"@vocab", "@context":{"@vocab":"https://ns.gs1.org/cbv/Disp-"}},
     "persistentDisposition": {"@type": "@id"},
-    "set": {"@type": "@id"},
-    "unset": {"@type": "@id"},
+    "set": {"@type":"@vocab", "@context":{"@vocab":"https://ns.gs1.org/cbv/Disp-"}},
+    "unset": {"@type":"@vocab", "@context":{"@vocab":"https://ns.gs1.org/cbv/Disp-"}},
     "bizTransactionList": {
       "@type": "@id",
       "@context": {"type": {"@id":"epcis:bizTransactionType", "@type":"@vocab", "@context":{"@vocab":"https://ns.gs1.org/cbv/BTT-"}}}},
