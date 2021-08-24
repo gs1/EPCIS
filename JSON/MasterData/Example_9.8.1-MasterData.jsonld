@@ -2,15 +2,15 @@
   "@context": ["https://gs1.github.io/EPCIS/epcis-context.jsonld",{"example": "http://ns.example.com/epcis/"}],
 
 	"id": "_:example_9.8.1",
-	"isA": "EPCISMasterDataDocument",
+	"isA": "epcis:EPCISMasterDataDocument",
 	"schemaVersion": "2.0",
 	"creationDate": "2005-07-11T11:30:47.0Z",
 	"epcisBody": {
 		"vocabularyList": [{
-				"isA": "Vocabulary",
+				"isA": "epcis:Vocabulary",
 				"type": "vtype:BusinessLocation",
 				"vocabularyElementList": [{
-						"isA": "VocabularyElement",
+						"isA": "epcis:VocabularyElement",
 						"id": "urn:epc:id:sgln:0037000.00729.0",
 						"xmda:latitude": "+18:0000",
 						"xmda:longitude": "-70.0000",
@@ -28,20 +28,20 @@
 					},
 
 					{
-						"isA": "VocabularyElement",
+						"isA": "epcis:VocabularyElement",
 						"id": "urn:epc:id:sgln:0037000.00729.8201",
 						"cbvmda:sst": "201"
 					},
 
 					{
-						"isA": "VocabularyElement",
+						"isA": "epcis:VocabularyElement",
 						"id": "urn:epc:id:sgln:0037000.00729.8202",
 						"cbvmda:sst": "202",
 						"children": ["urn:epc:id:sgln:0037000.00729.8203"]
 					},
 
 					{
-						"isA": "VocabularyElement",
+						"isA": "epcis:VocabularyElement",
 						"id": "urn:epc:id:sgln:0037000.00729.8203",
 						"cbvmda:sst": "202",
 						"cbvmda:ssa": "402"
@@ -52,24 +52,24 @@
 				]
 			},
 			{
-				"isA": "Vocabulary",
+				"isA": "epcis:Vocabulary",
 				"type": "vtype:ReadPoint",
 				"vocabularyElementList": [{
-						"isA": "VocabularyElement",
+						"isA": "epcis:VocabularyElement",
 						"id": "urn:epc:id:sgln:0037000.00729.8201",
 						"cbvmda:site": "0037000007296",
 						"cbvmda:sst": 201
 					},
 
 					{
-						"isA": "VocabularyElement",
+						"isA": "epcis:VocabularyElement",
 						"id": "urn:epc:id:sgln:0037000.00729.8202",
 						"cbvmda:site": "0037000007296",
 						"cbvmda:sst": 202
 					},
 
 					{
-						"isA": "VocabularyElement",
+						"isA": "epcis:VocabularyElement",
 						"id": "urn:epc:id:sgln:0037000.00729.8203",
 						"cbvmda:sst": 204
 					}
