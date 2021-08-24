@@ -302,9 +302,7 @@
                 }
             ]
         },
-        "eventID": {
-            "@id": "epcis:eventID"
-        },
+        "eventID": "@id",
         "creationDate": "dcterms:created",
         "schemaVersion": "owl:versionInfo",
         "ilmd": {
