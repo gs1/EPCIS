@@ -117,7 +117,7 @@
             "@container": "@set"
         },
         "bizTransactionList": {
-            "@id": "epcis:bizTransaction",
+            "@id": "epcis:bizTransactionList",
             "@container": "@set",
             "@context": [
                 "https://gs1.github.io/EPCIS/cbv-context-biztransaction-type.jsonld",
