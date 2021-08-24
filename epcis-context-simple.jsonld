@@ -92,6 +92,6 @@
     "id": "@id",
     "eventID": "@id",
     "creationDate": {"@id": "dcterms:created", "@type": "xsd:dateTime"},
-    "schemaVersion": {"@id": "owl:versionInfo", "@type": "xsd:string"},
+    "schemaVersion": {"@id": "owl:versionInfo", "@type": "xsd:string"}
   }
 }
