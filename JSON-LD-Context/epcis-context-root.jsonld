@@ -86,7 +86,7 @@
             ]
         },
         "persistentDisposition": {
-            "@id": "epcis:PersistentDisposition",
+            "@id": "epcis:persistentDisposition",
             "@container": "@set",
             "@context": {
                 "@protected": true,
