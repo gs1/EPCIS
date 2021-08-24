@@ -23,26 +23,26 @@
     "eventTimeZoneOffset": {"@type": "xsd:string"},
 
     "action": {"@type": "xsd:string"},
-    "bizStep": {"@type":"@vocab", "@vocab":"cbv:BizStep-"},
-    "disposition": {"@type":"@vocab", "@vocab":"cbv:Disp-"},
+    "bizStep": {"@type":"@vocab", "@context":{"@vocab":"cbv:BizStep-"}},
+    "disposition": {"@type":"@vocab", "@context":{"@vocab":"cbv:Disp-"}},
     "persistentDisposition": {"@type": "@id"},
     "set": {"@type": "@id"},
     "unset": {"@type": "@id"},
     "bizTransactionList": {
       "@type": "@id",
-      "@context": {"type": {"@id":"epcis:bizTransactionType", "@type":"@vocab", "@vocab":"cbv:BTT-"}}},
+      "@context": {"type": {"@id":"epcis:bizTransactionType", "@type":"@vocab", "@context":{"@vocab":"cbv:BTT-"}}}},
     "bizTransaction": {"@type": "@id"},
     "bizLocation": {"@type": "@id"},
     "readPoint": {"@type": "@id"},
     "sourceList": {
       "@type": "@id",
       "@context": {
-        "type": {"@id":"epcis:sourceOrDestinationType", "@type":"@vocab", "@vocab":"cbv:SDT-"},
+        "type": {"@id":"epcis:sourceOrDestinationType", "@type":"@vocab", "@context":{"@vocab":"cbv:SDT-"}},
         "source": {"@id":"epcis:sourceOrDestination", "@type":"@id"}}},
     "destinationList": {
       "@type": "@id",
       "@context": {
-        "type": {"@id":"epcis:sourceOrDestinationType", "@type":"@vocab", "@vocab":"cbv:SDT-"},
+        "type": {"@id":"epcis:sourceOrDestinationType", "@type":"@vocab", "@context":{"@vocab":"cbv:SDT-"}},
         "destination": {"@id":"epcis:sourceOrDestination", "@type":"@id"}}},
 
     "certificationInfo": {"@type": "@id"},
@@ -57,7 +57,7 @@
     "outputQuantityList": {"@type": "@id"},
     "childQuantityList": {"@type": "@id"},
 
-    "reason": {"@type":"@vocab", "@vocab":"cbv:ER-"},
+    "reason": {"@type":"@vocab", "@context":{"@vocab":"cbv:ER-"}},
     "errorDeclaration": {"@type": "@id"},
     "correctiveEventIDs": {"@type": "@id"},
     
@@ -65,7 +65,7 @@
     "sensorMetadata": {"@type": "@id"},
     "sensorReport": {
       "@type": "@id",
-      "@context": {"type": {"@id":"epcis:measurementType", "@type":"@vocab", "@vocab":"gs1:MT-"}}},
+      "@context": {"type": {"@id":"epcis:measurementType", "@type":"@vocab", "@context":{"@vocab":"gs1:MT-"}}}},
     "deviceID": {"@type": "@id"},
     "deviceMetadata": {"@type": "@id"},
     "rawData": {"@type": "@id"},
@@ -86,7 +86,7 @@
     "hexBinaryValue" : {"@type": "xsd:hexBinary"},
     "uriValue" : {"@type": "@id"},
     "uom": {"@type": "xsd:string"},
-    "component": {"@type": "@vocab", "@vocab":"cbv:COMP-"},
+    "component": {"@type": "@vocab", "@context":{"@vocab":"cbv:COMP-"}},
     
     "isA": "@type",
     "id": "@id",
