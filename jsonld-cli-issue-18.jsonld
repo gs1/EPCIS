@@ -1,0 +1,12 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@vocab" : "https://ns.gs1.org/epcis/",
+    "cbv": "https://ns.gs1.org/cbv/",
+    "bizStep": {"@type":"@vocab", "@context":{"@vocab":"cbv:BizStep-"}}
+  },
+  "@graph":{
+    "@id":"https://exmaple.org/event/1",
+    "bizStep": "installing"
+  }
+}
