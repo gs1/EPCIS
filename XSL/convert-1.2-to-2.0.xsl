@@ -149,12 +149,12 @@
         <xsl:if test="ilmd">
             <xsl:apply-templates mode="copy-nodes" select="ilmd"/>
         </xsl:if>
-        <xsl:if test="extension/extension">
+        <xsl:if test="extension/extension/*[not(name()='sensorElementList' or name()='persistentDisposition')]">
             <extension>
                 <!-- copy attributes -->
-                <xsl:apply-templates mode="copy-nodes" select="extension/extension/@*"/>
+                <xsl:apply-templates mode="copy-nodes" select="extension/extension/@*[not(name()='sensorElementList' or name()='persistentDisposition')]"/>
                 <!-- adding extension explicitly because it's excluded from copy-nodes mode -->
-                <xsl:apply-templates mode="copy-nodes" select="extension/extension/*"/>
+                <xsl:apply-templates mode="copy-nodes" select="extension/extension/*[not(name()='sensorElementList' or name()='persistentDisposition')]"/>
             </extension>
         </xsl:if>
         <!-- adding extension explicitly because it's excluded from copy-nodes mode -->
@@ -181,12 +181,12 @@
                              select="extension/childQuantityList|extension/sourceList|extension/destinationList"/>
         <xsl:apply-templates mode="copy-nodes"
                              select="extension/extension/sensorElementList|extension/extension/persistentDisposition"/>
-        <xsl:if test="extension/extension">
+        <xsl:if test="extension/extension/*[not(name()='sensorElementList' or name()='persistentDisposition')]">
             <extension>
                 <!-- copy attributes -->
-                <xsl:apply-templates mode="copy-nodes" select="extension/extension/@*"/>
+                <xsl:apply-templates mode="copy-nodes" select="extension/extension/@*[not(name()='sensorElementList' or name()='persistentDisposition')]"/>
                 <!-- adding extension explicitly because it's excluded from copy-nodes mode -->
-                <xsl:apply-templates mode="copy-nodes" select="extension/extension/*"/>
+                <xsl:apply-templates mode="copy-nodes" select="extension/extension/*[not(name()='sensorElementList' or name()='persistentDisposition')]"/>
             </extension>
         </xsl:if>
         <!-- adding extension explicitly because it's excluded from copy-nodes mode -->
@@ -205,12 +205,12 @@
         <xsl:if test="ilmd">
             <xsl:apply-templates mode="copy-nodes" select="ilmd"/>
         </xsl:if>
-        <xsl:if test="extension">
+        <xsl:if test="extension/*[not(name()='sensorElementList' or name()='persistentDisposition')]">
             <extension>
                 <!-- copy attributes -->
-                <xsl:apply-templates mode="copy-nodes" select="extension/@*"/>
+                <xsl:apply-templates mode="copy-nodes" select="extension/@*[not(name()='sensorElementList' or name()='persistentDisposition')]"/>
                 <!-- adding extension explicitly because it's excluded from copy-nodes mode -->
-                <xsl:apply-templates mode="copy-nodes" select="extension/*"/>
+                <xsl:apply-templates mode="copy-nodes" select="extension/*[not(name()='sensorElementList' or name()='persistentDisposition')]"/>
             </extension>
         </xsl:if>
         <!-- adding extension explicitly because it's excluded from copy-nodes mode -->
@@ -245,12 +245,12 @@
                              select="extension/quantityList|extension/sourceList|extension/destinationList"/>
         <xsl:apply-templates mode="copy-nodes"
                              select="extension/extension/sensorElementList|extension/extension/persistentDisposition"/>
-        <xsl:if test="extension/extension">
+        <xsl:if test="extension/extension/*[not(name()='sensorElementList' or name()='persistentDisposition')]">
             <extension>
                 <!-- copy attributes -->
-                <xsl:apply-templates mode="copy-nodes" select="extension/extension/@*"/>
+                <xsl:apply-templates mode="copy-nodes" select="extension/extension/@*[not(name()='sensorElementList' or name()='persistentDisposition')]"/>
                 <!-- adding extension explicitly because it's excluded from copy-nodes mode -->
-                <xsl:apply-templates mode="copy-nodes" select="extension/extension/*"/>
+                <xsl:apply-templates mode="copy-nodes" select="extension/extension/*[not(name()='sensorElementList' or name()='persistentDisposition')]"/>
             </extension>
         </xsl:if>
         <xsl:apply-templates mode="copy-nodes" select="*[not(name()='eventTime' or name()='recordTime' or name()='eventTimeZoneOffset' or name()='eventID' or name()='errorDeclaration'
@@ -265,12 +265,12 @@
         <xsl:apply-templates mode="copy-nodes"
                              select="parentID|childEPCs|childQuantityList|action|bizStep|disposition|readPoint|
                              bizLocation|bizTransactionList|sensorElementList|persistentDisposition"/>
-        <xsl:if test="extension">
+        <xsl:if test="extension/*[not(name()='sensorElementList' or name()='persistentDisposition')]">
             <extension>
                 <!-- copy attributes -->
-                <xsl:apply-templates mode="copy-nodes" select="extension/@*"/>
+                <xsl:apply-templates mode="copy-nodes" select="extension/@*[not(name()='sensorElementList' or name()='persistentDisposition')]"/>
                 <!-- adding extension explicitly because it's excluded from copy-nodes mode -->
-                <xsl:apply-templates mode="copy-nodes" select="extension/*"/>
+                <xsl:apply-templates mode="copy-nodes" select="extension/*[not(name()='sensorElementList' or name()='persistentDisposition')]"/>
             </extension>
         </xsl:if>
         <xsl:apply-templates mode="copy-nodes" select="*[not(name()='eventTime' or name()='recordTime' or name()='eventTimeZoneOffset' or name()='eventID' or name()='errorDeclaration'
