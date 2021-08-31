@@ -1,0 +1,64 @@
+@prefix cbv:         <https://ns.gs1.org/cbv/> .
+@prefix cbvmda:      <urn:epcglobal:cbv:mda:> .
+@prefix dcterms:     <http://purl.org/dc/terms/> .
+@prefix epcis:       <https://ns.gs1.org/epcis/> .
+@prefix example-mda: <http://epcis.example.com/mda/> .
+@prefix example1:    <http://ns.example.com/epcis/> .
+@prefix example2:    <http://epcis.example.com/ns/> .
+@prefix gs1:         <https://gs1.org/voc/> .
+@prefix md:          <https://ns.gs1.org/epcismd/> .
+@prefix owl:         <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:         <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:        <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vtype:       <urn:epcglobal:epcis:vtype:> .
+@prefix xsd:         <http://www.w3.org/2001/XMLSchema#> .
+
+cbvmda:site  epcis:attribute  "0037000007296" .
+
+<http://epcis.example.com/mdaaddress>
+        epcis:attribute  [ rdf:type         example2:Address ;
+                           example2:city    "Fancy" ;
+                           example2:state   "DC" ;
+                           example2:street  "100 Nowhere Street" ;
+                           example2:zip     "99999"
+                         ] .
+
+<urn:epc:id:sgln:0037000.00729.8201>
+        rdf:type          vtype:ReadPoint ;
+        epcis:attributes  cbvmda:sst , cbvmda:site .
+
+<http://epcis.example.com/mdalongitude>
+        epcis:attribute  "-70.0000" .
+
+<urn:epc:id:sgln:0037000.00729.8202>
+        rdf:type          vtype:ReadPoint , vtype:BusinessLocation ;
+        epcis:attributes  cbvmda:sst , cbvmda:site ;
+        epcis:children    <urn:epc:id:sgln:0037000.00729.8203> .
+
+<http://epcis.example.com/mdalatitude>
+        epcis:attribute  "+18.0000" .
+
+[ rdf:type           epcis:EPCISDocument ;
+  dcterms:created    "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
+  owl:versionInfo    "2.0" ;
+  epcis:epcisBody    []  ;
+  epcis:epcisHeader  [ epcis:epcisMasterData  [ epcis:vocabularyList  [ epcis:vocabularyElementList
+                                                                  <urn:epc:id:sgln:0037000.00729.8203> , <urn:epc:id:sgln:0037000.00729.8202> , <urn:epc:id:sgln:0037000.00729.8201> ] ;
+                                                epcis:vocabularyList  [ epcis:vocabularyElementList
+                                                                  <urn:epc:id:sgln:0037000.00729.8203> , <urn:epc:id:sgln:0037000.00729.8202> , <urn:epc:id:sgln:0037000.00729.0> ]
+                                              ]
+                     ]
+] .
+
+<urn:epc:id:sgln:0037000.00729.0>
+        rdf:type          vtype:BusinessLocation ;
+        epcis:attributes  <http://epcis.example.com/mdalongitude> , <http://epcis.example.com/mdalatitude> , <http://epcis.example.com/mdaaddress> ;
+        epcis:children    <urn:epc:id:sgln:0037000.00729.8203> , <urn:epc:id:sgln:0037000.00729.8202> , <urn:epc:id:sgln:0037000.00729.8201> .
+
+cbvmda:sst  epcis:attribute  204 , "202" , 201 .
+
+<urn:epc:id:sgln:0037000.00729.8203>
+        rdf:type          vtype:ReadPoint , vtype:BusinessLocation ;
+        epcis:attributes  cbvmda:sst , cbvmda:ssa .
+
+cbvmda:ssa  epcis:attribute  "402" .

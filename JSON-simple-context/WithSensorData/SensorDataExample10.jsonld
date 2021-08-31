@@ -1,0 +1,42 @@
+{
+	"@context": [
+		"https://vladimiralexiev.github.io/EPCIS/epcis-context-simple.jsonld",
+		{
+			"ex": "http://ns.example.com/epcis/"
+		},
+		{
+			"gs1": "https://gs1.org/voc/"
+		}
+	],
+	"id": "_:document1",
+	"isA": "EPCISDocument",
+	"schemaVersion": "2.0",
+	"creationDate": "2019-10-07T15:00:00.000+01:00",
+	"epcisBody": {
+		"eventList": [
+			{
+				"eventID": "ni:///sha-256;77c5b495d391767b1d3b8e7c669c9fee3965a778a9bfe793e85602c971b98436?ver=CBV2.0",
+				"isA": "ObjectEvent",
+				"eventTime": "2020-05-08T15:00:00+01:00",
+				"eventTimeZoneOffset": "+01:00",
+				"epcList": [
+					"urn:epc:id:sgtin:4012345.022222.1234"
+				],
+				"action": "OBSERVE",
+				"bizStep": "sensor_reporting",
+				"readPoint": {
+					"id": "urn:epc:id:sgln:4012345.00005.0"
+				},
+				"sensorElementList": [
+					{
+						"sensorReport": [
+							{"type": "Speed", "value": 4.5,  "component": "X", "ex:feature": "ex:product", "uom": "MTS"},
+							{"type": "Speed", "value": 12.8, "component": "Y", "ex:feature": "ex:product", "uom": "MTS"},
+							{"type": "Speed", "value": 0,    "component": "Z", "ex:feature": "ex:product", "uom": "MTS"}
+						]
+					}
+				]
+			}
+		]
+	}
+}

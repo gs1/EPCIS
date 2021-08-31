@@ -1,19 +1,15 @@
 {
-  "@context": [{
+  "@context": ["https://vladimiralexiev.github.io/EPCIS/epcis-context-simple.jsonld", {
     "epcismd": "https://ns.gs1.org/epcismd/",
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "xsd": "http://www.w3.org/2001/XMLSchema#",
-    "id": {"@id":"@id"},
-    "isA": {"@id":"@type"},
     "vtype": "urn:epcglobal:epcis:vtype:",
-    "mda": "urn:epcglobal:cbv:mda:"
-  },{
+    "mda": "urn:epcglobal:cbv:mda:",
     "xmda" : "http://epcis.example.com/mda/",
-    "xmda:latitude" : {"@type":"xsd:float"},
-    "xmda:longitude" : {"@type":"xsd:float"}
-  }  
-  ],
+    "xmda:latitude" : {"@type":"xsd:decimal"},
+    "xmda:longitude" : {"@type":"xsd:decimal"}
+  }],
   "@graph": [
     {
       "id": "urn:epc:id:sgln:0037000.00729.0",

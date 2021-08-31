@@ -1,0 +1,25 @@
+{
+  "@context": ["https://vladimiralexiev.github.io/EPCIS/epcis-context-simple.jsonld",{"example": "http://ns.example.com/epcis/"}],
+  
+  "id": "_:document1",
+  "isA": "EPCISDocument",
+  "schemaVersion": "2.0",
+  "creationDate":"2019-11-02T14:00:00.000+01:00",
+  "epcisBody": {
+   "eventList": [
+     {
+		  "eventID": "ni:///sha-256;a15e0b457cfc95305b6d530978c4cd7965bb29c0b8c312310fc7210c9ef123d9?ver=CBV2.0",
+		  "isA": "AssociationEvent",
+		  "eventTime": "2019-11-02T14:00:00.000+01:00",
+		  "eventTimeZoneOffset": "+01:00",
+		  "parentID":"urn:epc:id:sgln:4012345.00002.12",
+		  "childEPCs":["urn:epc:id:giai:4000001.12346"],
+		  "action": "ADD",
+		  "bizStep": "installing",
+		  "readPoint": {"id": "urn:epc:id:sgln:4012345.00002.0"}
+     }
+
+   ]
+  }
+  
+}

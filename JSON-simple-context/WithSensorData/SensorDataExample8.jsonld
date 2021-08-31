@@ -1,0 +1,57 @@
+{
+  "@context": ["https://vladimiralexiev.github.io/EPCIS/epcis-context-simple.jsonld",{"example": "http://ns.example.com/epcis/"}],
+  
+  "id": "_:document1",
+  "isA": "EPCISDocument",
+  "schemaVersion": "2.0",
+  "creationDate":"2005-07-11T11:30:47.0Z",
+  "epcisBody": {
+  "eventList": [
+     {
+		  "eventID": "ni:///sha-256;18454584ed96fbb533e4a69b01eefd1bff3edd1e80ef8598957111f4477a0a64?ver=CBV2.0",
+		  "isA": "AggregationEvent",
+		  "action": "ADD",
+		  "bizStep": "packing",
+		  "disposition": "in_progress",
+		  "parentID": "urn:epc:id:sscc:4012345.0111111111",
+		  "childQuantityList": [{"epcClass":"urn:epc:class:lgtin:4012345.011111.1234","quantity":52,"uom":"KGM"}],
+		  "eventTime": "2019-10-07T15:30:00.000+01:00",
+		  "eventTimeZoneOffset": "+01:00",
+		  "readPoint": {"id": "urn:epc:id:sgln:4012345.00025.0"},
+		  "sensorElementList": [
+		   {
+		    "sensorMetadata" : {"time":"2019-07-19T14:00:00.000+01:00", "deviceID":"urn:epc:id:giai:4000001.111", "deviceMetadata":"https://id.gs1.org/8004/4000001111", "rawData":"https://example.org/8004/401234599999", "dataProcessingMethod":"https://example.com/gdti/4012345000054987", "bizRules":"https://example.org/gdti/4012345000054987"},
+		    "sensorReport" : [
+			 { "type": "Humidity", "value":12.1, "uom":"A93"},
+			 { "type": "AmountOfSubstancePerUnitVolume" , "chemicalSubstance":"https://identifiers.org/inchikey:CZMRCDWAGMRECN-UGDNZRGBSA-N", "value":0.18, "uom":"C35"},
+			 { "type": "AmountOfSubstancePerUnitVolume" , "microorganism":"https://www.ncbi.nlm.nih.gov/taxonomy/1126011", "value":0.05, "uom":"C35"}
+		     ]
+		    },
+
+		   { 
+		    "sensorMetadata" : {"startTime":"2019-04-01T15:00:00.000+01:00", "endTime":"2019-04-02T14:59:59.999+01:00", "example:someFurtherMetaData":"someText"},
+		    "sensorReport" : [
+			 { "type":"Temperature", "minValue":12.4, "maxValue":13.8, "meanValue":13.2, "sDev":0.41, "uom":"CEL", "percRank":50, "percValue":12.7, "example:cv":"123"},
+			 { "type":"example:someSensorProperty", "stringValue":"someSensorOutput"}
+		     ],
+		     "example:furtherSensorData": [
+			 	{"example:measure1":"123.5"},
+			 	{"example:measure2":"0.987"}
+			 ]
+		    },
+
+		   {
+		    "sensorReport" : [
+			 { "type":"Temperature", "uom":"CEL", "time":"2019-07-19T14:00:00.000+01:00", "deviceID":"urn:epc:id:giai:4000001.111", "deviceMetadata":"https://id.gs1.org/8004/4000001111", "rawData":"https://example.org/8004/401234599999", "dataProcessingMethod":"https://example.com/gdti/4012345000054987", "bizRules":"https://example.org/gdti/4012345000054987"},
+			 { "type":"example:someSensorProperty", "stringValue":"someSensorOutput"}
+		     ]
+		    }
+		    	    
+		  ]
+		  
+     }
+   ]
+  }
+  
+}
+

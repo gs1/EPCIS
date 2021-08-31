@@ -1,0 +1,91 @@
+{
+    "@context": ["https://gs1.github.io/EPCIS/epcis-context.jsonld",{"example": "http://ns.example.com/epcis/"},{"xmda": "http://epcis.example.com/mda"}],
+	"id": "_:example_9.8.1",
+	"isA": "epcis:EPCISDocument",
+	"schemaVersion": "2.0",
+	"creationDate": "2005-07-11T11:30:47.0Z",
+	"epcisHeader": {
+		"epcisMasterData": {
+			"vocabularyList": [
+				{
+					"vocabularyElementList": [
+						{
+							"isA": "urn:epcglobal:epcis:vtype:BusinessLocation",
+							"id": "urn:epc:id:sgln:0037000.00729.0",
+							"attributes": [
+								{ "id": "xmda:latitude", "attribute": "+18.0000" },
+								{ "id": "xmda:longitude", "attribute": "-70.0000" },
+								{
+									"id": "xmda:address",
+									"attribute": {
+										"@context": {
+											"@vocab": "http://epcis.example.com/ns/"
+										},
+										"isA": "Address",
+										"street": "100 Nowhere Street",
+										"city": "Fancy",
+										"state": "DC",
+										"zip": "99999"
+									}
+								}
+							],
+							"children": [
+								"urn:epc:id:sgln:0037000.00729.8201",
+								"urn:epc:id:sgln:0037000.00729.8202",
+								"urn:epc:id:sgln:0037000.00729.8203"
+							]
+						},
+						{
+							"isA": "urn:epcglobal:epcis:vtype:BusinessLocation",
+							"id": "urn:epc:id:sgln:0037000.00729.8202",
+							"attributes": [
+								{ "id": "cbvmda:sst", "attribute": "202" }
+							],
+							"children": [
+								"urn:epc:id:sgln:0037000.00729.8203"
+							]
+						},
+						{
+							"isA": "urn:epcglobal:epcis:vtype:BusinessLocation",
+							"id": "urn:epc:id:sgln:0037000.00729.8203",
+							"attributes": [
+								{ "id": "cbvmda:sst", "attribute": "202" },
+								{ "id": "cbvmda:ssa", "attribute": "402" }
+							]
+						}
+					]
+				},
+				{
+					"vocabularyElementList": [
+						{
+							"isA": "urn:epcglobal:epcis:vtype:ReadPoint",
+							"id": "urn:epc:id:sgln:0037000.00729.8201",
+							"attributes": [
+								{ "id": "cbvmda:site", "attribute": "0037000007296" },
+								{ "id": "cbvmda:sst", "attribute": 201 }
+							]
+						},
+						{
+							"isA": "urn:epcglobal:epcis:vtype:ReadPoint",
+							"id": "urn:epc:id:sgln:0037000.00729.8202",
+							"attributes": [
+								{ "id": "cbvmda:site", "attribute": "0037000007296" },
+								{ "id": "cbvmda:sst", "attribute": "202" }
+							]
+						},
+						{
+							"isA": "urn:epcglobal:epcis:vtype:ReadPoint",
+							"id": "urn:epc:id:sgln:0037000.00729.8203",
+							"attributes": [
+								{ "id": "cbvmda:sst", "attribute": 204 }
+							]
+						}
+					]
+				}
+			]
+		}
+	},
+	"epcisBody": {
+		"eventList": []
+	}
+}

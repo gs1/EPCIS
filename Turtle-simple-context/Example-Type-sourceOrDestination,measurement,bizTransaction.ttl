@@ -13,26 +13,20 @@
 @prefix vtype:       <urn:epcglobal:epcis:vtype:> .
 @prefix xsd:         <http://www.w3.org/2001/XMLSchema#> .
 
-[ rdf:type         epcis:EPCISDocument ;
-  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
-  owl:versionInfo  "2.0" ;
-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;5f7c472bc4905de27a19b2efc8e4a9c6dc195139669b80b515f12218ff07cf65?ver=CBV2.0> ]
-] .
-
 <ni:///sha-256;5f7c472bc4905de27a19b2efc8e4a9c6dc195139669b80b515f12218ff07cf65?ver=CBV2.0>
         rdf:type                   epcis:AssociationEvent ;
         example1:myField           "Example of a vendor/user extension" ;
         epcis:action               "ADD" ;
         epcis:bizLocation          <urn:epc:id:sgln:4012345.00002.0> ;
         epcis:bizStep              cbv:BizStep-installing ;
+        epcis:bizTransactionList   [ epcis:bizTransaction      <urn:epcglobal:cbv:bt:4023333000000:54545> ;
+                                     epcis:bizTransactionType  cbv:BTT-inv
+                                   ] ;
         epcis:bizTransactionList   [ epcis:bizTransaction      <urn:epcglobal:cbv:bt:0614141073467:1152> ;
                                      epcis:bizTransactionType  cbv:BTT-desadv
                                    ] ;
         epcis:bizTransactionList   [ epcis:bizTransaction      <http://transaction.acme.com/po/12345678> ;
                                      epcis:bizTransactionType  cbv:BTT-po
-                                   ] ;
-        epcis:bizTransactionList   [ epcis:bizTransaction      <urn:epcglobal:cbv:bt:4023333000000:54545> ;
-                                     epcis:bizTransactionType  cbv:BTT-inv
                                    ] ;
         epcis:childEPCs            <urn:epc:id:giai:4000001.12345> , <urn:epc:id:giai:4000001.12346> ;
         epcis:childQuantityList    [ epcis:epcClass  <urn:epc:class:lgtin:4023333.002000.998877> ;
@@ -59,3 +53,9 @@
         epcis:sourceList           [ epcis:sourceOrDestination      <urn:epc:id:pgln:4000001.00012> ;
                                      epcis:sourceOrDestinationType  cbv:SDT-possessing_party
                                    ] .
+
+[ rdf:type         epcis:EPCISDocument ;
+  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
+  owl:versionInfo  "2.0" ;
+  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;5f7c472bc4905de27a19b2efc8e4a9c6dc195139669b80b515f12218ff07cf65?ver=CBV2.0> ]
+] .
