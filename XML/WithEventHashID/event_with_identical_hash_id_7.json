@@ -1,0 +1,72 @@
+{
+  "@context": ["https://gs1.github.io/EPCIS/epcis-context.jsonld",{"ext1": "http://ext.com/ext1"}],
+
+  "isA": "EPCISDocument",
+  "schemaVersion": "2.0",
+  "creationDate": "2005-07-11T11:30:47.0Z",
+  "epcisBody": {
+    "eventList": [
+      {
+        "isA": "ObjectEvent",
+        "action": "ADD",
+        "eventTime": "2005-04-04T20:33:31.116-06:00",
+        "eventTimeZoneOffset": "-06:00",
+        "epcList": [ "urn:epc:id:sgtin:0614141.107346.2016", "urn:epc:id:sgtin:0614141.107346.2017" ,"urn:epc:id:sgtin:0614141.107346.2018" ],
+        "bizStep": "urn:epcglobal:cbv:bizstep:receiving",
+        "disposition": "urn:epcglobal:cbv:disp:in_progress",
+        "readPoint": { "id" : "urn:epc:id:sgln:0012345.11111.400"},
+        "bizLocation": { "id" : "urn:epc:id:sgln:0012345.11111.0" } ,
+        "bizTransactionList": [ { "type": "urn:epcglobal:cbv:btt:po", "bizTransaction": "urn:epc:id:gdti:0614141.00001.1618034" }],
+        "quantityList": [ { "epcClass": "urn:epc:class:lgtin:4012345.012345.998877", "quantity": 200.0, "uom": "KGM" },
+          { "epcClass": "urn:epc:class:lgtin:4012345.012345.998876", "quantity": 300.0, "uom": "KGM" }],
+        "sourceList": [
+          { "type": "urn:epcglobal:cbv:sdt:location", "source": "urn:epc:id:sgln:4012345.00225.0" },
+          { "type": "urn:epcglobal:cbv:sdt:possessing_party", "source": "urn:epc:id:pgln:4012345.00225" },
+          { "type": "urn:epcglobal:cbv:sdt:owning_party", "source": "urn:epc:id:pgln:4012345.00225" }
+        ],
+        "destinationList": [
+          { "type": "urn:epcglobal:cbv:sdt:location", "destination": "urn:epc:id:sgln:0614141.00777.0" },
+          { "type": "urn:epcglobal:cbv:sdt:possessing_party", "destination": "urn:epc:id:pgln:0614141.00777" },
+          { "type": "urn:epcglobal:cbv:sdt:owning_party", "destination": "urn:epc:id:pgln:0614141.00777" }
+        ],
+        "ilmd": {
+          "ext1:default": "stringAsDefaultValue",
+          "ext1:int": 10,
+          "ext1:float": 20.0
+        },
+        "sensorElementList": [
+          {
+            "sensorMetadata": {
+              "time": "2019-04-02T14:05:00.000+01:00", "deviceID": "urn:epc:id:giai:4000001.111",
+              "deviceMetadata": "https://id.gs1.org/giai/4000001111", "rawData": "https://example.org/giai/401234599999",
+              "startTime": "2019-04-02T13:55:01.000+01:00", "endTime": "2019-04-02T14:55:00.000+01:00",
+              "bizRules": "https://example.com/gdti/4012345000054987", "dataProcessingMethod": "https://example.com/gdti/4012345000054987",
+              "ext1:someFurtherMetadata": "someText"
+            },
+            "sensorReport": [
+              {
+                "value": 26.0, "type": "gs1:Temperature", "component": "example:x", "stringValue": "SomeString",
+                "booleanValue": true, "hexBinaryValue": "f0f0f0", "uriValue": "https://id.gs1.org/giai/4000001111",
+                "uom": "CEL", "minValue": 26.0, "maxValue": 26.2, "sDev": 0.1, "chemicalSubstance": "https://identifiers.org/inchikey:CZMRCDWAGMRECN-UGDNZRGBSA-N",
+                "microorganism": "https://www.ncbi.nlm.nih.gov/taxonomy/1126011", "deviceID": "urn:epc:id:giai:4000001.111",
+                "deviceMetadata": "https://id.gs1.org/giai/4000001111", "rawData": "https://example.org/giai/401234599999",
+                "time": "2019-07-19T14:00:00.000+01:00", "meanValue": 13.2, "percRank": 50.0, "percValue": 12.7,
+                "dataProcessingMethod": "https://example.com/gdti/4012345000054987", "ext1:someFurtherReportData": "someText"
+              }
+            ],
+            "ext1:default":"stringAsDefaultValue",
+            "ext1:int": 10,
+            "ext1:float": 20.0
+          }
+        ],
+        "persistentDisposition": {
+          "unset": [ "urn:epcglobal:cbv:disp:completeness_inferred" ],
+          "set": [ "urn:epcglobal:cbv:disp:completeness_verified" ]
+        },
+        "ext1:default":"stringAsDefaultValue",
+        "ext1:int": 10,
+        "ext1:float": 20.0
+      }
+    ]
+  }
+}
