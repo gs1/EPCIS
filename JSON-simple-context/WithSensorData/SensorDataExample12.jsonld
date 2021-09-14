@@ -1,12 +1,11 @@
 {
   "@context": [
     "https://gs1.github.io/EPCIS/epcis-context-simple.jsonld",
-    {"cbvmda": "urn:epcglobal:cbv:mda"},
     {"example": "https://ns.example.com/epcis"},
     {"example1": "https://ns.example1.com/epcis"},
-    {"example2": "https://ns.example2.com/epcis"}
+    {"example2": "https://ns.example2.com/epcis"},
     {"example3": "https://ns.example3.com/epcis"},
-    {"example4": "https://ns.example4.com/epcis"},
+    {"example4": "https://ns.example4.com/epcis"}
   ],
   "isA": "EPCISDocument",
   "epcisBody": {
@@ -18,35 +17,17 @@
 	"errorDeclaration": {
 	  "declarationTime": "2020-09-29T13:00:00.000Z",
 	  "example:issuer": "Employee 123",
-	  "example:field": "",
-	  "example3:errorCodes": {
-	    "example3:value1": "34",
-	    "example3:value44": "66"
-	  }
+	  "example:field": "foo bar",
+	  "example3:errorCodes": {"example3:value1": "34", "example3:value44": "66"}
 	},
-	"inputQuantityList": [
-	  {
-	    "epcClass": "urn:epc:class:lgtin:4023333.055555.ABC123",
-	    "quantity": 25,
-	    "uom": "KGM"
-	  }
-	],
-	"outputEPCList": [
-	  "urn:epc:id:sgtin:4012345.012345.987",
-	  "urn:epc:id:sgtin:4012345.012345.988"
-	],
-	"bizStep": "urn:epcglobal:cbv:bizstep:commissioning",
-	"readPoint": {
-	  "id": "urn:epc:id:sgln:4023333.00000.0"
-	},
-	"bizLocation": {
-	  "id": "urn:epc:id:sgln:4023333.00001.12"
-	},
+	"inputQuantityList": [{"epcClass": "urn:epc:class:lgtin:4023333.055555.ABC123", "quantity": 25, "uom": "KGM"}],
+	"outputEPCList": ["urn:epc:id:sgtin:4012345.012345.987", "urn:epc:id:sgtin:4012345.012345.988"],
+	"bizStep": "commissioning",
+	"readPoint": {"id": "urn:epc:id:sgln:4023333.00000.0"},
+	"bizLocation": {"id": "urn:epc:id:sgln:4023333.00001.12"},
 	"ilmd": {
 	  "example:grading": "A",
-	  "example2:userMasterData": {
-	    "example2:sizeCode": "B-2"
-	  },
+	  "example2:userMasterData": {"example2:sizeCode": "B-2"},
 	  "cbvmda:lotNumber": "LOTABC"
 	},
 	"sensorElementList": [
