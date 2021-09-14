@@ -22,7 +22,7 @@
 	},
 	"inputQuantityList": [{"epcClass": "urn:epc:class:lgtin:4023333.055555.ABC123", "quantity": 25, "uom": "KGM"}],
 	"outputEPCList": ["urn:epc:id:sgtin:4012345.012345.987", "urn:epc:id:sgtin:4012345.012345.988"],
-	"bizStep": "urn:epcglobal:cbv:bizstep:commissioning",
+	"bizStep": "commissioning",
 	"readPoint": {"id": "urn:epc:id:sgln:4023333.00000.0"},
 	"bizLocation": {"id": "urn:epc:id:sgln:4023333.00001.12"},
 	"ilmd": {

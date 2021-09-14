@@ -8,14 +8,11 @@
         "isA": "TransactionEvent",
         "eventTime": "2019-10-04T13:12:00.000Z",
         "eventTimeZoneOffset": "+01:00",
-        "bizTransactionList": [{"bizTransaction": "urn:epc:id:gdti:95252084.0001.0003555480001000"}
-        ],
+        "bizTransactionList": [{"bizTransaction": "urn:epc:id:gdti:95252084.0001.0003555480001000"}],
         "epcList": ["urn:epc:id:gsrn:95252084.000000001"],
         "action": "ADD",
         "bizStep": "http://epcis.example.org/hc/bizstep/summarising_discharge",
-        "readPoint": {
-          "id": "urn:epc:id:sgln:9524567.98765.0"
-        }
+        "readPoint": {"id": "urn:epc:id:sgln:9524567.98765.0"}
       },
       {
         "isA": "TransactionEvent",
@@ -37,20 +34,20 @@
         "rail:trainVehicleCount": "3",
         "rail:vehicle": [
           {
-            "rail:vehicleUniquelyIdentified": true,
-            "rail:vehicleAxleCount": 4,
-            "rail:vehiclePosition": 1,
+            "rail:vehicleUniquelyIdentified": "true",
+            "rail:vehicleAxleCount": "4",
+            "rail:vehiclePosition": "1",
             "rail:vehicleMasterGIAI": "urn:epc:id:giai:952005385.vehicle2"
           },
           {
-            "rail:vehicleUniquelyIdentified": false,
-            "rail:vehicleAxleCount": 4,
-            "rail:vehiclePosition": 2
+            "rail:vehicleUniquelyIdentified": "false",
+            "rail:vehicleAxleCount": "4",
+            "rail:vehiclePosition": "2"
           },
           {
             "rail:vehicleUniquelyIdentified": true,
-            "rail:vehicleAxleCount": 4,
-            "rail:vehiclePosition": 3,
+            "rail:vehicleAxleCount": "4",
+            "rail:vehiclePosition": "3",
             "rail:vehicleMasterGIAI": "urn:epc:id:giai:735005385.vehicle1"
           }
         ],
@@ -60,6 +57,12 @@
   },
   "@context": [
     "https://gs1.github.io/EPCIS/epcis-context-simple.jsonld",
-    {"rail": "urn:gs1:epcisapp:rail"}
+    {"rail": "urn:gs1:epcisapp:rail:",
+     "rail:vehicleMasterGIAI": {"@type": "@id"},
+     "rail:trainAxleCount": {"@type": "xsd:integer"},
+     "rail:vehicleAxleCount": {"@type": "xsd:integer"},
+     "rail:vehiclePosition": {"@type": "xsd:integer"},
+     "rail:vehicleUniquelyIdentified": {"@type": "xsd:boolean"}
+    }
   ]
 }

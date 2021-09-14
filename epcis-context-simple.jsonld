@@ -65,7 +65,7 @@
     "sensorMetadata": {"@type": "@id"},
     "sensorReport": {
       "@type": "@id",
-      "@context": {"type": {"@id":"epcis:measurementType", "@type":"@vocab", "@context":{"@vocab":"https://gs1.org/voc/MT-"}}}},
+      "@context": {"type": {"@id":"epcis:measurementType", "@type":"@vocab", "@context":{"@vocab":"https://gs1.org/voc/"}}}},
     "deviceID": {"@type": "@id"},
     "deviceMetadata": {"@type": "@id"},
     "rawData": {"@type": "@id"},
@@ -87,6 +87,7 @@
     "uriValue" : {"@type": "@id"},
     "uom": {"@type": "xsd:string"},
     "component": {"@type": "@vocab", "@context":{"@vocab":"https://ns.gs1.org/cbv/COMP-"}},
+    "exception": {"@type": "@vocab", "@context":{"@vocab":"https://ns.gs1.org/voc/"}},
     
     "isA": "@type",
     "id": "@id",
