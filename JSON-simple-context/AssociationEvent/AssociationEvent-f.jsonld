@@ -6,41 +6,33 @@
   "schemaVersion": "2.0",
   "creationDate":"2019-11-06T14:00:00.000+01:00",
   "epcisBody": {
-   "eventList": [
-     {
-		  "eventID": "ni:///sha-256;5f7c472bc4905de27a19b2efc8e4a9c6dc195139669b80b515f12218ff07cf65?ver=CBV2.0",
-		  "isA": "AssociationEvent",
-		  "eventTime": "2019-11-06T14:00:00.000+01:00",
-		  "recordTime": "2019-11-06T14:05:00.000+01:00",
-		  "eventTimeZoneOffset": "+01:00",
-		  "parentID":"urn:epc:id:grai:4012345.55555.98765",
-		  "childEPCs":["urn:epc:id:giai:4000001.12345","urn:epc:id:giai:4000001.12346"],
-		  "childQuantityList": [
-		  	{"epcClass":"urn:epc:class:lgtin:4023333.002000.998877","quantity":4}
-		  ],
-		  "action": "ADD",
-		  "bizStep": "installing",
-		  "disposition": "in_progress",
-		  "readPoint": {"id": "urn:epc:id:sgln:4012345.00001.0"},
-		  "bizLocation": {"id": "urn:epc:id:sgln:4012345.00002.0"},
-		  "bizTransactionList": [  {"type":"inv", "bizTransaction": "urn:epcglobal:cbv:bt:4023333000000:54545" }  ],
-		  "sourceList": [
-		  	{"type":"possessing_party","source":"urn:epc:id:pgln:4000001.00012"}
-		  ],
-		  "destinationList": [
-		  	{"type":"possessing_party","destination":"urn:epc:id:pgln:4012345.00000"}
-		  ],
-		  "sensorElementList": [
-		   {
-		    "sensorMetadata" : {"startTime":"2019-11-06T13:55:00.000+01:00", "endTime":"2019-11-06T13:57:00.000+01:00"},
-		    "sensorReport" : [
-			 { "type": "gs1:Humidity" , "minValue" : 12.1 , "maxValue" : 12.2 , "uom": "A93"}
-		     ]
-		    }
-		   ]
-     }
-
-   ]
+    "eventList": [
+      {
+	"eventID": "ni:///sha-256;5f7c472bc4905de27a19b2efc8e4a9c6dc195139669b80b515f12218ff07cf65?ver=CBV2.0",
+	"isA": "AssociationEvent",
+	"eventTime": "2019-11-06T14:00:00.000+01:00",
+	"recordTime": "2019-11-06T14:05:00.000+01:00",
+	"eventTimeZoneOffset": "+01:00",
+	"parentID":"urn:epc:id:grai:4012345.55555.98765",
+	"childEPCs":["urn:epc:id:giai:4000001.12345","urn:epc:id:giai:4000001.12346"],
+	"childQuantityList": [{"epcClass":"urn:epc:class:lgtin:4023333.002000.998877","quantity":4}],
+	"action": "ADD",
+	"bizStep": "installing",
+	"disposition": "in_progress",
+	"readPoint": {"id": "urn:epc:id:sgln:4012345.00001.0"},
+	"bizLocation": {"id": "urn:epc:id:sgln:4012345.00002.0"},
+	"bizTransactionList": [  {"type":"inv", "bizTransaction": "urn:epcglobal:cbv:bt:4023333000000:54545" }  ],
+	"sourceList": [{"type":"possessing_party","source":"urn:epc:id:pgln:4000001.00012"}],
+	"destinationList": [{"type":"possessing_party","destination":"urn:epc:id:pgln:4012345.00000"}],
+	"sensorElementList": [
+	  {
+	    "sensorMetadata" : {"startTime":"2019-11-06T13:55:00.000+01:00", "endTime":"2019-11-06T13:57:00.000+01:00"},
+	    "sensorReport" : [
+	      { "type": "Humidity" , "minValue" : 12.1 , "maxValue" : 12.2 , "uom": "A93"}
+	    ]
+	  }
+	]
+      }
+    ]
   }
-  
 }

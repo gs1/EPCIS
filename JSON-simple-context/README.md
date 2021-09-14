@@ -88,7 +88,7 @@ Examples were derived from XML examples, then significantly added and commented 
 - `Example-TransactionEvents-2020_07_03y.jsonld`: custom transactions (summarising discharge from a hospital, passage of rail cars)
 - `Example-Type-sourceOrDestination,measurement,bizTransaction.jsonld`: shows the disambiguation of JSON field `type` to different RDF properties:
   - `epcis:bizTransactionType` (from `epcis:BizTransaction` to `cbv:BTT`)
-  - `epcis:measurementType` (from `epcis:SensorReport` to `gs1:MeasuremenType`)
+  - `epcis:measurementType` (from `epcis:SensorReport` to `gs1:MeasurementType`)
   - `epcis:sourceOrDestinationType` (from `epcis:SourceOrDestination` to `cbv:SDT`)
 - `Example_9.6.1-ObjectEvent.jsonld`: object event involving businessTransactions
 - `Example_9.6.1-with-comment.jsonld`: object event with custom field and a comment
