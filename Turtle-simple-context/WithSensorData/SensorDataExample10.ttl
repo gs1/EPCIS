@@ -1,17 +1,29 @@
-@prefix cbv:         <https://ns.gs1.org/cbv/> .
-@prefix cbvmda:      <urn:epcglobal:cbv:mda:> .
-@prefix dcterms:     <http://purl.org/dc/terms/> .
-@prefix epcis:       <https://ns.gs1.org/epcis/> .
-@prefix example-mda: <http://epcis.example.com/mda/> .
-@prefix example1:    <http://ns.example.com/epcis/> .
-@prefix example2:    <http://epcis.example.com/ns/> .
-@prefix gs1:         <https://gs1.org/voc/> .
-@prefix md:          <https://ns.gs1.org/epcismd/> .
-@prefix owl:         <http://www.w3.org/2002/07/owl#> .
-@prefix rdf:         <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs:        <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix vtype:       <urn:epcglobal:epcis:vtype:> .
-@prefix xsd:         <http://www.w3.org/2001/XMLSchema#> .
+@prefix cbv:      <https://ns.gs1.org/cbv/> .
+@prefix cbvmda:   <urn:epcglobal:cbv:mda:> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix epcis:    <https://ns.gs1.org/epcis/> .
+@prefix ex:       <http://epcis.example.com/ns/> .
+@prefix examp:    <http://ns.example.com/epcis/> .
+@prefix example:  <https://ns.example.com/epcis> .
+@prefix example1: <https://ns.example1.com/epcis> .
+@prefix example2: <https://ns.example2.com/epcis> .
+@prefix example3: <https://ns.example3.com/epcis> .
+@prefix example4: <https://ns.example4.com/epcis> .
+@prefix ext1:     <http://ext.com/ext1/> .
+@prefix ext2:     <http://ext.com/ext2/> .
+@prefix ext3:     <http://ext.com/ext3/> .
+@prefix gs1:      <https://gs1.org/voc/> .
+@prefix owl:      <http://www.w3.org/2002/07/owl#> .
+@prefix rail:     <urn:gs1:epcisapp:rail:> .
+@prefix rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+
+[ rdf:type         epcis:EPCISDocument ;
+  dcterms:created  "2019-10-07T15:00:00.000+01:00"^^xsd:dateTime ;
+  owl:versionInfo  "2.0" ;
+  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;77c5b495d391767b1d3b8e7c669c9fee3965a778a9bfe793e85602c971b98436?ver=CBV2.0> ]
+] .
 
 <ni:///sha-256;77c5b495d391767b1d3b8e7c669c9fee3965a778a9bfe793e85602c971b98436?ver=CBV2.0>
         rdf:type                   epcis:ObjectEvent ;
@@ -21,28 +33,22 @@
         epcis:eventTime            "2020-05-08T15:00:00+01:00"^^xsd:dateTime ;
         epcis:eventTimeZoneOffset  "+01:00" ;
         epcis:readPoint            <urn:epc:id:sgln:4012345.00005.0> ;
-        epcis:sensorElementList    [ epcis:sensorReport  [ example1:feature       "ex:product" ;
+        epcis:sensorElementList    [ epcis:sensorReport  [ examp:feature          "ex:product" ;
                                                            epcis:component        cbv:COMP-Z ;
-                                                           epcis:measurementType  gs1:MT-Speed ;
+                                                           epcis:measurementType  gs1:Speed ;
                                                            epcis:uom              "MTS" ;
                                                            epcis:value            0.0E0
                                                          ] ;
-                                     epcis:sensorReport  [ example1:feature       "ex:product" ;
+                                     epcis:sensorReport  [ examp:feature          "ex:product" ;
                                                            epcis:component        cbv:COMP-Y ;
-                                                           epcis:measurementType  gs1:MT-Speed ;
+                                                           epcis:measurementType  gs1:Speed ;
                                                            epcis:uom              "MTS" ;
                                                            epcis:value            1.28E1
                                                          ] ;
-                                     epcis:sensorReport  [ example1:feature       "ex:product" ;
+                                     epcis:sensorReport  [ examp:feature          "ex:product" ;
                                                            epcis:component        cbv:COMP-X ;
-                                                           epcis:measurementType  gs1:MT-Speed ;
+                                                           epcis:measurementType  gs1:Speed ;
                                                            epcis:uom              "MTS" ;
                                                            epcis:value            4.5E0
                                                          ]
                                    ] .
-
-[ rdf:type         epcis:EPCISDocument ;
-  dcterms:created  "2019-10-07T15:00:00.000+01:00"^^xsd:dateTime ;
-  owl:versionInfo  "2.0" ;
-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;77c5b495d391767b1d3b8e7c669c9fee3965a778a9bfe793e85602c971b98436?ver=CBV2.0> ]
-] .

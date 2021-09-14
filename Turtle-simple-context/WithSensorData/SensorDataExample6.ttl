@@ -1,17 +1,23 @@
-@prefix cbv:         <https://ns.gs1.org/cbv/> .
-@prefix cbvmda:      <urn:epcglobal:cbv:mda:> .
-@prefix dcterms:     <http://purl.org/dc/terms/> .
-@prefix epcis:       <https://ns.gs1.org/epcis/> .
-@prefix example-mda: <http://epcis.example.com/mda/> .
-@prefix example1:    <http://ns.example.com/epcis/> .
-@prefix example2:    <http://epcis.example.com/ns/> .
-@prefix gs1:         <https://gs1.org/voc/> .
-@prefix md:          <https://ns.gs1.org/epcismd/> .
-@prefix owl:         <http://www.w3.org/2002/07/owl#> .
-@prefix rdf:         <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs:        <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix vtype:       <urn:epcglobal:epcis:vtype:> .
-@prefix xsd:         <http://www.w3.org/2001/XMLSchema#> .
+@prefix cbv:      <https://ns.gs1.org/cbv/> .
+@prefix cbvmda:   <urn:epcglobal:cbv:mda:> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix epcis:    <https://ns.gs1.org/epcis/> .
+@prefix ex:       <http://epcis.example.com/ns/> .
+@prefix examp:    <http://ns.example.com/epcis/> .
+@prefix example:  <https://ns.example.com/epcis> .
+@prefix example1: <https://ns.example1.com/epcis> .
+@prefix example2: <https://ns.example2.com/epcis> .
+@prefix example3: <https://ns.example3.com/epcis> .
+@prefix example4: <https://ns.example4.com/epcis> .
+@prefix ext1:     <http://ext.com/ext1/> .
+@prefix ext2:     <http://ext.com/ext2/> .
+@prefix ext3:     <http://ext.com/ext3/> .
+@prefix gs1:      <https://gs1.org/voc/> .
+@prefix owl:      <http://www.w3.org/2002/07/owl#> .
+@prefix rail:     <urn:gs1:epcisapp:rail:> .
+@prefix rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
 
 [ rdf:type         epcis:EPCISDocument ;
   dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
@@ -31,25 +37,25 @@
                                      epcis:uom       "KGM"
                                    ] ;
         epcis:readPoint            <urn:epc:id:sgln:4012345.00005.0> ;
-        epcis:sensorElementList    [ example1:furtherSensorData  [ example1:measure2
+        epcis:sensorElementList    [ examp:furtherSensorData  [ examp:measure2
                                                        "0.987" ] ;
-                                     example1:furtherSensorData  [ example1:measure1
+                                     examp:furtherSensorData  [ examp:measure1
                                                        "123.5" ] ;
-                                     epcis:sensorMetadata        [ example1:someFurtherMetaData  "someText" ;
-                                                                   epcis:endTime                 "2019-04-02T14:59:59.999+01:00"^^xsd:dateTime ;
-                                                                   epcis:startTime               "2019-04-01T15:00:00.000+01:00"^^xsd:dateTime
-                                                                 ] ;
-                                     epcis:sensorReport          [ epcis:measurementType  example1:someSensorProperty ;
-                                                                   epcis:stringValue      "someSensorOutput"
-                                                                 ] ;
-                                     epcis:sensorReport          [ example1:cv            "123" ;
-                                                                   epcis:maxValue         1.38E1 ;
-                                                                   epcis:meanValue        1.32E1 ;
-                                                                   epcis:measurementType  gs1:MT-Temperature ;
-                                                                   epcis:minValue         1.24E1 ;
-                                                                   epcis:percRank         5.0E1 ;
-                                                                   epcis:percValue        1.27E1 ;
-                                                                   epcis:sDev             4.1E-1 ;
-                                                                   epcis:uom              "CEL"
-                                                                 ]
+                                     epcis:sensorMetadata     [ examp:someFurtherMetaData  "someText" ;
+                                                                epcis:endTime              "2019-04-02T14:59:59.999+01:00"^^xsd:dateTime ;
+                                                                epcis:startTime            "2019-04-01T15:00:00.000+01:00"^^xsd:dateTime
+                                                              ] ;
+                                     epcis:sensorReport       [ epcis:measurementType  examp:someSensorProperty ;
+                                                                epcis:stringValue      "someSensorOutput"
+                                                              ] ;
+                                     epcis:sensorReport       [ examp:cv               "123" ;
+                                                                epcis:maxValue         1.38E1 ;
+                                                                epcis:meanValue        1.32E1 ;
+                                                                epcis:measurementType  gs1:Temperature ;
+                                                                epcis:minValue         1.24E1 ;
+                                                                epcis:percRank         5.0E1 ;
+                                                                epcis:percValue        1.27E1 ;
+                                                                epcis:sDev             4.1E-1 ;
+                                                                epcis:uom              "CEL"
+                                                              ]
                                    ] .
