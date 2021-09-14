@@ -1743,7 +1743,7 @@
         "@language": "en"
       },
       "rdfs:range": {
-        "@id": "xsd:dobule"
+        "@id": "xsd:double"
       },
       "schema:rangeIncludes": {
         "@id": "xsd:double"
@@ -2373,11 +2373,26 @@
         "@language": "en"
       },
       "rdfs:domain": {
-        "@id": "epcis:SensorReport"
+        "@type": "owl:Class",
+        "owl:unionOf": {
+          "@list": [
+            {
+              "@id": "epcis:QuantityElement"
+            },
+            {
+              "@id": "epcis:SensorReport"
+            }
+          ]
+        }
       },
-      "schema:domainIncludes": {
-        "@id": "epcis:SensorReport"
-      },
+      "schema:domainIncludes": [
+        {
+          "@id": "epcis:QuantityElement"
+        },
+        {
+          "@id": "epcis:SensorReport"
+        }
+      ],
       "rdfs:isDefinedBy": {
         "@id": "epcis:"
       },
@@ -2610,37 +2625,6 @@
       },
       "schema:rangeIncludes": {
         "@id": "xsd:double"
-      },
-      "sw:term_status": "stable"
-    },
-    {
-      "@id": "epcis:uom",
-      "@type": [
-        "owl:DatatypeProperty",
-        "rdf:Property"
-      ],
-      "rdfs:comment": {
-        "@value": "TODO",
-        "@language": "en"
-      },
-      "rdfs:domain": {
-        "@id": "epcis:QuantityElement"
-      },
-      "schema:domainIncludes": {
-        "@id": "epcis:QuantityElement"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "epcis:"
-      },
-      "rdfs:label": {
-        "@value": "uom",
-        "@language": "en"
-      },
-      "rdfs:range": {
-        "@id": "xsd:string"
-      },
-      "schema:rangeIncludes": {
-        "@id": "xsd:string"
       },
       "sw:term_status": "stable"
     },
