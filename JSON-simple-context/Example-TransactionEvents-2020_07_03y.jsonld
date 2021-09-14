@@ -1,0 +1,83 @@
+{
+  "isA": "EPCISDocument",
+  "schemaVersion": "2.0",
+  "creationDate": "2020-07-03T09:00:00.0Z",
+  "epcisBody": {
+    "eventList": [
+      {
+        "isA": "TransactionEvent",
+        "eventTime": "2019-10-04T13:12:00.000Z",
+        "eventTimeZoneOffset": "+01:00",
+        "bizTransactionList": [
+          {
+            "bizTransaction": "urn:epc:id:gdti:95252084.0001.0003555480001000"
+          }
+        ],
+        "epcList": [
+          "urn:epc:id:gsrn:95252084.000000001"
+        ],
+        "action": "ADD",
+        "bizStep": "http://epcis.example.org/hc/bizstep/summarising_discharge",
+        "readPoint": {
+          "id": "urn:epc:id:sgln:9524567.98765.0"
+        }
+      },
+      {
+        "isA": "TransactionEvent",
+        "eventTime": "2014-12-12T10:00:00.000Z",
+        "eventTimeZoneOffset": "+02:00",
+        "bizTransactionList": [
+          {
+            "type": "urn:gs1:epcisapp:rail:btt:passage",
+            "bizTransaction": "http://transaction.examplerail.com/passage/xyz12345"
+          }
+        ],
+        "epcList": [
+          "urn:epc:id:giai:952005385.w2"
+        ],
+        "action": "ADD",
+        "bizStep": "transporting",
+        "disposition": "in_transit",
+        "readPoint": {
+          "id": "urn:epc:id:sgln:952005385.011.ts4711"
+        },
+        "bizLocation": {
+          "id": "urn:epc:id:sgln:952005385.011.scA"
+        },
+        "destinationList": {
+          "destination": "urn:epc:id:sgln:952005385.011.0"
+        },
+        "sourceList": {
+          "source": "urn:epc:id:sgln:952005385.481.0"
+        },
+        "rail:trainVehicleCount": "3",
+        "rail:vehicle": [
+          {
+            "rail:vehicleUniquelyIdentified": "true",
+            "rail:vehicleAxleCount": "4",
+            "rail:vehiclePosition": "1",
+            "rail:vehicleMasterGIAI": "urn:epc:id:giai:952005385.vehicle2"
+          },
+          {
+            "rail:vehicleUniquelyIdentified": "false",
+            "rail:vehicleAxleCount": "4",
+            "rail:vehiclePosition": "2",
+          },
+          {
+            "rail:vehicleUniquelyIdentified": "true",
+            "rail:vehicleAxleCount": "4",
+            "rail:vehiclePosition": "3",
+            "rail:vehicleMasterGIAI": "urn:epc:id:giai:735005385.vehicle1"
+          }
+        ],
+        "rail:trainAxleCount": "12"
+      }
+    ]
+  },
+  "@context": [
+    "https://gs1.github.io/EPCIS/epcis-context.jsonld",
+    {
+      "rail": "urn:gs1:epcisapp:rail"
+    }
+  ]
+}
