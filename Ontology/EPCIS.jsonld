@@ -218,6 +218,25 @@
       "sw:term_status": "stable"
     },
     {
+      "@id": "epcis:EPCISDocumentBody",
+      "@type": [
+        "owl:Class",
+        "rdfs:Class"
+      ],
+      "rdfs:comment": {
+        "@value": "Intermediate node that is connected to EPCISDocument using epcisBody, and includes a list of events using eventList",
+        "@language": "en"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "epcis:"
+      },
+      "rdfs:label": {
+        "@value": "EPCISDocumentBody",
+        "@language": "en"
+      },
+      "sw:term_status": "stable"
+    },
+    {
       "@id": "epcis:ErrorDeclaration",
       "@type": [
         "owl:Class",
@@ -308,25 +327,6 @@
       },
       "rdfs:label": {
         "@value": "QuantityElement",
-        "@language": "en"
-      },
-      "sw:term_status": "stable"
-    },
-    {
-      "@id": "epcis:ReadPoint",
-      "@type": [
-        "owl:Class",
-        "rdfs:Class"
-      ],
-      "rdfs:comment": {
-        "@value": "A Read Point is a discretely recorded location that is meant to identify the most specific place at which an EPCIS event took place. Read Points are determined by the EPCIS Capturing Application, perhaps inferred as a function of logical reader if stationary readers are used, perhaps determined overtly by reading a location tag if the reader is mobile, or in general determined by any other means the EPCIS Capturing Application chooses to use. Conceptually, the Read Point is designed to identify 'where objects were at the time of the EPCIS event'.",
-        "@language": "en"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "epcis:"
-      },
-      "rdfs:label": {
-        "@value": "ReadPoint",
         "@language": "en"
       },
       "sw:term_status": "stable"
@@ -786,10 +786,10 @@
         "@language": "en"
       },
       "rdfs:range": {
-        "@id": "xsd:string"
+        "@id": "cbv:Comp"
       },
       "schema:rangeIncludes": {
-        "@id": "xsd:string"
+        "@id": "cbv:Comp"
       },
       "sw:term_status": "stable"
     },
@@ -1198,51 +1198,20 @@
       "sw:term_status": "stable"
     },
     {
-      "@id": "epcis:eventID",
-      "@type": [
-        "owl:ObjectProperty",
-        "rdf:Property"
-      ],
-      "rdfs:comment": {
-        "@value": "(Optional) An identifier for this event as specified by the capturing application, globally unique across all events other than error declarations. 'Globally unique' means different from the eventID on any other EPCIS event across any implementation of EPCIS, not merely across the events captured by a single capturing application or by a single capture server. (The Core Business Vocabulary standard [CBV1.2] specifies the use of a UUID URI for this purpose.) Note that in the case of an error declaration, the event ID will be equal to the event ID of the erroneous event (or null if the event ID of the erroneous event is null), and in that sense is not unique.",
-        "@language": "en"
-      },
-      "rdfs:domain": {
-        "@id": "epcis:EPCISEvent"
-      },
-      "schema:domainIncludes": {
-        "@id": "epcis:EPCISEvent"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "epcis:"
-      },
-      "rdfs:label": {
-        "@value": "eventID",
-        "@language": "en"
-      },
-      "rdfs:range": {
-        "@id": "epcis:EventID"
-      },
-      "schema:rangeIncludes": {
-        "@id": "epcis:EventID"
-      },
-      "sw:term_status": "stable"
-    },
-    {
       "@id": "epcis:eventList",
       "@type": [
         "owl:ObjectProperty",
         "rdf:Property"
       ],
       "rdfs:comment": {
-        "@value": "TODO",
+        "@value": "List of EPCIS events included in a document: connects EPCISDocumentBody to EPCISEvent",
         "@language": "en"
       },
       "rdfs:domain": {
-        "@id": "epcis:EPCISDocument"
+        "@id": "epcis:EPCISDocumentBody"
       },
       "schema:domainIncludes": {
-        "@id": "epcis:EPCISDocument"
+        "@id": "epcis:EPCISDocumentBody"
       },
       "rdfs:isDefinedBy": {
         "@id": "epcis:"
@@ -1359,7 +1328,7 @@
         "rdf:Property"
       ],
       "rdfs:comment": {
-        "@value": "Associates sever TransformationEvents with a longer-running Transformation process, therefore linking them together.",
+        "@value": "Associates severe TransformationEvents with a longer-running Transformation process, therefore linking them together.",
         "@language": "en"
       },
       "rdfs:domain": {
@@ -1793,10 +1762,10 @@
         "@language": "en"
       },
       "rdfs:range": {
-        "@id": "xsd:decimal"
+        "@id": "xsd:dobule"
       },
       "schema:rangeIncludes": {
-        "@id": "xsd:decimal"
+        "@id": "xsd:double"
       },
       "sw:term_status": "stable"
     },
@@ -1824,10 +1793,10 @@
         "@language": "en"
       },
       "rdfs:range": {
-        "@id": "xsd:decimal"
+        "@id": "xsd:double"
       },
       "schema:rangeIncludes": {
-        "@id": "xsd:decimal"
+        "@id": "xsd:double"
       },
       "sw:term_status": "stable"
     },
@@ -2003,10 +1972,10 @@
         "@language": "en"
       },
       "rdfs:range": {
-        "@id": "epcis:ErrorReasonID"
+        "@id": "cbv:ER"
       },
       "schema:rangeIncludes": {
-        "@id": "epcis:ErrorReasonID"
+        "@id": "cbv:ER"
       },
       "sw:term_status": "stable"
     },
@@ -2249,7 +2218,7 @@
         "rdf:Property"
       ],
       "rdfs:comment": {
-        "@value": "An identifier that indicates the role of SourceOrDestination in a transfer (eg Owning Party, Possessing Party; or Location). \nMust correlate with the type of bizLocation: gs1:Organization for the first tow; gs1:Place for the last one.",
+        "@value": "An identifier that indicates the role of SourceOrDestination in a transfer (eg Owning Party, Possessing Party; or Location).\n        Must correlate with the type of bizLocation: gs1:Organization for the first tow; gs1:Place for the last one.",
         "@language": "en"
       },
       "rdfs:domain": {
@@ -2496,6 +2465,232 @@
       },
       "schema:rangeIncludes": {
         "@id": "xsd:double"
+      },
+      "sw:term_status": "stable"
+    },
+    {
+      "@id": "epcis:epcisBody",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@value": "Body (EPCISDocumentBody) of an EPCISDocument",
+        "@language": "en"
+      },
+      "rdfs:domain": {
+        "@id": "epcis:EPCISDocument"
+      },
+      "schema:domainIncludes": {
+        "@id": "epcis:EPCISDocument"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "epcis:"
+      },
+      "rdfs:label": {
+        "@value": "epcisBody",
+        "@language": "en"
+      },
+      "rdfs:range": {
+        "@id": "epcis:EPCISDocumentBody"
+      },
+      "schema:rangeIncludes": {
+        "@id": "epcis:EPCISDocumentBody"
+      },
+      "sw:term_status": "stable"
+    },
+    {
+      "@id": "epcis:transformationID",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@value": "TODO",
+        "@language": "en"
+      },
+      "rdfs:domain": {
+        "@id": "epcis:TransformationEvent"
+      },
+      "schema:domainIncludes": {
+        "@id": "epcis:TransformationEvent"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "epcis:"
+      },
+      "rdfs:label": {
+        "@value": "transformationID",
+        "@language": "en"
+      },
+      "sw:term_status": "stable"
+    },
+    {
+      "@id": "epcis:sensorElementList",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@value": "Should be one or more IRI that connects event to SensorElement",
+        "@language": "en"
+      },
+      "rdfs:domain": {
+        "@id": "epcis:EPCISEvent"
+      },
+      "schema:domainIncludes": {
+        "@id": "epcis:EPCISEvent"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "epcis:"
+      },
+      "rdfs:label": {
+        "@value": "sensorElementList",
+        "@language": "en"
+      },
+      "rdfs:range": {
+        "@id": "epcis:SensorElement"
+      },
+      "schema:rangeIncludes": {
+        "@id": "epcis:SensorElement"
+      },
+      "sw:term_status": "stable"
+    },
+    {
+      "@id": "epcis:epcClass",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@value": "TODO",
+        "@language": "en"
+      },
+      "rdfs:domain": {
+        "@id": "epcis:QuantityElement"
+      },
+      "schema:domainIncludes": {
+        "@id": "epcis:QuantityElement"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "epcis:"
+      },
+      "rdfs:label": {
+        "@value": "epcClass",
+        "@language": "en"
+      },
+      "rdfs:range": {
+        "@type": "owl:Class",
+        "owl:unionOf": {
+          "@list": [
+            {
+              "@id": "gs1:Product"
+            },
+            {
+              "@id": "gs1:ProductBatch"
+            }
+          ]
+        }
+      },
+      "schema:rangeIncludes": [
+        {
+          "@id": "gs1:Product"
+        },
+        {
+          "@id": "gs1:ProductBatch"
+        }
+      ],
+      "sw:term_status": "stable"
+    },
+    {
+      "@id": "epcis:quantity",
+      "@type": [
+        "owl:DatatypeProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@value": "TODO",
+        "@language": "en"
+      },
+      "rdfs:domain": {
+        "@id": "epcis:QuantityElement"
+      },
+      "schema:domainIncludes": {
+        "@id": "epcis:QuantityElement"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "epcis:"
+      },
+      "rdfs:label": {
+        "@value": "quantity",
+        "@language": "en"
+      },
+      "rdfs:range": {
+        "@id": "xsd:double"
+      },
+      "schema:rangeIncludes": {
+        "@id": "xsd:double"
+      },
+      "sw:term_status": "stable"
+    },
+    {
+      "@id": "epcis:uom",
+      "@type": [
+        "owl:DatatypeProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@value": "TODO",
+        "@language": "en"
+      },
+      "rdfs:domain": {
+        "@id": "epcis:QuantityElement"
+      },
+      "schema:domainIncludes": {
+        "@id": "epcis:QuantityElement"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "epcis:"
+      },
+      "rdfs:label": {
+        "@value": "uom",
+        "@language": "en"
+      },
+      "rdfs:range": {
+        "@id": "xsd:string"
+      },
+      "schema:rangeIncludes": {
+        "@id": "xsd:string"
+      },
+      "sw:term_status": "stable"
+    },
+    {
+      "@id": "epcis:certificationInfo",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "rdfs:comment": {
+        "@value": "TODO",
+        "@language": "en"
+      },
+      "rdfs:domain": {
+        "@id": "epcis:EPCISEvent"
+      },
+      "schema:domainIncludes": {
+        "@id": "epcis:EPCISEvent"
+      },
+      "rdfs:isDefinedBy": {
+        "@id": "epcis:"
+      },
+      "rdfs:label": {
+        "@value": "certificationInfo",
+        "@language": "en"
+      },
+      "rdfs:range": {
+        "@id": "gs1:CertificationDetails"
+      },
+      "schema:rangeIncludes": {
+        "@id": "gs1:CertificationDetails"
       },
       "sw:term_status": "stable"
     }
