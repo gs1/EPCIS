@@ -1,8 +1,5 @@
 @prefix epcis:       <https://ns.gs1.org/epcis/> .
 @prefix cbv:         <https://ns.gs1.org/cbv/> .
-@prefix md:          <https://ns.gs1.org/epcismd/> .
-@prefix vtype:       <urn:epcglobal:epcis:vtype:> .
-@prefix cbvmda:      <urn:epcglobal:cbv:mda:> .
 
 @prefix gs1:         <https://gs1.org/voc/> .
 @prefix rdf:         <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -13,4 +10,3 @@
 
 @prefix example1:    <http://ns.example.com/epcis/> .
 @prefix example2:    <http://epcis.example.com/ns/> .
-@prefix example-mda: <http://epcis.example.com/mda/> .

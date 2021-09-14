@@ -1,6 +1,6 @@
 {
 	"@context": [
-		"https://vladimiralexiev.github.io/EPCIS/epcis-context-simple.jsonld",
+		"https://gs1.github.io/EPCIS/epcis-context-simple.jsonld",
 		{
 			"ex": "http://ns.example.com/epcis/"
 		},
@@ -23,7 +23,7 @@
 					"https://id.gs1.org/01/09506000134352"
 				],
 				"action": "OBSERVE",
-				"bizStep": "https://ns.gs1.org/cbv/Bizstep-sensor_reporting",
+				"bizStep": "sensor_reporting",
 				"readPoint": {
 					"id": "https://id.gs1.org/414/9506000134307"
 				},
