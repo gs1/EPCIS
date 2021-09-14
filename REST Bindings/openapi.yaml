@@ -61,8 +61,8 @@ paths:
               $ref: '#/components/headers/GS1-CBV-Version'
             GS1-EPC-Format:
               $ref: '#/components/headers/GS1-EPC-Format'
-            GS1-CBV-Format:
-              $ref: '#/components/headers/GS1-CBV-Format'
+            GS1-CBV-XML-Format:
+              $ref: '#/components/headers/GS1-CBV-XML-Format'
             GS1-EPCIS-Extensions:
               $ref: '#/components/headers/GS1-EPCIS-Extensions'
             GS1-Vendor-Version:
@@ -121,8 +121,8 @@ paths:
               $ref: '#/components/headers/GS1-CBV-Version'
             GS1-EPC-Format:
               $ref: '#/components/headers/GS1-EPC-Format'
-            GS1-CBV-Format:
-              $ref: '#/components/headers/GS1-CBV-Format'
+            GS1-CBV-XML-Format:
+              $ref: '#/components/headers/GS1-CBV-XML-Format'
             GS1-EPCIS-Extensions:
               $ref: '#/components/headers/GS1-EPCIS-Extensions'
             GS1-Vendor-Version:
@@ -153,7 +153,7 @@ paths:
         - $ref: '#/components/parameters/GS1-EPCIS-Max'
         - $ref: '#/components/parameters/GS1-CBV-Version'
         - $ref: '#/components/parameters/GS1-EPC-Format'
-        - $ref: '#/components/parameters/GS1-CBV-Format'
+        - $ref: '#/components/parameters/GS1-CBV-XML-Format'
         - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
         - $ref: '#/components/parameters/GS1-CBV-Extensions'
         - name: GS1-Capture-Error-Behaviour
@@ -198,8 +198,8 @@ paths:
               $ref: '#/components/headers/GS1-CBV-Version'
             GS1-EPC-Format:
               $ref: '#/components/headers/GS1-EPC-Format'
-            GS1-CBV-Format:
-              $ref: '#/components/headers/GS1-CBV-Format'
+            GS1-CBV-XML-Format:
+              $ref: '#/components/headers/GS1-CBV-XML-Format'
             GS1-EPCIS-Extensions:
               $ref: '#/components/headers/GS1-EPCIS-Extensions'
             GS1-Vendor-Version:
@@ -272,8 +272,8 @@ paths:
               $ref: '#/components/headers/GS1-CBV-Version'
             GS1-EPC-Format:
               $ref: '#/components/headers/GS1-EPC-Format'
-            GS1-CBV-Format:
-              $ref: '#/components/headers/GS1-CBV-Format'
+            GS1-CBV-XML-Format:
+              $ref: '#/components/headers/GS1-CBV-XML-Format'
             GS1-EPCIS-Extensions:
               $ref: '#/components/headers/GS1-EPCIS-Extensions'
             GS1-CBV-Extensions:
@@ -359,8 +359,8 @@ paths:
               $ref: '#/components/headers/GS1-CBV-Version'
             GS1-EPC-Format:
               $ref: '#/components/headers/GS1-EPC-Format'
-            GS1-CBV-Format:
-              $ref: '#/components/headers/GS1-CBV-Format'
+            GS1-CBV-XML-Format:
+              $ref: '#/components/headers/GS1-CBV-XML-Format'
             GS1-EPCIS-Extensions:
               $ref: '#/components/headers/GS1-EPCIS-Extensions'
             GS1-Vendor-Version:
@@ -423,8 +423,8 @@ paths:
               $ref: '#/components/headers/GS1-CBV-Version'
             GS1-EPC-Format:
               $ref: '#/components/headers/GS1-EPC-Format'
-            GS1-CBV-Format:
-              $ref: '#/components/headers/GS1-CBV-Format'
+            GS1-CBV-XML-Format:
+              $ref: '#/components/headers/GS1-CBV-XML-Format'
             GS1-EPCIS-Extensions:
               $ref: '#/components/headers/GS1-EPCIS-Extensions'
             GS1-Vendor-Version:
@@ -537,7 +537,7 @@ paths:
       - $ref: '#/components/parameters/GS1-EPCIS-Max'
       - $ref: '#/components/parameters/GS1-CBV-Version'
       - $ref: '#/components/parameters/GS1-EPC-Format'
-      - $ref: '#/components/parameters/GS1-CBV-Format'
+      - $ref: '#/components/parameters/GS1-CBV-XML-Format'
       - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
       - $ref: '#/components/parameters/GS1-CBV-Extensions'
     options:
@@ -570,8 +570,8 @@ paths:
               $ref: '#/components/headers/GS1-CBV-Version'
             GS1-EPC-Format:
               $ref: '#/components/headers/GS1-EPC-Format'
-            GS1-CBV-Format:
-              $ref: '#/components/headers/GS1-CBV-Format'
+            GS1-CBV-XML-Format:
+              $ref: '#/components/headers/GS1-CBV-XML-Format'
             GS1-EPCIS-Extensions:
               $ref: '#/components/headers/GS1-EPCIS-Extensions'
             GS1-Vendor-Version:
@@ -658,8 +658,8 @@ paths:
               $ref: '#/components/headers/GS1-CBV-Version'
             GS1-EPC-Format:
               $ref: '#/components/headers/GS1-EPC-Format'
-            GS1-CBV-Format:
-              $ref: '#/components/headers/GS1-CBV-Format'
+            GS1-CBV-XML-Format:
+              $ref: '#/components/headers/GS1-CBV-XML-Format'
             GS1-EPCIS-Extensions:
               $ref: '#/components/headers/GS1-EPCIS-Extensions'
             GS1-Vendor-Version:
@@ -744,8 +744,8 @@ paths:
               $ref: '#/components/headers/GS1-CBV-Version'
             GS1-EPC-Format:
               $ref: '#/components/headers/GS1-EPC-Format'
-            GS1-CBV-Format:
-              $ref: '#/components/headers/GS1-CBV-Format'
+            GS1-CBV-XML-Format:
+              $ref: '#/components/headers/GS1-CBV-XML-Format'
             GS1-EPCIS-Extensions:
               $ref: '#/components/headers/GS1-EPCIS-Extensions'
             GS1-Vendor-Version:
@@ -762,7 +762,7 @@ paths:
         - $ref: '#/components/parameters/GS1-EPCIS-Max'
         - $ref: '#/components/parameters/GS1-CBV-Version'
         - $ref: '#/components/parameters/GS1-EPC-Format'
-        - $ref: '#/components/parameters/GS1-CBV-Format'
+        - $ref: '#/components/parameters/GS1-CBV-XML-Format'
         - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
         - $ref: '#/components/parameters/GS1-CBV-Extensions'
       description: |
@@ -806,7 +806,7 @@ paths:
         - $ref: '#/components/parameters/GS1-EPCIS-Max'
         - $ref: '#/components/parameters/GS1-CBV-Version'
         - $ref: '#/components/parameters/GS1-EPC-Format'
-        - $ref: '#/components/parameters/GS1-CBV-Format'
+        - $ref: '#/components/parameters/GS1-CBV-XML-Format'
         - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
         - $ref: '#/components/parameters/GS1-CBV-Extensions'
       summary: Returns known electronic product codes.
@@ -826,8 +826,8 @@ paths:
               $ref: '#/components/headers/GS1-CBV-Version'
             GS1-EPC-Format:
               $ref: '#/components/headers/GS1-EPC-Format'
-            GS1-CBV-Format:
-              $ref: '#/components/headers/GS1-CBV-Format'
+            GS1-CBV-XML-Format:
+              $ref: '#/components/headers/GS1-CBV-XML-Format'
             GS1-EPCIS-Extensions:
               $ref: '#/components/headers/GS1-EPCIS-Extensions'
             GS1-CBV-Extensions:
@@ -895,8 +895,8 @@ paths:
               $ref: '#/components/headers/GS1-CBV-Version'
             GS1-EPC-Format:
               $ref: '#/components/headers/GS1-EPC-Format'
-            GS1-CBV-Format:
-              $ref: '#/components/headers/GS1-CBV-Format'
+            GS1-CBV-XML-Format:
+              $ref: '#/components/headers/GS1-CBV-XML-Format'
             GS1-EPCIS-Extensions:
               $ref: '#/components/headers/GS1-EPCIS-Extensions'
             GS1-Vendor-Version:
@@ -955,7 +955,7 @@ paths:
         - $ref: '#/components/parameters/GS1-EPCIS-Max'
         - $ref: '#/components/parameters/GS1-CBV-Version'
         - $ref: '#/components/parameters/GS1-EPC-Format'
-        - $ref: '#/components/parameters/GS1-CBV-Format'
+        - $ref: '#/components/parameters/GS1-CBV-XML-Format'
         - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
         - $ref: '#/components/parameters/GS1-CBV-Extensions'
 
@@ -1013,7 +1013,7 @@ paths:
         - $ref: '#/components/parameters/GS1-EPCIS-Max'
         - $ref: '#/components/parameters/GS1-CBV-Version'
         - $ref: '#/components/parameters/GS1-EPC-Format'
-        - $ref: '#/components/parameters/GS1-CBV-Format'
+        - $ref: '#/components/parameters/GS1-CBV-XML-Format'
         - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
         - $ref: '#/components/parameters/GS1-CBV-Extensions'
       description: |
@@ -1055,7 +1055,7 @@ paths:
         - $ref: '#/components/parameters/GS1-EPCIS-Max'
         - $ref: '#/components/parameters/GS1-CBV-Version'
         - $ref: '#/components/parameters/GS1-EPC-Format'
-        - $ref: '#/components/parameters/GS1-CBV-Format'
+        - $ref: '#/components/parameters/GS1-CBV-XML-Format'
         - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
         - $ref: '#/components/parameters/GS1-CBV-Extensions'
       summary: Returns known business steps.
@@ -1075,8 +1075,8 @@ paths:
               $ref: '#/components/headers/GS1-CBV-Version'
             GS1-EPC-Format:
               $ref: '#/components/headers/GS1-EPC-Format'
-            GS1-CBV-Format:
-              $ref: '#/components/headers/GS1-CBV-Format'
+            GS1-CBV-XML-Format:
+              $ref: '#/components/headers/GS1-CBV-XML-Format'
             GS1-EPCIS-Extensions:
               $ref: '#/components/headers/GS1-EPCIS-Extensions'
             GS1-CBV-Extensions:
@@ -1143,8 +1143,8 @@ paths:
               $ref: '#/components/headers/GS1-CBV-Version'
             GS1-EPC-Format:
               $ref: '#/components/headers/GS1-EPC-Format'
-            GS1-CBV-Format:
-              $ref: '#/components/headers/GS1-CBV-Format'
+            GS1-CBV-XML-Format:
+              $ref: '#/components/headers/GS1-CBV-XML-Format'
             GS1-EPCIS-Extensions:
               $ref: '#/components/headers/GS1-EPCIS-Extensions'
             GS1-Vendor-Version:
@@ -1202,7 +1202,7 @@ paths:
         - $ref: '#/components/parameters/GS1-EPCIS-Max'
         - $ref: '#/components/parameters/GS1-CBV-Version'
         - $ref: '#/components/parameters/GS1-EPC-Format'
-        - $ref: '#/components/parameters/GS1-CBV-Format'
+        - $ref: '#/components/parameters/GS1-CBV-XML-Format'
         - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
         - $ref: '#/components/parameters/GS1-CBV-Extensions'
       description: |
@@ -1260,7 +1260,7 @@ paths:
         - $ref: '#/components/parameters/GS1-EPCIS-Max'
         - $ref: '#/components/parameters/GS1-CBV-Version'
         - $ref: '#/components/parameters/GS1-EPC-Format'
-        - $ref: '#/components/parameters/GS1-CBV-Format'
+        - $ref: '#/components/parameters/GS1-CBV-XML-Format'
         - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
         - $ref: '#/components/parameters/GS1-CBV-Extensions'
       description: |
@@ -1302,7 +1302,7 @@ paths:
         - $ref: '#/components/parameters/GS1-EPCIS-Max'
         - $ref: '#/components/parameters/GS1-CBV-Version'
         - $ref: '#/components/parameters/GS1-EPC-Format'
-        - $ref: '#/components/parameters/GS1-CBV-Format'
+        - $ref: '#/components/parameters/GS1-CBV-XML-Format'
         - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
         - $ref: '#/components/parameters/GS1-CBV-Extensions'
       summary: Returns known business locations.
@@ -1385,8 +1385,8 @@ paths:
               $ref: '#/components/headers/GS1-CBV-Version'
             GS1-EPC-Format:
               $ref: '#/components/headers/GS1-EPC-Format'
-            GS1-CBV-Format:
-              $ref: '#/components/headers/GS1-CBV-Format'
+            GS1-CBV-XML-Format:
+              $ref: '#/components/headers/GS1-CBV-XML-Format'
             GS1-EPCIS-Extensions:
               $ref: '#/components/headers/GS1-EPCIS-Extensions'
             GS1-Vendor-Version:
@@ -1446,7 +1446,7 @@ paths:
         - $ref: '#/components/parameters/GS1-EPCIS-Max'
         - $ref: '#/components/parameters/GS1-CBV-Version'
         - $ref: '#/components/parameters/GS1-EPC-Format'
-        - $ref: '#/components/parameters/GS1-CBV-Format'
+        - $ref: '#/components/parameters/GS1-CBV-XML-Format'
         - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
         - $ref: '#/components/parameters/GS1-CBV-Extensions'
 
@@ -1504,7 +1504,7 @@ paths:
         - $ref: '#/components/parameters/GS1-EPCIS-Max'
         - $ref: '#/components/parameters/GS1-CBV-Version'
         - $ref: '#/components/parameters/GS1-EPC-Format'
-        - $ref: '#/components/parameters/GS1-CBV-Format'
+        - $ref: '#/components/parameters/GS1-CBV-XML-Format'
         - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
         - $ref: '#/components/parameters/GS1-CBV-Extensions'
       description: |
@@ -1546,7 +1546,7 @@ paths:
         - $ref: '#/components/parameters/GS1-EPCIS-Max'
         - $ref: '#/components/parameters/GS1-CBV-Version'
         - $ref: '#/components/parameters/GS1-EPC-Format'
-        - $ref: '#/components/parameters/GS1-CBV-Format'
+        - $ref: '#/components/parameters/GS1-CBV-XML-Format'
         - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
         - $ref: '#/components/parameters/GS1-CBV-Extensions'
       summary: Returns known read points.
@@ -1568,8 +1568,8 @@ paths:
               $ref: '#/components/headers/GS1-EPCIS-Extensions'
             GS1-EPC-Format:
               $ref: '#/components/headers/GS1-EPC-Format'
-            GS1-CBV-Format:
-              $ref: '#/components/headers/GS1-CBV-Format'
+            GS1-CBV-XML-Format:
+              $ref: '#/components/headers/GS1-CBV-XML-Format'
             GS1-CBV-Extensions:
               $ref: '#/components/headers/GS1-CBV-Extensions'
             Link:
@@ -1633,8 +1633,8 @@ paths:
               $ref: '#/components/headers/GS1-CBV-Version'
             GS1-EPC-Format:
               $ref: '#/components/headers/GS1-EPC-Format'
-            GS1-CBV-Format:
-              $ref: '#/components/headers/GS1-CBV-Format'
+            GS1-CBV-XML-Format:
+              $ref: '#/components/headers/GS1-CBV-XML-Format'
             GS1-EPCIS-Extensions:
               $ref: '#/components/headers/GS1-EPCIS-Extensions'
             GS1-Vendor-Version:
@@ -1692,7 +1692,7 @@ paths:
         - $ref: '#/components/parameters/GS1-EPCIS-Max'
         - $ref: '#/components/parameters/GS1-CBV-Version'
         - $ref: '#/components/parameters/GS1-EPC-Format'
-        - $ref: '#/components/parameters/GS1-CBV-Format'
+        - $ref: '#/components/parameters/GS1-CBV-XML-Format'
         - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
         - $ref: '#/components/parameters/GS1-CBV-Extensions'
       description: |
@@ -1750,7 +1750,7 @@ paths:
         - $ref: '#/components/parameters/GS1-EPCIS-Max'
         - $ref: '#/components/parameters/GS1-CBV-Version'
         - $ref: '#/components/parameters/GS1-EPC-Format'
-        - $ref: '#/components/parameters/GS1-CBV-Format'
+        - $ref: '#/components/parameters/GS1-CBV-XML-Format'
         - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
         - $ref: '#/components/parameters/GS1-CBV-Extensions'
       description: |
@@ -1792,7 +1792,7 @@ paths:
         - $ref: '#/components/parameters/GS1-EPCIS-Max'
         - $ref: '#/components/parameters/GS1-CBV-Version'
         - $ref: '#/components/parameters/GS1-EPC-Format'
-        - $ref: '#/components/parameters/GS1-CBV-Format'
+        - $ref: '#/components/parameters/GS1-CBV-XML-Format'
         - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
         - $ref: '#/components/parameters/GS1-CBV-Extensions'
       summary: Returns known dispositions.
@@ -1875,8 +1875,8 @@ paths:
               $ref: '#/components/headers/GS1-CBV-Version'
             GS1-EPC-Format:
               $ref: '#/components/headers/GS1-EPC-Format'
-            GS1-CBV-Format:
-              $ref: '#/components/headers/GS1-CBV-Format'
+            GS1-CBV-XML-Format:
+              $ref: '#/components/headers/GS1-CBV-XML-Format'
             GS1-EPCIS-Extensions:
               $ref: '#/components/headers/GS1-EPCIS-Extensions'
             GS1-Vendor-Version:
@@ -1936,7 +1936,7 @@ paths:
         - $ref: '#/components/parameters/GS1-EPCIS-Max'
         - $ref: '#/components/parameters/GS1-CBV-Version'
         - $ref: '#/components/parameters/GS1-EPC-Format'
-        - $ref: '#/components/parameters/GS1-CBV-Format'
+        - $ref: '#/components/parameters/GS1-CBV-XML-Format'
         - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
         - $ref: '#/components/parameters/GS1-CBV-Extensions'
 
@@ -1994,7 +1994,7 @@ paths:
         - $ref: '#/components/parameters/GS1-EPCIS-Max'
         - $ref: '#/components/parameters/GS1-CBV-Version'
         - $ref: '#/components/parameters/GS1-EPC-Format'
-        - $ref: '#/components/parameters/GS1-CBV-Format'
+        - $ref: '#/components/parameters/GS1-CBV-XML-Format'
         - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
         - $ref: '#/components/parameters/GS1-CBV-Extensions'
       description: |
@@ -2057,8 +2057,8 @@ paths:
               $ref: '#/components/headers/GS1-CBV-Version'
             GS1-EPC-Format:
               $ref: '#/components/headers/GS1-EPC-Format'
-            GS1-CBV-Format:
-              $ref: '#/components/headers/GS1-CBV-Format'
+            GS1-CBV-XML-Format:
+              $ref: '#/components/headers/GS1-CBV-XML-Format'
             GS1-EPCIS-Extensions:
               $ref: '#/components/headers/GS1-EPCIS-Extensions'
             GS1-CBV-Extensions:
@@ -2131,8 +2131,8 @@ paths:
               $ref: '#/components/headers/GS1-CBV-Version'
             GS1-EPC-Format:
               $ref: '#/components/headers/GS1-EPC-Format'
-            GS1-CBV-Format:
-              $ref: '#/components/headers/GS1-CBV-Format'
+            GS1-CBV-XML-Format:
+              $ref: '#/components/headers/GS1-CBV-XML-Format'
             GS1-EPCIS-Extensions:
               $ref: '#/components/headers/GS1-EPCIS-Extensions'
             GS1-CBV-Extensions:
@@ -2189,7 +2189,7 @@ paths:
         - $ref: '#/components/parameters/GS1-EPCIS-Max'
         - $ref: '#/components/parameters/GS1-CBV-Version'
         - $ref: '#/components/parameters/GS1-EPC-Format'
-        - $ref: '#/components/parameters/GS1-CBV-Format'
+        - $ref: '#/components/parameters/GS1-CBV-XML-Format'
         - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
         - $ref: '#/components/parameters/GS1-CBV-Extensions'
         - $ref: '#/components/parameters/PerPage'
@@ -2213,8 +2213,8 @@ paths:
               $ref: '#/components/headers/GS1-CBV-Version'
             GS1-EPC-Format:
               $ref: '#/components/headers/GS1-EPC-Format'
-            GS1-CBV-Format:
-              $ref: '#/components/headers/GS1-CBV-Format'
+            GS1-CBV-XML-Format:
+              $ref: '#/components/headers/GS1-CBV-XML-Format'
             GS1-EPCIS-Extensions:
               $ref: '#/components/headers/GS1-EPCIS-Extensions'
             GS1-CBV-Extensions:
@@ -2286,8 +2286,8 @@ paths:
               $ref: '#/components/headers/GS1-CBV-Version'
             GS1-EPC-Format:
               $ref: '#/components/headers/GS1-EPC-Format'
-            GS1-CBV-Format:
-              $ref: '#/components/headers/GS1-CBV-Format'
+            GS1-CBV-XML-Format:
+              $ref: '#/components/headers/GS1-CBV-XML-Format'
             GS1-EPCIS-Extensions:
               $ref: '#/components/headers/GS1-EPCIS-Extensions'
             GS1-Vendor-Version:
@@ -2365,8 +2365,8 @@ paths:
               $ref: '#/components/headers/GS1-CBV-Version'
             GS1-EPC-Format:
               $ref: '#/components/headers/GS1-EPC-Format'
-            GS1-CBV-Format:
-              $ref: '#/components/headers/GS1-CBV-Format'
+            GS1-CBV-XML-Format:
+              $ref: '#/components/headers/GS1-CBV-XML-Format'
             GS1-EPCIS-Extensions:
               $ref: '#/components/headers/GS1-EPCIS-Extensions'
             GS1-CBV-Extensions:
@@ -2439,7 +2439,7 @@ paths:
         - $ref: '#/components/parameters/GS1-EPCIS-Max'
         - $ref: '#/components/parameters/GS1-CBV-Version'
         - $ref: '#/components/parameters/GS1-EPC-Format'
-        - $ref: '#/components/parameters/GS1-CBV-Format'
+        - $ref: '#/components/parameters/GS1-CBV-XML-Format'
         - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
         - $ref: '#/components/parameters/GS1-CBV-Extensions'
       description: |
@@ -2803,7 +2803,7 @@ paths:
         - $ref: '#/components/parameters/GS1-EPCIS-Max'
         - $ref: '#/components/parameters/GS1-CBV-Version'
         - $ref: '#/components/parameters/GS1-EPC-Format'
-        - $ref: '#/components/parameters/GS1-CBV-Format'
+        - $ref: '#/components/parameters/GS1-CBV-XML-Format'
         - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
         - $ref: '#/components/parameters/GS1-CBV-Extensions'
         - $ref: '#/components/parameters/PerPage'
@@ -2844,8 +2844,8 @@ paths:
               $ref: '#/components/headers/GS1-CBV-Version'
             GS1-EPC-Format:
               $ref: '#/components/headers/GS1-EPC-Format'
-            GS1-CBV-Format:
-              $ref: '#/components/headers/GS1-CBV-Format'
+            GS1-CBV-XML-Format:
+              $ref: '#/components/headers/GS1-CBV-XML-Format'
             GS1-EPCIS-Extensions:
               $ref: '#/components/headers/GS1-EPCIS-Extensions'
             GS1-CBV-Extensions:
@@ -2907,8 +2907,8 @@ paths:
               $ref: '#/components/headers/GS1-CBV-Version'
             GS1-EPC-Format:
               $ref: '#/components/headers/GS1-EPC-Format'
-            GS1-CBV-Format:
-              $ref: '#/components/headers/GS1-CBV-Format'
+            GS1-CBV-XML-Format:
+              $ref: '#/components/headers/GS1-CBV-XML-Format'
             GS1-EPCIS-Extensions:
               $ref: '#/components/headers/GS1-EPCIS-Extensions'
             GS1-CBV-Extensions:
@@ -2971,8 +2971,8 @@ paths:
               $ref: '#/components/headers/GS1-CBV-Version'
             GS1-EPC-Format:
               $ref: '#/components/headers/GS1-EPC-Format'
-            GS1-CBV-Format:
-              $ref: '#/components/headers/GS1-CBV-Format'
+            GS1-CBV-XML-Format:
+              $ref: '#/components/headers/GS1-CBV-XML-Format'
             GS1-EPCIS-Extensions:
               $ref: '#/components/headers/GS1-EPCIS-Extensions'
             GS1-CBV-Extensions:
@@ -3048,8 +3048,8 @@ components:
           $ref: '#/components/headers/GS1-EPCIS-Max'
         GS1-EPC-Format:
           $ref: '#/components/headers/GS1-EPC-Format'
-        GS1-CBV-Format:
-          $ref: '#/components/headers/GS1-CBV-Format'
+        GS1-CBV-XML-Format:
+          $ref: '#/components/headers/GS1-CBV-XML-Format'
         GS1-CBV-Version:
           $ref: '#/components/headers/GS1-CBV-Version'
         GS1-EPCIS-Extensions:
@@ -3082,8 +3082,8 @@ components:
           $ref: '#/components/headers/GS1-EPCIS-Extensions'
         GS1-EPC-Format:
           $ref: '#/components/headers/GS1-EPC-Format'
-        GS1-CBV-Format:
-          $ref: '#/components/headers/GS1-CBV-Format'
+        GS1-CBV-XML-Format:
+          $ref: '#/components/headers/GS1-CBV-XML-Format'
         GS1-CBV-Extensions:
           $ref: '#/components/headers/GS1-CBV-Extensions'
         Link:
@@ -3154,8 +3154,8 @@ components:
           $ref: '#/components/headers/GS1-CBV-Version'
         GS1-EPC-Format:
           $ref: '#/components/headers/GS1-EPC-Format'
-        GS1-CBV-Format:
-          $ref: '#/components/headers/GS1-CBV-Format'
+        GS1-CBV-XML-Format:
+          $ref: '#/components/headers/GS1-CBV-XML-Format'
         GS1-EPCIS-Extensions:
           $ref: '#/components/headers/GS1-EPCIS-Extensions'
         GS1-Vendor-Version:
@@ -3184,8 +3184,8 @@ components:
           $ref: '#/components/headers/GS1-CBV-Version'
         GS1-EPC-Format:
           $ref: '#/components/headers/GS1-EPC-Format'
-        GS1-CBV-Format:
-          $ref: '#/components/headers/GS1-CBV-Format'
+        GS1-CBV-XML-Format:
+          $ref: '#/components/headers/GS1-CBV-XML-Format'
         GS1-EPCIS-Extensions:
           $ref: '#/components/headers/GS1-EPCIS-Extensions'
         GS1-Vendor-Version:
@@ -4201,39 +4201,40 @@ components:
       type: string
       pattern: ^\d+(\.\d+)?$
     GS1-EPC-Format:
-      example: Always_DL
+      example: Always_GS1_Digital_Link
       description: |
         Request or response header to indicate whether EPCs are expressed as GS1 Digital Link URIs or as EPC URNs.
-        If both server and client set `GS1-EPC-Format` to `No_Preference`, the default value is `Always_DL`:
+        If both server and client set `GS1-EPC-Format` to `No_Preference`, the default value is `Always_GS1_Digital_Link`:
 
-        - No_Preference: The client (if a request header) or server (if a response header or `OPTIONS` discovery) chooses the representation.
+        - No_Preference: The server chooses the representation.
         - Always_DL: URIs are returned as GS1 Digital Link.
         - Always_EPC_URN: URIs are returned as URN.
         - Never_Translates: The original format is kept.
       type: string
       enum:
         - No_Preference
-        - Always_DL
+        - Always_GS1_Digital_Link
         - Always_EPC_URN
         - Never_Translates
-    GS1-CBV-Format:
-      example: Always_A_Term
+    GS1-CBV-XML-Format:
+      example: Always_Web_URI
       description: |
-        Request or response header to indicate whether CBV URI fields are expressed as URNs or single bare term.
-        If both server and client set `GS1-CBV-Format` to `No_Preference`, and the default value is `Always_A_Term`
+        When requesting XML content-type only, users can use this header to request
+        receiving events with CBV values in either URN or Web URI format.
+        This option is not available for JSON/LD.
 
-        - No_Preference: The client (if a request header) or server (if a response header or `OPTIONS` discovery) chooses the representation.
-        - Always_A_Term: CBV is returned as bare string.
-        - Always_URN: URIs are returned as URN.
+        - No_Preference: The server chooses the representation.
+        - Always_Web_URI: CBV values are returned as Web URI.
+        - Always_URN: CBV values are returned as URNs.
         - Never_Translates: The original format is kept.
       type: string
       enum:
         - No_Preference
-        - Always_A_Term
+        - Always_Web_URI
         - Always_URN
         - Never_Translates
     GS1-EPCIS-Extensions:
-      description: Specific EPCIS extensions supported (e.g. for FIT).
+      description: Specific EPCIS extensions supported (e.g., for FIT).
       example: {"example-epc-ext": "http://example.com/epcis/"}
       type: object
     GS1-Vendor-Version:
@@ -4462,11 +4463,11 @@ components:
       name: GS1-EPC-Format
       schema:
         $ref: '#/components/schemas/GS1-EPC-Format'
-    GS1-CBV-Format:
+    GS1-CBV-XML-Format:
       in: header
-      name: GS1-CBV-Format
+      name: GS1-CBV-XML-Format
       schema:
-        $ref: '#/components/schemas/GS1-CBV-Format'
+        $ref: '#/components/schemas/GS1-CBV-XML-Format'
     GS1-EPCIS-Extensions:
       in: header
       name: GS1-EPCIS-Extensions
@@ -4495,9 +4496,9 @@ components:
     GS1-EPC-Format:
       schema:
         $ref: '#/components/schemas/GS1-EPC-Format'
-    GS1-CBV-Format:
+    GS1-CBV-XML-Format:
       schema:
-        $ref: '#/components/schemas/GS1-CBV-Format'
+        $ref: '#/components/schemas/GS1-CBV-XML-Format'
     GS1-EPCIS-Extensions:
       schema:
         $ref: '#/components/schemas/GS1-EPCIS-Extensions'
