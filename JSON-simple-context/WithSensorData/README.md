@@ -33,6 +33,9 @@ Most of them are derived from the XML examples in [SensorDataExamples.xml](../..
   - USes Web URIs (GS1 DL URIs) rather than EPC URNs
 - `SensorDataExample14.jsonld`: Event conveying geographic coordinates as `Latitude, Longitude` (being `Angle` in `DD`) using the default Coordinate Reference System (WGS84), which does not need to be indicated
 - `SensorDataExample15.jsonld`: Event conveying the same coordinates as `Easting, Northing` (being `Length` in `MTR`) using a Coordinate Reference System (CRS) other than WGS84
+  - Namely, this uses https://epsg.io/27700 OSGB 1936 / British National Grid (Ordnance Survey of Great Britain).
+  - You can see the conversion at https://epsg.io/transform#s_srs=4326&t_srs=27700&x=23.3199410&y=42.6983340,
+  - You can browse for the OGC EPSG URL to use at http://www.opengis.net/def/crs/EPSG/0/ (where /0/ indicates the "latest version" or version-independent URL of that CRS)
 - `SensorDataExample16.jsonld`: Event conveying the same coordinates using the [geo: URI scheme](https://en.wikipedia.org/wiki/Geo_URI_scheme) ([RFC5870](https://datatracker.ietf.org/doc/html/rfc5870)), which is a much shorter way. 
   - However, `geo:` URIs can use only two fixed CRS (see [RFC5870 section 8.3](https://datatracker.ietf.org/doc/html/rfc5870#section-8.3) and [IANA geo-uri-parameters](https://iana.org/assignments/geo-uri-parameters/geo-uri-parameters.xhtml):
     - `EPSG::4326`, which is WGS84 (2D)

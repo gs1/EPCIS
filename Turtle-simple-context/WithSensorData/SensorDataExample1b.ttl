@@ -1,17 +1,29 @@
-@prefix cbv:         <https://ns.gs1.org/cbv/> .
-@prefix cbvmda:      <urn:epcglobal:cbv:mda:> .
-@prefix dcterms:     <http://purl.org/dc/terms/> .
-@prefix epcis:       <https://ns.gs1.org/epcis/> .
-@prefix example-mda: <http://epcis.example.com/mda/> .
-@prefix example1:    <http://ns.example.com/epcis/> .
-@prefix example2:    <http://epcis.example.com/ns/> .
-@prefix gs1:         <https://gs1.org/voc/> .
-@prefix md:          <https://ns.gs1.org/epcismd/> .
-@prefix owl:         <http://www.w3.org/2002/07/owl#> .
-@prefix rdf:         <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs:        <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix vtype:       <urn:epcglobal:epcis:vtype:> .
-@prefix xsd:         <http://www.w3.org/2001/XMLSchema#> .
+@prefix cbv:      <https://ns.gs1.org/cbv/> .
+@prefix cbvmda:   <urn:epcglobal:cbv:mda:> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix epcis:    <https://ns.gs1.org/epcis/> .
+@prefix ex:       <http://epcis.example.com/ns/> .
+@prefix examp:    <http://ns.example.com/epcis/> .
+@prefix example:  <https://ns.example.com/epcis> .
+@prefix example1: <https://ns.example1.com/epcis> .
+@prefix example2: <https://ns.example2.com/epcis> .
+@prefix example3: <https://ns.example3.com/epcis> .
+@prefix example4: <https://ns.example4.com/epcis> .
+@prefix ext1:     <http://ext.com/ext1/> .
+@prefix ext2:     <http://ext.com/ext2/> .
+@prefix ext3:     <http://ext.com/ext3/> .
+@prefix gs1:      <https://gs1.org/voc/> .
+@prefix owl:      <http://www.w3.org/2002/07/owl#> .
+@prefix rail:     <urn:gs1:epcisapp:rail:> .
+@prefix rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+
+[ rdf:type         epcis:EPCISDocument ;
+  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
+  owl:versionInfo  "2.0" ;
+  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;e84840e98e15b9c86168ce85ca277af4241dddd3b658f9650a00096c2a09c2f3?ver=CBV2.0> ]
+] .
 
 <ni:///sha-256;e84840e98e15b9c86168ce85ca277af4241dddd3b658f9650a00096c2a09c2f3?ver=CBV2.0>
         rdf:type                   epcis:ObjectEvent ;
@@ -25,19 +37,19 @@
                                                              epcis:rawData         <https://example.org/8004/401234599999> ;
                                                              epcis:time            "2019-04-02T14:35:00.000+01:00"^^xsd:dateTime
                                                            ] ;
-                                     epcis:sensorReport    [ epcis:measurementType  gs1:MT-Illuminance ;
+                                     epcis:sensorReport    [ epcis:measurementType  gs1:Illuminance ;
                                                              epcis:uom              "LUX" ;
                                                              epcis:value            8.01E2
                                                            ] ;
-                                     epcis:sensorReport    [ epcis:measurementType  gs1:MT-Speed ;
+                                     epcis:sensorReport    [ epcis:measurementType  gs1:Speed ;
                                                              epcis:uom              "KMH" ;
                                                              epcis:value            1.61E2
                                                            ] ;
-                                     epcis:sensorReport    [ epcis:measurementType  gs1:MT-Humidity ;
+                                     epcis:sensorReport    [ epcis:measurementType  gs1:Humidity ;
                                                              epcis:uom              "A93" ;
                                                              epcis:value            1.22E1
                                                            ] ;
-                                     epcis:sensorReport    [ epcis:measurementType  gs1:MT-Temperature ;
+                                     epcis:sensorReport    [ epcis:measurementType  gs1:Temperature ;
                                                              epcis:uom              "CEL" ;
                                                              epcis:value            2.61E1
                                                            ]
@@ -47,19 +59,19 @@
                                                              epcis:rawData         <https://example.org/8004/401234599999> ;
                                                              epcis:time            "2019-04-02T14:05:00.000+01:00"^^xsd:dateTime
                                                            ] ;
-                                     epcis:sensorReport    [ epcis:measurementType  gs1:MT-Illuminance ;
+                                     epcis:sensorReport    [ epcis:measurementType  gs1:Illuminance ;
                                                              epcis:uom              "LUX" ;
                                                              epcis:value            8.0E2
                                                            ] ;
-                                     epcis:sensorReport    [ epcis:measurementType  gs1:MT-Speed ;
+                                     epcis:sensorReport    [ epcis:measurementType  gs1:Speed ;
                                                              epcis:uom              "KMH" ;
                                                              epcis:value            1.6E2
                                                            ] ;
-                                     epcis:sensorReport    [ epcis:measurementType  gs1:MT-Humidity ;
+                                     epcis:sensorReport    [ epcis:measurementType  gs1:Humidity ;
                                                              epcis:uom              "A93" ;
                                                              epcis:value            1.21E1
                                                            ] ;
-                                     epcis:sensorReport    [ epcis:measurementType  gs1:MT-Temperature ;
+                                     epcis:sensorReport    [ epcis:measurementType  gs1:Temperature ;
                                                              epcis:uom              "CEL" ;
                                                              epcis:value            2.6E1
                                                            ]
@@ -69,26 +81,20 @@
                                                              epcis:rawData         <https://example.org/8004/401234599999> ;
                                                              epcis:time            "2019-04-02T14:55:00.000+01:00"^^xsd:dateTime
                                                            ] ;
-                                     epcis:sensorReport    [ epcis:measurementType  gs1:MT-Illuminance ;
+                                     epcis:sensorReport    [ epcis:measurementType  gs1:Illuminance ;
                                                              epcis:uom              "LUX" ;
                                                              epcis:value            8.02E2
                                                            ] ;
-                                     epcis:sensorReport    [ epcis:measurementType  gs1:MT-Speed ;
+                                     epcis:sensorReport    [ epcis:measurementType  gs1:Speed ;
                                                              epcis:uom              "KMH" ;
                                                              epcis:value            1.62E2
                                                            ] ;
-                                     epcis:sensorReport    [ epcis:measurementType  gs1:MT-Humidity ;
+                                     epcis:sensorReport    [ epcis:measurementType  gs1:Humidity ;
                                                              epcis:uom              "A93" ;
                                                              epcis:value            1.22E1
                                                            ] ;
-                                     epcis:sensorReport    [ epcis:measurementType  gs1:MT-Temperature ;
+                                     epcis:sensorReport    [ epcis:measurementType  gs1:Temperature ;
                                                              epcis:uom              "CEL" ;
                                                              epcis:value            2.62E1
                                                            ]
                                    ] .
-
-[ rdf:type         epcis:EPCISDocument ;
-  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
-  owl:versionInfo  "2.0" ;
-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;e84840e98e15b9c86168ce85ca277af4241dddd3b658f9650a00096c2a09c2f3?ver=CBV2.0> ]
-] .

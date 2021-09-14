@@ -159,7 +159,7 @@
               "endTime": "2019-04-02T13:55:00.000Z",
               "dataProcessingMethod": "https://example.com/gdti/4012345000054987",
               "bizRules": "https://example.com/gdti/4012345000054987",
-              "someFurtherMetadata": "someText"
+              "ext1:someFurtherMetadata": "someText"
             },
             "sensorReport": [
               {
@@ -291,13 +291,13 @@
   "@context": [
     "https://gs1.github.io/EPCIS/epcis-context-simple.jsonld",
     {
-      "ext3": "http://ext.com/ext3"
+      "ext3": "http://ext.com/ext3/"
     },
     {
-      "ext2": "http://ext.com/ext2"
+      "ext2": "http://ext.com/ext2/"
     },
     {
-      "ext1": "http://ext.com/ext1"
+      "ext1": "http://ext.com/ext1/"
     }
   ]
 }

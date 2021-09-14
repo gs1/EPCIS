@@ -1,16 +1,30 @@
 # EPCIS RDF Turtle Examples
 
+## Converting JSON-LD with Playground
+
+The contents of the EPCIS JSON example files can be pasted into this online tool:
+
+https://json-ld.org/playground/
+
+- This JSON-LD playground tool performs a basic check that the data is valid JSON-LD - although it has no awareness of our EPCIS-SHACL.ttl file.
+- The JSON-LD playground tool also performs conversion of JSON-LD data into other Linked Data formats such as N-Quads (consisting of Subject-Predicate-Object or Subject-Property-Value triples).
+- The JSON-LD playground tool now also includes a tabular view, as well as a visualisation as  a branching diagram.
+
+## jsonld-cli
+
 We convert all JSON and JSON-LD examples to RDF Turtle automatically for two purposes:
 
 - Turtle is easier to read than JSON-LD
 - To validate the faithfulness of the JSON-LD representation and check the details of the corresponding RDF
 
-## jsonld-cli
-
 We use the `jsonld-cli` command-line tool, which uses the JSONLD Playground code and packages it as a `node.js` module (NPM).
 - Source: https://github.com/digitalbazaar/jsonld-cli
 - Package: https://www.npmjs.com/package/jsonld-cli
-- Latest version: 0.3.0 (dated 2018)
+- Latest version: 0.3.0 (dated 2018). PLEASE USE THIS ONE
+
+Even this latest version of `jsonld-cli` doesn't implement all features of the jsonld playground,
+see issue [jsonld-cli#18](https://github.com/digitalbazaar/jsonld-cli/issues/18).
+But we were able to work around these issues in the JSONLD context.
 
 ### Installation
 

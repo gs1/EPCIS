@@ -1,17 +1,23 @@
-@prefix cbv:         <https://ns.gs1.org/cbv/> .
-@prefix cbvmda:      <urn:epcglobal:cbv:mda:> .
-@prefix dcterms:     <http://purl.org/dc/terms/> .
-@prefix epcis:       <https://ns.gs1.org/epcis/> .
-@prefix example-mda: <http://epcis.example.com/mda/> .
-@prefix example1:    <http://ns.example.com/epcis/> .
-@prefix example2:    <http://epcis.example.com/ns/> .
-@prefix gs1:         <https://gs1.org/voc/> .
-@prefix md:          <https://ns.gs1.org/epcismd/> .
-@prefix owl:         <http://www.w3.org/2002/07/owl#> .
-@prefix rdf:         <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs:        <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix vtype:       <urn:epcglobal:epcis:vtype:> .
-@prefix xsd:         <http://www.w3.org/2001/XMLSchema#> .
+@prefix cbv:      <https://ns.gs1.org/cbv/> .
+@prefix cbvmda:   <urn:epcglobal:cbv:mda:> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix epcis:    <https://ns.gs1.org/epcis/> .
+@prefix ex:       <http://epcis.example.com/ns/> .
+@prefix examp:    <http://ns.example.com/epcis/> .
+@prefix example:  <https://ns.example.com/epcis> .
+@prefix example1: <https://ns.example1.com/epcis> .
+@prefix example2: <https://ns.example2.com/epcis> .
+@prefix example3: <https://ns.example3.com/epcis> .
+@prefix example4: <https://ns.example4.com/epcis> .
+@prefix ext1:     <http://ext.com/ext1/> .
+@prefix ext2:     <http://ext.com/ext2/> .
+@prefix ext3:     <http://ext.com/ext3/> .
+@prefix gs1:      <https://gs1.org/voc/> .
+@prefix owl:      <http://www.w3.org/2002/07/owl#> .
+@prefix rail:     <urn:gs1:epcisapp:rail:> .
+@prefix rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
 
 <ni:///sha-256;e13ff14a9b4f3dd11bba60315ed9b849eb8ddf4c5b1a9aa794cd250256730834?ver=CBV2.0>
         rdf:type                   epcis:ObjectEvent ;
@@ -24,32 +30,32 @@
         epcis:sensorElementList    [ epcis:sensorMetadata  [ epcis:deviceID        <urn:epc:id:giai:4000001.111> ;
                                                              epcis:deviceMetadata  <https://id.gs1.org/8004/4000001111>
                                                            ] ;
-                                     epcis:sensorReport    [ epcis:measurementType  gs1:MT-Temperature ;
+                                     epcis:sensorReport    [ epcis:measurementType  gs1:Temperature ;
                                                              epcis:time             "2019-04-02T14:55:00.000+01:00"^^xsd:dateTime ;
                                                              epcis:uom              "CEL" ;
                                                              epcis:value            2.65E1
                                                            ] ;
-                                     epcis:sensorReport    [ epcis:measurementType  gs1:MT-Temperature ;
+                                     epcis:sensorReport    [ epcis:measurementType  gs1:Temperature ;
                                                              epcis:time             "2019-04-02T14:45:00.000+01:00"^^xsd:dateTime ;
                                                              epcis:uom              "CEL" ;
                                                              epcis:value            2.64E1
                                                            ] ;
-                                     epcis:sensorReport    [ epcis:measurementType  gs1:MT-Temperature ;
+                                     epcis:sensorReport    [ epcis:measurementType  gs1:Temperature ;
                                                              epcis:time             "2019-04-02T14:35:00.000+01:00"^^xsd:dateTime ;
                                                              epcis:uom              "CEL" ;
                                                              epcis:value            2.63E1
                                                            ] ;
-                                     epcis:sensorReport    [ epcis:measurementType  gs1:MT-Temperature ;
+                                     epcis:sensorReport    [ epcis:measurementType  gs1:Temperature ;
                                                              epcis:time             "2019-04-02T14:25:00.000+01:00"^^xsd:dateTime ;
                                                              epcis:uom              "CEL" ;
                                                              epcis:value            2.62E1
                                                            ] ;
-                                     epcis:sensorReport    [ epcis:measurementType  gs1:MT-Temperature ;
+                                     epcis:sensorReport    [ epcis:measurementType  gs1:Temperature ;
                                                              epcis:time             "2019-04-02T14:15:00.000+01:00"^^xsd:dateTime ;
                                                              epcis:uom              "CEL" ;
                                                              epcis:value            2.61E1
                                                            ] ;
-                                     epcis:sensorReport    [ epcis:measurementType  gs1:MT-Temperature ;
+                                     epcis:sensorReport    [ epcis:measurementType  gs1:Temperature ;
                                                              epcis:time             "2019-04-02T14:05:00.000+01:00"^^xsd:dateTime ;
                                                              epcis:uom              "CEL" ;
                                                              epcis:value            2.6E1
