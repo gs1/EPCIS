@@ -73,6 +73,7 @@
     "dataProcessingMethod": {"@type": "@id"},
     "chemicalSubstance": {"@type": "@id"},
     "microorganism": {"@type": "@id"},
+    "coordinateReferenceSystem": {"@type": "@id"},
     "quantity": {"@type": "xsd:double"},
     "value" : {"@type": "xsd:double"},
     "minValue" : {"@type": "xsd:double"},
