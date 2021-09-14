@@ -1,6 +1,6 @@
 {
 	"@context": [
-		"https://vladimiralexiev.github.io/EPCIS/epcis-context-simple.jsonld",
+		"https://gs1.github.io/EPCIS/epcis-context-simple.jsonld",
 		{
 			"ex": "http://ns.example.com/epcis/"
 		},

@@ -75,7 +75,7 @@
     ]
   },
   "@context": [
-    "https://gs1.github.io/EPCIS/epcis-context.jsonld",
+    "https://gs1.github.io/EPCIS/epcis-context-simple.jsonld",
     {
       "rail": "urn:gs1:epcisapp:rail"
     }
