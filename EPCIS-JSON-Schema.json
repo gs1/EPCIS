@@ -1,269 +1,361 @@
 {
   "$id": "https://gs1.github.io/EPCIS/EPCIS-JSON-Schema.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "oneOf": [
+  "required": [
+    "isA"
+  ],
+  "properties": {
+    "isA": {
+      "type": "string"
+    }
+  },
+  "allOf": [
     {
-      "$ref": "#/definitions/EPCIS-Event"
+      "if": {
+        "properties": {
+          "isA": {
+            "const": "EPCISDocument"
+          }
+        }
+      },
+      "then": {
+        "$ref": "#/definitions/epcisDocument"
+      }
     },
     {
-      "$ref": "#/definitions/EPCIS-Document"
+      "if": {
+        "properties": {
+          "isA": {
+            "const": "EPCISQueryDocument"
+          }
+        }
+      },
+      "then": {
+        "$ref": "#/definitions/epcisQueryDocument"
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "isA": {
+            "const": "ObjectEvent"
+          }
+        }
+      },
+      "then": {
+        "allOf": [
+          {
+            "$ref": "#/definitions/ObjectEvent"
+          },
+          {
+            "$ref": "#/definitions/required-ld-context"
+          }
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "isA": {
+            "const": "AggregationEvent"
+          }
+        }
+      },
+      "then": {
+        "allOf": [
+          {
+            "$ref": "#/definitions/AggregationEvent"
+          },
+          {
+            "$ref": "#/definitions/required-ld-context"
+          }
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "isA": {
+            "const": "AssociationEvent"
+          }
+        }
+      },
+      "then": {
+        "allOf": [
+          {
+            "$ref": "#/definitions/AssociationEvent"
+          },
+          {
+            "$ref": "#/definitions/required-ld-context"
+          }
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "isA": {
+            "const": "TransformationEvent"
+          }
+        }
+      },
+      "then": {
+        "allOf": [
+          {
+            "$ref": "#/definitions/TransformationEvent"
+          },
+          {
+            "$ref": "#/definitions/required-ld-context"
+          }
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "isA": {
+            "const": "TransactionEvent"
+          }
+        }
+      },
+      "then": {
+        "allOf": [
+          {
+            "$ref": "#/definitions/TransactionEvent"
+          },
+          {
+            "$ref": "#/definitions/required-ld-context"
+          }
+        ]
+      }
+    },
+    {
+      "if": {
+        "not": {
+          "properties": {
+            "isA": {
+              "enum": [
+                "AssociationEvent",
+                "ObjectEvent",
+                "AggregationEvent",
+                "TransactionEvent",
+                "TransformationEvent",
+                "EPCISQueryDocument",
+                "EPCISDocument"
+              ]
+            }
+          }
+        }
+      },
+      "then": {
+        "allOf": [
+          {
+            "$ref": "#/definitions/Extended-Event"
+          },
+          {
+            "$ref": "#/definitions/required-ld-context"
+          }
+        ]
+      }
     }
   ],
   "definitions": {
-    "EPCIS-Document-Event": {
-      "oneOf": [
-        {
-          "$ref": "#/definitions/ObjectEvent"
+    "vocabulary": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "$ref": "#/definitions/uri"
         },
-        {
-          "$ref": "#/definitions/AggregationEvent"
-        },
-        {
-          "$ref": "#/definitions/AssociationEvent"
-        },
-        {
-          "$ref": "#/definitions/TransformationEvent"
-        },
-        {
-          "$ref": "#/definitions/TransactionEvent"
-        },
-        {
-          "$ref": "#/definitions/Extended-Event"
+        "vocabularyElementList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/vocabularyElement"
+          }
         }
+      },
+      "required": [
+        "type"
       ]
     },
-    "EPCIS-Event": {
-      "oneOf": [
-        {
-          "allOf": [
-            {
-              "$ref": "#/definitions/ObjectEvent"
-            },
-            {
-              "$ref": "#/definitions/required-ld-context"
-            }
-          ]
+    "vocabularyElement": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/uri"
         },
-        {
-          "allOf": [
-            {
-              "$ref": "#/definitions/AggregationEvent"
-            },
-            {
-              "$ref": "#/definitions/required-ld-context"
-            }
-          ]
+        "attributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/attribute"
+          }
         },
-        {
-          "allOf": [
-            {
-              "$ref": "#/definitions/AssociationEvent"
-            },
-            {
-              "$ref": "#/definitions/required-ld-context"
-            }
-          ]
+        "children": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/uri"
+          }
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "attribute": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/uri"
         },
-        {
-          "allOf": [
+        "attribute": {
+          "anyOf": [
             {
-              "$ref": "#/definitions/TransformationEvent"
+              "type": "number"
             },
             {
-              "$ref": "#/definitions/required-ld-context"
-            }
-          ]
-        },
-        {
-          "allOf": [
-            {
-              "$ref": "#/definitions/TransactionEvent"
+              "type": "string"
             },
             {
-              "$ref": "#/definitions/required-ld-context"
-            }
-          ]
-        },
-        {
-          "allOf": [
-            {
-              "$ref": "#/definitions/Extended-Event"
-            },
-            {
-              "$ref": "#/definitions/required-ld-context"
+              "type": "object"
             }
           ]
         }
+      },
+      "required": [
+        "id"
       ]
     },
-    "ObjectEvent": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/Event"
+    "eventList": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/EPCIS-Document-Event"
+      }
+    },
+    "vocabularyList": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/vocabulary"
+      }
+    },
+    "resultsBody": {
+      "type": "object",
+      "properties": {
+        "eventList": {
+          "$ref": "#/definitions/eventList"
         },
-        {
+        "vocabularyList": {
+          "$ref": "#/definitions/vocabularyList"
+        }
+      },
+      "required": [
+        "eventList"
+      ]
+    },
+    "queryResults": {
+      "type": "object",
+      "properties": {
+        "queryName": {
+          "type": "string"
+        },
+        "subscriptionID": {
+          "type": "string"
+        },
+        "resultsBody": {
+          "$ref": "#/definitions/resultsBody"
+        }
+      },
+      "required": [
+        "resultsBody"
+      ]
+    },
+    "epcisQueryDocumentBody": {
+      "type": "object",
+      "properties": {
+        "queryResults": {
+          "$ref": "#/definitions/queryResults"
+        }
+      },
+      "required": [
+        "queryResults"
+      ]
+    },
+    "epcisHeader": {
+      "type": "object",
+      "properties": {
+        "epcisMasterData": {
           "type": "object",
           "properties": {
-            "isA": {
-              "type": "string",
-              "enum": [
-                "ObjectEvent"
-              ]
-            },
-            "epcList": {
-              "$ref": "#/definitions/epcList"
-            },
-            "quantityList": {
-              "$ref": "#/definitions/quantityList"
-            },
-            "action": {
-              "$ref": "#/definitions/action"
-            },
-            "bizStep": {
-              "$ref": "#/definitions/bizStep"
-            },
-            "disposition": {
-              "$ref": "#/definitions/disposition"
-            },
-            "persistentDisposition": {
-              "$ref": "#/definitions/persistentDisposition"
-            },
-            "readPoint": {
-              "$ref": "#/definitions/readPoint"
-            },
-            "bizLocation": {
-              "$ref": "#/definitions/bizLocation"
-            },
-            "bizTransactionList": {
+            "vocabularyList": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/bizTransaction"
+                "$ref": "#/definitions/vocabulary"
               }
-            },
-            "sourceList": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/source"
-              }
-            },
-            "destinationList": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/destination"
-              }
-            },
-            "sensorElementList": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/sensorElement"
-              }
-            },
-            "ilmd": {
-              "$ref": "#/definitions/ilmd"
+            }
+          }
+        }
+      }
+    },
+    "epcisDocument": {
+      "type": "object",
+      "properties": {
+        "isA": {
+          "type": "string",
+          "const": "EPCISDocument"
+        },
+        "@context": {
+          "$ref": "#/definitions/@context"
+        },
+        "schemaVersion": {
+          "type": "string"
+        },
+        "creationDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "epcisHeader": {
+          "$ref": "#/definitions/epcisHeader"
+        },
+        "epcisBody": {
+          "type": "object",
+          "properties": {
+            "eventList": {
+              "$ref": "#/definitions/eventList"
             }
           },
           "required": [
-            "isA",
-            "action"
+            "eventList"
           ]
+        }
+      },
+      "required": [
+        "@context",
+        "schemaVersion",
+        "creationDate",
+        "epcisBody"
+      ]
+    },
+    "epcisQueryDocument": {
+      "type": "object",
+      "properties": {
+        "isA": {
+          "type": "string",
+          "const": "EPCISQueryDocument"
+        },
+        "epcisBody": {
+          "$ref": "#/definitions/epcisQueryDocumentBody"
+        }
+      },
+      "required": [
+        "@context",
+        "epcisBody"
+      ]
+    },
+    "EPCIS-Document": {
+      "oneOf": [
+        {
+          "$ref": "#/definitions/epcisDocument"
         },
         {
-          "anyOf": [
-            {
-              "type": "object",
-              "properties": {
-                "epcList": {
-                  "type": "array",
-                  "minItems": 0
-                }
-              },
-              "required": [
-                "epcList"
-              ]
-            },
-            {
-              "type": "object",
-              "properties": {
-                "quantityList": {
-                  "type": "array",
-                  "minItems": 1,
-                  "items": {
-                    "$ref": "#/definitions/quantityElement"
-                  }
-                }
-              },
-              "required": [
-                "quantityList"
-              ]
-            },
-            {
-              "allOf": [
-                {
-                  "type": "object",
-                  "properties": {
-                    "sensorElementList": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/definitions/sensorElement"
-                      },
-                      "minItems": 1
-                    }
-                  },
-                  "required": [
-                    "sensorElementList"
-                  ]
-                },
-                {
-                  "type": "object",
-                  "properties": {
-                    "readPoint": {
-                      "$ref": "#/definitions/readPoint"
-                    }
-                  },
-                  "required": [
-                    "readPoint"
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "anyOf": [
-            {
-              "type": "object",
-              "properties": {
-                "ilmd": {
-                  "not": {}
-                },
-                "action": {
-                  "type": "string",
-                  "pattern": "^OBSERVE$"
-                }
-              }
-            },
-            {
-              "type": "object",
-              "properties": {
-                "ilmd": {
-                  "not": {}
-                },
-                "action": {
-                  "type": "string",
-                  "pattern": "^DELETE$"
-                }
-              }
-            },
-            {
-              "type": "object",
-              "properties": {
-                "action": {
-                  "type": "string",
-                  "pattern": "^ADD$"
-                }
-              }
-            }
-          ]
+          "$ref": "#/definitions/epcisQueryDocument"
         }
       ]
     },
@@ -721,6 +813,269 @@
         }
       ]
     },
+    "EPCIS-Document-Event": {
+      "required": [
+        "isA"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "isA": {
+                "const": "ObjectEvent"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/definitions/ObjectEvent"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "isA": {
+                "const": "AggregationEvent"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/definitions/AggregationEvent"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "isA": {
+                "const": "TransactionEvent"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/definitions/TransactionEvent"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "isA": {
+                "const": "TransformationEvent"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/definitions/TransformationEvent"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "isA": {
+                "const": "AssociationEvent"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/definitions/AssociationEvent"
+          }
+        },
+        {
+          "if": {
+            "not": {
+              "properties": {
+                "isA": {
+                  "enum": [
+                    "AssociationEvent",
+                    "ObjectEvent",
+                    "AggregationEvent",
+                    "TransactionEvent",
+                    "TransformationEvent"
+                  ]
+                }
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/definitions/Extended-Event"
+          }
+        }
+      ],
+      "properties": {
+        "isA": {
+          "type": "string"
+        }
+      }
+    },
+    "ObjectEvent": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/Event"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "isA": {
+              "type": "string",
+              "enum": [
+                "ObjectEvent"
+              ]
+            },
+            "epcList": {
+              "$ref": "#/definitions/epcList"
+            },
+            "quantityList": {
+              "$ref": "#/definitions/quantityList"
+            },
+            "action": {
+              "$ref": "#/definitions/action"
+            },
+            "bizStep": {
+              "$ref": "#/definitions/bizStep"
+            },
+            "disposition": {
+              "$ref": "#/definitions/disposition"
+            },
+            "persistentDisposition": {
+              "$ref": "#/definitions/persistentDisposition"
+            },
+            "readPoint": {
+              "$ref": "#/definitions/readPoint"
+            },
+            "bizLocation": {
+              "$ref": "#/definitions/bizLocation"
+            },
+            "bizTransactionList": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/bizTransaction"
+              }
+            },
+            "sourceList": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/source"
+              }
+            },
+            "destinationList": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/destination"
+              }
+            },
+            "sensorElementList": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/sensorElement"
+              }
+            },
+            "ilmd": {
+              "$ref": "#/definitions/ilmd"
+            }
+          },
+          "required": [
+            "isA",
+            "action"
+          ]
+        },
+        {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "epcList": {
+                  "type": "array",
+                  "minItems": 0
+                }
+              },
+              "required": [
+                "epcList"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "quantityList": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "$ref": "#/definitions/quantityElement"
+                  }
+                }
+              },
+              "required": [
+                "quantityList"
+              ]
+            },
+            {
+              "allOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "sensorElementList": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/sensorElement"
+                      },
+                      "minItems": 1
+                    }
+                  },
+                  "required": [
+                    "sensorElementList"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "readPoint": {
+                      "$ref": "#/definitions/readPoint"
+                    }
+                  },
+                  "required": [
+                    "readPoint"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "ilmd": {
+                  "not": {}
+                },
+                "action": {
+                  "type": "string",
+                  "pattern": "^OBSERVE$"
+                }
+              }
+            },
+            {
+              "type": "object",
+              "properties": {
+                "ilmd": {
+                  "not": {}
+                },
+                "action": {
+                  "type": "string",
+                  "pattern": "^DELETE$"
+                }
+              }
+            },
+            {
+              "type": "object",
+              "properties": {
+                "action": {
+                  "type": "string",
+                  "pattern": "^ADD$"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
     "bizStep": {
       "anyOf": [
         {
@@ -920,7 +1275,7 @@
         }
       ]
     },
-    "AssociationEvent": {
+    "TransactionEvent": {
       "allOf": [
         {
           "$ref": "#/definitions/Event"
@@ -930,20 +1285,25 @@
           "properties": {
             "isA": {
               "type": "string",
-              "enum": [
-                "AssociationEvent"
-              ]
+              "pattern": "^TransactionEvent$"
+            },
+            "bizTransactionList": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/bizTransaction"
+              },
+              "minItems": 1
             },
             "parentID": {
               "$ref": "#/definitions/uri"
             },
-            "childEPCs": {
+            "epcList": {
               "type": "array",
               "items": {
                 "$ref": "#/definitions/uri"
               }
             },
-            "childQuantityList": {
+            "quantityList": {
               "type": "array",
               "items": {
                 "$ref": "#/definitions/quantityElement"
@@ -967,12 +1327,6 @@
             "bizLocation": {
               "$ref": "#/definitions/bizLocation"
             },
-            "bizTransactionList": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/bizTransaction"
-              }
-            },
             "sourceList": {
               "type": "array",
               "items": {
@@ -994,8 +1348,8 @@
           },
           "required": [
             "isA",
-            "action",
-            "parentID"
+            "bizTransactionList",
+            "action"
           ]
         },
         {
@@ -1003,25 +1357,25 @@
             {
               "type": "object",
               "properties": {
-                "childEPCs": {
+                "epcList": {
                   "type": "array",
-                  "minItems": 1
+                  "minItems": 0
                 }
               },
               "required": [
-                "childEPCs"
+                "epcList"
               ]
             },
             {
               "type": "object",
               "properties": {
-                "childQuantityList": {
+                "quantityList": {
                   "type": "array",
                   "minItems": 1
                 }
               },
               "required": [
-                "childQuantityList"
+                "quantityList"
               ]
             },
             {
@@ -1263,7 +1617,7 @@
         }
       ]
     },
-    "TransactionEvent": {
+    "AssociationEvent": {
       "allOf": [
         {
           "$ref": "#/definitions/Event"
@@ -1273,25 +1627,20 @@
           "properties": {
             "isA": {
               "type": "string",
-              "pattern": "^TransactionEvent$"
-            },
-            "bizTransactionList": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/bizTransaction"
-              },
-              "minItems": 1
+              "enum": [
+                "AssociationEvent"
+              ]
             },
             "parentID": {
               "$ref": "#/definitions/uri"
             },
-            "epcList": {
+            "childEPCs": {
               "type": "array",
               "items": {
                 "$ref": "#/definitions/uri"
               }
             },
-            "quantityList": {
+            "childQuantityList": {
               "type": "array",
               "items": {
                 "$ref": "#/definitions/quantityElement"
@@ -1315,6 +1664,12 @@
             "bizLocation": {
               "$ref": "#/definitions/bizLocation"
             },
+            "bizTransactionList": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/bizTransaction"
+              }
+            },
             "sourceList": {
               "type": "array",
               "items": {
@@ -1336,8 +1691,8 @@
           },
           "required": [
             "isA",
-            "bizTransactionList",
-            "action"
+            "action",
+            "parentID"
           ]
         },
         {
@@ -1345,25 +1700,25 @@
             {
               "type": "object",
               "properties": {
-                "epcList": {
-                  "type": "array",
-                  "minItems": 0
-                }
-              },
-              "required": [
-                "epcList"
-              ]
-            },
-            {
-              "type": "object",
-              "properties": {
-                "quantityList": {
+                "childEPCs": {
                   "type": "array",
                   "minItems": 1
                 }
               },
               "required": [
-                "quantityList"
+                "childEPCs"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "childQuantityList": {
+                  "type": "array",
+                  "minItems": 1
+                }
+              },
+              "required": [
+                "childQuantityList"
               ]
             },
             {
@@ -1376,205 +1731,6 @@
               }
             }
           ]
-        }
-      ]
-    },
-    "vocabulary": {
-      "type": "object",
-      "properties": {
-        "type": {
-          "$ref": "#/definitions/uri"
-        },
-        "vocabularyElementList": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/vocabularyElement"
-          }
-        }
-      },
-      "required": [
-        "type"
-      ]
-    },
-    "vocabularyElement": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "$ref": "#/definitions/uri"
-        },
-        "attributes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/attribute"
-          }
-        },
-        "children": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/uri"
-          }
-        }
-      },
-      "required": [
-        "id"
-      ]
-    },
-    "attribute": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "$ref": "#/definitions/uri"
-        },
-        "attribute": {
-          "anyOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string"
-            },
-            {
-              "type": "object"
-            }
-          ]
-        }
-      },
-      "required": [
-        "id"
-      ]
-    },
-    "eventList": {
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/EPCIS-Document-Event"
-      }
-    },
-    "vocabularyList": {
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/vocabulary"
-      }
-    },
-    "resultsBody": {
-      "type": "object",
-      "properties": {
-        "eventList": {
-          "$ref": "#/definitions/eventList"
-        },
-        "vocabularyList": {
-          "$ref": "#/definitions/vocabularyList"
-        }
-      },
-      "required": [
-        "eventList"
-      ]
-    },
-    "queryResults": {
-      "type": "object",
-      "properties": {
-        "queryName": {
-          "type": "string"
-        },
-        "subscriptionID": {
-          "type": "string"
-        },
-        "resultsBody": {
-          "$ref": "#/definitions/resultsBody"
-        }
-      },
-      "required": [
-        "resultsBody"
-      ]
-    },
-    "epcisQueryDocumentBody": {
-      "type": "object",
-      "properties": {
-        "queryResults": {
-          "$ref": "#/definitions/queryResults"
-        }
-      },
-      "required": [
-        "queryResults"
-      ]
-    },
-    "epcisHeader": {
-      "type": "object",
-      "properties": {
-        "epcisMasterData": {
-          "type": "object",
-          "properties": {
-            "vocabularyList": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/vocabulary"
-              }
-            }
-          }
-        }
-      }
-    },
-    "epcisDocument": {
-      "type": "object",
-      "properties": {
-        "isA": {
-          "type": "string",
-          "const": "EPCISDocument"
-        },
-        "@context": {
-          "$ref": "#/definitions/@context"
-        },
-        "schemaVersion": {
-          "type": "string"
-        },
-        "creationDate": {
-          "type": "string",
-          "format": "date-time"
-        },
-        "epcisHeader": {
-          "$ref": "#/definitions/epcisHeader"
-        },
-        "epcisBody": {
-          "type": "object",
-          "properties": {
-            "eventList": {
-              "$ref": "#/definitions/eventList"
-            }
-          },
-          "required": [
-            "eventList"
-          ]
-        }
-      },
-      "required": [
-        "@context",
-        "schemaVersion",
-        "creationDate",
-        "epcisBody"
-      ]
-    },
-    "epcisQueryDocument": {
-      "type": "object",
-      "properties": {
-        "isA": {
-          "type": "string",
-          "const": "EPCISQueryDocument"
-        },
-        "epcisBody": {
-          "$ref": "#/definitions/epcisQueryDocumentBody"
-        }
-      },
-      "required": [
-        "@context",
-        "epcisBody"
-      ]
-    },
-    "EPCIS-Document": {
-      "oneOf": [
-        {
-          "$ref": "#/definitions/epcisDocument"
-        },
-        {
-          "$ref": "#/definitions/epcisQueryDocument"
         }
       ]
     }
