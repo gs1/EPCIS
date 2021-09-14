@@ -3,8 +3,8 @@
 <epcis:EPCISDocument schemaVersion="2.0"
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:ext1="http://ext.com/ext1" xmlns:ext2="http://ext.com/ext2"
-	xmlns:ext3="http://ext.com/ext3"
+	xmlns:ext1="http://ext.com/ext1/" xmlns:ext2="http://ext.com/ext2/"
+	xmlns:ext3="http://ext.com/ext3/"
 	creationDate="2013-06-04T14:59:02.099+02:00"
 	xmlns:epcis="urn:epcglobal:epcis:xsd:2">
 	<EPCISHeader>
