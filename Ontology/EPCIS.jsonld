@@ -161,25 +161,6 @@
       "sw:term_status": "stable"
     },
     {
-      "@id": "epcis:BizLocation",
-      "@type": [
-        "owl:Class",
-        "rdfs:Class"
-      ],
-      "rdfs:comment": {
-        "@value": "A Business Location is a uniquely identified and discretely recorded location that is meant to designate the specific place where an object is assumed to be following an EPCIS event until it is reported to be at a different Business Location by a subsequent EPCIS event. As with the Read Point, the EPCIS Capturing Application determines the Business Location based on whatever means it chooses. Conceptually, the Business Location is designed to identify 'where objects are following the EPCIS event'.",
-        "@language": "en"
-      },
-      "rdfs:isDefinedBy": {
-        "@id": "epcis:"
-      },
-      "rdfs:label": {
-        "@value": "BizLocation",
-        "@language": "en"
-      },
-      "sw:term_status": "stable"
-    },
-    {
       "@id": "epcis:BizTransaction",
       "@type": [
         "owl:Class",
