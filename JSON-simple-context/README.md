@@ -56,9 +56,13 @@ The contents of any of the EPCIS example files can also be pasted into this onli
 
 https://json-ld.org/playground/
 
-This JSON-LD playground tool performs a basic check that the data is valid JSON-LD - although it has no awareness of our EPCIS-SHACL.ttl file.
-The JSON-LD playground tool also performs conversion of JSON-LD data into other Linked Data formats such as N-Quads or Normalised (both of which are RDF Turtle format, consisting of Subject-Predicate-Object or Subject-Property-Value triples.
-The JSON-LD playground tool now also includes a tabular view, as well as a visualisation as  a branching diagram.
+This JSON-LD playground tool:
+
+- Performs a basic check that the data is valid JSON-LD - although it has no awareness of our EPCIS-SHACL.ttl file.
+- Converts between different JSON-LD renditions, eg Normalised, Compacted, Expanded
+- Performs conversion of JSON-LD data into other RDF (Linked Data formats),
+  such as N-Quads (consisting of Subject-Predicate-Object-Graph quads)
+- Now also includes a tabular view, as well as a visualisation as  a branching diagram.
 
 # Further information about JSON Schema
 
@@ -97,4 +101,4 @@ Examples were derived from XML examples, then significantly added and commented 
 - `Example_9.6.4-TransformationEvent.jsonld`: transformation event with `ilmd` (Instance/Lot Master Data)
 - `PersistentDisposition-example.jsonld`: aggregation event involving the change of persistent disposition from `completeness_inferred` to `completeness_verified`
 
-Further explanations about individual examples are found in sub-folders
+Further explanations about individual examples are found in sub-directories
