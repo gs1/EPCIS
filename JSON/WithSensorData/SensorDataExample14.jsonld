@@ -1,0 +1,40 @@
+{
+  "@context": ["https://gs1.github.io/EPCIS/epcis-context.jsonld"],
+  "isA": "EPCISDocument",
+  "schemaVersion": "2.0",
+  "creationDate": "2019-10-07T15:00:00.000+01:00",
+  "epcisBody": {
+    "eventList": [
+      {
+	"isA": "ObjectEvent",
+	"eventTime": "2021-05-27T10:00:00.000Z",
+	"eventTimeZoneOffset": "+01:00",
+	"epcList": ["https://id.example.com/8003/040123450007718765"],
+	"action": "OBSERVE",
+	"bizStep": "sensor_reporting",
+	"readPoint": {"id": "https://id.example.com/414/4012345000054"},
+	"sensorElementList": [
+	  {
+	    "isA": "epcis:SensorElement",
+	    "sensorReport": [
+	      {
+		"type": "Angle",
+		"value": 42.698334,
+		"component": "Latitude",
+		"uom": "DD",
+		"coordinateReferenceSystem": "http://www.opengis.net/def/crs/OGC/1.3/CRS84"
+	      },
+	      {
+		"type": "Angle",
+		"value": 23.319941,
+		"component": "Longitude",
+		"uom": "DD",
+		"coordinateReferenceSystem": "http://www.opengis.net/def/crs/OGC/1.3/CRS84"
+	      }
+	    ]
+	  }
+	]
+      }
+    ]
+  }
+}

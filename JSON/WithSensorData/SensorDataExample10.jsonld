@@ -23,16 +23,16 @@
 					"urn:epc:id:sgtin:4012345.022222.1234"
 				],
 				"action": "OBSERVE",
-				"bizStep": "urn:epcglobal:cbv:bizstep:sensor_reporting",
+				"bizStep": "sensor_reporting",
 				"readPoint": {
 					"id": "urn:epc:id:sgln:4012345.00005.0"
 				},
 				"sensorElementList": [
 					{
 						"sensorReport": [
-							{"type": "gs1:MT-Speed", "value": 4.5, "component": "ex:x", "ex:feature": "ex:product", "uom": "MTS"},
-							{"type": "gs1:MT-Speed", "value": 12.8, "component": "ex:y", "ex:feature": "ex:product", "uom": "MTS"},
-							{"type": "gs1:MT-Speed", "value": 0, "component": "ex:z", "ex:feature": "ex:product", "uom": "MTS"}
+							{"type": "Speed", "value": 4.5,  "component": "X", "ex:feature": "ex:product", "uom": "MTS"},
+							{"type": "Speed", "value": 12.8, "component": "Y", "ex:feature": "ex:product", "uom": "MTS"},
+							{"type": "Speed", "value": 0,    "component": "Z", "ex:feature": "ex:product", "uom": "MTS"}
 						]
 					}
 				]
