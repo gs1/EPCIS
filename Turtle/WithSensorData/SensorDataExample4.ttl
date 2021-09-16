@@ -1,58 +1,68 @@
-@prefix epcis: <https://ns.gs1.org/epcis/> .
-@prefix gs1:   <https://gs1.org/voc/> .
-@prefix owl:   <http://www.w3.org/2002/07/owl#> .
-@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix vtype: <urn:epcglobal:epcis:vtype:> .
-@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix example: <http://ns.example.com/epcis/> .
-@prefix cbvmda: <urn:epcglobal:cbv:mda:> .
-
-[ a                epcis:EPCISDocument ;
-  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
-  owl:versionInfo  "2.0" ;
-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;7ff1501099b3f5890d310d703fb9f57e251bba0c57d3c049fab590b50323a8e7?ver=CBV2.0> ]
-] .
+@prefix cbv:      <https://ns.gs1.org/cbv/> .
+@prefix cbvmda:   <urn:epcglobal:cbv:mda:> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix epcis:    <https://ns.gs1.org/epcis/> .
+@prefix ex:       <http://epcis.example.com/ns/> .
+@prefix examp:    <http://ns.example.com/epcis/> .
+@prefix example:  <https://ns.example.com/epcis> .
+@prefix example1: <https://ns.example1.com/epcis> .
+@prefix example2: <https://ns.example2.com/epcis> .
+@prefix example3: <https://ns.example3.com/epcis> .
+@prefix example4: <https://ns.example4.com/epcis> .
+@prefix ext1:     <http://ext.com/ext1/> .
+@prefix ext2:     <http://ext.com/ext2/> .
+@prefix ext3:     <http://ext.com/ext3/> .
+@prefix gs1:      <https://gs1.org/voc/> .
+@prefix owl:      <http://www.w3.org/2002/07/owl#> .
+@prefix rail:     <urn:gs1:epcisapp:rail:> .
+@prefix rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
 
 <ni:///sha-256;7ff1501099b3f5890d310d703fb9f57e251bba0c57d3c049fab590b50323a8e7?ver=CBV2.0>
-        a                          epcis:ObjectEvent ;
+        rdf:type                   epcis:ObjectEvent ;
         epcis:action               "OBSERVE" ;
-        epcis:bizStep              <urn:epcglobal:cbv:bizstep:inspecting> ;
-        epcis:eventTime            "2019-04-02T15:00:00.000+01:00"^^xsd:dateTime ;
+        epcis:bizStep              cbv:BizStep-inspecting ;
+        epcis:eventTime            "2019-04-02T15:00:00.000+01:00"^^xsd:dateTimeStamp ;
         epcis:eventTimeZoneOffset  "+01:00" ;
         epcis:quantityList         [ epcis:epcClass  <urn:epc:class:lgtin:4023333.002000.2019-10-07> ;
-                                     epcis:quantity  "150"^^xsd:decimal ;
+                                     epcis:quantity  1.5E2 ;
                                      epcis:uom       "KGM"
                                    ] ;
         epcis:readPoint            <urn:epc:id:sgln:4012345.00005.0> ;
-        epcis:sensorElementList    [ epcis:sensorMetadata  [ epcis:time  "2019-04-02T14:55:00.000+01:00"^^xsd:dateTime ] ;
+        epcis:sensorElementList    [ epcis:sensorMetadata  [ epcis:time  "2019-04-02T14:55:00.000+01:00"^^xsd:dateTimeStamp ] ;
                                      epcis:sensorReport    [ epcis:deviceID        <urn:epc:id:giai:4000001.444> ;
-                                                             epcis:deviceMetadata  <https://id.gs1.org/8004/4000001444> ;
-                                                             epcis:rawData         <https://example.org/8004/401234599999> ;
+                                                             epcis:deviceMetadata  <https://id.gs1.org/giai/4000001444> ;
+                                                             epcis:rawData         <https://example.org/giai/4000001444-20190402T150000000> ;
                                                              epcis:type            gs1:MT-Illuminance ;
                                                              epcis:uom             "LUX" ;
-                                                             epcis:value           "800"^^xsd:float
+                                                             epcis:value           8.0E2
                                                            ] ;
                                      epcis:sensorReport    [ epcis:deviceID        <urn:epc:id:giai:4000001.333> ;
-                                                             epcis:deviceMetadata  <https://id.gs1.org/8004/4000001333> ;
-                                                             epcis:rawData         <https://example.org/8004/401234599999> ;
+                                                             epcis:deviceMetadata  <https://id.gs1.org/giai/4000001333> ;
+                                                             epcis:rawData         <https://example.org/giai/4000001333-20190402T150000000> ;
                                                              epcis:type            gs1:MT-Speed ;
                                                              epcis:uom             "KMH" ;
-                                                             epcis:value           "160"^^xsd:float
+                                                             epcis:value           1.6E2
                                                            ] ;
                                      epcis:sensorReport    [ epcis:deviceID        <urn:epc:id:giai:4000001.222> ;
-                                                             epcis:deviceMetadata  <https://id.gs1.org/8004/4000001222> ;
-                                                             epcis:rawData         <https://example.org/8004/401234599999> ;
-                                                             epcis:type            gs1:MT-Humidity ;
+                                                             epcis:deviceMetadata  <https://id.gs1.org/giai/4000001222> ;
+                                                             epcis:rawData         <https://example.org/giai/4000001222-20190402T150000000> ;
+                                                             epcis:type            <file://C:/Humidity> ;
                                                              epcis:uom             "A93" ;
-                                                             epcis:value           "1.21E1"^^xsd:float
+                                                             epcis:value           1.21E1
                                                            ] ;
                                      epcis:sensorReport    [ epcis:deviceID        <urn:epc:id:giai:4000001.111> ;
-                                                             epcis:deviceMetadata  <https://id.gs1.org/8004/4000001111> ;
-                                                             epcis:rawData         <https://example.org/8004/401234599999> ;
+                                                             epcis:deviceMetadata  <https://id.gs1.org/giai/4000001111> ;
+                                                             epcis:rawData         <https://example.org/giai/4000001111-20190402T150000000> ;
                                                              epcis:type            gs1:MT-Temperature ;
                                                              epcis:uom             "CEL" ;
-                                                             epcis:value           "26"^^xsd:float
+                                                             epcis:value           2.6E1
                                                            ]
                                    ] .
+
+[ rdf:type         epcis:EPCISDocument ;
+  dcterms:created  "2005-07-11T11:30:47.0Z" ;
+  owl:versionInfo  "2.0" ;
+  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;7ff1501099b3f5890d310d703fb9f57e251bba0c57d3c049fab590b50323a8e7?ver=CBV2.0> ]
+] .
