@@ -11,7 +11,7 @@
 		  "eventID": "ni:///sha-256;e13ff14a9b4f3dd11bba60315ed9b849eb8ddf4c5b1a9aa794cd250256730834?ver=CBV2.0",
 		  "isA": "ObjectEvent",
 		  "action": "OBSERVE",
-		  "bizStep": "urn:epcglobal:cbv:bizstep:inspecting",
+		  "bizStep": "inspecting",
 		  "epcList": ["urn:epc:id:sgtin:4012345.011111.9876"],
 		  "eventTime": "2019-04-02T15:00:00.000+01:00",
 		  "eventTimeZoneOffset": "+01:00",
@@ -20,12 +20,12 @@
 		   {
 		    "sensorMetadata" : {"deviceID":"urn:epc:id:giai:4000001.111", "deviceMetadata":"https://id.gs1.org/8004/4000001111"},
 		    "sensorReport" : [
-			 { "type": "gs1:MT-Temperature" , "time":"2019-04-02T14:05:00.000+01:00", "value" : 26.0, "uom": "CEL"},
-			 { "type": "gs1:MT-Temperature" , "time":"2019-04-02T14:15:00.000+01:00", "value" : 26.1, "uom": "CEL"},
-			 { "type": "gs1:MT-Temperature" , "time":"2019-04-02T14:25:00.000+01:00", "value" : 26.2, "uom": "CEL"},
-			 { "type": "gs1:MT-Temperature" , "time":"2019-04-02T14:35:00.000+01:00", "value" : 26.3, "uom": "CEL"},
-			 { "type": "gs1:MT-Temperature" , "time":"2019-04-02T14:45:00.000+01:00", "value" : 26.4, "uom": "CEL"},
-			 { "type": "gs1:MT-Temperature" , "time":"2019-04-02T14:55:00.000+01:00", "value" : 26.5, "uom": "CEL"}
+			 { "type": "Temperature" , "time":"2019-04-02T14:05:00.000+01:00", "value" : 26.0, "uom": "CEL"},
+			 { "type": "Temperature" , "time":"2019-04-02T14:15:00.000+01:00", "value" : 26.1, "uom": "CEL"},
+			 { "type": "Temperature" , "time":"2019-04-02T14:25:00.000+01:00", "value" : 26.2, "uom": "CEL"},
+			 { "type": "Temperature" , "time":"2019-04-02T14:35:00.000+01:00", "value" : 26.3, "uom": "CEL"},
+			 { "type": "Temperature" , "time":"2019-04-02T14:45:00.000+01:00", "value" : 26.4, "uom": "CEL"},
+			 { "type": "Temperature" , "time":"2019-04-02T14:55:00.000+01:00", "value" : 26.5, "uom": "CEL"}
 		     ]
 		    }	    
 		  ]
