@@ -1,6 +1,0 @@
-epcis:childEPCs       a puml:InlineProperty.
-epcis:parentID        a puml:InlineProperty.
-epcis:epcClass        a puml:InlineProperty.
-epcis:bizTransaction  a puml:InlineProperty.
-epcis:source          a puml:InlineProperty.
-epcis:destination     a puml:InlineProperty.
