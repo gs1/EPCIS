@@ -13,20 +13,20 @@
 		  "eventTime": "2013-06-08T14:58:56.591Z",
 		  "eventTimeZoneOffset": "+02:00",
 		  "action": "OBSERVE",
-		  "bizStep": "urn:epcglobal:cbv:bizstep:receiving",
-		  "disposition": "urn:epcglobal:cbv:disp:in_progress",
+		  "bizStep": "receiving",
+		  "disposition": "in_progress",
 		  "readPoint": {"id": "urn:epc:id:sgln:0614141.00777.0"},
 		  "bizLocation": {"id": "urn:epc:id:sgln:0614141.00888.0"},
 		  "quantityList": [
 		  	{"epcClass":"urn:epc:class:lgtin:4012345.012345.998877","quantity":200,"uom":"KGM"}
 		  ],
 		  "sourceList": [
-		  	{"type":"urn:epcglobal:cbv:sdt:possessing_party","source":"urn:epc:id:sgln:4012345.00001.0"},
-		  	{"type":"urn:epcglobal:cbv:sdt:location","source":"urn:epc:id:sgln:4012345.00225.0"}
+		  	{"type":"possessing_party","source":"urn:epc:id:sgln:4012345.00001.0"},
+		  	{"type":"location","source":"urn:epc:id:sgln:4012345.00225.0"}
 		  ],
 		  "destinationList": [
-		  	{"type":"urn:epcglobal:cbv:sdt:owning_party","destination":"urn:epc:id:sgln:0614141.00001.0"},
-		  	{"type":"urn:epcglobal:cbv:sdt:location","destination":"urn:epc:id:sgln:0614141.00777.0"}
+		  	{"type":"owning_party","destination":"urn:epc:id:sgln:0614141.00001.0"},
+		  	{"type":"location","destination":"urn:epc:id:sgln:0614141.00777.0"}
 		  ],
 		  "example:myField":"Example of a vendor/user extension"
      }

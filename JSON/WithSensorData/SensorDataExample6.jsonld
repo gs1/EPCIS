@@ -11,7 +11,7 @@
 		  "eventID": "ni:///sha-256;6aca25c45463182fe3a1ebf60a6b81a165f061b58f4f3c202eb423234386b72e?ver=CBV2.0",
 		  "isA": "ObjectEvent",
 		  "action": "OBSERVE",
-		  "bizStep": "urn:epcglobal:cbv:bizstep:inspecting",
+		  "bizStep": "inspecting",
 		  "epcList": ["urn:epc:id:sgtin:4012345.011111.9876"],
 		  "eventTime": "2019-10-07T15:00:00.000+01:00",
 		  "eventTimeZoneOffset": "+01:00",
@@ -21,7 +21,7 @@
 		   {
 		    "sensorMetadata" : {"startTime":"2019-04-01T15:00:00.000+01:00", "endTime":"2019-04-02T14:59:59.999+01:00", "example:someFurtherMetaData":"someText"},
 		    "sensorReport" : [
-			 { "type": "gs1:MT-Temperature" , "minValue":12.4, "maxValue":13.8, "meanValue":13.2, "sDev":0.41, "uom":"CEL", "percRank":50, "percValue":12.7, "example:cv":"123"},
+			 { "type": "Temperature" , "minValue":12.4, "maxValue":13.8, "meanValue":13.2, "sDev":0.41, "uom":"CEL", "percRank":50, "percValue":12.7, "example:cv":"123"},
 			 { "type": "example:someSensorProperty", "stringValue":"someSensorOutput"}
 		     ],
 		     "example:furtherSensorData": [
