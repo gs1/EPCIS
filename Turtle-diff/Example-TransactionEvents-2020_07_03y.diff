@@ -1,0 +1,38 @@
+23c23
+<   dcterms:created  "2020-07-03T09:00:00.0Z" ;
+---
+>   dcterms:created  "2020-07-03T09:00:00.0Z"^^xsd:dateTime ;
+29c29
+<                                         epcis:bizTransactionList   [ epcis:bizTransaction      "http://transaction.examplerail.com/passage/xyz12345"^^xsd:anyURI ;
+---
+>                                         epcis:bizTransactionList   [ epcis:bizTransaction      <http://transaction.examplerail.com/passage/xyz12345> ;
+32c32
+<                                         epcis:destinationList      [ epcis:destination              <urn:epc:id:sgln:952005385.011.0> ;
+---
+>                                         epcis:destinationList      [ epcis:sourceOrDestination      <urn:epc:id:sgln:952005385.011.0> ;
+37c37
+<                                         epcis:eventTime            "2014-12-12T10:00:00.000Z"^^xsd:dateTimeStamp ;
+---
+>                                         epcis:eventTime            "2014-12-12T10:00:00.000Z"^^xsd:dateTime ;
+40c40
+<                                         epcis:sourceList           [ epcis:source                   <urn:epc:id:sgln:952005385.481.0> ;
+---
+>                                         epcis:sourceList           [ epcis:sourceOrDestination      <urn:epc:id:sgln:952005385.481.0> ;
+50a51,54
+>                                                                      rail:vehiclePosition            2 ;
+>                                                                      rail:vehicleUniquelyIdentified  false
+>                                                                    ] ;
+>                                         rail:vehicle               [ rail:vehicleAxleCount           4 ;
+54,57d57
+<                                                                    ] ;
+<                                         rail:vehicle               [ rail:vehicleAxleCount           4 ;
+<                                                                      rail:vehiclePosition            2 ;
+<                                                                      rail:vehicleUniquelyIdentified  false
+64c64
+<                                                           "urn:epc:id:gdti:95252084.0001.0003555480001000"^^xsd:anyURI ] ;
+---
+>                                                           <urn:epc:id:gdti:95252084.0001.0003555480001000> ] ;
+66c66
+<                                         epcis:eventTime            "2019-10-04T13:12:00.000Z"^^xsd:dateTimeStamp ;
+---
+>                                         epcis:eventTime            "2019-10-04T13:12:00.000Z"^^xsd:dateTime ;
