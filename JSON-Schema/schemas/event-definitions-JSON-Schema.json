@@ -84,9 +84,7 @@
                 }
             },
             "required": [
-                "declarationTime",
-                "reason",
-                "correctiveEventIDs"
+                "declarationTime"
             ]
         },
         "quantityElement": {
