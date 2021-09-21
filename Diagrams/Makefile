@@ -1,4 +1,4 @@
-TTL = $(wildcard ../Turtle-simple-context/*.ttl) $(wildcard ../Turtle-simple-context/*/*.ttl)
+TTL = $(filter-out ../Turtle-simple-context/prefixes.ttl, $(wildcard ../Turtle-simple-context/*.ttl) $(wildcard ../Turtle-simple-context/*/*.ttl))
 PNG = $(TTL:../Turtle-simple-context/%.ttl=%.png)
 RDFPUML = $(HOME)/Downloads/rdf2rml-master/bin/rdfpuml.pl
 PLANTUML = $(HOME)/Downloads/rdf2rml-master/bin/plantuml.1.2021.7.jar

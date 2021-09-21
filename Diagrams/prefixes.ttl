@@ -39,9 +39,11 @@ epcis:outputEPCList a puml:InlineProperty.
 epcis:parentID a puml:InlineProperty.
 epcis:parentId a puml:InlineProperty.
 epcis:rawData a puml:InlineProperty.
-epcis:readPoint a puml:InlineProperty.
-epcis:reason a puml:InlineProperty.
-epcis:sourceOrDestination a puml:InlineProperty.
-epcis:sourceOrDestinationType a puml:InlineProperty.
+epcis:uriValue a puml:InlineProperty.
+epcis:chemicalSubstance a puml:InlineProperty.
+epcis:microorganism a puml:InlineProperty.
+epcis:dataProcessingMethod a puml:InlineProperty.
+epcis:component a puml:InlineProperty.
 
 epcis:sensorMetadata puml:arrow puml:right .
+epcis:furtherSensorData puml:arrow puml:down-2 .
