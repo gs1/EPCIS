@@ -25,6 +25,7 @@
 epcis:bizLocation a puml:InlineProperty.
 epcis:bizRules a puml:InlineProperty.
 epcis:bizStep a puml:InlineProperty.
+epcis:bizTransaction a puml:InlineProperty.
 epcis:bizTransactionType  a puml:InlineProperty.
 epcis:childEPCs a puml:InlineProperty.
 epcis:deviceID a puml:InlineProperty.
