@@ -58,7 +58,7 @@ foreach $pathA (@filepaths) {
 	
 	if ($pathA=~ /\.ttl$/) {
 	
-		$diff = `/usr/bin/diff --ignore-space-change -U 0 $pathA $pathB`;
+		$diff = `/usr/bin/diff --ignore-space-change -U 0 --ignore-matching-lines=RE $pathA $pathB`;
 	
 		open (OUT, ">$pathC");
 		print OUT $diff;
