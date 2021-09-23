@@ -1,8 +1,11 @@
-# TODO: now Turtle is the master ontology format, so figure out how to generate good JSONLD from it
-# JSONLD = $(wildcard *.jsonld)
-# TTL    = $(JSONLD:%.jsonld=%.ttl)
+TTL    = EPCIS.ttl CBV.ttl
+JSONLD = EPCIS.jsonld CBV.jsonld 
 
-# all: $(TTL)
+all: $(JSONLD)
 
-%.ttl: %.jsonld prefixes.ttl
-	jsonld format -q $^ | cat prefixes.ttl - | riot -syntax ttl -formatted ttl > $@
+%.jsonld: %.ttl
+	riot -formatted jsonld $^ > $@
+
+# all: $(TTL) # Now Turtle is the master ontology format
+#%.ttl: %.jsonld prefixes.ttl
+#	jsonld format -q $^ | cat prefixes.ttl - | riot -syntax ttl -formatted ttl > $@

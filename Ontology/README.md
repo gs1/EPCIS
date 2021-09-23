@@ -7,6 +7,7 @@
     - [Ontologies](#ontologies)
         - [Ontology Checks](#ontology-checks)
         - [Property Checks](#property-checks)
+        - [Conversion to JSONLD](#conversion-to-jsonld)
     - [RDF Shape](#rdf-shape)
 
 <!-- markdown-toc end -->
@@ -52,6 +53,32 @@ These are draft and subject to change
 - `owl:DatatypeProperty` but range is not a `xsd:` datatype
 - `owl:ObjectProperty` with range not in `epcis:, cbv:` or `gs1:`
 - `owl:DatatypeProperty` with range `xsd:anyURI` should be changed to `owl:ObjectProperty`, see #206
+
+### Conversion to JSONLD
+
+TODO, see #238
+- `CBV.jsonld, EPCIS.jsonld` are produced with jena `riot`:
+  - cons: emits lists as `rdf:List` long-hand using blank nodes and `first/rest`
+  - cons: can't specify a custom context
+  - pro: generates a good context, extracted to `EPCIS-CBV-context.jsonld`
+```json
+{"@context":{"domainIncludes" : {"@id" : "http://schema.org/domainIncludes", "@type" : "@id"}},
+
+// and then for each property:
+"@graph": [
+  {"@id" : "epcis:action", 
+   "domainIncludes" : [ "epcis:AssociationEvent", "epcis:ObjectEvent", "epcis:AggregationEvent", "epcis:TransactionEvent" ]}]}
+```
+- `CBV-old.jsonld, EPCIS-old.jsonld` are produced with some other tool
+  - cons: can't specify input file type, thus can't convert RDF->JSONLD, see https://github.com/digitalbazaar/jsonld-cli/issues/19
+  - pro: can specify custom context
+  - pro: emits lists in short-hand, eg
+```json
+  {"@id":"epcis:epcClass",
+   "rdfs:domain":{
+    "@type":"owl:Class",
+    "owl:unionOf":{"@list":[{"@id":"gs1:Product"}, {"@id":"gs1:ProductBatch"}]}}}
+```
 
 ## RDF Shape
 
