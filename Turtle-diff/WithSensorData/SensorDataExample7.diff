@@ -1,0 +1,70 @@
+21a22,27
+> [ rdf:type         epcis:EPCISDocument ;
+>   dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
+>   owl:versionInfo  "2.0" ;
+>   epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;db924230b77cc4d9a7cea4968fd302b06598a2b63e1b0ea011b31d1b5f45e6ac?ver=CBV2.0> ]
+> ] .
+> 
+27c33
+<         epcis:eventTime            "2019-10-07T16:00:00.000+01:00"^^xsd:dateTimeStamp ;
+---
+>         epcis:eventTime            "2019-10-07T16:00:00.000+01:00"^^xsd:dateTime ;
+30,33c36,39
+<         epcis:sensorElementList    [ epcis:sensorMetadata  [ epcis:time  "2019-07-19T14:00:00.000+01:00"^^xsd:dateTimeStamp ] ;
+<                                      epcis:sensorReport    [ epcis:deviceID  <urn:epc:id:giai:4000001.116> ;
+<                                                              epcis:type      examp:Mno ;
+<                                                              epcis:uriValue  "https://example.org/example/someSectorSpecificValue"^^xsd:anyURI
+---
+>         epcis:sensorElementList    [ epcis:sensorMetadata  [ epcis:time  "2019-07-19T14:00:00.000+01:00"^^xsd:dateTime ] ;
+>                                      epcis:sensorReport    [ epcis:deviceID         <urn:epc:id:giai:4000001.116> ;
+>                                                              epcis:measurementType  examp:Mno ;
+>                                                              epcis:uriValue         <https://example.org/example/someSectorSpecificValue>
+35,37c41,43
+<                                      epcis:sensorReport    [ epcis:deviceID        <urn:epc:id:giai:4000001.115> ;
+<                                                              epcis:hexBinaryValue  "F0F0F0" ;
+<                                                              epcis:type            examp:Jkl
+---
+>                                      epcis:sensorReport    [ epcis:deviceID         <urn:epc:id:giai:4000001.115> ;
+>                                                              epcis:hexBinaryValue   "F0F0F0"^^xsd:hexBinary ;
+>                                                              epcis:measurementType  examp:Jkl
+39,41c45,47
+<                                      epcis:sensorReport    [ epcis:deviceID     <urn:epc:id:giai:4000001.114> ;
+<                                                              epcis:stringValue  "SomeString" ;
+<                                                              epcis:type         examp:Ghi
+---
+>                                      epcis:sensorReport    [ epcis:deviceID         <urn:epc:id:giai:4000001.114> ;
+>                                                              epcis:measurementType  examp:Ghi ;
+>                                                              epcis:stringValue      "SomeString"
+43,45c49,51
+<                                      epcis:sensorReport    [ epcis:booleanValue  true ;
+<                                                              epcis:deviceID      <urn:epc:id:giai:4000001.113> ;
+<                                                              epcis:type          examp:Def
+---
+>                                      epcis:sensorReport    [ epcis:booleanValue     true ;
+>                                                              epcis:deviceID         <urn:epc:id:giai:4000001.113> ;
+>                                                              epcis:measurementType  examp:Def
+47,49c53,55
+<                                      epcis:sensorReport    [ epcis:deviceID     <urn:epc:id:giai:4000001.112> ;
+<                                                              epcis:stringValue  "111100001111000011110000" ;
+<                                                              epcis:type         examp:Abc
+---
+>                                      epcis:sensorReport    [ epcis:deviceID         <urn:epc:id:giai:4000001.112> ;
+>                                                              epcis:measurementType  examp:Abc ;
+>                                                              epcis:stringValue      "111100001111000011110000"
+51,54c57,60
+<                                      epcis:sensorReport    [ epcis:deviceID  <urn:epc:id:giai:4000001.111> ;
+<                                                              epcis:type      gs1:MT-Temperature ;
+<                                                              epcis:uom       "CEL" ;
+<                                                              epcis:value     2.6E1
+---
+>                                      epcis:sensorReport    [ epcis:deviceID         <urn:epc:id:giai:4000001.111> ;
+>                                                              epcis:measurementType  gs1:Temperature ;
+>                                                              epcis:uom              "CEL" ;
+>                                                              epcis:value            2.6E1
+57,62d62
+< 
+< [ rdf:type         epcis:EPCISDocument ;
+<   dcterms:created  "2005-07-11T11:30:47.0Z" ;
+<   owl:versionInfo  "2.0" ;
+<   epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;db924230b77cc4d9a7cea4968fd302b06598a2b63e1b0ea011b31d1b5f45e6ac?ver=CBV2.0> ]
+< ] .

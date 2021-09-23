@@ -1,0 +1,24 @@
+23c23
+<   dcterms:created  "2019-10-07T15:00:00.000+01:00" ;
+---
+>   dcterms:created  "2019-10-07T15:00:00.000+01:00"^^xsd:dateTime ;
+27c27
+<                                         epcis:bizStep              <file://C:/sensor_reporting> ;
+---
+>                                         epcis:bizStep              cbv:BizStep-sensor_reporting ;
+29c29
+<                                         epcis:eventTime            "2020-05-07T15:00:00.000Z"^^xsd:dateTimeStamp ;
+---
+>                                         epcis:eventTime            "2020-05-07T15:00:00.000Z"^^xsd:dateTime ;
+32,33c32,33
+<                                         epcis:sensorElementList    [ epcis:sensorReport  [ epcis:booleanValue  true ;
+<                                                                                            epcis:type          <file://C:/ALARM_CONDITION>
+---
+>                                         epcis:sensorElementList    [ epcis:sensorReport  [ epcis:booleanValue     true ;
+>                                                                                            epcis:measurementType  gs1:ALARM_CONDITION
+35,36c35,36
+<                                                                      epcis:sensorReport  [ epcis:type      <file://C:/ERROR_CONDITION> ;
+<                                                                                            epcis:uriValue  "https://example.com/ErrorCode-A827"^^xsd:anyURI
+---
+>                                                                      epcis:sensorReport  [ epcis:measurementType  gs1:ERROR_CONDITION ;
+>                                                                                            epcis:uriValue         <https://example.com/ErrorCode-A827>

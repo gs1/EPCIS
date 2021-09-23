@@ -1,0 +1,48 @@
+23c23
+<   dcterms:created  "2019-10-07T15:00:00.000+01:00" ;
+---
+>   dcterms:created  "2019-10-07T15:00:00.000+01:00"^^xsd:dateTime ;
+31c31
+<         epcis:bizStep              <file://C:/sensor_reporting> ;
+---
+>         epcis:bizStep              cbv:BizStep-sensor_reporting ;
+33c33
+<         epcis:eventTime            "2020-05-08T15:00:00+01:00"^^xsd:dateTimeStamp ;
+---
+>         epcis:eventTime            "2020-05-08T15:00:00+01:00"^^xsd:dateTime ;
+36,40c36,40
+<         epcis:sensorElementList    [ epcis:sensorReport  [ examp:feature    "ex:product" ;
+<                                                            epcis:component  "Z" ;
+<                                                            epcis:type       gs1:MT-Speed ;
+<                                                            epcis:uom        "MTS" ;
+<                                                            epcis:value      0.0E0
+---
+>         epcis:sensorElementList    [ epcis:sensorReport  [ examp:feature          "ex:product" ;
+>                                                            epcis:component        cbv:COMP-Z ;
+>                                                            epcis:measurementType  gs1:Speed ;
+>                                                            epcis:uom              "MTS" ;
+>                                                            epcis:value            0.0E0
+42,46c42,46
+<                                      epcis:sensorReport  [ examp:feature    "ex:product" ;
+<                                                            epcis:component  "Y" ;
+<                                                            epcis:type       gs1:MT-Speed ;
+<                                                            epcis:uom        "MTS" ;
+<                                                            epcis:value      1.28E1
+---
+>                                      epcis:sensorReport  [ examp:feature          "ex:product" ;
+>                                                            epcis:component        cbv:COMP-Y ;
+>                                                            epcis:measurementType  gs1:Speed ;
+>                                                            epcis:uom              "MTS" ;
+>                                                            epcis:value            1.28E1
+48,52c48,52
+<                                      epcis:sensorReport  [ examp:feature    "ex:product" ;
+<                                                            epcis:component  "X" ;
+<                                                            epcis:type       gs1:MT-Speed ;
+<                                                            epcis:uom        "MTS" ;
+<                                                            epcis:value      4.5E0
+---
+>                                      epcis:sensorReport  [ examp:feature          "ex:product" ;
+>                                                            epcis:component        cbv:COMP-X ;
+>                                                            epcis:measurementType  gs1:Speed ;
+>                                                            epcis:uom              "MTS" ;
+>                                                            epcis:value            4.5E0
