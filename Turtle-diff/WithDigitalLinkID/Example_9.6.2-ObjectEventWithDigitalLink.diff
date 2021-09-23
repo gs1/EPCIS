@@ -1,27 +1,24 @@
-28c28
-<         epcis:destinationList      [ epcis:destination              <urn:epc:id:sgln:0614141.00777.0> ;
----
->         epcis:destinationList      [ epcis:sourceOrDestination      <urn:epc:id:sgln:0614141.00777.0> ;
-31c31
-<         epcis:destinationList      [ epcis:destination              <urn:epc:id:sgln:0614141.00001.0> ;
----
->         epcis:destinationList      [ epcis:sourceOrDestination      <urn:epc:id:sgln:0614141.00001.0> ;
-35c35
-<         epcis:eventTime            "2013-06-08T14:58:56.591Z"^^xsd:dateTimeStamp ;
----
->         epcis:eventTime            "2013-06-08T14:58:56.591Z"^^xsd:dateTime ;
-42,45c42
-<         epcis:sourceList           [ epcis:source                   <urn:epc:id:sgln:4012345.00001.0> ;
-<                                      epcis:sourceOrDestinationType  cbv:SDT-possessing_party
-<                                    ] ;
-<         epcis:sourceList           [ epcis:source                   <urn:epc:id:sgln:4012345.00225.0> ;
----
->         epcis:sourceList           [ epcis:sourceOrDestination      <urn:epc:id:sgln:4012345.00225.0> ;
-46a44,46
->                                    ] ;
->         epcis:sourceList           [ epcis:sourceOrDestination      <urn:epc:id:sgln:4012345.00001.0> ;
->                                      epcis:sourceOrDestinationType  cbv:SDT-possessing_party
-50c50
-<   dcterms:created  "2005-07-11T11:30:47.0Z" ;
----
->   dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
+--- ../Turtle/WithDigitalLinkID/Example_9.6.2-ObjectEventWithDigitalLink.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context/WithDigitalLinkID/Example_9.6.2-ObjectEventWithDigitalLink.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -28 +28 @@
+-        epcis:destinationList      [ epcis:destination              <urn:epc:id:sgln:0614141.00777.0> ;
++        epcis:destinationList      [ epcis:sourceOrDestination      <urn:epc:id:sgln:0614141.00777.0> ;
+@@ -31 +31 @@
+-        epcis:destinationList      [ epcis:destination              <urn:epc:id:sgln:0614141.00001.0> ;
++        epcis:destinationList      [ epcis:sourceOrDestination      <urn:epc:id:sgln:0614141.00001.0> ;
+@@ -35 +35 @@
+-        epcis:eventTime            "2013-06-08T14:58:56.591Z"^^xsd:dateTimeStamp ;
++        epcis:eventTime            "2013-06-08T14:58:56.591Z"^^xsd:dateTime ;
+@@ -42,4 +42 @@
+-        epcis:sourceList           [ epcis:source                   <urn:epc:id:sgln:4012345.00001.0> ;
+-                                     epcis:sourceOrDestinationType  cbv:SDT-possessing_party
+-                                   ] ;
+-        epcis:sourceList           [ epcis:source                   <urn:epc:id:sgln:4012345.00225.0> ;
++        epcis:sourceList           [ epcis:sourceOrDestination      <urn:epc:id:sgln:4012345.00225.0> ;
+@@ -46,0 +44,3 @@
++                                   ] ;
++        epcis:sourceList           [ epcis:sourceOrDestination      <urn:epc:id:sgln:4012345.00001.0> ;
++                                     epcis:sourceOrDestinationType  cbv:SDT-possessing_party
+@@ -50 +50 @@
+-  dcterms:created  "2005-07-11T11:30:47.0Z" ;
++  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;

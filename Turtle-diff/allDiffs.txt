@@ -1,0 +1,1820 @@
+
+./prefixes.diff
+
+
+
+
+./Example_9.6.1-ObjectEvent.diff
+
+--- ../Turtle//Example_9.6.1-ObjectEvent.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context//Example_9.6.1-ObjectEvent.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -21,0 +22,6 @@
++[ rdf:type         epcis:EPCISDocument ;
++  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
++  owl:versionInfo  "2.0" ;
++  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;df7bb3c352fef055578554f09f5e2aa41782150ced7bd0b8af24dd3ccb30ba69?ver=CBV2.0> , <ni:///sha-256;00e1e6eba3a7cc6125be4793a631f0af50f8322e0ab5f2c0bab994a11cec1d79?ver=CBV2.0> ]
++] .
++
+@@ -28,4 +34 @@
+-        epcis:bizTransactionList   [ epcis:bizTransaction      "http://transaction.acme.com/po/12345678"^^xsd:anyURI ;
+-                                     epcis:bizTransactionType  cbv:BTT-po
+-                                   ] ;
+-        epcis:bizTransactionList   [ epcis:bizTransaction      "urn:epcglobal:cbv:bt:0614141073467:1152"^^xsd:anyURI ;
++        epcis:bizTransactionList   [ epcis:bizTransaction      <urn:epcglobal:cbv:bt:0614141073467:1152> ;
+@@ -33,0 +37,3 @@
++        epcis:bizTransactionList   [ epcis:bizTransaction      <http://transaction.acme.com/po/12345678> ;
++                                     epcis:bizTransactionType  cbv:BTT-po
++                                   ] ;
+@@ -36 +42 @@
+-        epcis:eventTime            "2005-04-04T20:33:31.116-06:00"^^xsd:dateTimeStamp ;
++        epcis:eventTime            "2005-04-04T20:33:31.116-06:00"^^xsd:dateTime ;
+@@ -40,6 +45,0 @@
+-[ rdf:type         epcis:EPCISDocument ;
+-  dcterms:created  "2005-07-11T11:30:47.0Z" ;
+-  owl:versionInfo  "2.0" ;
+-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;df7bb3c352fef055578554f09f5e2aa41782150ced7bd0b8af24dd3ccb30ba69?ver=CBV2.0> , <ni:///sha-256;00e1e6eba3a7cc6125be4793a631f0af50f8322e0ab5f2c0bab994a11cec1d79?ver=CBV2.0> ]
+-] .
+-
+@@ -50 +50 @@
+-        epcis:bizTransactionList   [ epcis:bizTransaction      "http://transaction.acme.com/po/12345678"^^xsd:anyURI ;
++        epcis:bizTransactionList   [ epcis:bizTransaction      <http://transaction.acme.com/po/12345678> ;
+@@ -55 +55 @@
+-        epcis:eventTime            "2005-04-03T20:33:31.116000-06:00"^^xsd:dateTimeStamp ;
++        epcis:eventTime            "2005-04-03T20:33:31.116000-06:00"^^xsd:dateTime ;
+
+
+
+./Makefile
+
+
+./Example_9.6.3-AggregationEvent.diff
+
+--- ../Turtle//Example_9.6.3-AggregationEvent.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context//Example_9.6.3-AggregationEvent.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -22,6 +21,0 @@
+-[ rdf:type         epcis:EPCISDocument ;
+-  dcterms:created  "2005-07-11T11:30:47.0Z" ;
+-  owl:versionInfo  "2.0" ;
+-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;87b5f18a69993f0052046d4687dfacdf48f7c988cfabda2819688c86b4066a49?ver=CBV2.0> ]
+-] .
+-
+@@ -43 +37 @@
+-        epcis:eventTime            "2013-06-08T14:58:56.591Z"^^xsd:dateTimeStamp ;
++        epcis:eventTime            "2013-06-08T14:58:56.591Z"^^xsd:dateTime ;
+@@ -46,0 +41,6 @@
++
++[ rdf:type         epcis:EPCISDocument ;
++  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
++  owl:versionInfo  "2.0" ;
++  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;87b5f18a69993f0052046d4687dfacdf48f7c988cfabda2819688c86b4066a49?ver=CBV2.0> ]
++] .
+
+
+
+./Example_9.6.1-with-comment.diff
+
+--- ../Turtle//Example_9.6.1-with-comment.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context//Example_9.6.1-with-comment.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -28,4 +28 @@
+-        epcis:bizTransactionList   [ epcis:bizTransaction      "http://transaction.acme.com/po/12345678"^^xsd:anyURI ;
+-                                     epcis:bizTransactionType  cbv:BTT-po
+-                                   ] ;
+-        epcis:bizTransactionList   [ epcis:bizTransaction      "urn:epcglobal:cbv:bt:0614141073467:1152"^^xsd:anyURI ;
++        epcis:bizTransactionList   [ epcis:bizTransaction      <urn:epcglobal:cbv:bt:0614141073467:1152> ;
+@@ -33,0 +31,3 @@
++        epcis:bizTransactionList   [ epcis:bizTransaction      <http://transaction.acme.com/po/12345678> ;
++                                     epcis:bizTransactionType  cbv:BTT-po
++                                   ] ;
+@@ -36 +36 @@
+-        epcis:eventTime            "2005-04-04T20:33:31.116-06:00"^^xsd:dateTimeStamp ;
++        epcis:eventTime            "2005-04-04T20:33:31.116-06:00"^^xsd:dateTime ;
+@@ -39,0 +40,6 @@
++[ rdf:type         epcis:EPCISDocument ;
++  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
++  owl:versionInfo  "2.0" ;
++  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;59b0e6c6777da8128617f541585e25ef7a89f98909a4543fa5c742b363c79d3d?ver=CBV2.0> , <ni:///sha-256;36abb3a2c0a726de32ac4beafd6b8bc4ba0b1d2de244490312e5cbec7b5ddece?ver=CBV2.0> ]
++] .
++
+@@ -45 +51 @@
+-        epcis:bizTransactionList   [ epcis:bizTransaction      "http://transaction.acme.com/po/12345678"^^xsd:anyURI ;
++        epcis:bizTransactionList   [ epcis:bizTransaction      <http://transaction.acme.com/po/12345678> ;
+@@ -50 +56 @@
+-        epcis:eventTime            "2005-04-03T20:33:31.116000-06:00"^^xsd:dateTimeStamp ;
++        epcis:eventTime            "2005-04-03T20:33:31.116000-06:00"^^xsd:dateTime ;
+@@ -53,6 +58,0 @@
+-
+-[ rdf:type         epcis:EPCISDocument ;
+-  dcterms:created  "2005-07-11T11:30:47.0Z" ;
+-  owl:versionInfo  "2.0" ;
+-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;59b0e6c6777da8128617f541585e25ef7a89f98909a4543fa5c742b363c79d3d?ver=CBV2.0> , <ni:///sha-256;36abb3a2c0a726de32ac4beafd6b8bc4ba0b1d2de244490312e5cbec7b5ddece?ver=CBV2.0> ]
+-] .
+
+
+
+./Example-TransactionEvents-2020_07_03y.diff
+
+--- ../Turtle//Example-TransactionEvents-2020_07_03y.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context//Example-TransactionEvents-2020_07_03y.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -23 +23 @@
+-  dcterms:created  "2020-07-03T09:00:00.0Z" ;
++  dcterms:created  "2020-07-03T09:00:00.0Z"^^xsd:dateTime ;
+@@ -29 +29 @@
+-                                        epcis:bizTransactionList   [ epcis:bizTransaction      "http://transaction.examplerail.com/passage/xyz12345"^^xsd:anyURI ;
++                                        epcis:bizTransactionList   [ epcis:bizTransaction      <http://transaction.examplerail.com/passage/xyz12345> ;
+@@ -32 +32 @@
+-                                        epcis:destinationList      [ epcis:destination              <urn:epc:id:sgln:952005385.011.0> ;
++                                        epcis:destinationList      [ epcis:sourceOrDestination      <urn:epc:id:sgln:952005385.011.0> ;
+@@ -37 +37 @@
+-                                        epcis:eventTime            "2014-12-12T10:00:00.000Z"^^xsd:dateTimeStamp ;
++                                        epcis:eventTime            "2014-12-12T10:00:00.000Z"^^xsd:dateTime ;
+@@ -40 +40 @@
+-                                        epcis:sourceList           [ epcis:source                   <urn:epc:id:sgln:952005385.481.0> ;
++                                        epcis:sourceList           [ epcis:sourceOrDestination      <urn:epc:id:sgln:952005385.481.0> ;
+@@ -50,0 +51,4 @@
++                                                                     rail:vehiclePosition            2 ;
++                                                                     rail:vehicleUniquelyIdentified  false
++                                                                   ] ;
++                                        rail:vehicle               [ rail:vehicleAxleCount           4 ;
+@@ -54,4 +57,0 @@
+-                                                                   ] ;
+-                                        rail:vehicle               [ rail:vehicleAxleCount           4 ;
+-                                                                     rail:vehiclePosition            2 ;
+-                                                                     rail:vehicleUniquelyIdentified  false
+@@ -64 +64 @@
+-                                                          "urn:epc:id:gdti:95252084.0001.0003555480001000"^^xsd:anyURI ] ;
++                                                          <urn:epc:id:gdti:95252084.0001.0003555480001000> ] ;
+@@ -66 +66 @@
+-                                        epcis:eventTime            "2019-10-04T13:12:00.000Z"^^xsd:dateTimeStamp ;
++                                        epcis:eventTime            "2019-10-04T13:12:00.000Z"^^xsd:dateTime ;
+
+
+
+./README.md
+
+
+./Example-Type-sourceOrDestination,measurement,bizTransaction.diff
+
+--- ../Turtle//Example-Type-sourceOrDestination,measurement,bizTransaction.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context//Example-Type-sourceOrDestination,measurement,bizTransaction.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -28,4 +28 @@
+-        epcis:bizTransactionList   [ epcis:bizTransaction      "urn:epcglobal:cbv:bt:0614141073467:1152"^^xsd:anyURI ;
+-                                     epcis:bizTransactionType  cbv:BTT-desadv
+-                                   ] ;
+-        epcis:bizTransactionList   [ epcis:bizTransaction      "urn:epcglobal:cbv:bt:4023333000000:54545"^^xsd:anyURI ;
++        epcis:bizTransactionList   [ epcis:bizTransaction      <urn:epcglobal:cbv:bt:4023333000000:54545> ;
+@@ -34 +31,4 @@
+-        epcis:bizTransactionList   [ epcis:bizTransaction      "http://transaction.acme.com/po/12345678"^^xsd:anyURI ;
++        epcis:bizTransactionList   [ epcis:bizTransaction      <urn:epcglobal:cbv:bt:0614141073467:1152> ;
++                                     epcis:bizTransactionType  cbv:BTT-desadv
++                                   ] ;
++        epcis:bizTransactionList   [ epcis:bizTransaction      <http://transaction.acme.com/po/12345678> ;
+@@ -41 +41 @@
+-        epcis:destinationList      [ epcis:destination              <urn:epc:id:pgln:4012345.00000> ;
++        epcis:destinationList      [ epcis:sourceOrDestination      <urn:epc:id:pgln:4012345.00000> ;
+@@ -45 +45 @@
+-        epcis:eventTime            "2019-11-06T14:00:00.000+01:00"^^xsd:dateTimeStamp ;
++        epcis:eventTime            "2019-11-06T14:00:00.000+01:00"^^xsd:dateTime ;
+@@ -49,3 +49,3 @@
+-        epcis:recordTime           "2019-11-06T14:05:00.000+01:00"^^xsd:dateTimeStamp ;
+-        epcis:sensorElementList    [ epcis:sensorMetadata  [ epcis:endTime    "2019-11-06T13:57:00.000+01:00"^^xsd:dateTimeStamp ;
+-                                                             epcis:startTime  "2019-11-06T13:55:00.000+01:00"^^xsd:dateTimeStamp
++        epcis:recordTime           "2019-11-06T14:05:00.000+01:00"^^xsd:dateTime ;
++        epcis:sensorElementList    [ epcis:sensorMetadata  [ epcis:endTime    "2019-11-06T13:57:00.000+01:00"^^xsd:dateTime ;
++                                                             epcis:startTime  "2019-11-06T13:55:00.000+01:00"^^xsd:dateTime
+@@ -53,0 +54 @@
++                                                             epcis:measurementType  gs1:Humidity ;
+@@ -55 +55,0 @@
+-                                                             epcis:type      <file://C:/Humidity> ;
+@@ -59 +59 @@
+-        epcis:sourceList           [ epcis:source                   <urn:epc:id:pgln:4000001.00012> ;
++        epcis:sourceList           [ epcis:sourceOrDestination      <urn:epc:id:pgln:4000001.00012> ;
+@@ -64 +64 @@
+-  dcterms:created  "2005-07-11T11:30:47.0Z" ;
++  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
+
+
+
+./Example_9.6.2-ObjectEvent.diff
+
+--- ../Turtle//Example_9.6.2-ObjectEvent.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context//Example_9.6.2-ObjectEvent.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -22,6 +21,0 @@
+-[ rdf:type         epcis:EPCISDocument ;
+-  dcterms:created  "2005-07-11T11:30:47.0Z" ;
+-  owl:versionInfo  "2.0" ;
+-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;a98f08ae6ac4de3482054314d637c07010b448d3802dccb028a06aafcc6a4b10?ver=CBV2.0> ]
+-] .
+-
+@@ -34,4 +28 @@
+-        epcis:destinationList      [ epcis:destination              <urn:epc:id:sgln:0614141.00001.0> ;
+-                                     epcis:sourceOrDestinationType  cbv:SDT-owning_party
+-                                   ] ;
+-        epcis:destinationList      [ epcis:destination              <urn:epc:id:sgln:0614141.00777.0> ;
++        epcis:destinationList      [ epcis:sourceOrDestination      <urn:epc:id:sgln:0614141.00777.0> ;
+@@ -39,0 +31,3 @@
++        epcis:destinationList      [ epcis:sourceOrDestination      <urn:epc:id:sgln:0614141.00001.0> ;
++                                     epcis:sourceOrDestinationType  cbv:SDT-owning_party
++                                   ] ;
+@@ -41 +35 @@
+-        epcis:eventTime            "2013-06-08T14:58:56.591Z"^^xsd:dateTimeStamp ;
++        epcis:eventTime            "2013-06-08T14:58:56.591Z"^^xsd:dateTime ;
+@@ -48,4 +42 @@
+-        epcis:sourceList           [ epcis:source                   <urn:epc:id:sgln:4012345.00001.0> ;
+-                                     epcis:sourceOrDestinationType  cbv:SDT-possessing_party
+-                                   ] ;
+-        epcis:sourceList           [ epcis:source                   <urn:epc:id:sgln:4012345.00225.0> ;
++        epcis:sourceList           [ epcis:sourceOrDestination      <urn:epc:id:sgln:4012345.00225.0> ;
+@@ -52,0 +44,3 @@
++                                   ] ;
++        epcis:sourceList           [ epcis:sourceOrDestination      <urn:epc:id:sgln:4012345.00001.0> ;
++                                     epcis:sourceOrDestinationType  cbv:SDT-possessing_party
+@@ -53,0 +48,6 @@
++
++[ rdf:type         epcis:EPCISDocument ;
++  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
++  owl:versionInfo  "2.0" ;
++  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;a98f08ae6ac4de3482054314d637c07010b448d3802dccb028a06aafcc6a4b10?ver=CBV2.0> ]
++] .
+
+
+
+./PersistentDisposition-example.diff
+
+--- ../Turtle//PersistentDisposition-example.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context//PersistentDisposition-example.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -22,6 +21,0 @@
+-[ rdf:type         epcis:EPCISDocument ;
+-  dcterms:created  "2020-06-28T13:41:00.000Z" ;
+-  owl:versionInfo  "2.0" ;
+-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;dae7b481207bb87f1d981c5f169b8138368ae152a41b002eaf36eca1f67d56f5?ver=CBV2.0> , <ni:///sha-256;56ba4f355c57456b41c3fb60b22d8342e759de503e3e618940ca3b6ad1bf9b00?ver=CBV2.0> ]
+-] .
+-
+@@ -33 +27 @@
+-        epcis:bizTransactionList     [ epcis:bizTransaction      "urn:epcglobal:cbv:bt:9520011111116:A123"^^xsd:anyURI ;
++        epcis:bizTransactionList     [ epcis:bizTransaction      <urn:epcglobal:cbv:bt:9520011111116:A123> ;
+@@ -36 +30 @@
+-        epcis:bizTransactionList     [ epcis:bizTransaction      "urn:epcglobal:cbv:bt:9529999999991:XYZ567"^^xsd:anyURI ;
++        epcis:bizTransactionList     [ epcis:bizTransaction      <urn:epcglobal:cbv:bt:9529999999991:XYZ567> ;
+@@ -39 +33 @@
+-        epcis:bizTransactionList     [ epcis:bizTransaction      "urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6"^^xsd:anyURI ;
++        epcis:bizTransactionList     [ epcis:bizTransaction      <urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6> ;
+@@ -43 +37 @@
+-        epcis:destinationList        [ epcis:destination              <urn:epc:id:pgln:9520999.99999> ;
++        epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:pgln:9520999.99999> ;
+@@ -47 +41 @@
+-        epcis:eventTime              "2020-06-07T17:10:16Z"^^xsd:dateTimeStamp ;
++        epcis:eventTime              "2020-06-07T17:10:16Z"^^xsd:dateTime ;
+@@ -50 +44 @@
+-        epcis:persistentDisposition  [ epcis:set  <file://C:/completeness_inferred> ] ;
++        epcis:persistentDisposition  [ epcis:set  cbv:Disp-completeness_inferred ] ;
+@@ -52 +46 @@
+-        epcis:sourceList             [ epcis:source                   <urn:epc:id:pgln:9520001.11111> ;
++        epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:pgln:9520001.11111> ;
+@@ -61,2 +55,2 @@
+-        epcis:bizTransactionList     [ epcis:bizTransaction      "urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6"^^xsd:anyURI ;
+-                                       epcis:bizTransactionType  cbv:BTT-desadv
++        epcis:bizTransactionList     [ epcis:bizTransaction      <urn:epcglobal:cbv:bt:9529999999991:XYZ567> ;
++                                       epcis:bizTransactionType  cbv:BTT-po
+@@ -64 +58 @@
+-        epcis:bizTransactionList     [ epcis:bizTransaction      "urn:epcglobal:cbv:bt:9520011111116:A123"^^xsd:anyURI ;
++        epcis:bizTransactionList     [ epcis:bizTransaction      <urn:epcglobal:cbv:bt:9520011111116:A123> ;
+@@ -67,2 +61,2 @@
+-        epcis:bizTransactionList     [ epcis:bizTransaction      "urn:epcglobal:cbv:bt:9529999999991:XYZ567"^^xsd:anyURI ;
+-                                       epcis:bizTransactionType  cbv:BTT-po
++        epcis:bizTransactionList     [ epcis:bizTransaction      <urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6> ;
++                                       epcis:bizTransactionType  cbv:BTT-desadv
+@@ -71 +65 @@
+-        epcis:destinationList        [ epcis:destination              <urn:epc:id:pgln:9520999.99999> ;
++        epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:pgln:9520999.99999> ;
+@@ -75 +69 @@
+-        epcis:eventTime              "2020-06-08T18:11:16Z"^^xsd:dateTimeStamp ;
++        epcis:eventTime              "2020-06-08T18:11:16Z"^^xsd:dateTime ;
+@@ -78,2 +72,2 @@
+-        epcis:persistentDisposition  [ epcis:set    <file://C:/completeness_verified> ;
+-                                       epcis:unset  <file://C:/completeness_inferred>
++        epcis:persistentDisposition  [ epcis:set    cbv:Disp-completeness_verified ;
++                                       epcis:unset  cbv:Disp-completeness_inferred
+@@ -82 +76 @@
+-        epcis:sourceList             [ epcis:source                   <urn:epc:id:pgln:9520001.11111> ;
++        epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:pgln:9520001.11111> ;
+@@ -84,0 +79,6 @@
++
++[ rdf:type         epcis:EPCISDocument ;
++  dcterms:created  "2020-06-28T13:41:00.000Z"^^xsd:dateTime ;
++  owl:versionInfo  "2.0" ;
++  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;dae7b481207bb87f1d981c5f169b8138368ae152a41b002eaf36eca1f67d56f5?ver=CBV2.0> , <ni:///sha-256;56ba4f355c57456b41c3fb60b22d8342e759de503e3e618940ca3b6ad1bf9b00?ver=CBV2.0> ]
++] .
+
+
+
+./Example_9.6.4-TransformationEvent.diff
+
+--- ../Turtle//Example_9.6.4-TransformationEvent.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context//Example_9.6.4-TransformationEvent.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -23 +23 @@
+-  dcterms:created  "2013-06-04T14:59:02.099+02:00" ;
++  dcterms:created  "2013-06-04T14:59:02.099+02:00"^^xsd:dateTime ;
+@@ -33 +33 @@
+-        epcis:eventTime            "2013-10-31T14:58:56.591Z"^^xsd:dateTimeStamp ;
++        epcis:eventTime            "2013-10-31T14:58:56.591Z"^^xsd:dateTime ;
+@@ -39,3 +38,0 @@
+-        epcis:inputQuantityList    [ epcis:epcClass  <urn:epc:class:lgtin:0614141.077777.987> ;
+-                                     epcis:quantity  3.0E1
+-                                   ] ;
+@@ -44,0 +42,3 @@
++        epcis:inputQuantityList    [ epcis:epcClass  <urn:epc:class:lgtin:0614141.077777.987> ;
++                                     epcis:quantity  3.0E1
++                                   ] ;
+
+
+
+./WithErrorDeclaration/Example_9.6.1-ObjectEvent-with-error-declaration.diff
+
+--- ../Turtle/WithErrorDeclaration/Example_9.6.1-ObjectEvent-with-error-declaration.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context/WithErrorDeclaration/Example_9.6.1-ObjectEvent-with-error-declaration.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -28 +28 @@
+-        epcis:bizTransactionList   [ epcis:bizTransaction      "urn:epcglobal:cbv:bt:0614141073467:1152"^^xsd:anyURI ;
++        epcis:bizTransactionList   [ epcis:bizTransaction      <urn:epcglobal:cbv:bt:0614141073467:1152> ;
+@@ -31 +31 @@
+-        epcis:bizTransactionList   [ epcis:bizTransaction      "http://transaction.acme.com/po/12345678"^^xsd:anyURI ;
++        epcis:bizTransactionList   [ epcis:bizTransaction      <http://transaction.acme.com/po/12345678> ;
+@@ -36 +36 @@
+-        epcis:eventTime            "2005-04-04T20:33:31.116-06:00"^^xsd:dateTimeStamp ;
++        epcis:eventTime            "2005-04-04T20:33:31.116-06:00"^^xsd:dateTime ;
+@@ -40,6 +39,0 @@
+-[ rdf:type         epcis:EPCISDocument ;
+-  dcterms:created  "2005-07-11T11:30:47.0Z" ;
+-  owl:versionInfo  "2.0" ;
+-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;aa49daa1fe0b773e0437e546078dc87de9c864d5b9babe84488f31478887fdf3?ver=CBV2.0> , <ni:///sha-256;00e1e6eba3a7cc6125be4793a631f0af50f8322e0ab5f2c0bab994a11cec1d79?ver=CBV2.0> ]
+-] .
+-
+@@ -50 +44 @@
+-        epcis:bizTransactionList   [ epcis:bizTransaction      "http://transaction.acme.com/po/12345678"^^xsd:anyURI ;
++        epcis:bizTransactionList   [ epcis:bizTransaction      <http://transaction.acme.com/po/12345678> ;
+@@ -56,2 +50,2 @@
+-                                     epcis:declarationTime     "2021-02-01T22:46:31.117000+00:00"^^xsd:dateTimeStamp ;
+-                                     epcis:reason              <file://C:/incorrect-data>
++                                     epcis:declarationTime     "2021-02-01T22:46:31.117000+00:00"^^xsd:dateTime ;
++                                     epcis:reason              cbv:ER-incorrect-data
+@@ -59 +53 @@
+-        epcis:eventTime            "2005-04-03T20:33:31.116000-06:00"^^xsd:dateTimeStamp ;
++        epcis:eventTime            "2005-04-03T20:33:31.116000-06:00"^^xsd:dateTime ;
+@@ -61,0 +56,6 @@
++
++[ rdf:type         epcis:EPCISDocument ;
++  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
++  owl:versionInfo  "2.0" ;
++  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;aa49daa1fe0b773e0437e546078dc87de9c864d5b9babe84488f31478887fdf3?ver=CBV2.0> , <ni:///sha-256;00e1e6eba3a7cc6125be4793a631f0af50f8322e0ab5f2c0bab994a11cec1d79?ver=CBV2.0> ]
++] .
+
+
+
+./WithErrorDeclaration/ErrorDeclarationAndCorrectiveEvent.diff
+
+--- ../Turtle/WithErrorDeclaration/ErrorDeclarationAndCorrectiveEvent.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context/WithErrorDeclaration/ErrorDeclarationAndCorrectiveEvent.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -23 +23 @@
+-  dcterms:created  "2020-01-15T07:47:21.677+00:00" ;
++  dcterms:created  "2020-01-15T07:47:21.677+00:00"^^xsd:dateTime ;
+@@ -33 +33 @@
+-                                     epcis:declarationTime     "2020-01-15T00:00:00+01:00"^^xsd:dateTimeStamp ;
++                                     epcis:declarationTime     "2020-01-15T00:00:00+01:00"^^xsd:dateTime ;
+@@ -36 +36 @@
+-        epcis:eventTime            "2020-01-14T00:00:00+01:00"^^xsd:dateTimeStamp ;
++        epcis:eventTime            "2020-01-14T00:00:00+01:00"^^xsd:dateTime ;
+@@ -53 +53 @@
+-        epcis:eventTime            "2021-01-28T00:00:00+01:00"^^xsd:dateTimeStamp ;
++        epcis:eventTime            "2021-01-28T00:00:00+01:00"^^xsd:dateTime ;
+
+
+
+./WithDigitalLinkID/Example_9.6.2-ObjectEventWithDigitalLink.diff
+
+--- ../Turtle/WithDigitalLinkID/Example_9.6.2-ObjectEventWithDigitalLink.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context/WithDigitalLinkID/Example_9.6.2-ObjectEventWithDigitalLink.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -28 +28 @@
+-        epcis:destinationList      [ epcis:destination              <urn:epc:id:sgln:0614141.00777.0> ;
++        epcis:destinationList      [ epcis:sourceOrDestination      <urn:epc:id:sgln:0614141.00777.0> ;
+@@ -31 +31 @@
+-        epcis:destinationList      [ epcis:destination              <urn:epc:id:sgln:0614141.00001.0> ;
++        epcis:destinationList      [ epcis:sourceOrDestination      <urn:epc:id:sgln:0614141.00001.0> ;
+@@ -35 +35 @@
+-        epcis:eventTime            "2013-06-08T14:58:56.591Z"^^xsd:dateTimeStamp ;
++        epcis:eventTime            "2013-06-08T14:58:56.591Z"^^xsd:dateTime ;
+@@ -42,4 +42 @@
+-        epcis:sourceList           [ epcis:source                   <urn:epc:id:sgln:4012345.00001.0> ;
+-                                     epcis:sourceOrDestinationType  cbv:SDT-possessing_party
+-                                   ] ;
+-        epcis:sourceList           [ epcis:source                   <urn:epc:id:sgln:4012345.00225.0> ;
++        epcis:sourceList           [ epcis:sourceOrDestination      <urn:epc:id:sgln:4012345.00225.0> ;
+@@ -46,0 +44,3 @@
++                                   ] ;
++        epcis:sourceList           [ epcis:sourceOrDestination      <urn:epc:id:sgln:4012345.00001.0> ;
++                                     epcis:sourceOrDestinationType  cbv:SDT-possessing_party
+@@ -50 +50 @@
+-  dcterms:created  "2005-07-11T11:30:47.0Z" ;
++  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
+
+
+
+./WithDigitalLinkID/Example_9.6.3-AggregationEventWithDigitalLink.diff
+
+--- ../Turtle/WithDigitalLinkID/Example_9.6.3-AggregationEventWithDigitalLink.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context/WithDigitalLinkID/Example_9.6.3-AggregationEventWithDigitalLink.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -21,0 +22,6 @@
++[ rdf:type         epcis:EPCISDocument ;
++  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
++  owl:versionInfo  "2.0" ;
++  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;20a2b5b9681b7a70413c42bfe72db61386411252a803b6bc212f5f46f26649d7?ver=CBV2.0> ]
++] .
++
+@@ -37 +43 @@
+-        epcis:eventTime            "2013-06-08T14:58:56.591Z"^^xsd:dateTimeStamp ;
++        epcis:eventTime            "2013-06-08T14:58:56.591Z"^^xsd:dateTime ;
+@@ -41,6 +46,0 @@
+-
+-[ rdf:type         epcis:EPCISDocument ;
+-  dcterms:created  "2005-07-11T11:30:47.0Z" ;
+-  owl:versionInfo  "2.0" ;
+-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;20a2b5b9681b7a70413c42bfe72db61386411252a803b6bc212f5f46f26649d7?ver=CBV2.0> ]
+-] .
+
+
+
+./WithDigitalLinkID/Example_9.6.4-TransformationEventWithDigitalLink.diff
+
+--- ../Turtle/WithDigitalLinkID/Example_9.6.4-TransformationEventWithDigitalLink.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context/WithDigitalLinkID/Example_9.6.4-TransformationEventWithDigitalLink.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -23 +23 @@
+-  dcterms:created  "2013-06-04T14:59:02.099+02:00" ;
++  dcterms:created  "2013-06-04T14:59:02.099+02:00"^^xsd:dateTime ;
+@@ -33 +33 @@
+-        epcis:eventTime            "2013-10-31T14:58:56.591Z"^^xsd:dateTimeStamp ;
++        epcis:eventTime            "2013-10-31T14:58:56.591Z"^^xsd:dateTime ;
+@@ -39,3 +38,0 @@
+-        epcis:inputQuantityList    [ epcis:epcClass  <https://id.gs1.org/01/00614141777778/10/987> ;
+-                                     epcis:quantity  3.0E1
+-                                   ] ;
+@@ -44,0 +42,3 @@
++        epcis:inputQuantityList    [ epcis:epcClass  <https://id.gs1.org/01/00614141777778/10/987> ;
++                                     epcis:quantity  3.0E1
++                                   ] ;
+
+
+
+./WithDigitalLinkID/Example_9.6.1-ObjectEventWithDigitalLink.diff
+
+--- ../Turtle/WithDigitalLinkID/Example_9.6.1-ObjectEventWithDigitalLink.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context/WithDigitalLinkID/Example_9.6.1-ObjectEventWithDigitalLink.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -28 +28 @@
+-        epcis:bizTransactionList   [ epcis:bizTransaction      "urn:epcglobal:cbv:bt:0614141073467:1152"^^xsd:anyURI ;
++        epcis:bizTransactionList   [ epcis:bizTransaction      <urn:epcglobal:cbv:bt:0614141073467:1152> ;
+@@ -31 +31 @@
+-        epcis:bizTransactionList   [ epcis:bizTransaction      "http://transaction.acme.com/po/12345678"^^xsd:anyURI ;
++        epcis:bizTransactionList   [ epcis:bizTransaction      <http://transaction.acme.com/po/12345678> ;
+@@ -36 +36 @@
+-        epcis:eventTime            "2005-04-04T20:33:31.116-06:00"^^xsd:dateTimeStamp ;
++        epcis:eventTime            "2005-04-04T20:33:31.116-06:00"^^xsd:dateTime ;
+@@ -41 +41 @@
+-  dcterms:created  "2005-07-11T11:30:47.0Z" ;
++  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
+@@ -50 +50 @@
+-        epcis:bizTransactionList   [ epcis:bizTransaction      "http://transaction.acme.com/po/12345678"^^xsd:anyURI ;
++        epcis:bizTransactionList   [ epcis:bizTransaction      <http://transaction.acme.com/po/12345678> ;
+@@ -55 +55 @@
+-        epcis:eventTime            "2005-04-03T20:33:31.116000-06:00"^^xsd:dateTimeStamp ;
++        epcis:eventTime            "2005-04-03T20:33:31.116000-06:00"^^xsd:dateTime ;
+
+
+
+./AssociationEvent/AssociationEvent-h.diff
+
+--- ../Turtle/AssociationEvent/AssociationEvent-h.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context/AssociationEvent/AssociationEvent-h.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -23 +23 @@
+-  dcterms:created  "2019-11-04T14:00:00.000+01:00" ;
++  dcterms:created  "2019-11-04T14:00:00.000+01:00"^^xsd:dateTime ;
+@@ -33 +33 @@
+-        epcis:eventTime            "2019-11-04T14:00:00.000+01:00"^^xsd:dateTimeStamp ;
++        epcis:eventTime            "2019-11-04T14:00:00.000+01:00"^^xsd:dateTime ;
+
+
+
+./AssociationEvent/AssociationEvent-f.diff
+
+--- ../Turtle/AssociationEvent/AssociationEvent-f.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context/AssociationEvent/AssociationEvent-f.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -22,6 +21,0 @@
+-[ rdf:type         epcis:EPCISDocument ;
+-  dcterms:created  "2019-11-06T14:00:00.000+01:00" ;
+-  owl:versionInfo  "2.0" ;
+-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;5f7c472bc4905de27a19b2efc8e4a9c6dc195139669b80b515f12218ff07cf65?ver=CBV2.0> ]
+-] .
+-
+@@ -33 +27 @@
+-        epcis:bizTransactionList   [ epcis:bizTransaction      "urn:epcglobal:cbv:bt:4023333000000:54545"^^xsd:anyURI ;
++        epcis:bizTransactionList   [ epcis:bizTransaction      <urn:epcglobal:cbv:bt:4023333000000:54545> ;
+@@ -40 +34 @@
+-        epcis:destinationList      [ epcis:destination              <urn:epc:id:pgln:4012345.00000> ;
++        epcis:destinationList      [ epcis:sourceOrDestination      <urn:epc:id:pgln:4012345.00000> ;
+@@ -44 +38 @@
+-        epcis:eventTime            "2019-11-06T14:00:00.000+01:00"^^xsd:dateTimeStamp ;
++        epcis:eventTime            "2019-11-06T14:00:00.000+01:00"^^xsd:dateTime ;
+@@ -48,3 +42,3 @@
+-        epcis:recordTime           "2019-11-06T14:05:00.000+01:00"^^xsd:dateTimeStamp ;
+-        epcis:sensorElementList    [ epcis:sensorMetadata  [ epcis:endTime    "2019-11-06T13:57:00.000+01:00"^^xsd:dateTimeStamp ;
+-                                                             epcis:startTime  "2019-11-06T13:55:00.000+01:00"^^xsd:dateTimeStamp
++        epcis:recordTime           "2019-11-06T14:05:00.000+01:00"^^xsd:dateTime ;
++        epcis:sensorElementList    [ epcis:sensorMetadata  [ epcis:endTime    "2019-11-06T13:57:00.000+01:00"^^xsd:dateTime ;
++                                                             epcis:startTime  "2019-11-06T13:55:00.000+01:00"^^xsd:dateTime
+@@ -52,0 +47 @@
++                                                             epcis:measurementType  gs1:Humidity ;
+@@ -54 +48,0 @@
+-                                                             epcis:type      <file://C:/Humidity> ;
+@@ -58 +52 @@
+-        epcis:sourceList           [ epcis:source                   <urn:epc:id:pgln:4000001.00012> ;
++        epcis:sourceList           [ epcis:sourceOrDestination      <urn:epc:id:pgln:4000001.00012> ;
+@@ -60,0 +55,6 @@
++
++[ rdf:type         epcis:EPCISDocument ;
++  dcterms:created  "2019-11-06T14:00:00.000+01:00"^^xsd:dateTime ;
++  owl:versionInfo  "2.0" ;
++  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;5f7c472bc4905de27a19b2efc8e4a9c6dc195139669b80b515f12218ff07cf65?ver=CBV2.0> ]
++] .
+
+
+
+./AssociationEvent/AssociationEvent-g.diff
+
+--- ../Turtle/AssociationEvent/AssociationEvent-g.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context/AssociationEvent/AssociationEvent-g.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -21,0 +22,6 @@
++[ rdf:type         epcis:EPCISDocument ;
++  dcterms:created  "2019-11-04T14:00:00.000+01:00"^^xsd:dateTime ;
++  owl:versionInfo  "2.0" ;
++  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;3acf0f5d06f13134ea8899b9a711eb4d4039dfefd73f2093136729296d904d9a?ver=CBV2.0> ]
++] .
++
+@@ -27 +33 @@
+-                                     epcis:declarationTime     "2019-11-07T14:00:00.000+01:00"^^xsd:dateTimeStamp ;
++                                     epcis:declarationTime     "2019-11-07T14:00:00.000+01:00"^^xsd:dateTime ;
+@@ -30 +36 @@
+-        epcis:eventTime            "2019-11-04T14:00:00.000+01:00"^^xsd:dateTimeStamp ;
++        epcis:eventTime            "2019-11-04T14:00:00.000+01:00"^^xsd:dateTime ;
+@@ -34,6 +39,0 @@
+-
+-[ rdf:type         epcis:EPCISDocument ;
+-  dcterms:created  "2019-11-04T14:00:00.000+01:00" ;
+-  owl:versionInfo  "2.0" ;
+-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;3acf0f5d06f13134ea8899b9a711eb4d4039dfefd73f2093136729296d904d9a?ver=CBV2.0> ]
+-] .
+
+
+
+./AssociationEvent/AssociationEvent-e.diff
+
+--- ../Turtle/AssociationEvent/AssociationEvent-e.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context/AssociationEvent/AssociationEvent-e.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -23 +23 @@
+-  dcterms:created  "2019-11-05T14:00:00.000+01:00" ;
++  dcterms:created  "2019-11-05T14:00:00.000+01:00"^^xsd:dateTime ;
+@@ -38 +38 @@
+-        epcis:eventTime            "2019-11-05T14:00:00.000+01:00"^^xsd:dateTimeStamp ;
++        epcis:eventTime            "2019-11-05T14:00:00.000+01:00"^^xsd:dateTime ;
+
+
+
+./AssociationEvent/AssociationEvent-d.diff
+
+--- ../Turtle/AssociationEvent/AssociationEvent-d.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context/AssociationEvent/AssociationEvent-d.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -26 +26 @@
+-        epcis:eventTime            "2019-11-04T14:00:00.000+01:00"^^xsd:dateTimeStamp ;
++        epcis:eventTime            "2019-11-04T14:00:00.000+01:00"^^xsd:dateTime ;
+@@ -32 +32 @@
+-  dcterms:created  "2019-11-04T14:00:00.000+01:00" ;
++  dcterms:created  "2019-11-04T14:00:00.000+01:00"^^xsd:dateTime ;
+
+
+
+./AssociationEvent/AssociationEvent-a.diff
+
+--- ../Turtle/AssociationEvent/AssociationEvent-a.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context/AssociationEvent/AssociationEvent-a.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -27 +27 @@
+-        epcis:eventTime            "2019-11-01T14:00:00.000+01:00"^^xsd:dateTimeStamp ;
++        epcis:eventTime            "2019-11-01T14:00:00.000+01:00"^^xsd:dateTime ;
+@@ -33 +33 @@
+-  dcterms:created  "2019-11-01T14:00:00.000+01:00" ;
++  dcterms:created  "2019-11-01T14:00:00.000+01:00"^^xsd:dateTime ;
+
+
+
+./AssociationEvent/AssociationEvent-c.diff
+
+--- ../Turtle/AssociationEvent/AssociationEvent-c.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context/AssociationEvent/AssociationEvent-c.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -23 +23 @@
+-  dcterms:created  "2019-11-03T14:00:00.000+01:00" ;
++  dcterms:created  "2019-11-03T14:00:00.000+01:00"^^xsd:dateTime ;
+@@ -33 +33 @@
+-        epcis:eventTime            "2019-11-03T14:00:00.000+01:00"^^xsd:dateTimeStamp ;
++        epcis:eventTime            "2019-11-03T14:00:00.000+01:00"^^xsd:dateTime ;
+
+
+
+./AssociationEvent/AssociationEvent-b.diff
+
+--- ../Turtle/AssociationEvent/AssociationEvent-b.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context/AssociationEvent/AssociationEvent-b.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -23 +23 @@
+-  dcterms:created  "2019-11-02T14:00:00.000+01:00" ;
++  dcterms:created  "2019-11-02T14:00:00.000+01:00"^^xsd:dateTime ;
+@@ -33 +33 @@
+-        epcis:eventTime            "2019-11-02T14:00:00.000+01:00"^^xsd:dateTimeStamp ;
++        epcis:eventTime            "2019-11-02T14:00:00.000+01:00"^^xsd:dateTime ;
+
+
+
+./WithFullCombinationOfFields/association_event_all_possible_fields.diff
+
+--- ../Turtle/WithFullCombinationOfFields/association_event_all_possible_fields.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context/WithFullCombinationOfFields/association_event_all_possible_fields.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -23 +23 @@
+-  dcterms:created  "2013-06-04T14:59:02.099+02:00" ;
++  dcterms:created  "2013-06-04T14:59:02.099+02:00"^^xsd:dateTime ;
+@@ -26 +26 @@
+-                                        ext1:array                   "true" , "12" , "22" , "stringInArray" , "2013-06-08T14:58:56.591Z" ;
++                                        ext1:array                   "true" , "2013-06-08T14:58:56.591Z" , "12" , "22" , "stringInArray" ;
+@@ -49 +49 @@
+-                                        epcis:bizTransactionList     [ epcis:bizTransaction      "urn:epc:id:gdti:0614141.00001.1618034"^^xsd:anyURI ;
++                                        epcis:bizTransactionList     [ epcis:bizTransaction      <urn:epc:id:gdti:0614141.00001.1618034> ;
+@@ -52 +52 @@
+-                                        epcis:bizTransactionList     [ epcis:bizTransaction      "urn:epc:id:gsrn:0614141.0000010253"^^xsd:anyURI ;
++                                        epcis:bizTransactionList     [ epcis:bizTransaction      <urn:epc:id:gsrn:0614141.0000010253> ;
+@@ -55,4 +55 @@
+-                                        epcis:childEPCs              <urn:epc:id:giai:4000001.12346> , <urn:epc:id:giai:4000001.12345> ;
+-                                        epcis:childQuantityList      [ epcis:epcClass  <urn:epc:idpat:sgtin:4012345.098765.*> ;
+-                                                                       epcis:quantity  1.0E1
+-                                                                     ] ;
++                                        epcis:childEPCs              <urn:epc:id:giai:4000001.12345> , <urn:epc:id:giai:4000001.12346> ;
+@@ -63,2 +60,2 @@
+-                                        epcis:destinationList        [ epcis:destination              <urn:epc:id:pgln:0614141.00777> ;
+-                                                                       epcis:sourceOrDestinationType  cbv:SDT-owning_party
++                                        epcis:childQuantityList      [ epcis:epcClass  <urn:epc:idpat:sgtin:4012345.098765.*> ;
++                                                                       epcis:quantity  1.0E1
+@@ -66 +63 @@
+-                                        epcis:destinationList        [ epcis:destination              <urn:epc:id:sgln:0614141.00777.0> ;
++                                        epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:sgln:0614141.00777.0> ;
+@@ -69 +66 @@
+-                                        epcis:destinationList        [ epcis:destination              <urn:epc:id:pgln:0614141.00777> ;
++                                        epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:pgln:0614141.00777> ;
+@@ -71,0 +69,3 @@
++                                        epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:pgln:0614141.00777> ;
++                                                                       epcis:sourceOrDestinationType  cbv:SDT-owning_party
++                                                                     ] ;
+@@ -73 +73 @@
+-                                        epcis:eventTime              "2019-11-01T13:00:00.000Z"^^xsd:dateTimeStamp ;
++                                        epcis:eventTime              "2019-11-01T13:00:00.000Z"^^xsd:dateTime ;
+@@ -76,2 +76,2 @@
+-                                        epcis:persistentDisposition  [ epcis:set    <file://C:/completeness_verified> ;
+-                                                                       epcis:unset  <file://C:/completeness_inferred>
++                                        epcis:persistentDisposition  [ epcis:set    cbv:Disp-completeness_verified ;
++                                                                       epcis:unset  cbv:Disp-completeness_inferred
+@@ -81 +81 @@
+-                                                                       ext1:array            "stringInArray" , "true" , "12" , "2013-06-08T14:58:56.591Z" , "22" ;
++                                                                       ext1:array            "22" , "12" , "true" , "2013-06-08T14:58:56.591Z" , "stringInArray" ;
+@@ -106 +106 @@
+-                                                                                               epcis:endTime               "2019-04-02T13:55:00.000Z"^^xsd:dateTimeStamp ;
++                                                                                               epcis:endTime               "2019-04-02T13:55:00.000Z"^^xsd:dateTime ;
+@@ -108,2 +108,2 @@
+-                                                                                               epcis:startTime             "2019-04-02T12:55:01.000Z"^^xsd:dateTimeStamp ;
+-                                                                                               epcis:time                  "2019-04-02T13:05:00.000Z"^^xsd:dateTimeStamp
++                                                                                               epcis:startTime             "2019-04-02T12:55:01.000Z"^^xsd:dateTime ;
++                                                                                               epcis:time                  "2019-04-02T13:05:00.000Z"^^xsd:dateTime
+@@ -113 +113 @@
+-                                                                                               epcis:component             "example:x" ;
++                                                                                               epcis:component              <example:x> ;
+@@ -117 +117 @@
+-                                                                                               epcis:hexBinaryValue        "f0f0f0" ;
++                                                                                               epcis:hexBinaryValue         "f0f0f0"^^xsd:hexBinary ;
+@@ -119,0 +120 @@
++                                                                                               epcis:measurementType        gs1:Temperature ;
+@@ -125,0 +127 @@
++                                                                                               epcis:someFurtherReportData  "someText" ;
+@@ -127,2 +129 @@
+-                                                                                               epcis:time                  "2019-07-19T13:00:00.000Z"^^xsd:dateTimeStamp ;
+-                                                                                               epcis:type                  gs1:Temperature ;
++                                                                                               epcis:time                   "2019-07-19T13:00:00.000Z"^^xsd:dateTime ;
+@@ -130 +131 @@
+-                                                                                               epcis:uriValue              "https://id.gs1.org/giai/4000001111"^^xsd:anyURI ;
++                                                                                               epcis:uriValue               <https://id.gs1.org/giai/4000001111> ;
+@@ -134 +135 @@
+-                                        epcis:sourceList             [ epcis:source                   <urn:epc:id:sgln:4012345.00225.0> ;
++                                        epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:sgln:4012345.00225.0> ;
+@@ -137,4 +138 @@
+-                                        epcis:sourceList             [ epcis:source                   <urn:epc:id:pgln:4012345.00225> ;
+-                                                                       epcis:sourceOrDestinationType  cbv:SDT-possessing_party
+-                                                                     ] ;
+-                                        epcis:sourceList             [ epcis:source                   <urn:epc:id:pgln:4012345.00225> ;
++                                        epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:pgln:4012345.00225> ;
+@@ -141,0 +140,3 @@
++                                                                     ] ;
++                                        epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:pgln:4012345.00225> ;
++                                                                       epcis:sourceOrDestinationType  cbv:SDT-possessing_party
+
+
+
+./WithFullCombinationOfFields/aggregation_event_all_possible_fields.diff
+
+--- ../Turtle/WithFullCombinationOfFields/aggregation_event_all_possible_fields.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context/WithFullCombinationOfFields/aggregation_event_all_possible_fields.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -23 +23 @@
+-  dcterms:created  "2013-06-04T14:59:02.099+02:00" ;
++  dcterms:created  "2013-06-04T14:59:02.099+02:00"^^xsd:dateTime ;
+@@ -26 +26 @@
+-                                        ext1:array                   "true" , "22" , "stringInArray" , "12" , "2013-06-08T14:58:56.591Z" ;
++                                        ext1:array                   "stringInArray" , "true" , "12" , "22" , "2013-06-08T14:58:56.591Z" ;
+@@ -49,4 +49 @@
+-                                        epcis:bizTransactionList     [ epcis:bizTransaction      "urn:epc:id:gdti:0614141.00001.1618034"^^xsd:anyURI ;
+-                                                                       epcis:bizTransactionType  cbv:BTT-po
+-                                                                     ] ;
+-                                        epcis:bizTransactionList     [ epcis:bizTransaction      "urn:epc:id:gsrn:0614141.0000010253"^^xsd:anyURI ;
++                                        epcis:bizTransactionList     [ epcis:bizTransaction      <urn:epc:id:gsrn:0614141.0000010253> ;
+@@ -55 +52,4 @@
+-                                        epcis:childEPCs              <urn:epc:id:sgtin:0614141.107346.2017> , <urn:epc:id:sgtin:0614141.107346.2018> ;
++                                        epcis:bizTransactionList     [ epcis:bizTransaction      <urn:epc:id:gdti:0614141.00001.1618034> ;
++                                                                       epcis:bizTransactionType  cbv:BTT-po
++                                                                     ] ;
++                                        epcis:childEPCs              <urn:epc:id:sgtin:0614141.107346.2018> , <urn:epc:id:sgtin:0614141.107346.2017> ;
+@@ -63,4 +63 @@
+-                                        epcis:destinationList        [ epcis:destination              <urn:epc:id:pgln:0614141.00777> ;
+-                                                                       epcis:sourceOrDestinationType  cbv:SDT-possessing_party
+-                                                                     ] ;
+-                                        epcis:destinationList        [ epcis:destination              <urn:epc:id:sgln:0614141.00777.0> ;
++                                        epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:sgln:0614141.00777.0> ;
+@@ -69 +66,4 @@
+-                                        epcis:destinationList        [ epcis:destination              <urn:epc:id:pgln:0614141.00777> ;
++                                        epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:pgln:0614141.00777> ;
++                                                                       epcis:sourceOrDestinationType  cbv:SDT-possessing_party
++                                                                     ] ;
++                                        epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:pgln:0614141.00777> ;
+@@ -73 +73 @@
+-                                        epcis:eventTime              "2013-06-08T14:58:56.591Z"^^xsd:dateTimeStamp ;
++                                        epcis:eventTime              "2013-06-08T14:58:56.591Z"^^xsd:dateTime ;
+@@ -76,2 +76,2 @@
+-                                        epcis:persistentDisposition  [ epcis:set    <file://C:/completeness_verified> ;
+-                                                                       epcis:unset  <file://C:/completeness_inferred>
++                                        epcis:persistentDisposition  [ epcis:set    cbv:Disp-completeness_verified ;
++                                                                       epcis:unset  cbv:Disp-completeness_inferred
+@@ -81 +81 @@
+-                                                                       ext1:array            "12" , "2013-06-08T14:58:56.591Z" , "22" , "stringInArray" , "true" ;
++                                                                       ext1:array            "22" , "true" , "12" , "stringInArray" , "2013-06-08T14:58:56.591Z" ;
+@@ -106 +106 @@
+-                                                                                               epcis:endTime               "2019-04-02T13:55:00.000Z"^^xsd:dateTimeStamp ;
++                                                                                               epcis:endTime               "2019-04-02T13:55:00.000Z"^^xsd:dateTime ;
+@@ -108,2 +108,2 @@
+-                                                                                               epcis:startTime             "2019-04-02T12:55:01.000Z"^^xsd:dateTimeStamp ;
+-                                                                                               epcis:time                  "2019-04-02T13:05:00.000Z"^^xsd:dateTimeStamp
++                                                                                               epcis:startTime             "2019-04-02T12:55:01.000Z"^^xsd:dateTime ;
++                                                                                               epcis:time                  "2019-04-02T13:05:00.000Z"^^xsd:dateTime
+@@ -113 +113 @@
+-                                                                                               epcis:component             "example:x" ;
++                                                                                               epcis:component              <example:x> ;
+@@ -117 +117 @@
+-                                                                                               epcis:hexBinaryValue        "f0f0f0" ;
++                                                                                               epcis:hexBinaryValue         "f0f0f0"^^xsd:hexBinary ;
+@@ -119,0 +120 @@
++                                                                                               epcis:measurementType        gs1:Temperature ;
+@@ -125,0 +127 @@
++                                                                                               epcis:someFurtherReportData  "someText" ;
+@@ -127,2 +129 @@
+-                                                                                               epcis:time                  "2019-07-19T13:00:00.000Z"^^xsd:dateTimeStamp ;
+-                                                                                               epcis:type                  gs1:Temperature ;
++                                                                                               epcis:time                   "2019-07-19T13:00:00.000Z"^^xsd:dateTime ;
+@@ -130 +131 @@
+-                                                                                               epcis:uriValue              "https://id.gs1.org/giai/4000001111"^^xsd:anyURI ;
++                                                                                               epcis:uriValue               <https://id.gs1.org/giai/4000001111> ;
+@@ -134,4 +135 @@
+-                                        epcis:sourceList             [ epcis:source                   <urn:epc:id:pgln:4012345.00225> ;
+-                                                                       epcis:sourceOrDestinationType  cbv:SDT-possessing_party
+-                                                                     ] ;
+-                                        epcis:sourceList             [ epcis:source                   <urn:epc:id:sgln:4012345.00225.0> ;
++                                        epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:sgln:4012345.00225.0> ;
+@@ -140 +138,4 @@
+-                                        epcis:sourceList             [ epcis:source                   <urn:epc:id:pgln:4012345.00225> ;
++                                        epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:pgln:4012345.00225> ;
++                                                                       epcis:sourceOrDestinationType  cbv:SDT-possessing_party
++                                                                     ] ;
++                                        epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:pgln:4012345.00225> ;
+
+
+
+./WithFullCombinationOfFields/transaction_event_all_possible_fields.diff
+
+--- ../Turtle/WithFullCombinationOfFields/transaction_event_all_possible_fields.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context/WithFullCombinationOfFields/transaction_event_all_possible_fields.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -23 +23 @@
+-  dcterms:created  "2013-06-04T14:59:02.099+02:00" ;
++  dcterms:created  "2013-06-04T14:59:02.099+02:00"^^xsd:dateTime ;
+@@ -26 +26 @@
+-                                        ext1:array                   "22" , "12" , "true" , "2013-06-08T14:58:56.591Z" , "stringInArray" ;
++                                        ext1:array                   "22" , "2013-06-08T14:58:56.591Z" , "stringInArray" , "12" , "true" ;
+@@ -49,4 +49 @@
+-                                        epcis:bizTransactionList     [ epcis:bizTransaction      "urn:epc:id:gsrn:0614141.0000010253"^^xsd:anyURI ;
+-                                                                       epcis:bizTransactionType  cbv:BTT-pedigree
+-                                                                     ] ;
+-                                        epcis:bizTransactionList     [ epcis:bizTransaction      "urn:epc:id:gdti:0614141.00001.1618034"^^xsd:anyURI ;
++                                        epcis:bizTransactionList     [ epcis:bizTransaction      <urn:epc:id:gdti:0614141.00001.1618034> ;
+@@ -55 +52,4 @@
+-                                        epcis:destinationList        [ epcis:destination              <urn:epc:id:sgln:0614141.00777.0> ;
++                                        epcis:bizTransactionList     [ epcis:bizTransaction      <urn:epc:id:gsrn:0614141.0000010253> ;
++                                                                       epcis:bizTransactionType  cbv:BTT-pedigree
++                                                                     ] ;
++                                        epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:sgln:0614141.00777.0> ;
+@@ -58 +58 @@
+-                                        epcis:destinationList        [ epcis:destination              <urn:epc:id:pgln:0614141.00777> ;
++                                        epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:pgln:0614141.00777> ;
+@@ -61 +61 @@
+-                                        epcis:destinationList        [ epcis:destination              <urn:epc:id:pgln:0614141.00777> ;
++                                        epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:pgln:0614141.00777> ;
+@@ -65,2 +65,2 @@
+-                                        epcis:epcList                <urn:epc:id:sgtin:0614141.107346.2017> , <urn:epc:id:sgtin:0614141.107346.2018> ;
+-                                        epcis:eventTime              "2005-04-04T02:33:31.116Z"^^xsd:dateTimeStamp ;
++                                        epcis:epcList                <urn:epc:id:sgtin:0614141.107346.2018> , <urn:epc:id:sgtin:0614141.107346.2017> ;
++                                        epcis:eventTime              "2005-04-04T02:33:31.116Z"^^xsd:dateTime ;
+@@ -69,2 +69,2 @@
+-                                        epcis:persistentDisposition  [ epcis:set    <file://C:/completeness_verified> ;
+-                                                                       epcis:unset  <file://C:/completeness_inferred>
++                                        epcis:persistentDisposition  [ epcis:set    cbv:Disp-completeness_verified ;
++                                                                       epcis:unset  cbv:Disp-completeness_inferred
+@@ -78 +78 @@
+-                                                                       ext1:array            "true" , "stringInArray" , "12" , "2013-06-08T14:58:56.591Z" , "22" ;
++                                                                       ext1:array            "true" , "2013-06-08T14:58:56.591Z" , "12" , "22" , "stringInArray" ;
+@@ -103 +103 @@
+-                                                                                               epcis:endTime               "2019-04-02T13:55:00.000Z"^^xsd:dateTimeStamp ;
++                                                                                               epcis:endTime               "2019-04-02T13:55:00.000Z"^^xsd:dateTime ;
+@@ -105,2 +105,2 @@
+-                                                                                               epcis:startTime             "2019-04-02T12:55:01.000Z"^^xsd:dateTimeStamp ;
+-                                                                                               epcis:time                  "2019-04-02T13:05:00.000Z"^^xsd:dateTimeStamp
++                                                                                               epcis:startTime             "2019-04-02T12:55:01.000Z"^^xsd:dateTime ;
++                                                                                               epcis:time                  "2019-04-02T13:05:00.000Z"^^xsd:dateTime
+@@ -110 +110 @@
+-                                                                                               epcis:component             "example:x" ;
++                                                                                               epcis:component              <example:x> ;
+@@ -114 +114 @@
+-                                                                                               epcis:hexBinaryValue        "f0f0f0" ;
++                                                                                               epcis:hexBinaryValue         "f0f0f0"^^xsd:hexBinary ;
+@@ -116,0 +117 @@
++                                                                                               epcis:measurementType        gs1:Temperature ;
+@@ -122,0 +124 @@
++                                                                                               epcis:someFurtherReportData  "someText" ;
+@@ -124,2 +126 @@
+-                                                                                               epcis:time                  "2019-07-19T13:00:00.000Z"^^xsd:dateTimeStamp ;
+-                                                                                               epcis:type                  gs1:Temperature ;
++                                                                                               epcis:time                   "2019-07-19T13:00:00.000Z"^^xsd:dateTime ;
+@@ -127 +128 @@
+-                                                                                               epcis:uriValue              "https://id.gs1.org/giai/4000001111"^^xsd:anyURI ;
++                                                                                               epcis:uriValue               <https://id.gs1.org/giai/4000001111> ;
+@@ -131 +132 @@
+-                                        epcis:sourceList             [ epcis:source                   <urn:epc:id:pgln:4012345.00225> ;
++                                        epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:pgln:4012345.00225> ;
+@@ -134,4 +135 @@
+-                                        epcis:sourceList             [ epcis:source                   <urn:epc:id:pgln:4012345.00225> ;
+-                                                                       epcis:sourceOrDestinationType  cbv:SDT-possessing_party
+-                                                                     ] ;
+-                                        epcis:sourceList             [ epcis:source                   <urn:epc:id:sgln:4012345.00225.0> ;
++                                        epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:sgln:4012345.00225.0> ;
+@@ -138,0 +137,3 @@
++                                                                     ] ;
++                                        epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:pgln:4012345.00225> ;
++                                                                       epcis:sourceOrDestinationType  cbv:SDT-possessing_party
+
+
+
+./WithFullCombinationOfFields/object_event_all_possible_fields.diff
+
+--- ../Turtle/WithFullCombinationOfFields/object_event_all_possible_fields.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context/WithFullCombinationOfFields/object_event_all_possible_fields.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -23 +23 @@
+-  dcterms:created  "2013-06-04T14:59:02.099+02:00" ;
++  dcterms:created  "2013-06-04T14:59:02.099+02:00"^^xsd:dateTime ;
+@@ -26 +26 @@
+-                                        ext1:array                   "true" , "22" , "stringInArray" , "2013-06-08T14:58:56.591Z" , "12" ;
++                                        ext1:array                   "stringInArray" , "true" , "2013-06-08T14:58:56.591Z" , "22" , "12" ;
+@@ -49,4 +49 @@
+-                                        epcis:bizTransactionList     [ epcis:bizTransaction      "urn:epc:id:gsrn:0614141.0000010253"^^xsd:anyURI ;
+-                                                                       epcis:bizTransactionType  cbv:BTT-pedigree
+-                                                                     ] ;
+-                                        epcis:bizTransactionList     [ epcis:bizTransaction      "urn:epc:id:gdti:0614141.00001.1618034"^^xsd:anyURI ;
++                                        epcis:bizTransactionList     [ epcis:bizTransaction      <urn:epc:id:gdti:0614141.00001.1618034> ;
+@@ -55,2 +52,2 @@
+-                                        epcis:destinationList        [ epcis:destination              <urn:epc:id:pgln:0614141.00777> ;
+-                                                                       epcis:sourceOrDestinationType  cbv:SDT-owning_party
++                                        epcis:bizTransactionList     [ epcis:bizTransaction      <urn:epc:id:gsrn:0614141.0000010253> ;
++                                                                       epcis:bizTransactionType  cbv:BTT-pedigree
+@@ -58 +55 @@
+-                                        epcis:destinationList        [ epcis:destination              <urn:epc:id:pgln:0614141.00777> ;
++                                        epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:pgln:0614141.00777> ;
+@@ -61 +58,4 @@
+-                                        epcis:destinationList        [ epcis:destination              <urn:epc:id:sgln:0614141.00777.0> ;
++                                        epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:pgln:0614141.00777> ;
++                                                                       epcis:sourceOrDestinationType  cbv:SDT-owning_party
++                                                                     ] ;
++                                        epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:sgln:0614141.00777.0> ;
+@@ -66 +66 @@
+-                                        epcis:eventTime              "2005-04-05T02:33:31.116Z"^^xsd:dateTimeStamp ;
++                                        epcis:eventTime              "2005-04-05T02:33:31.116Z"^^xsd:dateTime ;
+@@ -68,7 +68 @@
+-                                        epcis:ilmd                   [ <cbvmda:countryOfExport>  "KR" ;
+-                                                                       <cbvmda:countryOfOrigin>  "GB" ;
+-                                                                       <cbvmda:drainedWeight>    "3.5" ;
+-                                                                       <cbvmda:grossWeight>      "3.5" ;
+-                                                                       <cbvmda:lotNumber>        "ABC123" ;
+-                                                                       <cbvmda:netWeight>        "3.5" ;
+-                                                                       ext1:array                "stringInArray" , "2013-06-08T14:58:56.591Z" , "22" , "true" , "12" ;
++                                        epcis:ilmd                   [ ext1:array              "true" , "12" , "2013-06-08T14:58:56.591Z" , "stringInArray" , "22" ;
+@@ -93 +87,7 @@
+-                                                                       ext1:time                 "2013-06-08T14:58:56.591Z"
++                                                                       ext1:time               "2013-06-08T14:58:56.591Z" ;
++                                                                       cbvmda:countryOfExport  "KR" ;
++                                                                       cbvmda:countryOfOrigin  "GB" ;
++                                                                       cbvmda:drainedWeight    "3.5" ;
++                                                                       cbvmda:grossWeight      "3.5" ;
++                                                                       cbvmda:lotNumber        "ABC123" ;
++                                                                       cbvmda:netWeight        "3.5"
+@@ -95,2 +95,2 @@
+-                                        epcis:persistentDisposition  [ epcis:set    <file://C:/completeness_verified> ;
+-                                                                       epcis:unset  <file://C:/completeness_inferred>
++                                        epcis:persistentDisposition  [ epcis:set    cbv:Disp-completeness_verified ;
++                                                                       epcis:unset  cbv:Disp-completeness_inferred
+@@ -104 +104 @@
+-                                                                       ext1:array            "22" , "12" , "2013-06-08T14:58:56.591Z" , "stringInArray" , "true" ;
++                                                                       ext1:array            "22" , "2013-06-08T14:58:56.591Z" , "12" , "stringInArray" , "true" ;
+@@ -129 +129 @@
+-                                                                                               epcis:endTime               "2019-04-02T13:55:00.000Z"^^xsd:dateTimeStamp ;
++                                                                                               epcis:endTime               "2019-04-02T13:55:00.000Z"^^xsd:dateTime ;
+@@ -131,2 +131,2 @@
+-                                                                                               epcis:startTime             "2019-04-02T12:55:01.000Z"^^xsd:dateTimeStamp ;
+-                                                                                               epcis:time                  "2019-04-02T13:05:00.000Z"^^xsd:dateTimeStamp
++                                                                                               epcis:startTime             "2019-04-02T12:55:01.000Z"^^xsd:dateTime ;
++                                                                                               epcis:time                  "2019-04-02T13:05:00.000Z"^^xsd:dateTime
+@@ -136 +136 @@
+-                                                                                               epcis:component             "example:x" ;
++                                                                                               epcis:component              <example:x> ;
+@@ -140 +140 @@
+-                                                                                               epcis:hexBinaryValue        "f0f0f0" ;
++                                                                                               epcis:hexBinaryValue         "f0f0f0"^^xsd:hexBinary ;
+@@ -142,0 +143 @@
++                                                                                               epcis:measurementType        gs1:Temperature ;
+@@ -148,0 +150 @@
++                                                                                               epcis:someFurtherReportData  "someText" ;
+@@ -150,2 +152 @@
+-                                                                                               epcis:time                  "2019-07-19T13:00:00.000Z"^^xsd:dateTimeStamp ;
+-                                                                                               epcis:type                  gs1:Temperature ;
++                                                                                               epcis:time                   "2019-07-19T13:00:00.000Z"^^xsd:dateTime ;
+@@ -153 +154 @@
+-                                                                                               epcis:uriValue              "https://id.gs1.org/giai/4000001111"^^xsd:anyURI ;
++                                                                                               epcis:uriValue               <https://id.gs1.org/giai/4000001111> ;
+@@ -157,4 +158 @@
+-                                        epcis:sourceList             [ epcis:source                   <urn:epc:id:sgln:4012345.00225.0> ;
+-                                                                       epcis:sourceOrDestinationType  cbv:SDT-location
+-                                                                     ] ;
+-                                        epcis:sourceList             [ epcis:source                   <urn:epc:id:pgln:4012345.00225> ;
++                                        epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:pgln:4012345.00225> ;
+@@ -163 +161 @@
+-                                        epcis:sourceList             [ epcis:source                   <urn:epc:id:pgln:4012345.00225> ;
++                                        epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:pgln:4012345.00225> ;
+@@ -164,0 +163,3 @@
++                                                                     ] ;
++                                        epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:sgln:4012345.00225.0> ;
++                                                                       epcis:sourceOrDestinationType  cbv:SDT-location
+
+
+
+./WithFullCombinationOfFields/transformation_event_all_possible_fields.diff
+
+--- ../Turtle/WithFullCombinationOfFields/transformation_event_all_possible_fields.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context/WithFullCombinationOfFields/transformation_event_all_possible_fields.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -23 +23 @@
+-  dcterms:created  "2013-06-04T14:59:02.099+02:00" ;
++  dcterms:created  "2013-06-04T14:59:02.099+02:00"^^xsd:dateTime ;
+@@ -26 +26 @@
+-                                        ext1:array                   "12" , "stringInArray" , "true" , "22" , "2013-06-08T14:58:56.591Z" ;
++                                        ext1:array                   "stringInArray" , "12" , "2013-06-08T14:58:56.591Z" , "22" , "true" ;
+@@ -48 +48 @@
+-                                        epcis:bizTransactionList     [ epcis:bizTransaction      "urn:epc:id:gdti:0614141.00001.1618034"^^xsd:anyURI ;
++                                        epcis:bizTransactionList     [ epcis:bizTransaction      <urn:epc:id:gdti:0614141.00001.1618034> ;
+@@ -51 +51 @@
+-                                        epcis:bizTransactionList     [ epcis:bizTransaction      "urn:epc:id:gsrn:0614141.0000010253"^^xsd:anyURI ;
++                                        epcis:bizTransactionList     [ epcis:bizTransaction      <urn:epc:id:gsrn:0614141.0000010253> ;
+@@ -54,4 +54 @@
+-                                        epcis:destinationList        [ epcis:destination              <urn:epc:id:sgln:0614141.00777.0> ;
+-                                                                       epcis:sourceOrDestinationType  cbv:SDT-location
+-                                                                     ] ;
+-                                        epcis:destinationList        [ epcis:destination              <urn:epc:id:pgln:0614141.00777> ;
++                                        epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:pgln:0614141.00777> ;
+@@ -60 +57 @@
+-                                        epcis:destinationList        [ epcis:destination              <urn:epc:id:pgln:0614141.00777> ;
++                                        epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:pgln:0614141.00777> ;
+@@ -62,0 +60,3 @@
++                                        epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:sgln:0614141.00777.0> ;
++                                                                       epcis:sourceOrDestinationType  cbv:SDT-location
++                                                                     ] ;
+@@ -64 +64 @@
+-                                        epcis:eventTime              "2013-10-31T14:58:56.591Z"^^xsd:dateTimeStamp ;
++                                        epcis:eventTime              "2013-10-31T14:58:56.591Z"^^xsd:dateTime ;
+@@ -66,7 +66 @@
+-                                        epcis:ilmd                   [ <cbvmda:countryOfExport>  "KR" ;
+-                                                                       <cbvmda:countryOfOrigin>  "GB" ;
+-                                                                       <cbvmda:drainedWeight>    "3.5" ;
+-                                                                       <cbvmda:grossWeight>      "3.5" ;
+-                                                                       <cbvmda:lotNumber>        "ABC123" ;
+-                                                                       <cbvmda:netWeight>        "3.5" ;
+-                                                                       ext1:array                "2013-06-08T14:58:56.591Z" , "12" , "22" , "true" , "stringInArray" ;
++                                        epcis:ilmd                   [ ext1:array              "stringInArray" , "2013-06-08T14:58:56.591Z" , "12" , "true" , "22" ;
+@@ -91,5 +85,7 @@
+-                                                                       ext1:time                 "2013-06-08T14:58:56.591Z"
+-                                                                     ] ;
+-                                        epcis:inputEPCList           <urn:epc:id:sgtin:4012345.011122.25> , <urn:epc:id:sgtin:4000001.065432.99886655> ;
+-                                        epcis:inputQuantityList      [ epcis:epcClass  <urn:epc:idpat:sgtin:4012345.066666.*> ;
+-                                                                       epcis:quantity  2.2E2
++                                                                       ext1:time               "2013-06-08T14:58:56.591Z" ;
++                                                                       cbvmda:countryOfExport  "KR" ;
++                                                                       cbvmda:countryOfOrigin  "GB" ;
++                                                                       cbvmda:drainedWeight    "3.5" ;
++                                                                       cbvmda:grossWeight      "3.5" ;
++                                                                       cbvmda:lotNumber        "ABC123" ;
++                                                                       cbvmda:netWeight        "3.5"
+@@ -96,0 +93 @@
++                                        epcis:inputEPCList           <urn:epc:id:sgtin:4000001.065432.99886655> , <urn:epc:id:sgtin:4012345.011122.25> ;
+@@ -99,0 +97,3 @@
++                                        epcis:inputQuantityList      [ epcis:epcClass  <urn:epc:idpat:sgtin:4012345.066666.*> ;
++                                                                       epcis:quantity  2.2E2
++                                                                     ] ;
+@@ -104,4 +104 @@
+-                                        epcis:outputEPCList          <urn:epc:id:sgtin:4012345.077889.27> , <urn:epc:id:sgtin:4012345.077889.28> , <urn:epc:id:sgtin:4012345.077889.25> , <urn:epc:id:sgtin:4012345.077889.26> ;
+-                                        epcis:outputQuantityList     [ epcis:epcClass  <urn:epc:class:lgtin:0614141.077777.987> ;
+-                                                                       epcis:quantity  3.0E1
+-                                                                     ] ;
++                                        epcis:outputEPCList          <urn:epc:id:sgtin:4012345.077889.26> , <urn:epc:id:sgtin:4012345.077889.25> , <urn:epc:id:sgtin:4012345.077889.28> , <urn:epc:id:sgtin:4012345.077889.27> ;
+@@ -110,0 +108,3 @@
++                                        epcis:outputQuantityList     [ epcis:epcClass  <urn:epc:class:lgtin:0614141.077777.987> ;
++                                                                       epcis:quantity  3.0E1
++                                                                     ] ;
+@@ -115,2 +115,2 @@
+-                                        epcis:persistentDisposition  [ epcis:set    <file://C:/completeness_verified> ;
+-                                                                       epcis:unset  <file://C:/completeness_inferred>
++                                        epcis:persistentDisposition  [ epcis:set    cbv:Disp-completeness_verified ;
++                                                                       epcis:unset  cbv:Disp-completeness_inferred
+@@ -120 +120 @@
+-                                                                       ext1:array            "true" , "stringInArray" , "2013-06-08T14:58:56.591Z" , "22" , "12" ;
++                                                                       ext1:array            "2013-06-08T14:58:56.591Z" , "22" , "true" , "12" , "stringInArray" ;
+@@ -145 +145 @@
+-                                                                                               epcis:endTime               "2019-04-02T13:55:00.000Z"^^xsd:dateTimeStamp ;
++                                                                                               epcis:endTime               "2019-04-02T13:55:00.000Z"^^xsd:dateTime ;
+@@ -147,2 +147,2 @@
+-                                                                                               epcis:startTime             "2019-04-02T12:55:01.000Z"^^xsd:dateTimeStamp ;
+-                                                                                               epcis:time                  "2019-04-02T13:05:00.000Z"^^xsd:dateTimeStamp
++                                                                                               epcis:startTime             "2019-04-02T12:55:01.000Z"^^xsd:dateTime ;
++                                                                                               epcis:time                  "2019-04-02T13:05:00.000Z"^^xsd:dateTime
+@@ -152 +152 @@
+-                                                                                               epcis:component             "example:x" ;
++                                                                                               epcis:component              <example:x> ;
+@@ -156 +156 @@
+-                                                                                               epcis:hexBinaryValue        "f0f0f0" ;
++                                                                                               epcis:hexBinaryValue         "f0f0f0"^^xsd:hexBinary ;
+@@ -158,0 +159 @@
++                                                                                               epcis:measurementType        gs1:Temperature ;
+@@ -164,0 +166 @@
++                                                                                               epcis:someFurtherReportData  "someText" ;
+@@ -166,2 +168 @@
+-                                                                                               epcis:time                  "2019-07-19T13:00:00.000Z"^^xsd:dateTimeStamp ;
+-                                                                                               epcis:type                  gs1:Temperature ;
++                                                                                               epcis:time                   "2019-07-19T13:00:00.000Z"^^xsd:dateTime ;
+@@ -169 +170 @@
+-                                                                                               epcis:uriValue              "https://id.gs1.org/giai/4000001111"^^xsd:anyURI ;
++                                                                                               epcis:uriValue               <https://id.gs1.org/giai/4000001111> ;
+@@ -173,2 +174,2 @@
+-                                        epcis:sourceList             [ epcis:source                   <urn:epc:id:pgln:4012345.00225> ;
+-                                                                       epcis:sourceOrDestinationType  cbv:SDT-owning_party
++                                        epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:sgln:4012345.00225.0> ;
++                                                                       epcis:sourceOrDestinationType  cbv:SDT-location
+@@ -176 +177 @@
+-                                        epcis:sourceList             [ epcis:source                   <urn:epc:id:pgln:4012345.00225> ;
++                                        epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:pgln:4012345.00225> ;
+@@ -179,3 +180,4 @@
+-                                        epcis:sourceList             [ epcis:source                   <urn:epc:id:sgln:4012345.00225.0> ;
+-                                                                       epcis:sourceOrDestinationType  cbv:SDT-location
+-                                                                     ]
++                                        epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:pgln:4012345.00225> ;
++                                                                       epcis:sourceOrDestinationType  cbv:SDT-owning_party
++                                                                     ] ;
++                                        epcis:transformationID       "urn:epc:id:gdti:0614141.12345.400"
+
+
+
+./WithSensorData/SensorDataExample8.diff
+
+--- ../Turtle/WithSensorData/SensorDataExample8.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample8.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -23 +23 @@
+-  dcterms:created  "2005-07-11T11:30:47.0Z" ;
++  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
+@@ -37 +37 @@
+-        epcis:eventTime            "2019-10-07T15:30:00.000+01:00"^^xsd:dateTimeStamp ;
++        epcis:eventTime            "2019-10-07T15:30:00.000+01:00"^^xsd:dateTime ;
+@@ -41,2 +41,2 @@
+-        epcis:sensorElementList    [ epcis:sensorReport  [ epcis:stringValue  "someSensorOutput" ;
+-                                                           epcis:type         examp:someSensorProperty
++        epcis:sensorElementList    [ epcis:sensorReport  [ epcis:measurementType  examp:someSensorProperty ;
++                                                           epcis:stringValue      "someSensorOutput"
+@@ -44 +44,2 @@
+-                                     epcis:sensorReport  [ epcis:dataProcessingMethod  <https://example.com/gdti/4012345000054987> ;
++                                     epcis:sensorReport  [ epcis:bizRules              <https://example.org/gdti/4012345000054987> ;
++                                                           epcis:dataProcessingMethod  <https://example.com/gdti/4012345000054987> ;
+@@ -46,0 +48 @@
++                                                           epcis:measurementType       gs1:Temperature ;
+@@ -48,2 +50 @@
+-                                                           epcis:time                  "2019-07-19T14:00:00.000+01:00"^^xsd:dateTimeStamp ;
+-                                                           epcis:type                  gs1:MT-Temperature ;
++                                                           epcis:time                  "2019-07-19T14:00:00.000+01:00"^^xsd:dateTime ;
+@@ -58 +59 @@
+-                                                             epcis:time                  "2019-07-19T14:00:00.000+01:00"^^xsd:dateTimeStamp
++                                                             epcis:time                  "2019-07-19T14:00:00.000+01:00"^^xsd:dateTime
+@@ -60,2 +61,2 @@
+-                                     epcis:sensorReport    [ epcis:microorganism  <https://www.ncbi.nlm.nih.gov/taxonomy/1126011> ;
+-                                                             epcis:type           gs1:MT-AmountOfSubstancePerUnitVolume ;
++                                     epcis:sensorReport    [ epcis:measurementType  gs1:AmountOfSubstancePerUnitVolume ;
++                                                             epcis:microorganism    <https://www.ncbi.nlm.nih.gov/taxonomy/1126011> ;
+@@ -66 +67 @@
+-                                                             epcis:type               gs1:MT-AmountOfSubstancePerUnitVolume ;
++                                                             epcis:measurementType    gs1:AmountOfSubstancePerUnitVolume ;
+@@ -70 +71 @@
+-                                     epcis:sensorReport    [ epcis:type   <file://C:/Humidity> ;
++                                     epcis:sensorReport    [ epcis:measurementType  gs1:Humidity ;
+@@ -80,2 +81,2 @@
+-                                                                epcis:endTime              "2019-04-02T14:59:59.999+01:00"^^xsd:dateTimeStamp ;
+-                                                                epcis:startTime            "2019-04-01T15:00:00.000+01:00"^^xsd:dateTimeStamp
++                                                                epcis:endTime              "2019-04-02T14:59:59.999+01:00"^^xsd:dateTime ;
++                                                                epcis:startTime            "2019-04-01T15:00:00.000+01:00"^^xsd:dateTime
+@@ -83,2 +84,2 @@
+-                                     epcis:sensorReport       [ epcis:stringValue  "someSensorOutput" ;
+-                                                                epcis:type         examp:someSensorProperty
++                                     epcis:sensorReport       [ epcis:measurementType  examp:someSensorProperty ;
++                                                                epcis:stringValue      "someSensorOutput"
+@@ -88,0 +90 @@
++                                                                epcis:measurementType  gs1:Temperature ;
+@@ -93 +94,0 @@
+-                                                                epcis:type       gs1:MT-Temperature ;
+
+
+
+./WithSensorData/SensorDataExample9.diff
+
+--- ../Turtle/WithSensorData/SensorDataExample9.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample9.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -23 +23 @@
+-  dcterms:created  "2019-10-07T15:00:00.000+01:00" ;
++  dcterms:created  "2019-10-07T15:00:00.000+01:00"^^xsd:dateTime ;
+@@ -27 +27 @@
+-                                        epcis:bizStep              <file://C:/sensor_reporting> ;
++                                        epcis:bizStep              cbv:BizStep-sensor_reporting ;
+@@ -29 +29 @@
+-                                        epcis:eventTime            "2020-05-07T15:00:00.000Z"^^xsd:dateTimeStamp ;
++                                        epcis:eventTime            "2020-05-07T15:00:00.000Z"^^xsd:dateTime ;
+@@ -33 +33 @@
+-                                                                                           epcis:type          <file://C:/ALARM_CONDITION>
++                                                                                           epcis:measurementType  gs1:ALARM_CONDITION
+@@ -35,2 +35,2 @@
+-                                                                     epcis:sensorReport  [ epcis:type      <file://C:/ERROR_CONDITION> ;
+-                                                                                           epcis:uriValue  "https://example.com/ErrorCode-A827"^^xsd:anyURI
++                                                                     epcis:sensorReport  [ epcis:measurementType  gs1:ERROR_CONDITION ;
++                                                                                           epcis:uriValue         <https://example.com/ErrorCode-A827>
+
+
+
+./WithSensorData/SensorDataExample2.diff
+
+--- ../Turtle/WithSensorData/SensorDataExample2.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample2.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -27 +27 @@
+-        epcis:eventTime            "2019-04-02T15:00:00.000+01:00"^^xsd:dateTimeStamp ;
++        epcis:eventTime            "2019-04-02T15:00:00.000+01:00"^^xsd:dateTime ;
+@@ -33 +33 @@
+-                                                             epcis:endTime         "2019-04-02T14:55:00.000+01:00"^^xsd:dateTimeStamp ;
++                                                             epcis:endTime         "2019-04-02T14:55:00.000+01:00"^^xsd:dateTime ;
+@@ -35 +35 @@
+-                                                             epcis:startTime       "2019-04-02T13:55:01.000+01:00"^^xsd:dateTimeStamp
++                                                             epcis:startTime       "2019-04-02T13:55:01.000+01:00"^^xsd:dateTime
+@@ -37,0 +38 @@
++                                                             epcis:measurementType  gs1:Illuminance ;
+@@ -39 +39,0 @@
+-                                                             epcis:type      gs1:MT-Illuminance ;
+@@ -42,0 +43 @@
++                                                             epcis:measurementType  gs1:Speed ;
+@@ -44 +44,0 @@
+-                                                             epcis:type      gs1:MT-Speed ;
+@@ -47,0 +48 @@
++                                                             epcis:measurementType  gs1:Humidity ;
+@@ -49 +49,0 @@
+-                                                             epcis:type      <file://C:/Humidity> ;
+@@ -53,0 +54 @@
++                                                             epcis:measurementType  gs1:Temperature ;
+@@ -56 +56,0 @@
+-                                                             epcis:type       gs1:MT-Temperature ;
+@@ -62 +62 @@
+-  dcterms:created  "2005-07-11T11:30:47.0Z" ;
++  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
+
+
+
+./WithSensorData/SensorDataExample1b.diff
+
+--- ../Turtle/WithSensorData/SensorDataExample1b.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample1b.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -21,0 +22,6 @@
++[ rdf:type         epcis:EPCISDocument ;
++  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
++  owl:versionInfo  "2.0" ;
++  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;e84840e98e15b9c86168ce85ca277af4241dddd3b658f9650a00096c2a09c2f3?ver=CBV2.0> ]
++] .
++
+@@ -26 +32 @@
+-        epcis:eventTime            "2019-04-02T15:00:00.000+01:00"^^xsd:dateTimeStamp ;
++        epcis:eventTime            "2019-04-02T15:00:00.000+01:00"^^xsd:dateTime ;
+@@ -32 +38 @@
+-                                                             epcis:time            "2019-04-02T14:35:00.000+01:00"^^xsd:dateTimeStamp
++                                                             epcis:time            "2019-04-02T14:35:00.000+01:00"^^xsd:dateTime
+@@ -34 +40 @@
+-                                     epcis:sensorReport    [ epcis:type   gs1:MT-Illuminance ;
++                                     epcis:sensorReport    [ epcis:measurementType  gs1:Illuminance ;
+@@ -38 +44 @@
+-                                     epcis:sensorReport    [ epcis:type   gs1:MT-Speed ;
++                                     epcis:sensorReport    [ epcis:measurementType  gs1:Speed ;
+@@ -42 +48 @@
+-                                     epcis:sensorReport    [ epcis:type   <file://C:/Humidity> ;
++                                     epcis:sensorReport    [ epcis:measurementType  gs1:Humidity ;
+@@ -46 +52 @@
+-                                     epcis:sensorReport    [ epcis:type   gs1:MT-Temperature ;
++                                     epcis:sensorReport    [ epcis:measurementType  gs1:Temperature ;
+@@ -54 +60 @@
+-                                                             epcis:time            "2019-04-02T14:05:00.000+01:00"^^xsd:dateTimeStamp
++                                                             epcis:time            "2019-04-02T14:05:00.000+01:00"^^xsd:dateTime
+@@ -56 +62 @@
+-                                     epcis:sensorReport    [ epcis:type   gs1:MT-Illuminance ;
++                                     epcis:sensorReport    [ epcis:measurementType  gs1:Illuminance ;
+@@ -60 +66 @@
+-                                     epcis:sensorReport    [ epcis:type   gs1:MT-Speed ;
++                                     epcis:sensorReport    [ epcis:measurementType  gs1:Speed ;
+@@ -64 +70 @@
+-                                     epcis:sensorReport    [ epcis:type   <file://C:/Humidity> ;
++                                     epcis:sensorReport    [ epcis:measurementType  gs1:Humidity ;
+@@ -68 +74 @@
+-                                     epcis:sensorReport    [ epcis:type   gs1:MT-Temperature ;
++                                     epcis:sensorReport    [ epcis:measurementType  gs1:Temperature ;
+@@ -76 +82 @@
+-                                                             epcis:time            "2019-04-02T14:55:00.000+01:00"^^xsd:dateTimeStamp
++                                                             epcis:time            "2019-04-02T14:55:00.000+01:00"^^xsd:dateTime
+@@ -78 +84 @@
+-                                     epcis:sensorReport    [ epcis:type   gs1:MT-Illuminance ;
++                                     epcis:sensorReport    [ epcis:measurementType  gs1:Illuminance ;
+@@ -82 +88 @@
+-                                     epcis:sensorReport    [ epcis:type   gs1:MT-Speed ;
++                                     epcis:sensorReport    [ epcis:measurementType  gs1:Speed ;
+@@ -86 +92 @@
+-                                     epcis:sensorReport    [ epcis:type   <file://C:/Humidity> ;
++                                     epcis:sensorReport    [ epcis:measurementType  gs1:Humidity ;
+@@ -90 +96 @@
+-                                     epcis:sensorReport    [ epcis:type   gs1:MT-Temperature ;
++                                     epcis:sensorReport    [ epcis:measurementType  gs1:Temperature ;
+@@ -95,6 +100,0 @@
+-
+-[ rdf:type         epcis:EPCISDocument ;
+-  dcterms:created  "2005-07-11T11:30:47.0Z" ;
+-  owl:versionInfo  "2.0" ;
+-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;e84840e98e15b9c86168ce85ca277af4241dddd3b658f9650a00096c2a09c2f3?ver=CBV2.0> ]
+-] .
+
+
+
+./WithSensorData/SensorDataExample14.diff
+
+--- ../Turtle/WithSensorData/SensorDataExample14.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample14.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -23 +23 @@
+-  dcterms:created  "2019-10-07T15:00:00.000+01:00" ;
++  dcterms:created  "2019-10-07T15:00:00.000+01:00"^^xsd:dateTime ;
+@@ -27 +27 @@
+-                                        epcis:bizStep              <file://C:/sensor_reporting> ;
++                                        epcis:bizStep              cbv:BizStep-sensor_reporting ;
+@@ -29 +29 @@
+-                                        epcis:eventTime            "2021-05-27T10:00:00.000Z"^^xsd:dateTimeStamp ;
++                                        epcis:eventTime            "2021-05-27T10:00:00.000Z"^^xsd:dateTime ;
+@@ -33,2 +33,4 @@
+-                                                                     epcis:sensorReport  [ epcis:component  "Longitude" ;
+-                                                                                           epcis:type       gs1:MT-Angle ;
++                                                                     epcis:sensorReport  [ epcis:component        cbv:COMP-Longitude ;
++                                                                                           epcis:coordinateReferenceSystem
++                                                                                                   "http://www.opengis.net/def/crs/OGC/1.3/CRS84" ;
++                                                                                           epcis:measurementType  gs1:Angle ;
+@@ -38,2 +40,4 @@
+-                                                                     epcis:sensorReport  [ epcis:component  "Latitude" ;
+-                                                                                           epcis:type       gs1:MT-Angle ;
++                                                                     epcis:sensorReport  [ epcis:component        cbv:COMP-Latitude ;
++                                                                                           epcis:coordinateReferenceSystem
++                                                                                                   "http://www.opengis.net/def/crs/OGC/1.3/CRS84" ;
++                                                                                           epcis:measurementType  gs1:Angle ;
+
+
+
+./WithSensorData/SensorDataExample15.diff
+
+--- ../Turtle/WithSensorData/SensorDataExample15.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample15.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -23 +23 @@
+-  dcterms:created  "2019-10-07T15:00:00.000+01:00" ;
++  dcterms:created  "2019-10-07T15:00:00.000+01:00"^^xsd:dateTime ;
+@@ -27 +27 @@
+-                                        epcis:bizStep              <file://C:/sensor_reporting> ;
++                                        epcis:bizStep              cbv:BizStep-sensor_reporting ;
+@@ -29 +29 @@
+-                                        epcis:eventTime            "2021-05-27T13:00:00.000Z"^^xsd:dateTimeStamp ;
++                                        epcis:eventTime            "2021-05-27T13:00:00.000Z"^^xsd:dateTime ;
+@@ -33,3 +33,5 @@
+-                                                                     epcis:sensorMetadata  [ epcis:time  "2021-05-27T12:50:00.000Z"^^xsd:dateTimeStamp ] ;
+-                                                                     epcis:sensorReport    [ epcis:component  "Easting" ;
+-                                                                                             epcis:type       gs1:MT-Length ;
++                                                                     epcis:sensorMetadata  [ epcis:time  "2021-05-27T12:50:00.000Z"^^xsd:dateTime ] ;
++                                                                     epcis:sensorReport    [ epcis:component        cbv:COMP-Easting ;
++                                                                                             epcis:coordinateReferenceSystem
++                                                                                                     "http://www.opengis.net/def/crs/EPSG/0/27700" ;
++                                                                                             epcis:measurementType  gs1:Length ;
+@@ -39,2 +41,4 @@
+-                                                                     epcis:sensorReport    [ epcis:component  "Northing" ;
+-                                                                                             epcis:type       gs1:MT-Length ;
++                                                                     epcis:sensorReport    [ epcis:component        cbv:COMP-Northing ;
++                                                                                             epcis:coordinateReferenceSystem
++                                                                                                     "http://www.opengis.net/def/crs/EPSG/0/27700" ;
++                                                                                             epcis:measurementType  gs1:Length ;
+
+
+
+./WithSensorData/SensorDataExample3.diff
+
+--- ../Turtle/WithSensorData/SensorDataExample3.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample3.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -21,0 +22,6 @@
++[ rdf:type         epcis:EPCISDocument ;
++  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
++  owl:versionInfo  "2.0" ;
++  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;b507b2720c96cd99855eabb101e8617d48622eff4ceaad0a416b3c10dfd316ee?ver=CBV2.0> ]
++] .
++
+@@ -26 +32 @@
+-        epcis:eventTime            "2019-04-02T15:00:00.000+01:00"^^xsd:dateTimeStamp ;
++        epcis:eventTime            "2019-04-02T15:00:00.000+01:00"^^xsd:dateTime ;
+@@ -29,2 +35,2 @@
+-        epcis:sensorElementList    [ epcis:sensorMetadata  [ epcis:endTime    "2019-04-02T14:59:59.999+01:00"^^xsd:dateTimeStamp ;
+-                                                             epcis:startTime  "2019-04-01T15:00:00.000+01:00"^^xsd:dateTimeStamp
++        epcis:sensorElementList    [ epcis:sensorMetadata  [ epcis:endTime    "2019-04-02T14:59:59.999+01:00"^^xsd:dateTime ;
++                                                             epcis:startTime  "2019-04-01T15:00:00.000+01:00"^^xsd:dateTime
+@@ -32,0 +39 @@
++                                                             epcis:measurementType  gs1:Humidity ;
+@@ -34 +40,0 @@
+-                                                             epcis:type      <file://C:/Humidity> ;
+@@ -37,0 +44 @@
++                                                             epcis:measurementType  gs1:Temperature ;
+@@ -39 +45,0 @@
+-                                                             epcis:type      gs1:MT-Temperature ;
+@@ -43,6 +48,0 @@
+-
+-[ rdf:type         epcis:EPCISDocument ;
+-  dcterms:created  "2005-07-11T11:30:47.0Z" ;
+-  owl:versionInfo  "2.0" ;
+-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;b507b2720c96cd99855eabb101e8617d48622eff4ceaad0a416b3c10dfd316ee?ver=CBV2.0> ]
+-] .
+
+
+
+./WithSensorData/SensorDataExample1.diff
+
+--- ../Turtle/WithSensorData/SensorDataExample1.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample1.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -23 +23 @@
+-  dcterms:created  "2005-07-11T11:30:47.0Z" ;
++  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
+@@ -33 +33 @@
+-        epcis:eventTime            "2019-04-02T15:00:00.000+01:00"^^xsd:dateTimeStamp ;
++        epcis:eventTime            "2019-04-02T15:00:00.000+01:00"^^xsd:dateTime ;
+@@ -36 +36 @@
+-        epcis:sensorElementList    [ rdf:type              <file://C:/SensorElement> ;
++        epcis:sensorElementList    [ rdf:type              epcis:SensorElement ;
+@@ -40 +40 @@
+-                                                             epcis:time            "2019-04-02T14:05:00.000+01:00"^^xsd:dateTimeStamp
++                                                             epcis:time            "2019-04-02T14:35:00.000+01:00"^^xsd:dateTime
+@@ -42 +42 @@
+-                                     epcis:sensorReport    [ epcis:type   gs1:MT-Illuminance ;
++                                     epcis:sensorReport    [ epcis:measurementType  gs1:Illuminance ;
+@@ -44 +44 @@
+-                                                             epcis:value  8.0E2
++                                                             epcis:value            8.01E2
+@@ -46 +46 @@
+-                                     epcis:sensorReport    [ epcis:type   gs1:MT-Speed ;
++                                     epcis:sensorReport    [ epcis:measurementType  gs1:Speed ;
+@@ -48 +48 @@
+-                                                             epcis:value  1.6E2
++                                                             epcis:value            1.61E2
+@@ -50 +50 @@
+-                                     epcis:sensorReport    [ epcis:type   <file://C:/Humidity> ;
++                                     epcis:sensorReport    [ epcis:measurementType  gs1:Humidity ;
+@@ -52 +52 @@
+-                                                             epcis:value  1.21E1
++                                                             epcis:value            1.22E1
+@@ -54 +54 @@
+-                                     epcis:sensorReport    [ epcis:type   gs1:MT-Temperature ;
++                                     epcis:sensorReport    [ epcis:measurementType  gs1:Temperature ;
+@@ -56 +56 @@
+-                                                             epcis:value  2.6E1
++                                                             epcis:value            2.61E1
+@@ -59 +59 @@
+-        epcis:sensorElementList    [ rdf:type              <file://C:/SensorElement> ;
++        epcis:sensorElementList    [ rdf:type              epcis:SensorElement ;
+@@ -63 +63 @@
+-                                                             epcis:time            "2019-04-02T14:35:00.000+01:00"^^xsd:dateTimeStamp
++                                                             epcis:time            "2019-04-02T14:05:00.000+01:00"^^xsd:dateTime
+@@ -65 +65 @@
+-                                     epcis:sensorReport    [ epcis:type   gs1:MT-Illuminance ;
++                                     epcis:sensorReport    [ epcis:measurementType  gs1:Illuminance ;
+@@ -67 +67 @@
+-                                                             epcis:value  8.01E2
++                                                             epcis:value            8.0E2
+@@ -69 +69 @@
+-                                     epcis:sensorReport    [ epcis:type   gs1:MT-Speed ;
++                                     epcis:sensorReport    [ epcis:measurementType  gs1:Speed ;
+@@ -71 +71 @@
+-                                                             epcis:value  1.61E2
++                                                             epcis:value            1.6E2
+@@ -73 +73 @@
+-                                     epcis:sensorReport    [ epcis:type   <file://C:/Humidity> ;
++                                     epcis:sensorReport    [ epcis:measurementType  gs1:Humidity ;
+@@ -75 +75 @@
+-                                                             epcis:value  1.22E1
++                                                             epcis:value            1.21E1
+@@ -77 +77 @@
+-                                     epcis:sensorReport    [ epcis:type   gs1:MT-Temperature ;
++                                     epcis:sensorReport    [ epcis:measurementType  gs1:Temperature ;
+@@ -79 +79 @@
+-                                                             epcis:value  2.61E1
++                                                             epcis:value            2.6E1
+@@ -82 +82 @@
+-        epcis:sensorElementList    [ rdf:type              <file://C:/SensorElement> ;
++        epcis:sensorElementList    [ rdf:type              epcis:SensorElement ;
+@@ -86 +86 @@
+-                                                             epcis:time            "2019-04-02T14:55:00.000+01:00"^^xsd:dateTimeStamp
++                                                             epcis:time            "2019-04-02T14:55:00.000+01:00"^^xsd:dateTime
+@@ -88 +88 @@
+-                                     epcis:sensorReport    [ epcis:type   gs1:MT-Illuminance ;
++                                     epcis:sensorReport    [ epcis:measurementType  gs1:Illuminance ;
+@@ -92 +92 @@
+-                                     epcis:sensorReport    [ epcis:type   gs1:MT-Speed ;
++                                     epcis:sensorReport    [ epcis:measurementType  gs1:Speed ;
+@@ -96 +96 @@
+-                                     epcis:sensorReport    [ epcis:type   <file://C:/Humidity> ;
++                                     epcis:sensorReport    [ epcis:measurementType  gs1:Humidity ;
+@@ -100 +100 @@
+-                                     epcis:sensorReport    [ epcis:type   gs1:MT-Temperature ;
++                                     epcis:sensorReport    [ epcis:measurementType  gs1:Temperature ;
+
+
+
+./WithSensorData/SensorDataExample17.diff
+
+--- ../Turtle/WithSensorData/SensorDataExample17.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample17.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -23,2 +23,2 @@
+-  dcterms:created  "2021-04-27T15:00:00+01:00" ;
+-  owl:versionInfo  2 ;
++  dcterms:created  "2021-04-27T15:00:00+01:00"^^xsd:dateTime ;
++  owl:versionInfo  "2" ;
+@@ -31 +31 @@
+-        epcis:bizStep              <file://C:/sensor_reporting> ;
++        epcis:bizStep              cbv:BizStep-sensor_reporting ;
+@@ -33 +33 @@
+-        epcis:eventTime            "2021-04-27T15:00:00+01:00"^^xsd:dateTimeStamp ;
++        epcis:eventTime            "2021-04-27T15:00:00+01:00"^^xsd:dateTime ;
+@@ -37 +37 @@
+-                                                           epcis:type     gs1:MT-Mass ;
++                                                           epcis:measurementType  gs1:Mass ;
+@@ -42 +42 @@
+-                                                           epcis:type     gs1:MT-Mass ;
++                                                           epcis:measurementType  gs1:Mass ;
+@@ -47 +47 @@
+-                                                           epcis:type     gs1:MT-Mass ;
++                                                           epcis:measurementType  gs1:Mass ;
+
+
+
+./WithSensorData/SensorDataExample16.diff
+
+--- ../Turtle/WithSensorData/SensorDataExample16.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample16.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -23 +23 @@
+-  dcterms:created  "2019-10-07T15:00:00.000+01:00" ;
++  dcterms:created  "2019-10-07T15:00:00.000+01:00"^^xsd:dateTime ;
+@@ -27 +27 @@
+-                                        epcis:bizStep              <file://C:/sensor_reporting> ;
++                                        epcis:bizStep              cbv:BizStep-sensor_reporting ;
+@@ -29 +29 @@
+-                                        epcis:eventTime            "2021-05-27T10:00:00.000Z"^^xsd:dateTimeStamp ;
++                                        epcis:eventTime            "2021-05-27T10:00:00.000Z"^^xsd:dateTime ;
+
+
+
+./WithSensorData/SensorDataExample4.diff
+
+--- ../Turtle/WithSensorData/SensorDataExample4.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample4.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -21,0 +22,6 @@
++[ rdf:type         epcis:EPCISDocument ;
++  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
++  owl:versionInfo  "2.0" ;
++  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;7ff1501099b3f5890d310d703fb9f57e251bba0c57d3c049fab590b50323a8e7?ver=CBV2.0> ]
++] .
++
+@@ -26 +32 @@
+-        epcis:eventTime            "2019-04-02T15:00:00.000+01:00"^^xsd:dateTimeStamp ;
++        epcis:eventTime            "2019-04-02T15:00:00.000+01:00"^^xsd:dateTime ;
+@@ -33 +39 @@
+-        epcis:sensorElementList    [ epcis:sensorMetadata  [ epcis:time  "2019-04-02T14:55:00.000+01:00"^^xsd:dateTimeStamp ] ;
++        epcis:sensorElementList    [ epcis:sensorMetadata  [ epcis:time  "2019-04-02T14:55:00.000+01:00"^^xsd:dateTime ] ;
+@@ -35,0 +42 @@
++                                                             epcis:measurementType  gs1:Illuminance ;
+@@ -37 +43,0 @@
+-                                                             epcis:type            gs1:MT-Illuminance ;
+@@ -42,0 +49 @@
++                                                             epcis:measurementType  gs1:Speed ;
+@@ -44 +50,0 @@
+-                                                             epcis:type            gs1:MT-Speed ;
+@@ -49,0 +56 @@
++                                                             epcis:measurementType  gs1:Humidity ;
+@@ -51 +57,0 @@
+-                                                             epcis:type            <file://C:/Humidity> ;
+@@ -56,0 +63 @@
++                                                             epcis:measurementType  gs1:Temperature ;
+@@ -58 +64,0 @@
+-                                                             epcis:type            gs1:MT-Temperature ;
+@@ -63,6 +68,0 @@
+-
+-[ rdf:type         epcis:EPCISDocument ;
+-  dcterms:created  "2005-07-11T11:30:47.0Z" ;
+-  owl:versionInfo  "2.0" ;
+-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;7ff1501099b3f5890d310d703fb9f57e251bba0c57d3c049fab590b50323a8e7?ver=CBV2.0> ]
+-] .
+
+
+
+./WithSensorData/SensorDataExample12.diff
+
+--- ../Turtle/WithSensorData/SensorDataExample12.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample12.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -35 +35 @@
+-                                                                     epcis:declarationTime  "2020-09-29T13:00:00.000Z"^^xsd:dateTimeStamp
++                                                                     epcis:declarationTime  "2020-09-29T13:00:00.000Z"^^xsd:dateTime
+@@ -37 +37 @@
+-                                        epcis:eventTime            "2020-09-29T12:00:00.000Z"^^xsd:dateTimeStamp ;
++                                        epcis:eventTime            "2020-09-29T12:00:00.000Z"^^xsd:dateTime ;
+@@ -39,2 +39 @@
+-                                        epcis:ilmd                 [ <cbvmda:lotNumber>       "LOTABC" ;
+-                                                                     example:grading          "A" ;
++                                        epcis:ilmd                 [ example:grading          "A" ;
+@@ -42 +41,2 @@
+-                                                                                       "B-2" ]
++                                                                                       "B-2" ] ;
++                                                                     cbvmda:lotNumber         "LOTABC"
+@@ -48 +48 @@
+-                                        epcis:outputEPCList        <urn:epc:id:sgtin:4012345.012345.987> , <urn:epc:id:sgtin:4012345.012345.988> ;
++                                        epcis:outputEPCList        <urn:epc:id:sgtin:4012345.012345.988> , <urn:epc:id:sgtin:4012345.012345.987> ;
+@@ -55,2 +55,3 @@
+-                                                                     epcis:sensorMetadata       [ epcis:endTime    "2019-04-02T13:59:59.999Z"^^xsd:dateTimeStamp ;
+-                                                                                                  epcis:startTime  "2019-04-01T14:00:00.000Z"^^xsd:dateTimeStamp
++                                                                     epcis:sensorMetadata       [ epcis:endTime              "2019-04-02T13:59:59.999Z"^^xsd:dateTime ;
++                                                                                                  epcis:someFurtherMetaData  "someText" ;
++                                                                                                  epcis:startTime            "2019-04-01T14:00:00.000Z"^^xsd:dateTime
+@@ -58,2 +59,2 @@
+-                                                                     epcis:sensorReport         [ epcis:stringValue  "someSensorOutput" ;
+-                                                                                                  epcis:type         example:someSensorProperty
++                                                                     epcis:sensorReport         [ epcis:measurementType  example:someSensorProperty ;
++                                                                                                  epcis:stringValue      "someSensorOutput"
+@@ -63,0 +65 @@
++                                                                                                  epcis:measurementType  gs1:Temperature ;
+@@ -68 +69,0 @@
+-                                                                                                  epcis:type       gs1:MT-Temperature ;
+
+
+
+./WithSensorData/SensorDataExample13.diff
+
+--- ../Turtle/WithSensorData/SensorDataExample13.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample13.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -23 +23 @@
+-  dcterms:created  "2021-04-27T15:00:00+01:00" ;
++  dcterms:created  "2021-04-27T15:00:00+01:00"^^xsd:dateTime ;
+@@ -31 +31 @@
+-        epcis:bizStep              <file://C:/sensor_reporting> ;
++        epcis:bizStep              cbv:BizStep-sensor_reporting ;
+@@ -33 +33 @@
+-        epcis:eventTime            "2021-04-27T15:00:00+01:00"^^xsd:dateTimeStamp ;
++        epcis:eventTime            "2021-04-27T15:00:00+01:00"^^xsd:dateTime ;
+@@ -37 +37 @@
+-                                                           epcis:type     gs1:MT-Temperature ;
++                                                           epcis:measurementType  gs1:Temperature ;
+@@ -42 +42 @@
+-                                                           epcis:type     gs1:MT-Temperature ;
++                                                           epcis:measurementType  gs1:Temperature ;
+
+
+
+./WithSensorData/SensorDataExample5.diff
+
+--- ../Turtle/WithSensorData/SensorDataExample5.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample5.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -22,6 +21,0 @@
+-[ rdf:type         epcis:EPCISDocument ;
+-  dcterms:created  "2005-07-11T11:30:47.0Z" ;
+-  owl:versionInfo  "2.0" ;
+-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;e13ff14a9b4f3dd11bba60315ed9b849eb8ddf4c5b1a9aa794cd250256730834?ver=CBV2.0> ]
+-] .
+-
+@@ -33 +27 @@
+-        epcis:eventTime            "2019-04-02T15:00:00.000+01:00"^^xsd:dateTimeStamp ;
++        epcis:eventTime            "2019-04-02T15:00:00.000+01:00"^^xsd:dateTime ;
+@@ -39,2 +33,2 @@
+-                                     epcis:sensorReport    [ epcis:time   "2019-04-02T14:55:00.000+01:00"^^xsd:dateTimeStamp ;
+-                                                             epcis:type   gs1:MT-Temperature ;
++                                     epcis:sensorReport    [ epcis:measurementType  gs1:Temperature ;
++                                                             epcis:time             "2019-04-02T14:55:00.000+01:00"^^xsd:dateTime ;
+@@ -44,2 +38,2 @@
+-                                     epcis:sensorReport    [ epcis:time   "2019-04-02T14:45:00.000+01:00"^^xsd:dateTimeStamp ;
+-                                                             epcis:type   gs1:MT-Temperature ;
++                                     epcis:sensorReport    [ epcis:measurementType  gs1:Temperature ;
++                                                             epcis:time             "2019-04-02T14:45:00.000+01:00"^^xsd:dateTime ;
+@@ -49,2 +43,2 @@
+-                                     epcis:sensorReport    [ epcis:time   "2019-04-02T14:35:00.000+01:00"^^xsd:dateTimeStamp ;
+-                                                             epcis:type   gs1:MT-Temperature ;
++                                     epcis:sensorReport    [ epcis:measurementType  gs1:Temperature ;
++                                                             epcis:time             "2019-04-02T14:35:00.000+01:00"^^xsd:dateTime ;
+@@ -54,2 +48,2 @@
+-                                     epcis:sensorReport    [ epcis:time   "2019-04-02T14:25:00.000+01:00"^^xsd:dateTimeStamp ;
+-                                                             epcis:type   gs1:MT-Temperature ;
++                                     epcis:sensorReport    [ epcis:measurementType  gs1:Temperature ;
++                                                             epcis:time             "2019-04-02T14:25:00.000+01:00"^^xsd:dateTime ;
+@@ -59,2 +53,2 @@
+-                                     epcis:sensorReport    [ epcis:time   "2019-04-02T14:15:00.000+01:00"^^xsd:dateTimeStamp ;
+-                                                             epcis:type   gs1:MT-Temperature ;
++                                     epcis:sensorReport    [ epcis:measurementType  gs1:Temperature ;
++                                                             epcis:time             "2019-04-02T14:15:00.000+01:00"^^xsd:dateTime ;
+@@ -64,2 +58,2 @@
+-                                     epcis:sensorReport    [ epcis:time   "2019-04-02T14:05:00.000+01:00"^^xsd:dateTimeStamp ;
+-                                                             epcis:type   gs1:MT-Temperature ;
++                                     epcis:sensorReport    [ epcis:measurementType  gs1:Temperature ;
++                                                             epcis:time             "2019-04-02T14:05:00.000+01:00"^^xsd:dateTime ;
+@@ -69,0 +64,6 @@
++
++[ rdf:type         epcis:EPCISDocument ;
++  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
++  owl:versionInfo  "2.0" ;
++  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;e13ff14a9b4f3dd11bba60315ed9b849eb8ddf4c5b1a9aa794cd250256730834?ver=CBV2.0> ]
++] .
+
+
+
+./WithSensorData/SensorDataExample7.diff
+
+--- ../Turtle/WithSensorData/SensorDataExample7.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample7.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -21,0 +22,6 @@
++[ rdf:type         epcis:EPCISDocument ;
++  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
++  owl:versionInfo  "2.0" ;
++  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;db924230b77cc4d9a7cea4968fd302b06598a2b63e1b0ea011b31d1b5f45e6ac?ver=CBV2.0> ]
++] .
++
+@@ -27 +33 @@
+-        epcis:eventTime            "2019-10-07T16:00:00.000+01:00"^^xsd:dateTimeStamp ;
++        epcis:eventTime            "2019-10-07T16:00:00.000+01:00"^^xsd:dateTime ;
+@@ -30 +36 @@
+-        epcis:sensorElementList    [ epcis:sensorMetadata  [ epcis:time  "2019-07-19T14:00:00.000+01:00"^^xsd:dateTimeStamp ] ;
++        epcis:sensorElementList    [ epcis:sensorMetadata  [ epcis:time  "2019-07-19T14:00:00.000+01:00"^^xsd:dateTime ] ;
+@@ -32,2 +38,2 @@
+-                                                             epcis:type      examp:Mno ;
+-                                                             epcis:uriValue  "https://example.org/example/someSectorSpecificValue"^^xsd:anyURI
++                                                             epcis:measurementType  examp:Mno ;
++                                                             epcis:uriValue         <https://example.org/example/someSectorSpecificValue>
+@@ -36,2 +42,2 @@
+-                                                             epcis:hexBinaryValue  "F0F0F0" ;
+-                                                             epcis:type            examp:Jkl
++                                                             epcis:hexBinaryValue   "F0F0F0"^^xsd:hexBinary ;
++                                                             epcis:measurementType  examp:Jkl
+@@ -40,2 +46,2 @@
+-                                                             epcis:stringValue  "SomeString" ;
+-                                                             epcis:type         examp:Ghi
++                                                             epcis:measurementType  examp:Ghi ;
++                                                             epcis:stringValue      "SomeString"
+@@ -45 +51 @@
+-                                                             epcis:type          examp:Def
++                                                             epcis:measurementType  examp:Def
+@@ -48,2 +54,2 @@
+-                                                             epcis:stringValue  "111100001111000011110000" ;
+-                                                             epcis:type         examp:Abc
++                                                             epcis:measurementType  examp:Abc ;
++                                                             epcis:stringValue      "111100001111000011110000"
+@@ -52 +58 @@
+-                                                             epcis:type      gs1:MT-Temperature ;
++                                                             epcis:measurementType  gs1:Temperature ;
+@@ -57,6 +62,0 @@
+-
+-[ rdf:type         epcis:EPCISDocument ;
+-  dcterms:created  "2005-07-11T11:30:47.0Z" ;
+-  owl:versionInfo  "2.0" ;
+-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;db924230b77cc4d9a7cea4968fd302b06598a2b63e1b0ea011b31d1b5f45e6ac?ver=CBV2.0> ]
+-] .
+
+
+
+./WithSensorData/SensorDataExample11.diff
+
+--- ../Turtle/WithSensorData/SensorDataExample11.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample11.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -29 +29 @@
+-        epcis:disposition          <file://C:/needs_replacement> ;
++        epcis:disposition          cbv:Disp-needs_replacement ;
+@@ -31 +31 @@
+-        epcis:eventTime            "2020-07-03T00:05:00-06:00"^^xsd:dateTimeStamp ;
++        epcis:eventTime            "2020-07-03T00:05:00-06:00"^^xsd:dateTime ;
+@@ -34 +34 @@
+-        epcis:sensorElementList    [ epcis:sensorReport  [ epcis:type   gs1:MT-DoseEquivalentRate ;
++        epcis:sensorElementList    [ epcis:sensorReport  [ epcis:measurementType  gs1:DoseEquivalentRate ;
+@@ -41 +41 @@
+-  dcterms:created  "2020-07-03T00:05:00-06:00" ;
++  dcterms:created  "2020-07-03T00:05:00-06:00"^^xsd:dateTime ;
+
+
+
+./WithSensorData/SensorDataExample10.diff
+
+--- ../Turtle/WithSensorData/SensorDataExample10.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample10.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -23 +23 @@
+-  dcterms:created  "2019-10-07T15:00:00.000+01:00" ;
++  dcterms:created  "2019-10-07T15:00:00.000+01:00"^^xsd:dateTime ;
+@@ -31 +31 @@
+-        epcis:bizStep              <file://C:/sensor_reporting> ;
++        epcis:bizStep              cbv:BizStep-sensor_reporting ;
+@@ -33 +33 @@
+-        epcis:eventTime            "2020-05-08T15:00:00+01:00"^^xsd:dateTimeStamp ;
++        epcis:eventTime            "2020-05-08T15:00:00+01:00"^^xsd:dateTime ;
+@@ -37,2 +37,2 @@
+-                                                           epcis:component  "Z" ;
+-                                                           epcis:type       gs1:MT-Speed ;
++                                                           epcis:component        cbv:COMP-Z ;
++                                                           epcis:measurementType  gs1:Speed ;
+@@ -43,2 +43,2 @@
+-                                                           epcis:component  "Y" ;
+-                                                           epcis:type       gs1:MT-Speed ;
++                                                           epcis:component        cbv:COMP-Y ;
++                                                           epcis:measurementType  gs1:Speed ;
+@@ -49,2 +49,2 @@
+-                                                           epcis:component  "X" ;
+-                                                           epcis:type       gs1:MT-Speed ;
++                                                           epcis:component        cbv:COMP-X ;
++                                                           epcis:measurementType  gs1:Speed ;
+
+
+
+./WithSensorData/SensorDataExample6.diff
+
+--- ../Turtle/WithSensorData/SensorDataExample6.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample6.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -23 +23 @@
+-  dcterms:created  "2005-07-11T11:30:47.0Z" ;
++  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
+@@ -33 +33 @@
+-        epcis:eventTime            "2019-10-07T15:00:00.000+01:00"^^xsd:dateTimeStamp ;
++        epcis:eventTime            "2019-10-07T15:00:00.000+01:00"^^xsd:dateTime ;
+@@ -45,2 +45,2 @@
+-                                                                epcis:endTime              "2019-04-02T14:59:59.999+01:00"^^xsd:dateTimeStamp ;
+-                                                                epcis:startTime            "2019-04-01T15:00:00.000+01:00"^^xsd:dateTimeStamp
++                                                                epcis:endTime              "2019-04-02T14:59:59.999+01:00"^^xsd:dateTime ;
++                                                                epcis:startTime            "2019-04-01T15:00:00.000+01:00"^^xsd:dateTime
+@@ -48,2 +48,2 @@
+-                                     epcis:sensorReport       [ epcis:stringValue  "someSensorOutput" ;
+-                                                                epcis:type         examp:someSensorProperty
++                                     epcis:sensorReport       [ epcis:measurementType  examp:someSensorProperty ;
++                                                                epcis:stringValue      "someSensorOutput"
+@@ -53,0 +54 @@
++                                                                epcis:measurementType  gs1:Temperature ;
+@@ -58 +58,0 @@
+-                                                                epcis:type       gs1:MT-Temperature ;
+
+

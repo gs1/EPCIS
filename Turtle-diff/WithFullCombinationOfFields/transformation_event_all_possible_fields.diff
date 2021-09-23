@@ -1,194 +1,117 @@
-23c23
-<   dcterms:created  "2013-06-04T14:59:02.099+02:00" ;
----
->   dcterms:created  "2013-06-04T14:59:02.099+02:00"^^xsd:dateTime ;
-26c26
-<                                         ext1:array                   "12" , "stringInArray" , "true" , "22" , "2013-06-08T14:58:56.591Z" ;
----
->                                         ext1:array                   "stringInArray" , "12" , "2013-06-08T14:58:56.591Z" , "22" , "true" ;
-48c48
-<                                         epcis:bizTransactionList     [ epcis:bizTransaction      "urn:epc:id:gdti:0614141.00001.1618034"^^xsd:anyURI ;
----
->                                         epcis:bizTransactionList     [ epcis:bizTransaction      <urn:epc:id:gdti:0614141.00001.1618034> ;
-51c51
-<                                         epcis:bizTransactionList     [ epcis:bizTransaction      "urn:epc:id:gsrn:0614141.0000010253"^^xsd:anyURI ;
----
->                                         epcis:bizTransactionList     [ epcis:bizTransaction      <urn:epc:id:gsrn:0614141.0000010253> ;
-54,57c54
-<                                         epcis:destinationList        [ epcis:destination              <urn:epc:id:sgln:0614141.00777.0> ;
-<                                                                        epcis:sourceOrDestinationType  cbv:SDT-location
-<                                                                      ] ;
-<                                         epcis:destinationList        [ epcis:destination              <urn:epc:id:pgln:0614141.00777> ;
----
->                                         epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:pgln:0614141.00777> ;
-60c57
-<                                         epcis:destinationList        [ epcis:destination              <urn:epc:id:pgln:0614141.00777> ;
----
->                                         epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:pgln:0614141.00777> ;
-62a60,62
->                                         epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:sgln:0614141.00777.0> ;
->                                                                        epcis:sourceOrDestinationType  cbv:SDT-location
->                                                                      ] ;
-64c64
-<                                         epcis:eventTime              "2013-10-31T14:58:56.591Z"^^xsd:dateTimeStamp ;
----
->                                         epcis:eventTime              "2013-10-31T14:58:56.591Z"^^xsd:dateTime ;
-66,95c66,91
-<                                         epcis:ilmd                   [ <cbvmda:countryOfExport>  "KR" ;
-<                                                                        <cbvmda:countryOfOrigin>  "GB" ;
-<                                                                        <cbvmda:drainedWeight>    "3.5" ;
-<                                                                        <cbvmda:grossWeight>      "3.5" ;
-<                                                                        <cbvmda:lotNumber>        "ABC123" ;
-<                                                                        <cbvmda:netWeight>        "3.5" ;
-<                                                                        ext1:array                "2013-06-08T14:58:56.591Z" , "12" , "22" , "true" , "stringInArray" ;
-<                                                                        ext1:array                [ ext1:object  [ ext1:object  [ ext2:array   "stringInArrayInObjectInArray" , "23.0" , "14" ;
-<                                                                                                                                  ext2:int     "13" ;
-<                                                                                                                                  ext2:object  [ ext2:object  [ ext3:string  "stringInObjectInObjectInArray" ]
-<                                                                                                                                               ] ;
-<                                                                                                                                  ext2:string  "stringInObjectInArray"
-<                                                                                                                                ]
-<                                                                                                                 ]
-<                                                                                                  ] ;
-<                                                                        ext1:boolean              "true" ;
-<                                                                        ext1:default              "stringAsDefaultValue" ;
-<                                                                        ext1:float                "20" ;
-<                                                                        ext1:int                  "10" ;
-<                                                                        ext1:object               [ ext2:array   "stringInArrayInObject" , "21" , "11" ;
-<                                                                                                    ext2:object  [ ext2:object  [ ext3:string  "stringInObjectInObject" ]
-<                                                                                                                 ] ;
-<                                                                                                    ext2:string  "stringInObject"
-<                                                                                                  ] ;
-<                                                                        ext1:string               "string" ;
-<                                                                        ext1:time                 "2013-06-08T14:58:56.591Z"
-<                                                                      ] ;
-<                                         epcis:inputEPCList           <urn:epc:id:sgtin:4012345.011122.25> , <urn:epc:id:sgtin:4000001.065432.99886655> ;
-<                                         epcis:inputQuantityList      [ epcis:epcClass  <urn:epc:idpat:sgtin:4012345.066666.*> ;
-<                                                                        epcis:quantity  2.2E2
----
->                                         epcis:ilmd                   [ ext1:array              "stringInArray" , "2013-06-08T14:58:56.591Z" , "12" , "true" , "22" ;
->                                                                        ext1:array              [ ext1:object  [ ext1:object  [ ext2:array   "stringInArrayInObjectInArray" , "23.0" , "14" ;
->                                                                                                                                ext2:int     "13" ;
->                                                                                                                                ext2:object  [ ext2:object  [ ext3:string  "stringInObjectInObjectInArray" ]
->                                                                                                                                             ] ;
->                                                                                                                                ext2:string  "stringInObjectInArray"
->                                                                                                                              ]
->                                                                                                               ]
->                                                                                                ] ;
->                                                                        ext1:boolean            "true" ;
->                                                                        ext1:default            "stringAsDefaultValue" ;
->                                                                        ext1:float              "20" ;
->                                                                        ext1:int                "10" ;
->                                                                        ext1:object             [ ext2:array   "stringInArrayInObject" , "21" , "11" ;
->                                                                                                  ext2:object  [ ext2:object  [ ext3:string  "stringInObjectInObject" ]
->                                                                                                               ] ;
->                                                                                                  ext2:string  "stringInObject"
->                                                                                                ] ;
->                                                                        ext1:string             "string" ;
->                                                                        ext1:time               "2013-06-08T14:58:56.591Z" ;
->                                                                        cbvmda:countryOfExport  "KR" ;
->                                                                        cbvmda:countryOfOrigin  "GB" ;
->                                                                        cbvmda:drainedWeight    "3.5" ;
->                                                                        cbvmda:grossWeight      "3.5" ;
->                                                                        cbvmda:lotNumber        "ABC123" ;
->                                                                        cbvmda:netWeight        "3.5"
-96a93
->                                         epcis:inputEPCList           <urn:epc:id:sgtin:4000001.065432.99886655> , <urn:epc:id:sgtin:4012345.011122.25> ;
-99a97,99
->                                         epcis:inputQuantityList      [ epcis:epcClass  <urn:epc:idpat:sgtin:4012345.066666.*> ;
->                                                                        epcis:quantity  2.2E2
->                                                                      ] ;
-104,107c104
-<                                         epcis:outputEPCList          <urn:epc:id:sgtin:4012345.077889.27> , <urn:epc:id:sgtin:4012345.077889.28> , <urn:epc:id:sgtin:4012345.077889.25> , <urn:epc:id:sgtin:4012345.077889.26> ;
-<                                         epcis:outputQuantityList     [ epcis:epcClass  <urn:epc:class:lgtin:0614141.077777.987> ;
-<                                                                        epcis:quantity  3.0E1
-<                                                                      ] ;
----
->                                         epcis:outputEPCList          <urn:epc:id:sgtin:4012345.077889.26> , <urn:epc:id:sgtin:4012345.077889.25> , <urn:epc:id:sgtin:4012345.077889.28> , <urn:epc:id:sgtin:4012345.077889.27> ;
-110a108,110
->                                         epcis:outputQuantityList     [ epcis:epcClass  <urn:epc:class:lgtin:0614141.077777.987> ;
->                                                                        epcis:quantity  3.0E1
->                                                                      ] ;
-115,116c115,116
-<                                         epcis:persistentDisposition  [ epcis:set    <file://C:/completeness_verified> ;
-<                                                                        epcis:unset  <file://C:/completeness_inferred>
----
->                                         epcis:persistentDisposition  [ epcis:set    cbv:Disp-completeness_verified ;
->                                                                        epcis:unset  cbv:Disp-completeness_inferred
-120c120
-<                                                                        ext1:array            "true" , "stringInArray" , "2013-06-08T14:58:56.591Z" , "22" , "12" ;
----
->                                                                        ext1:array            "2013-06-08T14:58:56.591Z" , "22" , "true" , "12" , "stringInArray" ;
-145c145
-<                                                                                                epcis:endTime               "2019-04-02T13:55:00.000Z"^^xsd:dateTimeStamp ;
----
->                                                                                                epcis:endTime               "2019-04-02T13:55:00.000Z"^^xsd:dateTime ;
-147,148c147,148
-<                                                                                                epcis:startTime             "2019-04-02T12:55:01.000Z"^^xsd:dateTimeStamp ;
-<                                                                                                epcis:time                  "2019-04-02T13:05:00.000Z"^^xsd:dateTimeStamp
----
->                                                                                                epcis:startTime             "2019-04-02T12:55:01.000Z"^^xsd:dateTime ;
->                                                                                                epcis:time                  "2019-04-02T13:05:00.000Z"^^xsd:dateTime
-150,170c150,171
-<                                                                        epcis:sensorReport    [ epcis:booleanValue          true ;
-<                                                                                                epcis:chemicalSubstance     <https://identifiers.org/inchikey:CZMRCDWAGMRECN-UGDNZRGBSA-N> ;
-<                                                                                                epcis:component             "example:x" ;
-<                                                                                                epcis:dataProcessingMethod  <https://example.com/gdti/4012345000054987> ;
-<                                                                                                epcis:deviceID              <urn:epc:id:giai:4000001.111> ;
-<                                                                                                epcis:deviceMetadata        <https://id.gs1.org/giai/4000001111> ;
-<                                                                                                epcis:hexBinaryValue        "f0f0f0" ;
-<                                                                                                epcis:maxValue              2.62E1 ;
-<                                                                                                epcis:meanValue             1.32E1 ;
-<                                                                                                epcis:microorganism         <https://www.ncbi.nlm.nih.gov/taxonomy/1126011> ;
-<                                                                                                epcis:minValue              2.6E1 ;
-<                                                                                                epcis:percRank              5.0E1 ;
-<                                                                                                epcis:percValue             1.27E1 ;
-<                                                                                                epcis:rawData               <https://example.org/giai/401234599999> ;
-<                                                                                                epcis:sDev                  1.0E-1 ;
-<                                                                                                epcis:stringValue           "SomeString" ;
-<                                                                                                epcis:time                  "2019-07-19T13:00:00.000Z"^^xsd:dateTimeStamp ;
-<                                                                                                epcis:type                  gs1:Temperature ;
-<                                                                                                epcis:uom                   "CEL" ;
-<                                                                                                epcis:uriValue              "https://id.gs1.org/giai/4000001111"^^xsd:anyURI ;
-<                                                                                                epcis:value                 2.6E1
----
->                                                                        epcis:sensorReport    [ epcis:booleanValue           true ;
->                                                                                                epcis:chemicalSubstance      <https://identifiers.org/inchikey:CZMRCDWAGMRECN-UGDNZRGBSA-N> ;
->                                                                                                epcis:component              <example:x> ;
->                                                                                                epcis:dataProcessingMethod   <https://example.com/gdti/4012345000054987> ;
->                                                                                                epcis:deviceID               <urn:epc:id:giai:4000001.111> ;
->                                                                                                epcis:deviceMetadata         <https://id.gs1.org/giai/4000001111> ;
->                                                                                                epcis:hexBinaryValue         "f0f0f0"^^xsd:hexBinary ;
->                                                                                                epcis:maxValue               2.62E1 ;
->                                                                                                epcis:meanValue              1.32E1 ;
->                                                                                                epcis:measurementType        gs1:Temperature ;
->                                                                                                epcis:microorganism          <https://www.ncbi.nlm.nih.gov/taxonomy/1126011> ;
->                                                                                                epcis:minValue               2.6E1 ;
->                                                                                                epcis:percRank               5.0E1 ;
->                                                                                                epcis:percValue              1.27E1 ;
->                                                                                                epcis:rawData                <https://example.org/giai/401234599999> ;
->                                                                                                epcis:sDev                   1.0E-1 ;
->                                                                                                epcis:someFurtherReportData  "someText" ;
->                                                                                                epcis:stringValue            "SomeString" ;
->                                                                                                epcis:time                   "2019-07-19T13:00:00.000Z"^^xsd:dateTime ;
->                                                                                                epcis:uom                    "CEL" ;
->                                                                                                epcis:uriValue               <https://id.gs1.org/giai/4000001111> ;
->                                                                                                epcis:value                  2.6E1
-173,174c174,175
-<                                         epcis:sourceList             [ epcis:source                   <urn:epc:id:pgln:4012345.00225> ;
-<                                                                        epcis:sourceOrDestinationType  cbv:SDT-owning_party
----
->                                         epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:sgln:4012345.00225.0> ;
->                                                                        epcis:sourceOrDestinationType  cbv:SDT-location
-176c177
-<                                         epcis:sourceList             [ epcis:source                   <urn:epc:id:pgln:4012345.00225> ;
----
->                                         epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:pgln:4012345.00225> ;
-179,181c180,183
-<                                         epcis:sourceList             [ epcis:source                   <urn:epc:id:sgln:4012345.00225.0> ;
-<                                                                        epcis:sourceOrDestinationType  cbv:SDT-location
-<                                                                      ]
----
->                                         epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:pgln:4012345.00225> ;
->                                                                        epcis:sourceOrDestinationType  cbv:SDT-owning_party
->                                                                      ] ;
->                                         epcis:transformationID       "urn:epc:id:gdti:0614141.12345.400"
+--- ../Turtle/WithFullCombinationOfFields/transformation_event_all_possible_fields.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context/WithFullCombinationOfFields/transformation_event_all_possible_fields.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -23 +23 @@
+-  dcterms:created  "2013-06-04T14:59:02.099+02:00" ;
++  dcterms:created  "2013-06-04T14:59:02.099+02:00"^^xsd:dateTime ;
+@@ -26 +26 @@
+-                                        ext1:array                   "12" , "stringInArray" , "true" , "22" , "2013-06-08T14:58:56.591Z" ;
++                                        ext1:array                   "stringInArray" , "12" , "2013-06-08T14:58:56.591Z" , "22" , "true" ;
+@@ -48 +48 @@
+-                                        epcis:bizTransactionList     [ epcis:bizTransaction      "urn:epc:id:gdti:0614141.00001.1618034"^^xsd:anyURI ;
++                                        epcis:bizTransactionList     [ epcis:bizTransaction      <urn:epc:id:gdti:0614141.00001.1618034> ;
+@@ -51 +51 @@
+-                                        epcis:bizTransactionList     [ epcis:bizTransaction      "urn:epc:id:gsrn:0614141.0000010253"^^xsd:anyURI ;
++                                        epcis:bizTransactionList     [ epcis:bizTransaction      <urn:epc:id:gsrn:0614141.0000010253> ;
+@@ -54,4 +54 @@
+-                                        epcis:destinationList        [ epcis:destination              <urn:epc:id:sgln:0614141.00777.0> ;
+-                                                                       epcis:sourceOrDestinationType  cbv:SDT-location
+-                                                                     ] ;
+-                                        epcis:destinationList        [ epcis:destination              <urn:epc:id:pgln:0614141.00777> ;
++                                        epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:pgln:0614141.00777> ;
+@@ -60 +57 @@
+-                                        epcis:destinationList        [ epcis:destination              <urn:epc:id:pgln:0614141.00777> ;
++                                        epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:pgln:0614141.00777> ;
+@@ -62,0 +60,3 @@
++                                        epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:sgln:0614141.00777.0> ;
++                                                                       epcis:sourceOrDestinationType  cbv:SDT-location
++                                                                     ] ;
+@@ -64 +64 @@
+-                                        epcis:eventTime              "2013-10-31T14:58:56.591Z"^^xsd:dateTimeStamp ;
++                                        epcis:eventTime              "2013-10-31T14:58:56.591Z"^^xsd:dateTime ;
+@@ -66,7 +66 @@
+-                                        epcis:ilmd                   [ <cbvmda:countryOfExport>  "KR" ;
+-                                                                       <cbvmda:countryOfOrigin>  "GB" ;
+-                                                                       <cbvmda:drainedWeight>    "3.5" ;
+-                                                                       <cbvmda:grossWeight>      "3.5" ;
+-                                                                       <cbvmda:lotNumber>        "ABC123" ;
+-                                                                       <cbvmda:netWeight>        "3.5" ;
+-                                                                       ext1:array                "2013-06-08T14:58:56.591Z" , "12" , "22" , "true" , "stringInArray" ;
++                                        epcis:ilmd                   [ ext1:array              "stringInArray" , "2013-06-08T14:58:56.591Z" , "12" , "true" , "22" ;
+@@ -91,5 +85,7 @@
+-                                                                       ext1:time                 "2013-06-08T14:58:56.591Z"
+-                                                                     ] ;
+-                                        epcis:inputEPCList           <urn:epc:id:sgtin:4012345.011122.25> , <urn:epc:id:sgtin:4000001.065432.99886655> ;
+-                                        epcis:inputQuantityList      [ epcis:epcClass  <urn:epc:idpat:sgtin:4012345.066666.*> ;
+-                                                                       epcis:quantity  2.2E2
++                                                                       ext1:time               "2013-06-08T14:58:56.591Z" ;
++                                                                       cbvmda:countryOfExport  "KR" ;
++                                                                       cbvmda:countryOfOrigin  "GB" ;
++                                                                       cbvmda:drainedWeight    "3.5" ;
++                                                                       cbvmda:grossWeight      "3.5" ;
++                                                                       cbvmda:lotNumber        "ABC123" ;
++                                                                       cbvmda:netWeight        "3.5"
+@@ -96,0 +93 @@
++                                        epcis:inputEPCList           <urn:epc:id:sgtin:4000001.065432.99886655> , <urn:epc:id:sgtin:4012345.011122.25> ;
+@@ -99,0 +97,3 @@
++                                        epcis:inputQuantityList      [ epcis:epcClass  <urn:epc:idpat:sgtin:4012345.066666.*> ;
++                                                                       epcis:quantity  2.2E2
++                                                                     ] ;
+@@ -104,4 +104 @@
+-                                        epcis:outputEPCList          <urn:epc:id:sgtin:4012345.077889.27> , <urn:epc:id:sgtin:4012345.077889.28> , <urn:epc:id:sgtin:4012345.077889.25> , <urn:epc:id:sgtin:4012345.077889.26> ;
+-                                        epcis:outputQuantityList     [ epcis:epcClass  <urn:epc:class:lgtin:0614141.077777.987> ;
+-                                                                       epcis:quantity  3.0E1
+-                                                                     ] ;
++                                        epcis:outputEPCList          <urn:epc:id:sgtin:4012345.077889.26> , <urn:epc:id:sgtin:4012345.077889.25> , <urn:epc:id:sgtin:4012345.077889.28> , <urn:epc:id:sgtin:4012345.077889.27> ;
+@@ -110,0 +108,3 @@
++                                        epcis:outputQuantityList     [ epcis:epcClass  <urn:epc:class:lgtin:0614141.077777.987> ;
++                                                                       epcis:quantity  3.0E1
++                                                                     ] ;
+@@ -115,2 +115,2 @@
+-                                        epcis:persistentDisposition  [ epcis:set    <file://C:/completeness_verified> ;
+-                                                                       epcis:unset  <file://C:/completeness_inferred>
++                                        epcis:persistentDisposition  [ epcis:set    cbv:Disp-completeness_verified ;
++                                                                       epcis:unset  cbv:Disp-completeness_inferred
+@@ -120 +120 @@
+-                                                                       ext1:array            "true" , "stringInArray" , "2013-06-08T14:58:56.591Z" , "22" , "12" ;
++                                                                       ext1:array            "2013-06-08T14:58:56.591Z" , "22" , "true" , "12" , "stringInArray" ;
+@@ -145 +145 @@
+-                                                                                               epcis:endTime               "2019-04-02T13:55:00.000Z"^^xsd:dateTimeStamp ;
++                                                                                               epcis:endTime               "2019-04-02T13:55:00.000Z"^^xsd:dateTime ;
+@@ -147,2 +147,2 @@
+-                                                                                               epcis:startTime             "2019-04-02T12:55:01.000Z"^^xsd:dateTimeStamp ;
+-                                                                                               epcis:time                  "2019-04-02T13:05:00.000Z"^^xsd:dateTimeStamp
++                                                                                               epcis:startTime             "2019-04-02T12:55:01.000Z"^^xsd:dateTime ;
++                                                                                               epcis:time                  "2019-04-02T13:05:00.000Z"^^xsd:dateTime
+@@ -152 +152 @@
+-                                                                                               epcis:component             "example:x" ;
++                                                                                               epcis:component              <example:x> ;
+@@ -156 +156 @@
+-                                                                                               epcis:hexBinaryValue        "f0f0f0" ;
++                                                                                               epcis:hexBinaryValue         "f0f0f0"^^xsd:hexBinary ;
+@@ -158,0 +159 @@
++                                                                                               epcis:measurementType        gs1:Temperature ;
+@@ -164,0 +166 @@
++                                                                                               epcis:someFurtherReportData  "someText" ;
+@@ -166,2 +168 @@
+-                                                                                               epcis:time                  "2019-07-19T13:00:00.000Z"^^xsd:dateTimeStamp ;
+-                                                                                               epcis:type                  gs1:Temperature ;
++                                                                                               epcis:time                   "2019-07-19T13:00:00.000Z"^^xsd:dateTime ;
+@@ -169 +170 @@
+-                                                                                               epcis:uriValue              "https://id.gs1.org/giai/4000001111"^^xsd:anyURI ;
++                                                                                               epcis:uriValue               <https://id.gs1.org/giai/4000001111> ;
+@@ -173,2 +174,2 @@
+-                                        epcis:sourceList             [ epcis:source                   <urn:epc:id:pgln:4012345.00225> ;
+-                                                                       epcis:sourceOrDestinationType  cbv:SDT-owning_party
++                                        epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:sgln:4012345.00225.0> ;
++                                                                       epcis:sourceOrDestinationType  cbv:SDT-location
+@@ -176 +177 @@
+-                                        epcis:sourceList             [ epcis:source                   <urn:epc:id:pgln:4012345.00225> ;
++                                        epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:pgln:4012345.00225> ;
+@@ -179,3 +180,4 @@
+-                                        epcis:sourceList             [ epcis:source                   <urn:epc:id:sgln:4012345.00225.0> ;
+-                                                                       epcis:sourceOrDestinationType  cbv:SDT-location
+-                                                                     ]
++                                        epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:pgln:4012345.00225> ;
++                                                                       epcis:sourceOrDestinationType  cbv:SDT-owning_party
++                                                                     ] ;
++                                        epcis:transformationID       "urn:epc:id:gdti:0614141.12345.400"

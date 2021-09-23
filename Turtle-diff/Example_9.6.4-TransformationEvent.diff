@@ -1,16 +1,16 @@
-23c23
-<   dcterms:created  "2013-06-04T14:59:02.099+02:00" ;
----
->   dcterms:created  "2013-06-04T14:59:02.099+02:00"^^xsd:dateTime ;
-33c33
-<         epcis:eventTime            "2013-10-31T14:58:56.591Z"^^xsd:dateTimeStamp ;
----
->         epcis:eventTime            "2013-10-31T14:58:56.591Z"^^xsd:dateTime ;
-39,41d38
-<         epcis:inputQuantityList    [ epcis:epcClass  <urn:epc:class:lgtin:0614141.077777.987> ;
-<                                      epcis:quantity  3.0E1
-<                                    ] ;
-44a42,44
->         epcis:inputQuantityList    [ epcis:epcClass  <urn:epc:class:lgtin:0614141.077777.987> ;
->                                      epcis:quantity  3.0E1
->                                    ] ;
+--- ../Turtle//Example_9.6.4-TransformationEvent.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context//Example_9.6.4-TransformationEvent.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -23 +23 @@
+-  dcterms:created  "2013-06-04T14:59:02.099+02:00" ;
++  dcterms:created  "2013-06-04T14:59:02.099+02:00"^^xsd:dateTime ;
+@@ -33 +33 @@
+-        epcis:eventTime            "2013-10-31T14:58:56.591Z"^^xsd:dateTimeStamp ;
++        epcis:eventTime            "2013-10-31T14:58:56.591Z"^^xsd:dateTime ;
+@@ -39,3 +38,0 @@
+-        epcis:inputQuantityList    [ epcis:epcClass  <urn:epc:class:lgtin:0614141.077777.987> ;
+-                                     epcis:quantity  3.0E1
+-                                   ] ;
+@@ -44,0 +42,3 @@
++        epcis:inputQuantityList    [ epcis:epcClass  <urn:epc:class:lgtin:0614141.077777.987> ;
++                                     epcis:quantity  3.0E1
++                                   ] ;

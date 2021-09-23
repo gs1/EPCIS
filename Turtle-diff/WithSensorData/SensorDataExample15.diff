@@ -1,38 +1,27 @@
-23c23
-<   dcterms:created  "2019-10-07T15:00:00.000+01:00" ;
----
->   dcterms:created  "2019-10-07T15:00:00.000+01:00"^^xsd:dateTime ;
-27c27
-<                                         epcis:bizStep              <file://C:/sensor_reporting> ;
----
->                                         epcis:bizStep              cbv:BizStep-sensor_reporting ;
-29c29
-<                                         epcis:eventTime            "2021-05-27T13:00:00.000Z"^^xsd:dateTimeStamp ;
----
->                                         epcis:eventTime            "2021-05-27T13:00:00.000Z"^^xsd:dateTime ;
-33,37c33,39
-<                                                                      epcis:sensorMetadata  [ epcis:time  "2021-05-27T12:50:00.000Z"^^xsd:dateTimeStamp ] ;
-<                                                                      epcis:sensorReport    [ epcis:component  "Easting" ;
-<                                                                                              epcis:type       gs1:MT-Length ;
-<                                                                                              epcis:uom        "MTR" ;
-<                                                                                              epcis:value      2.47758357E6
----
->                                                                      epcis:sensorMetadata  [ epcis:time  "2021-05-27T12:50:00.000Z"^^xsd:dateTime ] ;
->                                                                      epcis:sensorReport    [ epcis:component        cbv:COMP-Easting ;
->                                                                                              epcis:coordinateReferenceSystem
->                                                                                                      "http://www.opengis.net/def/crs/EPSG/0/27700" ;
->                                                                                              epcis:measurementType  gs1:Length ;
->                                                                                              epcis:uom              "MTR" ;
->                                                                                              epcis:value            2.47758357E6
-39,42c41,46
-<                                                                      epcis:sensorReport    [ epcis:component  "Northing" ;
-<                                                                                              epcis:type       gs1:MT-Length ;
-<                                                                                              epcis:uom        "MTR" ;
-<                                                                                              epcis:value      -4.7797989E5
----
->                                                                      epcis:sensorReport    [ epcis:component        cbv:COMP-Northing ;
->                                                                                              epcis:coordinateReferenceSystem
->                                                                                                      "http://www.opengis.net/def/crs/EPSG/0/27700" ;
->                                                                                              epcis:measurementType  gs1:Length ;
->                                                                                              epcis:uom              "MTR" ;
->                                                                                              epcis:value            -4.7797989E5
+--- ../Turtle/WithSensorData/SensorDataExample15.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample15.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -23 +23 @@
+-  dcterms:created  "2019-10-07T15:00:00.000+01:00" ;
++  dcterms:created  "2019-10-07T15:00:00.000+01:00"^^xsd:dateTime ;
+@@ -27 +27 @@
+-                                        epcis:bizStep              <file://C:/sensor_reporting> ;
++                                        epcis:bizStep              cbv:BizStep-sensor_reporting ;
+@@ -29 +29 @@
+-                                        epcis:eventTime            "2021-05-27T13:00:00.000Z"^^xsd:dateTimeStamp ;
++                                        epcis:eventTime            "2021-05-27T13:00:00.000Z"^^xsd:dateTime ;
+@@ -33,3 +33,5 @@
+-                                                                     epcis:sensorMetadata  [ epcis:time  "2021-05-27T12:50:00.000Z"^^xsd:dateTimeStamp ] ;
+-                                                                     epcis:sensorReport    [ epcis:component  "Easting" ;
+-                                                                                             epcis:type       gs1:MT-Length ;
++                                                                     epcis:sensorMetadata  [ epcis:time  "2021-05-27T12:50:00.000Z"^^xsd:dateTime ] ;
++                                                                     epcis:sensorReport    [ epcis:component        cbv:COMP-Easting ;
++                                                                                             epcis:coordinateReferenceSystem
++                                                                                                     "http://www.opengis.net/def/crs/EPSG/0/27700" ;
++                                                                                             epcis:measurementType  gs1:Length ;
+@@ -39,2 +41,4 @@
+-                                                                     epcis:sensorReport    [ epcis:component  "Northing" ;
+-                                                                                             epcis:type       gs1:MT-Length ;
++                                                                     epcis:sensorReport    [ epcis:component        cbv:COMP-Northing ;
++                                                                                             epcis:coordinateReferenceSystem
++                                                                                                     "http://www.opengis.net/def/crs/EPSG/0/27700" ;
++                                                                                             epcis:measurementType  gs1:Length ;

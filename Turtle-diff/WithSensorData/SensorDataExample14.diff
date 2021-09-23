@@ -1,36 +1,25 @@
-23c23
-<   dcterms:created  "2019-10-07T15:00:00.000+01:00" ;
----
->   dcterms:created  "2019-10-07T15:00:00.000+01:00"^^xsd:dateTime ;
-27c27
-<                                         epcis:bizStep              <file://C:/sensor_reporting> ;
----
->                                         epcis:bizStep              cbv:BizStep-sensor_reporting ;
-29c29
-<                                         epcis:eventTime            "2021-05-27T10:00:00.000Z"^^xsd:dateTimeStamp ;
----
->                                         epcis:eventTime            "2021-05-27T10:00:00.000Z"^^xsd:dateTime ;
-33,36c33,38
-<                                                                      epcis:sensorReport  [ epcis:component  "Longitude" ;
-<                                                                                            epcis:type       gs1:MT-Angle ;
-<                                                                                            epcis:uom        "DD" ;
-<                                                                                            epcis:value      2.3319941E1
----
->                                                                      epcis:sensorReport  [ epcis:component        cbv:COMP-Longitude ;
->                                                                                            epcis:coordinateReferenceSystem
->                                                                                                    "http://www.opengis.net/def/crs/OGC/1.3/CRS84" ;
->                                                                                            epcis:measurementType  gs1:Angle ;
->                                                                                            epcis:uom              "DD" ;
->                                                                                            epcis:value            2.3319941E1
-38,41c40,45
-<                                                                      epcis:sensorReport  [ epcis:component  "Latitude" ;
-<                                                                                            epcis:type       gs1:MT-Angle ;
-<                                                                                            epcis:uom        "DD" ;
-<                                                                                            epcis:value      4.2698334E1
----
->                                                                      epcis:sensorReport  [ epcis:component        cbv:COMP-Latitude ;
->                                                                                            epcis:coordinateReferenceSystem
->                                                                                                    "http://www.opengis.net/def/crs/OGC/1.3/CRS84" ;
->                                                                                            epcis:measurementType  gs1:Angle ;
->                                                                                            epcis:uom              "DD" ;
->                                                                                            epcis:value            4.2698334E1
+--- ../Turtle/WithSensorData/SensorDataExample14.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample14.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -23 +23 @@
+-  dcterms:created  "2019-10-07T15:00:00.000+01:00" ;
++  dcterms:created  "2019-10-07T15:00:00.000+01:00"^^xsd:dateTime ;
+@@ -27 +27 @@
+-                                        epcis:bizStep              <file://C:/sensor_reporting> ;
++                                        epcis:bizStep              cbv:BizStep-sensor_reporting ;
+@@ -29 +29 @@
+-                                        epcis:eventTime            "2021-05-27T10:00:00.000Z"^^xsd:dateTimeStamp ;
++                                        epcis:eventTime            "2021-05-27T10:00:00.000Z"^^xsd:dateTime ;
+@@ -33,2 +33,4 @@
+-                                                                     epcis:sensorReport  [ epcis:component  "Longitude" ;
+-                                                                                           epcis:type       gs1:MT-Angle ;
++                                                                     epcis:sensorReport  [ epcis:component        cbv:COMP-Longitude ;
++                                                                                           epcis:coordinateReferenceSystem
++                                                                                                   "http://www.opengis.net/def/crs/OGC/1.3/CRS84" ;
++                                                                                           epcis:measurementType  gs1:Angle ;
+@@ -38,2 +40,4 @@
+-                                                                     epcis:sensorReport  [ epcis:component  "Latitude" ;
+-                                                                                           epcis:type       gs1:MT-Angle ;
++                                                                     epcis:sensorReport  [ epcis:component        cbv:COMP-Latitude ;
++                                                                                           epcis:coordinateReferenceSystem
++                                                                                                   "http://www.opengis.net/def/crs/OGC/1.3/CRS84" ;
++                                                                                           epcis:measurementType  gs1:Angle ;

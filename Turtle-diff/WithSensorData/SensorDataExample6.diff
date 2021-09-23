@@ -1,40 +1,22 @@
-23c23
-<   dcterms:created  "2005-07-11T11:30:47.0Z" ;
----
->   dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
-33c33
-<         epcis:eventTime            "2019-10-07T15:00:00.000+01:00"^^xsd:dateTimeStamp ;
----
->         epcis:eventTime            "2019-10-07T15:00:00.000+01:00"^^xsd:dateTime ;
-45,46c45,46
-<                                                                 epcis:endTime              "2019-04-02T14:59:59.999+01:00"^^xsd:dateTimeStamp ;
-<                                                                 epcis:startTime            "2019-04-01T15:00:00.000+01:00"^^xsd:dateTimeStamp
----
->                                                                 epcis:endTime              "2019-04-02T14:59:59.999+01:00"^^xsd:dateTime ;
->                                                                 epcis:startTime            "2019-04-01T15:00:00.000+01:00"^^xsd:dateTime
-48,49c48,49
-<                                      epcis:sensorReport       [ epcis:stringValue  "someSensorOutput" ;
-<                                                                 epcis:type         examp:someSensorProperty
----
->                                      epcis:sensorReport       [ epcis:measurementType  examp:someSensorProperty ;
->                                                                 epcis:stringValue      "someSensorOutput"
-51,59c51,59
-<                                      epcis:sensorReport       [ examp:cv         "123" ;
-<                                                                 epcis:maxValue   1.38E1 ;
-<                                                                 epcis:meanValue  1.32E1 ;
-<                                                                 epcis:minValue   1.24E1 ;
-<                                                                 epcis:percRank   5.0E1 ;
-<                                                                 epcis:percValue  1.27E1 ;
-<                                                                 epcis:sDev       4.1E-1 ;
-<                                                                 epcis:type       gs1:MT-Temperature ;
-<                                                                 epcis:uom        "CEL"
----
->                                      epcis:sensorReport       [ examp:cv               "123" ;
->                                                                 epcis:maxValue         1.38E1 ;
->                                                                 epcis:meanValue        1.32E1 ;
->                                                                 epcis:measurementType  gs1:Temperature ;
->                                                                 epcis:minValue         1.24E1 ;
->                                                                 epcis:percRank         5.0E1 ;
->                                                                 epcis:percValue        1.27E1 ;
->                                                                 epcis:sDev             4.1E-1 ;
->                                                                 epcis:uom              "CEL"
+--- ../Turtle/WithSensorData/SensorDataExample6.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample6.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -23 +23 @@
+-  dcterms:created  "2005-07-11T11:30:47.0Z" ;
++  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
+@@ -33 +33 @@
+-        epcis:eventTime            "2019-10-07T15:00:00.000+01:00"^^xsd:dateTimeStamp ;
++        epcis:eventTime            "2019-10-07T15:00:00.000+01:00"^^xsd:dateTime ;
+@@ -45,2 +45,2 @@
+-                                                                epcis:endTime              "2019-04-02T14:59:59.999+01:00"^^xsd:dateTimeStamp ;
+-                                                                epcis:startTime            "2019-04-01T15:00:00.000+01:00"^^xsd:dateTimeStamp
++                                                                epcis:endTime              "2019-04-02T14:59:59.999+01:00"^^xsd:dateTime ;
++                                                                epcis:startTime            "2019-04-01T15:00:00.000+01:00"^^xsd:dateTime
+@@ -48,2 +48,2 @@
+-                                     epcis:sensorReport       [ epcis:stringValue  "someSensorOutput" ;
+-                                                                epcis:type         examp:someSensorProperty
++                                     epcis:sensorReport       [ epcis:measurementType  examp:someSensorProperty ;
++                                                                epcis:stringValue      "someSensorOutput"
+@@ -53,0 +54 @@
++                                                                epcis:measurementType  gs1:Temperature ;
+@@ -58 +58,0 @@
+-                                                                epcis:type       gs1:MT-Temperature ;

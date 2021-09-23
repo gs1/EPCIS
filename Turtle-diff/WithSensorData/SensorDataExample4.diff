@@ -1,76 +1,38 @@
-21a22,27
-> [ rdf:type         epcis:EPCISDocument ;
->   dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
->   owl:versionInfo  "2.0" ;
->   epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;7ff1501099b3f5890d310d703fb9f57e251bba0c57d3c049fab590b50323a8e7?ver=CBV2.0> ]
-> ] .
-> 
-26c32
-<         epcis:eventTime            "2019-04-02T15:00:00.000+01:00"^^xsd:dateTimeStamp ;
----
->         epcis:eventTime            "2019-04-02T15:00:00.000+01:00"^^xsd:dateTime ;
-33,39c39,45
-<         epcis:sensorElementList    [ epcis:sensorMetadata  [ epcis:time  "2019-04-02T14:55:00.000+01:00"^^xsd:dateTimeStamp ] ;
-<                                      epcis:sensorReport    [ epcis:deviceID        <urn:epc:id:giai:4000001.444> ;
-<                                                              epcis:deviceMetadata  <https://id.gs1.org/giai/4000001444> ;
-<                                                              epcis:rawData         <https://example.org/giai/4000001444-20190402T150000000> ;
-<                                                              epcis:type            gs1:MT-Illuminance ;
-<                                                              epcis:uom             "LUX" ;
-<                                                              epcis:value           8.0E2
----
->         epcis:sensorElementList    [ epcis:sensorMetadata  [ epcis:time  "2019-04-02T14:55:00.000+01:00"^^xsd:dateTime ] ;
->                                      epcis:sensorReport    [ epcis:deviceID         <urn:epc:id:giai:4000001.444> ;
->                                                              epcis:deviceMetadata   <https://id.gs1.org/giai/4000001444> ;
->                                                              epcis:measurementType  gs1:Illuminance ;
->                                                              epcis:rawData          <https://example.org/giai/4000001444-20190402T150000000> ;
->                                                              epcis:uom              "LUX" ;
->                                                              epcis:value            8.0E2
-41,46c47,52
-<                                      epcis:sensorReport    [ epcis:deviceID        <urn:epc:id:giai:4000001.333> ;
-<                                                              epcis:deviceMetadata  <https://id.gs1.org/giai/4000001333> ;
-<                                                              epcis:rawData         <https://example.org/giai/4000001333-20190402T150000000> ;
-<                                                              epcis:type            gs1:MT-Speed ;
-<                                                              epcis:uom             "KMH" ;
-<                                                              epcis:value           1.6E2
----
->                                      epcis:sensorReport    [ epcis:deviceID         <urn:epc:id:giai:4000001.333> ;
->                                                              epcis:deviceMetadata   <https://id.gs1.org/giai/4000001333> ;
->                                                              epcis:measurementType  gs1:Speed ;
->                                                              epcis:rawData          <https://example.org/giai/4000001333-20190402T150000000> ;
->                                                              epcis:uom              "KMH" ;
->                                                              epcis:value            1.6E2
-48,53c54,59
-<                                      epcis:sensorReport    [ epcis:deviceID        <urn:epc:id:giai:4000001.222> ;
-<                                                              epcis:deviceMetadata  <https://id.gs1.org/giai/4000001222> ;
-<                                                              epcis:rawData         <https://example.org/giai/4000001222-20190402T150000000> ;
-<                                                              epcis:type            <file://C:/Humidity> ;
-<                                                              epcis:uom             "A93" ;
-<                                                              epcis:value           1.21E1
----
->                                      epcis:sensorReport    [ epcis:deviceID         <urn:epc:id:giai:4000001.222> ;
->                                                              epcis:deviceMetadata   <https://id.gs1.org/giai/4000001222> ;
->                                                              epcis:measurementType  gs1:Humidity ;
->                                                              epcis:rawData          <https://example.org/giai/4000001222-20190402T150000000> ;
->                                                              epcis:uom              "A93" ;
->                                                              epcis:value            1.21E1
-55,60c61,66
-<                                      epcis:sensorReport    [ epcis:deviceID        <urn:epc:id:giai:4000001.111> ;
-<                                                              epcis:deviceMetadata  <https://id.gs1.org/giai/4000001111> ;
-<                                                              epcis:rawData         <https://example.org/giai/4000001111-20190402T150000000> ;
-<                                                              epcis:type            gs1:MT-Temperature ;
-<                                                              epcis:uom             "CEL" ;
-<                                                              epcis:value           2.6E1
----
->                                      epcis:sensorReport    [ epcis:deviceID         <urn:epc:id:giai:4000001.111> ;
->                                                              epcis:deviceMetadata   <https://id.gs1.org/giai/4000001111> ;
->                                                              epcis:measurementType  gs1:Temperature ;
->                                                              epcis:rawData          <https://example.org/giai/4000001111-20190402T150000000> ;
->                                                              epcis:uom              "CEL" ;
->                                                              epcis:value            2.6E1
-63,68d68
-< 
-< [ rdf:type         epcis:EPCISDocument ;
-<   dcterms:created  "2005-07-11T11:30:47.0Z" ;
-<   owl:versionInfo  "2.0" ;
-<   epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;7ff1501099b3f5890d310d703fb9f57e251bba0c57d3c049fab590b50323a8e7?ver=CBV2.0> ]
-< ] .
+--- ../Turtle/WithSensorData/SensorDataExample4.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample4.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -21,0 +22,6 @@
++[ rdf:type         epcis:EPCISDocument ;
++  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
++  owl:versionInfo  "2.0" ;
++  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;7ff1501099b3f5890d310d703fb9f57e251bba0c57d3c049fab590b50323a8e7?ver=CBV2.0> ]
++] .
++
+@@ -26 +32 @@
+-        epcis:eventTime            "2019-04-02T15:00:00.000+01:00"^^xsd:dateTimeStamp ;
++        epcis:eventTime            "2019-04-02T15:00:00.000+01:00"^^xsd:dateTime ;
+@@ -33 +39 @@
+-        epcis:sensorElementList    [ epcis:sensorMetadata  [ epcis:time  "2019-04-02T14:55:00.000+01:00"^^xsd:dateTimeStamp ] ;
++        epcis:sensorElementList    [ epcis:sensorMetadata  [ epcis:time  "2019-04-02T14:55:00.000+01:00"^^xsd:dateTime ] ;
+@@ -35,0 +42 @@
++                                                             epcis:measurementType  gs1:Illuminance ;
+@@ -37 +43,0 @@
+-                                                             epcis:type            gs1:MT-Illuminance ;
+@@ -42,0 +49 @@
++                                                             epcis:measurementType  gs1:Speed ;
+@@ -44 +50,0 @@
+-                                                             epcis:type            gs1:MT-Speed ;
+@@ -49,0 +56 @@
++                                                             epcis:measurementType  gs1:Humidity ;
+@@ -51 +57,0 @@
+-                                                             epcis:type            <file://C:/Humidity> ;
+@@ -56,0 +63 @@
++                                                             epcis:measurementType  gs1:Temperature ;
+@@ -58 +64,0 @@
+-                                                             epcis:type            gs1:MT-Temperature ;
+@@ -63,6 +68,0 @@
+-
+-[ rdf:type         epcis:EPCISDocument ;
+-  dcterms:created  "2005-07-11T11:30:47.0Z" ;
+-  owl:versionInfo  "2.0" ;
+-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;7ff1501099b3f5890d310d703fb9f57e251bba0c57d3c049fab590b50323a8e7?ver=CBV2.0> ]
+-] .

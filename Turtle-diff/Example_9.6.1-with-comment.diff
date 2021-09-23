@@ -1,37 +1,35 @@
-28,31c28
-<         epcis:bizTransactionList   [ epcis:bizTransaction      "http://transaction.acme.com/po/12345678"^^xsd:anyURI ;
-<                                      epcis:bizTransactionType  cbv:BTT-po
-<                                    ] ;
-<         epcis:bizTransactionList   [ epcis:bizTransaction      "urn:epcglobal:cbv:bt:0614141073467:1152"^^xsd:anyURI ;
----
->         epcis:bizTransactionList   [ epcis:bizTransaction      <urn:epcglobal:cbv:bt:0614141073467:1152> ;
-33a31,33
->         epcis:bizTransactionList   [ epcis:bizTransaction      <http://transaction.acme.com/po/12345678> ;
->                                      epcis:bizTransactionType  cbv:BTT-po
->                                    ] ;
-36c36
-<         epcis:eventTime            "2005-04-04T20:33:31.116-06:00"^^xsd:dateTimeStamp ;
----
->         epcis:eventTime            "2005-04-04T20:33:31.116-06:00"^^xsd:dateTime ;
-39a40,45
-> [ rdf:type         epcis:EPCISDocument ;
->   dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
->   owl:versionInfo  "2.0" ;
->   epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;59b0e6c6777da8128617f541585e25ef7a89f98909a4543fa5c742b363c79d3d?ver=CBV2.0> , <ni:///sha-256;36abb3a2c0a726de32ac4beafd6b8bc4ba0b1d2de244490312e5cbec7b5ddece?ver=CBV2.0> ]
-> ] .
-> 
-45c51
-<         epcis:bizTransactionList   [ epcis:bizTransaction      "http://transaction.acme.com/po/12345678"^^xsd:anyURI ;
----
->         epcis:bizTransactionList   [ epcis:bizTransaction      <http://transaction.acme.com/po/12345678> ;
-50c56
-<         epcis:eventTime            "2005-04-03T20:33:31.116000-06:00"^^xsd:dateTimeStamp ;
----
->         epcis:eventTime            "2005-04-03T20:33:31.116000-06:00"^^xsd:dateTime ;
-53,58d58
-< 
-< [ rdf:type         epcis:EPCISDocument ;
-<   dcterms:created  "2005-07-11T11:30:47.0Z" ;
-<   owl:versionInfo  "2.0" ;
-<   epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;59b0e6c6777da8128617f541585e25ef7a89f98909a4543fa5c742b363c79d3d?ver=CBV2.0> , <ni:///sha-256;36abb3a2c0a726de32ac4beafd6b8bc4ba0b1d2de244490312e5cbec7b5ddece?ver=CBV2.0> ]
-< ] .
+--- ../Turtle//Example_9.6.1-with-comment.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context//Example_9.6.1-with-comment.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -28,4 +28 @@
+-        epcis:bizTransactionList   [ epcis:bizTransaction      "http://transaction.acme.com/po/12345678"^^xsd:anyURI ;
+-                                     epcis:bizTransactionType  cbv:BTT-po
+-                                   ] ;
+-        epcis:bizTransactionList   [ epcis:bizTransaction      "urn:epcglobal:cbv:bt:0614141073467:1152"^^xsd:anyURI ;
++        epcis:bizTransactionList   [ epcis:bizTransaction      <urn:epcglobal:cbv:bt:0614141073467:1152> ;
+@@ -33,0 +31,3 @@
++        epcis:bizTransactionList   [ epcis:bizTransaction      <http://transaction.acme.com/po/12345678> ;
++                                     epcis:bizTransactionType  cbv:BTT-po
++                                   ] ;
+@@ -36 +36 @@
+-        epcis:eventTime            "2005-04-04T20:33:31.116-06:00"^^xsd:dateTimeStamp ;
++        epcis:eventTime            "2005-04-04T20:33:31.116-06:00"^^xsd:dateTime ;
+@@ -39,0 +40,6 @@
++[ rdf:type         epcis:EPCISDocument ;
++  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
++  owl:versionInfo  "2.0" ;
++  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;59b0e6c6777da8128617f541585e25ef7a89f98909a4543fa5c742b363c79d3d?ver=CBV2.0> , <ni:///sha-256;36abb3a2c0a726de32ac4beafd6b8bc4ba0b1d2de244490312e5cbec7b5ddece?ver=CBV2.0> ]
++] .
++
+@@ -45 +51 @@
+-        epcis:bizTransactionList   [ epcis:bizTransaction      "http://transaction.acme.com/po/12345678"^^xsd:anyURI ;
++        epcis:bizTransactionList   [ epcis:bizTransaction      <http://transaction.acme.com/po/12345678> ;
+@@ -50 +56 @@
+-        epcis:eventTime            "2005-04-03T20:33:31.116000-06:00"^^xsd:dateTimeStamp ;
++        epcis:eventTime            "2005-04-03T20:33:31.116000-06:00"^^xsd:dateTime ;
+@@ -53,6 +58,0 @@
+-
+-[ rdf:type         epcis:EPCISDocument ;
+-  dcterms:created  "2005-07-11T11:30:47.0Z" ;
+-  owl:versionInfo  "2.0" ;
+-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;59b0e6c6777da8128617f541585e25ef7a89f98909a4543fa5c742b363c79d3d?ver=CBV2.0> , <ni:///sha-256;36abb3a2c0a726de32ac4beafd6b8bc4ba0b1d2de244490312e5cbec7b5ddece?ver=CBV2.0> ]
+-] .
