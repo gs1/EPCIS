@@ -8,7 +8,24 @@
 @prefix sw:    <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 @prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
 
-#################### Ontology: TODO
+#################### Ontology
+
+cbv: a owl:Ontology;
+  rdfs:label "CBV Ontology";
+  rdfs:comment """The Comprehensive Business Vocabulary defines various enumerations used by EPCIS.""";
+  dct:creator <https://gs1.org/>;
+  dct:publisher <https://gs1.org/>;
+  dct:created  "2021-06-01"^^xsd:date;
+  dct:modified "2021-09-30"^^xsd:date;
+  # dct:issued   "2021-06-30"^^xsd:date; # after release
+  rdfs:seeAlso epcis:, gs1: ;
+  owl:versionInfo "2.0";
+  vann:preferredNamespaceUri "https://ns.gs1.org/cbv/";
+  vann:preferredNamespacePrefix "cbv".
+
+<https://gs1.org/> a schema:Organization;
+  schema:name "GS1";
+  schema:description "GS1 is an international organization that sets the global standards in transport and logistics".
 
 #################### Business Transaction Type
 
