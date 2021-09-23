@@ -1,90 +1,78 @@
 {
   "@graph" : [ {
-    "@id" : "_:b0",
+    "@id" : "_:b1",
+    "@type" : "owl:Class",
+    "unionOf" : {
+      "@list" : [ "epcis:AggregationEvent", "epcis:AssociationEvent" ]
+    }
+  }, {
+    "@id" : "_:b13",
+    "@type" : "owl:Class",
+    "unionOf" : {
+      "@list" : [ "epcis:SensorMetadata", "epcis:SensorReport" ]
+    }
+  }, {
+    "@id" : "_:b14",
+    "@type" : "owl:Class",
+    "unionOf" : {
+      "@list" : [ "epcis:SensorMetadata", "epcis:SensorReport" ]
+    }
+  }, {
+    "@id" : "_:b15",
     "@type" : "owl:Class",
     "unionOf" : {
       "@list" : [ "epcis:ObjectEvent", "epcis:TransactionEvent" ]
     }
   }, {
-    "@id" : "_:b10",
-    "@type" : "owl:Class",
-    "unionOf" : {
-      "@list" : [ "gs1:IndividualObject", "gs1:Place" ]
-    }
-  }, {
-    "@id" : "_:b11",
-    "@type" : "owl:Class",
-    "unionOf" : {
-      "@list" : [ "epcis:AggregationEvent", "epcis:AssociationEvent", "epcis:TransactionEvent" ]
-    }
-  }, {
-    "@id" : "_:b12",
-    "@type" : "owl:Class",
-    "unionOf" : {
-      "@list" : [ "epcis:SensorMetadata", "epcis:SensorReport" ]
-    }
-  }, {
-    "@id" : "_:b17",
-    "@type" : "owl:Class",
-    "unionOf" : {
-      "@list" : [ "epcis:ObjectEvent", "epcis:AggregationEvent", "epcis:AssociationEvent", "epcis:TransactionEvent" ]
-    }
-  }, {
-    "@id" : "_:b20",
-    "@type" : "owl:Class",
-    "unionOf" : {
-      "@list" : [ "epcis:SensorMetadata", "epcis:SensorReport" ]
-    }
-  }, {
-    "@id" : "_:b21",
-    "@type" : "owl:Class",
-    "unionOf" : {
-      "@list" : [ "epcis:SensorMetadata", "epcis:SensorReport" ]
-    }
-  }, {
-    "@id" : "_:b23",
+    "@id" : "_:b18",
     "@type" : "owl:Class",
     "unionOf" : {
       "@list" : [ "epcis:ObjectEvent", "epcis:TransformationEvent" ]
     }
   }, {
-    "@id" : "_:b24",
+    "@id" : "_:b19",
     "@type" : "owl:Class",
     "unionOf" : {
       "@list" : [ "epcis:SensorMetadata", "epcis:SensorReport" ]
     }
   }, {
-    "@id" : "_:b27",
+    "@id" : "_:b26",
+    "@type" : "owl:Class",
+    "unionOf" : {
+      "@list" : [ "epcis:AggregationEvent", "epcis:AssociationEvent" ]
+    }
+  }, {
+    "@id" : "_:b29",
     "@type" : "owl:Class",
     "unionOf" : {
       "@list" : [ "epcis:ObjectEvent", "epcis:TransactionEvent" ]
     }
   }, {
-    "@id" : "_:b3",
-    "@type" : "owl:Class",
-    "unionOf" : {
-      "@list" : [ "epcis:AggregationEvent", "epcis:AssociationEvent" ]
-    }
-  }, {
-    "@id" : "_:b32",
-    "@type" : "owl:Class",
-    "unionOf" : {
-      "@list" : [ "epcis:AggregationEvent", "epcis:AssociationEvent" ]
-    }
-  }, {
-    "@id" : "_:b36",
-    "@type" : "owl:Class",
-    "unionOf" : {
-      "@list" : [ "epcis:SensorReport", "epcis:QuantityElement" ]
-    }
-  }, {
-    "@id" : "_:b44",
+    "@id" : "_:b31",
     "@type" : "owl:Class",
     "unionOf" : {
       "@list" : [ "epcis:SensorMetadata", "epcis:SensorReport" ]
     }
   }, {
-    "@id" : "_:b50",
+    "@id" : "_:b33",
+    "@type" : "owl:Class",
+    "unionOf" : {
+      "@list" : [ "epcis:ObjectEvent", "epcis:AggregationEvent", "epcis:AssociationEvent", "epcis:TransactionEvent" ]
+    }
+  }, {
+    "@id" : "_:b4",
+    "@type" : "owl:Class",
+    "unionOf" : {
+      "@list" : [ "gs1:Organization", "gs1:Place" ]
+    }
+  }, {
+    "@id" : "_:b41",
+    "@type" : "owl:Class",
+    "unionOf" : {
+      "@list" : [ "epcis:SensorReport", "epcis:QuantityElement" ]
+    }
+  }, {
+    "@id" : "_:b49",
     "@type" : "owl:Class",
     "unionOf" : {
       "@list" : [ "gs1:Product", "gs1:ProductBatch" ]
@@ -93,7 +81,19 @@
     "@id" : "_:b6",
     "@type" : "owl:Class",
     "unionOf" : {
-      "@list" : [ "gs1:Organization", "gs1:Place" ]
+      "@list" : [ "epcis:AggregationEvent", "epcis:AssociationEvent", "epcis:TransactionEvent" ]
+    }
+  }, {
+    "@id" : "_:b7",
+    "@type" : "owl:Class",
+    "unionOf" : {
+      "@list" : [ "gs1:IndividualObject", "gs1:Place" ]
+    }
+  }, {
+    "@id" : "_:b9",
+    "@type" : "owl:Class",
+    "unionOf" : {
+      "@list" : [ "epcis:SensorMetadata", "epcis:SensorReport" ]
     }
   }, {
     "@id" : "rdf:type",
@@ -308,7 +308,7 @@
       "@language" : "en",
       "@value" : "How this event relates to the lifecycle of the EPCs named in this event."
     },
-    "domain" : "_:b17",
+    "domain" : "_:b33",
     "isDefinedBy" : "https://ns.gs1.org/epcis/",
     "label" : "action",
     "range" : "xsd:string",
@@ -431,7 +431,7 @@
       "@language" : "en",
       "@value" : "(Optional) An unordered list of the EPCs of contained objects identified by instance-level identifiers. An AggregationEvent SHALL contain either a nonempty childEPCs, a non-empty childQuantityList, or both, except that both childEPCs and childQuantityList MAY be empty if action is DELETE, indicating that all children are disaggregated from the parent.  An AssociationEvent SHALL contain either a non-empty childEPCs, a non-empty childQuantityList, or both, except that both childEPCs and childQuantityList MAY be empty if action is DELETE, indicating that all children are disassociated from the parent."
     },
-    "domain" : "_:b32",
+    "domain" : "_:b26",
     "isDefinedBy" : "https://ns.gs1.org/epcis/",
     "label" : "childEPCs",
     "range" : "gs1:IndividualObject",
@@ -445,7 +445,7 @@
       "@language" : "en",
       "@value" : "(Optional) An unordered list of one or more QuantityElements identifying (at the class level) contained objects. An AggregationEvent SHALL contain either a nonempty childEPCs, a non-empty childQuantityList, or both, except that both childEPCs and childQuantityList MAY be empty if action is DELETE, indicating that all children are disaggregated from the parent.  An AssociationEvent SHALL contain either a non-empty childEPCs, a non-empty childQuantityList, or both, except that both childEPCs and childQuantityList MAY be empty if action is DELETE, indicating that all children are disaggregated from the parent."
     },
-    "domain" : "_:b3",
+    "domain" : "_:b1",
     "isDefinedBy" : "https://ns.gs1.org/epcis/",
     "label" : "childQuantityList",
     "range" : "epcis:QuantityElement",
@@ -457,7 +457,7 @@
     "rangeIncludes" : "cbv:Comp",
     "comment" : {
       "@language" : "en",
-      "@value" : "(Optional) The indicator of one out of several dimensions of a vector value (as required for properties such as velocity, which consists of a magnitude and a specific direction in space).  If a component field is present, a sensorReport element MUST also include a double value and the uom field."
+      "@value" : "(Optional) The indicator of one out of several dimensions of a vector value (as required for properties such as velocity, which consists of a magnitude and a specific direction in space).  If a component field is present, a sensorReport element MUST also include a double `value` and the `uom` field."
     },
     "domain" : "epcis:SensorReport",
     "isDefinedBy" : "https://ns.gs1.org/epcis/",
@@ -486,7 +486,7 @@
       "@language" : "en",
       "@value" : "(Optional) Storage location of an electronic document accommodating the data processing method of the contained sensor data, if applicable.  For instance, before sensor data is captured in an EPCIS event, the latter might be redacted or refined by means of specific algorithms."
     },
-    "domain" : "_:b24",
+    "domain" : "_:b19",
     "isDefinedBy" : "https://ns.gs1.org/epcis/",
     "label" : "dataProcessingMethod",
     "term_status" : "stable"
@@ -527,7 +527,7 @@
       "@language" : "en",
       "@value" : "(Optional) Device from which the sensor data originates."
     },
-    "domain" : "_:b44",
+    "domain" : "_:b31",
     "isDefinedBy" : "https://ns.gs1.org/epcis/",
     "label" : "deviceID",
     "range" : "gs1:SensorDevice",
@@ -540,7 +540,7 @@
       "@language" : "en",
       "@value" : "(Optional) Storage location of an electronic document accommodating metadata of the device from which the sensor data originates."
     },
-    "domain" : "_:b12",
+    "domain" : "_:b9",
     "isDefinedBy" : "https://ns.gs1.org/epcis/",
     "label" : "deviceMetadata",
     "term_status" : "stable"
@@ -584,18 +584,18 @@
     "domain" : "epcis:QuantityElement",
     "isDefinedBy" : "https://ns.gs1.org/epcis/",
     "label" : "epcClass",
-    "range" : "_:b50",
+    "range" : "_:b49",
     "term_status" : "stable"
   }, {
     "@id" : "epcis:epcList",
     "@type" : [ "owl:ObjectProperty", "rdf:Property" ],
-    "domainIncludes" : [ "epcis:TransactionEvent", "epcis:ObjectEvent" ],
+    "domainIncludes" : [ "epcis:ObjectEvent", "epcis:TransactionEvent" ],
     "rangeIncludes" : "gs1:IndividualObject",
     "comment" : {
       "@language" : "en",
       "@value" : "(Optional) An unordered list of one or more EPCs naming specific objects to which the event pertained."
     },
-    "domain" : "_:b27",
+    "domain" : "_:b15",
     "isDefinedBy" : "https://ns.gs1.org/epcis/",
     "label" : "epcList",
     "range" : "gs1:IndividualObject",
@@ -671,6 +671,20 @@
     "range" : "xsd:string",
     "term_status" : "stable"
   }, {
+    "@id" : "epcis:exception",
+    "@type" : [ "owl:ObjectProperty", "rdf:Property" ],
+    "domainIncludes" : "epcis:SensorReport",
+    "rangeIncludes" : "gs1:SensorAlertType",
+    "comment" : {
+      "@language" : "en",
+      "@value" : "(Optional) A sensor alert, including an alarm condition or an error condition. When this field is used, extra details can be specified via `booleanValue` or `uriValue`."
+    },
+    "domain" : "epcis:SensorReport",
+    "isDefinedBy" : "https://ns.gs1.org/epcis/",
+    "label" : "exception",
+    "range" : "gs1:SensorAlertType",
+    "term_status" : "stable"
+  }, {
     "@id" : "epcis:hexBinaryValue",
     "@type" : [ "owl:DatatypeProperty", "rdf:Property" ],
     "domainIncludes" : "epcis:SensorReport",
@@ -693,7 +707,7 @@
       "@language" : "en",
       "@value" : "(Optional) Instance/Lot master data that describes the objects created during this event."
     },
-    "domain" : "_:b23",
+    "domain" : "_:b18",
     "isDefinedBy" : "https://ns.gs1.org/epcis/",
     "label" : "ilmd",
     "range" : "epcis:ILMD",
@@ -860,10 +874,10 @@
       "@language" : "en",
       "@value" : "(Optional when action is OBSERVE, required otherwise) The identifier of the parent of the aggregation or association. When the parent identifier is an EPC, this field SHALL contain the 'pure identity' URI for the EPC as specified in the GS1 Tag Data Standard"
     },
-    "domain" : "_:b11",
+    "domain" : "_:b6",
     "isDefinedBy" : "https://ns.gs1.org/epcis/",
     "label" : "parentID",
-    "range" : "_:b10",
+    "range" : "_:b7",
     "term_status" : "stable"
   }, {
     "@id" : "epcis:percRank",
@@ -930,7 +944,7 @@
       "@language" : "en",
       "@value" : "(Optional) An unordered list of one or more QuantityElements identifying (at the class level) objects to which the event pertained."
     },
-    "domain" : "_:b0",
+    "domain" : "_:b29",
     "isDefinedBy" : "https://ns.gs1.org/epcis/",
     "label" : "quantityList",
     "range" : "epcis:QuantityElement",
@@ -943,7 +957,7 @@
       "@language" : "en",
       "@value" : "(Optional) Storage/service location of the raw sensor data on which the aggregated/business-oriented data contained in the sensorElement is based."
     },
-    "domain" : "_:b21",
+    "domain" : "_:b14",
     "isDefinedBy" : "https://ns.gs1.org/epcis/",
     "label" : "rawData",
     "term_status" : "stable"
@@ -1085,7 +1099,7 @@
     "domain" : "epcis:SourceOrDestination",
     "isDefinedBy" : "https://ns.gs1.org/epcis/",
     "label" : "destination",
-    "range" : "_:b6",
+    "range" : "_:b4",
     "term_status" : "stable",
     "jsonldLabel" : [ "source", "destination" ]
   }, {
@@ -1140,7 +1154,7 @@
       "@language" : "en",
       "@value" : "(Optional) The actual point in time of an observation as transmitted by a sensor device.  If present, the time value SHALL be less (earlier) than or equal to the eventTime value.  It SHALL also contain a time zone offset value.  The coordination and integrity of distributed computing requires time synchronisation of EPCIS events conveying sensor data. Therefore, when populating the time, startTime, and endTime field, EPCIS capture applications SHOULD apply established time synchronisation protocols such as IEEE 1588-2008, which provides a standard method to synchronise device clocks in a network.  Note: The eventTime applies to the completion of a business step, not a sensor observation. For instance, for a receiving event accommodating a sensor element, the eventTime indicates when goods were received ' it gives no information when certain conditions (e.g. a specific temperature value) held true. In some circumstances, event and sensor observation times may correspond though (e.g. if a quality inspector checks certain properties of goods). In such cases, indicating the eventTime may be sufficient."
     },
-    "domain" : "_:b20",
+    "domain" : "_:b13",
     "isDefinedBy" : "https://ns.gs1.org/epcis/",
     "label" : "time",
     "range" : "xsd:dateTimeStamp",
@@ -1180,7 +1194,7 @@
       "@language" : "en",
       "@value" : "(Optional) Unit of measure by which the specified value(s) of the property specified by type should be interpreted.  If there is no value, minValue, maxValue, averageValue or percValue field present, uom SHALL be omitted.  When a uom field is present, its value SHALL be the 2- or 3-character code for a physical unit specified in the 'Common Code' column of UN/CEFACT Recommendation'20 [CEFACT20].   Note: GS1 provides a GitHub Repository containing a machine-readable file which enables the automatic conversion between quantitative values expressed using UN/CEFACT common codes. [TODO include URL once the file has been moved into GS1 GitHub Repo]"
     },
-    "domain" : "_:b36",
+    "domain" : "_:b41",
     "isDefinedBy" : "https://ns.gs1.org/epcis/",
     "label" : "uom",
     "range" : "xsd:string",
@@ -1224,10 +1238,6 @@
     "name" : {
       "@id" : "http://schema.org/name"
     },
-    "unionOf" : {
-      "@id" : "http://www.w3.org/2002/07/owl#unionOf",
-      "@type" : "@id"
-    },
     "rest" : {
       "@id" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#rest",
       "@type" : "@id"
@@ -1238,6 +1248,10 @@
     },
     "term_status" : {
       "@id" : "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status"
+    },
+    "domain" : {
+      "@id" : "http://www.w3.org/2000/01/rdf-schema#domain",
+      "@type" : "@id"
     },
     "range" : {
       "@id" : "http://www.w3.org/2000/01/rdf-schema#range",
@@ -1257,12 +1271,12 @@
     "label" : {
       "@id" : "http://www.w3.org/2000/01/rdf-schema#label"
     },
-    "domain" : {
-      "@id" : "http://www.w3.org/2000/01/rdf-schema#domain",
-      "@type" : "@id"
-    },
     "rangeIncludes" : {
       "@id" : "http://schema.org/rangeIncludes",
+      "@type" : "@id"
+    },
+    "unionOf" : {
+      "@id" : "http://www.w3.org/2002/07/owl#unionOf",
       "@type" : "@id"
     },
     "jsonldUriLabel" : {
