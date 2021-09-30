@@ -56,7 +56,7 @@
                     "@protected": true,
                     "epcis": "https://ns.gs1.org/epcis/",
                     "source": {
-                        "@id": "epcis:source",
+                        "@id": "epcis:sourceOrDestination",
                         "@type": "@id"
                     },
                     "type": {
@@ -75,7 +75,7 @@
                     "@protected": true,
                     "epcis": "https://ns.gs1.org/epcis/",
                     "destination": {
-                        "@id": "epcis:destination",
+                        "@id": "epcis:sourceOrDestination",
                         "@type": "@id"
                     },
                     "type": {
