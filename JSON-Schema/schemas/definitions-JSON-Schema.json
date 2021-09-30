@@ -1,0 +1,44 @@
+{
+    "$id": "https://gs1.github.io/EPCIS/JSON-Schema/schemas/definitions-JSON-Schema.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "definitions": {
+        "@context": {
+            "anyOf": [
+                {
+                    "type": "string",
+                    "format": "uri"
+                },
+                {
+                    "type": "object"
+                },
+                {
+                    "type": "array",
+                    "uniqueItems": true,
+                    "items": {
+                        "anyOf": [
+                            {
+                                "type": "string",
+                                "format": "uri"
+                            },
+                            {
+                                "type": "object"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "vocab-uri": {
+            "allOf": [
+                {
+                    "type": "string",
+                    "format": "uri"
+                }
+            ]
+        },
+        "required-ld-context": {
+            "type": "object",
+            "required": ["@context"]
+        }
+    }
+}

@@ -1,0 +1,163 @@
+{
+    "$id": "https://gs1.github.io/EPCIS/JSON-Schema/EPCIS-JSON-Schema.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+
+    "required": [
+        "isA"
+    ],
+    "properties": {
+        "isA": {
+            "type": "string"
+        }
+    },
+    "allOf": [
+        {
+            "if": {
+                "properties": {
+                    "isA": {
+                        "const": "EPCISDocument"
+                    }
+                }
+            },
+            "then": {
+                "$ref": "EPCIS-Document-JSON-Schema.json#/definitions/epcisDocument"
+            }
+        },
+        {
+            "if": {
+                "properties": {
+                    "isA": {
+                        "const": "EPCISQueryDocument"
+                    }
+                }
+            },
+            "then": {
+                "$ref": "EPCIS-Document-JSON-Schema.json#/definitions/epcisQueryDocument"
+            }
+        },
+        {
+            "if": {
+                "properties": {
+                    "isA": {
+                        "const": "ObjectEvent"
+                    }
+                }
+            },
+            "then": {
+                "allOf": [
+                    {
+                        "$ref": "schemas/ObjectEvent-JSON-Schema.json#/definitions/ObjectEvent"
+                    },
+                    {
+                        "$ref": "schemas/definitions-JSON-Schema.json#/definitions/required-ld-context"
+                    }
+                ]
+            }
+        },
+        {
+            "if": {
+                "properties": {
+                    "isA": {
+                        "const": "AggregationEvent"
+                    }
+                }
+            },
+            "then": {
+                "allOf": [
+                    {
+                        "$ref": "schemas/AggregationEvent-JSON-Schema.json#/definitions/AggregationEvent"
+                    },
+                    {
+                        "$ref": "schemas/definitions-JSON-Schema.json#/definitions/required-ld-context"
+                    }
+                ]
+            }
+        },
+        {
+            "if": {
+                "properties": {
+                    "isA": {
+                        "const": "AssociationEvent"
+                    }
+                }
+            },
+            "then": {
+                "allOf": [
+                    {
+                        "$ref": "schemas/AssociationEvent-JSON-Schema.json#/definitions/AssociationEvent"
+                    },
+                    {
+                        "$ref": "schemas/definitions-JSON-Schema.json#/definitions/required-ld-context"
+                    }
+                ]
+            }
+        },
+        {
+            "if": {
+                "properties": {
+                    "isA": {
+                        "const": "TransformationEvent"
+                    }
+                }
+            },
+            "then": {
+                "allOf": [
+                    {
+                        "$ref": "schemas/TransformationEvent-JSON-Schema.json#/definitions/TransformationEvent"
+                    },
+                    {
+                        "$ref": "schemas/definitions-JSON-Schema.json#/definitions/required-ld-context"
+                    }
+                ]
+            }
+        },
+        {
+            "if": {
+                "properties": {
+                    "isA": {
+                        "const": "TransactionEvent"
+                    }
+                }
+            },
+            "then": {
+                "allOf": [
+                    {
+                        "$ref": "schemas/TransactionEvent-JSON-Schema.json#/definitions/TransactionEvent"
+                    },
+                    {
+                        "$ref": "schemas/definitions-JSON-Schema.json#/definitions/required-ld-context"
+                    }
+                ]
+            }
+        },
+        {
+            "if": {
+                "not": {
+                    "properties": {
+                        "isA": {
+                            "enum": [
+                                "AssociationEvent",
+                                "ObjectEvent",
+                                "AggregationEvent",
+                                "TransactionEvent",
+                                "TransformationEvent",
+                                "EPCISQueryDocument",
+                                "EPCISDocument"
+                            ]
+                        }
+                    }
+                }
+            },
+            "then": {
+                "allOf": [
+                    {
+                        "$ref": "schemas/event-definitions-JSON-Schema.json#/definitions/Extended-Event"
+                    },
+                    {
+                        "$ref": "schemas/definitions-JSON-Schema.json#/definitions/required-ld-context"
+                    }
+                ]
+            }
+        }
+    ]
+}

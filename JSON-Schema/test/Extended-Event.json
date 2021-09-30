@@ -1,0 +1,11 @@
+{
+    "@context": [
+        "https://gs1.github.io/EPCIS/epcis-context.jsonld",
+        {
+            "example": "https://example.org/epcis"
+        }
+    ],
+    "isA": "example:CustomEvent",
+    "eventTime": "2005-04-03T20:33:31.116000-06:00",
+    "eventTimeZoneOffset": "-06:00"
+}
