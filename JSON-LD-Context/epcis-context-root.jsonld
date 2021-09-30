@@ -126,7 +126,7 @@
                     "epcis": "https://ns.gs1.org/epcis/",
                     "bizTransaction": {
                         "@id": "epcis:bizTransaction",
-                        "@type": "xsd:anyURI"
+                        "@type": "@id"
                     },
                     "type": {
                         "@id": "epcis:bizTransactionType",
@@ -243,7 +243,7 @@
                             "hexBinaryValue": "epcis:hexBinaryValue",
                             "uriValue": {
                                 "@id": "epcis:uriValue",
-                                "@type": "xsd:anyURI"
+                                "@type": "@id"
                             },
                             "minValue": {
                                 "@id": "epcis:minValue",
