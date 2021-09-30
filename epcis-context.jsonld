@@ -132,7 +132,7 @@
           "@protected": true,
           "epcis": "https://ns.gs1.org/epcis/",
           "source": {
-            "@id": "epcis:source",
+            "@id": "epcis:sourceOrDestination",
             "@type": "@id"
           },
           "type": {
@@ -158,7 +158,7 @@
           "@protected": true,
           "epcis": "https://ns.gs1.org/epcis/",
           "destination": {
-            "@id": "epcis:destination",
+            "@id": "epcis:sourceOrDestination",
             "@type": "@id"
           },
           "type": {
@@ -225,7 +225,7 @@
           "epcis": "https://ns.gs1.org/epcis/",
           "bizTransaction": {
             "@id": "epcis:bizTransaction",
-            "@type": "xsd:anyURI"
+            "@type": "@id"
           },
           "type": {
             "@id": "epcis:bizTransactionType",
@@ -312,139 +312,148 @@
         },
         "sensorReport": {
           "@id": "epcis:sensorReport",
-          "@context": [
-            {
-              "@protected": true,
-              "@version": 1.1,
-              "gs1": "https://gs1.org/voc/",
-              "AbsoluteHumidity": "gs1:MT-AbsoluteHumidity",
-              "AbsorbedDose": "gs1:MT-AbsorbedDose",
-              "AbsorbedDoseRate": "gs1:MT-AbsorbedDoseRate",
-              "Acceleration": "gs1:MT-Acceleration",
-              "Activity": "gs1:MT-Activity",
-              "Altitude": "gs1:MT-Altitude",
-              "AmountOfSubstance": "gs1:MT-AmountOfSubstance",
-              "AmountOfSubstancePerUnitVolume": "gs1:MT-AmountOfSubstancePerUnitVolume",
-              "Angle": "gs1:MT-Angle",
-              "AngularAcceleration": "gs1:MT-AngularAcceleration",
-              "AngularMomentum": "gs1:MT-AngularMomentum",
-              "AngularVelocity": "gs1:MT-AngularVelocity",
-              "Area": "gs1:MT-Area",
-              "Capacitance": "gs1:MT-Capacitance",
-              "Conductance": "gs1:MT-Conductance",
-              "Conductivity": "gs1:MT-Conductivity",
-              "Count": "gs1:MT-Count",
-              "Density": "gs1:MT-Density",
-              "DoseEquivalent": "gs1:MT-DoseEquivalent",
-              "DoseEquivalentRate": "gs1:MT-DoseEquivalentRate",
-              "DynamicViscosity": "gs1:MT-DynamicViscosity",
-              "ElectricCharge": "gs1:MT-ElectricCharge",
-              "ElectricCurrent": "gs1:MT-ElectricCurrent",
-              "ElectricCurrentDensity": "gs1:MT-ElectricCurrentDensity",
-              "ElectricFieldStrength": "gs1:MT-ElectricFieldStrength",
-              "Energy": "gs1:MT-Energy",
-              "Exposure": "gs1:MT-Exposure",
-              "Force": "gs1:MT-Force",
-              "Frequency": "gs1:MT-Frequency",
-              "Illuminance": "gs1:MT-Illuminance",
-              "Inductance": "gs1:MT-Inductance",
-              "Irradiance": "gs1:MT-Irradiance",
-              "KinematicViscosity": "gs1:MT-KinematicViscosity",
-              "Length": "gs1:MT-Length",
-              "LinearMomentum": "gs1:MT-LinearMomentum",
-              "Luminance": "gs1:MT-Luminance",
-              "LuminousFlux": "gs1:MT-LuminousFlux",
-              "LuminousIntensity": "gs1:MT-LuminousIntensity",
-              "MagneticFlux": "gs1:MT-MagneticFlux",
-              "MagneticFluxDensity": "gs1:MT-MagneticFluxDensity",
-              "MagneticVectorPotential": "gs1:MT-MagneticVectorPotential",
-              "Mass": "gs1:MT-Mass",
-              "MassConcentration": "gs1:MT-MassConcentration",
-              "MassFlowRate": "gs1:MT-MassFlowRate",
-              "MassPerAreaTime": "gs1:MT-MassPerAreaTime",
-              "MemoryCapacity": "gs1:MT-MemoryCapacity",
-              "MolalityOfSolute": "gs1:MT-MolalityOfSolute",
-              "MolarEnergy": "gs1:MT-MolarEnergy",
-              "MolarMass": "gs1:MT-MolarMass",
-              "MolarVolume": "gs1:MT-MolarVolume",
-              "Power": "gs1:MT-Power",
-              "Pressure": "gs1:MT-Pressure",
-              "RadiantFlux": "gs1:MT-RadiantFlux",
-              "RadiantIntensity": "gs1:MT-RadiantIntensity",
-              "RelativeHumidity": "gs1:MT-RelativeHumidity",
-              "Resistance": "gs1:MT-Resistance",
-              "Resistivity": "gs1:MT-Resistivity",
-              "SolidAngle": "gs1:MT-SolidAngle",
-              "SpecificVolume": "gs1:MT-SpecificVolume",
-              "Speed": "gs1:MT-Speed",
-              "SurfaceDensity": "gs1:MT-SurfaceDensity",
-              "SurfaceTension": "gs1:MT-SurfaceTension",
-              "Temperature": "gs1:MT-Temperature",
-              "Time": "gs1:MT-Time",
-              "Torque": "gs1:MT-Torque",
-              "Voltage": "gs1:MT-Voltage",
-              "Volume": "gs1:MT-Volume",
-              "VolumeFlowRate": "gs1:MT-VolumeFlowRate",
-              "VolumeFraction": "gs1:MT-VolumeFraction",
-              "VolumetricFlux": "gs1:MT-VolumetricFlux",
-              "Wavenumber": "gs1:MT-Wavenumber"
+          "@context": {
+            "@protected": true,
+            "epcis": "https://ns.gs1.org/epcis/",
+            "type": {
+              "@context": {
+                "@protected": true,
+                "@version": 1.1,
+                "gs1": "https://gs1.org/voc/",
+                "AbsoluteHumidity": "gs1:MT-AbsoluteHumidity",
+                "AbsorbedDose": "gs1:MT-AbsorbedDose",
+                "AbsorbedDoseRate": "gs1:MT-AbsorbedDoseRate",
+                "Acceleration": "gs1:MT-Acceleration",
+                "Activity": "gs1:MT-Activity",
+                "Altitude": "gs1:MT-Altitude",
+                "AmountOfSubstance": "gs1:MT-AmountOfSubstance",
+                "AmountOfSubstancePerUnitVolume": "gs1:MT-AmountOfSubstancePerUnitVolume",
+                "Angle": "gs1:MT-Angle",
+                "AngularAcceleration": "gs1:MT-AngularAcceleration",
+                "AngularMomentum": "gs1:MT-AngularMomentum",
+                "AngularVelocity": "gs1:MT-AngularVelocity",
+                "Area": "gs1:MT-Area",
+                "Capacitance": "gs1:MT-Capacitance",
+                "Conductance": "gs1:MT-Conductance",
+                "Conductivity": "gs1:MT-Conductivity",
+                "Count": "gs1:MT-Count",
+                "Density": "gs1:MT-Density",
+                "DoseEquivalent": "gs1:MT-DoseEquivalent",
+                "DoseEquivalentRate": "gs1:MT-DoseEquivalentRate",
+                "DynamicViscosity": "gs1:MT-DynamicViscosity",
+                "ElectricCharge": "gs1:MT-ElectricCharge",
+                "ElectricCurrent": "gs1:MT-ElectricCurrent",
+                "ElectricCurrentDensity": "gs1:MT-ElectricCurrentDensity",
+                "ElectricFieldStrength": "gs1:MT-ElectricFieldStrength",
+                "Energy": "gs1:MT-Energy",
+                "Exposure": "gs1:MT-Exposure",
+                "Force": "gs1:MT-Force",
+                "Frequency": "gs1:MT-Frequency",
+                "Illuminance": "gs1:MT-Illuminance",
+                "Inductance": "gs1:MT-Inductance",
+                "Irradiance": "gs1:MT-Irradiance",
+                "KinematicViscosity": "gs1:MT-KinematicViscosity",
+                "Length": "gs1:MT-Length",
+                "LinearMomentum": "gs1:MT-LinearMomentum",
+                "Luminance": "gs1:MT-Luminance",
+                "LuminousFlux": "gs1:MT-LuminousFlux",
+                "LuminousIntensity": "gs1:MT-LuminousIntensity",
+                "MagneticFlux": "gs1:MT-MagneticFlux",
+                "MagneticFluxDensity": "gs1:MT-MagneticFluxDensity",
+                "MagneticVectorPotential": "gs1:MT-MagneticVectorPotential",
+                "Mass": "gs1:MT-Mass",
+                "MassConcentration": "gs1:MT-MassConcentration",
+                "MassFlowRate": "gs1:MT-MassFlowRate",
+                "MassPerAreaTime": "gs1:MT-MassPerAreaTime",
+                "MemoryCapacity": "gs1:MT-MemoryCapacity",
+                "MolalityOfSolute": "gs1:MT-MolalityOfSolute",
+                "MolarEnergy": "gs1:MT-MolarEnergy",
+                "MolarMass": "gs1:MT-MolarMass",
+                "MolarVolume": "gs1:MT-MolarVolume",
+                "Power": "gs1:MT-Power",
+                "Pressure": "gs1:MT-Pressure",
+                "RadiantFlux": "gs1:MT-RadiantFlux",
+                "RadiantIntensity": "gs1:MT-RadiantIntensity",
+                "RelativeHumidity": "gs1:MT-RelativeHumidity",
+                "Resistance": "gs1:MT-Resistance",
+                "Resistivity": "gs1:MT-Resistivity",
+                "SolidAngle": "gs1:MT-SolidAngle",
+                "SpecificVolume": "gs1:MT-SpecificVolume",
+                "Speed": "gs1:MT-Speed",
+                "SurfaceDensity": "gs1:MT-SurfaceDensity",
+                "SurfaceTension": "gs1:MT-SurfaceTension",
+                "Temperature": "gs1:MT-Temperature",
+                "Time": "gs1:MT-Time",
+                "Torque": "gs1:MT-Torque",
+                "Voltage": "gs1:MT-Voltage",
+                "Volume": "gs1:MT-Volume",
+                "VolumeFlowRate": "gs1:MT-VolumeFlowRate",
+                "VolumeFraction": "gs1:MT-VolumeFraction",
+                "VolumetricFlux": "gs1:MT-VolumetricFlux",
+                "Wavenumber": "gs1:MT-Wavenumber"
+              },
+              "@id": "epcis:measurementType",
+              "@type": "@vocab"
             },
-            {
-              "@protected": true,
-              "epcis": "https://ns.gs1.org/epcis/",
-              "type": {
-                "@id": "epcis:type",
-                "@type": "@vocab"
+            "exception": {
+              "@context": {
+                "@protected": true,
+                "@version": 1.1,
+                "gs1": "https://gs1.org/voc/",
+                "ALARM_CONDITION": "gs1:ALARM_CONDITION",
+                "ERROR_CONDITION": "gs1:ERROR_CONDITION"
               },
-              "microorganism": {
-                "@id": "epcis:microorganism",
-                "@type": "@id"
-              },
-              "chemicalSubstance": {
-                "@id": "epcis:chemicalSubstance",
-                "@type": "@id"
-              },
-              "value": {
-                "@id": "epcis:value",
-                "@type": "xsd:double"
-              },
-              "component": "epcis:component",
-              "stringValue": "epcis:stringValue",
-              "booleanValue": {
-                "@id": "epcis:booleanValue",
-                "@type": "xsd:boolean"
-              },
-              "hexBinaryValue": "epcis:hexBinaryValue",
-              "uriValue": {
-                "@id": "epcis:uriValue",
-                "@type": "xsd:anyURI"
-              },
-              "minValue": {
-                "@id": "epcis:minValue",
-                "@type": "xsd:double"
-              },
-              "maxValue": {
-                "@id": "epcis:maxValue",
-                "@type": "xsd:double"
-              },
-              "meanValue": {
-                "@id": "epcis:meanValue",
-                "@type": "xsd:double"
-              },
-              "sDev": {
-                "@id": "epcis:sDev",
-                "@type": "xsd:double"
-              },
-              "percRank": {
-                "@id": "epcis:percRank",
-                "@type": "xsd:double"
-              },
-              "percValue": {
-                "@id": "epcis:percValue",
-                "@type": "xsd:double"
-              }
+              "@id": "epcis:exception",
+              "@type": "@vocab"
+            },
+            "microorganism": {
+              "@id": "epcis:microorganism",
+              "@type": "@id"
+            },
+            "chemicalSubstance": {
+              "@id": "epcis:chemicalSubstance",
+              "@type": "@id"
+            },
+            "value": {
+              "@id": "epcis:value",
+              "@type": "xsd:double"
+            },
+            "component": "epcis:component",
+            "stringValue": "epcis:stringValue",
+            "booleanValue": {
+              "@id": "epcis:booleanValue",
+              "@type": "xsd:boolean"
+            },
+            "hexBinaryValue": "epcis:hexBinaryValue",
+            "uriValue": {
+              "@id": "epcis:uriValue",
+              "@type": "@id"
+            },
+            "minValue": {
+              "@id": "epcis:minValue",
+              "@type": "xsd:double"
+            },
+            "maxValue": {
+              "@id": "epcis:maxValue",
+              "@type": "xsd:double"
+            },
+            "meanValue": {
+              "@id": "epcis:meanValue",
+              "@type": "xsd:double"
+            },
+            "sDev": {
+              "@id": "epcis:sDev",
+              "@type": "xsd:double"
+            },
+            "percRank": {
+              "@id": "epcis:percRank",
+              "@type": "xsd:double"
+            },
+            "percValue": {
+              "@id": "epcis:percValue",
+              "@type": "xsd:double"
             }
-          ]
+          }
         }
       }
     },
@@ -478,7 +487,10 @@
       ]
     },
     "eventID": "@id",
-    "creationDate": "dcterms:created",
+    "creationDate": {
+      "@id": "dcterms:created",
+      "@type": "xsd:dateTime"
+    },
     "schemaVersion": "owl:versionInfo",
     "ilmd": {
       "@id": "epcis:ilmd"
