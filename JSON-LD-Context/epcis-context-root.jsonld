@@ -221,6 +221,11 @@
                                 "@id": "epcis:measurementType",
                                 "@type": "@vocab"
                             },
+                            "exception": {
+                                "@context": "https://gs1.github.io/EPCIS/gs1-context-sensor-alert-type.jsonld",
+                                "@id": "epcis:exception",
+                                "@type": "@vocab"
+                            },
                             "microorganism": {
                                 "@id": "epcis:microorganism",
                                 "@type": "@id"
