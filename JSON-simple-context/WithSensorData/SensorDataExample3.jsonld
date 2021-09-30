@@ -1,0 +1,34 @@
+{
+  "@context": ["https://gs1.github.io/EPCIS/epcis-context-simple.jsonld",{"example": "http://ns.example.com/epcis/"}],
+  
+  "id": "_:document1",
+  "isA": "EPCISDocument",
+  "schemaVersion": "2.0",
+  "creationDate":"2005-07-11T11:30:47.0Z",
+  "epcisBody": {
+   "eventList": [
+     {
+		  "eventID": "ni:///sha-256;b507b2720c96cd99855eabb101e8617d48622eff4ceaad0a416b3c10dfd316ee?ver=CBV2.0",
+		  "isA": "ObjectEvent",
+		  "action": "OBSERVE",
+		  "bizStep": "inspecting",
+		  "epcList": [],
+		  "eventTime": "2019-04-02T15:00:00.000+01:00",
+		  "eventTimeZoneOffset": "+01:00",
+		  "readPoint": {"id": "urn:epc:id:sgln:4012345.00005.0"},
+		  "sensorElementList": [
+		   {
+		    "sensorMetadata" : {"startTime":"2019-04-01T15:00:00.000+01:00", "endTime":"2019-04-02T14:59:59.999+01:00"},
+		    "sensorReport" : [
+			 { "type": "Temperature" , "minValue" : 12.4, "maxValue":13.8, "uom": "CEL" },
+			 { "type": "Humidity" , "minValue" : 69.2 , "maxValue":72.5, "uom": "A93"}
+		     ]
+		    }	    
+		  ]
+		  
+     }
+   ]
+  }
+  
+}
+

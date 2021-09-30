@@ -15,7 +15,7 @@
 				"eventID": "ni:///sha-256;74f1dc48ee22289bc40ddd9f1d0ecae0dd09a2f4c3dfa66fdbca16cb2d8a4e77?ver=CBV2.0",
 				"isA": "ObjectEvent",
 				"action": "OBSERVE",
-				"bizStep": "urn:epcglobal:cbv:bizstep:inspecting",
+				"bizStep": "inspecting",
 				"epcList": [
 					"urn:epc:id:sgtin:4012345.011111.9876"
 				],

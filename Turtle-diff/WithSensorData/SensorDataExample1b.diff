@@ -1,0 +1,64 @@
+--- ../Turtle/WithSensorData/SensorDataExample1b.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample1b.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -21,0 +22,6 @@
++[ rdf:type         epcis:EPCISDocument ;
++  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
++  owl:versionInfo  "2.0" ;
++  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;e84840e98e15b9c86168ce85ca277af4241dddd3b658f9650a00096c2a09c2f3?ver=CBV2.0> ]
++] .
++
+@@ -26 +32 @@
+-        epcis:eventTime            "2019-04-02T15:00:00.000+01:00"^^xsd:dateTimeStamp ;
++        epcis:eventTime            "2019-04-02T15:00:00.000+01:00"^^xsd:dateTime ;
+@@ -32 +38 @@
+-                                                             epcis:time            "2019-04-02T14:35:00.000+01:00"^^xsd:dateTimeStamp
++                                                             epcis:time            "2019-04-02T14:35:00.000+01:00"^^xsd:dateTime
+@@ -34 +40 @@
+-                                     epcis:sensorReport    [ epcis:type   gs1:MT-Illuminance ;
++                                     epcis:sensorReport    [ epcis:measurementType  gs1:Illuminance ;
+@@ -38 +44 @@
+-                                     epcis:sensorReport    [ epcis:type   gs1:MT-Speed ;
++                                     epcis:sensorReport    [ epcis:measurementType  gs1:Speed ;
+@@ -42 +48 @@
+-                                     epcis:sensorReport    [ epcis:type   <file://C:/Humidity> ;
++                                     epcis:sensorReport    [ epcis:measurementType  gs1:Humidity ;
+@@ -46 +52 @@
+-                                     epcis:sensorReport    [ epcis:type   gs1:MT-Temperature ;
++                                     epcis:sensorReport    [ epcis:measurementType  gs1:Temperature ;
+@@ -54 +60 @@
+-                                                             epcis:time            "2019-04-02T14:05:00.000+01:00"^^xsd:dateTimeStamp
++                                                             epcis:time            "2019-04-02T14:05:00.000+01:00"^^xsd:dateTime
+@@ -56 +62 @@
+-                                     epcis:sensorReport    [ epcis:type   gs1:MT-Illuminance ;
++                                     epcis:sensorReport    [ epcis:measurementType  gs1:Illuminance ;
+@@ -60 +66 @@
+-                                     epcis:sensorReport    [ epcis:type   gs1:MT-Speed ;
++                                     epcis:sensorReport    [ epcis:measurementType  gs1:Speed ;
+@@ -64 +70 @@
+-                                     epcis:sensorReport    [ epcis:type   <file://C:/Humidity> ;
++                                     epcis:sensorReport    [ epcis:measurementType  gs1:Humidity ;
+@@ -68 +74 @@
+-                                     epcis:sensorReport    [ epcis:type   gs1:MT-Temperature ;
++                                     epcis:sensorReport    [ epcis:measurementType  gs1:Temperature ;
+@@ -76 +82 @@
+-                                                             epcis:time            "2019-04-02T14:55:00.000+01:00"^^xsd:dateTimeStamp
++                                                             epcis:time            "2019-04-02T14:55:00.000+01:00"^^xsd:dateTime
+@@ -78 +84 @@
+-                                     epcis:sensorReport    [ epcis:type   gs1:MT-Illuminance ;
++                                     epcis:sensorReport    [ epcis:measurementType  gs1:Illuminance ;
+@@ -82 +88 @@
+-                                     epcis:sensorReport    [ epcis:type   gs1:MT-Speed ;
++                                     epcis:sensorReport    [ epcis:measurementType  gs1:Speed ;
+@@ -86 +92 @@
+-                                     epcis:sensorReport    [ epcis:type   <file://C:/Humidity> ;
++                                     epcis:sensorReport    [ epcis:measurementType  gs1:Humidity ;
+@@ -90 +96 @@
+-                                     epcis:sensorReport    [ epcis:type   gs1:MT-Temperature ;
++                                     epcis:sensorReport    [ epcis:measurementType  gs1:Temperature ;
+@@ -95,6 +100,0 @@
+-
+-[ rdf:type         epcis:EPCISDocument ;
+-  dcterms:created  "2005-07-11T11:30:47.0Z" ;
+-  owl:versionInfo  "2.0" ;
+-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;e84840e98e15b9c86168ce85ca277af4241dddd3b658f9650a00096c2a09c2f3?ver=CBV2.0> ]
+-] .

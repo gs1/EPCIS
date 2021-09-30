@@ -1,0 +1,64 @@
+--- ../Turtle//PersistentDisposition-example.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context//PersistentDisposition-example.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -22,6 +21,0 @@
+-[ rdf:type         epcis:EPCISDocument ;
+-  dcterms:created  "2020-06-28T13:41:00.000Z" ;
+-  owl:versionInfo  "2.0" ;
+-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;dae7b481207bb87f1d981c5f169b8138368ae152a41b002eaf36eca1f67d56f5?ver=CBV2.0> , <ni:///sha-256;56ba4f355c57456b41c3fb60b22d8342e759de503e3e618940ca3b6ad1bf9b00?ver=CBV2.0> ]
+-] .
+-
+@@ -33 +27 @@
+-        epcis:bizTransactionList     [ epcis:bizTransaction      "urn:epcglobal:cbv:bt:9520011111116:A123"^^xsd:anyURI ;
++        epcis:bizTransactionList     [ epcis:bizTransaction      <urn:epcglobal:cbv:bt:9520011111116:A123> ;
+@@ -36 +30 @@
+-        epcis:bizTransactionList     [ epcis:bizTransaction      "urn:epcglobal:cbv:bt:9529999999991:XYZ567"^^xsd:anyURI ;
++        epcis:bizTransactionList     [ epcis:bizTransaction      <urn:epcglobal:cbv:bt:9529999999991:XYZ567> ;
+@@ -39 +33 @@
+-        epcis:bizTransactionList     [ epcis:bizTransaction      "urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6"^^xsd:anyURI ;
++        epcis:bizTransactionList     [ epcis:bizTransaction      <urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6> ;
+@@ -43 +37 @@
+-        epcis:destinationList        [ epcis:destination              <urn:epc:id:pgln:9520999.99999> ;
++        epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:pgln:9520999.99999> ;
+@@ -47 +41 @@
+-        epcis:eventTime              "2020-06-07T17:10:16Z"^^xsd:dateTimeStamp ;
++        epcis:eventTime              "2020-06-07T17:10:16Z"^^xsd:dateTime ;
+@@ -50 +44 @@
+-        epcis:persistentDisposition  [ epcis:set  <file://C:/completeness_inferred> ] ;
++        epcis:persistentDisposition  [ epcis:set  cbv:Disp-completeness_inferred ] ;
+@@ -52 +46 @@
+-        epcis:sourceList             [ epcis:source                   <urn:epc:id:pgln:9520001.11111> ;
++        epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:pgln:9520001.11111> ;
+@@ -61,2 +55,2 @@
+-        epcis:bizTransactionList     [ epcis:bizTransaction      "urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6"^^xsd:anyURI ;
+-                                       epcis:bizTransactionType  cbv:BTT-desadv
++        epcis:bizTransactionList     [ epcis:bizTransaction      <urn:epcglobal:cbv:bt:9529999999991:XYZ567> ;
++                                       epcis:bizTransactionType  cbv:BTT-po
+@@ -64 +58 @@
+-        epcis:bizTransactionList     [ epcis:bizTransaction      "urn:epcglobal:cbv:bt:9520011111116:A123"^^xsd:anyURI ;
++        epcis:bizTransactionList     [ epcis:bizTransaction      <urn:epcglobal:cbv:bt:9520011111116:A123> ;
+@@ -67,2 +61,2 @@
+-        epcis:bizTransactionList     [ epcis:bizTransaction      "urn:epcglobal:cbv:bt:9529999999991:XYZ567"^^xsd:anyURI ;
+-                                       epcis:bizTransactionType  cbv:BTT-po
++        epcis:bizTransactionList     [ epcis:bizTransaction      <urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6> ;
++                                       epcis:bizTransactionType  cbv:BTT-desadv
+@@ -71 +65 @@
+-        epcis:destinationList        [ epcis:destination              <urn:epc:id:pgln:9520999.99999> ;
++        epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:pgln:9520999.99999> ;
+@@ -75 +69 @@
+-        epcis:eventTime              "2020-06-08T18:11:16Z"^^xsd:dateTimeStamp ;
++        epcis:eventTime              "2020-06-08T18:11:16Z"^^xsd:dateTime ;
+@@ -78,2 +72,2 @@
+-        epcis:persistentDisposition  [ epcis:set    <file://C:/completeness_verified> ;
+-                                       epcis:unset  <file://C:/completeness_inferred>
++        epcis:persistentDisposition  [ epcis:set    cbv:Disp-completeness_verified ;
++                                       epcis:unset  cbv:Disp-completeness_inferred
+@@ -82 +76 @@
+-        epcis:sourceList             [ epcis:source                   <urn:epc:id:pgln:9520001.11111> ;
++        epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:pgln:9520001.11111> ;
+@@ -84,0 +79,6 @@
++
++[ rdf:type         epcis:EPCISDocument ;
++  dcterms:created  "2020-06-28T13:41:00.000Z"^^xsd:dateTime ;
++  owl:versionInfo  "2.0" ;
++  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;dae7b481207bb87f1d981c5f169b8138368ae152a41b002eaf36eca1f67d56f5?ver=CBV2.0> , <ni:///sha-256;56ba4f355c57456b41c3fb60b22d8342e759de503e3e618940ca3b6ad1bf9b00?ver=CBV2.0> ]
++] .

@@ -1,0 +1,38 @@
+{
+  "@context": ["https://gs1.github.io/EPCIS/epcis-context-simple.jsonld",{"example": "http://ns.example.com/epcis/"}],
+  
+  "id": "_:document1",
+  "isA": "EPCISDocument",
+  "schemaVersion": "2.0",
+  "creationDate":"2005-07-11T11:30:47.0Z",
+  "epcisBody": {
+  "eventList": [
+     {
+		  "eventID": "ni:///sha-256;db924230b77cc4d9a7cea4968fd302b06598a2b63e1b0ea011b31d1b5f45e6ac?ver=CBV2.0",
+		  "isA": "ObjectEvent",
+		  "action": "OBSERVE",
+		  "bizStep": "inspecting",
+		  "epcList": ["urn:epc:id:sgtin:4012345.011111.9876"],
+		  "eventTime": "2019-10-07T16:00:00.000+01:00",
+		  "eventTimeZoneOffset": "+01:00",
+		  "readPoint": {"id": "urn:epc:id:sgln:4012345.00005.0"},
+		  "sensorElementList": [
+		   {
+		    "sensorMetadata" : {"time":"2019-07-19T14:00:00.000+01:00"},
+		    "sensorReport" : [
+			 { "type": "Temperature" , "value":26.0, "uom":"CEL", "deviceID":"urn:epc:id:giai:4000001.111"},
+			 { "type": "example:Abc" , "stringValue":"111100001111000011110000", "deviceID":"urn:epc:id:giai:4000001.112"},
+			 { "type": "example:Def" , "booleanValue":true, "deviceID":"urn:epc:id:giai:4000001.113"},
+			 { "type": "example:Ghi" , "stringValue":"SomeString", "deviceID":"urn:epc:id:giai:4000001.114"},
+			 { "type": "example:Jkl" , "hexBinaryValue":"F0F0F0", "deviceID":"urn:epc:id:giai:4000001.115"},
+			 { "type": "example:Mno" , "uriValue":"https://example.org/example/someSectorSpecificValue", "deviceID":"urn:epc:id:giai:4000001.116"}
+		     ]
+		    }	    
+		  ]
+		  
+     }
+   ]
+  }
+  
+}
+

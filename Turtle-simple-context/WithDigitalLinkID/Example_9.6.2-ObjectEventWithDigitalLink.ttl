@@ -1,0 +1,53 @@
+@prefix cbv:      <https://ns.gs1.org/cbv/> .
+@prefix cbvmda:   <urn:epcglobal:cbv:mda:> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix epcis:    <https://ns.gs1.org/epcis/> .
+@prefix ex:       <http://epcis.example.com/ns/> .
+@prefix examp:    <http://ns.example.com/epcis/> .
+@prefix example:  <https://ns.example.com/epcis> .
+@prefix example1: <https://ns.example1.com/epcis> .
+@prefix example2: <https://ns.example2.com/epcis> .
+@prefix example3: <https://ns.example3.com/epcis> .
+@prefix example4: <https://ns.example4.com/epcis> .
+@prefix ext1:     <http://ext.com/ext1/> .
+@prefix ext2:     <http://ext.com/ext2/> .
+@prefix ext3:     <http://ext.com/ext3/> .
+@prefix gs1:      <https://gs1.org/voc/> .
+@prefix owl:      <http://www.w3.org/2002/07/owl#> .
+@prefix rail:     <urn:gs1:epcisapp:rail:> .
+@prefix rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+
+<ni:///sha-256;115b14983df54a9bcc3dd6a00dc4ebcab000bd52fda0abdd8996907e01dccc23?ver=CBV2.0>
+        rdf:type                   epcis:ObjectEvent ;
+        examp:myField              "Example of a vendor/user extension" ;
+        epcis:action               "OBSERVE" ;
+        epcis:bizLocation          <urn:epc:id:sgln:0614141.00888.0> ;
+        epcis:bizStep              cbv:BizStep-receiving ;
+        epcis:destinationList      [ epcis:sourceOrDestination      <urn:epc:id:sgln:0614141.00777.0> ;
+                                     epcis:sourceOrDestinationType  cbv:SDT-location
+                                   ] ;
+        epcis:destinationList      [ epcis:sourceOrDestination      <urn:epc:id:sgln:0614141.00001.0> ;
+                                     epcis:sourceOrDestinationType  cbv:SDT-owning_party
+                                   ] ;
+        epcis:disposition          cbv:Disp-in_progress ;
+        epcis:eventTime            "2013-06-08T14:58:56.591Z"^^xsd:dateTime ;
+        epcis:eventTimeZoneOffset  "+02:00" ;
+        epcis:quantityList         [ epcis:epcClass  <https://id.gs1.org/01/70614141123451/10/998877> ;
+                                     epcis:quantity  2.0E2 ;
+                                     epcis:uom       "KGM"
+                                   ] ;
+        epcis:readPoint            <urn:epc:id:sgln:0614141.00777.0> ;
+        epcis:sourceList           [ epcis:sourceOrDestination      <urn:epc:id:sgln:4012345.00225.0> ;
+                                     epcis:sourceOrDestinationType  cbv:SDT-location
+                                   ] ;
+        epcis:sourceList           [ epcis:sourceOrDestination      <urn:epc:id:sgln:4012345.00001.0> ;
+                                     epcis:sourceOrDestinationType  cbv:SDT-possessing_party
+                                   ] .
+
+[ rdf:type         epcis:EPCISDocument ;
+  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
+  owl:versionInfo  "2.0" ;
+  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;115b14983df54a9bcc3dd6a00dc4ebcab000bd52fda0abdd8996907e01dccc23?ver=CBV2.0> ]
+] .

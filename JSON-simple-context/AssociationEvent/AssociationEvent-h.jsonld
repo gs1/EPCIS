@@ -1,0 +1,26 @@
+{
+  "@context": ["https://gs1.github.io/EPCIS/epcis-context-simple.jsonld",{"example": "http://ns.example.com/epcis/"}],
+  
+  "id": "_:document1",
+  "isA": "EPCISDocument",
+  "schemaVersion": "2.0",
+  "creationDate":"2019-11-04T14:00:00.000+01:00",
+  "epcisBody": {
+   "eventList": [
+     {
+		  "eventID": "ni:///sha-256;fec9667280c4710a3fa9558b7bc8ddc2ced0dc442d87f82becae24bb6ca6a46f?ver=CBV2.0",
+		  "isA": "AssociationEvent",
+		  "eventTime": "2019-11-04T14:00:00.000+01:00",
+		  "eventTimeZoneOffset": "+01:00",
+		  "eventID": "urn:uuid:fd338495-0e6d-41dd-afee-a862ecd32518",
+		  "parentID":"urn:epc:id:grai:4012345.55555.987",
+		  "childEPCs": ["urn:epc:id:giai:4000001.12345","urn:epc:id:giai:4000001.12346"],
+		  "action": "DELETE",
+		  "bizStep": "disassembling",
+		  "readPoint": {"id": "urn:epc:id:sgln:4012345.00002.0"}
+     }
+
+   ]
+  }
+  
+}

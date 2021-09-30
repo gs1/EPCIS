@@ -1,0 +1,65 @@
+@prefix cbv:      <https://ns.gs1.org/cbv/> .
+@prefix cbvmda:   <urn:epcglobal:cbv:mda:> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix epcis:    <https://ns.gs1.org/epcis/> .
+@prefix ex:       <http://epcis.example.com/ns/> .
+@prefix examp:    <http://ns.example.com/epcis/> .
+@prefix example:  <https://ns.example.com/epcis> .
+@prefix example1: <https://ns.example1.com/epcis> .
+@prefix example2: <https://ns.example2.com/epcis> .
+@prefix example3: <https://ns.example3.com/epcis> .
+@prefix example4: <https://ns.example4.com/epcis> .
+@prefix ext1:     <http://ext.com/ext1/> .
+@prefix ext2:     <http://ext.com/ext2/> .
+@prefix ext3:     <http://ext.com/ext3/> .
+@prefix gs1:      <https://gs1.org/voc/> .
+@prefix owl:      <http://www.w3.org/2002/07/owl#> .
+@prefix rail:     <urn:gs1:epcisapp:rail:> .
+@prefix rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+
+<ni:///sha-256;0301ed4c40065cde36eb9cc80780312d903a031a91d105639df4e649a9d01200?ver=CBV2.0>
+        rdf:type                   epcis:ObjectEvent ;
+        epcis:action               "OBSERVE" ;
+        epcis:bizStep              cbv:BizStep-inspecting ;
+        epcis:epcList              <urn:epc:id:sgtin:4012345.011111.9876> ;
+        epcis:eventTime            "2019-04-02T15:00:00.000+01:00"^^xsd:dateTime ;
+        epcis:eventTimeZoneOffset  "+01:00" ;
+        epcis:readPoint            <urn:epc:id:sgln:4012345.00005.0> ;
+        epcis:sensorElementList    [ epcis:sensorMetadata  [ epcis:bizRules        <https://example.com/gdti/4012345000054987> ;
+                                                             epcis:deviceID        <urn:epc:id:giai:4000001.111> ;
+                                                             epcis:deviceMetadata  <https://id.gs1.org/8004/4000001111> ;
+                                                             epcis:endTime         "2019-04-02T14:55:00.000+01:00"^^xsd:dateTime ;
+                                                             epcis:rawData         <https://example.org/8004/401234599999> ;
+                                                             epcis:startTime       "2019-04-02T13:55:01.000+01:00"^^xsd:dateTime
+                                                           ] ;
+                                     epcis:sensorReport    [ epcis:maxValue         8.02E2 ;
+                                                             epcis:measurementType  gs1:Illuminance ;
+                                                             epcis:minValue         8.0E2 ;
+                                                             epcis:uom              "LUX"
+                                                           ] ;
+                                     epcis:sensorReport    [ epcis:maxValue         1.62E2 ;
+                                                             epcis:measurementType  gs1:Speed ;
+                                                             epcis:minValue         1.6E2 ;
+                                                             epcis:uom              "KMH"
+                                                           ] ;
+                                     epcis:sensorReport    [ epcis:maxValue         1.22E1 ;
+                                                             epcis:measurementType  gs1:Humidity ;
+                                                             epcis:minValue         1.21E1 ;
+                                                             epcis:uom              "A93"
+                                                           ] ;
+                                     epcis:sensorReport    [ epcis:maxValue         2.62E1 ;
+                                                             epcis:meanValue        2.61E1 ;
+                                                             epcis:measurementType  gs1:Temperature ;
+                                                             epcis:minValue         2.6E1 ;
+                                                             epcis:sDev             1.0E-1 ;
+                                                             epcis:uom              "CEL"
+                                                           ]
+                                   ] .
+
+[ rdf:type         epcis:EPCISDocument ;
+  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
+  owl:versionInfo  "2.0" ;
+  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;0301ed4c40065cde36eb9cc80780312d903a031a91d105639df4e649a9d01200?ver=CBV2.0> ]
+] .

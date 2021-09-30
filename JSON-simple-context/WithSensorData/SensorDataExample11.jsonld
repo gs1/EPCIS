@@ -1,0 +1,42 @@
+{
+  "@context": ["https://gs1.github.io/EPCIS/epcis-context-simple.jsonld",{"example": "http://ns.example.com/epcis/"}],
+
+  "isA": "EPCISDocument",
+  "creationDate": "2020-07-03T00:05:00-06:00",
+  "schemaVersion": "2.0",
+  "epcisBody": {
+    "eventList": [
+      {
+		"eventID": "ni:///sha-256;8702ac80df8ac48d19cc0c8d19399249fc7037f8b752acb97baf7148960d2a17?ver=CBV2.0",
+        "isA": "TransactionEvent",
+        "eventTime": "2020-07-03T00:05:00-06:00",
+        "eventTimeZoneOffset": "-06:00",
+        "epcList": [
+          "urn:epc:id:sgtin:0614141.107340.1",
+          "urn:epc:id:sgtin:0614141.107340.2"
+        ],
+        "action": "ADD",
+        "bizStep": "inspecting",
+        "disposition": "needs_replacement",
+        "readPoint": {"id": "urn:epc:id:sgln:4012345.00000.5"},
+        "bizTransactionList": [
+          {
+            "type": "po",
+            "bizTransaction": "urn:epcglobal:cbv:bt:4012345123456:RE100099"
+          }
+        ],
+        "sensorElementList": [
+          {
+            "sensorReport": [
+              {
+                "type": "DoseEquivalentRate",
+                "value": 0.005,
+                "uom": "P71"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

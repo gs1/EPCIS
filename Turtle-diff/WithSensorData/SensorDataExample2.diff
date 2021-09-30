@@ -1,0 +1,30 @@
+--- ../Turtle/WithSensorData/SensorDataExample2.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample2.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -27 +27 @@
+-        epcis:eventTime            "2019-04-02T15:00:00.000+01:00"^^xsd:dateTimeStamp ;
++        epcis:eventTime            "2019-04-02T15:00:00.000+01:00"^^xsd:dateTime ;
+@@ -33 +33 @@
+-                                                             epcis:endTime         "2019-04-02T14:55:00.000+01:00"^^xsd:dateTimeStamp ;
++                                                             epcis:endTime         "2019-04-02T14:55:00.000+01:00"^^xsd:dateTime ;
+@@ -35 +35 @@
+-                                                             epcis:startTime       "2019-04-02T13:55:01.000+01:00"^^xsd:dateTimeStamp
++                                                             epcis:startTime       "2019-04-02T13:55:01.000+01:00"^^xsd:dateTime
+@@ -37,0 +38 @@
++                                                             epcis:measurementType  gs1:Illuminance ;
+@@ -39 +39,0 @@
+-                                                             epcis:type      gs1:MT-Illuminance ;
+@@ -42,0 +43 @@
++                                                             epcis:measurementType  gs1:Speed ;
+@@ -44 +44,0 @@
+-                                                             epcis:type      gs1:MT-Speed ;
+@@ -47,0 +48 @@
++                                                             epcis:measurementType  gs1:Humidity ;
+@@ -49 +49,0 @@
+-                                                             epcis:type      <file://C:/Humidity> ;
+@@ -53,0 +54 @@
++                                                             epcis:measurementType  gs1:Temperature ;
+@@ -56 +56,0 @@
+-                                                             epcis:type       gs1:MT-Temperature ;
+@@ -62 +62 @@
+-  dcterms:created  "2005-07-11T11:30:47.0Z" ;
++  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;

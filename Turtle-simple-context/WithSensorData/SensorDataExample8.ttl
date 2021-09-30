@@ -1,0 +1,97 @@
+@prefix cbv:      <https://ns.gs1.org/cbv/> .
+@prefix cbvmda:   <urn:epcglobal:cbv:mda:> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix epcis:    <https://ns.gs1.org/epcis/> .
+@prefix ex:       <http://epcis.example.com/ns/> .
+@prefix examp:    <http://ns.example.com/epcis/> .
+@prefix example:  <https://ns.example.com/epcis> .
+@prefix example1: <https://ns.example1.com/epcis> .
+@prefix example2: <https://ns.example2.com/epcis> .
+@prefix example3: <https://ns.example3.com/epcis> .
+@prefix example4: <https://ns.example4.com/epcis> .
+@prefix ext1:     <http://ext.com/ext1/> .
+@prefix ext2:     <http://ext.com/ext2/> .
+@prefix ext3:     <http://ext.com/ext3/> .
+@prefix gs1:      <https://gs1.org/voc/> .
+@prefix owl:      <http://www.w3.org/2002/07/owl#> .
+@prefix rail:     <urn:gs1:epcisapp:rail:> .
+@prefix rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+
+[ rdf:type         epcis:EPCISDocument ;
+  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
+  owl:versionInfo  "2.0" ;
+  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;18454584ed96fbb533e4a69b01eefd1bff3edd1e80ef8598957111f4477a0a64?ver=CBV2.0> ]
+] .
+
+<ni:///sha-256;18454584ed96fbb533e4a69b01eefd1bff3edd1e80ef8598957111f4477a0a64?ver=CBV2.0>
+        rdf:type                   epcis:AggregationEvent ;
+        epcis:action               "ADD" ;
+        epcis:bizStep              cbv:BizStep-packing ;
+        epcis:childQuantityList    [ epcis:epcClass  <urn:epc:class:lgtin:4012345.011111.1234> ;
+                                     epcis:quantity  5.2E1 ;
+                                     epcis:uom       "KGM"
+                                   ] ;
+        epcis:disposition          cbv:Disp-in_progress ;
+        epcis:eventTime            "2019-10-07T15:30:00.000+01:00"^^xsd:dateTime ;
+        epcis:eventTimeZoneOffset  "+01:00" ;
+        epcis:parentID             <urn:epc:id:sscc:4012345.0111111111> ;
+        epcis:readPoint            <urn:epc:id:sgln:4012345.00025.0> ;
+        epcis:sensorElementList    [ epcis:sensorReport  [ epcis:measurementType  examp:someSensorProperty ;
+                                                           epcis:stringValue      "someSensorOutput"
+                                                         ] ;
+                                     epcis:sensorReport  [ epcis:bizRules              <https://example.org/gdti/4012345000054987> ;
+                                                           epcis:dataProcessingMethod  <https://example.com/gdti/4012345000054987> ;
+                                                           epcis:deviceID              <urn:epc:id:giai:4000001.111> ;
+                                                           epcis:deviceMetadata        <https://id.gs1.org/8004/4000001111> ;
+                                                           epcis:measurementType       gs1:Temperature ;
+                                                           epcis:rawData               <https://example.org/8004/401234599999> ;
+                                                           epcis:time                  "2019-07-19T14:00:00.000+01:00"^^xsd:dateTime ;
+                                                           epcis:uom                   "CEL"
+                                                         ]
+                                   ] ;
+        epcis:sensorElementList    [ epcis:sensorMetadata  [ epcis:bizRules              <https://example.org/gdti/4012345000054987> ;
+                                                             epcis:dataProcessingMethod  <https://example.com/gdti/4012345000054987> ;
+                                                             epcis:deviceID              <urn:epc:id:giai:4000001.111> ;
+                                                             epcis:deviceMetadata        <https://id.gs1.org/8004/4000001111> ;
+                                                             epcis:rawData               <https://example.org/8004/401234599999> ;
+                                                             epcis:time                  "2019-07-19T14:00:00.000+01:00"^^xsd:dateTime
+                                                           ] ;
+                                     epcis:sensorReport    [ epcis:measurementType  gs1:AmountOfSubstancePerUnitVolume ;
+                                                             epcis:microorganism    <https://www.ncbi.nlm.nih.gov/taxonomy/1126011> ;
+                                                             epcis:uom              "C35" ;
+                                                             epcis:value            5.0E-2
+                                                           ] ;
+                                     epcis:sensorReport    [ epcis:chemicalSubstance  <https://identifiers.org/inchikey:CZMRCDWAGMRECN-UGDNZRGBSA-N> ;
+                                                             epcis:measurementType    gs1:AmountOfSubstancePerUnitVolume ;
+                                                             epcis:uom                "C35" ;
+                                                             epcis:value              1.8E-1
+                                                           ] ;
+                                     epcis:sensorReport    [ epcis:measurementType  gs1:Humidity ;
+                                                             epcis:uom              "A93" ;
+                                                             epcis:value            1.21E1
+                                                           ]
+                                   ] ;
+        epcis:sensorElementList    [ examp:furtherSensorData  [ examp:measure1
+                                                       "123.5" ] ;
+                                     examp:furtherSensorData  [ examp:measure2
+                                                       "0.987" ] ;
+                                     epcis:sensorMetadata     [ examp:someFurtherMetaData  "someText" ;
+                                                                epcis:endTime              "2019-04-02T14:59:59.999+01:00"^^xsd:dateTime ;
+                                                                epcis:startTime            "2019-04-01T15:00:00.000+01:00"^^xsd:dateTime
+                                                              ] ;
+                                     epcis:sensorReport       [ epcis:measurementType  examp:someSensorProperty ;
+                                                                epcis:stringValue      "someSensorOutput"
+                                                              ] ;
+                                     epcis:sensorReport       [ examp:cv               "123" ;
+                                                                epcis:maxValue         1.38E1 ;
+                                                                epcis:meanValue        1.32E1 ;
+                                                                epcis:measurementType  gs1:Temperature ;
+                                                                epcis:minValue         1.24E1 ;
+                                                                epcis:percRank         5.0E1 ;
+                                                                epcis:percValue        1.27E1 ;
+                                                                epcis:sDev             4.1E-1 ;
+                                                                epcis:uom              "CEL"
+                                                              ]
+                                   ] .

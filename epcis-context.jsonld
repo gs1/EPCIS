@@ -1,328 +1,498 @@
 {
-    "@context": {
+  "@context": {
+    "@protected": true,
+    "@version": 1.1,
+    "epcis": "https://ns.gs1.org/epcis/",
+    "gs1": "https://gs1.org/voc/",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "id": "@id",
+    "isA": "@type",
+    "ObjectEvent": "epcis:ObjectEvent",
+    "AggregationEvent": "epcis:AggregationEvent",
+    "TransformationEvent": "epcis:TransformationEvent",
+    "AssociationEvent": "epcis:AssociationEvent",
+    "TransactionEvent": "epcis:TransactionEvent",
+    "eventTime": {
+      "@id": "epcis:eventTime",
+      "@type": "xsd:dateTimeStamp"
+    },
+    "recordTime": {
+      "@id": "epcis:recordTime",
+      "@type": "xsd:dateTimeStamp"
+    },
+    "eventTimeZoneOffset": "epcis:eventTimeZoneOffset",
+    "action": "epcis:action",
+    "bizStep": {
+      "@context": {
         "@protected": true,
         "@version": 1.1,
+        "cbv": "https://ns.gs1.org/cbv/",
+        "accepting": "cbv:BizStep-accepting",
+        "arriving": "cbv:BizStep-arriving",
+        "assembling": "cbv:BizStep-assembling",
+        "collecting": "cbv:BizStep-collecting",
+        "commissioning": "cbv:BizStep-commissioning",
+        "consigning": "cbv:BizStep-consigning",
+        "creating_class_instance": "cbv:BizStep-creating_class_instance",
+        "cycle_counting": "cbv:BizStep-cycle_counting",
+        "decommissioning": "cbv:BizStep-decommissioning",
+        "departing": "cbv:BizStep-departing",
+        "destroying": "cbv:BizStep-destroying",
+        "disassembling": "cbv:BizStep-disassembling",
+        "dispensing": "cbv:BizStep-dispensing",
+        "encoding": "cbv:BizStep-encoding",
+        "entering_exiting": "cbv:BizStep-entering_exiting",
+        "holding": "cbv:BizStep-holding",
+        "inspecting": "cbv:BizStep-inspecting",
+        "installing": "cbv:BizStep-installing",
+        "killing": "cbv:BizStep-killing",
+        "loading": "cbv:BizStep-loading",
+        "other": "cbv:BizStep-other",
+        "packing": "cbv:BizStep-packing",
+        "picking": "cbv:BizStep-picking",
+        "receiving": "cbv:BizStep-receiving",
+        "removing": "cbv:BizStep-removing",
+        "repackaging": "cbv:BizStep-repackaging",
+        "repairing": "cbv:BizStep-repairing",
+        "replacing": "cbv:BizStep-replacing",
+        "reserving": "cbv:BizStep-reserving",
+        "retail_selling": "cbv:BizStep-retail_selling",
+        "shipping": "cbv:BizStep-shipping",
+        "staging_outbound": "cbv:BizStep-staging_outbound",
+        "stock_taking": "cbv:BizStep-stock_taking",
+        "stocking": "cbv:BizStep-stocking",
+        "storing": "cbv:BizStep-storing",
+        "transporting": "cbv:BizStep-transporting",
+        "unloading": "cbv:BizStep-unloading",
+        "unpacking": "cbv:BizStep-unpacking",
+        "void_shipping": "cbv:BizStep-void_shipping"
+      },
+      "@id": "epcis:bizStep",
+      "@type": "@vocab"
+    },
+    "disposition": {
+      "@context": {
+        "@protected": true,
+        "@version": 1.1,
+        "cbv": "https://ns.gs1.org/cbv/",
+        "active": "cbv:Disp-active",
+        "container_closed": "cbv:Disp-container_closed",
+        "damaged": "cbv:Disp-damaged",
+        "destroyed": "cbv:Disp-destroyed",
+        "dispensed": "cbv:Disp-dispensed",
+        "disposed": "cbv:Disp-disposed",
+        "encoded": "cbv:Disp-encoded",
+        "expired": "cbv:Disp-expired",
+        "in_progress": "cbv:Disp-in_progress",
+        "in_transit": "cbv:Disp-in_transit",
+        "inactive": "cbv:Disp-inactive",
+        "no_pedigree_match": "cbv:Disp-no_pedigree_match",
+        "non_sellable_other": "cbv:Disp-non_sellable_other",
+        "partially_dispensed": "cbv:Disp-partially_dispensed",
+        "recalled": "cbv:Disp-recalled",
+        "reserved": "cbv:Disp-reserved",
+        "retail_sold": "cbv:Disp-retail_sold",
+        "returned": "cbv:Disp-returned",
+        "sellable_accessible": "cbv:Disp-sellable_accessible",
+        "sellable_not_accessible": "cbv:Disp-sellable_not_accessible",
+        "stolen": "cbv:Disp-stolen",
+        "unknown": "cbv:Disp-unknown"
+      },
+      "@id": "epcis:disposition",
+      "@type": "@vocab"
+    },
+    "bizLocation": {
+      "@id": "epcis:bizLocation",
+      "@type": "@id"
+    },
+    "readPoint": {
+      "@id": "epcis:readPoint",
+      "@type": "@id"
+    },
+    "epcList": {
+      "@id": "epcis:epcList",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "sourceList": {
+      "@id": "epcis:sourceList",
+      "@container": "@set",
+      "@context": [
+        {
+          "@protected": true,
+          "@version": 1.1,
+          "cbv": "https://ns.gs1.org/cbv/",
+          "owning_party": "cbv:SDT-owning_party",
+          "possessing_party": "cbv:SDT-possessing_party",
+          "location": "cbv:SDT-location"
+        },
+        {
+          "@protected": true,
+          "epcis": "https://ns.gs1.org/epcis/",
+          "source": {
+            "@id": "epcis:source",
+            "@type": "@id"
+          },
+          "type": {
+            "@id": "epcis:sourceOrDestinationType",
+            "@type": "@vocab"
+          }
+        }
+      ]
+    },
+    "destinationList": {
+      "@id": "epcis:destinationList",
+      "@container": "@set",
+      "@context": [
+        {
+          "@protected": true,
+          "@version": 1.1,
+          "cbv": "https://ns.gs1.org/cbv/",
+          "owning_party": "cbv:SDT-owning_party",
+          "possessing_party": "cbv:SDT-possessing_party",
+          "location": "cbv:SDT-location"
+        },
+        {
+          "@protected": true,
+          "epcis": "https://ns.gs1.org/epcis/",
+          "destination": {
+            "@id": "epcis:destination",
+            "@type": "@id"
+          },
+          "type": {
+            "@id": "epcis:sourceOrDestinationType",
+            "@type": "@vocab"
+          }
+        }
+      ]
+    },
+    "persistentDisposition": {
+      "@id": "epcis:persistentDisposition",
+      "@container": "@set",
+      "@context": {
+        "@protected": true,
         "epcis": "https://ns.gs1.org/epcis/",
-        "gs1": "https://gs1.org/voc/",
-        "owl": "http://www.w3.org/2002/07/owl#",
-        "xsd": "http://www.w3.org/2001/XMLSchema#",
-        "dcterms": "http://purl.org/dc/terms/",
-        "id": "@id",
-        "isA": "@type",
-        "ObjectEvent": "epcis:ObjectEvent",
-        "AggregationEvent": "epcis:AggregationEvent",
-        "TransformationEvent": "epcis:TransformationEvent",
-        "AssociationEvent": "epcis:AssociationEvent",
-        "TransactionEvent": "epcis:TransactionEvent",
-        "eventTime": {
-            "@id": "epcis:eventTime",
-            "@type": "xsd:dateTimeStamp"
+        "set": {
+          "@id": "epcis:set",
+          "@type": "@id",
+          "@container": "@set"
         },
-        "recordTime": {
-            "@id": "epcis:recordTime",
-            "@type": "xsd:dateTimeStamp"
+        "unset": {
+          "@id": "epcis:unset",
+          "@type": "@id",
+          "@container": "@set"
+        }
+      }
+    },
+    "quantity": {
+      "@id": "epcis:quantity",
+      "@type": "xsd:double"
+    },
+    "epcClass": {
+      "@id": "epcis:epcClass",
+      "@type": "@id"
+    },
+    "uom": "epcis:uom",
+    "quantityList": {
+      "@id": "epcis:quantityList",
+      "@container": "@set"
+    },
+    "bizTransactionList": {
+      "@id": "epcis:bizTransactionList",
+      "@container": "@set",
+      "@context": [
+        {
+          "@protected": true,
+          "@version": 1.1,
+          "cbv": "https://ns.gs1.org/cbv/",
+          "bol": "cbv:BTT-bol",
+          "cert": "cbv:BTT-cert",
+          "desadv": "cbv:BTT-desadv",
+          "inv": "cbv:BTT-inv",
+          "pedigree": "cbv:BTT-pedigree",
+          "po": "cbv:BTT-po",
+          "poc": "cbv:BTT-poc",
+          "prodorder": "cbv:BTT-prodorder",
+          "recadv": "cbv:BTT-recadv",
+          "rma": "cbv:BTT-rma",
+          "testprd": "cbv:BTT-testprd",
+          "testres": "cbv:BTT-testres"
         },
-        "eventTimeZoneOffset": "epcis:eventTimeZoneOffset",
-        "action": "epcis:action",
-        "bizStep": {
-            "@context": "https://gs1.github.io/EPCIS/cbv-context-bizstep.jsonld",
-            "@id": "epcis:bizStep",
-            "@type": "@vocab"
-        },
-        "disposition": {
-            "@context": "https://gs1.github.io/EPCIS/cbv-context-disposition.jsonld",
-            "@id": "epcis:disposition",
-            "@type": "@vocab"
-        },
-        "bizLocation": {
-            "@id": "epcis:bizLocation",
-            "@type": "@id"
-        },
-        "readPoint": {
-            "@id": "epcis:bizLocation",
-            "@type": "@id"
-        },
-        "epcList": {
-            "@id": "epcis:epcList",
-            "@type": "@id",
-            "@container": "@set"
-        },
-        "sourceList": {
-            "@id": "epcis:sourceList",
-            "@container": "@set",
-            "@context": [
-                "https://gs1.github.io/EPCIS/cbv-context-sourcedest-type.jsonld",
-                {
-                    "@protected": true,
-                    "epcis": "https://ns.gs1.org/epcis/",
-                    "source": {
-                        "@id": "epcis:source",
-                        "@type": "@id"
-                    },
-                    "type": {
-                        "@id": "epcis:sourceOrDestinationType",
-                        "@type": "@vocab"
-                    }
-                }
-            ]
-        },
-        "destinationList": {
-            "@id": "epcis:destinationList",
-            "@container": "@set",
-            "@context": [
-                "https://gs1.github.io/EPCIS/cbv-context-sourcedest-type.jsonld",
-                {
-                    "@protected": true,
-                    "epcis": "https://ns.gs1.org/epcis/",
-                    "destination": {
-                        "@id": "epcis:destination",
-                        "@type": "@id"
-                    },
-                    "type": {
-                        "@id": "epcis:sourceOrDestinationType",
-                        "@type": "@vocab"
-                    }
-                }
-            ]
-        },
-        "persistentDisposition": {
-            "@id": "epcis:PersistentDisposition",
-            "@container": "@set",
-            "@context": {
-                "@protected": true,
-                "epcis": "https://ns.gs1.org/epcis/",
-                "set": {
-                    "@id": "epcis:set",
-                    "@type": "@id",
-                    "@container": "@set"
-                },
-                "unset": {
-                    "@id": "epcis:unset",
-                    "@type": "@id",
-                    "@container": "@set"
-                }
-            }
-        },
-        "quantity": {
-            "@id": "epcis:quantity",
-            "@type": "xsd:double"
-        },
-        "epcClass": {
-            "@id": "epcis:epcClass",
-            "@type": "@id"
-        },
-        "uom": "epcis:uom",
-        "quantityList": {
-            "@id": "epcis:quantityList",
-            "@container": "@set"
-        },
-        "bizTransactionList": {
+        {
+          "@protected": true,
+          "epcis": "https://ns.gs1.org/epcis/",
+          "bizTransaction": {
             "@id": "epcis:bizTransaction",
-            "@container": "@set",
-            "@context": [
-                "https://gs1.github.io/EPCIS/cbv-context-biztransaction-type.jsonld",
-                {
-                    "@protected": true,
-                    "epcis": "https://ns.gs1.org/epcis/",
-                    "bizTransaction": {
-                        "@id": "epcis:bizTransaction",
-                        "@type": "xsd:anyURI"
-                    },
-                    "type": {
-                        "@id": "epcis:bizTransactionType",
-                        "@type": "@vocab"
-                    }
-                }
-            ]
+            "@type": "xsd:anyURI"
+          },
+          "type": {
+            "@id": "epcis:bizTransactionType",
+            "@type": "@vocab"
+          }
+        }
+      ]
+    },
+    "parentID": {
+      "@id": "epcis:parentID",
+      "@type": "@id"
+    },
+    "childEPCs": {
+      "@id": "epcis:childEPCs",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "childQuantityList": {
+      "@id": "epcis:childQuantityList",
+      "@container": "@set"
+    },
+    "inputEPCList": {
+      "@id": "epcis:inputEPCList",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "outputEPCList": {
+      "@id": "epcis:outputEPCList",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "inputQuantityList": {
+      "@id": "epcis:inputQuantityList",
+      "@container": "@set"
+    },
+    "outputQuantityList": {
+      "@id": "epcis:outputQuantityList",
+      "@container": "@set"
+    },
+    "sensorElementList": {
+      "@id": "epcis:sensorElementList",
+      "@container": "@set",
+      "@context": {
+        "@protected": true,
+        "epcis": "https://ns.gs1.org/epcis/",
+        "deviceID": {
+          "@id": "epcis:deviceID",
+          "@type": "@id"
         },
-        "parentID": {
-            "@id": "epcis:parentID",
-            "@type": "@id"
+        "deviceMetadata": {
+          "@id": "epcis:deviceMetadata",
+          "@type": "@id"
         },
-        "childEPCs": {
-            "@id": "epcis:childEPCs",
-            "@type": "@id",
-            "@container": "@set"
+        "rawData": {
+          "@id": "epcis:rawData",
+          "@type": "@id"
         },
-        "childQuantityList": {
-            "@id": "epcis:childQuantityList",
-            "@container": "@set"
+        "dataProcessingMethod": {
+          "@id": "epcis:dataProcessingMethod",
+          "@type": "@id"
         },
-        "inputEPCList": {
-            "@id": "epcis:inputEPCList",
-            "@container": "@set",
-            "@type": "@id"
-        },
-        "outputEPCList": {
-            "@id": "epcis:outputEPCList",
-            "@container": "@set",
-            "@type": "@id"
-        },
-        "inputQuantityList": {
-            "@id": "epcis:inputQuantityList",
-            "@container": "@set"
-        },
-        "outputQuantityList": {
-            "@id": "epcis:outputQuantityList",
-            "@container": "@set"
-        },
-        "sensorElementList": {
-            "@id": "epcis:sensorElementList",
-            "@container": "@set",
-            "@context": {
-                "@protected": true,
-                "epcis": "https://ns.gs1.org/epcis/",
-                "sensorMetadata": {
-                    "@id": "epcis:sensorMetadata"
-                },
-                "sensorReport": {
-                    "@id": "epcis:sensorReport",
-                    "@context": {
-                        "@protected": true,
-                        "type": {
-                            "@id": "epcis:measurementType",
-                            "@type": "@vocab"
-                        }
-                    }
-                },
-                "deviceID": {
-                    "@id": "epcis:deviceID",
-                    "@type": "@id"
-                },
-                "deviceMetadata": {
-                    "@id": "epcis:deviceMetadata",
-                    "@type": "@id"
-                },
-                "rawData": {
-                    "@id": "epcis:rawData",
-                    "@type": "@id"
-                },
-                "dataProcessingMethod": {
-                    "@id": "epcis:dataProcessingMethod",
-                    "@type": "@id"
-                },
-                "time": {
-                    "@id": "epcis:time",
-                    "@type": "xsd:dateTimeStamp"
-                }
-            }
+        "time": {
+          "@id": "epcis:time",
+          "@type": "xsd:dateTimeStamp"
         },
         "sensorMetadata": {
-            "@id": "epcis:SensorMetadata",
-            "@context": {
-                "@protected": true,
-                "epcis": "https://ns.gs1.org/epcis/",
-                "startTime": {
-                    "@id": "epcis:startTime",
-                    "@type": "xsd:dateTimeStamp"
-                },
-                "endTime": {
-                    "@id": "epcis:endTime",
-                    "@type": "xsd:dateTimeStamp"
-                },
-                "bizRules": {
-                    "@id": "epcis:bizRules",
-                    "@type": "@id"
-                }
+          "@id": "epcis:sensorMetadata",
+          "@context": {
+            "@protected": true,
+            "epcis": "https://ns.gs1.org/epcis/",
+            "startTime": {
+              "@id": "epcis:startTime",
+              "@type": "xsd:dateTimeStamp"
+            },
+            "endTime": {
+              "@id": "epcis:endTime",
+              "@type": "xsd:dateTimeStamp"
+            },
+            "bizRules": {
+              "@id": "epcis:bizRules",
+              "@type": "@id"
             }
+          }
         },
         "sensorReport": {
-            "@id": "epcis:SensorReport",
-            "@context": {
-                "@protected": true,
-                "epcis": "https://ns.gs1.org/epcis/",
-                "type": "@type",
-                "microorganism": {
-                    "@id": "epcis:microorganism",
-                    "@type": "@id"
-                },
-                "chemicalSubstance": {
-                    "@id": "epcis:microorganism",
-                    "@type": "@id"
-                },
-                "value": {
-                    "@id": "epcis:microorganism",
-                    "@type": "xsd:double"
-                },
-                "component": "epcis:component",
-                "stringValue": "epcis:stringValue",
-                "booleanValue": {
-                    "@id": "epcis:booleanValue",
-                    "@type": "xsd:boolean"
-                },
-                "hexBinaryValue": "epcis:hexBinaryValue",
-                "uriValue": {
-                    "@id": "epcis:uriValue",
-                    "@type": "xsd:anyURI"
-                },
-                "minValue": {
-                    "@id": "epcis:minValue",
-                    "@type": "xsd:double"
-                },
-                "maxValue": {
-                    "@id": "epcis:maxValue",
-                    "@type": "xsd:double"
-                },
-                "meanValue": {
-                    "@id": "epcis:meanValue",
-                    "@type": "xsd:double"
-                },
-                "sDev": {
-                    "@id": "epcis:sDev",
-                    "@type": "xsd:double"
-                },
-                "percRank": {
-                    "@id": "epcis:percRank",
-                    "@type": "xsd:double"
-                },
-                "percValue": {
-                    "@id": "epcis:percValue",
-                    "@type": "xsd:double"
-                }
+          "@id": "epcis:sensorReport",
+          "@context": [
+            {
+              "@protected": true,
+              "@version": 1.1,
+              "gs1": "https://gs1.org/voc/",
+              "AbsoluteHumidity": "gs1:MT-AbsoluteHumidity",
+              "AbsorbedDose": "gs1:MT-AbsorbedDose",
+              "AbsorbedDoseRate": "gs1:MT-AbsorbedDoseRate",
+              "Acceleration": "gs1:MT-Acceleration",
+              "Activity": "gs1:MT-Activity",
+              "Altitude": "gs1:MT-Altitude",
+              "AmountOfSubstance": "gs1:MT-AmountOfSubstance",
+              "AmountOfSubstancePerUnitVolume": "gs1:MT-AmountOfSubstancePerUnitVolume",
+              "Angle": "gs1:MT-Angle",
+              "AngularAcceleration": "gs1:MT-AngularAcceleration",
+              "AngularMomentum": "gs1:MT-AngularMomentum",
+              "AngularVelocity": "gs1:MT-AngularVelocity",
+              "Area": "gs1:MT-Area",
+              "Capacitance": "gs1:MT-Capacitance",
+              "Conductance": "gs1:MT-Conductance",
+              "Conductivity": "gs1:MT-Conductivity",
+              "Count": "gs1:MT-Count",
+              "Density": "gs1:MT-Density",
+              "DoseEquivalent": "gs1:MT-DoseEquivalent",
+              "DoseEquivalentRate": "gs1:MT-DoseEquivalentRate",
+              "DynamicViscosity": "gs1:MT-DynamicViscosity",
+              "ElectricCharge": "gs1:MT-ElectricCharge",
+              "ElectricCurrent": "gs1:MT-ElectricCurrent",
+              "ElectricCurrentDensity": "gs1:MT-ElectricCurrentDensity",
+              "ElectricFieldStrength": "gs1:MT-ElectricFieldStrength",
+              "Energy": "gs1:MT-Energy",
+              "Exposure": "gs1:MT-Exposure",
+              "Force": "gs1:MT-Force",
+              "Frequency": "gs1:MT-Frequency",
+              "Illuminance": "gs1:MT-Illuminance",
+              "Inductance": "gs1:MT-Inductance",
+              "Irradiance": "gs1:MT-Irradiance",
+              "KinematicViscosity": "gs1:MT-KinematicViscosity",
+              "Length": "gs1:MT-Length",
+              "LinearMomentum": "gs1:MT-LinearMomentum",
+              "Luminance": "gs1:MT-Luminance",
+              "LuminousFlux": "gs1:MT-LuminousFlux",
+              "LuminousIntensity": "gs1:MT-LuminousIntensity",
+              "MagneticFlux": "gs1:MT-MagneticFlux",
+              "MagneticFluxDensity": "gs1:MT-MagneticFluxDensity",
+              "MagneticVectorPotential": "gs1:MT-MagneticVectorPotential",
+              "Mass": "gs1:MT-Mass",
+              "MassConcentration": "gs1:MT-MassConcentration",
+              "MassFlowRate": "gs1:MT-MassFlowRate",
+              "MassPerAreaTime": "gs1:MT-MassPerAreaTime",
+              "MemoryCapacity": "gs1:MT-MemoryCapacity",
+              "MolalityOfSolute": "gs1:MT-MolalityOfSolute",
+              "MolarEnergy": "gs1:MT-MolarEnergy",
+              "MolarMass": "gs1:MT-MolarMass",
+              "MolarVolume": "gs1:MT-MolarVolume",
+              "Power": "gs1:MT-Power",
+              "Pressure": "gs1:MT-Pressure",
+              "RadiantFlux": "gs1:MT-RadiantFlux",
+              "RadiantIntensity": "gs1:MT-RadiantIntensity",
+              "RelativeHumidity": "gs1:MT-RelativeHumidity",
+              "Resistance": "gs1:MT-Resistance",
+              "Resistivity": "gs1:MT-Resistivity",
+              "SolidAngle": "gs1:MT-SolidAngle",
+              "SpecificVolume": "gs1:MT-SpecificVolume",
+              "Speed": "gs1:MT-Speed",
+              "SurfaceDensity": "gs1:MT-SurfaceDensity",
+              "SurfaceTension": "gs1:MT-SurfaceTension",
+              "Temperature": "gs1:MT-Temperature",
+              "Time": "gs1:MT-Time",
+              "Torque": "gs1:MT-Torque",
+              "Voltage": "gs1:MT-Voltage",
+              "Volume": "gs1:MT-Volume",
+              "VolumeFlowRate": "gs1:MT-VolumeFlowRate",
+              "VolumeFraction": "gs1:MT-VolumeFraction",
+              "VolumetricFlux": "gs1:MT-VolumetricFlux",
+              "Wavenumber": "gs1:MT-Wavenumber"
+            },
+            {
+              "@protected": true,
+              "epcis": "https://ns.gs1.org/epcis/",
+              "type": {
+                "@id": "epcis:type",
+                "@type": "@vocab"
+              },
+              "microorganism": {
+                "@id": "epcis:microorganism",
+                "@type": "@id"
+              },
+              "chemicalSubstance": {
+                "@id": "epcis:chemicalSubstance",
+                "@type": "@id"
+              },
+              "value": {
+                "@id": "epcis:value",
+                "@type": "xsd:double"
+              },
+              "component": "epcis:component",
+              "stringValue": "epcis:stringValue",
+              "booleanValue": {
+                "@id": "epcis:booleanValue",
+                "@type": "xsd:boolean"
+              },
+              "hexBinaryValue": "epcis:hexBinaryValue",
+              "uriValue": {
+                "@id": "epcis:uriValue",
+                "@type": "xsd:anyURI"
+              },
+              "minValue": {
+                "@id": "epcis:minValue",
+                "@type": "xsd:double"
+              },
+              "maxValue": {
+                "@id": "epcis:maxValue",
+                "@type": "xsd:double"
+              },
+              "meanValue": {
+                "@id": "epcis:meanValue",
+                "@type": "xsd:double"
+              },
+              "sDev": {
+                "@id": "epcis:sDev",
+                "@type": "xsd:double"
+              },
+              "percRank": {
+                "@id": "epcis:percRank",
+                "@type": "xsd:double"
+              },
+              "percValue": {
+                "@id": "epcis:percValue",
+                "@type": "xsd:double"
+              }
             }
-        },
-        "errorDeclaration": {
-            "@id": "epcis:errorDeclaration",
-            "@context": [
-                "https://gs1.github.io/EPCIS/cbv-context-error-reason.jsonld",
-                {
-                    "@protected": true,
-                    "epcis": "https://ns.gs1.org/epcis/",
-                    "reason": {
-                        "@id": "epcis:reason",
-                        "@type": "@vocab"
-                    },
-                    "correctiveEventIDs": {
-                        "@id": "epcis:correctiveEventIDs",
-                        "@container": "@set"
-                    },
-                    "declarationTime": {
-                        "@id": "epcis:declarationTime",
-                        "@type": "xsd:dateTimeStamp"
-                    }
-                }
-            ]
-        },
-        "eventID": {
-            "@id": "epcis:eventID"
-        },
-        "creationDate": "dcterms:created",
-        "schemaVersion": "owl:versionInfo",
-        "ilmd": {
-            "@id": "epcis:ilmd",
-            "@container": "@graph"
-        },
-        "EPCISDocument": "epcis:EPCISDocument",
-        "epcisHeader": "epcis:epcisHeader",
-        "epcisBody": "epcis:epcisBody",
-        "eventList": {
-            "@id": "epcis:eventList",
-            "@container": "@graph"
-        },
-        "children": {
-            "@id": "epcis:children",
-            "@container": "@set",
-            "@type": "@id"
+          ]
         }
+      }
+    },
+    "errorDeclaration": {
+      "@id": "epcis:errorDeclaration",
+      "@context": [
+        {
+          "@protected": true,
+          "@version": 1.1,
+          "cbv": "https://ns.gs1.org/cbv/",
+          "did_not_occur": "cbv:ER-did_not_occur",
+          "incorrect_data": "cbv:ER-incorrect_data"
+        },
+        {
+          "@protected": true,
+          "epcis": "https://ns.gs1.org/epcis/",
+          "reason": {
+            "@id": "epcis:reason",
+            "@type": "@vocab"
+          },
+          "correctiveEventIDs": {
+            "@id": "epcis:correctiveEventIDs",
+            "@type": "@id",
+            "@container": "@set"
+          },
+          "declarationTime": {
+            "@id": "epcis:declarationTime",
+            "@type": "xsd:dateTimeStamp"
+          }
+        }
+      ]
+    },
+    "eventID": "@id",
+    "creationDate": "dcterms:created",
+    "schemaVersion": "owl:versionInfo",
+    "ilmd": {
+      "@id": "epcis:ilmd"
+    },
+    "EPCISDocument": "epcis:EPCISDocument",
+    "epcisHeader": "epcis:epcisHeader",
+    "epcisBody": "epcis:epcisBody",
+    "eventList": {
+      "@id": "epcis:eventList"
+    },
+    "children": {
+      "@id": "epcis:children",
+      "@container": "@set",
+      "@type": "@id"
     }
+  }
 }

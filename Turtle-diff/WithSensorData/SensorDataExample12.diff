@@ -1,0 +1,34 @@
+--- ../Turtle/WithSensorData/SensorDataExample12.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample12.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -35 +35 @@
+-                                                                     epcis:declarationTime  "2020-09-29T13:00:00.000Z"^^xsd:dateTimeStamp
++                                                                     epcis:declarationTime  "2020-09-29T13:00:00.000Z"^^xsd:dateTime
+@@ -37 +37 @@
+-                                        epcis:eventTime            "2020-09-29T12:00:00.000Z"^^xsd:dateTimeStamp ;
++                                        epcis:eventTime            "2020-09-29T12:00:00.000Z"^^xsd:dateTime ;
+@@ -39,2 +39 @@
+-                                        epcis:ilmd                 [ <cbvmda:lotNumber>       "LOTABC" ;
+-                                                                     example:grading          "A" ;
++                                        epcis:ilmd                 [ example:grading          "A" ;
+@@ -42 +41,2 @@
+-                                                                                       "B-2" ]
++                                                                                       "B-2" ] ;
++                                                                     cbvmda:lotNumber         "LOTABC"
+@@ -48 +48 @@
+-                                        epcis:outputEPCList        <urn:epc:id:sgtin:4012345.012345.987> , <urn:epc:id:sgtin:4012345.012345.988> ;
++                                        epcis:outputEPCList        <urn:epc:id:sgtin:4012345.012345.988> , <urn:epc:id:sgtin:4012345.012345.987> ;
+@@ -55,2 +55,3 @@
+-                                                                     epcis:sensorMetadata       [ epcis:endTime    "2019-04-02T13:59:59.999Z"^^xsd:dateTimeStamp ;
+-                                                                                                  epcis:startTime  "2019-04-01T14:00:00.000Z"^^xsd:dateTimeStamp
++                                                                     epcis:sensorMetadata       [ epcis:endTime              "2019-04-02T13:59:59.999Z"^^xsd:dateTime ;
++                                                                                                  epcis:someFurtherMetaData  "someText" ;
++                                                                                                  epcis:startTime            "2019-04-01T14:00:00.000Z"^^xsd:dateTime
+@@ -58,2 +59,2 @@
+-                                                                     epcis:sensorReport         [ epcis:stringValue  "someSensorOutput" ;
+-                                                                                                  epcis:type         example:someSensorProperty
++                                                                     epcis:sensorReport         [ epcis:measurementType  example:someSensorProperty ;
++                                                                                                  epcis:stringValue      "someSensorOutput"
+@@ -63,0 +65 @@
++                                                                                                  epcis:measurementType  gs1:Temperature ;
+@@ -68 +69,0 @@
+-                                                                                                  epcis:type       gs1:MT-Temperature ;

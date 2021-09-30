@@ -3,6 +3,9 @@ TTL    = $(JSONLD:../JSON/%.jsonld=%.ttl)
 
 all: $(TTL)
 
+clean: 
+	rm $(TTL)
+
 # https://stackoverflow.com/questions/66764608/why-make-implicit-rule-doesnt-work-across-folders
 define jsonld2ttl
 $(1).ttl: ../JSON/$(1).jsonld

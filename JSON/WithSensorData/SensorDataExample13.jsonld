@@ -23,15 +23,15 @@
 					"https://id.gs1.org/01/09506000134352"
 				],
 				"action": "OBSERVE",
-				"bizStep": "https://ns.gs1.org/cbv/Bizstep-sensor_reporting",
+				"bizStep": "sensor_reporting",
 				"readPoint": {
 					"id": "https://id.gs1.org/414/9506000134307"
 				},
 				"sensorElementList": [
 					{
 						"sensorReport": [
-							{"type": "gs1:MT-Temperature", "value": 20.9, "ex:feature": "ex:ambiance", "uom": "CEL"},
-							{"type": "gs1:MT-Temperature", "value": 20.7, "ex:feature": "ex:outerPackage", "uom": "CEL"}
+							{"type": "Temperature", "value": 20.9, "ex:feature": "ex:ambiance", "uom": "CEL"},
+							{"type": "Temperature", "value": 20.7, "ex:feature": "ex:outerPackage", "uom": "CEL"}
 						]
 					}
 				]

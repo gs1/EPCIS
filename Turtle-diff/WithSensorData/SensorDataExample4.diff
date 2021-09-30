@@ -1,0 +1,38 @@
+--- ../Turtle/WithSensorData/SensorDataExample4.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample4.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -21,0 +22,6 @@
++[ rdf:type         epcis:EPCISDocument ;
++  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
++  owl:versionInfo  "2.0" ;
++  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;7ff1501099b3f5890d310d703fb9f57e251bba0c57d3c049fab590b50323a8e7?ver=CBV2.0> ]
++] .
++
+@@ -26 +32 @@
+-        epcis:eventTime            "2019-04-02T15:00:00.000+01:00"^^xsd:dateTimeStamp ;
++        epcis:eventTime            "2019-04-02T15:00:00.000+01:00"^^xsd:dateTime ;
+@@ -33 +39 @@
+-        epcis:sensorElementList    [ epcis:sensorMetadata  [ epcis:time  "2019-04-02T14:55:00.000+01:00"^^xsd:dateTimeStamp ] ;
++        epcis:sensorElementList    [ epcis:sensorMetadata  [ epcis:time  "2019-04-02T14:55:00.000+01:00"^^xsd:dateTime ] ;
+@@ -35,0 +42 @@
++                                                             epcis:measurementType  gs1:Illuminance ;
+@@ -37 +43,0 @@
+-                                                             epcis:type            gs1:MT-Illuminance ;
+@@ -42,0 +49 @@
++                                                             epcis:measurementType  gs1:Speed ;
+@@ -44 +50,0 @@
+-                                                             epcis:type            gs1:MT-Speed ;
+@@ -49,0 +56 @@
++                                                             epcis:measurementType  gs1:Humidity ;
+@@ -51 +57,0 @@
+-                                                             epcis:type            <file://C:/Humidity> ;
+@@ -56,0 +63 @@
++                                                             epcis:measurementType  gs1:Temperature ;
+@@ -58 +64,0 @@
+-                                                             epcis:type            gs1:MT-Temperature ;
+@@ -63,6 +68,0 @@
+-
+-[ rdf:type         epcis:EPCISDocument ;
+-  dcterms:created  "2005-07-11T11:30:47.0Z" ;
+-  owl:versionInfo  "2.0" ;
+-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;7ff1501099b3f5890d310d703fb9f57e251bba0c57d3c049fab590b50323a8e7?ver=CBV2.0> ]
+-] .

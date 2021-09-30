@@ -1,5 +1,8 @@
 {
-  "@context": ["https://gs1.github.io/EPCIS/epcis-context.jsonld",{"example": "http://ns.example.com/epcis/"}],
+  "@context": ["https://gs1.github.io/EPCIS/epcis-context.jsonld",
+    {"example": "http://ns.example.com/epcis/"}, 
+    {"rdfs": "http://www.w3.org/2000/01/rdf-schema#"}
+  ],
   
   "id": "_:document1",
   "isA": "EPCISDocument",
@@ -12,29 +15,29 @@
 		  "isA": "ObjectEvent",
 		  "action": "OBSERVE",
 		  "rdfs:comment": "An ObjectEvent may be used for reporting an observation",
-		  "bizStep": "urn:epcglobal:cbv:bizstep:shipping",
-		  "disposition": "urn:epcglobal:cbv:disp:in_transit",
+		  "bizStep": "shipping",
+		  "disposition": "in_transit",
 		  "epcList": ["urn:epc:id:sgtin:0614141.107346.2017","urn:epc:id:sgtin:0614141.107346.2018"],
 		  "eventTime": "2005-04-03T20:33:31.116000-06:00",
 		  "eventTimeZoneOffset": "-06:00",
 		  "readPoint": {"id": "urn:epc:id:sgln:0614141.07346.1234"},
-		  "bizTransactionList": [  {"type":"urn:epcglobal:cbv:btt:po", "bizTransaction": "http://transaction.acme.com/po/12345678" }  ]
+		  "bizTransactionList": [  {"type":"po", "bizTransaction": "http://transaction.acme.com/po/12345678" }  ]
      },
 
      {
 		  "eventID": "ni:///sha-256;59b0e6c6777da8128617f541585e25ef7a89f98909a4543fa5c742b363c79d3d?ver=CBV2.0",
 		  "isA": "ObjectEvent",
 		  "action": "OBSERVE",
-		  "bizStep": "urn:epcglobal:cbv:bizstep:receiving",
-		  "disposition": "urn:epcglobal:cbv:disp:in_progress",
+		  "bizStep": "receiving",
+		  "disposition": "in_progress",
 		  "epcList": ["urn:epc:id:sgtin:0614141.107346.2018"],
 		  "eventTime": "2005-04-04T20:33:31.116-06:00",
 		  "eventTimeZoneOffset": "-06:00",
 		  "readPoint": {"id": "urn:epc:id:sgln:0012345.11111.400"},
 		  "bizLocation": {"id": "urn:epc:id:sgln:0012345.11111.0"},
 		  "bizTransactionList": [ 
-                   {"type":"urn:epcglobal:cbv:btt:po", "bizTransaction": "http://transaction.acme.com/po/12345678" },
-                   {"type":"urn:epcglobal:cbv:btt:desadv", "bizTransaction": "urn:epcglobal:cbv:bt:0614141073467:1152" }
+                   {"type":"po", "bizTransaction": "http://transaction.acme.com/po/12345678" },
+                   {"type":"desadv", "bizTransaction": "urn:epcglobal:cbv:bt:0614141073467:1152" }
                   ],
 		  "example:myField": "Example of a vendor/user extension"
 

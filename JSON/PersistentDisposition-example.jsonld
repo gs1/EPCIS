@@ -26,23 +26,23 @@
 			"urn:epc:id:sgtin:9520001.012346.10000001010"
 		  	],
 		  "action": "OBSERVE",
-		  "bizStep": "urn:epcglobal:cbv:bizstep:receiving",
-		  "disposition": "urn:epcglobal:cbv:disp:in_progress",
+		  "bizStep": "receiving",
+		  "disposition": "in_progress",
 		  "readPoint": {"id": "urn:epc:id:sgln:9529999.99999.0"},
 		  "bizLocation": {"id": "urn:epc:id:sgln:9529999.99999.0"},
 		  "bizTransactionList": [  
-		  	{"type":"urn:epcglobal:cbv:btt:inv", "bizTransaction": "urn:epcglobal:cbv:bt:9520011111116:A123"},  
-		  	{"type":"urn:epcglobal:cbv:btt:po", "bizTransaction": "urn:epcglobal:cbv:bt:9529999999991:XYZ567"},
-		  	{"type":"urn:epcglobal:cbv:btt:desadv", "bizTransaction": "urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6"}
+		  	{"type":"inv", "bizTransaction": "urn:epcglobal:cbv:bt:9520011111116:A123"},  
+		  	{"type":"po", "bizTransaction": "urn:epcglobal:cbv:bt:9529999999991:XYZ567"},
+		  	{"type":"desadv", "bizTransaction": "urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6"}
 		  ],
 		  "sourceList": [
-		  	{"type":"urn:epcglobal:cbv:sdt:owning_party","source":"urn:epc:id:pgln:9520001.11111"}
+		  	{"type":"owning_party","source":"urn:epc:id:pgln:9520001.11111"}
 		  ],
 		  "destinationList": [
-		  	{"type":"urn:epcglobal:cbv:sdt:owning_party","destination":"urn:epc:id:pgln:9520999.99999"}
+		  	{"type":"owning_party","destination":"urn:epc:id:pgln:9520999.99999"}
 		  ],
 		  "persistentDisposition": {
-		  	"set": ["urn:epcglobal:cbv:disp:completeness_inferred"]
+		  	"set": ["completeness_inferred"]
 		  }		  
      },
      
@@ -65,24 +65,24 @@
 			"urn:epc:id:sgtin:9520001.012346.10000001010"
 		  	],
 		  "action": "DELETE",
-		  "bizStep": "urn:epcglobal:cbv:bizstep:unpacking",
-		  "disposition": "urn:epcglobal:cbv:disp:in_progress",
+		  "bizStep": "unpacking",
+		  "disposition": "in_progress",
 		  "readPoint": {"id": "urn:epc:id:sgln:9529999.99999.0"},
 		  "bizLocation": {"id": "urn:epc:id:sgln:9529999.99999.0"},
 		  "bizTransactionList": [  
-		  	{"type":"urn:epcglobal:cbv:btt:inv", "bizTransaction": "urn:epcglobal:cbv:bt:9520011111116:A123"},  
-		  	{"type":"urn:epcglobal:cbv:btt:po", "bizTransaction": "urn:epcglobal:cbv:bt:9529999999991:XYZ567"},
-		  	{"type":"urn:epcglobal:cbv:btt:desadv", "bizTransaction": "urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6"}
+		  	{"type":"inv", "bizTransaction": "urn:epcglobal:cbv:bt:9520011111116:A123"},  
+		  	{"type":"po", "bizTransaction": "urn:epcglobal:cbv:bt:9529999999991:XYZ567"},
+		  	{"type":"desadv", "bizTransaction": "urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6"}
 		  ],
 		  "sourceList": [
-		  	{"type":"urn:epcglobal:cbv:sdt:owning_party","source":"urn:epc:id:pgln:9520001.11111"}
+		  	{"type":"owning_party","source":"urn:epc:id:pgln:9520001.11111"}
 		  ],
 		  "destinationList": [
-		  	{"type":"urn:epcglobal:cbv:sdt:owning_party","destination":"urn:epc:id:pgln:9520999.99999"}
+		  	{"type":"owning_party","destination":"urn:epc:id:pgln:9520999.99999"}
 		  ],
 		  "persistentDisposition": {
-		  	"unset": ["urn:epcglobal:cbv:disp:completeness_inferred"],
-		  	"set": ["urn:epcglobal:cbv:disp:completeness_verified"]
+		  	"unset": ["completeness_inferred"],
+		  	"set": ["completeness_verified"]
 		  }		  
      }
      

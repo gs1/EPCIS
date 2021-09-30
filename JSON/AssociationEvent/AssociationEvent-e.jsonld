@@ -18,7 +18,7 @@
 		  	{"epcClass":"urn:epc:class:lgtin:4012345.005555.456","quantity":600}
 		  ],
 		  "action": "ADD",
-		  "bizStep": "urn:epcglobal:cbv:bizstep:assembling",
+		  "bizStep": "assembling",
 		  "readPoint": {"id": "urn:epc:id:sgln:4012345.00001.0"}
      }
 

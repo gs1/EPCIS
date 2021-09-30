@@ -1,74 +1,84 @@
-@prefix epcis: <https://ns.gs1.org/epcis/> .
-@prefix gs1:   <https://gs1.org/voc/> .
-@prefix owl:   <http://www.w3.org/2002/07/owl#> .
-@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix vtype: <urn:epcglobal:epcis:vtype:> .
-@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix example: <http://ns.example.com/epcis/> .
-@prefix cbvmda: <urn:epcglobal:cbv:mda:> .
+@prefix cbv:      <https://ns.gs1.org/cbv/> .
+@prefix cbvmda:   <urn:epcglobal:cbv:mda:> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix epcis:    <https://ns.gs1.org/epcis/> .
+@prefix ex:       <http://epcis.example.com/ns/> .
+@prefix examp:    <http://ns.example.com/epcis/> .
+@prefix example:  <https://ns.example.com/epcis> .
+@prefix example1: <https://ns.example1.com/epcis> .
+@prefix example2: <https://ns.example2.com/epcis> .
+@prefix example3: <https://ns.example3.com/epcis> .
+@prefix example4: <https://ns.example4.com/epcis> .
+@prefix ext1:     <http://ext.com/ext1/> .
+@prefix ext2:     <http://ext.com/ext2/> .
+@prefix ext3:     <http://ext.com/ext3/> .
+@prefix gs1:      <https://gs1.org/voc/> .
+@prefix owl:      <http://www.w3.org/2002/07/owl#> .
+@prefix rail:     <urn:gs1:epcisapp:rail:> .
+@prefix rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
 
-<ni:///sha-256;56ba4f355c57456b41c3fb60b22d8342e759de503e3e618940ca3b6ad1bf9b00?ver=CBV2.0>
-        a                            epcis:AggregationEvent ;
-        epcis:action                 "OBSERVE" ;
-        epcis:bizLocation            <urn:epc:id:sgln:9529999.99999.0> ;
-        epcis:bizStep                <urn:epcglobal:cbv:bizstep:receiving> ;
-        epcis:bizTransactionList     [ epcis:bizTransaction  <urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6> ;
-                                       epcis:type            <urn:epcglobal:cbv:btt:desadv>
-                                     ] ;
-        epcis:bizTransactionList     [ epcis:bizTransaction  <urn:epcglobal:cbv:bt:9529999999991:XYZ567> ;
-                                       epcis:type            <urn:epcglobal:cbv:btt:po>
-                                     ] ;
-        epcis:bizTransactionList     [ epcis:bizTransaction  <urn:epcglobal:cbv:bt:9520011111116:A123> ;
-                                       epcis:type            <urn:epcglobal:cbv:btt:inv>
-                                     ] ;
-        epcis:childEPCs              <urn:epc:id:sgtin:9520001.012346.10000001010> , <urn:epc:id:sgtin:9520001.012346.10000001009> , <urn:epc:id:sgtin:9520001.012346.10000001008> , <urn:epc:id:sgtin:9520001.012346.10000001003> , <urn:epc:id:sgtin:9520001.012346.10000001002> , <urn:epc:id:sgtin:9520001.012346.10000001007> , <urn:epc:id:sgtin:9520001.012346.10000001006> , <urn:epc:id:sgtin:9520001.012346.10000001001> , <urn:epc:id:sgtin:9520001.012346.10000001005> , <urn:epc:id:sgtin:9520001.012346.10000001004> ;
-        epcis:destinationList        [ epcis:destination  <urn:epc:id:pgln:9520999.99999> ;
-                                       epcis:type         <urn:epcglobal:cbv:sdt:owning_party>
-                                     ] ;
-        epcis:disposition            <urn:epcglobal:cbv:disp:in_progress> ;
-        epcis:eventTime              "2020-06-07T17:10:16Z"^^xsd:dateTime ;
-        epcis:eventTimeZoneOffset    "+02:00" ;
-        epcis:parentID               <urn:epc:id:sgtin:952001.1012345.22222223333> ;
-        epcis:persistentDisposition  [ epcis:set  <urn:epcglobal:cbv:disp:completeness_inferred> ] ;
-        epcis:readPoint              <urn:epc:id:sgln:9529999.99999.0> ;
-        epcis:sourceList             [ epcis:source  <urn:epc:id:pgln:9520001.11111> ;
-                                       epcis:type    <urn:epcglobal:cbv:sdt:owning_party>
-                                     ] .
-
-[ a                epcis:EPCISDocument ;
-  dcterms:created  "2020-06-28T13:41:00.000Z"^^xsd:dateTime ;
+[ rdf:type         epcis:EPCISDocument ;
+  dcterms:created  "2020-06-28T13:41:00.000Z" ;
   owl:versionInfo  "2.0" ;
   epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;dae7b481207bb87f1d981c5f169b8138368ae152a41b002eaf36eca1f67d56f5?ver=CBV2.0> , <ni:///sha-256;56ba4f355c57456b41c3fb60b22d8342e759de503e3e618940ca3b6ad1bf9b00?ver=CBV2.0> ]
 ] .
 
-<ni:///sha-256;dae7b481207bb87f1d981c5f169b8138368ae152a41b002eaf36eca1f67d56f5?ver=CBV2.0>
-        a                            epcis:AggregationEvent ;
-        epcis:action                 "DELETE" ;
+<ni:///sha-256;56ba4f355c57456b41c3fb60b22d8342e759de503e3e618940ca3b6ad1bf9b00?ver=CBV2.0>
+        rdf:type                     epcis:AggregationEvent ;
+        epcis:action                 "OBSERVE" ;
         epcis:bizLocation            <urn:epc:id:sgln:9529999.99999.0> ;
-        epcis:bizStep                <urn:epcglobal:cbv:bizstep:unpacking> ;
-        epcis:bizTransactionList     [ epcis:bizTransaction  <urn:epcglobal:cbv:bt:9529999999991:XYZ567> ;
-                                       epcis:type            <urn:epcglobal:cbv:btt:po>
+        epcis:bizStep                cbv:BizStep-receiving ;
+        epcis:bizTransactionList     [ epcis:bizTransaction      "urn:epcglobal:cbv:bt:9520011111116:A123"^^xsd:anyURI ;
+                                       epcis:bizTransactionType  cbv:BTT-inv
                                      ] ;
-        epcis:bizTransactionList     [ epcis:bizTransaction  <urn:epcglobal:cbv:bt:9520011111116:A123> ;
-                                       epcis:type            <urn:epcglobal:cbv:btt:inv>
+        epcis:bizTransactionList     [ epcis:bizTransaction      "urn:epcglobal:cbv:bt:9529999999991:XYZ567"^^xsd:anyURI ;
+                                       epcis:bizTransactionType  cbv:BTT-po
                                      ] ;
-        epcis:bizTransactionList     [ epcis:bizTransaction  <urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6> ;
-                                       epcis:type            <urn:epcglobal:cbv:btt:desadv>
+        epcis:bizTransactionList     [ epcis:bizTransaction      "urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6"^^xsd:anyURI ;
+                                       epcis:bizTransactionType  cbv:BTT-desadv
                                      ] ;
-        epcis:childEPCs              <urn:epc:id:sgtin:9520001.012346.10000001003> , <urn:epc:id:sgtin:9520001.012346.10000001010> , <urn:epc:id:sgtin:9520001.012346.10000001006> , <urn:epc:id:sgtin:9520001.012346.10000001008> , <urn:epc:id:sgtin:9520001.012346.10000001005> , <urn:epc:id:sgtin:9520001.012346.10000001007> , <urn:epc:id:sgtin:9520001.012346.10000001009> , <urn:epc:id:sgtin:9520001.012346.10000001002> , <urn:epc:id:sgtin:9520001.012346.10000001001> , <urn:epc:id:sgtin:9520001.012346.10000001004> ;
-        epcis:destinationList        [ epcis:destination  <urn:epc:id:pgln:9520999.99999> ;
-                                       epcis:type         <urn:epcglobal:cbv:sdt:owning_party>
+        epcis:childEPCs              <urn:epc:id:sgtin:9520001.012346.10000001010> , <urn:epc:id:sgtin:9520001.012346.10000001009> , <urn:epc:id:sgtin:9520001.012346.10000001008> , <urn:epc:id:sgtin:9520001.012346.10000001003> , <urn:epc:id:sgtin:9520001.012346.10000001002> , <urn:epc:id:sgtin:9520001.012346.10000001007> , <urn:epc:id:sgtin:9520001.012346.10000001006> , <urn:epc:id:sgtin:9520001.012346.10000001001> , <urn:epc:id:sgtin:9520001.012346.10000001005> , <urn:epc:id:sgtin:9520001.012346.10000001004> ;
+        epcis:destinationList        [ epcis:destination              <urn:epc:id:pgln:9520999.99999> ;
+                                       epcis:sourceOrDestinationType  cbv:SDT-owning_party
                                      ] ;
-        epcis:disposition            <urn:epcglobal:cbv:disp:in_progress> ;
-        epcis:eventTime              "2020-06-08T18:11:16Z"^^xsd:dateTime ;
+        epcis:disposition            cbv:Disp-in_progress ;
+        epcis:eventTime              "2020-06-07T17:10:16Z"^^xsd:dateTimeStamp ;
         epcis:eventTimeZoneOffset    "+02:00" ;
         epcis:parentID               <urn:epc:id:sgtin:952001.1012345.22222223333> ;
-        epcis:persistentDisposition  [ epcis:set    <urn:epcglobal:cbv:disp:completeness_verified> ;
-                                       epcis:unset  <urn:epcglobal:cbv:disp:completeness_inferred>
+        epcis:persistentDisposition  [ epcis:set  <file://C:/completeness_inferred> ] ;
+        epcis:readPoint              <urn:epc:id:sgln:9529999.99999.0> ;
+        epcis:sourceList             [ epcis:source                   <urn:epc:id:pgln:9520001.11111> ;
+                                       epcis:sourceOrDestinationType  cbv:SDT-owning_party
+                                     ] .
+
+<ni:///sha-256;dae7b481207bb87f1d981c5f169b8138368ae152a41b002eaf36eca1f67d56f5?ver=CBV2.0>
+        rdf:type                     epcis:AggregationEvent ;
+        epcis:action                 "DELETE" ;
+        epcis:bizLocation            <urn:epc:id:sgln:9529999.99999.0> ;
+        epcis:bizStep                cbv:BizStep-unpacking ;
+        epcis:bizTransactionList     [ epcis:bizTransaction      "urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6"^^xsd:anyURI ;
+                                       epcis:bizTransactionType  cbv:BTT-desadv
+                                     ] ;
+        epcis:bizTransactionList     [ epcis:bizTransaction      "urn:epcglobal:cbv:bt:9520011111116:A123"^^xsd:anyURI ;
+                                       epcis:bizTransactionType  cbv:BTT-inv
+                                     ] ;
+        epcis:bizTransactionList     [ epcis:bizTransaction      "urn:epcglobal:cbv:bt:9529999999991:XYZ567"^^xsd:anyURI ;
+                                       epcis:bizTransactionType  cbv:BTT-po
+                                     ] ;
+        epcis:childEPCs              <urn:epc:id:sgtin:9520001.012346.10000001003> , <urn:epc:id:sgtin:9520001.012346.10000001010> , <urn:epc:id:sgtin:9520001.012346.10000001006> , <urn:epc:id:sgtin:9520001.012346.10000001008> , <urn:epc:id:sgtin:9520001.012346.10000001005> , <urn:epc:id:sgtin:9520001.012346.10000001007> , <urn:epc:id:sgtin:9520001.012346.10000001009> , <urn:epc:id:sgtin:9520001.012346.10000001002> , <urn:epc:id:sgtin:9520001.012346.10000001001> , <urn:epc:id:sgtin:9520001.012346.10000001004> ;
+        epcis:destinationList        [ epcis:destination              <urn:epc:id:pgln:9520999.99999> ;
+                                       epcis:sourceOrDestinationType  cbv:SDT-owning_party
+                                     ] ;
+        epcis:disposition            cbv:Disp-in_progress ;
+        epcis:eventTime              "2020-06-08T18:11:16Z"^^xsd:dateTimeStamp ;
+        epcis:eventTimeZoneOffset    "+02:00" ;
+        epcis:parentID               <urn:epc:id:sgtin:952001.1012345.22222223333> ;
+        epcis:persistentDisposition  [ epcis:set    <file://C:/completeness_verified> ;
+                                       epcis:unset  <file://C:/completeness_inferred>
                                      ] ;
         epcis:readPoint              <urn:epc:id:sgln:9529999.99999.0> ;
-        epcis:sourceList             [ epcis:source  <urn:epc:id:pgln:9520001.11111> ;
-                                       epcis:type    <urn:epcglobal:cbv:sdt:owning_party>
+        epcis:sourceList             [ epcis:source                   <urn:epc:id:pgln:9520001.11111> ;
+                                       epcis:sourceOrDestinationType  cbv:SDT-owning_party
                                      ] .

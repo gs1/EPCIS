@@ -1,46 +1,52 @@
-@prefix epcis: <https://ns.gs1.org/epcis/> .
-@prefix gs1:   <https://gs1.org/voc/> .
-@prefix owl:   <http://www.w3.org/2002/07/owl#> .
-@prefix vtype: <urn:epcglobal:epcis:vtype:> .
-@prefix example-mda: <http://epcis.example.com/mda/> .
-@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
-@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix example2: <http://epcis.example.com/ns/> .
-@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix cbv:   <https://ns.gs1.org/cbv/> .
-@prefix md:    <https://ns.gs1.org/epcismd/> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix example1: <http://ns.example.com/epcis/> .
-@prefix cbvmda: <urn:epcglobal:cbv:mda:> .
+@prefix cbv:      <https://ns.gs1.org/cbv/> .
+@prefix cbvmda:   <urn:epcglobal:cbv:mda:> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix epcis:    <https://ns.gs1.org/epcis/> .
+@prefix ex:       <http://epcis.example.com/ns/> .
+@prefix examp:    <http://ns.example.com/epcis/> .
+@prefix example:  <https://ns.example.com/epcis> .
+@prefix example1: <https://ns.example1.com/epcis> .
+@prefix example2: <https://ns.example2.com/epcis> .
+@prefix example3: <https://ns.example3.com/epcis> .
+@prefix example4: <https://ns.example4.com/epcis> .
+@prefix ext1:     <http://ext.com/ext1/> .
+@prefix ext2:     <http://ext.com/ext2/> .
+@prefix ext3:     <http://ext.com/ext3/> .
+@prefix gs1:      <https://gs1.org/voc/> .
+@prefix owl:      <http://www.w3.org/2002/07/owl#> .
+@prefix rail:     <urn:gs1:epcisapp:rail:> .
+@prefix rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
 
 <ni:///sha-256;db924230b77cc4d9a7cea4968fd302b06598a2b63e1b0ea011b31d1b5f45e6ac?ver=CBV2.0>
-        a                          epcis:ObjectEvent ;
+        rdf:type                   epcis:ObjectEvent ;
         epcis:action               "OBSERVE" ;
-        epcis:bizStep              <urn:epcglobal:cbv:bizstep:inspecting> ;
+        epcis:bizStep              cbv:BizStep-inspecting ;
         epcis:epcList              <urn:epc:id:sgtin:4012345.011111.9876> ;
-        epcis:eventTime            "2019-10-07T16:00:00.000+01:00"^^xsd:dateTime ;
+        epcis:eventTime            "2019-10-07T16:00:00.000+01:00"^^xsd:dateTimeStamp ;
         epcis:eventTimeZoneOffset  "+01:00" ;
         epcis:readPoint            <urn:epc:id:sgln:4012345.00005.0> ;
-        epcis:sensorElementList    [ epcis:sensorMetadata  [ epcis:time  "2019-07-19T14:00:00.000+01:00"^^xsd:dateTime ] ;
+        epcis:sensorElementList    [ epcis:sensorMetadata  [ epcis:time  "2019-07-19T14:00:00.000+01:00"^^xsd:dateTimeStamp ] ;
                                      epcis:sensorReport    [ epcis:deviceID  <urn:epc:id:giai:4000001.116> ;
-                                                             epcis:type      example1:Mno ;
-                                                             epcis:uriValue  <https://example.org/example/someSectorSpecificValue>
+                                                             epcis:type      examp:Mno ;
+                                                             epcis:uriValue  "https://example.org/example/someSectorSpecificValue"^^xsd:anyURI
                                                            ] ;
                                      epcis:sensorReport    [ epcis:deviceID        <urn:epc:id:giai:4000001.115> ;
-                                                             epcis:hexBinaryValue  "F0F0F0"^^xsd:hexBinary ;
-                                                             epcis:type            example1:Jkl
+                                                             epcis:hexBinaryValue  "F0F0F0" ;
+                                                             epcis:type            examp:Jkl
                                                            ] ;
                                      epcis:sensorReport    [ epcis:deviceID     <urn:epc:id:giai:4000001.114> ;
                                                              epcis:stringValue  "SomeString" ;
-                                                             epcis:type         example1:Ghi
+                                                             epcis:type         examp:Ghi
                                                            ] ;
                                      epcis:sensorReport    [ epcis:booleanValue  true ;
                                                              epcis:deviceID      <urn:epc:id:giai:4000001.113> ;
-                                                             epcis:type          example1:Def
+                                                             epcis:type          examp:Def
                                                            ] ;
                                      epcis:sensorReport    [ epcis:deviceID     <urn:epc:id:giai:4000001.112> ;
                                                              epcis:stringValue  "111100001111000011110000" ;
-                                                             epcis:type         example1:Abc
+                                                             epcis:type         examp:Abc
                                                            ] ;
                                      epcis:sensorReport    [ epcis:deviceID  <urn:epc:id:giai:4000001.111> ;
                                                              epcis:type      gs1:MT-Temperature ;
@@ -49,9 +55,8 @@
                                                            ]
                                    ] .
 
-[ a                epcis:EPCISDocument ;
-  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
+[ rdf:type         epcis:EPCISDocument ;
+  dcterms:created  "2005-07-11T11:30:47.0Z" ;
   owl:versionInfo  "2.0" ;
-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;db924230b77cc4d9a7cea4968fd302b06598a2b63e1b0ea011b31d1b5f45e6ac?ver=CBV2.0> ] ;
-  epcis:format     "application/ld+json"
+  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;db924230b77cc4d9a7cea4968fd302b06598a2b63e1b0ea011b31d1b5f45e6ac?ver=CBV2.0> ]
 ] .

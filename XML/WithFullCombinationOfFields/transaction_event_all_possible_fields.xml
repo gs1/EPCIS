@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE project>
+<epcis:EPCISDocument schemaVersion="2.0"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:ext1="http://ext.com/ext1/" xmlns:ext2="http://ext.com/ext2/"
+	xmlns:ext3="http://ext.com/ext3/"
+	creationDate="2013-06-04T14:59:02.099+02:00"
+	xmlns:epcis="urn:epcglobal:epcis:xsd:2">
+	<EPCISBody>
+		<EventList>
+			<TransactionEvent>
+				<eventTime>2005-04-03T20:33:31.116-06:00</eventTime>
+				<eventTimeZoneOffset>-06:00</eventTimeZoneOffset>
+				<bizTransactionList>
+					<bizTransaction type="urn:epcglobal:cbv:btt:po">urn:epc:id:gdti:0614141.00001.1618034</bizTransaction>
+					<bizTransaction
+						type="urn:epcglobal:cbv:btt:pedigree">urn:epc:id:gsrn:0614141.0000010253</bizTransaction>
+				</bizTransactionList>
+				<parentID>urn:epc:id:sscc:0614141.1234567890</parentID>
+				<epcList>
+					<epc>urn:epc:id:sgtin:0614141.107346.2017</epc>
+					<epc>urn:epc:id:sgtin:0614141.107346.2018</epc>
+				</epcList>
+				<action>ADD</action>
+				<bizStep>urn:epcglobal:cbv:bizstep:shipping</bizStep>
+				<disposition>urn:epcglobal:cbv:disp:in_transit</disposition>
+				<readPoint>
+					<id>urn:epc:id:sgln:0614141.07346.1234</id>
+				</readPoint>
+				<bizLocation>
+					<id>urn:epc:id:sgln:0614141.00888.0</id>
+				</bizLocation>
+				<quantityList>
+					<quantityElement>
+						<epcClass>urn:epc:class:lgtin:4012345.011111.4444</epcClass>
+						<quantity>10</quantity>
+						<uom>KGM</uom>
+					</quantityElement>
+				</quantityList>
+				<sourceList>
+					<source type="urn:epcglobal:cbv:sdt:location">urn:epc:id:sgln:4012345.00225.0</source>
+					<source type="urn:epcglobal:cbv:sdt:possessing_party">urn:epc:id:pgln:4012345.00225</source>
+					<source type="urn:epcglobal:cbv:sdt:owning_party">urn:epc:id:pgln:4012345.00225</source>
+				</sourceList>
+				<destinationList>
+					<destination type="urn:epcglobal:cbv:sdt:location">urn:epc:id:sgln:0614141.00777.0</destination>
+					<destination
+						type="urn:epcglobal:cbv:sdt:possessing_party">urn:epc:id:pgln:0614141.00777</destination>
+					<destination type="urn:epcglobal:cbv:sdt:owning_party">urn:epc:id:pgln:0614141.00777</destination>
+				</destinationList>
+				<sensorElementList>
+					<sensorElement>
+						<sensorMetadata
+							time="2019-04-02T14:05:00.000+01:00"
+							deviceID="urn:epc:id:giai:4000001.111"
+							deviceMetadata="https://id.gs1.org/giai/4000001111"
+							rawData="https://example.org/giai/401234599999"
+							startTime="2019-04-02T13:55:01.000+01:00"
+							endTime="2019-04-02T14:55:00.000+01:00"
+							bizRules="https://example.com/gdti/4012345000054987"
+							dataProcessingMethod="https://example.com/gdti/4012345000054987"
+							ext1:someFurtherMetadata="someText" />
+						<sensorReport value="26.0" type="gs1:Temperature"
+							component="example:x" stringValue="SomeString"
+							booleanValue="true" hexBinaryValue="f0f0f0"
+							uriValue="https://id.gs1.org/giai/4000001111" uom="CEL"
+							minValue="26.0" maxValue="26.2" sDev="0.1"
+							chemicalSubstance="https://identifiers.org/inchikey:CZMRCDWAGMRECN-UGDNZRGBSA-N"
+							microorganism="https://www.ncbi.nlm.nih.gov/taxonomy/1126011"
+							deviceID="urn:epc:id:giai:4000001.111"
+							deviceMetadata="https://id.gs1.org/giai/4000001111"
+							rawData="https://example.org/giai/401234599999"
+							time="2019-07-19T14:00:00.000+01:00" meanValue="13.2"
+							percRank="50" percValue="12.7"
+							dataProcessingMethod="https://example.com/gdti/4012345000054987"
+							ext1:someFurtherReportData="someText" />
+						<ext1:default>stringAsDefaultValue</ext1:default>
+						<ext1:int xsi:type="xsd:integer">10</ext1:int>
+						<ext1:float xsi:type="xsd:double">20</ext1:float>
+						<ext1:time xsi:type="xsd:dateTime">2013-06-08T14:58:56.591Z</ext1:time>
+						<ext1:boolean xsi:type="xsd:boolean">true</ext1:boolean>
+						<ext1:string xsi:type="xsd:string">string</ext1:string>
+						<ext1:object>
+							<ext2:string xsi:type="xsd:string">stringInObject</ext2:string>
+							<ext2:array xsi:type="xsd:integer">11</ext2:array>
+							<ext2:array xsi:type="xsd:double">21</ext2:array>
+							<ext2:array xsi:type="xsd:string">stringInArrayInObject</ext2:array>
+							<ext2:object>
+								<ext3:string xsi:type="xsd:string">stringInObjectInObject</ext3:string>
+							</ext2:object>
+						</ext1:object>
+						<ext1:array xsi:type="xsd:integer">12</ext1:array>
+						<ext1:array xsi:type="xsd:double">22</ext1:array>
+						<ext1:array xsi:type="xsd:dateTime">2013-06-08T14:58:56.591Z</ext1:array>
+						<ext1:array xsi:type="xsd:boolean">true</ext1:array>
+						<ext1:array xsi:type="xsd:string">stringInArray</ext1:array>
+						<ext1:array>
+							<ext1:object>
+								<ext2:int xsi:type="xsd:integer">13</ext2:int>
+								<ext2:string xsi:type="xsd:string">stringInObjectInArray</ext2:string>
+								<ext2:array xsi:type="xsd:integer">14</ext2:array>
+								<ext2:array xsi:type="xsd:double">23.0</ext2:array>
+								<ext2:array xsi:type="xsd:string">stringInArrayInObjectInArray</ext2:array>
+								<ext2:object>
+									<ext3:string xsi:type="xsd:string">stringInObjectInObjectInArray</ext3:string>
+								</ext2:object>
+							</ext1:object>
+						</ext1:array>
+					</sensorElement>
+				</sensorElementList>
+				<persistentDisposition>
+					<unset>urn:epcglobal:cbv:disp:completeness_inferred</unset>
+					<set>urn:epcglobal:cbv:disp:completeness_verified</set>
+				</persistentDisposition>
+				<ext1:default>stringAsDefaultValue</ext1:default>
+				<ext1:int xsi:type="xsd:integer">10</ext1:int>
+				<ext1:float xsi:type="xsd:double">20</ext1:float>
+				<ext1:time xsi:type="xsd:dateTime">2013-06-08T14:58:56.591Z</ext1:time>
+				<ext1:boolean xsi:type="xsd:boolean">true</ext1:boolean>
+				<ext1:string xsi:type="xsd:string">string</ext1:string>
+				<ext1:object>
+					<ext2:string xsi:type="xsd:string">stringInObject</ext2:string>
+					<ext2:array xsi:type="xsd:integer">11</ext2:array>
+					<ext2:array xsi:type="xsd:double">21</ext2:array>
+					<ext2:array xsi:type="xsd:string">stringInArrayInObject</ext2:array>
+					<ext2:object>
+						<ext3:string xsi:type="xsd:string">stringInObjectInObject</ext3:string>
+					</ext2:object>
+				</ext1:object>
+				<ext1:array xsi:type="xsd:integer">12</ext1:array>
+				<ext1:array xsi:type="xsd:double">22</ext1:array>
+				<ext1:array xsi:type="xsd:dateTime">2013-06-08T14:58:56.591Z</ext1:array>
+				<ext1:array xsi:type="xsd:boolean">true</ext1:array>
+				<ext1:array xsi:type="xsd:string">stringInArray</ext1:array>
+				<ext1:array>
+					<ext1:object>
+						<ext2:int xsi:type="xsd:integer">13</ext2:int>
+						<ext2:string xsi:type="xsd:string">stringInObjectInArray</ext2:string>
+						<ext2:array xsi:type="xsd:integer">14</ext2:array>
+						<ext2:array xsi:type="xsd:double">23.0</ext2:array>
+						<ext2:array xsi:type="xsd:string">stringInArrayInObjectInArray</ext2:array>
+						<ext2:object>
+							<ext3:string xsi:type="xsd:string">stringInObjectInObjectInArray</ext3:string>
+						</ext2:object>
+					</ext1:object>
+				</ext1:array>
+			</TransactionEvent>
+		</EventList>
+	</EPCISBody>
+</epcis:EPCISDocument>

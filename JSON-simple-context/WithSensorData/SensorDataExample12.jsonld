@@ -1,0 +1,73 @@
+{
+  "@context": [
+    "https://gs1.github.io/EPCIS/epcis-context-simple.jsonld",
+    {"example": "https://ns.example.com/epcis"},
+    {"example1": "https://ns.example1.com/epcis"},
+    {"example2": "https://ns.example2.com/epcis"},
+    {"example3": "https://ns.example3.com/epcis"},
+    {"example4": "https://ns.example4.com/epcis"}
+  ],
+  "isA": "EPCISDocument",
+  "epcisBody": {
+    "eventList": [
+      {
+	"isA": "TransformationEvent",
+	"eventTime": "2020-09-29T12:00:00.000Z",
+	"eventTimeZoneOffset": "+02:00",
+	"errorDeclaration": {
+	  "declarationTime": "2020-09-29T13:00:00.000Z",
+	  "example:issuer": "Employee 123",
+	  "example:field": "foo bar",
+	  "example3:errorCodes": {"example3:value1": "34", "example3:value44": "66"}
+	},
+	"inputQuantityList": [{"epcClass": "urn:epc:class:lgtin:4023333.055555.ABC123", "quantity": 25, "uom": "KGM"}],
+	"outputEPCList": ["urn:epc:id:sgtin:4012345.012345.987", "urn:epc:id:sgtin:4012345.012345.988"],
+	"bizStep": "commissioning",
+	"readPoint": {"id": "urn:epc:id:sgln:4023333.00000.0"},
+	"bizLocation": {"id": "urn:epc:id:sgln:4023333.00001.12"},
+	"ilmd": {
+	  "example:grading": "A",
+	  "example2:userMasterData": {"example2:sizeCode": "B-2"},
+	  "cbvmda:lotNumber": "LOTABC"
+	},
+	"sensorElementList": [
+	  {
+	    "isA": "epcis:SensorElement",
+	    "sensorMetadata": {
+	      "startTime": "2019-04-01T14:00:00.000Z",
+	      "endTime": "2019-04-02T13:59:59.999Z",
+	      "someFurtherMetaData": "someText"
+	    },
+	    "sensorReport": [
+	      {
+		"type": "Temperature",
+		"minValue": 12.4,
+		"maxValue": 13.8,
+		"meanValue": 13.2,
+		"percRank": 50,
+		"percValue": 12.7,
+		"uom": "CEL",
+		"sDev": 0.41,
+		"example:cv": "123"
+	      },
+	      {
+		"type": "example:someSensorProperty",
+		"stringValue": "someSensorOutput"
+	      }
+	    ],
+	    "example:furtherSensorData": {
+	      "example:measure2": "0.987",
+	      "example:measure1": "123.5"
+	    },
+	    "example:someUserField": "abc123"
+	  }
+	],
+	"example4:otherThings": "some text",
+	"example:internalData": {
+	  "example:procedure": "A-1",
+	  "example:machine": "urn:epc:id:giai:4012345.ABC"
+	}
+      }
+    ]
+  }
+}

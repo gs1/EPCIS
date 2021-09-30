@@ -1,0 +1,8 @@
+--- ../Turtle/AssociationEvent/AssociationEvent-a.ttl	2021-09-21 12:46:41.000000000 +0100
++++ ../Turtle-simple-context/AssociationEvent/AssociationEvent-a.ttl	2021-09-21 12:46:41.000000000 +0100
+@@ -27 +27 @@
+-        epcis:eventTime            "2019-11-01T14:00:00.000+01:00"^^xsd:dateTimeStamp ;
++        epcis:eventTime            "2019-11-01T14:00:00.000+01:00"^^xsd:dateTime ;
+@@ -33 +33 @@
+-  dcterms:created  "2019-11-01T14:00:00.000+01:00" ;
++  dcterms:created  "2019-11-01T14:00:00.000+01:00"^^xsd:dateTime ;
