@@ -1,0 +1,9 @@
+{
+    "@context": {
+        "@protected": true,
+        "@version": 1.1,
+        "gs1": "https://gs1.org/voc/",
+        "ALARM_CONDITION": "gs1:ALARM_CONDITION",
+        "ERROR_CONDITION": "gs1:ERROR_CONDITION"
+    }
+}
