@@ -219,7 +219,7 @@
                             "@protected": true,
                             "epcis": "https://ns.gs1.org/epcis/",
                             "type": {
-                                "@id": "epcis:type",
+                                "@id": "epcis:measurementType",
                                 "@type": "@vocab"
                             },
                             "microorganism": {
