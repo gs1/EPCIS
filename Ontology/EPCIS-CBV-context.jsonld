@@ -3,7 +3,7 @@
     "cbv" : "https://ns.gs1.org/cbv/",
     "dct" : "http://purl.org/dc/terms/",
     "epcis" : "https://ns.gs1.org/epcis/",
-    "gs1" : "https://gs1.org/gdd/",
+    "gs1" : "https://gs1.org/voc/",
     "owl" : "http://www.w3.org/2002/07/owl#",
     "rdf" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdfs" : "http://www.w3.org/2000/01/rdf-schema#",
@@ -46,7 +46,8 @@
       "@type" : "@id"
     },
     "comment" : {
-      "@id" : "http://www.w3.org/2000/01/rdf-schema#comment"
+      "@id" : "http://www.w3.org/2000/01/rdf-schema#comment",
+      "@language": "en"
     },
     "label" : {
       "@id" : "http://www.w3.org/2000/01/rdf-schema#label"
@@ -79,6 +80,10 @@
     },
     "versionInfo" : {
       "@id" : "http://www.w3.org/2002/07/owl#versionInfo"
+    },
+    "sameAs": {
+      "@id" : "http://www.w3.org/2002/07/owl#sameAs",
+      "@type" : "@id"
     },
     "seeAlso" : {
       "@id" : "http://www.w3.org/2000/01/rdf-schema#seeAlso",
