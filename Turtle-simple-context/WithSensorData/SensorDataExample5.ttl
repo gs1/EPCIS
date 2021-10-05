@@ -19,6 +19,12 @@
 @prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
 
+[ rdf:type         epcis:EPCISDocument ;
+  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
+  owl:versionInfo  "2.0" ;
+  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;e13ff14a9b4f3dd11bba60315ed9b849eb8ddf4c5b1a9aa794cd250256730834?ver=CBV2.0> ]
+] .
+
 <ni:///sha-256;e13ff14a9b4f3dd11bba60315ed9b849eb8ddf4c5b1a9aa794cd250256730834?ver=CBV2.0>
         rdf:type                   epcis:ObjectEvent ;
         epcis:action               "OBSERVE" ;
@@ -61,9 +67,3 @@
                                                              epcis:value            2.6E1
                                                            ]
                                    ] .
-
-[ rdf:type         epcis:EPCISDocument ;
-  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
-  owl:versionInfo  "2.0" ;
-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;e13ff14a9b4f3dd11bba60315ed9b849eb8ddf4c5b1a9aa794cd250256730834?ver=CBV2.0> ]
-] .

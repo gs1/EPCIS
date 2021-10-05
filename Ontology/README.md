@@ -64,7 +64,6 @@ These are draft and subject to change
 
 #238
 We use some complementary tools to convert Turtle to the best possible JSON-LD:
-
 - `CBV.ttl` to `CBV.jsonld`
 - `EPCIS.ttl` to `EPCIS.jsonld`
 

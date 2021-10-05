@@ -33,14 +33,14 @@
                                                                      epcis:sensorMetadata  [ epcis:time  "2021-05-27T12:50:00.000Z"^^xsd:dateTime ] ;
                                                                      epcis:sensorReport    [ epcis:component        cbv:COMP-Easting ;
                                                                                              epcis:coordinateReferenceSystem
-                                                                                                     "http://www.opengis.net/def/crs/EPSG/0/27700" ;
+                                                                                                     <http://www.opengis.net/def/crs/EPSG/0/27700> ;
                                                                                              epcis:measurementType  gs1:Length ;
                                                                                              epcis:uom              "MTR" ;
                                                                                              epcis:value            2.47758357E6
                                                                                            ] ;
                                                                      epcis:sensorReport    [ epcis:component        cbv:COMP-Northing ;
                                                                                              epcis:coordinateReferenceSystem
-                                                                                                     "http://www.opengis.net/def/crs/EPSG/0/27700" ;
+                                                                                                     <http://www.opengis.net/def/crs/EPSG/0/27700> ;
                                                                                              epcis:measurementType  gs1:Length ;
                                                                                              epcis:uom              "MTR" ;
                                                                                              epcis:value            -4.7797989E5

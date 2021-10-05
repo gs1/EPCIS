@@ -14,12 +14,13 @@
     "xsd": "http://www.w3.org/2001/XMLSchema#",
     "dcterms": "http://purl.org/dc/terms/",
     
-    "time": {"@type": "xsd:dateTime"},
-    "startTime": {"@type": "xsd:dateTime"},
-    "endTime": {"@type": "xsd:dateTime"},
-    "eventTime": {"@type": "xsd:dateTime"},
-    "recordTime": {"@type": "xsd:dateTime"},
-    "declarationTime": {"@type": "xsd:dateTime"},
+    "creationDate": {"@id": "dcterms:created", "@type": "xsd:dateTime"},
+    "time": {"@type": "xsd:dateTimeStamp"},
+    "startTime": {"@type": "xsd:dateTimeStamp"},
+    "endTime": {"@type": "xsd:dateTimeStamp"},
+    "eventTime": {"@type": "xsd:dateTimeStamp"},
+    "recordTime": {"@type": "xsd:dateTimeStamp"},
+    "declarationTime": {"@type": "xsd:dateTimeStamp"},
     "eventTimeZoneOffset": {"@type": "xsd:string"},
 
     "action": {"@type": "xsd:string"},
@@ -31,7 +32,6 @@
     "bizTransactionList": {
       "@type": "@id",
       "@context": {"type": {"@id":"epcis:bizTransactionType", "@type":"@vocab", "@context":{"@vocab":"https://ns.gs1.org/cbv/BTT-"}}}},
-    "bizTransaction": {"@type": "@id"},
     "bizLocation": {"@type": "@id"},
     "readPoint": {"@type": "@id"},
     "sourceList": {
@@ -93,7 +93,7 @@
     "isA": "@type",
     "id": "@id",
     "eventID": "@id",
-    "creationDate": {"@id": "dcterms:created", "@type": "xsd:dateTime"},
+    "bizTransaction": "@id",
     "schemaVersion": {"@id": "owl:versionInfo", "@type": "xsd:string"}
   }
 }

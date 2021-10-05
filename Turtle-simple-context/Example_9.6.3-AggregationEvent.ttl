@@ -26,12 +26,12 @@
         epcis:bizLocation          <urn:epc:id:sgln:0614141.00888.0> ;
         epcis:bizStep              cbv:BizStep-receiving ;
         epcis:childEPCs            <urn:epc:id:sgtin:0614141.107346.2018> , <urn:epc:id:sgtin:0614141.107346.2017> ;
-        epcis:childQuantityList    [ epcis:epcClass  <urn:epc:idpat:sgtin:4012345.098765.*> ;
-                                     epcis:quantity  1.0E1
-                                   ] ;
         epcis:childQuantityList    [ epcis:epcClass  <urn:epc:class:lgtin:4012345.012345.998877> ;
                                      epcis:quantity  2.005E2 ;
                                      epcis:uom       "KGM"
+                                   ] ;
+        epcis:childQuantityList    [ epcis:epcClass  <urn:epc:idpat:sgtin:4012345.098765.*> ;
+                                     epcis:quantity  1.0E1
                                    ] ;
         epcis:disposition          cbv:Disp-in_progress ;
         epcis:eventTime            "2013-06-08T14:58:56.591Z"^^xsd:dateTime ;
