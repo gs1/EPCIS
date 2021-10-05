@@ -23,7 +23,7 @@
   dcterms:created  "2013-06-04T14:59:02.099+02:00"^^xsd:dateTime ;
   owl:versionInfo  "2.0" ;
   epcis:epcisBody  [ epcis:eventList  [ rdf:type                     epcis:TransformationEvent ;
-                                        ext1:array                   "stringInArray" , "12" , "2013-06-08T14:58:56.591Z" , "22" , "true" ;
+                                        ext1:array                   "stringInArray" , "2013-06-08T14:58:56.591Z" , "22" , "12" , "true" ;
                                         ext1:array                   [ ext1:object  [ ext1:object  [ ext2:array   "stringInArrayInObjectInArray" , "23.0" , "14" ;
                                                                                                      ext2:int     "13" ;
                                                                                                      ext2:object  [ ext2:object  [ ext3:string  "stringInObjectInObjectInArray" ]
@@ -45,14 +45,11 @@
                                         ext1:time                    "2013-06-08T14:58:56.591Z" ;
                                         epcis:bizLocation            <urn:epc:id:sgln:0614141.00888.0> ;
                                         epcis:bizStep                cbv:BizStep-commissioning ;
-                                        epcis:bizTransactionList     [ epcis:bizTransaction      <urn:epc:id:gdti:0614141.00001.1618034> ;
-                                                                       epcis:bizTransactionType  cbv:BTT-po
-                                                                     ] ;
                                         epcis:bizTransactionList     [ epcis:bizTransaction      <urn:epc:id:gsrn:0614141.0000010253> ;
                                                                        epcis:bizTransactionType  cbv:BTT-pedigree
                                                                      ] ;
-                                        epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:pgln:0614141.00777> ;
-                                                                       epcis:sourceOrDestinationType  cbv:SDT-possessing_party
+                                        epcis:bizTransactionList     [ epcis:bizTransaction      <urn:epc:id:gdti:0614141.00001.1618034> ;
+                                                                       epcis:bizTransactionType  cbv:BTT-po
                                                                      ] ;
                                         epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:pgln:0614141.00777> ;
                                                                        epcis:sourceOrDestinationType  cbv:SDT-owning_party
@@ -60,10 +57,13 @@
                                         epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:sgln:0614141.00777.0> ;
                                                                        epcis:sourceOrDestinationType  cbv:SDT-location
                                                                      ] ;
+                                        epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:pgln:0614141.00777> ;
+                                                                       epcis:sourceOrDestinationType  cbv:SDT-possessing_party
+                                                                     ] ;
                                         epcis:disposition            cbv:Disp-in_progress ;
                                         epcis:eventTime              "2013-10-31T14:58:56.591Z"^^xsd:dateTime ;
                                         epcis:eventTimeZoneOffset    "+02:00" ;
-                                        epcis:ilmd                   [ ext1:array              "stringInArray" , "2013-06-08T14:58:56.591Z" , "12" , "true" , "22" ;
+                                        epcis:ilmd                   [ ext1:array              "true" , "12" , "22" , "2013-06-08T14:58:56.591Z" , "stringInArray" ;
                                                                        ext1:array              [ ext1:object  [ ext1:object  [ ext2:array   "stringInArrayInObjectInArray" , "23.0" , "14" ;
                                                                                                                                ext2:int     "13" ;
                                                                                                                                ext2:object  [ ext2:object  [ ext3:string  "stringInObjectInObjectInArray" ]
@@ -90,7 +90,7 @@
                                                                        cbvmda:lotNumber        "ABC123" ;
                                                                        cbvmda:netWeight        "3.5"
                                                                      ] ;
-                                        epcis:inputEPCList           <urn:epc:id:sgtin:4000001.065432.99886655> , <urn:epc:id:sgtin:4012345.011122.25> ;
+                                        epcis:inputEPCList           <urn:epc:id:sgtin:4012345.011122.25> , <urn:epc:id:sgtin:4000001.065432.99886655> ;
                                         epcis:inputQuantityList      [ epcis:epcClass  <urn:epc:class:lgtin:0614141.077777.987> ;
                                                                        epcis:quantity  3.0E1
                                                                      ] ;
@@ -101,23 +101,23 @@
                                                                        epcis:quantity  1.0E1 ;
                                                                        epcis:uom       "KGM"
                                                                      ] ;
-                                        epcis:outputEPCList          <urn:epc:id:sgtin:4012345.077889.26> , <urn:epc:id:sgtin:4012345.077889.25> , <urn:epc:id:sgtin:4012345.077889.28> , <urn:epc:id:sgtin:4012345.077889.27> ;
+                                        epcis:outputEPCList          <urn:epc:id:sgtin:4012345.077889.25> , <urn:epc:id:sgtin:4012345.077889.28> , <urn:epc:id:sgtin:4012345.077889.27> , <urn:epc:id:sgtin:4012345.077889.26> ;
                                         epcis:outputQuantityList     [ epcis:epcClass  <urn:epc:idpat:sgtin:4012345.066666.*> ;
                                                                        epcis:quantity  2.2E2
-                                                                     ] ;
-                                        epcis:outputQuantityList     [ epcis:epcClass  <urn:epc:class:lgtin:0614141.077777.987> ;
-                                                                       epcis:quantity  3.0E1
                                                                      ] ;
                                         epcis:outputQuantityList     [ epcis:epcClass  <urn:epc:class:lgtin:4012345.011111.4444> ;
                                                                        epcis:quantity  1.0E1 ;
                                                                        epcis:uom       "KGM"
+                                                                     ] ;
+                                        epcis:outputQuantityList     [ epcis:epcClass  <urn:epc:class:lgtin:0614141.077777.987> ;
+                                                                       epcis:quantity  3.0E1
                                                                      ] ;
                                         epcis:persistentDisposition  [ epcis:set    cbv:Disp-completeness_verified ;
                                                                        epcis:unset  cbv:Disp-completeness_inferred
                                                                      ] ;
                                         epcis:readPoint              <urn:epc:id:sgln:4012345.00001.0> ;
                                         epcis:sensorElementList      [ rdf:type              epcis:SensorElement ;
-                                                                       ext1:array            "2013-06-08T14:58:56.591Z" , "22" , "true" , "12" , "stringInArray" ;
+                                                                       ext1:array            "true" , "2013-06-08T14:58:56.591Z" , "stringInArray" , "22" , "12" ;
                                                                        ext1:array            [ ext1:object  [ ext1:object  [ ext2:array   "stringInArrayInObjectInArray" , "23.0" , "14" ;
                                                                                                                              ext2:int     "13" ;
                                                                                                                              ext2:object  [ ext2:object  [ ext3:string  "stringInObjectInObjectInArray" ]
@@ -171,14 +171,14 @@
                                                                                                epcis:value                  2.6E1
                                                                                              ]
                                                                      ] ;
-                                        epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:sgln:4012345.00225.0> ;
-                                                                       epcis:sourceOrDestinationType  cbv:SDT-location
-                                                                     ] ;
                                         epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:pgln:4012345.00225> ;
                                                                        epcis:sourceOrDestinationType  cbv:SDT-possessing_party
                                                                      ] ;
                                         epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:pgln:4012345.00225> ;
                                                                        epcis:sourceOrDestinationType  cbv:SDT-owning_party
+                                                                     ] ;
+                                        epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:sgln:4012345.00225.0> ;
+                                                                       epcis:sourceOrDestinationType  cbv:SDT-location
                                                                      ] ;
                                         epcis:transformationID       "urn:epc:id:gdti:0614141.12345.400"
                                       ]

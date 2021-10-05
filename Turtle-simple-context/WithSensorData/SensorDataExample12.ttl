@@ -45,7 +45,7 @@
                                                                      epcis:quantity  2.5E1 ;
                                                                      epcis:uom       "KGM"
                                                                    ] ;
-                                        epcis:outputEPCList        <urn:epc:id:sgtin:4012345.012345.988> , <urn:epc:id:sgtin:4012345.012345.987> ;
+                                        epcis:outputEPCList        <urn:epc:id:sgtin:4012345.012345.987> , <urn:epc:id:sgtin:4012345.012345.988> ;
                                         epcis:readPoint            <urn:epc:id:sgln:4023333.00000.0> ;
                                         epcis:sensorElementList    [ rdf:type                   epcis:SensorElement ;
                                                                      example:furtherSensorData  [ example:measure1  "123.5" ;

@@ -48,13 +48,13 @@
                                                                      rail:vehicleUniquelyIdentified  true
                                                                    ] ;
                                         rail:vehicle               [ rail:vehicleAxleCount           4 ;
-                                                                     rail:vehiclePosition            2 ;
-                                                                     rail:vehicleUniquelyIdentified  false
-                                                                   ] ;
-                                        rail:vehicle               [ rail:vehicleAxleCount           4 ;
                                                                      rail:vehicleMasterGIAI          <urn:epc:id:giai:735005385.vehicle1> ;
                                                                      rail:vehiclePosition            3 ;
                                                                      rail:vehicleUniquelyIdentified  true
+                                                                   ] ;
+                                        rail:vehicle               [ rail:vehicleAxleCount           4 ;
+                                                                     rail:vehiclePosition            2 ;
+                                                                     rail:vehicleUniquelyIdentified  false
                                                                    ]
                                       ] ;
                      epcis:eventList  [ rdf:type                   epcis:TransactionEvent ;

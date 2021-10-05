@@ -1,14 +1,35 @@
 @prefix cbv:   <https://ns.gs1.org/cbv/> .
 @prefix epcis: <https://ns.gs1.org/epcis/> .
-@prefix gs1:   <https://gs1.org/gdd/> .
-@prefix owl:   <http://www.w3.org/2002/07/owl#> .
-@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
-@prefix sw:    <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
-@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix gs1:   <https://gs1.org/voc/> .
 
-#################### Ontology: TODO
+@prefix dct:    <http://purl.org/dc/terms/> .
+@prefix owl:    <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix skos:   <http://www.w3.org/2004/02/skos/core#> .
+@prefix sw:     <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix vann:   <http://purl.org/vocab/vann/> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+
+#################### Ontology
+
+cbv: a owl:Ontology;
+  rdfs:label "CBV Ontology";
+  rdfs:comment """The Comprehensive Business Vocabulary defines various enumerations used by EPCIS.""";
+  dct:creator <https://gs1.org/>;
+  dct:publisher <https://gs1.org/>;
+  dct:created  "2021-06-01"^^xsd:date;
+  dct:modified "2021-09-30"^^xsd:date;
+  # dct:issued   "2021-06-30"^^xsd:date; # after release
+  rdfs:seeAlso epcis:, gs1: ;
+  owl:versionInfo "2.0";
+  vann:preferredNamespaceUri "https://ns.gs1.org/cbv/";
+  vann:preferredNamespacePrefix "cbv".
+
+<https://gs1.org/> a schema:Organization;
+  schema:name "GS1";
+  schema:description "GS1 is an international organization that sets the global standards in transport and logistics".
 
 #################### Business Transaction Type
 

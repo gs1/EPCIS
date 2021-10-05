@@ -25,11 +25,11 @@
         epcis:action               "OBSERVE" ;
         epcis:bizLocation          <urn:epc:id:sgln:0012345.11111.0> ;
         epcis:bizStep              cbv:BizStep-receiving ;
-        epcis:bizTransactionList   [ epcis:bizTransaction      <urn:epcglobal:cbv:bt:0614141073467:1152> ;
-                                     epcis:bizTransactionType  cbv:BTT-desadv
-                                   ] ;
         epcis:bizTransactionList   [ epcis:bizTransaction      <http://transaction.acme.com/po/12345678> ;
                                      epcis:bizTransactionType  cbv:BTT-po
+                                   ] ;
+        epcis:bizTransactionList   [ epcis:bizTransaction      <urn:epcglobal:cbv:bt:0614141073467:1152> ;
+                                     epcis:bizTransactionType  cbv:BTT-desadv
                                    ] ;
         epcis:disposition          cbv:Disp-in_progress ;
         epcis:epcList              <urn:epc:id:sgtin:0614141.107346.2018> ;
