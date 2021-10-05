@@ -159,7 +159,7 @@ Then we can validate that the JSONLD is correct by converting back to formatted 
 
 ```
 riot --formatted ttl EPCIS.jsonld | less
-``
+```
 
 (but the order of ontology terms is not preserved)
 
