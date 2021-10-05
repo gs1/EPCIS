@@ -1,0 +1,78 @@
+22,27d21
+< [ rdf:type         epcis:EPCISDocument ;
+<   dcterms:created  "2005-07-11T11:30:47.0Z" ;
+<   owl:versionInfo  "2.0" ;
+<   epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;e13ff14a9b4f3dd11bba60315ed9b849eb8ddf4c5b1a9aa794cd250256730834?ver=CBV2.0> ]
+< ] .
+< 
+33c27
+<         epcis:eventTime            "2019-04-02T15:00:00.000+01:00"^^xsd:dateTimeStamp ;
+---
+>         epcis:eventTime            "2019-04-02T15:00:00.000+01:00"^^xsd:dateTime ;
+39,67c33,61
+<                                      epcis:sensorReport    [ epcis:time   "2019-04-02T14:55:00.000+01:00"^^xsd:dateTimeStamp ;
+<                                                              epcis:type   gs1:MT-Temperature ;
+<                                                              epcis:uom    "CEL" ;
+<                                                              epcis:value  2.65E1
+<                                                            ] ;
+<                                      epcis:sensorReport    [ epcis:time   "2019-04-02T14:45:00.000+01:00"^^xsd:dateTimeStamp ;
+<                                                              epcis:type   gs1:MT-Temperature ;
+<                                                              epcis:uom    "CEL" ;
+<                                                              epcis:value  2.64E1
+<                                                            ] ;
+<                                      epcis:sensorReport    [ epcis:time   "2019-04-02T14:35:00.000+01:00"^^xsd:dateTimeStamp ;
+<                                                              epcis:type   gs1:MT-Temperature ;
+<                                                              epcis:uom    "CEL" ;
+<                                                              epcis:value  2.63E1
+<                                                            ] ;
+<                                      epcis:sensorReport    [ epcis:time   "2019-04-02T14:25:00.000+01:00"^^xsd:dateTimeStamp ;
+<                                                              epcis:type   gs1:MT-Temperature ;
+<                                                              epcis:uom    "CEL" ;
+<                                                              epcis:value  2.62E1
+<                                                            ] ;
+<                                      epcis:sensorReport    [ epcis:time   "2019-04-02T14:15:00.000+01:00"^^xsd:dateTimeStamp ;
+<                                                              epcis:type   gs1:MT-Temperature ;
+<                                                              epcis:uom    "CEL" ;
+<                                                              epcis:value  2.61E1
+<                                                            ] ;
+<                                      epcis:sensorReport    [ epcis:time   "2019-04-02T14:05:00.000+01:00"^^xsd:dateTimeStamp ;
+<                                                              epcis:type   gs1:MT-Temperature ;
+<                                                              epcis:uom    "CEL" ;
+<                                                              epcis:value  2.6E1
+---
+>                                      epcis:sensorReport    [ epcis:measurementType  gs1:Temperature ;
+>                                                              epcis:time             "2019-04-02T14:55:00.000+01:00"^^xsd:dateTime ;
+>                                                              epcis:uom              "CEL" ;
+>                                                              epcis:value            2.65E1
+>                                                            ] ;
+>                                      epcis:sensorReport    [ epcis:measurementType  gs1:Temperature ;
+>                                                              epcis:time             "2019-04-02T14:45:00.000+01:00"^^xsd:dateTime ;
+>                                                              epcis:uom              "CEL" ;
+>                                                              epcis:value            2.64E1
+>                                                            ] ;
+>                                      epcis:sensorReport    [ epcis:measurementType  gs1:Temperature ;
+>                                                              epcis:time             "2019-04-02T14:35:00.000+01:00"^^xsd:dateTime ;
+>                                                              epcis:uom              "CEL" ;
+>                                                              epcis:value            2.63E1
+>                                                            ] ;
+>                                      epcis:sensorReport    [ epcis:measurementType  gs1:Temperature ;
+>                                                              epcis:time             "2019-04-02T14:25:00.000+01:00"^^xsd:dateTime ;
+>                                                              epcis:uom              "CEL" ;
+>                                                              epcis:value            2.62E1
+>                                                            ] ;
+>                                      epcis:sensorReport    [ epcis:measurementType  gs1:Temperature ;
+>                                                              epcis:time             "2019-04-02T14:15:00.000+01:00"^^xsd:dateTime ;
+>                                                              epcis:uom              "CEL" ;
+>                                                              epcis:value            2.61E1
+>                                                            ] ;
+>                                      epcis:sensorReport    [ epcis:measurementType  gs1:Temperature ;
+>                                                              epcis:time             "2019-04-02T14:05:00.000+01:00"^^xsd:dateTime ;
+>                                                              epcis:uom              "CEL" ;
+>                                                              epcis:value            2.6E1
+69a64,69
+> 
+> [ rdf:type         epcis:EPCISDocument ;
+>   dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
+>   owl:versionInfo  "2.0" ;
+>   epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;e13ff14a9b4f3dd11bba60315ed9b849eb8ddf4c5b1a9aa794cd250256730834?ver=CBV2.0> ]
+> ] .

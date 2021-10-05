@@ -1,0 +1,24 @@
+28c28
+<         epcis:bizTransactionList   [ epcis:bizTransaction      "urn:epcglobal:cbv:bt:0614141073467:1152"^^xsd:anyURI ;
+---
+>         epcis:bizTransactionList   [ epcis:bizTransaction      <urn:epcglobal:cbv:bt:0614141073467:1152> ;
+31c31
+<         epcis:bizTransactionList   [ epcis:bizTransaction      "http://transaction.acme.com/po/12345678"^^xsd:anyURI ;
+---
+>         epcis:bizTransactionList   [ epcis:bizTransaction      <http://transaction.acme.com/po/12345678> ;
+36c36
+<         epcis:eventTime            "2005-04-04T20:33:31.116-06:00"^^xsd:dateTimeStamp ;
+---
+>         epcis:eventTime            "2005-04-04T20:33:31.116-06:00"^^xsd:dateTime ;
+41c41
+<   dcterms:created  "2005-07-11T11:30:47.0Z" ;
+---
+>   dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
+50c50
+<         epcis:bizTransactionList   [ epcis:bizTransaction      "http://transaction.acme.com/po/12345678"^^xsd:anyURI ;
+---
+>         epcis:bizTransactionList   [ epcis:bizTransaction      <http://transaction.acme.com/po/12345678> ;
+55c55
+<         epcis:eventTime            "2005-04-03T20:33:31.116000-06:00"^^xsd:dateTimeStamp ;
+---
+>         epcis:eventTime            "2005-04-03T20:33:31.116000-06:00"^^xsd:dateTime ;

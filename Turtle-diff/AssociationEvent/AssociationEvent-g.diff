@@ -1,0 +1,22 @@
+21a22,27
+> [ rdf:type         epcis:EPCISDocument ;
+>   dcterms:created  "2019-11-04T14:00:00.000+01:00"^^xsd:dateTime ;
+>   owl:versionInfo  "2.0" ;
+>   epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;3acf0f5d06f13134ea8899b9a711eb4d4039dfefd73f2093136729296d904d9a?ver=CBV2.0> ]
+> ] .
+> 
+27c33
+<                                      epcis:declarationTime     "2019-11-07T14:00:00.000+01:00"^^xsd:dateTimeStamp ;
+---
+>                                      epcis:declarationTime     "2019-11-07T14:00:00.000+01:00"^^xsd:dateTime ;
+30c36
+<         epcis:eventTime            "2019-11-04T14:00:00.000+01:00"^^xsd:dateTimeStamp ;
+---
+>         epcis:eventTime            "2019-11-04T14:00:00.000+01:00"^^xsd:dateTime ;
+34,39d39
+< 
+< [ rdf:type         epcis:EPCISDocument ;
+<   dcterms:created  "2019-11-04T14:00:00.000+01:00" ;
+<   owl:versionInfo  "2.0" ;
+<   epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;3acf0f5d06f13134ea8899b9a711eb4d4039dfefd73f2093136729296d904d9a?ver=CBV2.0> ]
+< ] .

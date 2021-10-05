@@ -1,0 +1,8 @@
+23c23
+<   dcterms:created  "2019-11-03T14:00:00.000+01:00" ;
+---
+>   dcterms:created  "2019-11-03T14:00:00.000+01:00"^^xsd:dateTime ;
+33c33
+<         epcis:eventTime            "2019-11-03T14:00:00.000+01:00"^^xsd:dateTimeStamp ;
+---
+>         epcis:eventTime            "2019-11-03T14:00:00.000+01:00"^^xsd:dateTime ;

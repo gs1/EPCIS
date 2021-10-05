@@ -1,0 +1,44 @@
+21a22,27
+> [ rdf:type         epcis:EPCISDocument ;
+>   dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
+>   owl:versionInfo  "2.0" ;
+>   epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;b507b2720c96cd99855eabb101e8617d48622eff4ceaad0a416b3c10dfd316ee?ver=CBV2.0> ]
+> ] .
+> 
+26c32
+<         epcis:eventTime            "2019-04-02T15:00:00.000+01:00"^^xsd:dateTimeStamp ;
+---
+>         epcis:eventTime            "2019-04-02T15:00:00.000+01:00"^^xsd:dateTime ;
+29,30c35,36
+<         epcis:sensorElementList    [ epcis:sensorMetadata  [ epcis:endTime    "2019-04-02T14:59:59.999+01:00"^^xsd:dateTimeStamp ;
+<                                                              epcis:startTime  "2019-04-01T15:00:00.000+01:00"^^xsd:dateTimeStamp
+---
+>         epcis:sensorElementList    [ epcis:sensorMetadata  [ epcis:endTime    "2019-04-02T14:59:59.999+01:00"^^xsd:dateTime ;
+>                                                              epcis:startTime  "2019-04-01T15:00:00.000+01:00"^^xsd:dateTime
+32,35c38,41
+<                                      epcis:sensorReport    [ epcis:maxValue  7.25E1 ;
+<                                                              epcis:minValue  6.92E1 ;
+<                                                              epcis:type      <file://C:/Humidity> ;
+<                                                              epcis:uom       "A93"
+---
+>                                      epcis:sensorReport    [ epcis:maxValue         7.25E1 ;
+>                                                              epcis:measurementType  gs1:Humidity ;
+>                                                              epcis:minValue         6.92E1 ;
+>                                                              epcis:uom              "A93"
+37,40c43,46
+<                                      epcis:sensorReport    [ epcis:maxValue  1.38E1 ;
+<                                                              epcis:minValue  1.24E1 ;
+<                                                              epcis:type      gs1:MT-Temperature ;
+<                                                              epcis:uom       "CEL"
+---
+>                                      epcis:sensorReport    [ epcis:maxValue         1.38E1 ;
+>                                                              epcis:measurementType  gs1:Temperature ;
+>                                                              epcis:minValue         1.24E1 ;
+>                                                              epcis:uom              "CEL"
+43,48d48
+< 
+< [ rdf:type         epcis:EPCISDocument ;
+<   dcterms:created  "2005-07-11T11:30:47.0Z" ;
+<   owl:versionInfo  "2.0" ;
+<   epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;b507b2720c96cd99855eabb101e8617d48622eff4ceaad0a416b3c10dfd316ee?ver=CBV2.0> ]
+< ] .

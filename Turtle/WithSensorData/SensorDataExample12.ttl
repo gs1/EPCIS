@@ -1,0 +1,74 @@
+@prefix cbv:      <https://ns.gs1.org/cbv/> .
+@prefix cbvmda:   <urn:epcglobal:cbv:mda:> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix epcis:    <https://ns.gs1.org/epcis/> .
+@prefix ex:       <http://epcis.example.com/ns/> .
+@prefix examp:    <http://ns.example.com/epcis/> .
+@prefix example:  <https://ns.example.com/epcis> .
+@prefix example1: <https://ns.example1.com/epcis> .
+@prefix example2: <https://ns.example2.com/epcis> .
+@prefix example3: <https://ns.example3.com/epcis> .
+@prefix example4: <https://ns.example4.com/epcis> .
+@prefix ext1:     <http://ext.com/ext1/> .
+@prefix ext2:     <http://ext.com/ext2/> .
+@prefix ext3:     <http://ext.com/ext3/> .
+@prefix gs1:      <https://gs1.org/voc/> .
+@prefix owl:      <http://www.w3.org/2002/07/owl#> .
+@prefix rail:     <urn:gs1:epcisapp:rail:> .
+@prefix rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+
+[ rdf:type         epcis:EPCISDocument ;
+  epcis:epcisBody  [ epcis:eventList  [ rdf:type                   epcis:TransformationEvent ;
+                                        example:internalData       [ example:machine    "urn:epc:id:giai:4012345.ABC" ;
+                                                                     example:procedure  "A-1"
+                                                                   ] ;
+                                        example4:otherThings       "some text" ;
+                                        epcis:bizLocation          <urn:epc:id:sgln:4023333.00001.12> ;
+                                        epcis:bizStep              cbv:BizStep-commissioning ;
+                                        epcis:errorDeclaration     [ example:field          "foo bar" ;
+                                                                     example:issuer         "Employee 123" ;
+                                                                     example3:errorCodes    [ example3:value1   "34" ;
+                                                                                              example3:value44  "66"
+                                                                                            ] ;
+                                                                     epcis:declarationTime  "2020-09-29T13:00:00.000Z"^^xsd:dateTimeStamp
+                                                                   ] ;
+                                        epcis:eventTime            "2020-09-29T12:00:00.000Z"^^xsd:dateTimeStamp ;
+                                        epcis:eventTimeZoneOffset  "+02:00" ;
+                                        epcis:ilmd                 [ <cbvmda:lotNumber>       "LOTABC" ;
+                                                                     example:grading          "A" ;
+                                                                     example2:userMasterData  [ example2:sizeCode
+                                                                                       "B-2" ]
+                                                                   ] ;
+                                        epcis:inputQuantityList    [ epcis:epcClass  <urn:epc:class:lgtin:4023333.055555.ABC123> ;
+                                                                     epcis:quantity  2.5E1 ;
+                                                                     epcis:uom       "KGM"
+                                                                   ] ;
+                                        epcis:outputEPCList        <urn:epc:id:sgtin:4012345.012345.987> , <urn:epc:id:sgtin:4012345.012345.988> ;
+                                        epcis:readPoint            <urn:epc:id:sgln:4023333.00000.0> ;
+                                        epcis:sensorElementList    [ rdf:type                   epcis:SensorElement ;
+                                                                     example:furtherSensorData  [ example:measure1  "123.5" ;
+                                                                                                  example:measure2  "0.987"
+                                                                                                ] ;
+                                                                     example:someUserField      "abc123" ;
+                                                                     epcis:sensorMetadata       [ epcis:endTime    "2019-04-02T13:59:59.999Z"^^xsd:dateTimeStamp ;
+                                                                                                  epcis:startTime  "2019-04-01T14:00:00.000Z"^^xsd:dateTimeStamp
+                                                                                                ] ;
+                                                                     epcis:sensorReport         [ epcis:stringValue  "someSensorOutput" ;
+                                                                                                  epcis:type         example:someSensorProperty
+                                                                                                ] ;
+                                                                     epcis:sensorReport         [ example:cv       "123" ;
+                                                                                                  epcis:maxValue   1.38E1 ;
+                                                                                                  epcis:meanValue  1.32E1 ;
+                                                                                                  epcis:minValue   1.24E1 ;
+                                                                                                  epcis:percRank   5.0E1 ;
+                                                                                                  epcis:percValue  1.27E1 ;
+                                                                                                  epcis:sDev       4.1E-1 ;
+                                                                                                  epcis:type       gs1:MT-Temperature ;
+                                                                                                  epcis:uom        "CEL"
+                                                                                                ]
+                                                                   ]
+                                      ]
+                   ]
+] .

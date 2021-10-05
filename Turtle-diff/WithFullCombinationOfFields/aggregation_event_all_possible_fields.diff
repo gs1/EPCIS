@@ -1,0 +1,119 @@
+23c23
+<   dcterms:created  "2013-06-04T14:59:02.099+02:00" ;
+---
+>   dcterms:created  "2013-06-04T14:59:02.099+02:00"^^xsd:dateTime ;
+26c26
+<                                         ext1:array                   "true" , "22" , "stringInArray" , "12" , "2013-06-08T14:58:56.591Z" ;
+---
+>                                         ext1:array                   "stringInArray" , "true" , "12" , "22" , "2013-06-08T14:58:56.591Z" ;
+49,52c49
+<                                         epcis:bizTransactionList     [ epcis:bizTransaction      "urn:epc:id:gdti:0614141.00001.1618034"^^xsd:anyURI ;
+<                                                                        epcis:bizTransactionType  cbv:BTT-po
+<                                                                      ] ;
+<                                         epcis:bizTransactionList     [ epcis:bizTransaction      "urn:epc:id:gsrn:0614141.0000010253"^^xsd:anyURI ;
+---
+>                                         epcis:bizTransactionList     [ epcis:bizTransaction      <urn:epc:id:gsrn:0614141.0000010253> ;
+55c52,55
+<                                         epcis:childEPCs              <urn:epc:id:sgtin:0614141.107346.2017> , <urn:epc:id:sgtin:0614141.107346.2018> ;
+---
+>                                         epcis:bizTransactionList     [ epcis:bizTransaction      <urn:epc:id:gdti:0614141.00001.1618034> ;
+>                                                                        epcis:bizTransactionType  cbv:BTT-po
+>                                                                      ] ;
+>                                         epcis:childEPCs              <urn:epc:id:sgtin:0614141.107346.2018> , <urn:epc:id:sgtin:0614141.107346.2017> ;
+63,66c63
+<                                         epcis:destinationList        [ epcis:destination              <urn:epc:id:pgln:0614141.00777> ;
+<                                                                        epcis:sourceOrDestinationType  cbv:SDT-possessing_party
+<                                                                      ] ;
+<                                         epcis:destinationList        [ epcis:destination              <urn:epc:id:sgln:0614141.00777.0> ;
+---
+>                                         epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:sgln:0614141.00777.0> ;
+69c66,69
+<                                         epcis:destinationList        [ epcis:destination              <urn:epc:id:pgln:0614141.00777> ;
+---
+>                                         epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:pgln:0614141.00777> ;
+>                                                                        epcis:sourceOrDestinationType  cbv:SDT-possessing_party
+>                                                                      ] ;
+>                                         epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:pgln:0614141.00777> ;
+73c73
+<                                         epcis:eventTime              "2013-06-08T14:58:56.591Z"^^xsd:dateTimeStamp ;
+---
+>                                         epcis:eventTime              "2013-06-08T14:58:56.591Z"^^xsd:dateTime ;
+76,77c76,77
+<                                         epcis:persistentDisposition  [ epcis:set    <file://C:/completeness_verified> ;
+<                                                                        epcis:unset  <file://C:/completeness_inferred>
+---
+>                                         epcis:persistentDisposition  [ epcis:set    cbv:Disp-completeness_verified ;
+>                                                                        epcis:unset  cbv:Disp-completeness_inferred
+81c81
+<                                                                        ext1:array            "12" , "2013-06-08T14:58:56.591Z" , "22" , "stringInArray" , "true" ;
+---
+>                                                                        ext1:array            "22" , "true" , "12" , "stringInArray" , "2013-06-08T14:58:56.591Z" ;
+106c106
+<                                                                                                epcis:endTime               "2019-04-02T13:55:00.000Z"^^xsd:dateTimeStamp ;
+---
+>                                                                                                epcis:endTime               "2019-04-02T13:55:00.000Z"^^xsd:dateTime ;
+108,109c108,109
+<                                                                                                epcis:startTime             "2019-04-02T12:55:01.000Z"^^xsd:dateTimeStamp ;
+<                                                                                                epcis:time                  "2019-04-02T13:05:00.000Z"^^xsd:dateTimeStamp
+---
+>                                                                                                epcis:startTime             "2019-04-02T12:55:01.000Z"^^xsd:dateTime ;
+>                                                                                                epcis:time                  "2019-04-02T13:05:00.000Z"^^xsd:dateTime
+111,131c111,132
+<                                                                        epcis:sensorReport    [ epcis:booleanValue          true ;
+<                                                                                                epcis:chemicalSubstance     <https://identifiers.org/inchikey:CZMRCDWAGMRECN-UGDNZRGBSA-N> ;
+<                                                                                                epcis:component             "example:x" ;
+<                                                                                                epcis:dataProcessingMethod  <https://example.com/gdti/4012345000054987> ;
+<                                                                                                epcis:deviceID              <urn:epc:id:giai:4000001.111> ;
+<                                                                                                epcis:deviceMetadata        <https://id.gs1.org/giai/4000001111> ;
+<                                                                                                epcis:hexBinaryValue        "f0f0f0" ;
+<                                                                                                epcis:maxValue              2.62E1 ;
+<                                                                                                epcis:meanValue             1.32E1 ;
+<                                                                                                epcis:microorganism         <https://www.ncbi.nlm.nih.gov/taxonomy/1126011> ;
+<                                                                                                epcis:minValue              2.6E1 ;
+<                                                                                                epcis:percRank              5.0E1 ;
+<                                                                                                epcis:percValue             1.27E1 ;
+<                                                                                                epcis:rawData               <https://example.org/giai/401234599999> ;
+<                                                                                                epcis:sDev                  1.0E-1 ;
+<                                                                                                epcis:stringValue           "SomeString" ;
+<                                                                                                epcis:time                  "2019-07-19T13:00:00.000Z"^^xsd:dateTimeStamp ;
+<                                                                                                epcis:type                  gs1:Temperature ;
+<                                                                                                epcis:uom                   "CEL" ;
+<                                                                                                epcis:uriValue              "https://id.gs1.org/giai/4000001111"^^xsd:anyURI ;
+<                                                                                                epcis:value                 2.6E1
+---
+>                                                                        epcis:sensorReport    [ epcis:booleanValue           true ;
+>                                                                                                epcis:chemicalSubstance      <https://identifiers.org/inchikey:CZMRCDWAGMRECN-UGDNZRGBSA-N> ;
+>                                                                                                epcis:component              <example:x> ;
+>                                                                                                epcis:dataProcessingMethod   <https://example.com/gdti/4012345000054987> ;
+>                                                                                                epcis:deviceID               <urn:epc:id:giai:4000001.111> ;
+>                                                                                                epcis:deviceMetadata         <https://id.gs1.org/giai/4000001111> ;
+>                                                                                                epcis:hexBinaryValue         "f0f0f0"^^xsd:hexBinary ;
+>                                                                                                epcis:maxValue               2.62E1 ;
+>                                                                                                epcis:meanValue              1.32E1 ;
+>                                                                                                epcis:measurementType        gs1:Temperature ;
+>                                                                                                epcis:microorganism          <https://www.ncbi.nlm.nih.gov/taxonomy/1126011> ;
+>                                                                                                epcis:minValue               2.6E1 ;
+>                                                                                                epcis:percRank               5.0E1 ;
+>                                                                                                epcis:percValue              1.27E1 ;
+>                                                                                                epcis:rawData                <https://example.org/giai/401234599999> ;
+>                                                                                                epcis:sDev                   1.0E-1 ;
+>                                                                                                epcis:someFurtherReportData  "someText" ;
+>                                                                                                epcis:stringValue            "SomeString" ;
+>                                                                                                epcis:time                   "2019-07-19T13:00:00.000Z"^^xsd:dateTime ;
+>                                                                                                epcis:uom                    "CEL" ;
+>                                                                                                epcis:uriValue               <https://id.gs1.org/giai/4000001111> ;
+>                                                                                                epcis:value                  2.6E1
+134,137c135
+<                                         epcis:sourceList             [ epcis:source                   <urn:epc:id:pgln:4012345.00225> ;
+<                                                                        epcis:sourceOrDestinationType  cbv:SDT-possessing_party
+<                                                                      ] ;
+<                                         epcis:sourceList             [ epcis:source                   <urn:epc:id:sgln:4012345.00225.0> ;
+---
+>                                         epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:sgln:4012345.00225.0> ;
+140c138,141
+<                                         epcis:sourceList             [ epcis:source                   <urn:epc:id:pgln:4012345.00225> ;
+---
+>                                         epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:pgln:4012345.00225> ;
+>                                                                        epcis:sourceOrDestinationType  cbv:SDT-possessing_party
+>                                                                      ] ;
+>                                         epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:pgln:4012345.00225> ;
