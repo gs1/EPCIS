@@ -102,6 +102,12 @@ epcis:TransactionEvent   a owl:Class , rdfs:Class ;
         epcis:jsonldUriLabel "eventID";
         sw:term_status    "stable" .
 
+epcis:Transformation a owl:Class , rdfs:Class ;
+        rdfs:comment      "A transformation business processes that takes a longer period of time than a single TransformationEvent, so is associated with a series of such events. When events share the same Transformation, the meaning is that the inputs to any of those events may have contributed in some way to each of the outputs in any of those same events."@en ;
+        rdfs:isDefinedBy  epcis: ;
+        rdfs:label        "Transformation" ;
+        sw:term_status    "stable" .
+
 epcis:TransformationEvent        a owl:Class , rdfs:Class ;
         rdfs:comment      "A TransformationEvent captures information about an event in which one or more physical or digital objects identified by instance-level (EPC) or class-level (EPC Class) identifiers are fully or partially consumed as inputs and one or more objects identified by instance-level (EPC) or class-level (EPC Class) identifiers are produced as outputs. The TransformationEvent captures the relationship between the inputs and the outputs, such that any of the inputs may have contributed in some way to each of the outputs."@en ;
         rdfs:isDefinedBy  epcis: ;
@@ -332,6 +338,18 @@ epcis:declarationTime    a owl:DatatypeProperty , rdf:Property ;
         schema:rangeIncludes xsd:dateTimeStamp ;
         sw:term_status    "stable" .
 
+epcis:destination  a      owl:ObjectProperty , rdf:Property ;
+        rdfs:comment      """An identifier that denotes the specific destination of a business transfer."@en ;
+Its type (gs1:Organization or gs1:Place) must correlate with sourceOrDestinationType."""@en ;
+        rdfs:domain       epcis:SourceOrDestination ;
+        schema:domainIncludes epcis:SourceOrDestination ;
+        rdfs:isDefinedBy  epcis: ;
+        rdfs:label        "destination" ;
+        rdfs:range        [a owl:Class ;
+                           owl:unionOf (gs1:Organization gs1:Place)] ;
+        schema:rangeIncludes gs1:Organization, gs1:Place ;
+        sw:term_status    "stable" .
+
 epcis:destinationList    a owl:ObjectProperty , rdf:Property ;
         rdfs:comment      "(Optional) An unordered list of Destination elements that provide context about the terminating endpoint of a business transfer of which this event is a part."@en ;
         rdfs:domain       epcis:EPCISEvent ;
@@ -473,6 +491,16 @@ epcis:hexBinaryValue  a   owl:DatatypeProperty , rdf:Property ;
         rdfs:label        "hexBinaryValue" ;
         rdfs:range        xsd:hexBinary ;
         schema:rangeIncludes xsd:hexBinary ;
+        sw:term_status    "stable" .
+
+epcis:transformationID  a owl:ObjectProperty , rdf:Property ;
+        rdfs:comment      "Associates severe TransformationEvents with a longer-running Transformation process, therefore linking them together."@en ;
+        rdfs:domain       epcis:TransformationEvent ;
+        schema:domainIncludes epcis:TransformationEvent ;
+        rdfs:isDefinedBy  epcis: ;
+        rdfs:label        "transformationID" ;
+        rdfs:range        epcis:Transformation ;
+        schema:rangeIncludes epcis:Transformation ;
         sw:term_status    "stable" .
 
 epcis:ilmd  a             owl:ObjectProperty , rdf:Property ;
@@ -839,3 +867,13 @@ epcis:value  a            owl:DatatypeProperty , rdf:Property ;
         rdfs:range        xsd:double ;
         schema:rangeIncludes xsd:double ;
         sw:term_status    "stable" .
+
+epcis:certificationInfo  a           owl:ObjectProperty , rdf:Property ;
+      rdfs:comment      "TODO"@en ;
+      rdfs:domain       epcis:EPCISEvent ;
+      schema:domainIncludes epcis:EPCISEvent ;
+      rdfs:isDefinedBy  epcis: ;
+      rdfs:label        "certificationInfo"@en ;
+      rdfs:range        gs1:CertificationDetails ;
+      schema:rangeIncludes gs1:CertificationDetails ;
+      sw:term_status    "stable" .
