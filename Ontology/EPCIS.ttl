@@ -103,7 +103,8 @@ epcis:TransactionEvent   a owl:Class , rdfs:Class ;
         sw:term_status    "stable" .
 
 epcis:Transformation a owl:Class , rdfs:Class ;
-        rdfs:comment      "A transformation business processes that takes a longer period of time than a single TransformationEvent, so is associated with a series of such events. When events share the same Transformation, the meaning is that the inputs to any of those events may have contributed in some way to each of the outputs in any of those same events."@en ;
+        rdfs:comment      """A transformation business processes that takes a longer period of time than a single TransformationEvent, so is associated with a series of such events.
+When events share the same Transformation, the meaning is that the inputs to any of those events may have contributed in some way to each of the outputs in any of those same events."""@en ;
         rdfs:isDefinedBy  epcis: ;
         rdfs:label        "Transformation" ;
         sw:term_status    "stable" .
@@ -260,7 +261,7 @@ epcis:booleanValue  a     owl:DatatypeProperty , rdf:Property ;
         sw:term_status    "stable" .
 
 epcis:certification a   owl:ObjectProperty , rdf:Property ;
-      rdfs:comment      "CertificationDetails relevant for Objects, Places or Organizations mentioned in this event"@en ;
+      rdfs:comment      "CertificationDetails relevant for Objects, Places and/or Organizations mentioned in this Event"@en ;
       rdfs:domain       epcis:EPCISEvent ;
       schema:domainIncludes epcis:EPCISEvent ;
       rdfs:isDefinedBy  epcis: ;
@@ -336,18 +337,6 @@ epcis:declarationTime    a owl:DatatypeProperty , rdf:Property ;
         rdfs:label        "declarationTime" ;
         rdfs:range        xsd:dateTimeStamp ;
         schema:rangeIncludes xsd:dateTimeStamp ;
-        sw:term_status    "stable" .
-
-epcis:destination  a      owl:ObjectProperty , rdf:Property ;
-        rdfs:comment      """An identifier that denotes the specific destination of a business transfer."@en ;
-Its type (gs1:Organization or gs1:Place) must correlate with sourceOrDestinationType."""@en ;
-        rdfs:domain       epcis:SourceOrDestination ;
-        schema:domainIncludes epcis:SourceOrDestination ;
-        rdfs:isDefinedBy  epcis: ;
-        rdfs:label        "destination" ;
-        rdfs:range        [a owl:Class ;
-                           owl:unionOf (gs1:Organization gs1:Place)] ;
-        schema:rangeIncludes gs1:Organization, gs1:Place ;
         sw:term_status    "stable" .
 
 epcis:destinationList    a owl:ObjectProperty , rdf:Property ;
@@ -494,7 +483,7 @@ epcis:hexBinaryValue  a   owl:DatatypeProperty , rdf:Property ;
         sw:term_status    "stable" .
 
 epcis:transformationID  a owl:ObjectProperty , rdf:Property ;
-        rdfs:comment      "Associates severe TransformationEvents with a longer-running Transformation process, therefore linking them together."@en ;
+        rdfs:comment      "(Optional) Associates several TransformationEvents with a longer-running Transformation process, therefore linking them together."@en ;
         rdfs:domain       epcis:TransformationEvent ;
         schema:domainIncludes epcis:TransformationEvent ;
         rdfs:isDefinedBy  epcis: ;
@@ -771,7 +760,7 @@ Its type (gs1:Organization or gs1:Place) must correlate with sourceOrDestination
         rdfs:domain       epcis:SourceOrDestination ;
         schema:domainIncludes epcis:SourceOrDestination ;
         rdfs:isDefinedBy  epcis: ;
-        rdfs:label        "destination" ;
+        rdfs:label        "sourceOrDestination" ;
         rdfs:range        [a owl:Class ;
                            owl:unionOf (gs1:Organization gs1:Place)] ;
         schema:rangeIncludes gs1:Organization, gs1:Place ;
@@ -867,13 +856,3 @@ epcis:value  a            owl:DatatypeProperty , rdf:Property ;
         rdfs:range        xsd:double ;
         schema:rangeIncludes xsd:double ;
         sw:term_status    "stable" .
-
-epcis:certificationInfo  a           owl:ObjectProperty , rdf:Property ;
-      rdfs:comment      "TODO"@en ;
-      rdfs:domain       epcis:EPCISEvent ;
-      schema:domainIncludes epcis:EPCISEvent ;
-      rdfs:isDefinedBy  epcis: ;
-      rdfs:label        "certificationInfo"@en ;
-      rdfs:range        gs1:CertificationDetails ;
-      schema:rangeIncludes gs1:CertificationDetails ;
-      sw:term_status    "stable" .

@@ -235,6 +235,17 @@
       "term_status": "stable"
     },
     {
+      "@id": "epcis:Transformation",
+      "@type": [
+        "owl:Class",
+        "rdfs:Class"
+      ],
+      "comment": "A transformation business processes that takes a longer period of time than a single TransformationEvent, so is associated with a series of such events.\nWhen events share the same Transformation, the meaning is that the inputs to any of those events may have contributed in some way to each of the outputs in any of those same events.",
+      "isDefinedBy": "https://ns.gs1.org/epcis/",
+      "label": "Transformation",
+      "term_status": "stable"
+    },
+    {
       "@id": "epcis:TransformationEvent",
       "@type": [
         "owl:Class",
@@ -496,7 +507,7 @@
         "owl:ObjectProperty",
         "rdf:Property"
       ],
-      "comment": "CertificationDetails relevant for Objects, Places or Organizations mentioned in this event",
+      "comment": "CertificationDetails relevant for Objects, Places and/or Organizations mentioned in this Event",
       "domain": "epcis:EPCISEvent",
       "domainIncludes": "epcis:EPCISEvent",
       "isDefinedBy": "https://ns.gs1.org/epcis/",
@@ -889,6 +900,21 @@
       "label": "hexBinaryValue",
       "range": "xsd:hexBinary",
       "rangeIncludes": "xsd:hexBinary",
+      "term_status": "stable"
+    },
+    {
+      "@id": "epcis:transformationID",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "comment": "(Optional) Associates several TransformationEvents with a longer-running Transformation process, therefore linking them together.",
+      "domain": "epcis:TransformationEvent",
+      "domainIncludes": "epcis:TransformationEvent",
+      "isDefinedBy": "https://ns.gs1.org/epcis/",
+      "label": "transformationID",
+      "range": "epcis:Transformation",
+      "rangeIncludes": "epcis:Transformation",
       "term_status": "stable"
     },
     {
@@ -1349,7 +1375,7 @@
         "source",
         "destination"
       ],
-      "label": "destination",
+      "label": "sourceOrDestination",
       "range": {
         "@type": "owl:Class",
         "unionOf": {
