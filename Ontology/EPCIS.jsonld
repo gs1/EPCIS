@@ -109,10 +109,7 @@
       "@id": "https://ns.gs1.org/epcis/",
       "@type": "owl:Ontology",
       "created": "2021-06-01",
-      "creator": [
-        "https://gs1.org/",
-        "https://ontotext.com"
-      ],
+      "creator": "https://gs1.org/",
       "label": "EPCIS Ontology",
       "modified": "2021-09-30",
       "preferredNamespacePrefix": "epcis",
@@ -130,12 +127,6 @@
       "@type": "schema:Organization",
       "description": "GS1 is an international organization that sets the global standards in transport and logistics",
       "name": "GS1"
-    },
-    {
-      "@id": "https://ontotext.com/",
-      "@type": "schema:Organization",
-      "description": "Ontotext is a leading semantic technology company",
-      "name": "Ontotext (Sirma AI)"
     },
     {
       "@id": "epcis:jsonldLabel",
