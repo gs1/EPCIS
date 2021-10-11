@@ -5,7 +5,12 @@
         "cbv": "https://ns.gs1.org/cbv/",
        
         "active": "cbv:Disp-active",
+        "available": "cbv:Disp-available",
+        "completeness_verified": "cbv:Disp-completeness_verified",
+        "completeness_inferred": "cbv:Disp-completeness_inferred",
+        "conformant": "cbv:Disp-conformant",
         "container_closed": "cbv:Disp-container_closed",
+        "container_open": "cbv:Disp-container_open",
         "damaged": "cbv:Disp-damaged",
         "destroyed": "cbv:Disp-destroyed",
         "dispensed": "cbv:Disp-dispensed",
@@ -15,7 +20,12 @@
         "in_progress": "cbv:Disp-in_progress",
         "in_transit": "cbv:Disp-in_transit",
         "inactive": "cbv:Disp-inactive",
+        "mismatch_instance": "cbv:Disp-mismatch_instance",
+        "mismatch_class": "cbv:Disp-mismatch_class",
+        "mismatch_quantity": "cbv:Disp-mismatch_quantity",        
+        "needs_replacement": "cbv:Disp-needs_replacement",
         "no_pedigree_match": "cbv:Disp-no_pedigree_match",
+        "non_conformant": "cbv:Disp-non_conformant",
         "non_sellable_other": "cbv:Disp-non_sellable_other",
         "partially_dispensed": "cbv:Disp-partially_dispensed",
         "recalled": "cbv:Disp-recalled",
@@ -25,6 +35,7 @@
         "sellable_accessible": "cbv:Disp-sellable_accessible",
         "sellable_not_accessible": "cbv:Disp-sellable_not_accessible",
         "stolen": "cbv:Disp-stolen",
+        "unavailable": "cbv:Disp-unavailable",
         "unknown": "cbv:Disp-unknown"
     }
 }
