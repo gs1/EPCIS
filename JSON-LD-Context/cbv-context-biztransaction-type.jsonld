@@ -15,6 +15,7 @@
         "recadv": "cbv:BTT-recadv",        
         "rma": "cbv:BTT-rma",        
         "testprd": "cbv:BTT-testprd",        
-        "testres": "cbv:BTT-testres"
+        "testres": "cbv:BTT-testres",
+        "upevt": "cbv:BTT-upevt"        
     }
 }
