@@ -34,6 +34,8 @@
         "replacing": "cbv:BizStep-replacing",
         "reserving": "cbv:BizStep-reserving",
         "retail_selling": "cbv:BizStep-retail_selling",
+        "sampling": "cbv:BizStep-sampling",
+        "sensor_reporting": "cbv:BizStep-sensor_reporting",
         "shipping": "cbv:BizStep-shipping",
         "staging_outbound": "cbv:BizStep-staging_outbound",
         "stock_taking": "cbv:BizStep-stock_taking",
