@@ -1,4 +1,4 @@
-﻿{
+{
   "openapi": "3.0.3",
   "info": {
     "version": "2.0.0",
@@ -67,8 +67,8 @@
               "GS1-EPC-Format": {
                 "$ref": "#/components/headers/GS1-EPC-Format"
               },
-              "GS1-CBV-Format": {
-                "$ref": "#/components/headers/GS1-CBV-Format"
+              "GS1-CBV-XML-Format": {
+                "$ref": "#/components/headers/GS1-CBV-XML-Format"
               },
               "GS1-EPCIS-Extensions": {
                 "$ref": "#/components/headers/GS1-EPCIS-Extensions"
@@ -146,8 +146,8 @@
               "GS1-EPC-Format": {
                 "$ref": "#/components/headers/GS1-EPC-Format"
               },
-              "GS1-CBV-Format": {
-                "$ref": "#/components/headers/GS1-CBV-Format"
+              "GS1-CBV-XML-Format": {
+                "$ref": "#/components/headers/GS1-CBV-XML-Format"
               },
               "GS1-EPCIS-Extensions": {
                 "$ref": "#/components/headers/GS1-EPCIS-Extensions"
@@ -207,7 +207,7 @@
             "$ref": "#/components/parameters/GS1-EPC-Format"
           },
           {
-            "$ref": "#/components/parameters/GS1-CBV-Format"
+            "$ref": "#/components/parameters/GS1-CBV-XML-Format"
           },
           {
             "$ref": "#/components/parameters/GS1-EPCIS-Extensions"
@@ -254,8 +254,8 @@
               "GS1-EPC-Format": {
                 "$ref": "#/components/headers/GS1-EPC-Format"
               },
-              "GS1-CBV-Format": {
-                "$ref": "#/components/headers/GS1-CBV-Format"
+              "GS1-CBV-XML-Format": {
+                "$ref": "#/components/headers/GS1-CBV-XML-Format"
               },
               "GS1-EPCIS-Extensions": {
                 "$ref": "#/components/headers/GS1-EPCIS-Extensions"
@@ -367,8 +367,8 @@
               "GS1-EPC-Format": {
                 "$ref": "#/components/headers/GS1-EPC-Format"
               },
-              "GS1-CBV-Format": {
-                "$ref": "#/components/headers/GS1-CBV-Format"
+              "GS1-CBV-XML-Format": {
+                "$ref": "#/components/headers/GS1-CBV-XML-Format"
               },
               "GS1-EPCIS-Extensions": {
                 "$ref": "#/components/headers/GS1-EPCIS-Extensions"
@@ -475,8 +475,8 @@
               "GS1-EPC-Format": {
                 "$ref": "#/components/headers/GS1-EPC-Format"
               },
-              "GS1-CBV-Format": {
-                "$ref": "#/components/headers/GS1-CBV-Format"
+              "GS1-CBV-XML-Format": {
+                "$ref": "#/components/headers/GS1-CBV-XML-Format"
               },
               "GS1-EPCIS-Extensions": {
                 "$ref": "#/components/headers/GS1-EPCIS-Extensions"
@@ -524,8 +524,8 @@
               "GS1-EPC-Format": {
                 "$ref": "#/components/headers/GS1-EPC-Format"
               },
-              "GS1-CBV-Format": {
-                "$ref": "#/components/headers/GS1-CBV-Format"
+              "GS1-CBV-XML-Format": {
+                "$ref": "#/components/headers/GS1-CBV-XML-Format"
               },
               "GS1-EPCIS-Extensions": {
                 "$ref": "#/components/headers/GS1-EPCIS-Extensions"
@@ -701,7 +701,7 @@
           "$ref": "#/components/parameters/GS1-EPC-Format"
         },
         {
-          "$ref": "#/components/parameters/GS1-CBV-Format"
+          "$ref": "#/components/parameters/GS1-CBV-XML-Format"
         },
         {
           "$ref": "#/components/parameters/GS1-EPCIS-Extensions"
@@ -742,8 +742,8 @@
               "GS1-EPC-Format": {
                 "$ref": "#/components/headers/GS1-EPC-Format"
               },
-              "GS1-CBV-Format": {
-                "$ref": "#/components/headers/GS1-CBV-Format"
+              "GS1-CBV-XML-Format": {
+                "$ref": "#/components/headers/GS1-CBV-XML-Format"
               },
               "GS1-EPCIS-Extensions": {
                 "$ref": "#/components/headers/GS1-EPCIS-Extensions"
@@ -842,8 +842,8 @@
               "GS1-EPC-Format": {
                 "$ref": "#/components/headers/GS1-EPC-Format"
               },
-              "GS1-CBV-Format": {
-                "$ref": "#/components/headers/GS1-CBV-Format"
+              "GS1-CBV-XML-Format": {
+                "$ref": "#/components/headers/GS1-CBV-XML-Format"
               },
               "GS1-EPCIS-Extensions": {
                 "$ref": "#/components/headers/GS1-EPCIS-Extensions"
@@ -969,8 +969,8 @@
               "GS1-EPC-Format": {
                 "$ref": "#/components/headers/GS1-EPC-Format"
               },
-              "GS1-CBV-Format": {
-                "$ref": "#/components/headers/GS1-CBV-Format"
+              "GS1-CBV-XML-Format": {
+                "$ref": "#/components/headers/GS1-CBV-XML-Format"
               },
               "GS1-EPCIS-Extensions": {
                 "$ref": "#/components/headers/GS1-EPCIS-Extensions"
@@ -1007,7 +1007,7 @@
             "$ref": "#/components/parameters/GS1-EPC-Format"
           },
           {
-            "$ref": "#/components/parameters/GS1-CBV-Format"
+            "$ref": "#/components/parameters/GS1-CBV-XML-Format"
           },
           {
             "$ref": "#/components/parameters/GS1-EPCIS-Extensions"
@@ -1079,7 +1079,7 @@
             "$ref": "#/components/parameters/GS1-EPC-Format"
           },
           {
-            "$ref": "#/components/parameters/GS1-CBV-Format"
+            "$ref": "#/components/parameters/GS1-CBV-XML-Format"
           },
           {
             "$ref": "#/components/parameters/GS1-EPCIS-Extensions"
@@ -1108,8 +1108,8 @@
               "GS1-EPC-Format": {
                 "$ref": "#/components/headers/GS1-EPC-Format"
               },
-              "GS1-CBV-Format": {
-                "$ref": "#/components/headers/GS1-CBV-Format"
+              "GS1-CBV-XML-Format": {
+                "$ref": "#/components/headers/GS1-CBV-XML-Format"
               },
               "GS1-EPCIS-Extensions": {
                 "$ref": "#/components/headers/GS1-EPCIS-Extensions"
@@ -1195,8 +1195,8 @@
               "GS1-EPC-Format": {
                 "$ref": "#/components/headers/GS1-EPC-Format"
               },
-              "GS1-CBV-Format": {
-                "$ref": "#/components/headers/GS1-CBV-Format"
+              "GS1-CBV-XML-Format": {
+                "$ref": "#/components/headers/GS1-CBV-XML-Format"
               },
               "GS1-EPCIS-Extensions": {
                 "$ref": "#/components/headers/GS1-EPCIS-Extensions"
@@ -1296,7 +1296,7 @@
             "$ref": "#/components/parameters/GS1-EPC-Format"
           },
           {
-            "$ref": "#/components/parameters/GS1-CBV-Format"
+            "$ref": "#/components/parameters/GS1-CBV-XML-Format"
           },
           {
             "$ref": "#/components/parameters/GS1-EPCIS-Extensions"
@@ -1377,7 +1377,7 @@
             "$ref": "#/components/parameters/GS1-EPC-Format"
           },
           {
-            "$ref": "#/components/parameters/GS1-CBV-Format"
+            "$ref": "#/components/parameters/GS1-CBV-XML-Format"
           },
           {
             "$ref": "#/components/parameters/GS1-EPCIS-Extensions"
@@ -1449,7 +1449,7 @@
             "$ref": "#/components/parameters/GS1-EPC-Format"
           },
           {
-            "$ref": "#/components/parameters/GS1-CBV-Format"
+            "$ref": "#/components/parameters/GS1-CBV-XML-Format"
           },
           {
             "$ref": "#/components/parameters/GS1-EPCIS-Extensions"
@@ -1478,8 +1478,8 @@
               "GS1-EPC-Format": {
                 "$ref": "#/components/headers/GS1-EPC-Format"
               },
-              "GS1-CBV-Format": {
-                "$ref": "#/components/headers/GS1-CBV-Format"
+              "GS1-CBV-XML-Format": {
+                "$ref": "#/components/headers/GS1-CBV-XML-Format"
               },
               "GS1-EPCIS-Extensions": {
                 "$ref": "#/components/headers/GS1-EPCIS-Extensions"
@@ -1565,8 +1565,8 @@
               "GS1-EPC-Format": {
                 "$ref": "#/components/headers/GS1-EPC-Format"
               },
-              "GS1-CBV-Format": {
-                "$ref": "#/components/headers/GS1-CBV-Format"
+              "GS1-CBV-XML-Format": {
+                "$ref": "#/components/headers/GS1-CBV-XML-Format"
               },
               "GS1-EPCIS-Extensions": {
                 "$ref": "#/components/headers/GS1-EPCIS-Extensions"
@@ -1666,7 +1666,7 @@
             "$ref": "#/components/parameters/GS1-EPC-Format"
           },
           {
-            "$ref": "#/components/parameters/GS1-CBV-Format"
+            "$ref": "#/components/parameters/GS1-CBV-XML-Format"
           },
           {
             "$ref": "#/components/parameters/GS1-EPCIS-Extensions"
@@ -1747,7 +1747,7 @@
             "$ref": "#/components/parameters/GS1-EPC-Format"
           },
           {
-            "$ref": "#/components/parameters/GS1-CBV-Format"
+            "$ref": "#/components/parameters/GS1-CBV-XML-Format"
           },
           {
             "$ref": "#/components/parameters/GS1-EPCIS-Extensions"
@@ -1819,7 +1819,7 @@
             "$ref": "#/components/parameters/GS1-EPC-Format"
           },
           {
-            "$ref": "#/components/parameters/GS1-CBV-Format"
+            "$ref": "#/components/parameters/GS1-CBV-XML-Format"
           },
           {
             "$ref": "#/components/parameters/GS1-EPCIS-Extensions"
@@ -1928,8 +1928,8 @@
               "GS1-EPC-Format": {
                 "$ref": "#/components/headers/GS1-EPC-Format"
               },
-              "GS1-CBV-Format": {
-                "$ref": "#/components/headers/GS1-CBV-Format"
+              "GS1-CBV-XML-Format": {
+                "$ref": "#/components/headers/GS1-CBV-XML-Format"
               },
               "GS1-EPCIS-Extensions": {
                 "$ref": "#/components/headers/GS1-EPCIS-Extensions"
@@ -2029,7 +2029,7 @@
             "$ref": "#/components/parameters/GS1-EPC-Format"
           },
           {
-            "$ref": "#/components/parameters/GS1-CBV-Format"
+            "$ref": "#/components/parameters/GS1-CBV-XML-Format"
           },
           {
             "$ref": "#/components/parameters/GS1-EPCIS-Extensions"
@@ -2110,7 +2110,7 @@
             "$ref": "#/components/parameters/GS1-EPC-Format"
           },
           {
-            "$ref": "#/components/parameters/GS1-CBV-Format"
+            "$ref": "#/components/parameters/GS1-CBV-XML-Format"
           },
           {
             "$ref": "#/components/parameters/GS1-EPCIS-Extensions"
@@ -2182,7 +2182,7 @@
             "$ref": "#/components/parameters/GS1-EPC-Format"
           },
           {
-            "$ref": "#/components/parameters/GS1-CBV-Format"
+            "$ref": "#/components/parameters/GS1-CBV-XML-Format"
           },
           {
             "$ref": "#/components/parameters/GS1-EPCIS-Extensions"
@@ -2214,8 +2214,8 @@
               "GS1-EPC-Format": {
                 "$ref": "#/components/headers/GS1-EPC-Format"
               },
-              "GS1-CBV-Format": {
-                "$ref": "#/components/headers/GS1-CBV-Format"
+              "GS1-CBV-XML-Format": {
+                "$ref": "#/components/headers/GS1-CBV-XML-Format"
               },
               "GS1-CBV-Extensions": {
                 "$ref": "#/components/headers/GS1-CBV-Extensions"
@@ -2297,8 +2297,8 @@
               "GS1-EPC-Format": {
                 "$ref": "#/components/headers/GS1-EPC-Format"
               },
-              "GS1-CBV-Format": {
-                "$ref": "#/components/headers/GS1-CBV-Format"
+              "GS1-CBV-XML-Format": {
+                "$ref": "#/components/headers/GS1-CBV-XML-Format"
               },
               "GS1-EPCIS-Extensions": {
                 "$ref": "#/components/headers/GS1-EPCIS-Extensions"
@@ -2398,7 +2398,7 @@
             "$ref": "#/components/parameters/GS1-EPC-Format"
           },
           {
-            "$ref": "#/components/parameters/GS1-CBV-Format"
+            "$ref": "#/components/parameters/GS1-CBV-XML-Format"
           },
           {
             "$ref": "#/components/parameters/GS1-EPCIS-Extensions"
@@ -2479,7 +2479,7 @@
             "$ref": "#/components/parameters/GS1-EPC-Format"
           },
           {
-            "$ref": "#/components/parameters/GS1-CBV-Format"
+            "$ref": "#/components/parameters/GS1-CBV-XML-Format"
           },
           {
             "$ref": "#/components/parameters/GS1-EPCIS-Extensions"
@@ -2551,7 +2551,7 @@
             "$ref": "#/components/parameters/GS1-EPC-Format"
           },
           {
-            "$ref": "#/components/parameters/GS1-CBV-Format"
+            "$ref": "#/components/parameters/GS1-CBV-XML-Format"
           },
           {
             "$ref": "#/components/parameters/GS1-EPCIS-Extensions"
@@ -2660,8 +2660,8 @@
               "GS1-EPC-Format": {
                 "$ref": "#/components/headers/GS1-EPC-Format"
               },
-              "GS1-CBV-Format": {
-                "$ref": "#/components/headers/GS1-CBV-Format"
+              "GS1-CBV-XML-Format": {
+                "$ref": "#/components/headers/GS1-CBV-XML-Format"
               },
               "GS1-EPCIS-Extensions": {
                 "$ref": "#/components/headers/GS1-EPCIS-Extensions"
@@ -2764,7 +2764,7 @@
             "$ref": "#/components/parameters/GS1-EPC-Format"
           },
           {
-            "$ref": "#/components/parameters/GS1-CBV-Format"
+            "$ref": "#/components/parameters/GS1-CBV-XML-Format"
           },
           {
             "$ref": "#/components/parameters/GS1-EPCIS-Extensions"
@@ -2845,7 +2845,7 @@
             "$ref": "#/components/parameters/GS1-EPC-Format"
           },
           {
-            "$ref": "#/components/parameters/GS1-CBV-Format"
+            "$ref": "#/components/parameters/GS1-CBV-XML-Format"
           },
           {
             "$ref": "#/components/parameters/GS1-EPCIS-Extensions"
@@ -2931,8 +2931,8 @@
               "GS1-EPC-Format": {
                 "$ref": "#/components/headers/GS1-EPC-Format"
               },
-              "GS1-CBV-Format": {
-                "$ref": "#/components/headers/GS1-CBV-Format"
+              "GS1-CBV-XML-Format": {
+                "$ref": "#/components/headers/GS1-CBV-XML-Format"
               },
               "GS1-EPCIS-Extensions": {
                 "$ref": "#/components/headers/GS1-EPCIS-Extensions"
@@ -3037,8 +3037,8 @@
               "GS1-EPC-Format": {
                 "$ref": "#/components/headers/GS1-EPC-Format"
               },
-              "GS1-CBV-Format": {
-                "$ref": "#/components/headers/GS1-CBV-Format"
+              "GS1-CBV-XML-Format": {
+                "$ref": "#/components/headers/GS1-CBV-XML-Format"
               },
               "GS1-EPCIS-Extensions": {
                 "$ref": "#/components/headers/GS1-EPCIS-Extensions"
@@ -3129,7 +3129,7 @@
             "$ref": "#/components/parameters/GS1-EPC-Format"
           },
           {
-            "$ref": "#/components/parameters/GS1-CBV-Format"
+            "$ref": "#/components/parameters/GS1-CBV-XML-Format"
           },
           {
             "$ref": "#/components/parameters/GS1-EPCIS-Extensions"
@@ -3163,8 +3163,8 @@
               "GS1-EPC-Format": {
                 "$ref": "#/components/headers/GS1-EPC-Format"
               },
-              "GS1-CBV-Format": {
-                "$ref": "#/components/headers/GS1-CBV-Format"
+              "GS1-CBV-XML-Format": {
+                "$ref": "#/components/headers/GS1-CBV-XML-Format"
               },
               "GS1-EPCIS-Extensions": {
                 "$ref": "#/components/headers/GS1-EPCIS-Extensions"
@@ -3249,8 +3249,8 @@
               "GS1-EPC-Format": {
                 "$ref": "#/components/headers/GS1-EPC-Format"
               },
-              "GS1-CBV-Format": {
-                "$ref": "#/components/headers/GS1-CBV-Format"
+              "GS1-CBV-XML-Format": {
+                "$ref": "#/components/headers/GS1-CBV-XML-Format"
               },
               "GS1-EPCIS-Extensions": {
                 "$ref": "#/components/headers/GS1-EPCIS-Extensions"
@@ -3367,8 +3367,8 @@
               "GS1-EPC-Format": {
                 "$ref": "#/components/headers/GS1-EPC-Format"
               },
-              "GS1-CBV-Format": {
-                "$ref": "#/components/headers/GS1-CBV-Format"
+              "GS1-CBV-XML-Format": {
+                "$ref": "#/components/headers/GS1-CBV-XML-Format"
               },
               "GS1-EPCIS-Extensions": {
                 "$ref": "#/components/headers/GS1-EPCIS-Extensions"
@@ -3487,7 +3487,7 @@
             "$ref": "#/components/parameters/GS1-EPC-Format"
           },
           {
-            "$ref": "#/components/parameters/GS1-CBV-Format"
+            "$ref": "#/components/parameters/GS1-CBV-XML-Format"
           },
           {
             "$ref": "#/components/parameters/GS1-EPCIS-Extensions"
@@ -3931,7 +3931,7 @@
             "$ref": "#/components/parameters/GS1-EPC-Format"
           },
           {
-            "$ref": "#/components/parameters/GS1-CBV-Format"
+            "$ref": "#/components/parameters/GS1-CBV-XML-Format"
           },
           {
             "$ref": "#/components/parameters/GS1-EPCIS-Extensions"
@@ -3992,8 +3992,8 @@
               "GS1-EPC-Format": {
                 "$ref": "#/components/headers/GS1-EPC-Format"
               },
-              "GS1-CBV-Format": {
-                "$ref": "#/components/headers/GS1-CBV-Format"
+              "GS1-CBV-XML-Format": {
+                "$ref": "#/components/headers/GS1-CBV-XML-Format"
               },
               "GS1-EPCIS-Extensions": {
                 "$ref": "#/components/headers/GS1-EPCIS-Extensions"
@@ -4077,8 +4077,8 @@
               "GS1-EPC-Format": {
                 "$ref": "#/components/headers/GS1-EPC-Format"
               },
-              "GS1-CBV-Format": {
-                "$ref": "#/components/headers/GS1-CBV-Format"
+              "GS1-CBV-XML-Format": {
+                "$ref": "#/components/headers/GS1-CBV-XML-Format"
               },
               "GS1-EPCIS-Extensions": {
                 "$ref": "#/components/headers/GS1-EPCIS-Extensions"
@@ -4172,8 +4172,8 @@
               "GS1-EPC-Format": {
                 "$ref": "#/components/headers/GS1-EPC-Format"
               },
-              "GS1-CBV-Format": {
-                "$ref": "#/components/headers/GS1-CBV-Format"
+              "GS1-CBV-XML-Format": {
+                "$ref": "#/components/headers/GS1-CBV-XML-Format"
               },
               "GS1-EPCIS-Extensions": {
                 "$ref": "#/components/headers/GS1-EPCIS-Extensions"
@@ -4287,8 +4287,8 @@
           "GS1-EPC-Format": {
             "$ref": "#/components/headers/GS1-EPC-Format"
           },
-          "GS1-CBV-Format": {
-            "$ref": "#/components/headers/GS1-CBV-Format"
+          "GS1-CBV-XML-Format": {
+            "$ref": "#/components/headers/GS1-CBV-XML-Format"
           },
           "GS1-CBV-Version": {
             "$ref": "#/components/headers/GS1-CBV-Version"
@@ -4338,8 +4338,8 @@
           "GS1-EPC-Format": {
             "$ref": "#/components/headers/GS1-EPC-Format"
           },
-          "GS1-CBV-Format": {
-            "$ref": "#/components/headers/GS1-CBV-Format"
+          "GS1-CBV-XML-Format": {
+            "$ref": "#/components/headers/GS1-CBV-XML-Format"
           },
           "GS1-CBV-Extensions": {
             "$ref": "#/components/headers/GS1-CBV-Extensions"
@@ -4434,8 +4434,8 @@
           "GS1-EPC-Format": {
             "$ref": "#/components/headers/GS1-EPC-Format"
           },
-          "GS1-CBV-Format": {
-            "$ref": "#/components/headers/GS1-CBV-Format"
+          "GS1-CBV-XML-Format": {
+            "$ref": "#/components/headers/GS1-CBV-XML-Format"
           },
           "GS1-EPCIS-Extensions": {
             "$ref": "#/components/headers/GS1-EPCIS-Extensions"
@@ -4473,8 +4473,8 @@
           "GS1-EPC-Format": {
             "$ref": "#/components/headers/GS1-EPC-Format"
           },
-          "GS1-CBV-Format": {
-            "$ref": "#/components/headers/GS1-CBV-Format"
+          "GS1-CBV-XML-Format": {
+            "$ref": "#/components/headers/GS1-CBV-XML-Format"
           },
           "GS1-EPCIS-Extensions": {
             "$ref": "#/components/headers/GS1-EPCIS-Extensions"
@@ -5758,29 +5758,29 @@
         "pattern": "^\\d+(\\.\\d+)?$"
       },
       "GS1-EPC-Format": {
-        "example": "Always_DL",
-        "description": "Request or response header to indicate whether EPCs are expressed as GS1 Digital Link URIs or as EPC URNs.\nIf both server and client set `GS1-EPC-Format` to `No_Preference`, the default value is `Always_DL`:\n\n- No_Preference: The client (if a request header) or server (if a response header or `OPTIONS` discovery) chooses the representation.\n- Always_DL: URIs are returned as GS1 Digital Link.\n- Always_EPC_URN: URIs are returned as URN.\n- Never_Translates: The original format is kept.\n",
+        "example": "Always_GS1_Digital_Link",
+        "description": "Request or response header to indicate whether EPCs are expressed as GS1 Digital Link URIs or as EPC URNs.\nIf both server and client set `GS1-EPC-Format` to `No_Preference`, the default value is `Always_GS1_Digital_Link`:\n\n- No_Preference: The server chooses the representation.\n- Always_DL: URIs are returned as GS1 Digital Link.\n- Always_EPC_URN: URIs are returned as URN.\n- Never_Translates: The original format is kept.\n",
         "type": "string",
         "enum": [
-          "Client_Chooses",
-          "Always_DL",
+          "No_Preference",
+          "Always_GS1_Digital_Link",
           "Always_EPC_URN",
           "Never_Translates"
         ]
       },
-      "GS1-CBV-Format": {
-        "example": "Always_URL",
-        "description": "Request or response header to indicate whether CBV URI fields are expressed as URLs or URNs.\nIf server has set GS1-CBV-Format to Client_Chooses then the absence of the `GS1-CBV-Format` header will be treated as \"the client has no preference\", and the default value is `Always_URL`\n\n- No_Preference: The client (if a request header) or server (if a response header or `OPTIONS` discovery) chooses the representation.\n- Always_URL: URIs are returned as web URL.\n- Always_URN: URIs are returned as URN.\n- Never_Translates: The original format is kept.\n",
+      "GS1-CBV-XML-Format": {
+        "example": "Always_Web_URI",
+        "description": "When requesting XML content-type only, users can use this header to request\nreceiving events with CBV values in either URN or Web URI format.\nThis option is not available for JSON/LD.\n\n- No_Preference: The server chooses the representation.\n- Always_Web_URI: CBV values are returned as Web URI.\n- Always_URN: CBV values are returned as URNs.\n- Never_Translates: The original format is kept.\n",
         "type": "string",
         "enum": [
           "No_Preference",
+          "Always_Web_URI",
           "Always_URN",
-          "Always_URL",
           "Never_Translates"
         ]
       },
       "GS1-EPCIS-Extensions": {
-        "description": "Specific EPCIS extensions supported (e.g. for FIT).",
+        "description": "Specific EPCIS extensions supported (e.g., for FIT).",
         "example": {
           "example-epc-ext": "http://example.com/epcis/"
         },
@@ -6072,11 +6072,11 @@
           "$ref": "#/components/schemas/GS1-EPC-Format"
         }
       },
-      "GS1-CBV-Format": {
+      "GS1-CBV-XML-Format": {
         "in": "header",
-        "name": "GS1-CBV-Format",
+        "name": "GS1-CBV-XML-Format",
         "schema": {
-          "$ref": "#/components/schemas/GS1-CBV-Format"
+          "$ref": "#/components/schemas/GS1-CBV-XML-Format"
         }
       },
       "GS1-EPCIS-Extensions": {
@@ -6120,9 +6120,9 @@
           "$ref": "#/components/schemas/GS1-EPC-Format"
         }
       },
-      "GS1-CBV-Format": {
+      "GS1-CBV-XML-Format": {
         "schema": {
-          "$ref": "#/components/schemas/GS1-CBV-Format"
+          "$ref": "#/components/schemas/GS1-CBV-XML-Format"
         }
       },
       "GS1-EPCIS-Extensions": {
