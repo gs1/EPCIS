@@ -18,7 +18,7 @@ epcis: a owl:Ontology;
   rdfs:label "EPCIS Ontology";
   rdfs:comment """The Electronic Product Code Information System (EPCIS) is a specification for capturing and exchanging event visibility data across the global logistics chain.
 Version 2.0 is a major release that adds JSON, JSONLD and RDF payload formats, sensor reports, and other major features.""";
-  dct:creator <https://gs1.org/>, <https://ontotext.com>;
+  dct:creator <https://gs1.org/>;
   dct:publisher <https://gs1.org/>;
   dct:created  "2021-06-01"^^xsd:date;
   dct:modified "2021-09-30"^^xsd:date;
@@ -31,10 +31,6 @@ Version 2.0 is a major release that adds JSON, JSONLD and RDF payload formats, s
 <https://gs1.org/> a schema:Organization;
   schema:name "GS1";
   schema:description "GS1 is an international organization that sets the global standards in transport and logistics".
-
-<https://ontotext.com/> a schema:Organization;
-  schema:name "Ontotext (Sirma AI)";
-  schema:description "Ontotext is a leading semantic technology company".
 
 #################### Meta-properties
 
