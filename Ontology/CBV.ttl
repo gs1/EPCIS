@@ -831,3 +831,97 @@ cbv:SDT-possessing_party
         rdfs:label        "possessing party"@en ;
         owl:sameAs        <urn:epcglobal:cbv:sdt:possessing_party> ;
         sw:term_status    "stable" .
+
+#################### Component
+
+cbv:Comp  a                owl:Class , rdfs:Class ;
+        rdfs:comment      "These identifiers may be used to populate the type attribute of a component element in the SensorReport of an EPCIS event."@en ;
+        rdfs:isDefinedBy  cbv: ;
+        rdfs:label        "Component"@en ;
+        rdfs:subClassOf   cbv:TypeCode ;
+        sw:term_status    "stable" .
+
+cbv:Comp-x  a       cbv:Comp ;
+        rdfs:comment      "Component or projection along the x axis in Cartesian coordinates (X,Y,Z)"@en ;
+        rdfs:isDefinedBy  cbv: ;
+        rdfs:label        "x coordinate"@en ;
+        owl:sameAs        <urn:epcglobal:cbv:comp:x> ;
+        sw:term_status    "stable" .
+
+cbv:Comp-y  a       cbv:Comp ;
+        rdfs:comment      "Component or projection along the y axis in Cartesian coordinates (X,Y,Z)"@en ;
+        rdfs:isDefinedBy  cbv: ;
+        rdfs:label        "y coordinate"@en ;
+        owl:sameAs        <urn:epcglobal:cbv:comp:y> ;
+        sw:term_status    "stable" .
+
+cbv:Comp-z  a       cbv:Comp ;
+        rdfs:comment      "Component or projection along the z axis in Cartesian coordinates (X,Y,Z)"@en ;
+        rdfs:isDefinedBy  cbv: ;
+        rdfs:label        "z coordinate"@en ;
+        owl:sameAs        <urn:epcglobal:cbv:comp:z> ;
+        sw:term_status    "stable" .
+
+cbv:Comp-axial_distance  a       cbv:Comp ;
+        rdfs:comment      "Radial distance from the cylindrical axis in a cylindrical polar coordinate system; the magnitude of the projection of the vector in the plane perpendicular to the cylindrical axis"@en ;
+        rdfs:isDefinedBy  cbv: ;
+        rdfs:label        "axial distance"@en ;
+        owl:sameAs        <urn:epcglobal:cbv:comp:axial_distance> ;
+        sw:term_status    "stable" .
+
+cbv:Comp-azimuth  a       cbv:Comp ;
+        rdfs:comment      "Angle measured in the XY plane, anticlockwise from the X axis (in cylindrical or spherical polar coordinate systems) to the plane containing the vector and the Z axis"@en ;
+        rdfs:isDefinedBy  cbv: ;
+        rdfs:label        "azimuth"@en ;
+        owl:sameAs        <urn:epcglobal:cbv:comp:azimuth> ;
+        sw:term_status    "stable" .
+
+cbv:Comp-height  a       cbv:Comp ;
+        rdfs:comment      "Height parallel to the cylindrical axis in a cylindrical polar coordinate system, above a defined reference origin plane (typically the XY plane) "@en ;
+        rdfs:isDefinedBy  cbv: ;
+        rdfs:label        "height"@en ;
+        owl:sameAs        <urn:epcglobal:cbv:comp:height> ;
+        sw:term_status    "stable" .
+
+cbv:Comp-spherical_radius  a       cbv:Comp ;
+        rdfs:comment      "Radial distance from the centre of a sphere in a spherical polar coordinate system; the magnitude of the vector"@en ;
+        rdfs:isDefinedBy  cbv: ;
+        rdfs:label        "spherical radius"@en ;
+        owl:sameAs        <urn:epcglobal:cbv:comp:spherical_radius> ;
+        sw:term_status    "stable" .
+
+cbv:Comp-polar_angle  a       cbv:Comp ;
+        rdfs:comment      "Angle measured from the Z axis to the vector in a spherical polar coordinate system"@en ;
+        rdfs:isDefinedBy  cbv: ;
+        rdfs:label        "polar angle"@en ;
+        owl:sameAs        <urn:epcglobal:cbv:comp:polar_angle> ;
+        sw:term_status    "stable" .
+
+cbv:Comp-elevation_angle  a       cbv:Comp ;
+        rdfs:comment      "Angle measured from the XY plane to the vector in a spherical polar coordinate system"@en ;
+        rdfs:isDefinedBy  cbv: ;
+        rdfs:label        "elevation angle"@en ;
+        owl:sameAs        <urn:epcglobal:cbv:comp:elevation_angle> ;
+        sw:term_status    "stable" .
+
+cbv:Comp-easting  a       cbv:Comp ;
+        rdfs:comment      "A component or projection along an east-pointing axis in a geographic Cartesian coordinate system"@en ;
+        rdfs:isDefinedBy  cbv: ;
+        rdfs:label        "easting"@en ;
+        owl:sameAs        <urn:epcglobal:cbv:comp:easting> ;
+        sw:term_status    "stable" .
+
+cbv:Comp-northing  a       cbv:Comp ;
+        rdfs:comment      "A component or projection along a north-pointing axis in a geographic Cartesian coordinate system"@en ;
+        rdfs:isDefinedBy  cbv: ;
+        rdfs:label        "northing"@en ;
+        owl:sameAs        <urn:epcglobal:cbv:comp:northing> ;
+        sw:term_status    "stable" .
+
+cbv:Comp-geocoordinate  a       cbv:Comp ;
+        rdfs:comment      "RFC5870-compliant geographic location URI expressed via the uriValue field"@en ;
+        rdfs:isDefinedBy  cbv: ;
+        rdfs:label        "geocoordinate"@en ;
+        owl:sameAs        <urn:epcglobal:cbv:comp:geocoordinate> ;
+        sw:term_status    "stable" .
+
