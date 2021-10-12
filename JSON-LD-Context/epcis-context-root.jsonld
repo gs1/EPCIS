@@ -230,6 +230,10 @@
                                 "@id": "epcis:exception",
                                 "@type": "@vocab"
                             },
+                            "coordinateReferenceSystem": {
+                                "@id": "epcis:coordinateReferenceSystem",
+                                "@type": "@id"
+                            },
                             "microorganism": {
                                 "@id": "epcis:microorganism",
                                 "@type": "@id"
