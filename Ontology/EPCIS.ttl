@@ -297,13 +297,21 @@ epcis:childQuantityList  a owl:ObjectProperty , rdf:Property ;
         sw:term_status    "stable" .
 
 epcis:component  a        owl:DatatypeProperty , rdf:Property ;
-        rdfs:comment      "(Optional) The indicator of one out of several dimensions of a vector value (as required for properties such as velocity, which consists of a magnitude and a specific direction in space).  If a component field is present, a sensorReport element MUST also include a double `value` and the `uom` field."@en ;
+        rdfs:comment      "(Optional) Some measurement types (e.g. force, pressure) are vectors (having magnitude and direction in space), whereas others (e.g. temperature, absolute humidity) are scalars.  The components of a vector in a coordinate system can be specified by setting the value of component to indicate which vector component has magnitude indicated by the value parameter.  The SensorReport element is then repeated as two or three instances to express each component of the vector in two or three dimensions, the pair or trio of SensorReport elements sharing the same values for all fields except value, component and uom (which may differ for each vector component). If present, the SensorReport element MUST also include the value and uom fields."@en ;
         rdfs:domain       epcis:SensorReport ;
         schema:domainIncludes epcis:SensorReport ;
         rdfs:isDefinedBy  epcis: ;
         rdfs:label        "component" ;
         rdfs:range        cbv:Comp ;
         schema:rangeIncludes cbv:Comp ;
+        sw:term_status    "stable" .
+
+epcis:coordinateReferenceSystem  a        owl:ObjectProperty , rdf:Property ;
+        rdfs:comment      "(Optional) A URI identifying the Coordinate Reference System. If omitted, the World Geodetic System 1984 (WGS-84) is assumed to apply."@en ;
+        rdfs:domain       epcis:SensorReport ;
+        schema:domainIncludes epcis:SensorReport ;
+        rdfs:isDefinedBy  epcis: ;
+        rdfs:label        "coordinate reference system" ;
         sw:term_status    "stable" .
 
 epcis:correctiveEventIDs         a owl:ObjectProperty , rdf:Property ;
