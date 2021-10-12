@@ -24,24 +24,24 @@
 				<sensorElementList>
 					<sensorElement>
 						<sensorMetadata time="2019-04-02T14:05:00.000+01:00" deviceID="urn:epc:id:giai:4000001.111" deviceMetadata="https://id.gs1.org/8004/4000001111" rawData="https://example.org/8004/401234599999" />
-						<sensorReport type="gs1:MT-Temperature" value="26.0" uom="CEL" />
-						<sensorReport type="gs1:MT-Humidity" value="12.1" uom="A93" />
-						<sensorReport type="gs1:MT-Speed" value="160.0" uom="KMH" />
-						<sensorReport type="gs1:MT-Illuminance" value="800.0" uom="LUX" />
+						<sensorReport type="gs1:Temperature" value="26.0" uom="CEL" />
+						<sensorReport type="gs1:AbsoluteHumidity" value="12.1" uom="A93" />
+						<sensorReport type="gs1:Speed" value="160.0" uom="KMH" />
+						<sensorReport type="gs1:Illuminance" value="800.0" uom="LUX" />
 					</sensorElement>
 					<sensorElement>
 						<sensorMetadata time="2019-04-02T14:35:00.000+01:00" deviceID="urn:epc:id:giai:4000001.111" deviceMetadata="https://id.gs1.org/8004/4000001111" rawData="https://example.org/8004/401234599999" />
-						<sensorReport type="gs1:MT-Temperature" value="26.1" uom="CEL" />
-						<sensorReport type="gs1:MT-Humidity" value="12.2" uom="A93" />
-						<sensorReport type="gs1:MT-Speed" value="161.0" uom="KMH" />
-						<sensorReport type="gs1:MT-Illuminance" value="801.0" uom="LUX" />
+						<sensorReport type="gs1:Temperature" value="26.1" uom="CEL" />
+						<sensorReport type="gs1:AbsoluteHumidity" value="12.2" uom="A93" />
+						<sensorReport type="gs1:Speed" value="161.0" uom="KMH" />
+						<sensorReport type="gs1:Illuminance" value="801.0" uom="LUX" />
 					</sensorElement>
 					<sensorElement>
 						<sensorMetadata time="2019-04-02T14:55:00.000+01:00" deviceID="urn:epc:id:giai:4000001.111" deviceMetadata="https://id.gs1.org/8004/4000001111" rawData="https://example.org/8004/401234599999" />
-						<sensorReport type="gs1:MT-Temperature" value="26.2" uom="CEL" />
-						<sensorReport type="gs1:MT-Humidity" value="12.2" uom="A93" />
-						<sensorReport type="gs1:MT-Speed" value="162.0" uom="KMH" />
-						<sensorReport type="gs1:MT-Illuminance" value="802.0" uom="LUX" />
+						<sensorReport type="gs1:Temperature" value="26.2" uom="CEL" />
+						<sensorReport type="gs1:AbsoluteHumidity" value="12.2" uom="A93" />
+						<sensorReport type="gs1:Speed" value="162.0" uom="KMH" />
+						<sensorReport type="gs1:Illuminance" value="802.0" uom="LUX" />
 					</sensorElement>
 				</sensorElementList>
 			</ObjectEvent>
@@ -60,10 +60,10 @@
 				<sensorElementList>
 					<sensorElement>
 						<sensorMetadata startTime="2019-04-02T13:55:01.000+01:00" endTime="2019-04-02T14:55:00.000+01:00" deviceID="urn:epc:id:giai:4000001.111" deviceMetadata="https://id.gs1.org/8004/4000001111" rawData="https://example.org/8004/401234599999" bizRules="https://example.com/gdti/4012345000054987" />
-						<sensorReport type="gs1:MT-Temperature" minValue="26.0" maxValue="26.2" uom="CEL" meanValue="26.1" sDev="0.1" />
-						<sensorReport type="gs1:MT-Humidity" minValue="12.1" maxValue="12.2" uom="A93" />
-						<sensorReport type="gs1:MT-Speed" minValue="160.0" maxValue="162.0" uom="KMH" />
-						<sensorReport type="gs1:MT-Illuminance" minValue="800.0" maxValue="802.0" uom="LUX" />
+						<sensorReport type="gs1:Temperature" minValue="26.0" maxValue="26.2" uom="CEL" meanValue="26.1" sDev="0.1" />
+						<sensorReport type="gs1:AbsoluteHumidity" minValue="12.1" maxValue="12.2" uom="A93" />
+						<sensorReport type="gs1:Speed" minValue="160.0" maxValue="162.0" uom="KMH" />
+						<sensorReport type="gs1:Illuminance" minValue="800.0" maxValue="802.0" uom="LUX" />
 					</sensorElement>
 				</sensorElementList>
 			</ObjectEvent>
@@ -80,8 +80,8 @@
 				<sensorElementList>
 					<sensorElement>
 						<sensorMetadata startTime="2019-04-01T15:00:00.000+01:00" endTime="2019-04-02T14:59:59.999+01:00" />
-						<sensorReport type="gs1:MT-Temperature" minValue="12.4" maxValue="13.8" uom="CEL" />
-						<sensorReport type="gs1:MT-Humidity" minValue="69.2" maxValue="72.5" uom="A93" />
+						<sensorReport type="gs1:Temperature" minValue="12.4" maxValue="13.8" uom="CEL" />
+						<sensorReport type="gs1:AbsoluteHumidity" minValue="69.2" maxValue="72.5" uom="A93" />
 					</sensorElement>
 				</sensorElementList>
 			</ObjectEvent>
@@ -105,10 +105,10 @@
 				<sensorElementList>
 					<sensorElement>
 						<sensorMetadata time="2019-04-02T14:55:00.000+01:00" />
-						<sensorReport type="gs1:MT-Temperature" value="26.0" uom="CEL" deviceID="urn:epc:id:giai:4000001.111" deviceMetadata="https://id.gs1.org/8004/4000001111" rawData="https://example.org/8004/401234599999" />
-						<sensorReport type="gs1:MT-Humidity" value="12.1" uom="A93" deviceID="urn:epc:id:giai:4000001.222" deviceMetadata="https://id.gs1.org/8004/4000001222" rawData="https://example.org/8004/401234599999" />
-						<sensorReport type="gs1:MT-Speed" value="160" uom="KMH" deviceID="urn:epc:id:giai:4000001.333" deviceMetadata="https://id.gs1.org/8004/4000001333" rawData="https://example.org/8004/401234599999" />
-						<sensorReport type="gs1:MT-Illuminance" value="800" uom="LUX" deviceID="urn:epc:id:giai:4000001.444" deviceMetadata="https://id.gs1.org/8004/4000001444" rawData="https://example.org/8004/401234599999" />
+						<sensorReport type="gs1:Temperature" value="26.0" uom="CEL" deviceID="urn:epc:id:giai:4000001.111" deviceMetadata="https://id.gs1.org/8004/4000001111" rawData="https://example.org/8004/401234599999" />
+						<sensorReport type="gs1:AbsoluteHumidity" value="12.1" uom="A93" deviceID="urn:epc:id:giai:4000001.222" deviceMetadata="https://id.gs1.org/8004/4000001222" rawData="https://example.org/8004/401234599999" />
+						<sensorReport type="gs1:Speed" value="160" uom="KMH" deviceID="urn:epc:id:giai:4000001.333" deviceMetadata="https://id.gs1.org/8004/4000001333" rawData="https://example.org/8004/401234599999" />
+						<sensorReport type="gs1:Illuminance" value="800" uom="LUX" deviceID="urn:epc:id:giai:4000001.444" deviceMetadata="https://id.gs1.org/8004/4000001444" rawData="https://example.org/8004/401234599999" />
 					</sensorElement>
 				</sensorElementList>
 			</ObjectEvent>
@@ -127,12 +127,12 @@
 				<sensorElementList>
 					<sensorElement>
 						<sensorMetadata deviceID="urn:epc:id:giai:4000001.111" deviceMetadata="https://id.gs1.org/8004/4000001111" />
-						<sensorReport time="2019-04-02T14:05:00.000+01:00" type="gs1:MT-Temperature" value="26.0" uom="CEL" />
-						<sensorReport time="2019-04-02T14:15:00.000+01:00" type="gs1:MT-Temperature" value="26.1" uom="CEL" />
-						<sensorReport time="2019-04-02T14:25:00.000+01:00" type="gs1:MT-Temperature" value="26.2" uom="CEL" />
-						<sensorReport time="2019-04-02T14:35:00.000+01:00" type="gs1:MT-Temperature" value="26.3" uom="CEL" />
-						<sensorReport time="2019-04-02T14:45:00.000+01:00" type="gs1:MT-Temperature" value="26.4" uom="CEL" />
-						<sensorReport time="2019-04-02T14:55:00.000+01:00" type="gs1:MT-Temperature" value="26.5" uom="CEL" />
+						<sensorReport time="2019-04-02T14:05:00.000+01:00" type="gs1:Temperature" value="26.0" uom="CEL" />
+						<sensorReport time="2019-04-02T14:15:00.000+01:00" type="gs1:Temperature" value="26.1" uom="CEL" />
+						<sensorReport time="2019-04-02T14:25:00.000+01:00" type="gs1:Temperature" value="26.2" uom="CEL" />
+						<sensorReport time="2019-04-02T14:35:00.000+01:00" type="gs1:Temperature" value="26.3" uom="CEL" />
+						<sensorReport time="2019-04-02T14:45:00.000+01:00" type="gs1:Temperature" value="26.4" uom="CEL" />
+						<sensorReport time="2019-04-02T14:55:00.000+01:00" type="gs1:Temperature" value="26.5" uom="CEL" />
 					</sensorElement>
 				</sensorElementList>
 			</ObjectEvent>
@@ -149,7 +149,7 @@
 				<sensorElementList>
 					<sensorElement>
 						<sensorMetadata startTime="2019-04-01T15:00:00.000+01:00" endTime="2019-04-02T14:59:59.999+01:00" example:someFurtherMetaData="someText" />
-						<sensorReport type="gs1:MT-Temperature" minValue="12.4" maxValue="13.8" meanValue="13.2" sDev="0.41" uom="CEL" percRank="50" percValue="12.7" example:cv="123" />
+						<sensorReport type="gs1:Temperature" minValue="12.4" maxValue="13.8" meanValue="13.2" sDev="0.41" uom="CEL" percRank="50" percValue="12.7" example:cv="123" />
 						<sensorReport type="example:someSensorProperty" stringValue="someSensorOutput" />
 						<example:furtherSensorData>
 							<example:measure1>123.5</example:measure1>
@@ -173,7 +173,7 @@
 				<sensorElementList>
 					<sensorElement>
 						<sensorMetadata time="2019-07-19T14:00:00.000+01:00" />
-						<sensorReport type="gs1:MT-Temperature" value="26.0" uom="CEL" deviceID="urn:epc:id:giai:4000001.111" />
+						<sensorReport type="gs1:Temperature" value="26.0" uom="CEL" deviceID="urn:epc:id:giai:4000001.111" />
 						<sensorReport type="example:Abc" stringValue="111100001111000011110000" deviceID="urn:epc:id:giai:4000001.112" />
 						<sensorReport type="example:Def" booleanValue="true" deviceID="urn:epc:id:giai:4000001.113" />
 						<sensorReport type="example:Ghi" stringValue="SomeString" deviceID="urn:epc:id:giai:4000001.114" />
@@ -204,13 +204,13 @@
 				<sensorElementList>
 					<sensorElement>
 						<sensorMetadata time="2019-07-19T14:00:00.000+01:00" deviceID="urn:epc:id:giai:4000001.111" deviceMetadata="https://id.gs1.org/8004/4000001111" rawData="https://example.org/8004/401234599999" dataProcessingMethod="https://example.com/gdti/4012345000054987" bizRules="https://example.org/gdti/4012345000054987" />
-						<sensorReport type="gs1:MT-Humidity" value="12.1" uom="A93" />
-						<sensorReport type="gs1:MT-Molar_concentration" chemicalSubstance="https://identifiers.org/inchikey:CZMRCDWAGMRECN-UGDNZRGBSA-N" value="0.18" uom="C35" />
-						<sensorReport type="gs1:MT-Molar_concentration" microorganism="https://www.ncbi.nlm.nih.gov/taxonomy/1126011" value="0.05" uom="C35" />
+						<sensorReport type="gs1:AbsoluteHumidity" value="12.1" uom="A93" />
+						<sensorReport type="gs1:Molar_concentration" chemicalSubstance="https://identifiers.org/inchikey:CZMRCDWAGMRECN-UGDNZRGBSA-N" value="0.18" uom="C35" />
+						<sensorReport type="gs1:Molar_concentration" microorganism="https://www.ncbi.nlm.nih.gov/taxonomy/1126011" value="0.05" uom="C35" />
 					</sensorElement>
 					<sensorElement>
 						<sensorMetadata startTime="2019-04-01T15:00:00.000+01:00" endTime="2019-04-02T14:59:59.999+01:00" example:someFurtherMetaData="someText" />
-						<sensorReport type="gs1:MT-Temperature" minValue="12.4" maxValue="13.8" meanValue="13.2" sDev="0.41" uom="CEL" percRank="50" percValue="12.7" example:cv="123" />
+						<sensorReport type="gs1:Temperature" minValue="12.4" maxValue="13.8" meanValue="13.2" sDev="0.41" uom="CEL" percRank="50" percValue="12.7" example:cv="123" />
 						<sensorReport type="example:someSensorProperty" stringValue="someSensorOutput" />
 						<example:furtherSensorData>
 							<example:measure1>123.5</example:measure1>
@@ -218,7 +218,7 @@
 						</example:furtherSensorData>
 					</sensorElement>
 					<sensorElement>
-						<sensorReport type="gs1:MT-Temperature" uom="CEL" time="2019-07-19T14:00:00.000+01:00" deviceID="urn:epc:id:giai:4000001.111" deviceMetadata="https://id.gs1.org/8004/4000001111" rawData="https://example.org/8004/401234599999" dataProcessingMethod="https://example.com/gdti/4012345000054987" bizRules="https://example.org/gdti/4012345000054987" />
+						<sensorReport type="gs1:Temperature" uom="CEL" time="2019-07-19T14:00:00.000+01:00" deviceID="urn:epc:id:giai:4000001.111" deviceMetadata="https://id.gs1.org/8004/4000001111" rawData="https://example.org/8004/401234599999" dataProcessingMethod="https://example.com/gdti/4012345000054987" bizRules="https://example.org/gdti/4012345000054987" />
 						<sensorReport type="example:someSensorProperty" stringValue="someSensorOutput" />
 					</sensorElement>
 				</sensorElementList>
@@ -237,8 +237,8 @@
 				</readPoint>
 				<sensorElementList>
 					<sensorElement>
-						<sensorReport type="gs1:AT-Error_condition" uriValue="https://example.com/ErrorCode-A827" />
-						<sensorReport type="gs1:AT-Alarm_condition" booleanValue="true" />
+						<sensorReport type="gs1:ERROR_CONDITION" uriValue="https://example.com/ErrorCode-A827" />
+						<sensorReport type="gs1:ALARM_CONDITION" booleanValue="true" />
 					</sensorElement>
 				</sensorElementList>
 			</ObjectEvent>
@@ -257,9 +257,9 @@
 				</readPoint>
 				<sensorElementList>
 					<sensorElement>
-						<sensorReport type="gs1:MT-Speed" value="4.5" component="example:x" uom="MTS" />
-						<sensorReport type="gs1:MT-Speed" value="12.8" component="example:y" uom="MTS" />
-						<sensorReport type="gs1:MT-Speed" value="0" component="example:z" uom="MTS" />
+						<sensorReport type="gs1:Speed" value="4.5" component="example:x" uom="MTS" />
+						<sensorReport type="gs1:Speed" value="12.8" component="example:y" uom="MTS" />
+						<sensorReport type="gs1:Speed" value="0" component="example:z" uom="MTS" />
 					</sensorElement>
 				</sensorElementList>
 			</ObjectEvent>
@@ -282,7 +282,7 @@
 				</readPoint>
 				<sensorElementList>
 					<sensorElement>
-						<sensorReport type="gs1:MT-EffectiveDoseRate" value="0.005" uom="P71" />
+						<sensorReport type="gs1:EffectiveDoseRate" value="0.005" uom="P71" />
 					</sensorElement>
 				</sensorElementList>
 			</TransactionEvent>
@@ -322,7 +322,7 @@
 				<sensorElementList>
 					<sensorElement>
 						<sensorMetadata startTime="2019-04-01T15:00:00.000+01:00" endTime="2019-04-02T14:59:59.999+01:00" example:someFurtherMetaData="someText" />
-						<sensorReport type="gs1:MT-Temperature" minValue="12.4" maxValue="13.8" meanValue="13.2" sDev="0.41" uom="CEL" percRank="50" percValue="12.7" example:cv="123" />
+						<sensorReport type="gs1:Temperature" minValue="12.4" maxValue="13.8" meanValue="13.2" sDev="0.41" uom="CEL" percRank="50" percValue="12.7" example:cv="123" />
 						<sensorReport type="example:someSensorProperty" stringValue="someSensorOutput" />
 						<example:furtherSensorData>
 							<example:measure1>123.5</example:measure1>
@@ -361,8 +361,8 @@
 				</readPoint>
 				<sensorElementList>
 					<sensorElement>
-						<sensorReport type="gs1:MT-Angle" component="Latitude" value="42.698334" uom="DD" coordinateReferenceSystem="http://www.opengis.net/def/crs/OGC/1.3/CRS84" />
-						<sensorReport type="gs1:MT-Angle" component="Longitude" value="23.319941" uom="DD" coordinateReferenceSystem="http://www.opengis.net/def/crs/OGC/1.3/CRS84" />
+						<sensorReport type="gs1:Angle" component="Latitude" value="42.698334" uom="DD" coordinateReferenceSystem="http://www.opengis.net/def/crs/OGC/1.3/CRS84" />
+						<sensorReport type="gs1:Angle" component="Longitude" value="23.319941" uom="DD" coordinateReferenceSystem="http://www.opengis.net/def/crs/OGC/1.3/CRS84" />
 					</sensorElement>
 				</sensorElementList>
 			</ObjectEvent>
@@ -381,8 +381,8 @@
 				<sensorElementList>
 					<sensorElement>
 						<sensorMetadata time="2021-05-27T13:50:00.000+01:00" />
-						<sensorReport type="gs1:MT-Length" component="Northing" value="-477979.89" uom="MTR" coordinateReferenceSystem="http://www.opengis.net/def/crs/EPSG/0/27700" />
-						<sensorReport type="gs1:MT-Length" component="Easting" value="2477583.57" uom="MTR" coordinateReferenceSystem="http://www.opengis.net/def/crs/EPSG/0/27700" />
+						<sensorReport type="gs1:Length" component="Northing" value="-477979.89" uom="MTR" coordinateReferenceSystem="http://www.opengis.net/def/crs/EPSG/0/27700" />
+						<sensorReport type="gs1:Length" component="Easting" value="2477583.57" uom="MTR" coordinateReferenceSystem="http://www.opengis.net/def/crs/EPSG/0/27700" />
 					</sensorElement>
 				</sensorElementList>
 			</ObjectEvent>

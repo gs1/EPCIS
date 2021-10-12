@@ -7,4 +7,4 @@ s{urn:epcglobal:cbv:disp:}{};
 s{urn:epcglobal:cbv:btt:}{};
 s{urn:epcglobal:cbv:sdt:}{};
 s{urn:epcglobal:cbv:er:}{};
-s{gs1:MT-}{};
+s{gs1:}{};

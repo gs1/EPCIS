@@ -22,7 +22,7 @@
 				</readPoint>
 				<sensorElementList>
 					<sensorElement>
-						<sensorReport type="gs1:MT-EffectiveDoseRate" value="0.005" uom="P71" />
+						<sensorReport type="gs1:EffectiveDoseRate" value="0.005" uom="P71" />
 					</sensorElement>
 				</sensorElementList>
                 <extension>

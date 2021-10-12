@@ -21,7 +21,7 @@
 		    "sensorMetadata" : {"startTime":"2019-04-01T15:00:00.000+01:00", "endTime":"2019-04-02T14:59:59.999+01:00"},
 		    "sensorReport" : [
 			 { "type": "Temperature" , "minValue" : 12.4, "maxValue":13.8, "uom": "CEL" },
-			 { "type": "Humidity" , "minValue" : 69.2 , "maxValue":72.5, "uom": "A93"}
+			 { "type": "AbsoluteHumidity" , "minValue" : 69.2 , "maxValue":72.5, "uom": "A93"}
 		     ]
 		    }	    
 		  ]

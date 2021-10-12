@@ -12,7 +12,7 @@
 @@ -33,3 +33,5 @@
 -                                                                     epcis:sensorMetadata  [ epcis:time  "2021-05-27T12:50:00.000Z"^^xsd:dateTimeStamp ] ;
 -                                                                     epcis:sensorReport    [ epcis:component  "Easting" ;
--                                                                                             epcis:type       gs1:MT-Length ;
+-                                                                                             epcis:type       gs1:Length ;
 +                                                                     epcis:sensorMetadata  [ epcis:time  "2021-05-27T12:50:00.000Z"^^xsd:dateTime ] ;
 +                                                                     epcis:sensorReport    [ epcis:component        cbv:COMP-Easting ;
 +                                                                                             epcis:coordinateReferenceSystem
@@ -20,7 +20,7 @@
 +                                                                                             epcis:measurementType  gs1:Length ;
 @@ -39,2 +41,4 @@
 -                                                                     epcis:sensorReport    [ epcis:component  "Northing" ;
--                                                                                             epcis:type       gs1:MT-Length ;
+-                                                                                             epcis:type       gs1:Length ;
 +                                                                     epcis:sensorReport    [ epcis:component        cbv:COMP-Northing ;
 +                                                                                             epcis:coordinateReferenceSystem
 +                                                                                                     "http://www.opengis.net/def/crs/EPSG/0/27700" ;

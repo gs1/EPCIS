@@ -35,19 +35,19 @@
         epcis:readPoint            <urn:epc:id:sgln:4012345.00005.0> ;
         epcis:sensorElementList    [ epcis:sensorReport  [ examp:feature    "ex:product" ;
                                                            epcis:component  "Z" ;
-                                                           epcis:type       gs1:MT-Speed ;
+                                                           epcis:type       gs1:Speed ;
                                                            epcis:uom        "MTS" ;
                                                            epcis:value      0.0E0
                                                          ] ;
                                      epcis:sensorReport  [ examp:feature    "ex:product" ;
                                                            epcis:component  "Y" ;
-                                                           epcis:type       gs1:MT-Speed ;
+                                                           epcis:type       gs1:Speed ;
                                                            epcis:uom        "MTS" ;
                                                            epcis:value      1.28E1
                                                          ] ;
                                      epcis:sensorReport  [ examp:feature    "ex:product" ;
                                                            epcis:component  "X" ;
-                                                           epcis:type       gs1:MT-Speed ;
+                                                           epcis:type       gs1:Speed ;
                                                            epcis:uom        "MTS" ;
                                                            epcis:value      4.5E0
                                                          ]

@@ -21,7 +21,7 @@
 		    "sensorMetadata" : {"startTime":"2019-04-02T13:55:01.000+01:00", "endTime":"2019-04-02T14:55:00.000+01:00", "deviceID": "urn:epc:id:giai:4000001.111", "deviceMetadata": "https://id.gs1.org/8004/4000001111","rawData":"https://example.org/8004/401234599999","bizRules":"https://example.com/gdti/4012345000054987"},
 		    "sensorReport" : [
 			 { "type": "Temperature" , "minValue" : 26.0, "maxValue":26.2, "uom": "CEL", "meanValue":26.1, "sDev":0.1 },
-			 { "type": "Humidity" , "minValue" : 12.1 , "maxValue":12.2, "uom": "A93"},
+			 { "type": "AbsoluteHumidity" , "minValue" : 12.1 , "maxValue":12.2, "uom": "A93"},
 			 { "type": "Speed" , "minValue": 160.0, "maxValue": 162.0, "uom":"KMH"},
 			 { "type": "Illuminance" , "minValue": 800.0, "maxValue": 802.0, "uom":"LUX"}		 
 		     ]

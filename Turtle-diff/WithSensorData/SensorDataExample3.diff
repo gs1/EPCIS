@@ -22,7 +22,7 @@
 @@ -37,0 +44 @@
 +                                                             epcis:measurementType  gs1:Temperature ;
 @@ -39 +45,0 @@
--                                                             epcis:type      gs1:MT-Temperature ;
+-                                                             epcis:type      gs1:Temperature ;
 @@ -43,6 +48,0 @@
 -
 -[ rdf:type         epcis:EPCISDocument ;

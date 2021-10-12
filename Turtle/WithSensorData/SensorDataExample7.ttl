@@ -49,7 +49,7 @@
                                                              epcis:type         examp:Abc
                                                            ] ;
                                      epcis:sensorReport    [ epcis:deviceID  <urn:epc:id:giai:4000001.111> ;
-                                                             epcis:type      gs1:MT-Temperature ;
+                                                             epcis:type      gs1:Temperature ;
                                                              epcis:uom       "CEL" ;
                                                              epcis:value     2.6E1
                                                            ]

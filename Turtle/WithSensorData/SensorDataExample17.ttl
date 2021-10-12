@@ -34,17 +34,17 @@
         epcis:eventTimeZoneOffset  "+01:00" ;
         epcis:readPoint            <https://id.gs1.org/414/9506000134307> ;
         epcis:sensorElementList    [ epcis:sensorReport  [ examp:feature  "ex:total" ;
-                                                           epcis:type     gs1:MT-Mass ;
+                                                           epcis:type     gs1:Mass ;
                                                            epcis:uom      "KGM" ;
                                                            epcis:value    2.6E1
                                                          ] ;
                                      epcis:sensorReport  [ examp:feature  "ex:product" ;
-                                                           epcis:type     gs1:MT-Mass ;
+                                                           epcis:type     gs1:Mass ;
                                                            epcis:uom      "KGM" ;
                                                            epcis:value    2.5E1
                                                          ] ;
                                      epcis:sensorReport  [ examp:feature  "ex:packaging" ;
-                                                           epcis:type     gs1:MT-Mass ;
+                                                           epcis:type     gs1:Mass ;
                                                            epcis:uom      "KGM" ;
                                                            epcis:value    1.0E0
                                                          ]

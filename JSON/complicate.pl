@@ -6,4 +6,4 @@ s{https://gs1.github.io/EPCIS/epcis-context-simple.jsonld}{https://gs1.github.io
 # s{urn:epcglobal:cbv:btt:}{};
 # s{urn:epcglobal:cbv:sdt:}{};
 # s{urn:epcglobal:cbv:er:}{};
-# s{gs1:MT-}{};
+# s{gs1:}{};

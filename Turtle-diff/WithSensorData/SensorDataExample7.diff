@@ -37,7 +37,7 @@
 +                                                             epcis:measurementType  examp:Abc ;
 +                                                             epcis:stringValue      "111100001111000011110000"
 @@ -52 +58 @@
--                                                             epcis:type      gs1:MT-Temperature ;
+-                                                             epcis:type      gs1:Temperature ;
 +                                                             epcis:measurementType  gs1:Temperature ;
 @@ -57,6 +62,0 @@
 -

@@ -31,12 +31,12 @@
                                         epcis:readPoint            <https://id.example.com/414/4012345000054> ;
                                         epcis:sensorElementList    [ rdf:type            epcis:SensorElement ;
                                                                      epcis:sensorReport  [ epcis:component  "Longitude" ;
-                                                                                           epcis:type       gs1:MT-Angle ;
+                                                                                           epcis:type       gs1:Angle ;
                                                                                            epcis:uom        "DD" ;
                                                                                            epcis:value      2.3319941E1
                                                                                          ] ;
                                                                      epcis:sensorReport  [ epcis:component  "Latitude" ;
-                                                                                           epcis:type       gs1:MT-Angle ;
+                                                                                           epcis:type       gs1:Angle ;
                                                                                            epcis:uom        "DD" ;
                                                                                            epcis:value      4.2698334E1
                                                                                          ]

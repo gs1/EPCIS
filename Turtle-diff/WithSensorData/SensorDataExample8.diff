@@ -19,18 +19,18 @@
 +                                                           epcis:measurementType       gs1:Temperature ;
 @@ -48,2 +50 @@
 -                                                           epcis:time                  "2019-07-19T14:00:00.000+01:00"^^xsd:dateTimeStamp ;
--                                                           epcis:type                  gs1:MT-Temperature ;
+-                                                           epcis:type                  gs1:Temperature ;
 +                                                           epcis:time                  "2019-07-19T14:00:00.000+01:00"^^xsd:dateTime ;
 @@ -58 +59 @@
 -                                                             epcis:time                  "2019-07-19T14:00:00.000+01:00"^^xsd:dateTimeStamp
 +                                                             epcis:time                  "2019-07-19T14:00:00.000+01:00"^^xsd:dateTime
 @@ -60,2 +61,2 @@
 -                                     epcis:sensorReport    [ epcis:microorganism  <https://www.ncbi.nlm.nih.gov/taxonomy/1126011> ;
--                                                             epcis:type           gs1:MT-AmountOfSubstancePerUnitVolume ;
+-                                                             epcis:type           gs1:AmountOfSubstancePerUnitVolume ;
 +                                     epcis:sensorReport    [ epcis:measurementType  gs1:AmountOfSubstancePerUnitVolume ;
 +                                                             epcis:microorganism    <https://www.ncbi.nlm.nih.gov/taxonomy/1126011> ;
 @@ -66 +67 @@
--                                                             epcis:type               gs1:MT-AmountOfSubstancePerUnitVolume ;
+-                                                             epcis:type               gs1:AmountOfSubstancePerUnitVolume ;
 +                                                             epcis:measurementType    gs1:AmountOfSubstancePerUnitVolume ;
 @@ -70 +71 @@
 -                                     epcis:sensorReport    [ epcis:type   <file://C:/Humidity> ;
@@ -48,4 +48,4 @@
 @@ -88,0 +90 @@
 +                                                                epcis:measurementType  gs1:Temperature ;
 @@ -93 +94,0 @@
--                                                                epcis:type       gs1:MT-Temperature ;
+-                                                                epcis:type       gs1:Temperature ;

@@ -36,12 +36,12 @@
                                                            ] ;
                                      epcis:sensorReport    [ epcis:maxValue  8.02E2 ;
                                                              epcis:minValue  8.0E2 ;
-                                                             epcis:type      gs1:MT-Illuminance ;
+                                                             epcis:type      gs1:Illuminance ;
                                                              epcis:uom       "LUX"
                                                            ] ;
                                      epcis:sensorReport    [ epcis:maxValue  1.62E2 ;
                                                              epcis:minValue  1.6E2 ;
-                                                             epcis:type      gs1:MT-Speed ;
+                                                             epcis:type      gs1:Speed ;
                                                              epcis:uom       "KMH"
                                                            ] ;
                                      epcis:sensorReport    [ epcis:maxValue  1.22E1 ;
@@ -53,7 +53,7 @@
                                                              epcis:meanValue  2.61E1 ;
                                                              epcis:minValue   2.6E1 ;
                                                              epcis:sDev       1.0E-1 ;
-                                                             epcis:type       gs1:MT-Temperature ;
+                                                             epcis:type       gs1:Temperature ;
                                                              epcis:uom        "CEL"
                                                            ]
                                    ] .

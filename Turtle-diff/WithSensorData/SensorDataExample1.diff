@@ -13,13 +13,13 @@
 -                                                             epcis:time            "2019-04-02T14:05:00.000+01:00"^^xsd:dateTimeStamp
 +                                                             epcis:time            "2019-04-02T14:35:00.000+01:00"^^xsd:dateTime
 @@ -42 +42 @@
--                                     epcis:sensorReport    [ epcis:type   gs1:MT-Illuminance ;
+-                                     epcis:sensorReport    [ epcis:type   gs1:Illuminance ;
 +                                     epcis:sensorReport    [ epcis:measurementType  gs1:Illuminance ;
 @@ -44 +44 @@
 -                                                             epcis:value  8.0E2
 +                                                             epcis:value            8.01E2
 @@ -46 +46 @@
--                                     epcis:sensorReport    [ epcis:type   gs1:MT-Speed ;
+-                                     epcis:sensorReport    [ epcis:type   gs1:Speed ;
 +                                     epcis:sensorReport    [ epcis:measurementType  gs1:Speed ;
 @@ -48 +48 @@
 -                                                             epcis:value  1.6E2
@@ -31,7 +31,7 @@
 -                                                             epcis:value  1.21E1
 +                                                             epcis:value            1.22E1
 @@ -54 +54 @@
--                                     epcis:sensorReport    [ epcis:type   gs1:MT-Temperature ;
+-                                     epcis:sensorReport    [ epcis:type   gs1:Temperature ;
 +                                     epcis:sensorReport    [ epcis:measurementType  gs1:Temperature ;
 @@ -56 +56 @@
 -                                                             epcis:value  2.6E1
@@ -43,13 +43,13 @@
 -                                                             epcis:time            "2019-04-02T14:35:00.000+01:00"^^xsd:dateTimeStamp
 +                                                             epcis:time            "2019-04-02T14:05:00.000+01:00"^^xsd:dateTime
 @@ -65 +65 @@
--                                     epcis:sensorReport    [ epcis:type   gs1:MT-Illuminance ;
+-                                     epcis:sensorReport    [ epcis:type   gs1:Illuminance ;
 +                                     epcis:sensorReport    [ epcis:measurementType  gs1:Illuminance ;
 @@ -67 +67 @@
 -                                                             epcis:value  8.01E2
 +                                                             epcis:value            8.0E2
 @@ -69 +69 @@
--                                     epcis:sensorReport    [ epcis:type   gs1:MT-Speed ;
+-                                     epcis:sensorReport    [ epcis:type   gs1:Speed ;
 +                                     epcis:sensorReport    [ epcis:measurementType  gs1:Speed ;
 @@ -71 +71 @@
 -                                                             epcis:value  1.61E2
@@ -61,7 +61,7 @@
 -                                                             epcis:value  1.22E1
 +                                                             epcis:value            1.21E1
 @@ -77 +77 @@
--                                     epcis:sensorReport    [ epcis:type   gs1:MT-Temperature ;
+-                                     epcis:sensorReport    [ epcis:type   gs1:Temperature ;
 +                                     epcis:sensorReport    [ epcis:measurementType  gs1:Temperature ;
 @@ -79 +79 @@
 -                                                             epcis:value  2.61E1
@@ -73,14 +73,14 @@
 -                                                             epcis:time            "2019-04-02T14:55:00.000+01:00"^^xsd:dateTimeStamp
 +                                                             epcis:time            "2019-04-02T14:55:00.000+01:00"^^xsd:dateTime
 @@ -88 +88 @@
--                                     epcis:sensorReport    [ epcis:type   gs1:MT-Illuminance ;
+-                                     epcis:sensorReport    [ epcis:type   gs1:Illuminance ;
 +                                     epcis:sensorReport    [ epcis:measurementType  gs1:Illuminance ;
 @@ -92 +92 @@
--                                     epcis:sensorReport    [ epcis:type   gs1:MT-Speed ;
+-                                     epcis:sensorReport    [ epcis:type   gs1:Speed ;
 +                                     epcis:sensorReport    [ epcis:measurementType  gs1:Speed ;
 @@ -96 +96 @@
 -                                     epcis:sensorReport    [ epcis:type   <file://C:/Humidity> ;
 +                                     epcis:sensorReport    [ epcis:measurementType  gs1:Humidity ;
 @@ -100 +100 @@
--                                     epcis:sensorReport    [ epcis:type   gs1:MT-Temperature ;
+-                                     epcis:sensorReport    [ epcis:type   gs1:Temperature ;
 +                                     epcis:sensorReport    [ epcis:measurementType  gs1:Temperature ;

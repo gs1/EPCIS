@@ -55,7 +55,7 @@
                                                                 epcis:percRank   5.0E1 ;
                                                                 epcis:percValue  1.27E1 ;
                                                                 epcis:sDev       4.1E-1 ;
-                                                                epcis:type       gs1:MT-Temperature ;
+                                                                epcis:type       gs1:Temperature ;
                                                                 epcis:uom        "CEL"
                                                               ]
                                    ] .

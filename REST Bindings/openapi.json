@@ -5093,22 +5093,22 @@
               },
               "sensorReport": [
                 {
-                  "type": "gs1:MT-Temperature",
+                  "type": "gs1:Temperature",
                   "value": 26,
                   "uom": "CEL"
                 },
                 {
-                  "type": "gs1:MT-Humidity",
+                  "type": "gs1:AbsoluteHumidity",
                   "value": 12.1,
                   "uom": "A93"
                 },
                 {
-                  "type": "gs1:MT-Speed",
+                  "type": "gs1:Speed",
                   "value": 160,
                   "uom": "KMH"
                 },
                 {
-                  "type": "gs1:MT-Illuminance",
+                  "type": "gs1:Illuminance",
                   "value": 800,
                   "uom": "LUX"
                 }
@@ -5123,22 +5123,22 @@
               },
               "sensorReport": [
                 {
-                  "type": "gs1:MT-Temperature",
+                  "type": "gs1:Temperature",
                   "value": 26.1,
                   "uom": "CEL"
                 },
                 {
-                  "type": "gs1:MT-Humidity",
+                  "type": "gs1:AbsoluteHumidity",
                   "value": 12.2,
                   "uom": "A93"
                 },
                 {
-                  "type": "gs1:MT-Speed",
+                  "type": "gs1:Speed",
                   "value": 161,
                   "uom": "KMH"
                 },
                 {
-                  "type": "gs1:MT-Illuminance",
+                  "type": "gs1:Illuminance",
                   "value": 801,
                   "uom": "LUX"
                 }
@@ -5153,22 +5153,22 @@
               },
               "sensorReport": [
                 {
-                  "type": "gs1:MT-Temperature",
+                  "type": "gs1:Temperature",
                   "value": 26.2,
                   "uom": "CEL"
                 },
                 {
-                  "type": "gs1:MT-Humidity",
+                  "type": "gs1:AbsoluteHumidity",
                   "value": 12.2,
                   "uom": "A93"
                 },
                 {
-                  "type": "gs1:MT-Speed",
+                  "type": "gs1:Speed",
                   "value": 162,
                   "uom": "KMH"
                 },
                 {
-                  "type": "gs1:MT-Illuminance",
+                  "type": "gs1:Illuminance",
                   "value": 802,
                   "uom": "LUX"
                 }

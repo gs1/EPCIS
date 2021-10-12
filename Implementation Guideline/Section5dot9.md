@@ -100,7 +100,7 @@ For instance, if an organisation is interested to ascertain that their products 
 | | `maxValue` |  |  |  |  |  |  |  | 21.8 | | 14.9 |
 | | `uom` |  |  |  |  |  |  |  | `CEL` |  | `CEL` |
 | | `sensorReport` |
-| | `type` |  |  |  |  |  |  |  | `Humidity (CBV)` |  | `Humidity (CBV)` |
+| | `type` |  |  |  |  |  |  |  | `AbsoluteHumidity (CBV)` |  | `AbsoluteHumidity (CBV)` |
 | | `minValue` |  |  |  |  |  |  |  | 6.1 |  | 4.6 |
 | | `maxValue` |  |  |  |  |  |  |  | 8.2 | | 3.3 |
 | | `uom` |  |  |  |  |  |  |  | `A93` |  | `A93` |

@@ -34,12 +34,12 @@
         epcis:eventTimeZoneOffset  "+01:00" ;
         epcis:readPoint            <https://id.gs1.org/414/9506000134307> ;
         epcis:sensorElementList    [ epcis:sensorReport  [ examp:feature  "ex:outerPackage" ;
-                                                           epcis:type     gs1:MT-Temperature ;
+                                                           epcis:type     gs1:Temperature ;
                                                            epcis:uom      "CEL" ;
                                                            epcis:value    2.07E1
                                                          ] ;
                                      epcis:sensorReport  [ examp:feature  "ex:ambiance" ;
-                                                           epcis:type     gs1:MT-Temperature ;
+                                                           epcis:type     gs1:Temperature ;
                                                            epcis:uom      "CEL" ;
                                                            epcis:value    2.09E1
                                                          ]

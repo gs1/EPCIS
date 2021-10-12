@@ -31,4 +31,4 @@
 @@ -63,0 +65 @@
 +                                                                                                  epcis:measurementType  gs1:Temperature ;
 @@ -68 +69,0 @@
--                                                                                                  epcis:type       gs1:MT-Temperature ;
+-                                                                                                  epcis:type       gs1:Temperature ;

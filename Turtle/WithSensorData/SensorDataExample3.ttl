@@ -36,7 +36,7 @@
                                                            ] ;
                                      epcis:sensorReport    [ epcis:maxValue  1.38E1 ;
                                                              epcis:minValue  1.24E1 ;
-                                                             epcis:type      gs1:MT-Temperature ;
+                                                             epcis:type      gs1:Temperature ;
                                                              epcis:uom       "CEL"
                                                            ]
                                    ] .

@@ -810,7 +810,7 @@
       "sameAs": "urn:epcglobal:cbv:bizstep:sensor_reporting",
       "skos:example": {
         "@language": "en",
-        "@value": "Several packages of frozen food are kept in cold storage, with temperature monitoring. An EPCIS event is triggered once a specific, pre-set temperature threshold is reached.\nA dust-free room is continuously checked for the presence of contaminants. An EPCIS event is captured at regular intervals for documentation purposes.\nA wine/cheese cellar is continuously checked for humidity and temperature. Each time the door is opened or closed, an EPCIS event is captured, including the range of temperature and humidity values within the period of time since the previously captured `commissioning` EPCIS event."
+        "@value": "Several packages of frozen food are kept in cold storage, with temperature monitoring. An EPCIS event is triggered once a specific, pre-set temperature threshold is reached.\nA dust-free room is continuously checked for the presence of contaminants. An EPCIS event is captured at regular intervals for documentation purposes.\nA wine/cheese cellar is continuously checked for absolute humidity and temperature. Each time the door is opened or closed, an EPCIS event is captured, including the range of temperature and absolute humidity values within the period of time since the previously captured `commissioning` EPCIS event."
       },
       "term_status": "stable"
     },

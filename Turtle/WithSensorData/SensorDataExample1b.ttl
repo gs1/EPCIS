@@ -31,11 +31,11 @@
                                                              epcis:rawData         <https://example.org/8004/401234599999> ;
                                                              epcis:time            "2019-04-02T14:35:00.000+01:00"^^xsd:dateTimeStamp
                                                            ] ;
-                                     epcis:sensorReport    [ epcis:type   gs1:MT-Illuminance ;
+                                     epcis:sensorReport    [ epcis:type   gs1:Illuminance ;
                                                              epcis:uom    "LUX" ;
                                                              epcis:value  8.01E2
                                                            ] ;
-                                     epcis:sensorReport    [ epcis:type   gs1:MT-Speed ;
+                                     epcis:sensorReport    [ epcis:type   gs1:Speed ;
                                                              epcis:uom    "KMH" ;
                                                              epcis:value  1.61E2
                                                            ] ;
@@ -43,7 +43,7 @@
                                                              epcis:uom    "A93" ;
                                                              epcis:value  1.22E1
                                                            ] ;
-                                     epcis:sensorReport    [ epcis:type   gs1:MT-Temperature ;
+                                     epcis:sensorReport    [ epcis:type   gs1:Temperature ;
                                                              epcis:uom    "CEL" ;
                                                              epcis:value  2.61E1
                                                            ]
@@ -53,11 +53,11 @@
                                                              epcis:rawData         <https://example.org/8004/401234599999> ;
                                                              epcis:time            "2019-04-02T14:05:00.000+01:00"^^xsd:dateTimeStamp
                                                            ] ;
-                                     epcis:sensorReport    [ epcis:type   gs1:MT-Illuminance ;
+                                     epcis:sensorReport    [ epcis:type   gs1:Illuminance ;
                                                              epcis:uom    "LUX" ;
                                                              epcis:value  8.0E2
                                                            ] ;
-                                     epcis:sensorReport    [ epcis:type   gs1:MT-Speed ;
+                                     epcis:sensorReport    [ epcis:type   gs1:Speed ;
                                                              epcis:uom    "KMH" ;
                                                              epcis:value  1.6E2
                                                            ] ;
@@ -65,7 +65,7 @@
                                                              epcis:uom    "A93" ;
                                                              epcis:value  1.21E1
                                                            ] ;
-                                     epcis:sensorReport    [ epcis:type   gs1:MT-Temperature ;
+                                     epcis:sensorReport    [ epcis:type   gs1:Temperature ;
                                                              epcis:uom    "CEL" ;
                                                              epcis:value  2.6E1
                                                            ]
@@ -75,11 +75,11 @@
                                                              epcis:rawData         <https://example.org/8004/401234599999> ;
                                                              epcis:time            "2019-04-02T14:55:00.000+01:00"^^xsd:dateTimeStamp
                                                            ] ;
-                                     epcis:sensorReport    [ epcis:type   gs1:MT-Illuminance ;
+                                     epcis:sensorReport    [ epcis:type   gs1:Illuminance ;
                                                              epcis:uom    "LUX" ;
                                                              epcis:value  8.02E2
                                                            ] ;
-                                     epcis:sensorReport    [ epcis:type   gs1:MT-Speed ;
+                                     epcis:sensorReport    [ epcis:type   gs1:Speed ;
                                                              epcis:uom    "KMH" ;
                                                              epcis:value  1.62E2
                                                            ] ;
@@ -87,7 +87,7 @@
                                                              epcis:uom    "A93" ;
                                                              epcis:value  1.22E1
                                                            ] ;
-                                     epcis:sensorReport    [ epcis:type   gs1:MT-Temperature ;
+                                     epcis:sensorReport    [ epcis:type   gs1:Temperature ;
                                                              epcis:uom    "CEL" ;
                                                              epcis:value  2.62E1
                                                            ]

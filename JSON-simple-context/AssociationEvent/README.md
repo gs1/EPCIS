@@ -12,6 +12,6 @@ Association events in JSON/JSON-LD  extracted from [AssociationEvents.xml](../..
    - two childQuantities of particular product lots (LGTIN) are put into a returnable asset (GRAI)
 - `AssociationEvent-f.jsonld`: has all fields of an ordinary event:
    - installing two individual assets (GIAI) and 4 products of a lot (LGTIN) in a returnable asset (GRAI)
-   - also stating `bizTransaction` (a PO), transfer from a source `possessing_party` to a target `possessing_party`, and a sesnor reading of `Humidity`
+   - also stating `bizTransaction` (a PO), transfer from a source `possessing_party` to a target `possessing_party`, and a sensor reading of `AbsoluteHumidity`
 - `AssociationEvent-g.jsonld`: `disassembling` that is declared to be wrong with an ErrorDeclaration with `reason`: `incorrect_data` and has a `correctiveEventID`
 - `AssociationEvent-h.jsonld`: `disassembling` expressed with correct parent (GRAI) and children (GIAIs) (correction of the event in the previous example)

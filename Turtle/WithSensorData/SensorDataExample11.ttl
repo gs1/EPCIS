@@ -31,7 +31,7 @@
         epcis:eventTime            "2020-07-03T00:05:00-06:00"^^xsd:dateTimeStamp ;
         epcis:eventTimeZoneOffset  "-06:00" ;
         epcis:readPoint            <urn:epc:id:sgln:4012345.00000.5> ;
-        epcis:sensorElementList    [ epcis:sensorReport  [ epcis:type   gs1:MT-DoseEquivalentRate ;
+        epcis:sensorElementList    [ epcis:sensorReport  [ epcis:type   gs1:DoseEquivalentRate ;
                                                            epcis:uom    "P71" ;
                                                            epcis:value  5.0E-3
                                                          ]

@@ -3,7 +3,7 @@
 This directory has example files in JSON / JSON-LD. 
 Most of them are derived from the XML examples in [SensorDataExamples.xml](../../XSD/SensorDataExamples.xml), but we have added some more:
 
-- `SensorDataExample1.jsonld`: 3 sensor readings of several properties (`Temperature, Humidity, Speed, Illuminance`) 
+- `SensorDataExample1.jsonld`: 3 sensor readings of several properties (`Temperature, Absolute Humidity, Speed, Illuminance`) 
   of a particular SGTIN at different `time` instants (here: 30 minutes apart). 
   Sensor `deviceID` is a GIAI. Includes `deviceMetadata` and `rawData` URLs
 - `SensorDataExample1b.jsonld`: 3 sensor readings, but no GTIN is mentioned, so the readings apply to the `readPoint` itself
@@ -17,7 +17,7 @@ Most of them are derived from the XML examples in [SensorDataExamples.xml](../..
 - `SensorDataExample6.jsonld`:  An interval reading with comprehensive statistical measures (`minValue, maxValue, meanValue, sDev, percRank, percValue`) over interval `startTime, endTime`.
    Also includes a custom MeasurementType `someSensorProperty` that uses `stringValue`, and custom `furtherSensorData` with extra custom props (user/vendor extensions)
 - `SensorDataExample7.jsonld`:  Custom MeasurementTypes using non-numeric values (`stringValue, booleanValue, uriValue, hexBinaryValue`)
-- `SensorDataExample8.jsonld`:  An interval report of Humidity Temperature
+- `SensorDataExample8.jsonld`:  An interval report of Absolute Humidity and Temperature
    - And the concentration of:
      - A `chemicalSubstance` (using an INCHI key URL)
      - A `microorganism` (using a NCBI taxonomy URL)

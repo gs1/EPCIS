@@ -34,14 +34,14 @@
                                      epcis:sensorReport    [ epcis:deviceID        <urn:epc:id:giai:4000001.444> ;
                                                              epcis:deviceMetadata  <https://id.gs1.org/giai/4000001444> ;
                                                              epcis:rawData         <https://example.org/giai/4000001444-20190402T150000000> ;
-                                                             epcis:type            gs1:MT-Illuminance ;
+                                                             epcis:type            gs1:Illuminance ;
                                                              epcis:uom             "LUX" ;
                                                              epcis:value           8.0E2
                                                            ] ;
                                      epcis:sensorReport    [ epcis:deviceID        <urn:epc:id:giai:4000001.333> ;
                                                              epcis:deviceMetadata  <https://id.gs1.org/giai/4000001333> ;
                                                              epcis:rawData         <https://example.org/giai/4000001333-20190402T150000000> ;
-                                                             epcis:type            gs1:MT-Speed ;
+                                                             epcis:type            gs1:Speed ;
                                                              epcis:uom             "KMH" ;
                                                              epcis:value           1.6E2
                                                            ] ;
@@ -55,7 +55,7 @@
                                      epcis:sensorReport    [ epcis:deviceID        <urn:epc:id:giai:4000001.111> ;
                                                              epcis:deviceMetadata  <https://id.gs1.org/giai/4000001111> ;
                                                              epcis:rawData         <https://example.org/giai/4000001111-20190402T150000000> ;
-                                                             epcis:type            gs1:MT-Temperature ;
+                                                             epcis:type            gs1:Temperature ;
                                                              epcis:uom             "CEL" ;
                                                              epcis:value           2.6E1
                                                            ]

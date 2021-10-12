@@ -32,12 +32,12 @@
                                         epcis:sensorElementList    [ rdf:type              epcis:SensorElement ;
                                                                      epcis:sensorMetadata  [ epcis:time  "2021-05-27T12:50:00.000Z"^^xsd:dateTimeStamp ] ;
                                                                      epcis:sensorReport    [ epcis:component  "Easting" ;
-                                                                                             epcis:type       gs1:MT-Length ;
+                                                                                             epcis:type       gs1:Length ;
                                                                                              epcis:uom        "MTR" ;
                                                                                              epcis:value      2.47758357E6
                                                                                            ] ;
                                                                      epcis:sensorReport    [ epcis:component  "Northing" ;
-                                                                                             epcis:type       gs1:MT-Length ;
+                                                                                             epcis:type       gs1:Length ;
                                                                                              epcis:uom        "MTR" ;
                                                                                              epcis:value      -4.7797989E5
                                                                                            ]

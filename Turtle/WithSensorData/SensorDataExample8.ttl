@@ -46,7 +46,7 @@
                                                            epcis:deviceMetadata        <https://id.gs1.org/8004/4000001111> ;
                                                            epcis:rawData               <https://example.org/8004/401234599999> ;
                                                            epcis:time                  "2019-07-19T14:00:00.000+01:00"^^xsd:dateTimeStamp ;
-                                                           epcis:type                  gs1:MT-Temperature ;
+                                                           epcis:type                  gs1:Temperature ;
                                                            epcis:uom                   "CEL"
                                                          ]
                                    ] ;
@@ -58,12 +58,12 @@
                                                              epcis:time                  "2019-07-19T14:00:00.000+01:00"^^xsd:dateTimeStamp
                                                            ] ;
                                      epcis:sensorReport    [ epcis:microorganism  <https://www.ncbi.nlm.nih.gov/taxonomy/1126011> ;
-                                                             epcis:type           gs1:MT-AmountOfSubstancePerUnitVolume ;
+                                                             epcis:type           gs1:AmountOfSubstancePerUnitVolume ;
                                                              epcis:uom            "C35" ;
                                                              epcis:value          5.0E-2
                                                            ] ;
                                      epcis:sensorReport    [ epcis:chemicalSubstance  <https://identifiers.org/inchikey:CZMRCDWAGMRECN-UGDNZRGBSA-N> ;
-                                                             epcis:type               gs1:MT-AmountOfSubstancePerUnitVolume ;
+                                                             epcis:type               gs1:AmountOfSubstancePerUnitVolume ;
                                                              epcis:uom                "C35" ;
                                                              epcis:value              1.8E-1
                                                            ] ;
@@ -90,7 +90,7 @@
                                                                 epcis:percRank   5.0E1 ;
                                                                 epcis:percValue  1.27E1 ;
                                                                 epcis:sDev       4.1E-1 ;
-                                                                epcis:type       gs1:MT-Temperature ;
+                                                                epcis:type       gs1:Temperature ;
                                                                 epcis:uom        "CEL"
                                                               ]
                                    ] .

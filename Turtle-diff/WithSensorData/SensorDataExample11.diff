@@ -7,7 +7,7 @@
 -        epcis:eventTime            "2020-07-03T00:05:00-06:00"^^xsd:dateTimeStamp ;
 +        epcis:eventTime            "2020-07-03T00:05:00-06:00"^^xsd:dateTime ;
 @@ -34 +34 @@
--        epcis:sensorElementList    [ epcis:sensorReport  [ epcis:type   gs1:MT-DoseEquivalentRate ;
+-        epcis:sensorElementList    [ epcis:sensorReport  [ epcis:type   gs1:DoseEquivalentRate ;
 +        epcis:sensorElementList    [ epcis:sensorReport  [ epcis:measurementType  gs1:DoseEquivalentRate ;
 @@ -41 +41 @@
 -  dcterms:created  "2020-07-03T00:05:00-06:00" ;
