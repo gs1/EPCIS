@@ -1,5 +1,5 @@
 {
-  "@context": ["https://gs1.github.io/EPCIS/epcis-context.jsonld",{"ext1": "http://ext.com/ext1"}],
+  "@context": ["https://gs1.github.io/EPCIS/epcis-context.jsonld",{"ext1": "http://example.com/ext1"}],
 
   "isA": "EPCISDocument",
   "schemaVersion": "2.0",

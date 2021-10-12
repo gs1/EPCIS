@@ -3,8 +3,8 @@
 <epcis:EPCISDocument schemaVersion="2.0"
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:ext1="http://ext.com/ext1/" xmlns:ext2="http://ext.com/ext2/"
-	xmlns:ext3="http://ext.com/ext3/" xmlns:cbvmda="urn:epcglobal:cbv:mda"
+	xmlns:ext1="http://example.com/ext1/" xmlns:ext2="http://example.com/ext2/"
+	xmlns:ext3="http://example.com/ext3/" xmlns:cbvmda="urn:epcglobal:cbv:mda"
 	creationDate="2013-06-04T14:59:02.099+02:00"
 	xmlns:epcis="urn:epcglobal:epcis:xsd:2">
 	<EPCISBody>

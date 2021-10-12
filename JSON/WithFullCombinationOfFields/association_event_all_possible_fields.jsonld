@@ -107,7 +107,7 @@
                 "percValue": 12.7,
                 "uom": "CEL",
                 "sDev": 0.1,
-                "someFurtherReportData": "someText",
+                "ext1:someFurtherReportData": "someText",
                 "deviceMetadata": "https://id.gs1.org/giai/4000001111"
               }
             ],
@@ -215,13 +215,13 @@
   "@context": [
     "https://gs1.github.io/EPCIS/epcis-context.jsonld",
     {
-      "ext3": "http://ext.com/ext3/"
+      "ext3": "http://example.com/ext3/"
     },
     {
-      "ext2": "http://ext.com/ext2/"
+      "ext2": "http://example.com/ext2/"
     },
     {
-      "ext1": "http://ext.com/ext1/"
+      "ext1": "http://example.com/ext1/"
     }
   ]
 }

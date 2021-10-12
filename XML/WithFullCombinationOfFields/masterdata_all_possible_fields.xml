@@ -3,8 +3,8 @@
 <epcis:EPCISDocument schemaVersion="2.0"
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:ext1="http://ext.com/ext1/" xmlns:ext2="http://ext.com/ext2/"
-	xmlns:ext3="http://ext.com/ext3/"
+	xmlns:ext1="http://example.com/ext1/" xmlns:ext2="http://example.com/ext2/"
+	xmlns:ext3="http://example.com/ext3/"
 	creationDate="2013-06-04T14:59:02.099+02:00"
 	xmlns:epcis="urn:epcglobal:epcis:xsd:2">
 	<EPCISHeader>
@@ -16,17 +16,17 @@
 						<VocabularyElementList>
 							<VocabularyElement
 								id="urn:epc:id:sgln:0037000.00729.0">
-								<attribute id="http://ext.com/ext1#string">stringValue</attribute>
-								<attribute id="http://ext.com/ext1#array">string1InArray</attribute>
-								<attribute id="http://ext.com/ext1#array">string2InArray</attribute>
-								<attribute id="http://ext.com/ext1#object1">
+								<attribute id="http://example.com/ext1#string">stringValue</attribute>
+								<attribute id="http://example.com/ext1#array">string1InArray</attribute>
+								<attribute id="http://example.com/ext1#array">string2InArray</attribute>
+								<attribute id="http://example.com/ext1#object1">
 									<ext1:object2>
 										<inner1 xsi:type="xsd:string">val1</inner1>
 										<inner2 xsi:type="xsd:string">val2</inner2>
 									</ext1:object2>
 									<ext1:string xsi:type="xsd:string">string</ext1:string>
 								</attribute>
-								<attribute id="http://ext.com/ext1#object2">
+								<attribute id="http://example.com/ext1#object2">
 									<ext1:default>stringAsDefaultValue</ext1:default>
 									<ext1:int xsi:type="xsd:integer">10</ext1:int>
 									<ext1:float xsi:type="xsd:double">20</ext1:float>
@@ -71,17 +71,17 @@
 						<VocabularyElementList>
 							<VocabularyElement
 								id="urn:epc:id:sgln:0037000.00729.0">
-								<attribute id="http://ext.com/ext1#string">stringValue</attribute>
-								<attribute id="http://ext.com/ext1#array">string1InArray</attribute>
-								<attribute id="http://ext.com/ext1#array">string2InArray</attribute>
-								<attribute id="http://ext.com/ext1#object1">
+								<attribute id="http://example.com/ext1#string">stringValue</attribute>
+								<attribute id="http://example.com/ext1#array">string1InArray</attribute>
+								<attribute id="http://example.com/ext1#array">string2InArray</attribute>
+								<attribute id="http://example.com/ext1#object1">
 									<ext1:object2>
 										<inner1 xsi:type="xsd:string">val1</inner1>
 										<inner2 xsi:type="xsd:string">val2</inner2>
 									</ext1:object2>
 									<ext1:string xsi:type="xsd:string">string</ext1:string>
 								</attribute>
-								<attribute id="http://ext.com/ext1#object2">
+								<attribute id="http://example.com/ext1#object2">
 									<ext1:default>stringAsDefaultValue</ext1:default>
 									<ext1:int xsi:type="xsd:integer">10</ext1:int>
 									<ext1:float xsi:type="xsd:double">20</ext1:float>
