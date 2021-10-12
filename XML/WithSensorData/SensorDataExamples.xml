@@ -381,8 +381,8 @@
 				<sensorElementList>
 					<sensorElement>
 						<sensorMetadata time="2021-05-27T13:50:00.000+01:00" />
-						<sensorReport type="gs1:Length" component="Northing" value="-477979.89" uom="MTR" coordinateReferenceSystem="http://www.opengis.net/def/crs/EPSG/0/27700" />
-						<sensorReport type="gs1:Length" component="Easting" value="2477583.57" uom="MTR" coordinateReferenceSystem="http://www.opengis.net/def/crs/EPSG/0/27700" />
+						<sensorReport type="gs1:Length" component="northing" value="-477979.89" uom="MTR" coordinateReferenceSystem="http://www.opengis.net/def/crs/EPSG/0/27700" />
+						<sensorReport type="gs1:Length" component="easting" value="2477583.57" uom="MTR" coordinateReferenceSystem="http://www.opengis.net/def/crs/EPSG/0/27700" />
 					</sensorElement>
 				</sensorElementList>
 			</ObjectEvent>

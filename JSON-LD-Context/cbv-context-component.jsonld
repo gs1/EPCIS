@@ -15,6 +15,9 @@
         "elevation_angle": "cbv:Comp-elevation_angle",
         "easting": "cbv:Comp-easting",
         "northing": "cbv:Comp-northing",
+        "latitude": "cbv:Comp-latitude",
+        "longitude": "cbv:Comp-longitude",
+        "altitude": "cbv:Comp-altitude",
         "geocoordinate": "cbv:Comp-geocoordinate"
     }
 }
