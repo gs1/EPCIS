@@ -99,7 +99,7 @@
                     "epcis": "https://ns.gs1.org/epcis/",
                     "set": {
                         "@id": "epcis:set",
-                        "@type": "@id",
+                        "@type": "@vocab",
                         "@container": "@set"
                     },
                     "unset": {
