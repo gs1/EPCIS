@@ -485,7 +485,30 @@
               "@id": "epcis:value",
               "@type": "xsd:double"
             },
-            "component": "epcis:component",
+            "component": {
+              "@context": {
+                "@protected": true,
+                "@version": 1.1,
+                "cbv": "https://ns.gs1.org/cbv/",
+                "x": "cbv:Comp-x",
+                "y": "cbv:Comp-y",
+                "z": "cbv:Comp-z",
+                "axial_distance": "cbv:Comp-axial_distance",
+                "azimuth": "cbv:Comp-azimuth",
+                "height": "cbv:Comp-height",
+                "spherical_radius": "cbv:Comp-spherical_radius",
+                "polar_angle": "cbv:Comp-polar_angle",
+                "elevation_angle": "cbv:Comp-elevation_angle",
+                "easting": "cbv:Comp-easting",
+                "northing": "cbv:Comp-northing",
+                "latitude": "cbv:Comp-latitude",
+                "longitude": "cbv:Comp-longitude",
+                "altitude": "cbv:Comp-altitude",
+                "geocoordinate": "cbv:Comp-geocoordinate"
+              },
+              "@id": "epcis:component",
+              "@type": "@vocab"
+            },
             "stringValue": "epcis:stringValue",
             "booleanValue": {
               "@id": "epcis:booleanValue",
