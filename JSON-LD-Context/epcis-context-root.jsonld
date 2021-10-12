@@ -246,6 +246,10 @@
                                 "@id": "epcis:chemicalSubstance",
                                 "@type": "@id"
                             },
+                            "coordinateReferenceSystem": {
+                                "@id": "epcis:coordinateReferenceSystem",
+                                "@type": "@id"
+                            },
                             "time": {
                                 "@id": "epcis:time",
                                 "@type": "xsd:dateTimeStamp"
