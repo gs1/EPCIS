@@ -200,7 +200,8 @@
                     "@id": "epcis:time",
                     "@type": "xsd:dateTimeStamp"
                 },
-                "sensorMetadata": {
+               "isA": "@type",
+               "sensorMetadata": {
                     "@id": "epcis:sensorMetadata",
                     "@context": {
                         "@protected": true,

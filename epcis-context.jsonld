@@ -349,6 +349,7 @@
           "@id": "epcis:time",
           "@type": "xsd:dateTimeStamp"
         },
+        "isA": "@type",
         "sensorMetadata": {
           "@id": "epcis:sensorMetadata",
           "@context": {
