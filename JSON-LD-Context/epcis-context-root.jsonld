@@ -85,7 +85,7 @@
                 }
             ]
         },
-        "persistentDisposition": {
+        "persistentDisposition": ["https://gs1.github.io/EPCIS/cbv-context-disposition.jsonld",{
             "@id": "epcis:persistentDisposition",
             "@container": "@set",
             "@context": {
@@ -93,15 +93,15 @@
                 "epcis": "https://ns.gs1.org/epcis/",
                 "set": {
                     "@id": "epcis:set",
-                    "@type": "@id",
+                    "@type": "@vocab",
                     "@container": "@set"
                 },
                 "unset": {
                     "@id": "epcis:unset",
-                    "@type": "@id",
+                    "@type": "@vocab",
                     "@container": "@set"
                 }
-            }
+            }]
         },
         "quantity": {
             "@id": "epcis:quantity",
