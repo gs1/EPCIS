@@ -42,6 +42,10 @@
             "@id": "epcis:readPoint",
             "@type": "@id"
         },
+        "transformationID": {
+            "@id": "epcis:transformationID",
+            "@type": "@id"
+        },
         "epcList": {
             "@id": "epcis:epcList",
             "@type": "@id",
@@ -244,7 +248,10 @@
                                 "@id": "epcis:booleanValue",
                                 "@type": "xsd:boolean"
                             },
-                            "hexBinaryValue": "epcis:hexBinaryValue",
+                            "hexBinaryValue": {
+                                "@id": "epcis:hexBinaryValue",
+                                "@type": "xsd:hexBinary"
+                            },
                             "uriValue": {
                                 "@id": "epcis:uriValue",
                                 "@type": "@id"
@@ -286,7 +293,7 @@
                     "epcis": "https://ns.gs1.org/epcis/",
                     "reason": {
                         "@id": "epcis:reason",
-                        "@type": "@vocab"
+                        "@type": "@vocab"trans
                     },
                     "correctiveEventIDs": {
                         "@id": "epcis:correctiveEventIDs",
