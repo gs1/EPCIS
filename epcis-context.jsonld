@@ -59,6 +59,8 @@
         "replacing": "cbv:BizStep-replacing",
         "reserving": "cbv:BizStep-reserving",
         "retail_selling": "cbv:BizStep-retail_selling",
+        "sampling": "cbv:BizStep-sampling",
+        "sensor_reporting": "cbv:BizStep-sensor_reporting",
         "shipping": "cbv:BizStep-shipping",
         "staging_outbound": "cbv:BizStep-staging_outbound",
         "stock_taking": "cbv:BizStep-stock_taking",
@@ -78,7 +80,12 @@
         "@version": 1.1,
         "cbv": "https://ns.gs1.org/cbv/",
         "active": "cbv:Disp-active",
+        "available": "cbv:Disp-available",
+        "completeness_verified": "cbv:Disp-completeness_verified",
+        "completeness_inferred": "cbv:Disp-completeness_inferred",
+        "conformant": "cbv:Disp-conformant",
         "container_closed": "cbv:Disp-container_closed",
+        "container_open": "cbv:Disp-container_open",
         "damaged": "cbv:Disp-damaged",
         "destroyed": "cbv:Disp-destroyed",
         "dispensed": "cbv:Disp-dispensed",
@@ -88,7 +95,12 @@
         "in_progress": "cbv:Disp-in_progress",
         "in_transit": "cbv:Disp-in_transit",
         "inactive": "cbv:Disp-inactive",
+        "mismatch_instance": "cbv:Disp-mismatch_instance",
+        "mismatch_class": "cbv:Disp-mismatch_class",
+        "mismatch_quantity": "cbv:Disp-mismatch_quantity",
+        "needs_replacement": "cbv:Disp-needs_replacement",
         "no_pedigree_match": "cbv:Disp-no_pedigree_match",
+        "non_conformant": "cbv:Disp-non_conformant",
         "non_sellable_other": "cbv:Disp-non_sellable_other",
         "partially_dispensed": "cbv:Disp-partially_dispensed",
         "recalled": "cbv:Disp-recalled",
@@ -98,6 +110,7 @@
         "sellable_accessible": "cbv:Disp-sellable_accessible",
         "sellable_not_accessible": "cbv:Disp-sellable_not_accessible",
         "stolen": "cbv:Disp-stolen",
+        "unavailable": "cbv:Disp-unavailable",
         "unknown": "cbv:Disp-unknown"
       },
       "@id": "epcis:disposition",
@@ -109,6 +122,10 @@
     },
     "readPoint": {
       "@id": "epcis:readPoint",
+      "@type": "@id"
+    },
+    "transformationID": {
+      "@id": "epcis:transformationID",
       "@type": "@id"
     },
     "epcList": {
@@ -171,20 +188,60 @@
     "persistentDisposition": {
       "@id": "epcis:persistentDisposition",
       "@container": "@set",
-      "@context": {
-        "@protected": true,
-        "epcis": "https://ns.gs1.org/epcis/",
-        "set": {
-          "@id": "epcis:set",
-          "@type": "@id",
-          "@container": "@set"
+      "@context": [
+        {
+          "@protected": true,
+          "@version": 1.1,
+          "cbv": "https://ns.gs1.org/cbv/",
+          "active": "cbv:Disp-active",
+          "available": "cbv:Disp-available",
+          "completeness_verified": "cbv:Disp-completeness_verified",
+          "completeness_inferred": "cbv:Disp-completeness_inferred",
+          "conformant": "cbv:Disp-conformant",
+          "container_closed": "cbv:Disp-container_closed",
+          "container_open": "cbv:Disp-container_open",
+          "damaged": "cbv:Disp-damaged",
+          "destroyed": "cbv:Disp-destroyed",
+          "dispensed": "cbv:Disp-dispensed",
+          "disposed": "cbv:Disp-disposed",
+          "encoded": "cbv:Disp-encoded",
+          "expired": "cbv:Disp-expired",
+          "in_progress": "cbv:Disp-in_progress",
+          "in_transit": "cbv:Disp-in_transit",
+          "inactive": "cbv:Disp-inactive",
+          "mismatch_instance": "cbv:Disp-mismatch_instance",
+          "mismatch_class": "cbv:Disp-mismatch_class",
+          "mismatch_quantity": "cbv:Disp-mismatch_quantity",
+          "needs_replacement": "cbv:Disp-needs_replacement",
+          "no_pedigree_match": "cbv:Disp-no_pedigree_match",
+          "non_conformant": "cbv:Disp-non_conformant",
+          "non_sellable_other": "cbv:Disp-non_sellable_other",
+          "partially_dispensed": "cbv:Disp-partially_dispensed",
+          "recalled": "cbv:Disp-recalled",
+          "reserved": "cbv:Disp-reserved",
+          "retail_sold": "cbv:Disp-retail_sold",
+          "returned": "cbv:Disp-returned",
+          "sellable_accessible": "cbv:Disp-sellable_accessible",
+          "sellable_not_accessible": "cbv:Disp-sellable_not_accessible",
+          "stolen": "cbv:Disp-stolen",
+          "unavailable": "cbv:Disp-unavailable",
+          "unknown": "cbv:Disp-unknown"
         },
-        "unset": {
-          "@id": "epcis:unset",
-          "@type": "@id",
-          "@container": "@set"
+        {
+          "@protected": true,
+          "epcis": "https://ns.gs1.org/epcis/",
+          "set": {
+            "@id": "epcis:set",
+            "@type": "@id",
+            "@container": "@set"
+          },
+          "unset": {
+            "@id": "epcis:unset",
+            "@type": "@vocab",
+            "@container": "@set"
+          }
         }
-      }
+      ]
     },
     "quantity": {
       "@id": "epcis:quantity",
@@ -218,13 +275,14 @@
           "recadv": "cbv:BTT-recadv",
           "rma": "cbv:BTT-rma",
           "testprd": "cbv:BTT-testprd",
-          "testres": "cbv:BTT-testres"
+          "testres": "cbv:BTT-testres",
+          "upevt": "cbv:BTT-upevt"
         },
         {
           "@protected": true,
           "epcis": "https://ns.gs1.org/epcis/",
           "bizTransaction": {
-            "@id": "epcis:bizTransaction",
+            "@id": "@id",
             "@type": "@id"
           },
           "type": {
@@ -338,6 +396,7 @@
                 "Conductivity": "gs1:Conductivity",
                 "Count": "gs1:Count",
                 "Density": "gs1:Density",
+                "Dimensionless": "gs1:Dimensionless",
                 "DoseEquivalent": "gs1:DoseEquivalent",
                 "DoseEquivalentRate": "gs1:DoseEquivalentRate",
                 "DynamicViscosity": "gs1:DynamicViscosity",
@@ -406,6 +465,10 @@
               "@id": "epcis:exception",
               "@type": "@vocab"
             },
+            "coordinateReferenceSystem": {
+              "@id": "epcis:coordinateReferenceSystem",
+              "@type": "@id"
+            },
             "microorganism": {
               "@id": "epcis:microorganism",
               "@type": "@id"
@@ -413,6 +476,10 @@
             "chemicalSubstance": {
               "@id": "epcis:chemicalSubstance",
               "@type": "@id"
+            },
+            "time": {
+              "@id": "epcis:time",
+              "@type": "xsd:dateTimeStamp"
             },
             "value": {
               "@id": "epcis:value",
@@ -424,7 +491,10 @@
               "@id": "epcis:booleanValue",
               "@type": "xsd:boolean"
             },
-            "hexBinaryValue": "epcis:hexBinaryValue",
+            "hexBinaryValue": {
+              "@id": "epcis:hexBinaryValue",
+              "@type": "xsd:hexBinary"
+            },
             "uriValue": {
               "@id": "epcis:uriValue",
               "@type": "@id"
