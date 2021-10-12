@@ -254,7 +254,11 @@
                                 "@id": "epcis:value",
                                 "@type": "xsd:double"
                             },
-                            "component": "epcis:component",
+                            "component": {
+                                "@context": "https://gs1.github.io/EPCIS/cbv-context-component.jsonld",
+                                "@id": "epcis:component",
+                                "@type": "@vocab"
+                            },
                             "stringValue": "epcis:stringValue",
                             "booleanValue": {
                                 "@id": "epcis:booleanValue",
