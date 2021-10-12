@@ -237,8 +237,8 @@
 				</readPoint>
 				<sensorElementList>
 					<sensorElement>
-						<sensorReport type="gs1:ERROR_CONDITION" uriValue="https://example.com/ErrorCode-A827" />
-						<sensorReport type="gs1:ALARM_CONDITION" booleanValue="true" />
+						<sensorReport exception="gs1:ERROR_CONDITION" uriValue="https://example.com/ErrorCode-A827" />
+						<sensorReport exception="gs1:ALARM_CONDITION" booleanValue="true" />
 					</sensorElement>
 				</sensorElementList>
 			</ObjectEvent>

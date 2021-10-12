@@ -17,11 +17,13 @@
           {
             "sensorReport": [
               {
-                "type": "ERROR_CONDITION",
+                "type": "Temperature",
+                "exception": "ERROR_CONDITION",
                 "uriValue": "https://example.com/ErrorCode-A827"
               },
               {
-                "type": "ALARM_CONDITION",
+                "type": "AbsoluteHumidity",
+                "exception": "ALARM_CONDITION",
                 "booleanValue": true
               }
             ]
