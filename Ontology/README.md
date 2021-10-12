@@ -47,7 +47,7 @@ These are draft and subject to change
 
 `ontology-props.rq` makes a table of all `epcis:` props with their domains and ranges
 
-- load EPCIS.ttl to a an RDF respository
+- load EPCIS.ttl to a RDF respository
 - run this query and capture the table (eg as tsv)
 - check against the [google sheet of properties](https://docs.google.com/spreadsheets/d/19lseUd1kHiz48VNtrHXy6kafLTlNzS1GsaYiBqdT4UA/edit#gid=606879607)
 
