@@ -89,24 +89,28 @@
                 }
             ]
         },
-        "persistentDisposition": ["https://gs1.github.io/EPCIS/cbv-context-disposition.jsonld",{
+        "persistentDisposition": {
             "@id": "epcis:persistentDisposition",
             "@container": "@set",
-            "@context": {
-                "@protected": true,
-                "epcis": "https://ns.gs1.org/epcis/",
-                "set": {
-                    "@id": "epcis:set",
-                    "@type": "@vocab",
-                    "@container": "@set"
-                },
-                "unset": {
-                    "@id": "epcis:unset",
-                    "@type": "@vocab",
-                    "@container": "@set"
+            "@context": [
+                "https://gs1.github.io/EPCIS/cbv-context-disposition.jsonld",
+                {
+                    "@protected": true,
+                    "epcis": "https://ns.gs1.org/epcis/",
+                    "set": {
+                        "@id": "epcis:set",
+                        "@type": "@id",
+                        "@container": "@set"
+                    },
+                    "unset": {
+                        "@id": "epcis:unset",
+                        "@type": "@vocab",
+                        "@container": "@set"
+                    }
                 }
-            }]
+            ]
         },
+
         "quantity": {
             "@id": "epcis:quantity",
             "@type": "xsd:double"
