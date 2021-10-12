@@ -242,6 +242,10 @@
                                 "@id": "epcis:chemicalSubstance",
                                 "@type": "@id"
                             },
+                            "time": {
+                                "@id": "epcis:time",
+                                "@type": "xsd:dateTimeStamp"
+                            },
                             "value": {
                                 "@id": "epcis:value",
                                 "@type": "xsd:double"
