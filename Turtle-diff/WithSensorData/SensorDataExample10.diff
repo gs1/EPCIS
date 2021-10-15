@@ -1,26 +1,25 @@
---- ../Turtle/WithSensorData/SensorDataExample10.ttl	2021-09-21 12:46:41.000000000 +0100
-+++ ../Turtle-simple-context/WithSensorData/SensorDataExample10.ttl	2021-09-21 12:46:41.000000000 +0100
-@@ -23 +23 @@
--  dcterms:created  "2019-10-07T15:00:00.000+01:00" ;
+--- ../Turtle/WithSensorData/SensorDataExample10.ttl	2021-10-15 16:14:55.021464500 +0300
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample10.ttl	2021-10-15 15:32:52.169294100 +0300
+@@ -21,0 +22,6 @@
++[ rdf:type         epcis:EPCISDocument ;
 +  dcterms:created  "2019-10-07T15:00:00.000+01:00"^^xsd:dateTime ;
-@@ -31 +31 @@
--        epcis:bizStep              <file://C:/sensor_reporting> ;
-+        epcis:bizStep              cbv:BizStep-sensor_reporting ;
-@@ -33 +33 @@
--        epcis:eventTime            "2020-05-08T15:00:00+01:00"^^xsd:dateTimeStamp ;
-+        epcis:eventTime            "2020-05-08T15:00:00+01:00"^^xsd:dateTime ;
-@@ -37,2 +37,2 @@
--                                                           epcis:component  "Z" ;
--                                                           epcis:type       gs1:Speed ;
-+                                                           epcis:component        cbv:COMP-Z ;
-+                                                           epcis:measurementType  gs1:Speed ;
-@@ -43,2 +43,2 @@
--                                                           epcis:component  "Y" ;
--                                                           epcis:type       gs1:Speed ;
-+                                                           epcis:component        cbv:COMP-Y ;
-+                                                           epcis:measurementType  gs1:Speed ;
-@@ -49,2 +49,2 @@
--                                                           epcis:component  "X" ;
--                                                           epcis:type       gs1:Speed ;
-+                                                           epcis:component        cbv:COMP-X ;
-+                                                           epcis:measurementType  gs1:Speed ;
++  owl:versionInfo  "2.0" ;
++  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;77c5b495d391767b1d3b8e7c669c9fee3965a778a9bfe793e85602c971b98436?ver=CBV2.0> ]
++] .
++
+@@ -31 +37 @@
+-                                                           epcis:component        cbv:Comp-z ;
++                                                           epcis:component        cbv:COMP-z ;
+@@ -37 +43 @@
+-                                                           epcis:component        cbv:Comp-y ;
++                                                           epcis:component        cbv:COMP-y ;
+@@ -43 +49 @@
+-                                                           epcis:component        cbv:Comp-x ;
++                                                           epcis:component        cbv:COMP-x ;
+@@ -49,6 +54,0 @@
+-
+-[ rdf:type         epcis:EPCISDocument ;
+-  dcterms:created  "2019-10-07T15:00:00.000+01:00"^^xsd:dateTime ;
+-  owl:versionInfo  "2.0" ;
+-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;77c5b495d391767b1d3b8e7c669c9fee3965a778a9bfe793e85602c971b98436?ver=CBV2.0> ]
+-] .

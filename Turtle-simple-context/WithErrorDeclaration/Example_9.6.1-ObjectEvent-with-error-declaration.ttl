@@ -31,15 +31,10 @@
         epcis:action               "OBSERVE" ;
         epcis:bizLocation          <urn:epc:id:sgln:0012345.11111.0> ;
         epcis:bizStep              cbv:BizStep-receiving ;
-        epcis:bizTransactionList   [ epcis:bizTransaction      <urn:epcglobal:cbv:bt:0614141073467:1152> ;
-                                     epcis:bizTransactionType  cbv:BTT-desadv
-                                   ] ;
-        epcis:bizTransactionList   [ epcis:bizTransaction      <http://transaction.acme.com/po/12345678> ;
-                                     epcis:bizTransactionType  cbv:BTT-po
-                                   ] ;
+        epcis:bizTransactionList   <http://transaction.acme.com/po/12345678> , <urn:epcglobal:cbv:bt:0614141073467:1152> ;
         epcis:disposition          cbv:Disp-in_progress ;
         epcis:epcList              <urn:epc:id:sgtin:0614141.107346.2018> ;
-        epcis:eventTime            "2005-04-04T20:33:31.116-06:00"^^xsd:dateTime ;
+        epcis:eventTime            "2005-04-04T20:33:31.116-06:00"^^xsd:dateTimeStamp ;
         epcis:eventTimeZoneOffset  "-06:00" ;
         epcis:readPoint            <urn:epc:id:sgln:0012345.11111.400> .
 
@@ -47,15 +42,19 @@
         rdf:type                   epcis:ObjectEvent ;
         epcis:action               "OBSERVE" ;
         epcis:bizStep              cbv:BizStep-shipping ;
-        epcis:bizTransactionList   [ epcis:bizTransaction      <http://transaction.acme.com/po/12345678> ;
-                                     epcis:bizTransactionType  cbv:BTT-po
-                                   ] ;
+        epcis:bizTransactionList   <http://transaction.acme.com/po/12345678> ;
         epcis:disposition          cbv:Disp-in_transit ;
         epcis:epcList              <urn:epc:id:sgtin:0614141.107346.2018> , <urn:epc:id:sgtin:0614141.107346.2017> ;
         epcis:errorDeclaration     [ epcis:correctiveEventIDs  <urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6> , <ni:///sha-256;c6407ffcac52ec159528f2b556ba4ac3844c5aa48485c1fd61643e94f0a2d678?ver=CBV2.0> ;
-                                     epcis:declarationTime     "2021-02-01T22:46:31.117000+00:00"^^xsd:dateTime ;
-                                     epcis:reason              cbv:ER-incorrect-data
+                                     epcis:declarationTime     "2021-02-01T22:46:31.117000+00:00"^^xsd:dateTimeStamp ;
+                                     epcis:reason              cbv:ER-incorrect_data
                                    ] ;
-        epcis:eventTime            "2005-04-03T20:33:31.116000-06:00"^^xsd:dateTime ;
+        epcis:eventTime            "2005-04-03T20:33:31.116000-06:00"^^xsd:dateTimeStamp ;
         epcis:eventTimeZoneOffset  "-06:00" ;
         epcis:readPoint            <urn:epc:id:sgln:0614141.07346.1234> .
+
+<urn:epcglobal:cbv:bt:0614141073467:1152>
+        epcis:bizTransactionType  cbv:BTT-desadv .
+
+<http://transaction.acme.com/po/12345678>
+        epcis:bizTransactionType  cbv:BTT-po .

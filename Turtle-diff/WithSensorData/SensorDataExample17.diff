@@ -1,22 +1,5 @@
---- ../Turtle/WithSensorData/SensorDataExample17.ttl	2021-09-21 12:46:41.000000000 +0100
-+++ ../Turtle-simple-context/WithSensorData/SensorDataExample17.ttl	2021-09-21 12:46:41.000000000 +0100
-@@ -23,2 +23,2 @@
--  dcterms:created  "2021-04-27T15:00:00+01:00" ;
+--- ../Turtle/WithSensorData/SensorDataExample17.ttl	2021-10-15 16:15:20.587212100 +0300
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample17.ttl	2021-10-15 15:33:11.737986500 +0300
+@@ -49 +49 @@
 -  owl:versionInfo  2 ;
-+  dcterms:created  "2021-04-27T15:00:00+01:00"^^xsd:dateTime ;
 +  owl:versionInfo  "2" ;
-@@ -31 +31 @@
--        epcis:bizStep              <file://C:/sensor_reporting> ;
-+        epcis:bizStep              cbv:BizStep-sensor_reporting ;
-@@ -33 +33 @@
--        epcis:eventTime            "2021-04-27T15:00:00+01:00"^^xsd:dateTimeStamp ;
-+        epcis:eventTime            "2021-04-27T15:00:00+01:00"^^xsd:dateTime ;
-@@ -37 +37 @@
--                                                           epcis:type     gs1:Mass ;
-+                                                           epcis:measurementType  gs1:Mass ;
-@@ -42 +42 @@
--                                                           epcis:type     gs1:Mass ;
-+                                                           epcis:measurementType  gs1:Mass ;
-@@ -47 +47 @@
--                                                           epcis:type     gs1:Mass ;
-+                                                           epcis:measurementType  gs1:Mass ;

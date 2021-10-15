@@ -1,33 +1,20 @@
---- ../Turtle//Example-TransactionEvents-2020_07_03y.ttl	2021-09-21 12:46:41.000000000 +0100
-+++ ../Turtle-simple-context//Example-TransactionEvents-2020_07_03y.ttl	2021-09-21 12:46:41.000000000 +0100
-@@ -23 +23 @@
--  dcterms:created  "2020-07-03T09:00:00.0Z" ;
-+  dcterms:created  "2020-07-03T09:00:00.0Z"^^xsd:dateTime ;
-@@ -29 +29 @@
--                                        epcis:bizTransactionList   [ epcis:bizTransaction      "http://transaction.examplerail.com/passage/xyz12345"^^xsd:anyURI ;
-+                                        epcis:bizTransactionList   [ epcis:bizTransaction      <http://transaction.examplerail.com/passage/xyz12345> ;
-@@ -32 +32 @@
--                                        epcis:destinationList      [ epcis:destination              <urn:epc:id:sgln:952005385.011.0> ;
-+                                        epcis:destinationList      [ epcis:sourceOrDestination      <urn:epc:id:sgln:952005385.011.0> ;
-@@ -37 +37 @@
--                                        epcis:eventTime            "2014-12-12T10:00:00.000Z"^^xsd:dateTimeStamp ;
-+                                        epcis:eventTime            "2014-12-12T10:00:00.000Z"^^xsd:dateTime ;
-@@ -40 +40 @@
--                                        epcis:sourceList           [ epcis:source                   <urn:epc:id:sgln:952005385.481.0> ;
-+                                        epcis:sourceList           [ epcis:sourceOrDestination      <urn:epc:id:sgln:952005385.481.0> ;
-@@ -50,0 +51,4 @@
+--- ../Turtle/Example-TransactionEvents-2020_07_03y.ttl	2021-10-15 16:12:52.294963900 +0300
++++ ../Turtle-simple-context/Example-TransactionEvents-2020_07_03y.ttl	2021-10-15 15:31:06.640360200 +0300
+@@ -22,3 +21,0 @@
+-<http://transaction.examplerail.com/passage/xyz12345>
+-        epcis:bizTransactionType  rail:btt:passage .
+-
+@@ -46,0 +44,4 @@
 +                                                                     rail:vehiclePosition            2 ;
 +                                                                     rail:vehicleUniquelyIdentified  false
 +                                                                   ] ;
 +                                        rail:vehicle               [ rail:vehicleAxleCount           4 ;
-@@ -54,4 +57,0 @@
--                                                                   ] ;
--                                        rail:vehicle               [ rail:vehicleAxleCount           4 ;
+@@ -52,4 +52,0 @@
 -                                                                     rail:vehiclePosition            2 ;
 -                                                                     rail:vehicleUniquelyIdentified  false
-@@ -64 +64 @@
--                                                          "urn:epc:id:gdti:95252084.0001.0003555480001000"^^xsd:anyURI ] ;
-+                                                          <urn:epc:id:gdti:95252084.0001.0003555480001000> ] ;
-@@ -66 +66 @@
--                                        epcis:eventTime            "2019-10-04T13:12:00.000Z"^^xsd:dateTimeStamp ;
-+                                        epcis:eventTime            "2019-10-04T13:12:00.000Z"^^xsd:dateTime ;
+-                                                                   ] ;
+-                                        rail:vehicle               [ rail:vehicleAxleCount           4 ;
+@@ -71,0 +69,3 @@
++
++<http://transaction.examplerail.com/passage/xyz12345>
++        epcis:bizTransactionType  rail:btt:passage .

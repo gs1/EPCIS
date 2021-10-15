@@ -20,7 +20,7 @@
 @prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
 
 [ rdf:type         epcis:EPCISDocument ;
-  dcterms:created  "2005-07-11T11:30:47.0Z" ;
+  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
   owl:versionInfo  "2.0" ;
   epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;6aca25c45463182fe3a1ebf60a6b81a165f061b58f4f3c202eb423234386b72e?ver=CBV2.0> ]
 ] .
@@ -45,17 +45,17 @@
                                                                 epcis:endTime              "2019-04-02T14:59:59.999+01:00"^^xsd:dateTimeStamp ;
                                                                 epcis:startTime            "2019-04-01T15:00:00.000+01:00"^^xsd:dateTimeStamp
                                                               ] ;
-                                     epcis:sensorReport       [ epcis:stringValue  "someSensorOutput" ;
-                                                                epcis:type         examp:someSensorProperty
+                                     epcis:sensorReport       [ epcis:measurementType  examp:someSensorProperty ;
+                                                                epcis:stringValue      "someSensorOutput"
                                                               ] ;
-                                     epcis:sensorReport       [ examp:cv         "123" ;
-                                                                epcis:maxValue   1.38E1 ;
-                                                                epcis:meanValue  1.32E1 ;
-                                                                epcis:minValue   1.24E1 ;
-                                                                epcis:percRank   5.0E1 ;
-                                                                epcis:percValue  1.27E1 ;
-                                                                epcis:sDev       4.1E-1 ;
-                                                                epcis:type       gs1:Temperature ;
-                                                                epcis:uom        "CEL"
+                                     epcis:sensorReport       [ examp:cv               "123" ;
+                                                                epcis:maxValue         1.38E1 ;
+                                                                epcis:meanValue        1.32E1 ;
+                                                                epcis:measurementType  gs1:Temperature ;
+                                                                epcis:minValue         1.24E1 ;
+                                                                epcis:percRank         5.0E1 ;
+                                                                epcis:percValue        1.27E1 ;
+                                                                epcis:sDev             4.1E-1 ;
+                                                                epcis:uom              "CEL"
                                                               ]
                                    ] .

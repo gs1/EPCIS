@@ -1,5 +1,5 @@
---- ../Turtle/WithSensorData/SensorDataExample7.ttl	2021-09-21 12:46:41.000000000 +0100
-+++ ../Turtle-simple-context/WithSensorData/SensorDataExample7.ttl	2021-09-21 12:46:41.000000000 +0100
+--- ../Turtle/WithSensorData/SensorDataExample7.ttl	2021-10-15 16:15:06.236587500 +0300
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample7.ttl	2021-10-15 15:32:58.600854400 +0300
 @@ -21,0 +22,6 @@
 +[ rdf:type         epcis:EPCISDocument ;
 +  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
@@ -7,42 +7,10 @@
 +  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;db924230b77cc4d9a7cea4968fd302b06598a2b63e1b0ea011b31d1b5f45e6ac?ver=CBV2.0> ]
 +] .
 +
-@@ -27 +33 @@
--        epcis:eventTime            "2019-10-07T16:00:00.000+01:00"^^xsd:dateTimeStamp ;
-+        epcis:eventTime            "2019-10-07T16:00:00.000+01:00"^^xsd:dateTime ;
-@@ -30 +36 @@
--        epcis:sensorElementList    [ epcis:sensorMetadata  [ epcis:time  "2019-07-19T14:00:00.000+01:00"^^xsd:dateTimeStamp ] ;
-+        epcis:sensorElementList    [ epcis:sensorMetadata  [ epcis:time  "2019-07-19T14:00:00.000+01:00"^^xsd:dateTime ] ;
-@@ -32,2 +38,2 @@
--                                                             epcis:type      examp:Mno ;
--                                                             epcis:uriValue  "https://example.org/example/someSectorSpecificValue"^^xsd:anyURI
-+                                                             epcis:measurementType  examp:Mno ;
-+                                                             epcis:uriValue         <https://example.org/example/someSectorSpecificValue>
-@@ -36,2 +42,2 @@
--                                                             epcis:hexBinaryValue  "F0F0F0" ;
--                                                             epcis:type            examp:Jkl
-+                                                             epcis:hexBinaryValue   "F0F0F0"^^xsd:hexBinary ;
-+                                                             epcis:measurementType  examp:Jkl
-@@ -40,2 +46,2 @@
--                                                             epcis:stringValue  "SomeString" ;
--                                                             epcis:type         examp:Ghi
-+                                                             epcis:measurementType  examp:Ghi ;
-+                                                             epcis:stringValue      "SomeString"
-@@ -45 +51 @@
--                                                             epcis:type          examp:Def
-+                                                             epcis:measurementType  examp:Def
-@@ -48,2 +54,2 @@
--                                                             epcis:stringValue  "111100001111000011110000" ;
--                                                             epcis:type         examp:Abc
-+                                                             epcis:measurementType  examp:Abc ;
-+                                                             epcis:stringValue      "111100001111000011110000"
-@@ -52 +58 @@
--                                                             epcis:type      gs1:Temperature ;
-+                                                             epcis:measurementType  gs1:Temperature ;
 @@ -57,6 +62,0 @@
 -
 -[ rdf:type         epcis:EPCISDocument ;
--  dcterms:created  "2005-07-11T11:30:47.0Z" ;
+-  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
 -  owl:versionInfo  "2.0" ;
 -  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;db924230b77cc4d9a7cea4968fd302b06598a2b63e1b0ea011b31d1b5f45e6ac?ver=CBV2.0> ]
 -] .

@@ -19,26 +19,20 @@
 @prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
 
-[ rdf:type         epcis:EPCISDocument ;
-  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
-  owl:versionInfo  "2.0" ;
-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;115b14983df54a9bcc3dd6a00dc4ebcab000bd52fda0abdd8996907e01dccc23?ver=CBV2.0> ]
-] .
-
 <ni:///sha-256;115b14983df54a9bcc3dd6a00dc4ebcab000bd52fda0abdd8996907e01dccc23?ver=CBV2.0>
         rdf:type                   epcis:ObjectEvent ;
         examp:myField              "Example of a vendor/user extension" ;
         epcis:action               "OBSERVE" ;
         epcis:bizLocation          <urn:epc:id:sgln:0614141.00888.0> ;
         epcis:bizStep              cbv:BizStep-receiving ;
-        epcis:destinationList      [ epcis:sourceOrDestination      <urn:epc:id:sgln:0614141.00001.0> ;
-                                     epcis:sourceOrDestinationType  cbv:SDT-owning_party
-                                   ] ;
         epcis:destinationList      [ epcis:sourceOrDestination      <urn:epc:id:sgln:0614141.00777.0> ;
                                      epcis:sourceOrDestinationType  cbv:SDT-location
                                    ] ;
+        epcis:destinationList      [ epcis:sourceOrDestination      <urn:epc:id:sgln:0614141.00001.0> ;
+                                     epcis:sourceOrDestinationType  cbv:SDT-owning_party
+                                   ] ;
         epcis:disposition          cbv:Disp-in_progress ;
-        epcis:eventTime            "2013-06-08T14:58:56.591Z"^^xsd:dateTime ;
+        epcis:eventTime            "2013-06-08T14:58:56.591Z"^^xsd:dateTimeStamp ;
         epcis:eventTimeZoneOffset  "+02:00" ;
         epcis:quantityList         [ epcis:epcClass  <https://id.gs1.org/01/70614141123451/10/998877> ;
                                      epcis:quantity  2.0E2 ;
@@ -51,3 +45,9 @@
         epcis:sourceList           [ epcis:sourceOrDestination      <urn:epc:id:sgln:4012345.00225.0> ;
                                      epcis:sourceOrDestinationType  cbv:SDT-location
                                    ] .
+
+[ rdf:type         epcis:EPCISDocument ;
+  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
+  owl:versionInfo  "2.0" ;
+  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;115b14983df54a9bcc3dd6a00dc4ebcab000bd52fda0abdd8996907e01dccc23?ver=CBV2.0> ]
+] .

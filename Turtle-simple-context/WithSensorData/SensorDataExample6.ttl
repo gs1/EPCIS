@@ -30,7 +30,7 @@
         epcis:action               "OBSERVE" ;
         epcis:bizStep              cbv:BizStep-inspecting ;
         epcis:epcList              <urn:epc:id:sgtin:4012345.011111.9876> ;
-        epcis:eventTime            "2019-10-07T15:00:00.000+01:00"^^xsd:dateTime ;
+        epcis:eventTime            "2019-10-07T15:00:00.000+01:00"^^xsd:dateTimeStamp ;
         epcis:eventTimeZoneOffset  "+01:00" ;
         epcis:quantityList         [ epcis:epcClass  <urn:epc:class:lgtin:4023333.002000.2019-10-07> ;
                                      epcis:quantity  1.5E2 ;
@@ -42,8 +42,8 @@
                                      examp:furtherSensorData  [ examp:measure1
                                                        "123.5" ] ;
                                      epcis:sensorMetadata     [ examp:someFurtherMetaData  "someText" ;
-                                                                epcis:endTime              "2019-04-02T14:59:59.999+01:00"^^xsd:dateTime ;
-                                                                epcis:startTime            "2019-04-01T15:00:00.000+01:00"^^xsd:dateTime
+                                                                epcis:endTime              "2019-04-02T14:59:59.999+01:00"^^xsd:dateTimeStamp ;
+                                                                epcis:startTime            "2019-04-01T15:00:00.000+01:00"^^xsd:dateTimeStamp
                                                               ] ;
                                      epcis:sensorReport       [ epcis:measurementType  examp:someSensorProperty ;
                                                                 epcis:stringValue      "someSensorOutput"

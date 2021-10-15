@@ -19,15 +19,21 @@
 @prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
 
+[ rdf:type         epcis:EPCISDocument ;
+  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
+  owl:versionInfo  "2.0" ;
+  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;db924230b77cc4d9a7cea4968fd302b06598a2b63e1b0ea011b31d1b5f45e6ac?ver=CBV2.0> ]
+] .
+
 <ni:///sha-256;db924230b77cc4d9a7cea4968fd302b06598a2b63e1b0ea011b31d1b5f45e6ac?ver=CBV2.0>
         rdf:type                   epcis:ObjectEvent ;
         epcis:action               "OBSERVE" ;
         epcis:bizStep              cbv:BizStep-inspecting ;
         epcis:epcList              <urn:epc:id:sgtin:4012345.011111.9876> ;
-        epcis:eventTime            "2019-10-07T16:00:00.000+01:00"^^xsd:dateTime ;
+        epcis:eventTime            "2019-10-07T16:00:00.000+01:00"^^xsd:dateTimeStamp ;
         epcis:eventTimeZoneOffset  "+01:00" ;
         epcis:readPoint            <urn:epc:id:sgln:4012345.00005.0> ;
-        epcis:sensorElementList    [ epcis:sensorMetadata  [ epcis:time  "2019-07-19T14:00:00.000+01:00"^^xsd:dateTime ] ;
+        epcis:sensorElementList    [ epcis:sensorMetadata  [ epcis:time  "2019-07-19T14:00:00.000+01:00"^^xsd:dateTimeStamp ] ;
                                      epcis:sensorReport    [ epcis:deviceID         <urn:epc:id:giai:4000001.116> ;
                                                              epcis:measurementType  examp:Mno ;
                                                              epcis:uriValue         <https://example.org/example/someSectorSpecificValue>
@@ -54,9 +60,3 @@
                                                              epcis:value            2.6E1
                                                            ]
                                    ] .
-
-[ rdf:type         epcis:EPCISDocument ;
-  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
-  owl:versionInfo  "2.0" ;
-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;db924230b77cc4d9a7cea4968fd302b06598a2b63e1b0ea011b31d1b5f45e6ac?ver=CBV2.0> ]
-] .

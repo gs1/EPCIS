@@ -1,0 +1,54 @@
+{
+  "@context": [
+    "https://gs1.github.io/EPCIS/epcis-context-simple.jsonld",
+    {
+      "ex": "http://ns.example.com/epcis/",
+      "ex:custom": {"@type": "@vocab", "@context": {"@vocab": "http://ns.example.com/custom/"}}
+    }
+  ],
+  
+  "id": "_:document1",
+  "isA": "EPCISDocument",
+  "schemaVersion": "2.0",
+  "creationDate":"2005-07-11T11:30:47.0Z",
+  "epcisBody": {
+    "eventList": [
+      {
+	"eventID": "ni:///sha-256;a98f08ae6ac4de3482054314d637c07010b448d3802dccb028a06aafcc6a4b10?ver=CBV2.0",
+	"isA": "ObjectEvent",
+	"eventTime": "2013-06-08T14:58:56.591Z",
+	"eventTimeZoneOffset": "+02:00",
+	"action": "OBSERVE",
+	"bizStep": "receiving",
+	"disposition": "in_progress",
+	"readPoint": {"id": "urn:epc:id:sgln:0614141.00777.0"},
+	"bizLocation": {"id": "urn:epc:id:sgln:0614141.00888.0"},
+	"quantityList": [
+	  {"epcClass":"urn:epc:class:lgtin:4012345.012345.998877", "quantity":200, "uom":"KGM"}
+	],
+	"bizTransactionList": [
+          {"type":"inv", "bizTransaction":"urn:epcglobal:cbv:bt:4023333000000:54545", "ex:custom": "inv"}
+        ],
+	"sourceList": [
+	  {"type":"possessing_party", "source":"urn:epc:id:sgln:4012345.00001.0", "ex:custom": "possessing_party"},
+	  {"type":"location", "source":"urn:epc:id:sgln:4012345.00225.0", "ex:custom": "location"}
+	],
+	"destinationList": [
+	  {"type":"owning_party","destination":"urn:epc:id:sgln:0614141.00001.0", "ex:custom": "owning_party"},
+	  {"type":"location","destination":"urn:epc:id:sgln:0614141.00777.0", "ex:custom": "location"}
+	],
+	"persistentDisposition": {
+          "ex:custom": ["stolen","returned"],
+	  "unset": ["stolen"],
+	  "set": ["returned"]
+	},
+	"errorDeclaration": { 
+	  "declarationTime" : "2021-02-01T22:46:31.117000+00:00",
+	  "reason" : "incorrect_data",
+          "ex:custom": "incorrect_data",
+	  "correctiveEventIDs": ["ni:///sha-256;c6407ffcac52ec159528f2b556ba4ac3844c5aa48485c1fd61643e94f0a2d678?ver=CBV2.0"]
+	}
+      }
+    ]
+  }
+}

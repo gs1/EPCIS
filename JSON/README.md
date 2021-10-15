@@ -89,6 +89,9 @@ Please only edit the existing JSON / JSON-LD EPCIS examples if you know what you
 
 Examples were derived from XML examples, then significantly added and commented by Vladmir Alexiev, Greg Rowe, Craig Alan Repec and other WG members
 
+- `Example-custom.jsonld`: checks there are no leaks of predefined CBV values to custom fields (see #307 bugs 8, 8a, 8b).
+  `ex:custom` should get URLs in namespace http://ns.example.com/custom/ and not cbv:, in all these fields:
+  `bizTransationList, sorceList, destinationList, persistentDisposition, errorDeclaration`
 - `Example-TransactionEvents-2020_07_03y.jsonld`: custom transactions (summarising discharge from a hospital, passage of rail cars)
 - `Example-Type-sourceOrDestination,measurement,bizTransaction.jsonld`: shows the disambiguation of JSON field `type` to different RDF properties:
   - `epcis:bizTransactionType` (from `epcis:BizTransaction` to `cbv:BTT`)

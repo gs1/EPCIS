@@ -281,10 +281,7 @@
         {
           "@protected": true,
           "epcis": "https://ns.gs1.org/epcis/",
-          "bizTransaction": {
-            "@id": "@id",
-            "@type": "@id"
-          },
+          "bizTransaction": "@id",
           "type": {
             "@id": "epcis:bizTransactionType",
             "@type": "@vocab"

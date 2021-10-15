@@ -1,17 +1,16 @@
---- ../Turtle/WithSensorData/SensorDataExample13.ttl	2021-09-21 12:46:41.000000000 +0100
-+++ ../Turtle-simple-context/WithSensorData/SensorDataExample13.ttl	2021-09-21 12:46:41.000000000 +0100
-@@ -23 +23 @@
--  dcterms:created  "2021-04-27T15:00:00+01:00" ;
+--- ../Turtle/WithSensorData/SensorDataExample13.ttl	2021-10-15 16:17:42.923929600 +0300
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample13.ttl	2021-10-15 15:33:59.760023800 +0300
+@@ -21,0 +22,6 @@
++[ rdf:type         epcis:EPCISDocument ;
 +  dcterms:created  "2021-04-27T15:00:00+01:00"^^xsd:dateTime ;
-@@ -31 +31 @@
--        epcis:bizStep              <file://C:/sensor_reporting> ;
-+        epcis:bizStep              cbv:BizStep-sensor_reporting ;
-@@ -33 +33 @@
--        epcis:eventTime            "2021-04-27T15:00:00+01:00"^^xsd:dateTimeStamp ;
-+        epcis:eventTime            "2021-04-27T15:00:00+01:00"^^xsd:dateTime ;
-@@ -37 +37 @@
--                                                           epcis:type     gs1:Temperature ;
-+                                                           epcis:measurementType  gs1:Temperature ;
-@@ -42 +42 @@
--                                                           epcis:type     gs1:Temperature ;
-+                                                           epcis:measurementType  gs1:Temperature ;
++  owl:versionInfo  "2.0" ;
++  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;e1f630b9c84c84020eb9bc73f082324a420f4472dd6c14edb1f1ab98ea279f24?ver=CBV2.0> ]
++] .
++
+@@ -41,6 +46,0 @@
+-
+-[ rdf:type         epcis:EPCISDocument ;
+-  dcterms:created  "2021-04-27T15:00:00+01:00"^^xsd:dateTime ;
+-  owl:versionInfo  "2.0" ;
+-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;e1f630b9c84c84020eb9bc73f082324a420f4472dd6c14edb1f1ab98ea279f24?ver=CBV2.0> ]
+-] .

@@ -1,0 +1,43 @@
+--- ../Turtle/Example-custom.ttl	2021-10-15 16:35:09.329358800 +0300
++++ ../Turtle-simple-context/Example-custom.ttl	2021-10-15 16:34:11.041196000 +0300
+@@ -22,6 +21,0 @@
+-[ rdf:type         epcis:EPCISDocument ;
+-  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
+-  owl:versionInfo  "2.0" ;
+-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;a98f08ae6ac4de3482054314d637c07010b448d3802dccb028a06aafcc6a4b10?ver=CBV2.0> ]
+-] .
+-
+@@ -34 +28 @@
+-        epcis:destinationList        [ examp:custom                   cbv:SDT-owning_party ;
++        epcis:destinationList        [ examp:custom                   <http://ns.example.com/custom/owning_party> ;
+@@ -38 +32 @@
+-        epcis:destinationList        [ examp:custom                   cbv:SDT-location ;
++        epcis:destinationList        [ examp:custom                   <http://ns.example.com/custom/location> ;
+@@ -43 +37 @@
+-        epcis:errorDeclaration       [ examp:custom              cbv:ER-incorrect_data ;
++        epcis:errorDeclaration       [ examp:custom              <http://ns.example.com/custom/incorrect_data> ;
+@@ -50 +44 @@
+-        epcis:persistentDisposition  [ examp:custom  cbv:Disp-stolen , cbv:Disp-returned ;
++        epcis:persistentDisposition  [ examp:custom  <http://ns.example.com/custom/stolen> , <http://ns.example.com/custom/returned> ;
+@@ -59,5 +53 @@
+-        epcis:sourceList             [ examp:custom                   cbv:SDT-possessing_party ;
+-                                       epcis:sourceOrDestination      <urn:epc:id:sgln:4012345.00001.0> ;
+-                                       epcis:sourceOrDestinationType  cbv:SDT-possessing_party
+-                                     ] ;
+-        epcis:sourceList             [ examp:custom                   cbv:SDT-location ;
++        epcis:sourceList             [ examp:custom                   <http://ns.example.com/custom/location> ;
+@@ -65,0 +56,4 @@
++                                     ] ;
++        epcis:sourceList             [ examp:custom                   <http://ns.example.com/custom/possessing_party> ;
++                                       epcis:sourceOrDestination      <urn:epc:id:sgln:4012345.00001.0> ;
++                                       epcis:sourceOrDestinationType  cbv:SDT-possessing_party
+@@ -67,0 +62,6 @@
++[ rdf:type         epcis:EPCISDocument ;
++  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
++  owl:versionInfo  "2.0" ;
++  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;a98f08ae6ac4de3482054314d637c07010b448d3802dccb028a06aafcc6a4b10?ver=CBV2.0> ]
++] .
++
+@@ -69 +69 @@
+-        examp:custom              cbv:BTT-inv ;
++        examp:custom              <http://ns.example.com/custom/inv> ;

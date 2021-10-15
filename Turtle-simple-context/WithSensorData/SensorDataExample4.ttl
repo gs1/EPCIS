@@ -29,14 +29,14 @@
         rdf:type                   epcis:ObjectEvent ;
         epcis:action               "OBSERVE" ;
         epcis:bizStep              cbv:BizStep-inspecting ;
-        epcis:eventTime            "2019-04-02T15:00:00.000+01:00"^^xsd:dateTime ;
+        epcis:eventTime            "2019-04-02T15:00:00.000+01:00"^^xsd:dateTimeStamp ;
         epcis:eventTimeZoneOffset  "+01:00" ;
         epcis:quantityList         [ epcis:epcClass  <urn:epc:class:lgtin:4023333.002000.2019-10-07> ;
                                      epcis:quantity  1.5E2 ;
                                      epcis:uom       "KGM"
                                    ] ;
         epcis:readPoint            <urn:epc:id:sgln:4012345.00005.0> ;
-        epcis:sensorElementList    [ epcis:sensorMetadata  [ epcis:time  "2019-04-02T14:55:00.000+01:00"^^xsd:dateTime ] ;
+        epcis:sensorElementList    [ epcis:sensorMetadata  [ epcis:time  "2019-04-02T14:55:00.000+01:00"^^xsd:dateTimeStamp ] ;
                                      epcis:sensorReport    [ epcis:deviceID         <urn:epc:id:giai:4000001.444> ;
                                                              epcis:deviceMetadata   <https://id.gs1.org/giai/4000001444> ;
                                                              epcis:measurementType  gs1:Illuminance ;
@@ -53,7 +53,7 @@
                                                            ] ;
                                      epcis:sensorReport    [ epcis:deviceID         <urn:epc:id:giai:4000001.222> ;
                                                              epcis:deviceMetadata   <https://id.gs1.org/giai/4000001222> ;
-                                                             epcis:measurementType  gs1:Humidity ;
+                                                             epcis:measurementType  gs1:AbsoluteHumidity ;
                                                              epcis:rawData          <https://example.org/giai/4000001222-20190402T150000000> ;
                                                              epcis:uom              "A93" ;
                                                              epcis:value            1.21E1

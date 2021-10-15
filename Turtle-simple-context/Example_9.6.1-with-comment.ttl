@@ -19,40 +19,39 @@
 @prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
 
+<http://transaction.acme.com/po/12345678>
+        epcis:bizTransactionType  cbv:BTT-po .
+
 <ni:///sha-256;59b0e6c6777da8128617f541585e25ef7a89f98909a4543fa5c742b363c79d3d?ver=CBV2.0>
         rdf:type                   epcis:ObjectEvent ;
         examp:myField              "Example of a vendor/user extension" ;
         epcis:action               "OBSERVE" ;
         epcis:bizLocation          <urn:epc:id:sgln:0012345.11111.0> ;
         epcis:bizStep              cbv:BizStep-receiving ;
-        epcis:bizTransactionList   [ epcis:bizTransaction      <http://transaction.acme.com/po/12345678> ;
-                                     epcis:bizTransactionType  cbv:BTT-po
-                                   ] ;
-        epcis:bizTransactionList   [ epcis:bizTransaction      <urn:epcglobal:cbv:bt:0614141073467:1152> ;
-                                     epcis:bizTransactionType  cbv:BTT-desadv
-                                   ] ;
+        epcis:bizTransactionList   <http://transaction.acme.com/po/12345678> , <urn:epcglobal:cbv:bt:0614141073467:1152> ;
         epcis:disposition          cbv:Disp-in_progress ;
         epcis:epcList              <urn:epc:id:sgtin:0614141.107346.2018> ;
-        epcis:eventTime            "2005-04-04T20:33:31.116-06:00"^^xsd:dateTime ;
+        epcis:eventTime            "2005-04-04T20:33:31.116-06:00"^^xsd:dateTimeStamp ;
         epcis:eventTimeZoneOffset  "-06:00" ;
         epcis:readPoint            <urn:epc:id:sgln:0012345.11111.400> .
-
-[ rdf:type         epcis:EPCISDocument ;
-  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
-  owl:versionInfo  "2.0" ;
-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;59b0e6c6777da8128617f541585e25ef7a89f98909a4543fa5c742b363c79d3d?ver=CBV2.0> , <ni:///sha-256;36abb3a2c0a726de32ac4beafd6b8bc4ba0b1d2de244490312e5cbec7b5ddece?ver=CBV2.0> ]
-] .
 
 <ni:///sha-256;36abb3a2c0a726de32ac4beafd6b8bc4ba0b1d2de244490312e5cbec7b5ddece?ver=CBV2.0>
         rdf:type                   epcis:ObjectEvent ;
         rdfs:comment               "An ObjectEvent may be used for reporting an observation" ;
         epcis:action               "OBSERVE" ;
         epcis:bizStep              cbv:BizStep-shipping ;
-        epcis:bizTransactionList   [ epcis:bizTransaction      <http://transaction.acme.com/po/12345678> ;
-                                     epcis:bizTransactionType  cbv:BTT-po
-                                   ] ;
+        epcis:bizTransactionList   <http://transaction.acme.com/po/12345678> ;
         epcis:disposition          cbv:Disp-in_transit ;
         epcis:epcList              <urn:epc:id:sgtin:0614141.107346.2018> , <urn:epc:id:sgtin:0614141.107346.2017> ;
-        epcis:eventTime            "2005-04-03T20:33:31.116000-06:00"^^xsd:dateTime ;
+        epcis:eventTime            "2005-04-03T20:33:31.116000-06:00"^^xsd:dateTimeStamp ;
         epcis:eventTimeZoneOffset  "-06:00" ;
         epcis:readPoint            <urn:epc:id:sgln:0614141.07346.1234> .
+
+<urn:epcglobal:cbv:bt:0614141073467:1152>
+        epcis:bizTransactionType  cbv:BTT-desadv .
+
+[ rdf:type         epcis:EPCISDocument ;
+  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
+  owl:versionInfo  "2.0" ;
+  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;59b0e6c6777da8128617f541585e25ef7a89f98909a4543fa5c742b363c79d3d?ver=CBV2.0> , <ni:///sha-256;36abb3a2c0a726de32ac4beafd6b8bc4ba0b1d2de244490312e5cbec7b5ddece?ver=CBV2.0> ]
+] .

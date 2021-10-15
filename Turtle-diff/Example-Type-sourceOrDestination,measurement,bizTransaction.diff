@@ -1,37 +1,10 @@
---- ../Turtle//Example-Type-sourceOrDestination,measurement,bizTransaction.ttl	2021-09-21 12:46:41.000000000 +0100
-+++ ../Turtle-simple-context//Example-Type-sourceOrDestination,measurement,bizTransaction.ttl	2021-09-21 12:46:41.000000000 +0100
-@@ -28,4 +28 @@
--        epcis:bizTransactionList   [ epcis:bizTransaction      "urn:epcglobal:cbv:bt:0614141073467:1152"^^xsd:anyURI ;
--                                     epcis:bizTransactionType  cbv:BTT-desadv
--                                   ] ;
--        epcis:bizTransactionList   [ epcis:bizTransaction      "urn:epcglobal:cbv:bt:4023333000000:54545"^^xsd:anyURI ;
-+        epcis:bizTransactionList   [ epcis:bizTransaction      <urn:epcglobal:cbv:bt:4023333000000:54545> ;
-@@ -34 +31,4 @@
--        epcis:bizTransactionList   [ epcis:bizTransaction      "http://transaction.acme.com/po/12345678"^^xsd:anyURI ;
-+        epcis:bizTransactionList   [ epcis:bizTransaction      <urn:epcglobal:cbv:bt:0614141073467:1152> ;
-+                                     epcis:bizTransactionType  cbv:BTT-desadv
-+                                   ] ;
-+        epcis:bizTransactionList   [ epcis:bizTransaction      <http://transaction.acme.com/po/12345678> ;
-@@ -41 +41 @@
--        epcis:destinationList      [ epcis:destination              <urn:epc:id:pgln:4012345.00000> ;
-+        epcis:destinationList      [ epcis:sourceOrDestination      <urn:epc:id:pgln:4012345.00000> ;
-@@ -45 +45 @@
--        epcis:eventTime            "2019-11-06T14:00:00.000+01:00"^^xsd:dateTimeStamp ;
-+        epcis:eventTime            "2019-11-06T14:00:00.000+01:00"^^xsd:dateTime ;
-@@ -49,3 +49,3 @@
--        epcis:recordTime           "2019-11-06T14:05:00.000+01:00"^^xsd:dateTimeStamp ;
--        epcis:sensorElementList    [ epcis:sensorMetadata  [ epcis:endTime    "2019-11-06T13:57:00.000+01:00"^^xsd:dateTimeStamp ;
--                                                             epcis:startTime  "2019-11-06T13:55:00.000+01:00"^^xsd:dateTimeStamp
-+        epcis:recordTime           "2019-11-06T14:05:00.000+01:00"^^xsd:dateTime ;
-+        epcis:sensorElementList    [ epcis:sensorMetadata  [ epcis:endTime    "2019-11-06T13:57:00.000+01:00"^^xsd:dateTime ;
-+                                                             epcis:startTime  "2019-11-06T13:55:00.000+01:00"^^xsd:dateTime
-@@ -53,0 +54 @@
-+                                                             epcis:measurementType  gs1:Humidity ;
-@@ -55 +55,0 @@
--                                                             epcis:type      <file://C:/Humidity> ;
-@@ -59 +59 @@
--        epcis:sourceList           [ epcis:source                   <urn:epc:id:pgln:4000001.00012> ;
-+        epcis:sourceList           [ epcis:sourceOrDestination      <urn:epc:id:pgln:4000001.00012> ;
-@@ -64 +64 @@
--  dcterms:created  "2005-07-11T11:30:47.0Z" ;
-+  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
+--- ../Turtle/Example-Type-sourceOrDestination,measurement,bizTransaction.ttl	2021-10-15 16:12:58.983858100 +0300
++++ ../Turtle-simple-context/Example-Type-sourceOrDestination,measurement,bizTransaction.ttl	2021-10-15 15:31:14.379396900 +0300
+@@ -57,0 +58,3 @@
++<urn:epcglobal:cbv:bt:4023333000000:54545>
++        epcis:bizTransactionType  cbv:BTT-inv .
++
+@@ -63,3 +65,0 @@
+-
+-<urn:epcglobal:cbv:bt:4023333000000:54545>
+-        epcis:bizTransactionType  cbv:BTT-inv .

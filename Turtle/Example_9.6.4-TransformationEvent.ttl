@@ -20,7 +20,7 @@
 @prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
 
 [ rdf:type         epcis:EPCISDocument ;
-  dcterms:created  "2013-06-04T14:59:02.099+02:00" ;
+  dcterms:created  "2013-06-04T14:59:02.099+02:00"^^xsd:dateTime ;
   owl:versionInfo  "2.0" ;
   epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;e65c3a997e77f34b58306da7a82ab0fc91c7820013287700f0b50345e5795b97?ver=CBV2.0> ]
 ] .
@@ -36,15 +36,15 @@
                                      examp:bestBeforeDate  "2014-12-10"
                                    ] ;
         epcis:inputEPCList         <urn:epc:id:sgtin:4000001.065432.99886655> , <urn:epc:id:sgtin:4012345.011122.25> ;
+        epcis:inputQuantityList    [ epcis:epcClass  <urn:epc:class:lgtin:4012345.011111.4444> ;
+                                     epcis:quantity  1.0E1 ;
+                                     epcis:uom       "KGM"
+                                   ] ;
         epcis:inputQuantityList    [ epcis:epcClass  <urn:epc:class:lgtin:0614141.077777.987> ;
                                      epcis:quantity  3.0E1
                                    ] ;
         epcis:inputQuantityList    [ epcis:epcClass  <urn:epc:idpat:sgtin:4012345.066666.*> ;
                                      epcis:quantity  2.2E2
-                                   ] ;
-        epcis:inputQuantityList    [ epcis:epcClass  <urn:epc:class:lgtin:4012345.011111.4444> ;
-                                     epcis:quantity  1.0E1 ;
-                                     epcis:uom       "KGM"
                                    ] ;
         epcis:outputEPCList        <urn:epc:id:sgtin:4012345.077889.28> , <urn:epc:id:sgtin:4012345.077889.25> , <urn:epc:id:sgtin:4012345.077889.26> , <urn:epc:id:sgtin:4012345.077889.27> ;
         epcis:readPoint            <urn:epc:id:sgln:4012345.00001.0> .

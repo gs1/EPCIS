@@ -1,0 +1,17 @@
+--- ../Turtle/Example_9.6.1-ObjectEvent-with-pseudo-SBDH-headers.ttl	2021-10-15 16:13:01.590885900 +0300
++++ ../Turtle-simple-context/Example_9.6.1-ObjectEvent-with-pseudo-SBDH-headers.ttl	2021-10-15 15:31:16.812718900 +0300
+@@ -48,0 +49,3 @@
++<urn:epcglobal:cbv:bt:0614141073467:1152>
++        epcis:bizTransactionType  cbv:BTT-desadv .
++
+@@ -52 +55,5 @@
+-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;df7bb3c352fef055578554f09f5e2aa41782150ced7bd0b8af24dd3ccb30ba69?ver=CBV2.0> , <ni:///sha-256;00e1e6eba3a7cc6125be4793a631f0af50f8322e0ab5f2c0bab994a11cec1d79?ver=CBV2.0> ]
++  epcis:epcisBody           [ epcis:eventList
++                    <ni:///sha-256;df7bb3c352fef055578554f09f5e2aa41782150ced7bd0b8af24dd3ccb30ba69?ver=CBV2.0> , <ni:///sha-256;00e1e6eba3a7cc6125be4793a631f0af50f8322e0ab5f2c0bab994a11cec1d79?ver=CBV2.0> ] ;
++  epcis:instanceIdentifier  "1234567890" ;
++  epcis:receiver            "urn:epc:id:sgln:5012345.00001.0" ;
++  epcis:sender              "urn:epc:id:sgln:0353579.00001.0"
+@@ -54,3 +60,0 @@
+-
+-<urn:epcglobal:cbv:bt:0614141073467:1152>
+-        epcis:bizTransactionType  cbv:BTT-desadv .

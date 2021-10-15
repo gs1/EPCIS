@@ -1,20 +1,16 @@
---- ../Turtle/WithDigitalLinkID/Example_9.6.1-ObjectEventWithDigitalLink.ttl	2021-09-21 12:46:41.000000000 +0100
-+++ ../Turtle-simple-context/WithDigitalLinkID/Example_9.6.1-ObjectEventWithDigitalLink.ttl	2021-09-21 12:46:41.000000000 +0100
-@@ -28 +28 @@
--        epcis:bizTransactionList   [ epcis:bizTransaction      "urn:epcglobal:cbv:bt:0614141073467:1152"^^xsd:anyURI ;
-+        epcis:bizTransactionList   [ epcis:bizTransaction      <urn:epcglobal:cbv:bt:0614141073467:1152> ;
-@@ -31 +31 @@
--        epcis:bizTransactionList   [ epcis:bizTransaction      "http://transaction.acme.com/po/12345678"^^xsd:anyURI ;
-+        epcis:bizTransactionList   [ epcis:bizTransaction      <http://transaction.acme.com/po/12345678> ;
-@@ -36 +36 @@
--        epcis:eventTime            "2005-04-04T20:33:31.116-06:00"^^xsd:dateTimeStamp ;
-+        epcis:eventTime            "2005-04-04T20:33:31.116-06:00"^^xsd:dateTime ;
-@@ -41 +41 @@
--  dcterms:created  "2005-07-11T11:30:47.0Z" ;
+--- ../Turtle/WithDigitalLinkID/Example_9.6.1-ObjectEventWithDigitalLink.ttl	2021-10-15 16:14:17.379670000 +0300
++++ ../Turtle-simple-context/WithDigitalLinkID/Example_9.6.1-ObjectEventWithDigitalLink.ttl	2021-10-15 15:32:07.253971200 +0300
+@@ -38,6 +37,0 @@
+-[ rdf:type         epcis:EPCISDocument ;
+-  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
+-  owl:versionInfo  "2.0" ;
+-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;9fa42e8bf64e1cfe152d582a248646ce0ad2b0c6826c7e8ed95442a7a1545f33?ver=CBV2.0> , <ni:///sha-256;4217c6a122625b7b9d8ae4f9b89890df35ffa0c501471a096cbfdeebd7207e45?ver=CBV2.0> ]
+-] .
+-
+@@ -56,0 +51,6 @@
++
++[ rdf:type         epcis:EPCISDocument ;
 +  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
-@@ -50 +50 @@
--        epcis:bizTransactionList   [ epcis:bizTransaction      "http://transaction.acme.com/po/12345678"^^xsd:anyURI ;
-+        epcis:bizTransactionList   [ epcis:bizTransaction      <http://transaction.acme.com/po/12345678> ;
-@@ -55 +55 @@
--        epcis:eventTime            "2005-04-03T20:33:31.116000-06:00"^^xsd:dateTimeStamp ;
-+        epcis:eventTime            "2005-04-03T20:33:31.116000-06:00"^^xsd:dateTime ;
++  owl:versionInfo  "2.0" ;
++  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;9fa42e8bf64e1cfe152d582a248646ce0ad2b0c6826c7e8ed95442a7a1545f33?ver=CBV2.0> , <ni:///sha-256;4217c6a122625b7b9d8ae4f9b89890df35ffa0c501471a096cbfdeebd7207e45?ver=CBV2.0> ]
++] .

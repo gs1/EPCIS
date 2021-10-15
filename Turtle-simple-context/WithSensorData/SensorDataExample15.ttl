@@ -26,19 +26,19 @@
                                         epcis:action               "OBSERVE" ;
                                         epcis:bizStep              cbv:BizStep-sensor_reporting ;
                                         epcis:epcList              <https://id.example.com/8003/040123450007718765> ;
-                                        epcis:eventTime            "2021-05-27T13:00:00.000Z"^^xsd:dateTime ;
+                                        epcis:eventTime            "2021-05-27T13:00:00.000Z"^^xsd:dateTimeStamp ;
                                         epcis:eventTimeZoneOffset  "+01:00" ;
                                         epcis:readPoint            <https://id.example.com/414/4012345000054> ;
                                         epcis:sensorElementList    [ rdf:type              epcis:SensorElement ;
-                                                                     epcis:sensorMetadata  [ epcis:time  "2021-05-27T12:50:00.000Z"^^xsd:dateTime ] ;
-                                                                     epcis:sensorReport    [ epcis:component        cbv:COMP-Easting ;
+                                                                     epcis:sensorMetadata  [ epcis:time  "2021-05-27T12:50:00.000Z"^^xsd:dateTimeStamp ] ;
+                                                                     epcis:sensorReport    [ epcis:component        cbv:COMP-easting ;
                                                                                              epcis:coordinateReferenceSystem
                                                                                                      <http://www.opengis.net/def/crs/EPSG/0/27700> ;
                                                                                              epcis:measurementType  gs1:Length ;
                                                                                              epcis:uom              "MTR" ;
                                                                                              epcis:value            2.47758357E6
                                                                                            ] ;
-                                                                     epcis:sensorReport    [ epcis:component        cbv:COMP-Northing ;
+                                                                     epcis:sensorReport    [ epcis:component        cbv:COMP-northing ;
                                                                                              epcis:coordinateReferenceSystem
                                                                                                      <http://www.opengis.net/def/crs/EPSG/0/27700> ;
                                                                                              epcis:measurementType  gs1:Length ;

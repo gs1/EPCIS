@@ -20,7 +20,7 @@
 @prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
 
 [ rdf:type         epcis:EPCISDocument ;
-  dcterms:created  "2019-11-04T14:00:00.000+01:00" ;
+  dcterms:created  "2019-11-04T14:00:00.000+01:00"^^xsd:dateTime ;
   owl:versionInfo  "2.0" ;
   epcis:epcisBody  [ epcis:eventList  <urn:uuid:fd338495-0e6d-41dd-afee-a862ecd32518> ]
 ] .

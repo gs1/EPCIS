@@ -34,7 +34,7 @@
                                      epcis:quantity  1.0E1
                                    ] ;
         epcis:disposition          cbv:Disp-in_progress ;
-        epcis:eventTime            "2013-06-08T14:58:56.591Z"^^xsd:dateTime ;
+        epcis:eventTime            "2013-06-08T14:58:56.591Z"^^xsd:dateTimeStamp ;
         epcis:eventTimeZoneOffset  "+02:00" ;
         epcis:parentID             <urn:epc:id:sscc:0614141.1234567890> ;
         epcis:readPoint            <urn:epc:id:sgln:0614141.00777.0> .

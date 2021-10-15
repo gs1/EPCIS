@@ -32,9 +32,9 @@
                                                                      example3:errorCodes    [ example3:value1   "34" ;
                                                                                               example3:value44  "66"
                                                                                             ] ;
-                                                                     epcis:declarationTime  "2020-09-29T13:00:00.000Z"^^xsd:dateTime
+                                                                     epcis:declarationTime  "2020-09-29T13:00:00.000Z"^^xsd:dateTimeStamp
                                                                    ] ;
-                                        epcis:eventTime            "2020-09-29T12:00:00.000Z"^^xsd:dateTime ;
+                                        epcis:eventTime            "2020-09-29T12:00:00.000Z"^^xsd:dateTimeStamp ;
                                         epcis:eventTimeZoneOffset  "+02:00" ;
                                         epcis:ilmd                 [ example:grading          "A" ;
                                                                      example2:userMasterData  [ example2:sizeCode
@@ -52,9 +52,9 @@
                                                                                                   example:measure2  "0.987"
                                                                                                 ] ;
                                                                      example:someUserField      "abc123" ;
-                                                                     epcis:sensorMetadata       [ epcis:endTime              "2019-04-02T13:59:59.999Z"^^xsd:dateTime ;
-                                                                                                  epcis:someFurtherMetaData  "someText" ;
-                                                                                                  epcis:startTime            "2019-04-01T14:00:00.000Z"^^xsd:dateTime
+                                                                     epcis:sensorMetadata       [ example:someFurtherMetaData  "someText" ;
+                                                                                                  epcis:endTime                "2019-04-02T13:59:59.999Z"^^xsd:dateTimeStamp ;
+                                                                                                  epcis:startTime              "2019-04-01T14:00:00.000Z"^^xsd:dateTimeStamp
                                                                                                 ] ;
                                                                      epcis:sensorReport         [ epcis:measurementType  example:someSensorProperty ;
                                                                                                   epcis:stringValue      "someSensorOutput"

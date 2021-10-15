@@ -19,12 +19,18 @@
 @prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
 
+[ rdf:type         epcis:EPCISDocument ;
+  dcterms:created  "2013-06-04T14:59:02.099+02:00"^^xsd:dateTime ;
+  owl:versionInfo  "2.0" ;
+  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;4f143d1adf7b2950a34f5e82a240ce5280530b06a9f3c2b9cfe49f5ca5001815?ver=CBV2.0> ]
+] .
+
 <ni:///sha-256;4f143d1adf7b2950a34f5e82a240ce5280530b06a9f3c2b9cfe49f5ca5001815?ver=CBV2.0>
         rdf:type                   epcis:TransformationEvent ;
         examp:myField              "Example of a vendor/user extension" ;
         epcis:bizStep              cbv:BizStep-commissioning ;
         epcis:disposition          cbv:Disp-in_progress ;
-        epcis:eventTime            "2013-10-31T14:58:56.591Z"^^xsd:dateTime ;
+        epcis:eventTime            "2013-10-31T14:58:56.591Z"^^xsd:dateTimeStamp ;
         epcis:eventTimeZoneOffset  "+02:00" ;
         epcis:ilmd                 [ examp:batch           "XYZ" ;
                                      examp:bestBeforeDate  "2014-12-10"
@@ -42,9 +48,3 @@
                                    ] ;
         epcis:outputEPCList        <urn:epc:id:sgtin:4012345.077889.28> , <urn:epc:id:sgtin:4012345.077889.25> , <urn:epc:id:sgtin:4012345.077889.27> , <urn:epc:id:sgtin:4012345.077889.26> ;
         epcis:readPoint            <urn:epc:id:sgln:4012345.00001.0> .
-
-[ rdf:type         epcis:EPCISDocument ;
-  dcterms:created  "2013-06-04T14:59:02.099+02:00"^^xsd:dateTime ;
-  owl:versionInfo  "2.0" ;
-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;4f143d1adf7b2950a34f5e82a240ce5280530b06a9f3c2b9cfe49f5ca5001815?ver=CBV2.0> ]
-] .

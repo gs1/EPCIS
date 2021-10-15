@@ -1,0 +1,70 @@
+@prefix cbv:      <https://ns.gs1.org/cbv/> .
+@prefix cbvmda:   <urn:epcglobal:cbv:mda:> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix epcis:    <https://ns.gs1.org/epcis/> .
+@prefix ex:       <http://epcis.example.com/ns/> .
+@prefix examp:    <http://ns.example.com/epcis/> .
+@prefix example:  <https://ns.example.com/epcis> .
+@prefix example1: <https://ns.example1.com/epcis> .
+@prefix example2: <https://ns.example2.com/epcis> .
+@prefix example3: <https://ns.example3.com/epcis> .
+@prefix example4: <https://ns.example4.com/epcis> .
+@prefix ext1:     <http://example.com/ext1/> .
+@prefix ext2:     <http://example.com/ext2/> .
+@prefix ext3:     <http://example.com/ext3/> .
+@prefix gs1:      <https://gs1.org/voc/> .
+@prefix owl:      <http://www.w3.org/2002/07/owl#> .
+@prefix rail:     <urn:gs1:epcisapp:rail:> .
+@prefix rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+
+[ rdf:type         epcis:EPCISDocument ;
+  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
+  owl:versionInfo  "2.0" ;
+  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;a98f08ae6ac4de3482054314d637c07010b448d3802dccb028a06aafcc6a4b10?ver=CBV2.0> ]
+] .
+
+<ni:///sha-256;a98f08ae6ac4de3482054314d637c07010b448d3802dccb028a06aafcc6a4b10?ver=CBV2.0>
+        rdf:type                     epcis:ObjectEvent ;
+        epcis:action                 "OBSERVE" ;
+        epcis:bizLocation            <urn:epc:id:sgln:0614141.00888.0> ;
+        epcis:bizStep                cbv:BizStep-receiving ;
+        epcis:bizTransactionList     <urn:epcglobal:cbv:bt:4023333000000:54545> ;
+        epcis:destinationList        [ examp:custom                   cbv:SDT-owning_party ;
+                                       epcis:sourceOrDestination      <urn:epc:id:sgln:0614141.00001.0> ;
+                                       epcis:sourceOrDestinationType  cbv:SDT-owning_party
+                                     ] ;
+        epcis:destinationList        [ examp:custom                   cbv:SDT-location ;
+                                       epcis:sourceOrDestination      <urn:epc:id:sgln:0614141.00777.0> ;
+                                       epcis:sourceOrDestinationType  cbv:SDT-location
+                                     ] ;
+        epcis:disposition            cbv:Disp-in_progress ;
+        epcis:errorDeclaration       [ examp:custom              cbv:ER-incorrect_data ;
+                                       epcis:correctiveEventIDs  <ni:///sha-256;c6407ffcac52ec159528f2b556ba4ac3844c5aa48485c1fd61643e94f0a2d678?ver=CBV2.0> ;
+                                       epcis:declarationTime     "2021-02-01T22:46:31.117000+00:00"^^xsd:dateTimeStamp ;
+                                       epcis:reason              cbv:ER-incorrect_data
+                                     ] ;
+        epcis:eventTime              "2013-06-08T14:58:56.591Z"^^xsd:dateTimeStamp ;
+        epcis:eventTimeZoneOffset    "+02:00" ;
+        epcis:persistentDisposition  [ examp:custom  cbv:Disp-stolen , cbv:Disp-returned ;
+                                       epcis:set     cbv:Disp-returned ;
+                                       epcis:unset   cbv:Disp-stolen
+                                     ] ;
+        epcis:quantityList           [ epcis:epcClass  <urn:epc:class:lgtin:4012345.012345.998877> ;
+                                       epcis:quantity  2.0E2 ;
+                                       epcis:uom       "KGM"
+                                     ] ;
+        epcis:readPoint              <urn:epc:id:sgln:0614141.00777.0> ;
+        epcis:sourceList             [ examp:custom                   cbv:SDT-possessing_party ;
+                                       epcis:sourceOrDestination      <urn:epc:id:sgln:4012345.00001.0> ;
+                                       epcis:sourceOrDestinationType  cbv:SDT-possessing_party
+                                     ] ;
+        epcis:sourceList             [ examp:custom                   cbv:SDT-location ;
+                                       epcis:sourceOrDestination      <urn:epc:id:sgln:4012345.00225.0> ;
+                                       epcis:sourceOrDestinationType  cbv:SDT-location
+                                     ] .
+
+<urn:epcglobal:cbv:bt:4023333000000:54545>
+        examp:custom              cbv:BTT-inv ;
+        epcis:bizTransactionType  cbv:BTT-inv .

@@ -26,7 +26,7 @@
                                         epcis:action               "OBSERVE" ;
                                         epcis:bizStep              cbv:BizStep-sensor_reporting ;
                                         epcis:epcList              <https://id.example.com/8003/040123450007718765> ;
-                                        epcis:eventTime            "2021-05-27T10:00:00.000Z"^^xsd:dateTime ;
+                                        epcis:eventTime            "2021-05-27T10:00:00.000Z"^^xsd:dateTimeStamp ;
                                         epcis:eventTimeZoneOffset  "+01:00" ;
                                         epcis:readPoint            <geo:42.698334,23.319941>
                                       ]

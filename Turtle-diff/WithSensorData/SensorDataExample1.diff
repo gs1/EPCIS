@@ -1,86 +1,35 @@
---- ../Turtle/WithSensorData/SensorDataExample1.ttl	2021-09-21 12:46:41.000000000 +0100
-+++ ../Turtle-simple-context/WithSensorData/SensorDataExample1.ttl	2021-09-21 12:46:41.000000000 +0100
-@@ -23 +23 @@
--  dcterms:created  "2005-07-11T11:30:47.0Z" ;
-+  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
-@@ -33 +33 @@
--        epcis:eventTime            "2019-04-02T15:00:00.000+01:00"^^xsd:dateTimeStamp ;
-+        epcis:eventTime            "2019-04-02T15:00:00.000+01:00"^^xsd:dateTime ;
+--- ../Turtle/WithSensorData/SensorDataExample1.ttl	2021-10-15 16:15:56.676621100 +0300
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample1.ttl	2021-10-15 15:33:50.164820200 +0300
 @@ -36 +36 @@
 -        epcis:sensorElementList    [ rdf:type              <file://C:/SensorElement> ;
 +        epcis:sensorElementList    [ rdf:type              epcis:SensorElement ;
 @@ -40 +40 @@
--                                                             epcis:time            "2019-04-02T14:05:00.000+01:00"^^xsd:dateTimeStamp
-+                                                             epcis:time            "2019-04-02T14:35:00.000+01:00"^^xsd:dateTime
-@@ -42 +42 @@
--                                     epcis:sensorReport    [ epcis:type   gs1:Illuminance ;
-+                                     epcis:sensorReport    [ epcis:measurementType  gs1:Illuminance ;
+-                                                             epcis:time            "2019-04-02T14:35:00.000+01:00"^^xsd:dateTimeStamp
++                                                             epcis:time            "2019-04-02T14:55:00.000+01:00"^^xsd:dateTimeStamp
 @@ -44 +44 @@
--                                                             epcis:value  8.0E2
-+                                                             epcis:value            8.01E2
-@@ -46 +46 @@
--                                     epcis:sensorReport    [ epcis:type   gs1:Speed ;
-+                                     epcis:sensorReport    [ epcis:measurementType  gs1:Speed ;
+-                                                             epcis:value            8.01E2
++                                                             epcis:value            8.02E2
 @@ -48 +48 @@
--                                                             epcis:value  1.6E2
-+                                                             epcis:value            1.61E2
-@@ -50 +50 @@
--                                     epcis:sensorReport    [ epcis:type   <file://C:/Humidity> ;
-+                                     epcis:sensorReport    [ epcis:measurementType  gs1:Humidity ;
-@@ -52 +52 @@
--                                                             epcis:value  1.21E1
-+                                                             epcis:value            1.22E1
-@@ -54 +54 @@
--                                     epcis:sensorReport    [ epcis:type   gs1:Temperature ;
-+                                     epcis:sensorReport    [ epcis:measurementType  gs1:Temperature ;
+-                                                             epcis:value            1.61E2
++                                                             epcis:value            1.62E2
 @@ -56 +56 @@
--                                                             epcis:value  2.6E1
-+                                                             epcis:value            2.61E1
+-                                                             epcis:value            2.61E1
++                                                             epcis:value            2.62E1
 @@ -59 +59 @@
 -        epcis:sensorElementList    [ rdf:type              <file://C:/SensorElement> ;
 +        epcis:sensorElementList    [ rdf:type              epcis:SensorElement ;
-@@ -63 +63 @@
--                                                             epcis:time            "2019-04-02T14:35:00.000+01:00"^^xsd:dateTimeStamp
-+                                                             epcis:time            "2019-04-02T14:05:00.000+01:00"^^xsd:dateTime
-@@ -65 +65 @@
--                                     epcis:sensorReport    [ epcis:type   gs1:Illuminance ;
-+                                     epcis:sensorReport    [ epcis:measurementType  gs1:Illuminance ;
-@@ -67 +67 @@
--                                                             epcis:value  8.01E2
-+                                                             epcis:value            8.0E2
-@@ -69 +69 @@
--                                     epcis:sensorReport    [ epcis:type   gs1:Speed ;
-+                                     epcis:sensorReport    [ epcis:measurementType  gs1:Speed ;
-@@ -71 +71 @@
--                                                             epcis:value  1.61E2
-+                                                             epcis:value            1.6E2
-@@ -73 +73 @@
--                                     epcis:sensorReport    [ epcis:type   <file://C:/Humidity> ;
-+                                     epcis:sensorReport    [ epcis:measurementType  gs1:Humidity ;
-@@ -75 +75 @@
--                                                             epcis:value  1.22E1
-+                                                             epcis:value            1.21E1
-@@ -77 +77 @@
--                                     epcis:sensorReport    [ epcis:type   gs1:Temperature ;
-+                                     epcis:sensorReport    [ epcis:measurementType  gs1:Temperature ;
-@@ -79 +79 @@
--                                                             epcis:value  2.61E1
-+                                                             epcis:value            2.6E1
 @@ -82 +82 @@
 -        epcis:sensorElementList    [ rdf:type              <file://C:/SensorElement> ;
 +        epcis:sensorElementList    [ rdf:type              epcis:SensorElement ;
 @@ -86 +86 @@
 -                                                             epcis:time            "2019-04-02T14:55:00.000+01:00"^^xsd:dateTimeStamp
-+                                                             epcis:time            "2019-04-02T14:55:00.000+01:00"^^xsd:dateTime
-@@ -88 +88 @@
--                                     epcis:sensorReport    [ epcis:type   gs1:Illuminance ;
-+                                     epcis:sensorReport    [ epcis:measurementType  gs1:Illuminance ;
-@@ -92 +92 @@
--                                     epcis:sensorReport    [ epcis:type   gs1:Speed ;
-+                                     epcis:sensorReport    [ epcis:measurementType  gs1:Speed ;
-@@ -96 +96 @@
--                                     epcis:sensorReport    [ epcis:type   <file://C:/Humidity> ;
-+                                     epcis:sensorReport    [ epcis:measurementType  gs1:Humidity ;
-@@ -100 +100 @@
--                                     epcis:sensorReport    [ epcis:type   gs1:Temperature ;
-+                                     epcis:sensorReport    [ epcis:measurementType  gs1:Temperature ;
++                                                             epcis:time            "2019-04-02T14:35:00.000+01:00"^^xsd:dateTimeStamp
+@@ -90 +90 @@
+-                                                             epcis:value            8.02E2
++                                                             epcis:value            8.01E2
+@@ -94 +94 @@
+-                                                             epcis:value            1.62E2
++                                                             epcis:value            1.61E2
+@@ -102 +102 @@
+-                                                             epcis:value            2.62E1
++                                                             epcis:value            2.61E1

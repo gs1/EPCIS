@@ -1,30 +1,16 @@
---- ../Turtle/WithSensorData/SensorDataExample2.ttl	2021-09-21 12:46:41.000000000 +0100
-+++ ../Turtle-simple-context/WithSensorData/SensorDataExample2.ttl	2021-09-21 12:46:41.000000000 +0100
-@@ -27 +27 @@
--        epcis:eventTime            "2019-04-02T15:00:00.000+01:00"^^xsd:dateTimeStamp ;
-+        epcis:eventTime            "2019-04-02T15:00:00.000+01:00"^^xsd:dateTime ;
-@@ -33 +33 @@
--                                                             epcis:endTime         "2019-04-02T14:55:00.000+01:00"^^xsd:dateTimeStamp ;
-+                                                             epcis:endTime         "2019-04-02T14:55:00.000+01:00"^^xsd:dateTime ;
-@@ -35 +35 @@
--                                                             epcis:startTime       "2019-04-02T13:55:01.000+01:00"^^xsd:dateTimeStamp
-+                                                             epcis:startTime       "2019-04-02T13:55:01.000+01:00"^^xsd:dateTime
-@@ -37,0 +38 @@
-+                                                             epcis:measurementType  gs1:Illuminance ;
-@@ -39 +39,0 @@
--                                                             epcis:type      gs1:Illuminance ;
-@@ -42,0 +43 @@
-+                                                             epcis:measurementType  gs1:Speed ;
-@@ -44 +44,0 @@
--                                                             epcis:type      gs1:Speed ;
-@@ -47,0 +48 @@
-+                                                             epcis:measurementType  gs1:Humidity ;
-@@ -49 +49,0 @@
--                                                             epcis:type      <file://C:/Humidity> ;
-@@ -53,0 +54 @@
-+                                                             epcis:measurementType  gs1:Temperature ;
-@@ -56 +56,0 @@
--                                                             epcis:type       gs1:Temperature ;
-@@ -62 +62 @@
--  dcterms:created  "2005-07-11T11:30:47.0Z" ;
+--- ../Turtle/WithSensorData/SensorDataExample2.ttl	2021-10-15 16:15:51.033515200 +0300
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample2.ttl	2021-10-15 15:33:46.963110900 +0300
+@@ -21,0 +22,6 @@
++[ rdf:type         epcis:EPCISDocument ;
 +  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
++  owl:versionInfo  "2.0" ;
++  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;0301ed4c40065cde36eb9cc80780312d903a031a91d105639df4e649a9d01200?ver=CBV2.0> ]
++] .
++
+@@ -60,6 +65,0 @@
+-
+-[ rdf:type         epcis:EPCISDocument ;
+-  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
+-  owl:versionInfo  "2.0" ;
+-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;0301ed4c40065cde36eb9cc80780312d903a031a91d105639df4e649a9d01200?ver=CBV2.0> ]
+-] .

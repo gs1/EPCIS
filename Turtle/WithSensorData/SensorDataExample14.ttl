@@ -20,25 +20,29 @@
 @prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
 
 [ rdf:type         epcis:EPCISDocument ;
-  dcterms:created  "2019-10-07T15:00:00.000+01:00" ;
+  dcterms:created  "2019-10-07T15:00:00.000+01:00"^^xsd:dateTime ;
   owl:versionInfo  "2.0" ;
   epcis:epcisBody  [ epcis:eventList  [ rdf:type                   epcis:ObjectEvent ;
                                         epcis:action               "OBSERVE" ;
-                                        epcis:bizStep              <file://C:/sensor_reporting> ;
+                                        epcis:bizStep              cbv:BizStep-sensor_reporting ;
                                         epcis:epcList              <https://id.example.com/8003/040123450007718765> ;
                                         epcis:eventTime            "2021-05-27T10:00:00.000Z"^^xsd:dateTimeStamp ;
                                         epcis:eventTimeZoneOffset  "+01:00" ;
                                         epcis:readPoint            <https://id.example.com/414/4012345000054> ;
                                         epcis:sensorElementList    [ rdf:type            epcis:SensorElement ;
-                                                                     epcis:sensorReport  [ epcis:component  "Longitude" ;
-                                                                                           epcis:type       gs1:Angle ;
-                                                                                           epcis:uom        "DD" ;
-                                                                                           epcis:value      2.3319941E1
+                                                                     epcis:sensorReport  [ epcis:component        cbv:Comp-longitude ;
+                                                                                           epcis:coordinateReferenceSystem
+                                                                                                   <http://www.opengis.net/def/crs/OGC/1.3/CRS84> ;
+                                                                                           epcis:measurementType  gs1:Angle ;
+                                                                                           epcis:uom              "DD" ;
+                                                                                           epcis:value            2.3319941E1
                                                                                          ] ;
-                                                                     epcis:sensorReport  [ epcis:component  "Latitude" ;
-                                                                                           epcis:type       gs1:Angle ;
-                                                                                           epcis:uom        "DD" ;
-                                                                                           epcis:value      4.2698334E1
+                                                                     epcis:sensorReport  [ epcis:component        cbv:Comp-latitude ;
+                                                                                           epcis:coordinateReferenceSystem
+                                                                                                   <http://www.opengis.net/def/crs/OGC/1.3/CRS84> ;
+                                                                                           epcis:measurementType  gs1:Angle ;
+                                                                                           epcis:uom              "DD" ;
+                                                                                           epcis:value            4.2698334E1
                                                                                          ]
                                                                    ]
                                       ]

@@ -1,77 +1,33 @@
---- ../Turtle/WithFullCombinationOfFields/transaction_event_all_possible_fields.ttl	2021-09-21 12:46:41.000000000 +0100
-+++ ../Turtle-simple-context/WithFullCombinationOfFields/transaction_event_all_possible_fields.ttl	2021-09-21 12:46:41.000000000 +0100
-@@ -23 +23 @@
--  dcterms:created  "2013-06-04T14:59:02.099+02:00" ;
-+  dcterms:created  "2013-06-04T14:59:02.099+02:00"^^xsd:dateTime ;
-@@ -26 +26 @@
--                                        ext1:array                   "22" , "12" , "true" , "2013-06-08T14:58:56.591Z" , "stringInArray" ;
-+                                        ext1:array                   "22" , "2013-06-08T14:58:56.591Z" , "stringInArray" , "12" , "true" ;
-@@ -49,4 +49 @@
--                                        epcis:bizTransactionList     [ epcis:bizTransaction      "urn:epc:id:gsrn:0614141.0000010253"^^xsd:anyURI ;
--                                                                       epcis:bizTransactionType  cbv:BTT-pedigree
+--- ../Turtle/WithFullCombinationOfFields/transaction_event_all_possible_fields.ttl	2021-10-15 16:14:31.176920400 +0300
++++ ../Turtle-simple-context/WithFullCombinationOfFields/transaction_event_all_possible_fields.ttl	2021-10-15 15:32:27.125636600 +0300
+@@ -22,6 +21,0 @@
+-<urn:epc:id:gdti:0614141.00001.1618034>
+-        epcis:bizTransactionType  cbv:BTT-po .
+-
+-<urn:epc:id:gsrn:0614141.0000010253>
+-        epcis:bizTransactionType  cbv:BTT-pedigree .
+-
+@@ -32 +26 @@
+-                                        ext1:array                   "12" , "22" , "stringInArray" , "2013-06-08T14:58:56.591Z" , "true" ;
++                                        ext1:array                   "stringInArray" , "22" , "true" , "2013-06-08T14:58:56.591Z" , "12" ;
+@@ -56,3 +49,0 @@
+-                                        epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:sgln:0614141.00777.0> ;
+-                                                                       epcis:sourceOrDestinationType  cbv:SDT-location
 -                                                                     ] ;
--                                        epcis:bizTransactionList     [ epcis:bizTransaction      "urn:epc:id:gdti:0614141.00001.1618034"^^xsd:anyURI ;
-+                                        epcis:bizTransactionList     [ epcis:bizTransaction      <urn:epc:id:gdti:0614141.00001.1618034> ;
-@@ -55 +52,4 @@
--                                        epcis:destinationList        [ epcis:destination              <urn:epc:id:sgln:0614141.00777.0> ;
-+                                        epcis:bizTransactionList     [ epcis:bizTransaction      <urn:epc:id:gsrn:0614141.0000010253> ;
-+                                                                       epcis:bizTransactionType  cbv:BTT-pedigree
-+                                                                     ] ;
+@@ -61,0 +53,3 @@
 +                                        epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:sgln:0614141.00777.0> ;
-@@ -58 +58 @@
--                                        epcis:destinationList        [ epcis:destination              <urn:epc:id:pgln:0614141.00777> ;
-+                                        epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:pgln:0614141.00777> ;
-@@ -61 +61 @@
--                                        epcis:destinationList        [ epcis:destination              <urn:epc:id:pgln:0614141.00777> ;
-+                                        epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:pgln:0614141.00777> ;
-@@ -65,2 +65,2 @@
--                                        epcis:epcList                <urn:epc:id:sgtin:0614141.107346.2017> , <urn:epc:id:sgtin:0614141.107346.2018> ;
--                                        epcis:eventTime              "2005-04-04T02:33:31.116Z"^^xsd:dateTimeStamp ;
-+                                        epcis:epcList                <urn:epc:id:sgtin:0614141.107346.2018> , <urn:epc:id:sgtin:0614141.107346.2017> ;
-+                                        epcis:eventTime              "2005-04-04T02:33:31.116Z"^^xsd:dateTime ;
-@@ -69,2 +69,2 @@
--                                        epcis:persistentDisposition  [ epcis:set    <file://C:/completeness_verified> ;
--                                                                       epcis:unset  <file://C:/completeness_inferred>
-+                                        epcis:persistentDisposition  [ epcis:set    cbv:Disp-completeness_verified ;
-+                                                                       epcis:unset  cbv:Disp-completeness_inferred
-@@ -78 +78 @@
--                                                                       ext1:array            "true" , "stringInArray" , "12" , "2013-06-08T14:58:56.591Z" , "22" ;
-+                                                                       ext1:array            "true" , "2013-06-08T14:58:56.591Z" , "12" , "22" , "stringInArray" ;
-@@ -103 +103 @@
--                                                                                               epcis:endTime               "2019-04-02T13:55:00.000Z"^^xsd:dateTimeStamp ;
-+                                                                                               epcis:endTime               "2019-04-02T13:55:00.000Z"^^xsd:dateTime ;
-@@ -105,2 +105,2 @@
--                                                                                               epcis:startTime             "2019-04-02T12:55:01.000Z"^^xsd:dateTimeStamp ;
--                                                                                               epcis:time                  "2019-04-02T13:05:00.000Z"^^xsd:dateTimeStamp
-+                                                                                               epcis:startTime             "2019-04-02T12:55:01.000Z"^^xsd:dateTime ;
-+                                                                                               epcis:time                  "2019-04-02T13:05:00.000Z"^^xsd:dateTime
-@@ -110 +110 @@
--                                                                                               epcis:component             "example:x" ;
-+                                                                                               epcis:component              <example:x> ;
-@@ -114 +114 @@
--                                                                                               epcis:hexBinaryValue        "f0f0f0" ;
-+                                                                                               epcis:hexBinaryValue         "f0f0f0"^^xsd:hexBinary ;
-@@ -116,0 +117 @@
-+                                                                                               epcis:measurementType        gs1:Temperature ;
-@@ -122,0 +124 @@
-+                                                                                               epcis:someFurtherReportData  "someText" ;
-@@ -124,2 +126 @@
--                                                                                               epcis:time                  "2019-07-19T13:00:00.000Z"^^xsd:dateTimeStamp ;
--                                                                                               epcis:type                  gs1:Temperature ;
-+                                                                                               epcis:time                   "2019-07-19T13:00:00.000Z"^^xsd:dateTime ;
-@@ -127 +128 @@
--                                                                                               epcis:uriValue              "https://id.gs1.org/giai/4000001111"^^xsd:anyURI ;
-+                                                                                               epcis:uriValue               <https://id.gs1.org/giai/4000001111> ;
-@@ -131 +132 @@
--                                        epcis:sourceList             [ epcis:source                   <urn:epc:id:pgln:4012345.00225> ;
-+                                        epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:pgln:4012345.00225> ;
-@@ -134,4 +135 @@
--                                        epcis:sourceList             [ epcis:source                   <urn:epc:id:pgln:4012345.00225> ;
--                                                                       epcis:sourceOrDestinationType  cbv:SDT-possessing_party
--                                                                     ] ;
--                                        epcis:sourceList             [ epcis:source                   <urn:epc:id:sgln:4012345.00225.0> ;
-+                                        epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:sgln:4012345.00225.0> ;
-@@ -138,0 +137,3 @@
++                                                                       epcis:sourceOrDestinationType  cbv:SDT-location
 +                                                                     ] ;
-+                                        epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:pgln:4012345.00225> ;
-+                                                                       epcis:sourceOrDestinationType  cbv:SDT-possessing_party
+@@ -66 +60 @@
+-                                        epcis:epcList                <urn:epc:id:sgtin:0614141.107346.2017> , <urn:epc:id:sgtin:0614141.107346.2018> ;
++                                        epcis:epcList                <urn:epc:id:sgtin:0614141.107346.2018> , <urn:epc:id:sgtin:0614141.107346.2017> ;
+@@ -79 +73 @@
+-                                                                       ext1:array            "stringInArray" , "true" , "12" , "2013-06-08T14:58:56.591Z" , "22" ;
++                                                                       ext1:array            "12" , "2013-06-08T14:58:56.591Z" , "true" , "22" , "stringInArray" ;
+@@ -144,0 +139,6 @@
++
++<urn:epc:id:gdti:0614141.00001.1618034>
++        epcis:bizTransactionType  cbv:BTT-po .
++
++<urn:epc:id:gsrn:0614141.0000010253>
++        epcis:bizTransactionType  cbv:BTT-pedigree .

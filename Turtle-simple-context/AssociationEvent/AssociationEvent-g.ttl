@@ -24,10 +24,10 @@
         epcis:action               "DELETE" ;
         epcis:bizStep              cbv:BizStep-disassembling ;
         epcis:errorDeclaration     [ epcis:correctiveEventIDs  <ni:///sha-256;fec9667280c4710a3fa9558b7bc8ddc2ced0dc442d87f82becae24bb6ca6a46f?ver=CBV2.0> ;
-                                     epcis:declarationTime     "2019-11-07T14:00:00.000+01:00"^^xsd:dateTime ;
+                                     epcis:declarationTime     "2019-11-07T14:00:00.000+01:00"^^xsd:dateTimeStamp ;
                                      epcis:reason              cbv:ER-incorrect_data
                                    ] ;
-        epcis:eventTime            "2019-11-04T14:00:00.000+01:00"^^xsd:dateTime ;
+        epcis:eventTime            "2019-11-04T14:00:00.000+01:00"^^xsd:dateTimeStamp ;
         epcis:eventTimeZoneOffset  "+01:00" ;
         epcis:parentID             <urn:epc:id:grai:4012345.55555.987> ;
         epcis:readPoint            <urn:epc:id:sgln:4012345.00002.0> .

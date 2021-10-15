@@ -1,51 +1,52 @@
---- ../Turtle/WithSensorData/SensorDataExample8.ttl	2021-09-21 12:46:41.000000000 +0100
-+++ ../Turtle-simple-context/WithSensorData/SensorDataExample8.ttl	2021-09-21 12:46:41.000000000 +0100
-@@ -23 +23 @@
--  dcterms:created  "2005-07-11T11:30:47.0Z" ;
-+  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
-@@ -37 +37 @@
--        epcis:eventTime            "2019-10-07T15:30:00.000+01:00"^^xsd:dateTimeStamp ;
-+        epcis:eventTime            "2019-10-07T15:30:00.000+01:00"^^xsd:dateTime ;
-@@ -41,2 +41,2 @@
--        epcis:sensorElementList    [ epcis:sensorReport  [ epcis:stringValue  "someSensorOutput" ;
--                                                           epcis:type         examp:someSensorProperty
-+        epcis:sensorElementList    [ epcis:sensorReport  [ epcis:measurementType  examp:someSensorProperty ;
-+                                                           epcis:stringValue      "someSensorOutput"
-@@ -44 +44,2 @@
+--- ../Turtle/WithSensorData/SensorDataExample8.ttl	2021-10-15 16:15:01.088595600 +0300
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample8.ttl	2021-10-15 15:32:56.088801100 +0300
+@@ -35,22 +34,0 @@
+-        epcis:sensorElementList    [ epcis:sensorMetadata  [ epcis:bizRules              <https://example.org/gdti/4012345000054987> ;
+-                                                             epcis:dataProcessingMethod  <https://example.com/gdti/4012345000054987> ;
+-                                                             epcis:deviceID              <urn:epc:id:giai:4000001.111> ;
+-                                                             epcis:deviceMetadata        <https://id.gs1.org/8004/4000001111> ;
+-                                                             epcis:rawData               <https://example.org/8004/401234599999> ;
+-                                                             epcis:time                  "2019-07-19T14:00:00.000+01:00"^^xsd:dateTimeStamp
+-                                                           ] ;
+-                                     epcis:sensorReport    [ epcis:measurementType  gs1:AmountOfSubstancePerUnitVolume ;
+-                                                             epcis:microorganism    <https://www.ncbi.nlm.nih.gov/taxonomy/1126011> ;
+-                                                             epcis:uom              "C35" ;
+-                                                             epcis:value            5.0E-2
+-                                                           ] ;
+-                                     epcis:sensorReport    [ epcis:chemicalSubstance  <https://identifiers.org/inchikey:CZMRCDWAGMRECN-UGDNZRGBSA-N> ;
+-                                                             epcis:measurementType    gs1:AmountOfSubstancePerUnitVolume ;
+-                                                             epcis:uom                "C35" ;
+-                                                             epcis:value              1.8E-1
+-                                                           ] ;
+-                                     epcis:sensorReport    [ epcis:measurementType  gs1:AbsoluteHumidity ;
+-                                                             epcis:uom              "A93" ;
+-                                                             epcis:value            1.21E1
+-                                                           ]
+-                                   ] ;
+@@ -82 +60,2 @@
 -                                     epcis:sensorReport  [ epcis:dataProcessingMethod  <https://example.com/gdti/4012345000054987> ;
 +                                     epcis:sensorReport  [ epcis:bizRules              <https://example.org/gdti/4012345000054987> ;
 +                                                           epcis:dataProcessingMethod  <https://example.com/gdti/4012345000054987> ;
-@@ -46,0 +48 @@
-+                                                           epcis:measurementType       gs1:Temperature ;
-@@ -48,2 +50 @@
--                                                           epcis:time                  "2019-07-19T14:00:00.000+01:00"^^xsd:dateTimeStamp ;
--                                                           epcis:type                  gs1:Temperature ;
-+                                                           epcis:time                  "2019-07-19T14:00:00.000+01:00"^^xsd:dateTime ;
-@@ -58 +59 @@
--                                                             epcis:time                  "2019-07-19T14:00:00.000+01:00"^^xsd:dateTimeStamp
-+                                                             epcis:time                  "2019-07-19T14:00:00.000+01:00"^^xsd:dateTime
-@@ -60,2 +61,2 @@
--                                     epcis:sensorReport    [ epcis:microorganism  <https://www.ncbi.nlm.nih.gov/taxonomy/1126011> ;
--                                                             epcis:type           gs1:AmountOfSubstancePerUnitVolume ;
+@@ -89,0 +69,22 @@
++                                   ] ;
++        epcis:sensorElementList    [ epcis:sensorMetadata  [ epcis:bizRules              <https://example.org/gdti/4012345000054987> ;
++                                                             epcis:dataProcessingMethod  <https://example.com/gdti/4012345000054987> ;
++                                                             epcis:deviceID              <urn:epc:id:giai:4000001.111> ;
++                                                             epcis:deviceMetadata        <https://id.gs1.org/8004/4000001111> ;
++                                                             epcis:rawData               <https://example.org/8004/401234599999> ;
++                                                             epcis:time                  "2019-07-19T14:00:00.000+01:00"^^xsd:dateTimeStamp
++                                                           ] ;
 +                                     epcis:sensorReport    [ epcis:measurementType  gs1:AmountOfSubstancePerUnitVolume ;
 +                                                             epcis:microorganism    <https://www.ncbi.nlm.nih.gov/taxonomy/1126011> ;
-@@ -66 +67 @@
--                                                             epcis:type               gs1:AmountOfSubstancePerUnitVolume ;
++                                                             epcis:uom              "C35" ;
++                                                             epcis:value            5.0E-2
++                                                           ] ;
++                                     epcis:sensorReport    [ epcis:chemicalSubstance  <https://identifiers.org/inchikey:CZMRCDWAGMRECN-UGDNZRGBSA-N> ;
 +                                                             epcis:measurementType    gs1:AmountOfSubstancePerUnitVolume ;
-@@ -70 +71 @@
--                                     epcis:sensorReport    [ epcis:type   <file://C:/Humidity> ;
-+                                     epcis:sensorReport    [ epcis:measurementType  gs1:Humidity ;
-@@ -80,2 +81,2 @@
--                                                                epcis:endTime              "2019-04-02T14:59:59.999+01:00"^^xsd:dateTimeStamp ;
--                                                                epcis:startTime            "2019-04-01T15:00:00.000+01:00"^^xsd:dateTimeStamp
-+                                                                epcis:endTime              "2019-04-02T14:59:59.999+01:00"^^xsd:dateTime ;
-+                                                                epcis:startTime            "2019-04-01T15:00:00.000+01:00"^^xsd:dateTime
-@@ -83,2 +84,2 @@
--                                     epcis:sensorReport       [ epcis:stringValue  "someSensorOutput" ;
--                                                                epcis:type         examp:someSensorProperty
-+                                     epcis:sensorReport       [ epcis:measurementType  examp:someSensorProperty ;
-+                                                                epcis:stringValue      "someSensorOutput"
-@@ -88,0 +90 @@
-+                                                                epcis:measurementType  gs1:Temperature ;
-@@ -93 +94,0 @@
--                                                                epcis:type       gs1:Temperature ;
++                                                             epcis:uom                "C35" ;
++                                                             epcis:value              1.8E-1
++                                                           ] ;
++                                     epcis:sensorReport    [ epcis:measurementType  gs1:AbsoluteHumidity ;
++                                                             epcis:uom              "A93" ;
++                                                             epcis:value            1.21E1
++                                                           ]

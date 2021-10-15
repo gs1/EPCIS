@@ -1,45 +1,12 @@
---- ../Turtle/WithSensorData/SensorDataExample5.ttl	2021-09-21 12:46:41.000000000 +0100
-+++ ../Turtle-simple-context/WithSensorData/SensorDataExample5.ttl	2021-09-21 12:46:41.000000000 +0100
+--- ../Turtle/WithSensorData/SensorDataExample5.ttl	2021-10-15 16:15:29.720234700 +0300
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample5.ttl	2021-10-15 15:33:23.295016900 +0300
 @@ -22,6 +21,0 @@
 -[ rdf:type         epcis:EPCISDocument ;
--  dcterms:created  "2005-07-11T11:30:47.0Z" ;
+-  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
 -  owl:versionInfo  "2.0" ;
 -  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;e13ff14a9b4f3dd11bba60315ed9b849eb8ddf4c5b1a9aa794cd250256730834?ver=CBV2.0> ]
 -] .
 -
-@@ -33 +27 @@
--        epcis:eventTime            "2019-04-02T15:00:00.000+01:00"^^xsd:dateTimeStamp ;
-+        epcis:eventTime            "2019-04-02T15:00:00.000+01:00"^^xsd:dateTime ;
-@@ -39,2 +33,2 @@
--                                     epcis:sensorReport    [ epcis:time   "2019-04-02T14:55:00.000+01:00"^^xsd:dateTimeStamp ;
--                                                             epcis:type   gs1:Temperature ;
-+                                     epcis:sensorReport    [ epcis:measurementType  gs1:Temperature ;
-+                                                             epcis:time             "2019-04-02T14:55:00.000+01:00"^^xsd:dateTime ;
-@@ -44,2 +38,2 @@
--                                     epcis:sensorReport    [ epcis:time   "2019-04-02T14:45:00.000+01:00"^^xsd:dateTimeStamp ;
--                                                             epcis:type   gs1:Temperature ;
-+                                     epcis:sensorReport    [ epcis:measurementType  gs1:Temperature ;
-+                                                             epcis:time             "2019-04-02T14:45:00.000+01:00"^^xsd:dateTime ;
-@@ -49,2 +43,2 @@
--                                     epcis:sensorReport    [ epcis:time   "2019-04-02T14:35:00.000+01:00"^^xsd:dateTimeStamp ;
--                                                             epcis:type   gs1:Temperature ;
-+                                     epcis:sensorReport    [ epcis:measurementType  gs1:Temperature ;
-+                                                             epcis:time             "2019-04-02T14:35:00.000+01:00"^^xsd:dateTime ;
-@@ -54,2 +48,2 @@
--                                     epcis:sensorReport    [ epcis:time   "2019-04-02T14:25:00.000+01:00"^^xsd:dateTimeStamp ;
--                                                             epcis:type   gs1:Temperature ;
-+                                     epcis:sensorReport    [ epcis:measurementType  gs1:Temperature ;
-+                                                             epcis:time             "2019-04-02T14:25:00.000+01:00"^^xsd:dateTime ;
-@@ -59,2 +53,2 @@
--                                     epcis:sensorReport    [ epcis:time   "2019-04-02T14:15:00.000+01:00"^^xsd:dateTimeStamp ;
--                                                             epcis:type   gs1:Temperature ;
-+                                     epcis:sensorReport    [ epcis:measurementType  gs1:Temperature ;
-+                                                             epcis:time             "2019-04-02T14:15:00.000+01:00"^^xsd:dateTime ;
-@@ -64,2 +58,2 @@
--                                     epcis:sensorReport    [ epcis:time   "2019-04-02T14:05:00.000+01:00"^^xsd:dateTimeStamp ;
--                                                             epcis:type   gs1:Temperature ;
-+                                     epcis:sensorReport    [ epcis:measurementType  gs1:Temperature ;
-+                                                             epcis:time             "2019-04-02T14:05:00.000+01:00"^^xsd:dateTime ;
 @@ -69,0 +64,6 @@
 +
 +[ rdf:type         epcis:EPCISDocument ;

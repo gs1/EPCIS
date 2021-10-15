@@ -19,17 +19,18 @@
 @prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
 
+<http://transaction.examplerail.com/passage/xyz12345>
+        epcis:bizTransactionType  rail:btt:passage .
+
 [ rdf:type         epcis:EPCISDocument ;
-  dcterms:created  "2020-07-03T09:00:00.0Z" ;
+  dcterms:created  "2020-07-03T09:00:00.0Z"^^xsd:dateTime ;
   owl:versionInfo  "2.0" ;
   epcis:epcisBody  [ epcis:eventList  [ rdf:type                   epcis:TransactionEvent ;
                                         epcis:action               "ADD" ;
                                         epcis:bizLocation          <urn:epc:id:sgln:952005385.011.scA> ;
                                         epcis:bizStep              cbv:BizStep-transporting ;
-                                        epcis:bizTransactionList   [ epcis:bizTransaction      "http://transaction.examplerail.com/passage/xyz12345"^^xsd:anyURI ;
-                                                                     epcis:bizTransactionType  rail:btt:passage
-                                                                   ] ;
-                                        epcis:destinationList      [ epcis:destination              <urn:epc:id:sgln:952005385.011.0> ;
+                                        epcis:bizTransactionList   <http://transaction.examplerail.com/passage/xyz12345> ;
+                                        epcis:destinationList      [ epcis:sourceOrDestination      <urn:epc:id:sgln:952005385.011.0> ;
                                                                      epcis:sourceOrDestinationType  cbv:SDT-location
                                                                    ] ;
                                         epcis:disposition          cbv:Disp-in_transit ;
@@ -37,7 +38,7 @@
                                         epcis:eventTime            "2014-12-12T10:00:00.000Z"^^xsd:dateTimeStamp ;
                                         epcis:eventTimeZoneOffset  "+02:00" ;
                                         epcis:readPoint            <urn:epc:id:sgln:952005385.011.ts4711> ;
-                                        epcis:sourceList           [ epcis:source                   <urn:epc:id:sgln:952005385.481.0> ;
+                                        epcis:sourceList           [ epcis:sourceOrDestination      <urn:epc:id:sgln:952005385.481.0> ;
                                                                      epcis:sourceOrDestinationType  cbv:SDT-location
                                                                    ] ;
                                         rail:trainAxleCount        12 ;
@@ -48,20 +49,19 @@
                                                                      rail:vehicleUniquelyIdentified  true
                                                                    ] ;
                                         rail:vehicle               [ rail:vehicleAxleCount           4 ;
+                                                                     rail:vehiclePosition            2 ;
+                                                                     rail:vehicleUniquelyIdentified  false
+                                                                   ] ;
+                                        rail:vehicle               [ rail:vehicleAxleCount           4 ;
                                                                      rail:vehicleMasterGIAI          <urn:epc:id:giai:735005385.vehicle1> ;
                                                                      rail:vehiclePosition            3 ;
                                                                      rail:vehicleUniquelyIdentified  true
-                                                                   ] ;
-                                        rail:vehicle               [ rail:vehicleAxleCount           4 ;
-                                                                     rail:vehiclePosition            2 ;
-                                                                     rail:vehicleUniquelyIdentified  false
                                                                    ]
                                       ] ;
                      epcis:eventList  [ rdf:type                   epcis:TransactionEvent ;
                                         epcis:action               "ADD" ;
                                         epcis:bizStep              <http://epcis.example.org/hc/bizstep/summarising_discharge> ;
-                                        epcis:bizTransactionList   [ epcis:bizTransaction
-                                                          "urn:epc:id:gdti:95252084.0001.0003555480001000"^^xsd:anyURI ] ;
+                                        epcis:bizTransactionList   <urn:epc:id:gdti:95252084.0001.0003555480001000> ;
                                         epcis:epcList              <urn:epc:id:gsrn:95252084.000000001> ;
                                         epcis:eventTime            "2019-10-04T13:12:00.000Z"^^xsd:dateTimeStamp ;
                                         epcis:eventTimeZoneOffset  "+01:00" ;

@@ -3,13 +3,14 @@ hide empty attributes
 hide empty methods
 hide circle
 
-class CertificationDetails1 as "gs1:CertificationDetails"
-class CertificationDetails2 as "gs1:CertificationDetails"
-class Place as "gs1:Place"
-class Product as "gs1:Product"
+class EPCISEvent             as "epcis:EPCISEvent"
+class CertificationDetails1  as "gs1:CertificationDetails"
+class CertificationDetails2  as "gs1:CertificationDetails"
+class Place                  as "gs1:Place"
+class Product                as "gs1:IndividualProduct"
 
-EPCISEvent --> CertificationDetails1 : gs1:certification
-EPCISEvent --> CertificationDetails2 : gs1:certification
+EPCISEvent --> CertificationDetails1 : epcis:certification
+EPCISEvent --> CertificationDetails2 : epcis:certification
 EPCISEvent --> Place : bizLocation
 EPCISEvent --> Product : epcList 
 CertificationDetails1 --> Place : gs1:certificationSubject
