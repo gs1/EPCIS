@@ -352,6 +352,10 @@
 
 
 
+################# ./WithErrorDeclaration/Example-ObjectEvent-with-reused-source-destination.diff
+
+
+
 ################# ./WithErrorDeclaration/Example_9.6.1-ObjectEvent-with-error-declaration.diff
 
 --- ../Turtle/WithErrorDeclaration/Example_9.6.1-ObjectEvent-with-error-declaration.ttl	2021-10-15 16:14:27.928920200 +0300

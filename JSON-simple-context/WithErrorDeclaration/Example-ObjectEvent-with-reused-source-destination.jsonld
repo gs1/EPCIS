@@ -1,0 +1,74 @@
+{
+  "@context": ["https://gs1.github.io/EPCIS/epcis-context-simple.jsonld",{"example": "http://ns.example.com/epcis/"}],
+
+  "id": "_:document1",
+  "isA": "EPCISDocument",
+  "schemaVersion": "2.0",
+  "creationDate":"2021-01-11T11:30:47.0Z",
+  "epcisBody": {
+    "eventList": [
+      {
+        "eventID": "ni:///sha-256;a98f08ae6ac4de3482054314d637c07010b448d3802dccb028a06aafcc6a4b10?ver=CBV2.0",
+        "isA": "ObjectEvent",
+        "eventTime": "2021-01-11T14:58:56.591Z",
+        "eventTimeZoneOffset": "+02:00",
+        "action": "OBSERVE",
+        "bizStep": "receiving",
+        "disposition": "in_progress",
+        "readPoint": {"id": "urn:epc:id:sgln:0614141.00777.0"},
+        "bizLocation": {"id": "urn:epc:id:sgln:0614141.00888.0"},
+        "quantityList": [
+          {"epcClass":"urn:epc:class:lgtin:4012345.012345.998877","quantity":200,"uom":"KGM"}
+        ],
+        "sourceList": [
+          {"id":"http://example.org/gln/4012345.00001.0/type/poss", "type":"possessing_party","source":"urn:epc:id:sgln:4012345.00001.0"},
+          {"id":"http://example.org/gln/4012345.00225.0/type/loc",  "type":"location",        "source":"urn:epc:id:sgln:4012345.00225.0"}
+        ],
+        "destinationList": [
+          {"id":"http://example.org/gln/0614141.00001.0/type/own", "type":"owning_party","destination":"urn:epc:id:sgln:0614141.00001.0"},
+          {"id":"http://example.org/gln/0614141.00777.0/type/loc", "type":"location",    "destination":"urn:epc:id:sgln:0614141.00777.0"}
+        ],
+        "bizTransactionList": [
+          {"type": "po", "bizTransaction": "http://transaction.acme.com/po/12345678" },
+          {"type": "desadv", "bizTransaction": "urn:epcglobal:cbv:bt:0614141073467:1152" }
+        ],
+        "errorDeclaration": {
+          "declarationTime" : "2021-02-01T22:46:31.117000+00:00",
+          "reason" : "incorrect_data",
+          "correctiveEventIDs": ["ni:///sha-256;c6407ffcac52ec159528f2b556ba4ac3844c5aa48485c1fd61643e94f0a2d678?ver=CBV2.0"]
+        }
+      },
+      {
+        "eventID": "ni:///sha-256;c6407ffcac52ec159528f2b556ba4ac3844c5aa48485c1fd61643e94f0a2d678?ver=CBV2.0",
+        "isA": "ObjectEvent",
+        "eventTime": "2021-01-11T14:58:56.591Z",
+        "eventTimeZoneOffset": "+02:00",
+        "action": "OBSERVE",
+        "bizStep": "receiving",
+        "disposition": "in_progress",
+        "readPoint": {"id": "urn:epc:id:sgln:0614141.00777.0"},
+        "bizLocation": {"id": "urn:epc:id:sgln:0614141.00888.0"},
+        "quantityList": [
+          {"epcClass":"urn:epc:class:lgtin:4012345.012345.998877","quantity":400,"uom":"KGM"}
+        ],
+        "sourceList": [
+          {"id":"http://example.org/gln/4012345.00001.0/type/poss", "type":"possessing_party","source":"urn:epc:id:sgln:4012345.00001.0"},
+          {"id":"http://example.org/gln/4012345.00225.0/type/loc",  "type":"location",        "source":"urn:epc:id:sgln:4012345.00225.0"}
+        ],
+        "destinationList": [
+          {"id":"http://example.org/gln/0614141.00001.0/type/own", "type":"owning_party","destination":"urn:epc:id:sgln:0614141.00001.0"},
+          {"id":"http://example.org/gln/0614141.00777.0/type/loc", "type":"location",    "destination":"urn:epc:id:sgln:0614141.00777.0"}
+        ],
+        "bizTransactionList": [
+          {"type": "po", "bizTransaction": "http://transaction.acme.com/po/12345678" },
+          {"type": "desadv", "bizTransaction": "urn:epcglobal:cbv:bt:0614141073467:1152" }
+        ],
+        "errorDeclaration": {
+          "declarationTime" : "2021-02-01T22:46:31.117000+00:00",
+          "reason" : "incorrect_data",
+          "correctiveEventIDs": ["ni:///sha-256;c6407ffcac52ec159528f2b556ba4ac3844c5aa48485c1fd61643e94f0a2d678?ver=CBV2.0"]
+        }
+      }
+    ]
+  }
+}

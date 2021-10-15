@@ -1,0 +1,90 @@
+@prefix cbv:      <https://ns.gs1.org/cbv/> .
+@prefix cbvmda:   <urn:epcglobal:cbv:mda:> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix epcis:    <https://ns.gs1.org/epcis/> .
+@prefix ex:       <http://epcis.example.com/ns/> .
+@prefix examp:    <http://ns.example.com/epcis/> .
+@prefix example:  <https://ns.example.com/epcis> .
+@prefix example1: <https://ns.example1.com/epcis> .
+@prefix example2: <https://ns.example2.com/epcis> .
+@prefix example3: <https://ns.example3.com/epcis> .
+@prefix example4: <https://ns.example4.com/epcis> .
+@prefix ext1:     <http://example.com/ext1/> .
+@prefix ext2:     <http://example.com/ext2/> .
+@prefix ext3:     <http://example.com/ext3/> .
+@prefix gs1:      <https://gs1.org/voc/> .
+@prefix owl:      <http://www.w3.org/2002/07/owl#> .
+@prefix rail:     <urn:gs1:epcisapp:rail:> .
+@prefix rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+
+<http://transaction.acme.com/po/12345678>
+        epcis:bizTransactionType  cbv:BTT-po .
+
+<ni:///sha-256;c6407ffcac52ec159528f2b556ba4ac3844c5aa48485c1fd61643e94f0a2d678?ver=CBV2.0>
+        rdf:type                   epcis:ObjectEvent ;
+        epcis:action               "OBSERVE" ;
+        epcis:bizLocation          <urn:epc:id:sgln:0614141.00888.0> ;
+        epcis:bizStep              cbv:BizStep-receiving ;
+        epcis:bizTransactionList   <urn:epcglobal:cbv:bt:0614141073467:1152> , <http://transaction.acme.com/po/12345678> ;
+        epcis:destinationList      <http://example.org/gln/0614141.00001.0/type/own> , <http://example.org/gln/0614141.00777.0/type/loc> ;
+        epcis:disposition          cbv:Disp-in_progress ;
+        epcis:errorDeclaration     [ epcis:correctiveEventIDs  <ni:///sha-256;c6407ffcac52ec159528f2b556ba4ac3844c5aa48485c1fd61643e94f0a2d678?ver=CBV2.0> ;
+                                     epcis:declarationTime     "2021-02-01T22:46:31.117000+00:00"^^xsd:dateTimeStamp ;
+                                     epcis:reason              cbv:ER-incorrect_data
+                                   ] ;
+        epcis:eventTime            "2021-01-11T14:58:56.591Z"^^xsd:dateTimeStamp ;
+        epcis:eventTimeZoneOffset  "+02:00" ;
+        epcis:quantityList         [ epcis:epcClass  <urn:epc:class:lgtin:4012345.012345.998877> ;
+                                     epcis:quantity  4.0E2 ;
+                                     epcis:uom       "KGM"
+                                   ] ;
+        epcis:readPoint            <urn:epc:id:sgln:0614141.00777.0> ;
+        epcis:sourceList           <http://example.org/gln/4012345.00001.0/type/poss> , <http://example.org/gln/4012345.00225.0/type/loc> .
+
+<http://example.org/gln/4012345.00001.0/type/poss>
+        epcis:sourceOrDestination      <urn:epc:id:sgln:4012345.00001.0> ;
+        epcis:sourceOrDestinationType  cbv:SDT-possessing_party .
+
+<http://example.org/gln/0614141.00001.0/type/own>
+        epcis:sourceOrDestination      <urn:epc:id:sgln:0614141.00001.0> ;
+        epcis:sourceOrDestinationType  cbv:SDT-owning_party .
+
+<ni:///sha-256;a98f08ae6ac4de3482054314d637c07010b448d3802dccb028a06aafcc6a4b10?ver=CBV2.0>
+        rdf:type                   epcis:ObjectEvent ;
+        epcis:action               "OBSERVE" ;
+        epcis:bizLocation          <urn:epc:id:sgln:0614141.00888.0> ;
+        epcis:bizStep              cbv:BizStep-receiving ;
+        epcis:bizTransactionList   <urn:epcglobal:cbv:bt:0614141073467:1152> , <http://transaction.acme.com/po/12345678> ;
+        epcis:destinationList      <http://example.org/gln/0614141.00777.0/type/loc> , <http://example.org/gln/0614141.00001.0/type/own> ;
+        epcis:disposition          cbv:Disp-in_progress ;
+        epcis:errorDeclaration     [ epcis:correctiveEventIDs  <ni:///sha-256;c6407ffcac52ec159528f2b556ba4ac3844c5aa48485c1fd61643e94f0a2d678?ver=CBV2.0> ;
+                                     epcis:declarationTime     "2021-02-01T22:46:31.117000+00:00"^^xsd:dateTimeStamp ;
+                                     epcis:reason              cbv:ER-incorrect_data
+                                   ] ;
+        epcis:eventTime            "2021-01-11T14:58:56.591Z"^^xsd:dateTimeStamp ;
+        epcis:eventTimeZoneOffset  "+02:00" ;
+        epcis:quantityList         [ epcis:epcClass  <urn:epc:class:lgtin:4012345.012345.998877> ;
+                                     epcis:quantity  2.0E2 ;
+                                     epcis:uom       "KGM"
+                                   ] ;
+        epcis:readPoint            <urn:epc:id:sgln:0614141.00777.0> ;
+        epcis:sourceList           <http://example.org/gln/4012345.00001.0/type/poss> , <http://example.org/gln/4012345.00225.0/type/loc> .
+
+<http://example.org/gln/4012345.00225.0/type/loc>
+        epcis:sourceOrDestination      <urn:epc:id:sgln:4012345.00225.0> ;
+        epcis:sourceOrDestinationType  cbv:SDT-location .
+
+[ rdf:type         epcis:EPCISDocument ;
+  dcterms:created  "2021-01-11T11:30:47.0Z"^^xsd:dateTime ;
+  owl:versionInfo  "2.0" ;
+  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;c6407ffcac52ec159528f2b556ba4ac3844c5aa48485c1fd61643e94f0a2d678?ver=CBV2.0> , <ni:///sha-256;a98f08ae6ac4de3482054314d637c07010b448d3802dccb028a06aafcc6a4b10?ver=CBV2.0> ]
+] .
+
+<urn:epcglobal:cbv:bt:0614141073467:1152>
+        epcis:bizTransactionType  cbv:BTT-desadv .
+
+<http://example.org/gln/0614141.00777.0/type/loc>
+        epcis:sourceOrDestination      <urn:epc:id:sgln:0614141.00777.0> ;
+        epcis:sourceOrDestinationType  cbv:SDT-location .
