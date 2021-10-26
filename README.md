@@ -8,3 +8,5 @@ Please use this link to download the .zip (including the public review drafts of
 Please do not attempt to submit any public review comments as GitHub issues - we need them to be submitted via the official GS1 mechanism so that they can be formally considered by the work group.  
 
 Anyone can submit comments, whether you participate in the GS1 Global Standards Management Process (GSMP) or not - further details at the link above.
+
+Public review for EPCIS/CBV 2.0 ends on 11th November 2021.
