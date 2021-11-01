@@ -150,6 +150,14 @@ ttl2jsonld EPCIS.ttl \
  > EPCIS.jsonld
 ```
 
+```
+ttl2jsonld CBV.ttl \
+ | jsonld compact -c file://EPCIS-CBV-context.jsonld \
+ | jq -S --slurpfile c EPCIS-CBV-context.jsonld '.["@context"] |= $c[0]["@context"]' \
+ > CBV.jsonld
+```
+
+
 - The `jq` step slurps the context file to variable `$c`, then
   replaces the field `"@context"` (being `"file://EPCIS-CBV-context.jsonld"`)
   with its content (stripping a top-level array and dict).
