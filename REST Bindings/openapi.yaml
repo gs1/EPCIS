@@ -12,21 +12,9 @@ tags:
   - name: 'Capture'
     description: |
       Endpoints to capture EPCIS events in bulk or individually.
-  - name: 'Top-level Resources'
-    description: |
-      Endpoints to conveniently browse EPCIS events by top-level resources:
-
-      - EPCIS events
-      - EventTypes
-      - electronic product codes (EPC)
-      - business steps (bizStep)
-      - business locations (bizLocation)
-      - read points
-      - dispositions
-
   - name: 'Events'
     description: |
-      Endpoints that expose EPCIS events as Web resources.
+      Endpoints that expose allow you to retrieve EPCIS events as Web resources.
   - name: 'Queries'
     description: |
       Endpoints to create large named or anonymous queries using the EPCIS query language. Named queries have a custom
@@ -35,6 +23,15 @@ tags:
   - name: 'Subscriptions'
     description: |
       EPCIS 2.0 supports query subscriptions with using Webhooks or Websockets.
+  - name: 'Top-level'
+    description: |
+      Endpoints to browse retrieve information about EPCIS resources:
+      - events
+      - electronic product codes
+      - business steps
+      - business locations
+      - read points
+      - dispositions
 
 paths:
   /:
@@ -469,7 +466,7 @@ paths:
           $ref: '#/components/responses/204TopLevelResourcesDiscovery'
     get:
       tags:
-        - 'Top-level Resources'
+        - 'Top-level'
       summary: Returns all EPCIS events available in the EPCIS repository.
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-Version'
@@ -619,7 +616,7 @@ paths:
               $ref: '#/components/headers/GS1-CBV-Extensions'
     get:
       tags:
-        - 'Top-level Resources'
+        - 'Events'
       summary: Returns an individual EPCIS event.
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-Version'
@@ -661,7 +658,7 @@ paths:
           $ref: '#/components/responses/204TopLevelResourcesDiscovery'
     get:
       tags:
-        - 'Events'
+        - 'Top-level'
       summary: Returns all EPCIS event types currently available in the EPCIS repository.
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-Version'
@@ -721,178 +718,7 @@ paths:
           $ref: '#/components/responses/406NotAcceptable'
         '500':
           $ref: '#/components/responses/500ImplementationException'
-
-  /eventTypes/{eventType}/events:
-    parameters:
-      - $ref: '#/components/parameters/EventType'
-      - $ref: '#/components/parameters/GS1-EPCIS-Version'
-      - $ref: '#/components/parameters/GS1-EPCIS-Min'
-      - $ref: '#/components/parameters/GS1-EPCIS-Max'
-      - $ref: '#/components/parameters/GS1-CBV-Version'
-      - $ref: '#/components/parameters/GS1-EPC-Format'
-      - $ref: '#/components/parameters/GS1-CBV-XML-Format'
-      - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
-      - $ref: '#/components/parameters/GS1-CBV-Extensions'
-    options:
-      tags:
-        - 'Discovery'
-      summary: Query the metadata of the endpoint to access EPCIS events.
-      description: |
-        EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
-        of EPCIS and CBV. The `OPTIONS` method allows the client to discover which vocabularies and EPCIS and CBV
-        versions are used.
-      responses:
-        '204':
-          description: |
-            The `OPTIONS` method is used as a discovery service for `events` endpoints. It describes which EPCIS and CBV
-            versions are supported as well as  EPCIS and CBV extensions.
-            The list of headers is not exhaustive. It only describes the functionality specific to EPCIS 2.0.
-          headers:
-            Allow:
-              schema:
-                example: OPTIONS, POST, GET
-                type: string
-                default: OPTIONS, POST, GET
-            GS1-EPCIS-Version:
-              $ref: '#/components/headers/GS1-EPCIS-Version'
-            GS1-EPCIS-Min:
-              $ref: '#/components/headers/GS1-EPCIS-Min'
-            GS1-EPCIS-Max:
-              $ref: '#/components/headers/GS1-EPCIS-Max'
-            GS1-CBV-Version:
-              $ref: '#/components/headers/GS1-CBV-Version'
-            GS1-EPC-Format:
-              $ref: '#/components/headers/GS1-EPC-Format'
-            GS1-CBV-XML-Format:
-              $ref: '#/components/headers/GS1-CBV-XML-Format'
-            GS1-EPCIS-Extensions:
-              $ref: '#/components/headers/GS1-EPCIS-Extensions'
-            GS1-Vendor-Version:
-              $ref: '#/components/headers/GS1-Vendor-Version'
-            GS1-CBV-Extensions:
-              $ref: '#/components/headers/GS1-CBV-Extensions'
-            GS1-EPCIS-Capture-Limit:
-              $ref: '#/components/headers/GS1-EPCIS-Capture-Limit'
-            GS1-EPCIS-Capture-File-Size-Limit:
-              $ref: '#/components/headers/GS1-EPCIS-Capture-File-Size-Limit'
-    get:
-      tags:
-        - 'Events'
-      summary: |
-        Returns EPCIS events of a given EPCIS event type. If `all` is used instead of an EPCIS
-        event type, every event in the repository is returned.
-      parameters:
-        - $ref: '#/components/parameters/PerPage'
-        - $ref: '#/components/parameters/NextPageToken'
-
-      description: |
-        This endpoint returns all EPCIS events of a specific EPCIS event type up to the amount defined in `perPage`.
-        The server returns a 'Link' header to point to the remaining results.
-
-        If the EPCIS event type is not needed, `all` can be used instead of an EPCIS event type.
-
-        The client can further restrict the list of events returned by filtering events using the EPCIS query
-        language as URL query string parameters.
-
-        Example:
-
-        ```
-        https://example.com/eventTypes/ObjectEvent/events?EQ_bizStep=urn%3Aepcglobal%3Acbv%3Abizstep%3Ashipping%2Curn%3Aepcglobal%3Acbv%3Abizstep%3Adecommissioning&GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
-        ```
-      responses:
-        '200':
-          $ref: '#/components/responses/200EPCISQueryDocument'
-        '400':
-          $ref: '#/components/responses/400QueryIssues'
-        '401':
-          $ref: '#/components/responses/401UnauthorizedRequest'
-        '403':
-          $ref: '#/components/responses/403ClientUnauthorized'
-        '404':
-          $ref: '#/components/responses/404ResourceNotFound'
-        '414':
-          $ref: '#/components/responses/414URLTooLong'
-        '406':
-          $ref: '#/components/responses/406NotAcceptable'
-        '500':
-          $ref: '#/components/responses/500ImplementationException'
-
-    
-
-  /eventTypes/{eventType}/events/{eventID}:
-    parameters:
-      - $ref: '#/components/parameters/EventType'
-      - $ref: '#/components/parameters/EventID'
-    options:
-      tags:
-        - 'Discovery'
-      summary: Query metadata for the endpoint to access an individual EPCIS event.
-      description: |
-        EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
-        of EPCIS and CBV. The `OPTIONS` method allows the client to discover which vocabularies and EPCIS and CBV
-        versions are used.
-      responses:
-        '204':
-          description: |
-            The `OPTIONS` method is used as a discovery service for individual EPCIS events endpoints. It describes
-            which EPCIS and CBV versions are supported as well as  EPCIS and CBV extensions.
-            The list of headers is not exhaustive. It only describes the functionality specific to EPCIS 2.0.
-          headers:
-            Allow:
-              schema:
-                example: OPTIONS, GET
-                type: string
-                default: OPTIONS, GET
-
-            GS1-EPCIS-Version:
-              $ref: '#/components/headers/GS1-EPCIS-Version'
-            GS1-EPCIS-Min:
-              $ref: '#/components/headers/GS1-EPCIS-Min'
-            GS1-EPCIS-Max:
-              $ref: '#/components/headers/GS1-EPCIS-Max'
-            GS1-CBV-Version:
-              $ref: '#/components/headers/GS1-CBV-Version'
-            GS1-EPC-Format:
-              $ref: '#/components/headers/GS1-EPC-Format'
-            GS1-CBV-XML-Format:
-              $ref: '#/components/headers/GS1-CBV-XML-Format'
-            GS1-EPCIS-Extensions:
-              $ref: '#/components/headers/GS1-EPCIS-Extensions'
-            GS1-Vendor-Version:
-              $ref: '#/components/headers/GS1-Vendor-Version'
-            GS1-CBV-Extensions:
-              $ref: '#/components/headers/GS1-CBV-Extensions'
-    get:
-      tags:
-        - 'Events'
-      summary: Returns an individual EPCIS event.
-      parameters:
-        - $ref: '#/components/parameters/GS1-EPCIS-Version'
-        - $ref: '#/components/parameters/GS1-EPCIS-Min'
-        - $ref: '#/components/parameters/GS1-EPCIS-Max'
-        - $ref: '#/components/parameters/GS1-CBV-Version'
-        - $ref: '#/components/parameters/GS1-EPC-Format'
-        - $ref: '#/components/parameters/GS1-CBV-XML-Format'
-        - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
-        - $ref: '#/components/parameters/GS1-CBV-Extensions'
-      description: |
-        This endpoint accesses individual events using their unique id. If the EPCIS event type is not known
-        or irrelevant, `all` can be used instead of an EPCIS event type. The response body is an `EPCISDocument` with
-        the unique event.
-      responses:
-        '200':
-          $ref: '#/components/responses/200EPCISQueryDocument'
-        '401':
-          $ref: '#/components/responses/401UnauthorizedRequest'
-        '403':
-          $ref: '#/components/responses/403ClientUnauthorized'
-        '404':
-          $ref: '#/components/responses/404ResourceNotFound'
-        '406':
-          $ref: '#/components/responses/406NotAcceptable'
-        '500':
-          $ref: '#/components/responses/500ImplementationException'
-
+   
   /epcs:
     options:
       tags:
@@ -907,7 +733,7 @@ paths:
           $ref: '#/components/responses/204TopLevelResourcesDiscovery'
     get:
       tags:
-        - 'Top-level Resources'
+        - 'Top-level'
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
@@ -978,74 +804,7 @@ paths:
     options:
       tags:
         - 'Discovery'
-      summary: Query metadata of the electronic product code.
-      description: |
-        EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
-        of EPCIS and CBV. The `OPTIONS` method allows the client to discover which vocabularies and EPCIS and CBV
-        versions are used.
-      responses:
-        '204':
-          description: |
-            The `OPTIONS` method is used as a discovery service for an electronic product code. It describes which EPCIS
-            and CBV versions are supported as well as EPCIS and CBV extensions.
-            The list of headers is not exhaustive. It only describes the functionality specific to EPCIS 2.0.
-          headers:
-            Allow:
-              schema:
-                example: OPTIONS, GET
-                type: string
-                default: OPTIONS, GET
-            GS1-EPCIS-Version:
-              $ref: '#/components/headers/GS1-EPCIS-Version'
-            GS1-EPCIS-Min:
-              $ref: '#/components/headers/GS1-EPCIS-Min'
-            GS1-EPCIS-Max:
-              $ref: '#/components/headers/GS1-EPCIS-Max'
-            GS1-CBV-Version:
-              $ref: '#/components/headers/GS1-CBV-Version'
-            GS1-EPC-Format:
-              $ref: '#/components/headers/GS1-EPC-Format'
-            GS1-CBV-XML-Format:
-              $ref: '#/components/headers/GS1-CBV-XML-Format'
-            GS1-EPCIS-Extensions:
-              $ref: '#/components/headers/GS1-EPCIS-Extensions'
-            GS1-Vendor-Version:
-              $ref: '#/components/headers/GS1-Vendor-Version'
-            GS1-CBV-Extensions:
-              $ref: '#/components/headers/GS1-CBV-Extensions'
-    get:
-      tags:
-        - 'Top-level Resources'
-      summary: Returns all sub-resources of an electronic product code.
-      parameters:
-        - $ref: '#/components/parameters/PerPage'
-        - $ref: '#/components/parameters/NextPageToken'
-
-      description: |
-        This endpoint returns all sub-resources of an electronic product code, which currently is `events`.
-      responses:
-        '200':
-          $ref: '#/components/responses/200TopLevelOrEventTypeSubResource'
-        '400':
-          $ref: '#/components/responses/400QueryIssues'
-        '401':
-          $ref: '#/components/responses/401UnauthorizedRequest'
-        '403':
-          $ref: '#/components/responses/403ClientUnauthorized'
-        '404':
-          $ref: '#/components/responses/404ResourceNotFound'
-        '406':
-          $ref: '#/components/responses/406NotAcceptable'
-        '500':
-          $ref: '#/components/responses/500ImplementationException'
-
-  /epcs/{epc}/events:
-    parameters:
-      - $ref: '#/components/parameters/EPC'
-    options:
-      tags:
-        - 'Discovery'
-      summary: Query the metadata of the endpoint to access EPCIS events.
+      summary: Query the metadata of the endpoint to access EPCIS events by EPC.
       description: |
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
         of EPCIS and CBV. The `OPTIONS` method allows the client to discover which vocabularies and EPCIS and CBV
@@ -1073,12 +832,12 @@ paths:
       description: |
         This endpoint helps to navigate EPCIS events by electronic product codes. It returns
         EPCIS events up to the amount defined in `perPage`. The server returns a `Link` header to point to the remaining
-        results. Optionally, EPCIS events can be further filtered using the EPCIS query language in as query string parameters.
+        results. Optionally, EPCIS events can be further filtered using the EPCIS Query Language in as query string parameters.
 
         Example:
 
         ```
-        https://example.com/epcs/urn:epc:id:sgtin:0614141.107346.2018/events?EQ_bizStep=urn%3Aepcglobal%3Acbv%3Abizstep%3Ashipping%2Curn%3Aepcglobal%3Acbv%3Abizstep%3Adecommissioning&GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
+        https://example.com/epcs/urn:epc:id:sgtin:0614141.107346.2018?EQ_bizStep=urn%3Aepcglobal%3Acbv%3Abizstep%3Ashipping%2Curn%3Aepcglobal%3Acbv%3Abizstep%3Adecommissioning&GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
         ```
       responses:
         '200':
@@ -1098,49 +857,6 @@ paths:
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
-  /epcs/{epc}/events/{eventID}:
-    parameters:
-      - $ref: '#/components/parameters/EPC'
-      - $ref: '#/components/parameters/EventID'
-    options:
-      tags:
-        - 'Discovery'
-      summary: Query metadata for the endpoint to access an individual EPCIS event.
-      description: |
-        EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
-        of EPCIS and CBV. The `OPTIONS` method allows the client to discover which vocabularies and EPCIS and CBV
-        versions are used.
-      responses:
-        '204':
-          $ref: '#/components/responses/204TopLevelResourcesDiscovery'
-    get:
-      tags:
-        - 'Events'
-      summary: Returns an individual EPCIS event.
-      parameters:
-        - $ref: '#/components/parameters/GS1-EPCIS-Version'
-        - $ref: '#/components/parameters/GS1-EPCIS-Min'
-        - $ref: '#/components/parameters/GS1-EPCIS-Max'
-        - $ref: '#/components/parameters/GS1-CBV-Version'
-        - $ref: '#/components/parameters/GS1-EPC-Format'
-        - $ref: '#/components/parameters/GS1-CBV-XML-Format'
-        - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
-        - $ref: '#/components/parameters/GS1-CBV-Extensions'
-      description: |
-        This endpoint accesses individual events with the electronic product code.
-      responses:
-        '200':
-          $ref: '#/components/responses/200EPCISQueryDocument'
-        '401':
-          $ref: '#/components/responses/401UnauthorizedRequest'
-        '403':
-          $ref: '#/components/responses/403ClientUnauthorized'
-        '404':
-          $ref: '#/components/responses/404ResourceNotFound'
-        '406':
-          $ref: '#/components/responses/406NotAcceptable'
-        '500':
-          $ref: '#/components/responses/500ImplementationException'
 
   /bizSteps:
     options:
@@ -1156,7 +872,7 @@ paths:
           $ref: '#/components/responses/204TopLevelResourcesDiscovery'
     get:
       tags:
-        - 'Top-level Resources'
+        - 'Top-level'
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
@@ -1226,73 +942,7 @@ paths:
     options:
       tags:
         - 'Discovery'
-      summary: Query metadata of the endpoint to access an individual business step.
-      description: |
-        EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
-        of EPCIS and CBV. The `OPTIONS` method allows the client to discover which vocabularies and EPCIS and CBV
-        versions are used.
-      responses:
-        '204':
-          description: |
-            The `OPTIONS` method is used as a discovery service for a business step. It describes which EPCIS and CBV
-            versions are supported as well as EPCIS and CBV extensions. The list of headers is not exhaustive. It only
-            describes the functionality specific to EPCIS 2.0.
-          headers:
-            Allow:
-              schema:
-                example: OPTIONS, GET
-                type: string
-                default: OPTIONS, GET
-            GS1-EPCIS-Version:
-              $ref: '#/components/headers/GS1-EPCIS-Version'
-            GS1-EPCIS-Min:
-              $ref: '#/components/headers/GS1-EPCIS-Min'
-            GS1-EPCIS-Max:
-              $ref: '#/components/headers/GS1-EPCIS-Max'
-            GS1-CBV-Version:
-              $ref: '#/components/headers/GS1-CBV-Version'
-            GS1-EPC-Format:
-              $ref: '#/components/headers/GS1-EPC-Format'
-            GS1-CBV-XML-Format:
-              $ref: '#/components/headers/GS1-CBV-XML-Format'
-            GS1-EPCIS-Extensions:
-              $ref: '#/components/headers/GS1-EPCIS-Extensions'
-            GS1-Vendor-Version:
-              $ref: '#/components/headers/GS1-Vendor-Version'
-            GS1-CBV-Extensions:
-              $ref: '#/components/headers/GS1-CBV-Extensions'
-    get:
-      tags:
-        - 'Top-level Resources'
-      summary: Returns all sub-resources of a business step.
-      parameters:
-        - $ref: '#/components/parameters/PerPage'
-        - $ref: '#/components/parameters/NextPageToken'
-      description: |
-        This endpoint returns all sub-resources of a business step, which currently is `events`.
-      responses:
-        '200':
-          $ref: '#/components/responses/200TopLevelOrEventTypeSubResource'
-        '400':
-          $ref: '#/components/responses/400QueryIssues'
-        '401':
-          $ref: '#/components/responses/401UnauthorizedRequest'
-        '403':
-          $ref: '#/components/responses/403ClientUnauthorized'
-        '404':
-          $ref: '#/components/responses/404ResourceNotFound'
-        '406':
-          $ref: '#/components/responses/406NotAcceptable'
-        '500':
-          $ref: '#/components/responses/500ImplementationException'
-
-  /bizSteps/{bizStep}/events:
-    parameters:
-      - $ref: '#/components/parameters/BizStep'
-    options:
-      tags:
-        - 'Discovery'
-      summary: Query the metadata of the endpoint to access EPCIS events.
+      summary: Query the metadata of the endpoint to access EPCIS events by business step.
       description: |
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
         of EPCIS and CBV. The `OPTIONS` method allows the client to discover which vocabularies and EPCIS and CBV
@@ -1324,7 +974,7 @@ paths:
         Example:
 
         ```
-        https://example.com/bizSteps/urn:epcglobal:cbv:bizstep:receiving/events?GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
+        https://example.com/bizSteps/urn:epcglobal:cbv:bizstep:receiving?GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
         ```
       responses:
         '200':
@@ -1345,50 +995,6 @@ paths:
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
-  /bizSteps/{bizStep}/events/{eventID}:
-    parameters:
-      - $ref: '#/components/parameters/BizStep'
-      - $ref: '#/components/parameters/EventID'
-    options:
-      tags:
-        - 'Discovery'
-      summary: Query the metadata for the endpoint to access an individual EPCIS event.
-      description: |
-        EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
-        of EPCIS and CBV. The `OPTIONS` method allows the client to discover which vocabularies and EPCIS and CBV
-        versions are used.
-      responses:
-        '204':
-          $ref: '#/components/responses/204TopLevelResourcesDiscovery'
-    get:
-      tags:
-        - 'Events'
-      summary: Returns an individual EPCIS event.
-      parameters:
-        - $ref: '#/components/parameters/GS1-EPCIS-Version'
-        - $ref: '#/components/parameters/GS1-EPCIS-Min'
-        - $ref: '#/components/parameters/GS1-EPCIS-Max'
-        - $ref: '#/components/parameters/GS1-CBV-Version'
-        - $ref: '#/components/parameters/GS1-EPC-Format'
-        - $ref: '#/components/parameters/GS1-CBV-XML-Format'
-        - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
-        - $ref: '#/components/parameters/GS1-CBV-Extensions'
-      description: |
-        This endpoint accesses individual events with the business step.
-      responses:
-        '200':
-          $ref: '#/components/responses/200EPCISQueryDocument'
-        '401':
-          $ref: '#/components/responses/401UnauthorizedRequest'
-        '403':
-          $ref: '#/components/responses/403ClientUnauthorized'
-        '404':
-          $ref: '#/components/responses/404ResourceNotFound'
-        '406':
-          $ref: '#/components/responses/406NotAcceptable'
-        '500':
-          $ref: '#/components/responses/500ImplementationException'
-
   /bizLocations:
     options:
       tags:
@@ -1403,7 +1009,7 @@ paths:
           $ref: '#/components/responses/204TopLevelResourcesDiscovery'
     get:
       tags:
-        - 'Top-level Resources'
+        - 'Top-level'
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
@@ -1465,77 +1071,11 @@ paths:
   /bizLocations/{bizLocation}:
     parameters:
       - $ref: '#/components/parameters/BizLocation'
-    options:
-      tags:
-        - 'Discovery'
-      summary: Query the metadata of the endpoint to access an individual business location.
-      description: |
-        EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
-        of EPCIS and CBV. The `OPTIONS` method allows the client to discover which vocabularies and EPCIS and CBV
-        versions are used.
-      responses:
-        '204':
-          description: |
-            The `OPTIONS` method is used as a discovery service for a business location. It describes which EPCIS and
-            CBV versions are supported as well as EPCIS and CBV extensions. The list of headers is not exhaustive.
-            It only describes the functionality specific to EPCIS 2.0.
-          headers:
-            Allow:
-              schema:
-                example: OPTIONS, GET
-                type: string
-                default: OPTIONS, GET
-            GS1-EPCIS-Version:
-              $ref: '#/components/headers/GS1-EPCIS-Version'
-            GS1-EPCIS-Min:
-              $ref: '#/components/headers/GS1-EPCIS-Min'
-            GS1-EPCIS-Max:
-              $ref: '#/components/headers/GS1-EPCIS-Max'
-            GS1-CBV-Version:
-              $ref: '#/components/headers/GS1-CBV-Version'
-            GS1-EPC-Format:
-              $ref: '#/components/headers/GS1-EPC-Format'
-            GS1-CBV-XML-Format:
-              $ref: '#/components/headers/GS1-CBV-XML-Format'
-            GS1-EPCIS-Extensions:
-              $ref: '#/components/headers/GS1-EPCIS-Extensions'
-            GS1-Vendor-Version:
-              $ref: '#/components/headers/GS1-Vendor-Version'
-            GS1-CBV-Extensions:
-              $ref: '#/components/headers/GS1-CBV-Extensions'
-    get:
-      tags:
-        - 'Top-level Resources'
-      summary: Returns all sub-resources of a business location.
-      parameters:
-        - $ref: '#/components/parameters/PerPage'
-        - $ref: '#/components/parameters/NextPageToken'
-      description: |
-        This endpoint returns all sub-resources of a business location, which currently is `events`.
-      responses:
-        '200':
-          $ref: '#/components/responses/200TopLevelOrEventTypeSubResource'
-        '400':
-          $ref: '#/components/responses/400QueryIssues'
-        '401':
-          $ref: '#/components/responses/401UnauthorizedRequest'
-        '403':
-          $ref: '#/components/responses/403ClientUnauthorized'
-        '404':
-          $ref: '#/components/responses/404ResourceNotFound'
-        '406':
-          $ref: '#/components/responses/406NotAcceptable'
-        '500':
-          $ref: '#/components/responses/500ImplementationException'
-
-  /bizLocations/{bizLocation}/events:
-    parameters:
-      - $ref: '#/components/parameters/BizLocation'
 
     options:
       tags:
         - 'Discovery'
-      summary: Query the metadata of the endpoint to access EPCIS events.
+      summary: Query the metadata of the endpoint to access EPCIS events by business location.
       description: |
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
         of EPCIS and CBV. The `OPTIONS` method allows the client to discover which vocabularies and EPCIS and CBV
@@ -1569,7 +1109,7 @@ paths:
         Example:
 
         ```
-        https://example.com/bizLocations/urn:epc:id:sgln:0012345.11111.0/events?GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
+        https://example.com/bizLocations/urn:epc:id:sgln:0012345.11111.0?GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
         ```
       responses:
         '200':
@@ -1589,50 +1129,6 @@ paths:
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
-  /bizLocations/{bizLocation}/events/{eventID}:
-    parameters:
-      - $ref: '#/components/parameters/BizLocation'
-      - $ref: '#/components/parameters/EventID'
-    options:
-      tags:
-        - 'Discovery'
-      summary: Query the metadata for the endpoint to access an individual EPCIS event.
-      description: |
-        EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
-        of EPCIS and CBV. The `OPTIONS` method allows the client to discover which vocabularies and EPCIS and CBV
-        versions are used.
-      responses:
-        '204':
-          $ref: '#/components/responses/204TopLevelResourcesDiscovery'
-    get:
-      tags:
-        - 'Events'
-      summary: Returns an individual EPCIS event.
-      parameters:
-        - $ref: '#/components/parameters/GS1-EPCIS-Version'
-        - $ref: '#/components/parameters/GS1-EPCIS-Min'
-        - $ref: '#/components/parameters/GS1-EPCIS-Max'
-        - $ref: '#/components/parameters/GS1-CBV-Version'
-        - $ref: '#/components/parameters/GS1-EPC-Format'
-        - $ref: '#/components/parameters/GS1-CBV-XML-Format'
-        - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
-        - $ref: '#/components/parameters/GS1-CBV-Extensions'
-      description: |
-        This endpoint accesses individual events with the business location.
-      responses:
-        '200':
-          $ref: '#/components/responses/200EPCISQueryDocument'
-        '401':
-          $ref: '#/components/responses/401UnauthorizedRequest'
-        '403':
-          $ref: '#/components/responses/403ClientUnauthorized'
-        '404':
-          $ref: '#/components/responses/404ResourceNotFound'
-        '406':
-          $ref: '#/components/responses/406NotAcceptable'
-        '500':
-          $ref: '#/components/responses/500ImplementationException'
-
   /readPoints:
     options:
       tags:
@@ -1647,7 +1143,7 @@ paths:
           $ref: '#/components/responses/204TopLevelResourcesDiscovery'
     get:
       tags:
-        - 'Top-level Resources'
+        - 'Top-level'
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
@@ -1716,73 +1212,7 @@ paths:
     options:
       tags:
         - 'Discovery'
-      summary: Query the metadata of the endpoint to access an individual read point.
-      description: |
-        EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
-        of EPCIS and CBV. The `OPTIONS` method allows the client to discover which vocabularies and EPCIS and CBV
-        versions are used.
-      responses:
-        '204':
-          description: |
-            The `OPTIONS` method is used as a discovery service for a read point. It describes which EPCIS and CBV
-            versions are supported as well as EPCIS and CBV extensions. The list of headers is not exhaustive. It only
-            describes the functionality specific to EPCIS 2.0.
-          headers:
-            Allow:
-              schema:
-                example: OPTIONS, GET
-                type: string
-                default: OPTIONS, GET
-            GS1-EPCIS-Version:
-              $ref: '#/components/headers/GS1-EPCIS-Version'
-            GS1-EPCIS-Min:
-              $ref: '#/components/headers/GS1-EPCIS-Min'
-            GS1-EPCIS-Max:
-              $ref: '#/components/headers/GS1-EPCIS-Max'
-            GS1-CBV-Version:
-              $ref: '#/components/headers/GS1-CBV-Version'
-            GS1-EPC-Format:
-              $ref: '#/components/headers/GS1-EPC-Format'
-            GS1-CBV-XML-Format:
-              $ref: '#/components/headers/GS1-CBV-XML-Format'
-            GS1-EPCIS-Extensions:
-              $ref: '#/components/headers/GS1-EPCIS-Extensions'
-            GS1-Vendor-Version:
-              $ref: '#/components/headers/GS1-Vendor-Version'
-            GS1-CBV-Extensions:
-              $ref: '#/components/headers/GS1-CBV-Extensions'
-    get:
-      tags:
-        - 'Top-level Resources'
-      summary: Returns all sub-resources of a read point.
-      parameters:
-        - $ref: '#/components/parameters/PerPage'
-        - $ref: '#/components/parameters/NextPageToken'
-      description: |
-        This endpoint returns all sub-resources of a read point, which currently is `events`.
-      responses:
-        '200':
-          $ref: '#/components/responses/200TopLevelOrEventTypeSubResource'
-        '400':
-          $ref: '#/components/responses/400QueryIssues'
-        '401':
-          $ref: '#/components/responses/401UnauthorizedRequest'
-        '403':
-          $ref: '#/components/responses/403ClientUnauthorized'
-        '404':
-          $ref: '#/components/responses/404ResourceNotFound'
-        '406':
-          $ref: '#/components/responses/406NotAcceptable'
-        '500':
-          $ref: '#/components/responses/500ImplementationException'
-
-  /readPoints/{readPoint}/events:
-    parameters:
-      - $ref: '#/components/parameters/ReadPoint'
-    options:
-      tags:
-        - 'Discovery'
-      summary: Query the metadata of the endpoint to access EPCIS events.
+      summary: Query the metadata of the endpoint to access EPCIS events by read point.
       description: |
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
         of EPCIS and CBV. The `OPTIONS` method allows the client to discover which vocabularies and EPCIS and CBV
@@ -1815,7 +1245,7 @@ paths:
         Example:
 
         ```
-        https://example.com/readPoints/urn:epc:id:sgln:0012345.11111.400/events?GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
+        https://example.com/readPoints/urn:epc:id:sgln:0012345.11111.400?GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
         ```
       responses:
         '200':
@@ -1835,50 +1265,6 @@ paths:
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
-  /readPoints/{readPoint}/events/{eventID}:
-    parameters:
-      - $ref: '#/components/parameters/ReadPoint'
-      - $ref: '#/components/parameters/EventID'
-    options:
-      tags:
-        - 'Discovery'
-      summary: Query the metadata for the endpoint to access an individual EPCIS event.
-      description: |
-        EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
-        of EPCIS and CBV. The `OPTIONS` method allows the client to discover which vocabularies and EPCIS and CBV
-        versions are used.
-      responses:
-        '204':
-          $ref: '#/components/responses/204TopLevelResourcesDiscovery'
-    get:
-      tags:
-        - 'Events'
-      summary: Returns an individual EPCIS event.
-      parameters:
-        - $ref: '#/components/parameters/GS1-EPCIS-Version'
-        - $ref: '#/components/parameters/GS1-EPCIS-Min'
-        - $ref: '#/components/parameters/GS1-EPCIS-Max'
-        - $ref: '#/components/parameters/GS1-CBV-Version'
-        - $ref: '#/components/parameters/GS1-EPC-Format'
-        - $ref: '#/components/parameters/GS1-CBV-XML-Format'
-        - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
-        - $ref: '#/components/parameters/GS1-CBV-Extensions'
-      description: |
-        This endpoint accesses individual events with the read point.
-      responses:
-        '200':
-          $ref: '#/components/responses/200EPCISQueryDocument'
-        '401':
-          $ref: '#/components/responses/401UnauthorizedRequest'
-        '403':
-          $ref: '#/components/responses/403ClientUnauthorized'
-        '404':
-          $ref: '#/components/responses/404ResourceNotFound'
-        '406':
-          $ref: '#/components/responses/406NotAcceptable'
-        '500':
-          $ref: '#/components/responses/500ImplementationException'
-
   /dispositions:
     options:
       tags:
@@ -1893,7 +1279,7 @@ paths:
           $ref: '#/components/responses/204TopLevelResourcesDiscovery'
     get:
       tags:
-        - 'Top-level Resources'
+        - 'Top-level'
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
@@ -1958,75 +1344,7 @@ paths:
     options:
       tags:
         - 'Discovery'
-      summary: Query the metadata of the endpoint to access an individual disposition.
-      description: |
-        EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
-        of EPCIS and CBV. The `OPTIONS` method allows the client to discover which vocabularies and EPCIS and CBV
-        versions are used.
-      responses:
-        '204':
-          description: |
-            The `OPTIONS` method is used as a discovery service for a disposition. It describes which EPCIS and CBV
-            versions are supported as well as EPCIS and CBV extensions. The list of headers is not exhaustive. It only
-            describes the functionality specific to EPCIS 2.0.
-          headers:
-            Allow:
-              schema:
-                example: OPTIONS, GET
-                type: string
-                default: OPTIONS, GET
-            GS1-EPCIS-Version:
-              $ref: '#/components/headers/GS1-EPCIS-Version'
-            GS1-EPCIS-Min:
-              $ref: '#/components/headers/GS1-EPCIS-Min'
-            GS1-EPCIS-Max:
-              $ref: '#/components/headers/GS1-EPCIS-Max'
-            GS1-CBV-Version:
-              $ref: '#/components/headers/GS1-CBV-Version'
-            GS1-EPC-Format:
-              $ref: '#/components/headers/GS1-EPC-Format'
-            GS1-CBV-XML-Format:
-              $ref: '#/components/headers/GS1-CBV-XML-Format'
-            GS1-EPCIS-Extensions:
-              $ref: '#/components/headers/GS1-EPCIS-Extensions'
-            GS1-Vendor-Version:
-              $ref: '#/components/headers/GS1-Vendor-Version'
-            GS1-CBV-Extensions:
-              $ref: '#/components/headers/GS1-CBV-Extensions'
-    get:
-      tags:
-        - 'Top-level Resources'
-      summary: Returns all sub-resources of a disposition.
-      parameters:
-        - $ref: '#/components/parameters/PerPage'
-        - $ref: '#/components/parameters/NextPageToken'
-      description: |
-        This endpoint returns all sub-resources of a disposition, which currently is `events`.
-      responses:
-        '200':
-          $ref: '#/components/responses/200TopLevelOrEventTypeSubResource'
-        '400':
-          $ref: '#/components/responses/400QueryIssues'
-        '401':
-          $ref: '#/components/responses/401UnauthorizedRequest'
-        '403':
-          $ref: '#/components/responses/403ClientUnauthorized'
-        '404':
-          $ref: '#/components/responses/404ResourceNotFound'
-        '414':
-          $ref: '#/components/responses/414URLTooLong'
-        '406':
-          $ref: '#/components/responses/406NotAcceptable'
-        '500':
-          $ref: '#/components/responses/500ImplementationException'
-
-  /dispositions/{disposition}/events:
-    parameters:
-      - $ref: '#/components/parameters/Disposition'
-    options:
-      tags:
-        - 'Discovery'
-      summary: Query the metadata of the endpoint to access EPCIS events.
+      summary: Query the metadata of the endpoint to access EPCIS events by disposition.
       description: |
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
         of EPCIS and CBV. The `OPTIONS` method allows the client to discover which vocabularies and EPCIS and CBV
@@ -2059,7 +1377,7 @@ paths:
         Example:
 
         ```
-        https://example.com/dispositions/urn:epcglobal:cbv:disp:in_progress/events?GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
+        https://example.com/dispositions/urn:epcglobal:cbv:disp:in_progress?GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
         ```
       responses:
         '200':
@@ -2074,50 +1392,6 @@ paths:
           $ref: '#/components/responses/404ResourceNotFound'
         '414':
           $ref: '#/components/responses/414URLTooLong'
-        '406':
-          $ref: '#/components/responses/406NotAcceptable'
-        '500':
-          $ref: '#/components/responses/500ImplementationException'
-
-  /dispositions/{disposition}/events/{eventID}:
-    parameters:
-      - $ref: '#/components/parameters/Disposition'
-      - $ref: '#/components/parameters/EventID'
-    options:
-      tags:
-        - 'Discovery'
-      summary: Query the metadata for the endpoint to access an individual EPCIS event.
-      description: |
-        EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
-        of EPCIS and CBV. The `OPTIONS` method allows the client to discover which vocabularies and EPCIS and CBV
-        versions are used.
-      responses:
-        '204':
-          $ref: '#/components/responses/204TopLevelResourcesDiscovery'
-    get:
-      tags:
-        - 'Events'
-      summary: Returns an individual EPCIS event.
-      parameters:
-        - $ref: '#/components/parameters/GS1-EPCIS-Version'
-        - $ref: '#/components/parameters/GS1-EPCIS-Min'
-        - $ref: '#/components/parameters/GS1-EPCIS-Max'
-        - $ref: '#/components/parameters/GS1-CBV-Version'
-        - $ref: '#/components/parameters/GS1-EPC-Format'
-        - $ref: '#/components/parameters/GS1-CBV-XML-Format'
-        - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
-        - $ref: '#/components/parameters/GS1-CBV-Extensions'
-      description: |
-        This endpoint accesses individual events with the disposition.
-      responses:
-        '200':
-          $ref: '#/components/responses/200EPCISQueryDocument'
-        '401':
-          $ref: '#/components/responses/401UnauthorizedRequest'
-        '403':
-          $ref: '#/components/responses/403ClientUnauthorized'
-        '404':
-          $ref: '#/components/responses/404ResourceNotFound'
         '406':
           $ref: '#/components/responses/406NotAcceptable'
         '500':
