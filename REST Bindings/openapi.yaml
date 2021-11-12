@@ -14,11 +14,13 @@ tags:
       Endpoints to capture EPCIS events in bulk or individually.
   - name: 'Top-level Resources'
     description: |
-      Endpoints to browse EPCIS events by six common top-level resources:
+      Endpoints to conveniently browse EPCIS events by top-level resources:
 
-      - electronic product codes
-      - business steps
-      - business locations
+      - EPCIS events
+      - EventTypes
+      - electronic product codes (EPC)
+      - business steps (bizStep)
+      - business locations (bizLocation)
       - read points
       - dispositions
 
@@ -453,6 +455,197 @@ paths:
           $ref: '#/components/responses/406NotAcceptable'
         '500':
           $ref: '#/components/responses/500ImplementationException'
+  /events:
+    options:
+      tags:
+        - 'Discovery'
+      summary: Query metadata for the EPCIS events endpoint.
+      description: |
+        EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
+        of EPCIS and CBV. The `OPTIONS` method allows the client to discover which vocabularies and EPCIS and CBV
+        versions are used.
+      responses:
+        '204':
+          $ref: '#/components/responses/204TopLevelResourcesDiscovery'
+    get:
+      tags:
+        - 'Top-level Resources'
+      summary: Returns all EPCIS events available in the EPCIS repository.
+      parameters:
+        - $ref: '#/components/parameters/GS1-EPCIS-Version'
+        - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
+        - $ref: '#/components/parameters/GS1-EPCIS-Min'
+        - $ref: '#/components/parameters/GS1-EPCIS-Max'
+        - $ref: '#/components/parameters/GS1-CBV-Version'
+        - $ref: '#/components/parameters/GS1-CBV-Extensions'
+      description: |
+        This endpoint returns all EPCIS events that are currently in the repository. It supports
+        refinement via the EPCIS Query Language
+      responses:
+        '200':
+          $ref: '#/components/responses/200EPCISQueryDocument'
+        '401':
+          $ref: '#/components/responses/401UnauthorizedRequest'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
+
+    post:
+      tags:
+        - 'Capture'
+      summary: Synchronous capture interface for a single EPCIS event.
+      description: |
+        An individual EPCIS event can be created by making a `POST` request on the `/events` resource. Alternatively, the client can also use the `/capture`
+        interface and capture a single event.
+      requestBody:
+        required: true
+        description: A single EPCIS event with optional JSON-LD context.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SingleEvent'
+
+      responses:
+        '201':
+          description: |
+            Successfully created (captured) the EPCIS event. The request returns the URL of newly created
+            EPCIS event in the Location header.
+          headers:
+            GS1-EPCIS-Version:
+              $ref: '#/components/headers/GS1-EPCIS-Version'
+            GS1-EPCIS-Min:
+              $ref: '#/components/headers/GS1-EPCIS-Min'
+            GS1-EPCIS-Max:
+              $ref: '#/components/headers/GS1-EPCIS-Max'
+            GS1-CBV-Version:
+              $ref: '#/components/headers/GS1-CBV-Version'
+            GS1-EPC-Format:
+              $ref: '#/components/headers/GS1-EPC-Format'
+            GS1-CBV-XML-Format:
+              $ref: '#/components/headers/GS1-CBV-XML-Format'
+            GS1-EPCIS-Extensions:
+              $ref: '#/components/headers/GS1-EPCIS-Extensions'
+            GS1-Vendor-Version:
+              $ref: '#/components/headers/GS1-Vendor-Version'
+            GS1-CBV-Extensions:
+              $ref: '#/components/headers/GS1-CBV-Extensions'
+            GS1-EPCIS-Capture-Limit:
+              $ref: '#/components/headers/GS1-EPCIS-Capture-Limit'
+            GS1-EPCIS-Capture-File-Size-Limit:
+              $ref: '#/components/headers/GS1-EPCIS-Capture-File-Size-Limit'
+            Location:
+              example: "https://example.com/eventTypes/ObjectEvent/events/eventId123"
+              schema:
+                $ref: '#/components/schemas/Location'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SingleEvent'
+        '400':
+          description: An error occurred while creating the EPCIS event. The event was rejected.
+          content:
+            application/problem+json:
+              schema:
+                allOf:
+                  - properties:
+                      status:
+                        type: integer
+                        enum:
+                          - 400
+                        default: 400
+                      type:
+                        type: string
+                        format: uri
+                        enum:
+                          - epcisException:ValidationException
+                  - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+        '401':
+          $ref: '#/components/responses/401UnauthorizedRequest'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '413':
+          $ref: '#/components/responses/413CapturePayloadTooLarge'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
+        '415':
+          $ref: '#/components/responses/415UnsupportedMediaType'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
+
+  /events/{eventID}:
+    parameters:
+      - $ref: '#/components/parameters/EventID'
+    options:
+      tags:
+        - 'Discovery'
+      summary: Query metadata for the endpoint to access an individual EPCIS event.
+      description: |
+        EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
+        of EPCIS and CBV. The `OPTIONS` method allows the client to discover which vocabularies and EPCIS and CBV
+        versions are used.
+      responses:
+        '204':
+          description: |
+            The `OPTIONS` method is used as a discovery service for individual EPCIS events endpoints. It describes
+            which EPCIS and CBV versions are supported as well as EPCIS and CBV extensions.
+            The list of headers is not exhaustive. It only describes the functionality specific to EPCIS 2.0.
+          headers:
+            Allow:
+              schema:
+                example: OPTIONS, GET
+                type: string
+                default: OPTIONS, GET
+
+            GS1-EPCIS-Version:
+              $ref: '#/components/headers/GS1-EPCIS-Version'
+            GS1-EPCIS-Min:
+              $ref: '#/components/headers/GS1-EPCIS-Min'
+            GS1-EPCIS-Max:
+              $ref: '#/components/headers/GS1-EPCIS-Max'
+            GS1-CBV-Version:
+              $ref: '#/components/headers/GS1-CBV-Version'
+            GS1-EPC-Format:
+              $ref: '#/components/headers/GS1-EPC-Format'
+            GS1-CBV-XML-Format:
+              $ref: '#/components/headers/GS1-CBV-XML-Format'
+            GS1-EPCIS-Extensions:
+              $ref: '#/components/headers/GS1-EPCIS-Extensions'
+            GS1-Vendor-Version:
+              $ref: '#/components/headers/GS1-Vendor-Version'
+            GS1-CBV-Extensions:
+              $ref: '#/components/headers/GS1-CBV-Extensions'
+    get:
+      tags:
+        - 'Top-level Resources'
+      summary: Returns an individual EPCIS event.
+      parameters:
+        - $ref: '#/components/parameters/GS1-EPCIS-Version'
+        - $ref: '#/components/parameters/GS1-EPCIS-Min'
+        - $ref: '#/components/parameters/GS1-EPCIS-Max'
+        - $ref: '#/components/parameters/GS1-CBV-Version'
+        - $ref: '#/components/parameters/GS1-EPC-Format'
+        - $ref: '#/components/parameters/GS1-CBV-XML-Format'
+        - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
+        - $ref: '#/components/parameters/GS1-CBV-Extensions'
+      description: |
+        This endpoint accesses individual events using their unique identifier. The response body is an `EPCISDocument` 
+        enclosing the unique event.
+      responses:
+        '200':
+          $ref: '#/components/responses/200EPCISQueryDocument'
+        '401':
+          $ref: '#/components/responses/401UnauthorizedRequest'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '404':
+          $ref: '#/components/responses/404ResourceNotFound'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
 
   /eventTypes:
     options:
@@ -624,90 +817,7 @@ paths:
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
-    post:
-      tags:
-        - 'Capture'
-        - 'Events'
-      summary: Synchronous capture interface for a single EPCIS event.
-      description: |
-        An individual EPCIS event can be created by making a `POST` request to the EPCIS event type of
-        the EPCIS event that is being captured. If the client does not wish to specify the EPCIS event type,
-        the `/eventTypes/all/events` endpoint can be used. Alternatively, the client can also use the `/capture`
-        interface and capture a single event.
-      requestBody:
-        required: true
-        description: A single EPCIS event with optional JSON-LD context.
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/SingleEvent'
-
-      responses:
-        '201':
-          description: |
-            Successfully created (captured) the EPCIS event. The request returns the URL of newly created
-            EPCIS event in the Location header.
-          headers:
-            GS1-EPCIS-Version:
-              $ref: '#/components/headers/GS1-EPCIS-Version'
-            GS1-EPCIS-Min:
-              $ref: '#/components/headers/GS1-EPCIS-Min'
-            GS1-EPCIS-Max:
-              $ref: '#/components/headers/GS1-EPCIS-Max'
-            GS1-CBV-Version:
-              $ref: '#/components/headers/GS1-CBV-Version'
-            GS1-EPC-Format:
-              $ref: '#/components/headers/GS1-EPC-Format'
-            GS1-CBV-XML-Format:
-              $ref: '#/components/headers/GS1-CBV-XML-Format'
-            GS1-EPCIS-Extensions:
-              $ref: '#/components/headers/GS1-EPCIS-Extensions'
-            GS1-Vendor-Version:
-              $ref: '#/components/headers/GS1-Vendor-Version'
-            GS1-CBV-Extensions:
-              $ref: '#/components/headers/GS1-CBV-Extensions'
-            GS1-EPCIS-Capture-Limit:
-              $ref: '#/components/headers/GS1-EPCIS-Capture-Limit'
-            GS1-EPCIS-Capture-File-Size-Limit:
-              $ref: '#/components/headers/GS1-EPCIS-Capture-File-Size-Limit'
-            Location:
-              example: "https://example.com/eventTypes/ObjectEvent/events/eventId123"
-              schema:
-                $ref: '#/components/schemas/Location'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SingleEvent'
-        '400':
-          description: An error occurred while creating the EPCIS event. The event was rejected.
-          content:
-            application/problem+json:
-              schema:
-                allOf:
-                  - properties:
-                      status:
-                        type: integer
-                        enum:
-                          - 400
-                        default: 400
-                      type:
-                        type: string
-                        format: uri
-                        enum:
-                          - epcisException:ValidationException
-                  - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-        '401':
-          $ref: '#/components/responses/401UnauthorizedRequest'
-        '403':
-          $ref: '#/components/responses/403ClientUnauthorized'
-        '413':
-          $ref: '#/components/responses/413CapturePayloadTooLarge'
-        '406':
-          $ref: '#/components/responses/406NotAcceptable'
-        '415':
-          $ref: '#/components/responses/415UnsupportedMediaType'
-        '500':
-          $ref: '#/components/responses/500ImplementationException'
+    
 
   /eventTypes/{eventType}/events/{eventID}:
     parameters:
@@ -4330,8 +4440,7 @@ components:
       name: eventID
       in: path
       description: |
-        The ID of an EPCIS event. Because of the `all` reserved value for EPCIS event types,
-        an EPCIS event ID must be unique across all events in the system.
+        The ID of an EPCIS event. EPCIS event ID must be unique across all events in the system.
       required: true
       example: "ni:///sha-256;df7bb3c352fef055578554f09f5e2aa41782150ced7bd0b8af24dd3ccb30ba69?ver=CBV2.0"
       schema:
