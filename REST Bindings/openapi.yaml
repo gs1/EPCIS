@@ -685,27 +685,80 @@ paths:
   /eventTypes/{eventType}:
     parameters:
       - $ref: '#/components/parameters/EventType'
+      - $ref: '#/components/parameters/GS1-EPCIS-Version'
+      - $ref: '#/components/parameters/GS1-EPCIS-Min'
+      - $ref: '#/components/parameters/GS1-EPCIS-Max'
+      - $ref: '#/components/parameters/GS1-CBV-Version'
+      - $ref: '#/components/parameters/GS1-EPC-Format'
+      - $ref: '#/components/parameters/GS1-CBV-XML-Format'
+      - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
+      - $ref: '#/components/parameters/GS1-CBV-Extensions'
     options:
       tags:
         - 'Discovery'
-      summary: Query metadata of the EPCIS event type endpoint.
+      summary: Query the metadata of the endpoint to access EPCIS events by event type.
       description: |
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
         of EPCIS and CBV. The `OPTIONS` method allows the client to discover which vocabularies and EPCIS and CBV
         versions are used.
       responses:
         '204':
-          $ref: '#/components/responses/204TopLevelResourcesDiscovery'
+          description: |
+            The `OPTIONS` method is used as a discovery service for `events` endpoints. It describes which EPCIS and CBV
+            versions are supported as well as  EPCIS and CBV extensions.
+            The list of headers is not exhaustive. It only describes the functionality specific to EPCIS 2.0.
+          headers:
+            Allow:
+              schema:
+                example: OPTIONS, POST, GET
+                type: string
+                default: OPTIONS, POST, GET
+            GS1-EPCIS-Version:
+              $ref: '#/components/headers/GS1-EPCIS-Version'
+            GS1-EPCIS-Min:
+              $ref: '#/components/headers/GS1-EPCIS-Min'
+            GS1-EPCIS-Max:
+              $ref: '#/components/headers/GS1-EPCIS-Max'
+            GS1-CBV-Version:
+              $ref: '#/components/headers/GS1-CBV-Version'
+            GS1-EPC-Format:
+              $ref: '#/components/headers/GS1-EPC-Format'
+            GS1-CBV-XML-Format:
+              $ref: '#/components/headers/GS1-CBV-XML-Format'
+            GS1-EPCIS-Extensions:
+              $ref: '#/components/headers/GS1-EPCIS-Extensions'
+            GS1-Vendor-Version:
+              $ref: '#/components/headers/GS1-Vendor-Version'
+            GS1-CBV-Extensions:
+              $ref: '#/components/headers/GS1-CBV-Extensions'
+            GS1-EPCIS-Capture-Limit:
+              $ref: '#/components/headers/GS1-EPCIS-Capture-Limit'
+            GS1-EPCIS-Capture-File-Size-Limit:
+              $ref: '#/components/headers/GS1-EPCIS-Capture-File-Size-Limit'
     get:
       tags:
         - 'Events'
-      summary: Returns all sub-resources of an EPCIS event type.
+      summary: |
+        Returns EPCIS events of a given an EPCIS event type.
+      parameters:
+        - $ref: '#/components/parameters/PerPage'
+        - $ref: '#/components/parameters/NextPageToken'
+
       description: |
-        This endpoint returns all sub-resources of an EPCIS event type, which currently is `events`. A server may
-        add additional endpoints, for example `schema` to access the EPCIS event type schema.
+        This endpoint returns all EPCIS events of a specific EPCIS event type up to the amount defined in `perPage`.
+        The server returns a 'Link' header to point to the remaining results.
+
+        The client can further restrict the list of events returned by filtering events using the EPCIS query
+        language as URL query string parameters.
+
+        Example:
+
+        ```
+        https://example.com/eventTypes/ObjectEvent/events?EQ_bizStep=urn%3Aepcglobal%3Acbv%3Abizstep%3Ashipping%2Curn%3Aepcglobal%3Acbv%3Abizstep%3Adecommissioning&GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
+        ```
       responses:
         '200':
-          $ref: '#/components/responses/200TopLevelOrEventTypeSubResource'
+          $ref: '#/components/responses/200EPCISQueryDocument'
         '400':
           $ref: '#/components/responses/400QueryIssues'
         '401':
@@ -714,11 +767,13 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '404':
           $ref: '#/components/responses/404ResourceNotFound'
+        '414':
+          $ref: '#/components/responses/414URLTooLong'
         '406':
           $ref: '#/components/responses/406NotAcceptable'
         '500':
           $ref: '#/components/responses/500ImplementationException'
-   
+
   /epcs:
     options:
       tags:
@@ -804,7 +859,7 @@ paths:
     options:
       tags:
         - 'Discovery'
-      summary: Query the metadata of the endpoint to access EPCIS events by EPC.
+      summary: Query the metadata of the endpoint to access EPCIS events by EPC in a URN or constrained GS1 Digital Link form (URL encoded).
       description: |
         EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
         of EPCIS and CBV. The `OPTIONS` method allows the client to discover which vocabularies and EPCIS and CBV
@@ -834,10 +889,15 @@ paths:
         EPCIS events up to the amount defined in `perPage`. The server returns a `Link` header to point to the remaining
         results. Optionally, EPCIS events can be further filtered using the EPCIS Query Language in as query string parameters.
 
-        Example:
+        Example 1 - EPC in a URN form with EPCIS Query Language filtering
 
         ```
         https://example.com/epcs/urn:epc:id:sgtin:0614141.107346.2018?EQ_bizStep=urn%3Aepcglobal%3Acbv%3Abizstep%3Ashipping%2Curn%3Aepcglobal%3Acbv%3Abizstep%3Adecommissioning&GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
+        ```
+        
+        Example 2  - EPC in a constrained GS1 Digital Link form (URL encoded)
+        ```
+        https://example.com/epcs/https:%2f%2fexample.org%2f01%2f1234567089012400
         ```
       responses:
         '200':
@@ -2665,8 +2725,8 @@ components:
         { "query": {
           "eventType": [ "ObjectEvent" ] ,
           "EQ_bizStep": [
-              "urn:epcglobal:cbv:bizstep:shipping",
-              "urn:epcglobal:cbv:bizstep:receiving" ]
+              "shipping",
+              "receiving" ]
         }
         }
       description: |
@@ -2685,8 +2745,8 @@ components:
         {
           "eventType": ["ObjectEvent"],
           "EQ_bizStep": [
-              "urn:epcglobal:cbv:bizstep:shipping",
-              "urn:epcglobal:cbv:bizstep:receiving" ]
+              "shipping",
+              "receiving" ]
         }
       externalDocs:
         url: query-schema.json
