@@ -4440,7 +4440,7 @@ components:
       name: eventID
       in: path
       description: |
-        The ID of an EPCIS event. EPCIS event ID must be unique across all events in the system.
+        The ID of an EPCIS event. An EPCIS event ID must be unique across all events in the system.
       required: true
       example: "ni:///sha-256;df7bb3c352fef055578554f09f5e2aa41782150ced7bd0b8af24dd3ccb30ba69?ver=CBV2.0"
       schema:
