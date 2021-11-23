@@ -17,7 +17,7 @@ tags:
       - dispositions
   - name: 'Events'
     description: |
-      Endpoints that expose allow you to retrieve EPCIS events as Web resources.
+      Endpoints that allow you to retrieve EPCIS events as Web resources.
   - name: 'Capture'
     description: |
       Endpoints to capture EPCIS events in bulk or individually.
@@ -754,7 +754,7 @@ paths:
         Example:
 
         ```
-        https://example.com/eventTypes/ObjectEvent/events?EQ_bizStep=urn%3Aepcglobal%3Acbv%3Abizstep%3Ashipping%2Curn%3Aepcglobal%3Acbv%3Abizstep%3Adecommissioning&GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
+        https://example.com/eventTypes/ObjectEvent/events?EQ_bizStep=shipping%2decommissioning&GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
         ```
       responses:
         '200':
@@ -886,7 +886,7 @@ paths:
 
       description: |
         This endpoint helps to navigate EPCIS events by electronic product codes. It returns
-        EPCIS events up to the amount defined in `perPage`. The server returns a `Link` header to point to the remaining
+        EPCIS events up to the amount defined in `perPage`. If applicable, the server returns a `Link` header to point to the remaining
         results. Optionally, EPCIS events can be further filtered using the EPCIS Query Language in as query string parameters.
 
         Example 1 - EPC in a URN form with EPCIS Query Language filtering
