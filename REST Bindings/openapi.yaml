@@ -31,7 +31,7 @@ tags:
       EPCIS 2.0 supports query subscriptions with using Webhooks or Websockets.
   - name: 'Discovery'
     description: |
-      Endpoints to obtain information about the endpoint, such as EPCIS and CBV versions or custom vocabularies.
+     Endpoints exposing metadata such as EPCIS and CBV versions or custom vocabularies.
 
 paths:
   /:
@@ -495,7 +495,7 @@ paths:
         - 'Capture'
       summary: Synchronous capture interface for a single EPCIS event.
       description: |
-        An individual EPCIS event can be created by making a `POST` request on the `/events` resource. Alternatively, the client can also use the `/capture`
+        An individual EPCIS event can be created by making a `POST` request on the `/events` resource. Alternatively, the client can also use the `/capture` endpoint
         interface and capture a single event.
       requestBody:
         required: true
