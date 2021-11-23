@@ -791,7 +791,7 @@ paths:
         Example:
 
         ```
-        https://example.com/eventTypes/ObjectEvent/events?EQ_bizStep=shipping%2decommissioning&GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
+        https://example.com/eventTypes/ObjectEvent/events?EQ_bizStep=shipping%7Cdecommissioning&GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
         ```
       responses:
         '200':
@@ -861,7 +861,7 @@ paths:
             GS1-CBV-Extensions:
               $ref: '#/components/headers/GS1-CBV-Extensions'
             Link:
-              example: '<https://example.com/epcs?perPage=30&nextPageToken=3A1550673874978%2Ci%3AU6D7DENAKwM2gQRRwGrataeq>; rel="next"'
+              example: '<https://example.com/epcs?perPage=30&nextPageToken=3A1550673874978CiAU6D7DENAKwM2gQRRwGrataeq>; rel="next"'
               schema:
                 $ref: '#/components/schemas/Link'
           description: |
@@ -996,7 +996,7 @@ paths:
         Example 1 - EPC in a URN form with EPCIS Query Language filtering
 
         ```
-        https://example.com/epcs/urn:epc:id:sgtin:0614141.107346.2018?EQ_bizStep=shipping%2Cdecommissioning&GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
+        https://example.com/epcs/urn:epc:id:sgtin:0614141.107346.2018?EQ_bizStep=shipping%7Cdecommissioning&GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
         ```
         
         Example 2  - EPC in a constrained GS1 Digital Link form (URL encoded)
@@ -1072,7 +1072,7 @@ paths:
             GS1-CBV-Extensions:
               $ref: '#/components/headers/GS1-CBV-Extensions'
             Link:
-              example: '<https://example.com/bizSteps?perPage=30&nextPageToken=3A1550673874978%2Ci%3AU6D7DENAKwM2gQRRwGrataeq>; rel="next"'
+              example: '<https://example.com/bizSteps?perPage=30&nextPageToken=3A1550673874978DENAKwM2gQRRwGrataeq>; rel="next"'
               schema:
                 $ref: '#/components/schemas/Link'
           description: |
@@ -1272,7 +1272,7 @@ paths:
             GS1-CBV-Extensions:
               $ref: '#/components/headers/GS1-CBV-Extensions'
             Link:
-              example: '<https://example.com/bizLocations?perPage=30&nextPageToken=3A1550673874978%2Ci%3AU6D7DENAKwM2gQRRwGrataeq>; rel="next"'
+              example: '<https://example.com/bizLocations?perPage=30&nextPageToken=3A1550673874978AU6D7DENAKwM2gQRRwGrataeq>; rel="next"'
               schema:
                 $ref: '#/components/schemas/Link'
           description: |
@@ -1415,7 +1415,7 @@ paths:
             GS1-CBV-Extensions:
               $ref: '#/components/headers/GS1-CBV-Extensions'
             Link:
-              example: '<https://example.com/readPoints?perPage=30&nextPageToken=3A1550673874978%2Ci%3AU6D7DENAKwM2gQRRwGrataeq>; rel="next"'
+              example: '<https://example.com/readPoints?perPage=30&nextPageToken=3A15506738749783AU6D7DENAKwM2gQRRwGrataeq>; rel="next"'
               schema:
                 $ref: '#/components/schemas/Link'
           description: |
@@ -1613,7 +1613,7 @@ paths:
             GS1-CBV-Extensions:
               $ref: '#/components/headers/GS1-CBV-Extensions'
             Link:
-              example: '<https://example.com/dispositions?perPage=30&nextPageToken=3A1550673874978%2Ci%3AU6D7DENAKwM2gQRRwGrataeq>; rel="next"'
+              example: '<https://example.com/dispositions?perPage=30&nextPageToken=3A1550673874979AU6D7DENAKwM2gQRRwGrataeq>; rel="next"'
               schema:
                 $ref: '#/components/schemas/Link'
           description: |
@@ -1974,7 +1974,7 @@ paths:
             GS1-CBV-Extensions:
               $ref: '#/components/headers/GS1-CBV-Extensions'
             Link:
-              example: <https://example.com/queries/myQuery/events?perPage=30&nextPageToken=3A1550673874978%2Ci%3AU6D7DENAKwM2gQRRwGrataeq>; rel="next"
+              example: <https://example.com/queries/myQuery/events?perPage=30&nextPageToken=3A15506738749783AU6D7DENAKwM2gQRRwGrataeq>; rel="next"
               description: |
                 The `Link` header is used for pagination. It contains the URL to the next result set. This endpoint does
                 not paginate on the same endpoint where the resource was created:
@@ -2126,7 +2126,7 @@ paths:
             GS1-CBV-Extensions:
               $ref: '#/components/headers/GS1-CBV-Extensions'
             Link:
-              example: '<https://example.com/queries/myQuery/subscriptions?perPage=30&nextPageToken=3A1550673874978%2Ci%3AU6D7DENAKwM2gQRRwGrataeq>; rel="next"'
+              example: '<https://example.com/queries/myQuery/subscriptions?perPage=30&nextPageToken=3A15506738749783AU6D7DENAKwM2gQRRwGrataeq>; rel="next"'
               schema:
                 $ref: '#/components/schemas/Link'
           description: Returns active Webhook subscriptions.
@@ -3521,7 +3521,7 @@ components:
         A `nextPageToken` may be invalidated through timeout. It is up to the specific implementation to provide
         the mechanisms for invalidating tokens.
       type: string
-      example: '3A1550673874978%2Ci%3AU6D7DENAKwM2gQRRwGrataeq'
+      example: '3A15506738749783AU6D7DENAKwM2gQRRwGrataeq'
     Upgrade:
       type: string
       description: The `Upgrade` and `Connection` headers are needed to open a Websocket for queries.
