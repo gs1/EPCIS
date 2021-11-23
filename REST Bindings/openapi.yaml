@@ -31,7 +31,7 @@ tags:
       EPCIS 2.0 supports query subscriptions with using Webhooks or Websockets.
   - name: 'Discovery'
     description: |
-      Endpoints to obtain information about the endpoint, such as EPCIS and CBV versions or custom vocabularies.
+     Endpoints exposing metadata such as EPCIS and CBV versions or custom vocabularies.
 
 paths:
   /:
