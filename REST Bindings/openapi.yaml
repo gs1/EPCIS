@@ -2216,13 +2216,13 @@ paths:
         in the same manner as cron jobs.
 
         For example, this query subscription is scheduled to trigger every morning at 1.05am. By setting
-        `reportIfEmpty` to `true`, the client's callback URL will be called even if there are no new events that match
+        `reportIfEmpty` to `true`, the client's callback URL (`dest`) will be called even if there are no new events that match
         the query.
 
         ```
         POST /queries/MyQuery/subscriptions
         {
-          "callbackUrl": "https://client.example.com/queryCallback",
+          "dest": "https://client.example.com/queryCallback",
           "secret": "0435ojtojt02",
           "reportIfEmpty": true,
           "schedule": {
@@ -2240,7 +2240,7 @@ paths:
         ```
         POST /queries/MyQuery/subscriptions
         {
-          "callbackUrl": "https://client.example.com/queryCallback",
+          "dest": "https://client.example.com/queryCallback",
           "secret": "0435ojtojt02",
           "stream": true
         }
@@ -2250,7 +2250,7 @@ paths:
         content:
           application/json:
             example: {
-              "callbackUrl": "https://client.example.com/queryCallback",
+              "dest": "https://client.example.com/queryCallback",
               "secret": "0435ojtojt02",
               "schedule": { "hour": "1", "minute": "5" }
             }
@@ -2295,7 +2295,7 @@ paths:
 
       callbacks:
         querySubscriptionResults:
-          '{$request.body#/callbackUrl}?secret={$request.body#/secret}':
+          '{$request.body#/dest}?secret={$request.body#/secret}':
             post:
               summary: Registers this Webhook to subscribe to a query.
               requestBody:
@@ -3555,7 +3555,7 @@ components:
 
     AbstractQuerySubscription:
       example: {
-        "callbackUrl": "https://client.example.com/queryCallback",
+        "dest": "https://client.example.com/queryCallback",
         "secret": "0435ojtojt02"
       }
       type: object
@@ -3563,11 +3563,11 @@ components:
         This schema contains shared features of EPCIS query subscriptions. If the schema is used in a response, the
         `secret` should not be fully revealed.
       required:
-        - callbackUrl
+        - dest
         - secret
       properties:
-        callbackUrl:
-          description: Callback to receive EPCIS resources and errors.
+        dest:
+          description: Callback URL to receive EPCIS resources and errors.
           type: string
           format: uri
           example: https://client.example.com/queryCallback
@@ -3588,7 +3588,7 @@ components:
         ```
         POST /queries/MyQuery/subscriptions
         {
-          "callbackUrl": "https://client.example.com/queryCallback",
+          "dest": "https://client.example.com/queryCallback",
           "secret": "0435ojtojt02",
           "stream": true
         }
@@ -3613,7 +3613,7 @@ components:
         ```
         POST /queries/MyQuery/subscriptions
         {
-          "callbackUrl": "https://client.example.com/queryCallback",
+          "dest": "https://client.example.com/queryCallback",
           "secret": "0435ojtojt02",
           "reportIfEmpty": true,
           "schedule": {
