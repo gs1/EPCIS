@@ -10,6 +10,7 @@ tags:
     description: |
       Endpoints to browse retrieve information about EPCIS resources:
       - events
+      - types of events
       - electronic product codes
       - business steps
       - business locations
@@ -145,7 +146,8 @@ paths:
     post:
       tags:
         - 'Capture'
-      summary: Asynchronous capture interface for one or more EPCIS events.
+      summary: Asynchronous capture endpoint for one or more EPCIS events. 
+      
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-Version'
         - $ref: '#/components/parameters/GS1-EPCIS-Min'
@@ -162,12 +164,13 @@ paths:
             $ref: '#/components/schemas/GS1-Capture-Error-Behaviour'
 
       description: |
-        EPCIS events are added in bulk using the capture interface. Three design considerations were made to remain compatible with EPCIS 1.2:
+        EPCIS events are added in bulk using the capture interface. Four design considerations were made to remain compatible with EPCIS 1.2:
 
         - EPCIS 2.0 makes event IDs optional. If event IDs are missing, the server should populate the event id with a unique value.
         Otherwise, it won't be possible to retrieve these events.
         - By default, EPCIS events are only stored if the entire capture job was successful. This behaviour can be changed with the `GS1-Capture-Error-Behaviour` header.
         - EPCIS master data can be captured in the header (`epcisHeader`) of an `EPCISDocument`.
+        - This endpoint should support both `EPCISDocument` and `EPCISQueryDocument` as input.
 
         To prevent timeouts for large payloads, the client potentially has to split the payload into several capture calls. To that end, the server specified a capture
         limit (number of EPCIS events) and file size limit (payload size).
@@ -180,7 +183,9 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/EPCISDocument'
+                    oneOf:
+                      - $ref: '#/components/schemas/EPCISQueryDocument'
+                      - $ref: '#/components/schemas/EPCISDocument'      
       responses:
         '202':
           description: |
@@ -628,7 +633,7 @@ paths:
         - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
         - $ref: '#/components/parameters/GS1-CBV-Extensions'
       description: |
-        This endpoint accesses individual events using their unique identifier. The response body is an `EPCISDocument` 
+        This endpoint accesses individual events using their unique identifier. The response body is an `EPCISQueryDocument` 
         enclosing the unique event.
       responses:
         '200':
@@ -2305,7 +2310,7 @@ paths:
                   application/json:
                     schema:
                       oneOf:
-                        - $ref: '#/components/schemas/EPCISDocument'
+                        - $ref: '#/components/schemas/EPCISQueryDocument'
                         - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
               responses:
                 '200':
