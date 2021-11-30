@@ -8,7 +8,7 @@ info:
 tags:
   - name: 'Top-level'
     description: |
-      Endpoints to browse retrieve information about EPCIS resources:
+      Endpoints to browse or retrieve information about EPCIS resources:
       - events
       - types of events
       - electronic product codes
