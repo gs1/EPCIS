@@ -29,7 +29,7 @@ tags:
       EPCIS events queries also support query subscription.
   - name: 'Subscriptions'
     description: |
-      EPCIS 2.0 supports query subscriptions with using Webhooks or Websockets.
+      EPCIS 2.0 supports query subscriptions using Webhooks or Websockets.
   - name: 'Discovery'
     description: |
       Endpoints to obtain information about the endpoint, such as EPCIS and CBV versions or custom vocabularies.
@@ -97,8 +97,8 @@ paths:
 
         - which EPCIS and CBV versions are supported,
         - the EPCIS and CBV extensions,
-        - the payload size as a EPCIS events count (`GS1-EPCIS-Capture-Limit` header) or maximum payload size in bytes (`GS1-EPCIS-Capture-File-Size-Limit` header)
-        - what to dowhat the server will do if an error occurred during capture (`GS1-Capture-Error-Behaviour` header).
+        - the maximum payload size as count of EPCIS events (`GS1-EPCIS-Capture-Limit` header) or as a maximum payload size in bytes (`GS1-EPCIS-Capture-File-Size-Limit` header)
+        - what the server will do if an error occurred during capture (`GS1-Capture-Error-Behaviour` header).
 
         The list of headers is not exhaustive. It only describes the functionality specific to EPCIS 2.0.
       responses:
@@ -166,13 +166,13 @@ paths:
       description: |
         EPCIS events are added in bulk using the capture interface. Four design considerations were made to remain compatible with EPCIS 1.2:
 
-        - EPCIS 2.0 makes event IDs optional. If event IDs are missing, the server should populate the event id with a unique value.
-        Otherwise, it won't be possible to retrieve these events.
+        - EPCIS 2.0 keeps event IDs optional. If event IDs are missing, the server should populate the event id with a unique value.
+        Otherwise, it won't be possible to retrieve these events by eventID.
         - By default, EPCIS events are only stored if the entire capture job was successful. This behaviour can be changed with the `GS1-Capture-Error-Behaviour` header.
         - EPCIS master data can be captured in the header (`epcisHeader`) of an `EPCISDocument`.
         - This endpoint should support both `EPCISDocument` and `EPCISQueryDocument` as input.
 
-        To prevent timeouts for large payloads, the client potentially has to split the payload into several capture calls. To that end, the server specified a capture
+        To prevent timeouts for large payloads, the client potentially may need to split the payload into several capture calls. To that end, the server can specify a capture
         limit (number of EPCIS events) and file size limit (payload size).
 
         A successful capturing of events does not guarantee that events will be stored. Instead, the server returns a
@@ -385,7 +385,7 @@ paths:
       description: |
 
         When EPCIS events are added through the capture interface, the capture process can run asynchronously. If the payload
-        is syntactically correct and the client is allowed to call `/capture`, the server returns a `202`. This
+        is syntactically correct and the client is allowed to call `/capture`, the server returns a `202` HTTP response code. This
         does not guarantee successful storage of all EPCIS events. The capture job endpoint exposes the state
         of the capture job to the client.
 
@@ -591,7 +591,7 @@ paths:
       responses:
         '204':
           description: |
-            The `OPTIONS` method is used as a discovery service for individual EPCIS events endpoints. It describes
+            The `OPTIONS` method is used to discover capabilities of individual EPCIS events endpoints. It describes
             which EPCIS and CBV versions are supported as well as EPCIS and CBV extensions.
             The list of headers is not exhaustive. It only describes the functionality specific to EPCIS 2.0.
           headers:
@@ -746,7 +746,7 @@ paths:
       responses:
         '204':
           description: |
-            The `OPTIONS` method is used as a discovery service for `events` endpoints. It describes which EPCIS and CBV
+            The `OPTIONS` method is used to discover capabilities of `events` endpoints. It describes which EPCIS and CBV
             versions are supported as well as  EPCIS and CBV extensions.
             The list of headers is not exhaustive. It only describes the functionality specific to EPCIS 2.0.
           headers:
@@ -791,7 +791,9 @@ paths:
         The server returns a 'Link' header to point to the remaining results.
 
         The client can further restrict the list of events returned by filtering events using the EPCIS query
-        language as URL query string parameters.
+        language as URL query string parameters.  The paraneter `eventCountLimit` is used to restrict the maximum number of
+        events to be returned in total, whereas `perPage` restricts the number of events to return per page or paginated results.
+
 
         Example:
 
@@ -909,7 +911,7 @@ paths:
       responses:
         '204':
           description: |
-            The `OPTIONS` method is used as a discovery service for an electronic product code. It describes which EPCIS
+            The `OPTIONS` method is used to discover capabilities for an endpoint specifying an electronic product code. It describes which EPCIS
             and CBV versions are supported as well as EPCIS and CBV extensions.
             The list of headers is not exhaustive. It only describes the functionality specific to EPCIS 2.0.
           headers:
@@ -979,7 +981,7 @@ paths:
     get:
       tags:
         - 'Events'
-      summary: Returns EPCIS events with the electronic product code.
+      summary: Returns EPCIS events matching the specified electronic product code.
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
@@ -1119,7 +1121,7 @@ paths:
       responses:
         '204':
           description: |
-            The `OPTIONS` method is used as a discovery service for a business step. It describes which EPCIS and CBV
+            The `OPTIONS` method is used to discover the capabilities for an endpoint specifying a business step. It describes which EPCIS and CBV
             versions are supported as well as EPCIS and CBV extensions. The list of headers is not exhaustive. It only
             describes the functionality specific to EPCIS 2.0.
           headers:
@@ -1318,7 +1320,7 @@ paths:
       responses:
         '204':
           description: |
-            The `OPTIONS` method is used as a discovery service for a business location. It describes which EPCIS and
+            The `OPTIONS` method is used to discover the capabilities of an endpoint that specifies a business location. It describes which EPCIS and
             CBV versions are supported as well as EPCIS and CBV extensions. The list of headers is not exhaustive.
             It only describes the functionality specific to EPCIS 2.0.
           headers:
@@ -1461,7 +1463,7 @@ paths:
       responses:
         '204':
           description: |
-            The `OPTIONS` method is used as a discovery service for a read point. It describes which EPCIS and CBV
+            The `OPTIONS` method is used to discover the capabilities of an endpoint that specifies a read point. It describes which EPCIS and CBV
             versions are supported as well as EPCIS and CBV extensions. The list of headers is not exhaustive. It only
             describes the functionality specific to EPCIS 2.0.
           headers:
@@ -1659,7 +1661,7 @@ paths:
       responses:
         '204':
           description: |
-            The `OPTIONS` method is used as a discovery service for a disposition. It describes which EPCIS and CBV
+            The `OPTIONS` method is used to discover the capabilities of an endpoint that specifies a disposition. It describes which EPCIS and CBV
             versions are supported as well as EPCIS and CBV extensions. The list of headers is not exhaustive. It only
             describes the functionality specific to EPCIS 2.0.
           headers:
@@ -1784,7 +1786,7 @@ paths:
       responses:
         '204':
           description: |
-            The `OPTIONS` method is used as a discovery service for `/queries` endpoints. It describes which EPCIS and CBV
+            The `OPTIONS` method is used to discover the capabilities of `/queries` endpoints. It describes which EPCIS and CBV
             versions are supported as well as EPCIS and CBV extensions.
             The list of headers is not exhaustive. It only describes the functionality specific to EPCIS 2.0.
           headers:
@@ -1953,7 +1955,7 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-Extensions'
         - $ref: '#/components/parameters/PerPage'
       description: |
-        Creating a named query creates a view on the events in the repository, accessible through it's events resource.
+        Creating a named query creates a view on the events in the repository, accessible through its events resource.
         Creating a query also returns EPCIS events up to the amount defined in `perPage`. To obtain the remaining events,
         the client can use the URL in the `Link` header. When a query is created, the server returns the query URL in the
         `Location` header. The client can use this URL to start a query subscription immediately after creating the query.
@@ -2026,7 +2028,7 @@ paths:
       responses:
         '204':
           description: |
-            The `OPTIONS` method is used as a discovery service for `/queries` endpoints. It describes which EPCIS and
+            The `OPTIONS` method is used to discover the capabilities for `/queries` endpoints. It describes which EPCIS and
             CBV versions are supported as well as EPCIS and CBV extensions.
             The list of headers is not exhaustive. It only describes the functionality specific to EPCIS 2.0.
           headers:
@@ -2355,7 +2357,7 @@ paths:
         - 'Discovery'
       summary: Query the metadata of the endpoint for an individual subscription.
       description: |
-        The `OPTIONS` method is used as a discovery service for a Webhook-based query subscription.
+        The `OPTIONS` method is used to discover capabilities for a Webhook-based query subscription.
       responses:
         '204':
           description: |
@@ -2449,7 +2451,7 @@ paths:
         - 'Discovery'
       summary: Query the metadata of the EPCIS events query result endpoint.
       description: |
-        The `OPTIONS` method is used as a discovery service for named queries. It describes which EPCIS and CBV
+        The `OPTIONS` method is used to discover capabilities for named queries. It describes which EPCIS and CBV
         versions are used in the query result supported as well as EPCIS and CBV extensions.
 
       responses:
@@ -2648,7 +2650,7 @@ components:
             $ref: '#/components/schemas/EPCISEventTypes'
     204TopLevelResourcesDiscovery:
       description: |
-        The `OPTIONS` method is used as a discovery service for EPCIS 2.0 endpoints.
+        The `OPTIONS` method is used to discover capabilities for EPCIS 2.0 endpoints.
         It describes which EPCIS and CBV versions are supported and used for the top-level resource as well as EPCIS and
         CBV extensions. The list of headers is not exhaustive. It only describes the functionality specific to EPCIS 2.0.
       headers:
@@ -2673,7 +2675,7 @@ components:
           $ref: '#/components/headers/GS1-CBV-Extensions'
     204AnonymousQueriesDiscovery:
       description: |
-        The `OPTIONS` method is used as a discovery service for anonymous queries endpoints.
+        The `OPTIONS` method is used to discover capabilities for anonymous queries endpoints.
         The list of headers is not exhaustive. It only describes the functionality specific to EPCIS 2.0.
       headers:
         Allow:
@@ -2702,7 +2704,7 @@ components:
 
     204EventsEndpointDiscovery:
       description: |
-        The `OPTIONS` method is used as a discovery service for `events` endpoints. It describes which EPCIS and CBV
+        The `OPTIONS` method is used to discover capabilities for `events` endpoints. It describes which EPCIS and CBV
         versions are supported as well as  EPCIS and CBV extensions.
         The list of headers is not exhaustive. It only describes the functionality specific to EPCIS 2.0.
       headers:
@@ -3515,7 +3517,7 @@ components:
 
         As long as there are more resources to retrieve, the `Link` header contains the URL of the next page and
         the attribute `rel="next"`. The last page is indicated by the absence of the `rel="next"`. Depending on the
-        implementation, there can be a global upper limit for the `perPage` value that the client cannot overwrite,
+        implementation, there can be a global upper limit for the `perPage` value that the client cannot override,
         which should be stated in the documentation.
       type: integer
       default: 30
@@ -3709,7 +3711,7 @@ components:
     GS1-Query-Stream:
       type: boolean
       description: |
-        If now schedule is specified and `stream` is `true`, the standing query SHALL report immediately whenever a
+        If no schedule is specified and `stream` is `true`, the standing query SHALL report immediately whenever a
         captured EPCIS event matches the query criteria.
       default: true
       enum:
@@ -3758,7 +3760,7 @@ components:
       description: |
         When requesting XML content-type only, users can use this header to request
         receiving events with CBV values in either URN or Web URI format.
-        This option is not available for JSON/LD.
+        This option is not available for JSON/JSON-LD.
 
         - No_Preference: The server chooses the representation.
         - Always_Web_URI: CBV values are returned as Web URI.
