@@ -628,7 +628,7 @@ paths:
         - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
         - $ref: '#/components/parameters/GS1-CBV-Extensions'
       description: |
-        This endpoint accesses individual events using their unique identifier. The response body is an `EPCISDocument` 
+        This endpoint accesses individual events using their unique identifier. The response body is an `EPCISQueryDocument` 
         enclosing the unique event.
       responses:
         '200':
