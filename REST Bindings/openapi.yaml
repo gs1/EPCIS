@@ -1872,71 +1872,6 @@ paths:
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
-  /queries/{queryName}:
-    parameters:
-      - $ref: '#/components/parameters/QueryName'
-    get:
-      tags:
-        - 'Queries'
-      summary: Returns the query definition.
-      responses:
-        '200':
-          headers:
-            GS1-EPCIS-Version:
-              $ref: '#/components/headers/GS1-EPCIS-Version'
-            GS1-EPCIS-Min:
-              $ref: '#/components/headers/GS1-EPCIS-Min'
-            GS1-EPCIS-Max:
-              $ref: '#/components/headers/GS1-EPCIS-Max'
-            GS1-CBV-Version:
-              $ref: '#/components/headers/GS1-CBV-Version'
-            GS1-EPC-Format:
-              $ref: '#/components/headers/GS1-EPC-Format'
-            GS1-CBV-XML-Format:
-              $ref: '#/components/headers/GS1-CBV-XML-Format'
-            GS1-EPCIS-Extensions:
-              $ref: '#/components/headers/GS1-EPCIS-Extensions'
-            GS1-CBV-Extensions:
-              $ref: '#/components/headers/GS1-CBV-Extensions'
-
-          description: |
-            Queries are like views that are created using the EPCIS query language. Each query object
-            consists of a query name and the query definition.
-          content:
-            application/json:
-              example: {
-                "query": {
-                  "EQ_bizStep": [
-                      "shipping",
-                      "receiving"
-                  ],
-                  "eventType": ["ObjectEvent"]
-                },
-                "name": "myQuery"
-              }
-              schema:
-                type: array
-                items:
-                  allOf:
-                    - type: object
-                      required:
-                        - name
-                      properties:
-                        name:
-                          type: string
-                    - $ref: '#/components/schemas/QueryDefinition'
-        '401':
-          $ref: '#/components/responses/401UnauthorizedRequest'
-        '403':
-          $ref: '#/components/responses/403ClientUnauthorized'
-        '404':
-          $ref: '#/components/responses/404ResourceNotFound'
-        '413':
-          $ref: '#/components/responses/413QueryScopeOrSize'
-        '406':
-          $ref: '#/components/responses/406NotAcceptable'
-        '500':
-          $ref: '#/components/responses/500ImplementationException'
     post:
       tags:
         - 'Queries'
@@ -2015,6 +1950,72 @@ paths:
           $ref: '#/components/responses/406NotAcceptable'
         '415':
           $ref: '#/components/responses/415UnsupportedMediaType'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
+
+  /queries/{queryName}:
+    parameters:
+      - $ref: '#/components/parameters/QueryName'
+    get:
+      tags:
+        - 'Queries'
+      summary: Returns the query definition.
+      responses:
+        '200':
+          headers:
+            GS1-EPCIS-Version:
+              $ref: '#/components/headers/GS1-EPCIS-Version'
+            GS1-EPCIS-Min:
+              $ref: '#/components/headers/GS1-EPCIS-Min'
+            GS1-EPCIS-Max:
+              $ref: '#/components/headers/GS1-EPCIS-Max'
+            GS1-CBV-Version:
+              $ref: '#/components/headers/GS1-CBV-Version'
+            GS1-EPC-Format:
+              $ref: '#/components/headers/GS1-EPC-Format'
+            GS1-CBV-XML-Format:
+              $ref: '#/components/headers/GS1-CBV-XML-Format'
+            GS1-EPCIS-Extensions:
+              $ref: '#/components/headers/GS1-EPCIS-Extensions'
+            GS1-CBV-Extensions:
+              $ref: '#/components/headers/GS1-CBV-Extensions'
+
+          description: |
+            Queries are like views that are created using the EPCIS query language. Each query object
+            consists of a query name and the query definition.
+          content:
+            application/json:
+              example: {
+                "query": {
+                  "EQ_bizStep": [
+                      "shipping",
+                      "receiving"
+                  ],
+                  "eventType": ["ObjectEvent"]
+                },
+                "name": "myQuery"
+              }
+              schema:
+                type: array
+                items:
+                  allOf:
+                    - type: object
+                      required:
+                        - name
+                      properties:
+                        name:
+                          type: string
+                    - $ref: '#/components/schemas/QueryDefinition'
+        '401':
+          $ref: '#/components/responses/401UnauthorizedRequest'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '404':
+          $ref: '#/components/responses/404ResourceNotFound'
+        '413':
+          $ref: '#/components/responses/413QueryScopeOrSize'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
         '500':
           $ref: '#/components/responses/500ImplementationException'
     options:
@@ -3041,19 +3042,24 @@ components:
 
     QueryDefinition:
       example:
-        { "query": {
-          "eventType": [ "ObjectEvent" ] ,
-          "EQ_bizStep": [
-              "shipping",
-              "receiving" ]
-        }
+        { 
+          "queryName" : "UniqueQueryName",
+          "query": {
+            "eventType": [ "ObjectEvent" ] ,
+            "EQ_bizStep": [
+                "shipping",
+                "receiving" ]
+          }
         }
       description: |
         Creating a new query with query body.
       type: object
       required:
-        - query
+        - queryName
+        - name
       properties:
+        queryName:
+          type: string
         query:
           $ref: '#/components/schemas/EPCISEventsQuery'
 
