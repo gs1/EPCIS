@@ -9,18 +9,22 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 
 
-epcis:EventListShape
-    a sh:NodeShape;
-    sh:targetObjectsOf epcis:eventList;
-    sh:property epcis:EventType_Constraint .
-    
-
-epcis:EventType_Constraint
-    sh:path rdf:type;
-    sh:in ( epcis:ObjectEvent epcis:AggregationEvent epcis:TransactionEvent epcis:TransformationEvent epcis:AssociationEvent epcis:Event);
-    sh:message "eventList must contain valid subclasses of EPCISEvent".
+epcis:EPCISDocumentShape
+    a sh:NodeShape ;
+    sh:targetClass epcis:EPCISDocument ;
+    sh:property [
+        sh:path epcis:eventList ;
+        sh:node epcis:EventShape ;
+    ] .
 
 
+epcis:EventShape
+    a sh:NodeShape ;
+    sh:property [
+        sh:path rdf:type ;
+        sh:in ( epcis:ObjectEvent epcis:AggregationEvent epcis:AssociationEvent epcis:TransformationEvent epcis:TransactionEvent epcis:EPCISEvent);
+        sh:message "eventList must contain valid subclasses of EPCISEvent";
+    ] .
 
 
 epcis:ObjectEventShape
@@ -30,8 +34,6 @@ epcis:ObjectEventShape
     sh:property epcis:Action_IsMandatory ;
     sh:property epcis:EventTime_IsMandatory ;
     sh:property epcis:EventTimeZoneOffset_IsMandatory ;
-
-    sh:property epcis:EventID_TypeConstraint ;
     sh:property epcis:Action_TypeAndFormat ;
     sh:property epcis:EventTime_TypeConstraint ;
     sh:property epcis:EventTimeZoneOffset_TypeAndFormat ;
@@ -63,7 +65,6 @@ epcis:AggregationEventShape
     sh:property epcis:EventTime_IsMandatory ;
     sh:property epcis:EventTimeZoneOffset_IsMandatory ;
 
-    sh:property epcis:EventID_TypeConstraint ;
     sh:property epcis:Action_TypeAndFormat ;
     sh:property epcis:EventTime_TypeConstraint ;
     sh:property epcis:EventTimeZoneOffset_TypeAndFormat ;
@@ -93,7 +94,6 @@ epcis:AssociationEventShape
     sh:property epcis:EventTimeZoneOffset_IsMandatory ;
     sh:property epcis:ParentID_IsMandatory ;
 
-    sh:property epcis:EventID_TypeConstraint ;
     sh:property epcis:Action_TypeAndFormat ;
     sh:property epcis:EventTime_TypeConstraint ;
     sh:property epcis:EventTimeZoneOffset_TypeAndFormat ;
@@ -125,7 +125,6 @@ epcis:TransactionEventShape
     sh:property epcis:BizTransactionList_IsMandatory ;
 
 
-    sh:property epcis:EventID_TypeConstraint ;
     sh:property epcis:Action_TypeAndFormat ;
     sh:property epcis:EventTime_TypeConstraint ;
     sh:property epcis:EventTimeZoneOffset_TypeAndFormat ;
@@ -157,7 +156,6 @@ epcis:TransformationEventShape
     sh:property epcis:EventTime_IsMandatory ;
     sh:property epcis:EventTimeZoneOffset_IsMandatory ;
 
-    sh:property epcis:EventID_TypeConstraint ;
     sh:property epcis:EventTime_TypeConstraint ;
     sh:property epcis:EventTimeZoneOffset_TypeAndFormat ;
     sh:property epcis:RecordTime_TypeConstraint ;
@@ -415,12 +413,6 @@ epcis:ErrorReasonID_TypeConstraint
 .
 
 
-epcis:EventID_TypeConstraint 
-    sh:path epcis:eventID ;
-    sh:nodeKind sh:IRI ;
-    sh:name "eventID type constraint" ;
-    sh:message "eventID must be a sh:IRI." 
-.
 
 epcis:EventTime_IsMandatory 
     sh:path epcis:eventTime ;
@@ -497,7 +489,8 @@ epcis:ParentID_TypeConstraint
 epcis:EventList_TypeConstraint 
     sh:path epcis:eventList ;
     sh:message "eventList must be specified within epcisBody";
-    sh:minCount 1 .
+    
+    sh:minCount 0 .
     
 
 
@@ -619,6 +612,7 @@ epcis:RecordTime_TypeConstraint
     sh:name "recordTime type constraint" ;
     sh:message "recordTime must be an xsd:dateTimeStamp" 
 .
+
 
 
 epcis:SourceDestType_IsMandatory
