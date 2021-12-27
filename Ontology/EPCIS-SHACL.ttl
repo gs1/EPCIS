@@ -183,7 +183,7 @@ epcis:TransformationEventShape
 
 epcis:BizTransactionListShape
     a sh:NodeShape;
-    sh:targetClass epcis:BusinessTransaction ;
+    sh:targetObjectsOf epcis:bizTransactionList ;
     sh:property epcis:BizTransaction_IsMandatory ;
     sh:property epcis:BizTransaction_TypeConstraint ;
     sh:property epcis:BizTransactionType_TypeConstraint .
@@ -191,7 +191,7 @@ epcis:BizTransactionListShape
 
 epcis:ErrorDeclarationShape
     a sh:NodeShape;
-    sh:targetClass epcis:ErrorDeclaration ;
+    sh:targetObjectsOf epcis:errorDeclaration ;
     sh:property epcis:DeclarationTime_IsMandatory ;
     sh:property epcis:Reason_IsMandatory ;
     sh:property epcis:CorrectiveEventIDs_IsMandatory ;
@@ -203,7 +203,7 @@ epcis:ErrorDeclarationShape
 
 epcis:SourceListShape
     a sh:NodeShape;
-    sh:targetClass epcis:SourceList ;
+    sh:targetObjectsOf epcis:sourceList ;
     sh:property epcis:Source_IsMandatory ;
     sh:property epcis:SourceDestType_IsMandatory ;
     sh:property epcis:Source_TypeConstraint ;
@@ -212,7 +212,7 @@ epcis:SourceListShape
 
 epcis:DestinationListShape
     a sh:NodeShape;
-    sh:targetClass epcis:DestinationList ;
+    sh:targetObjectsOf epcis:destinationList ;
     sh:property epcis:Destination_IsMandatory ;
     sh:property epcis:SourceDestType_IsMandatory ;
     sh:property epcis:Destination_TypeConstraint ;
@@ -221,7 +221,7 @@ epcis:DestinationListShape
     
 epcis:QuantityElementShape
     a sh:NodeShape;
-    sh:targetClass epcis:QuantityElement ;
+    sh:targetObjectsOf epcis:quantityList, epcis:childQuantityList, epcis:inputQuantityList, epcis:outputQuantityList ;
     sh:property epcis:EPCClass_IsMandatory ;
     sh:property epcis:Quantity_IsMandatory ;
     sh:property epcis:EPCClass_TypeConstraint ;
@@ -635,7 +635,7 @@ epcis:SourceDest_TypeConstraint
 
 epcis:SensorMetadataShape
     a sh:NodeShape;
-    sh:targetClass epcis:SensorMetadata ;
+    sh:targetObjectsOf epcis:sensorMetadata ;
     sh:property epcis:SensorTime_TypeConstraint ;
     sh:property epcis:SensorMetadataStartTime_TypeConstraint ;
     sh:property epcis:SensorMetadataEndTime_TypeConstraint ;
@@ -648,7 +648,7 @@ epcis:SensorMetadataShape
 
 epcis:SensorReportShape
     a sh:NodeShape;
-    sh:targetClass epcis:SensorReport ;
+    sh:targetObjectsOf epcis:sensorReport ;
     sh:property epcis:SensorDeviceID_TypeConstraint ;
     sh:property epcis:SensorDeviceMetaData_TypeConstraint ;
     sh:property epcis:SensorRawData_TypeConstraint ;
