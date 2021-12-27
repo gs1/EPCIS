@@ -14,17 +14,27 @@ epcis:EPCISDocumentShape
     sh:targetClass epcis:EPCISDocument ;
     sh:property [
         sh:path epcis:eventList ;
-        sh:node epcis:EventShape ;
+        sh:node epcis:Event_TypeConstraint ;
+        sh:node epcis:EventID_Constraint ;
     ] .
 
 
-epcis:EventShape
+epcis:Event_TypeConstraint
     a sh:NodeShape ;
     sh:property [
         sh:path rdf:type ;
         sh:in ( epcis:ObjectEvent epcis:AggregationEvent epcis:AssociationEvent epcis:TransformationEvent epcis:TransactionEvent epcis:EPCISEvent);
         sh:message "eventList must contain valid subclasses of EPCISEvent";
     ] .
+
+epcis:EventID_Constraint
+    a sh:NodeShape ;
+    sh:message "Must be a blank node or ni or urn URI";
+    sh:or (
+    [ sh:nodeKind sh:BlankNode ]
+    [ sh:nodeKind sh:IRI; sh:pattern "^ni:\\/\\/"]
+    [ sh:nodeKind sh:IRI; sh:pattern "^urn:uuid:"]
+    );
 
 
 epcis:ObjectEventShape
@@ -653,6 +663,7 @@ epcis:SensorReportShape
     sh:property epcis:SensorTime_TypeConstraint ;
     sh:property epcis:SensorReportMicroorganism_TypeConstraint ;
     sh:property epcis:SensorReportChemicalSubstance_TypeConstraint ;
+    sh:property epcis:SensorReportCoordinateReferenceSystem_TypeConstraint ;
     sh:property epcis:SensorReportValue_TypeConstraint ;
     sh:property epcis:SensorReportComponent_TypeConstraint ;
     sh:property epcis:SensorReportStringValue_TypeConstraint ;
@@ -881,6 +892,14 @@ epcis:SensorReportMicroorganism_TypeConstraint
     sh:name "microorganism type constraint" ;
     sh:message "microorganism must be a sh:IRI.  Please refer to the EPCIS 2.0 standard." 
 .
+
+epcis:SensorReportCoordinateReferenceSystem_TypeConstraint
+    sh:path epcis:coordinateReferenceSystem ;
+    sh:nodeKind sh:IRI ;
+    sh:name "coordinateReferenceSystem type constraint" ;
+    sh:message "coordinateReferenceSystem must be a sh:IRI.  Please refer to the EPCIS 2.0 standard." 
+.
+
 
 epcis:SensorDeviceID_TypeConstraint
     sh:path epcis:deviceID ;
