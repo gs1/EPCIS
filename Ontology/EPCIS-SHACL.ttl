@@ -253,7 +253,7 @@ epcis:BizLocation_TypeConstraint
     sh:path epcis:bizLocation ;
     sh:nodeKind sh:IRI ;
     sh:name "bizLocation type constraint" ;
-    sh:message "bizLocation must be an xsd:anyURI.  Please refer to the GS1 Core Business Vocabulary for standard vocabulary values for bizLocation" 
+    sh:message "bizLocation must be a sh:IRI.  Please refer to the GS1 Core Business Vocabulary for standard vocabulary values for bizLocation" 
 .
 
 
@@ -261,7 +261,7 @@ epcis:BizStep_TypeConstraint
     sh:path epcis:bizStep ;
     sh:nodeKind sh:IRI ;
     sh:name "bizStep type constraint" ;
-    sh:message "bizStep must be an xsd:anyURI.  Please refer to the GS1 Core Business Vocabulary for standard vocabulary values for bizStep" 
+    sh:message "bizStep must be a sh:IRI.  Please refer to the GS1 Core Business Vocabulary for standard vocabulary values for bizStep" 
 .
 
 epcis:BizTransactionList_IsMandatory 
@@ -282,25 +282,26 @@ epcis:BizTransactionType_TypeConstraint
     sh:path epcis:type ;
     sh:nodeKind sh:IRI ;
     sh:name "'type' type constraint" ;
-    sh:message "type (within epcis:BusinessTransaction) must be an xsd:anyURI." 
+    sh:message "type (within epcis:BusinessTransaction) must be a sh:IRI." 
 .
 
 epcis:BizTransaction_TypeConstraint 
     sh:path epcis:bizTransaction ;
     sh:nodeKind sh:IRI ;
     sh:name "bizTransaction type constraint" ;
-    sh:message "bizTransaction (within epcis:BusinessTransaction) must be an xsd:anyURI." 
+    sh:message "bizTransaction (within epcis:BusinessTransaction) must be a sh:IRI." 
 .
 
 epcis:ChildEPCs_TypeConstraint 
     sh:path epcis:childEPCs ;
     sh:nodeKind sh:IRI ;
     sh:name "childEPCs type constraint" ;
-    sh:message "childEPCs must be an xsd:anyURI." 
+    sh:message "childEPCs must be a sh:IRI." 
 .
 
 
 epcis:ChildQuantityList_TypeConstraint  
+    sh:path epcis:childQuantityList ;
     sh:node epcis:QuantityElementShape ;
     sh:name "childQuantityList type constraint" ;
     sh:message "childQuantityList expects a list of epcis:QuantityElement" 
@@ -310,14 +311,14 @@ epcis:InputEPCList_TypeConstraint
     sh:path epcis:inputEPCList ;
     sh:nodeKind sh:IRI ;
     sh:name "inputEPCList type constraint" ;
-    sh:message "inputEPCList must be an xsd:anyURI." 
+    sh:message "inputEPCList must be a sh:IRI." 
 .
 
 epcis:OutputEPCList_TypeConstraint 
     sh:path epcis:outputEPCList ;
     sh:nodeKind sh:IRI ;
     sh:name "outputEPCList type constraint" ;
-    sh:message "outputEPCList must be an xsd:anyURI." 
+    sh:message "outputEPCList must be a sh:IRI." 
 .
 
 
@@ -364,14 +365,14 @@ epcis:Destination_TypeConstraint
     sh:path epcis:destination ;
     sh:nodeKind sh:IRI ;
     sh:name "destination type constraint" ;
-    sh:message "destination must be an xsd:anyURI" 
+    sh:message "destination must be a sh:IRI.";
 .
 
 epcis:Disposition_TypeConstraint 
     sh:path epcis:disposition ;
     sh:nodeKind sh:IRI ;
     sh:name "dispsition type constraint" ;
-    sh:message "disposition must be an xsd:anyURI.  Please refer to the GS1 Core Business Vocabulary for standard vocabulary values for disposition" 
+    sh:message "disposition must be a sh:IRI.  Please refer to the GS1 Core Business Vocabulary for standard vocabulary values for disposition" 
 .
 
 epcis:EPCClass_IsMandatory 
@@ -387,7 +388,7 @@ epcis:EPCClass_TypeConstraint
     sh:path epcis:epcClass ;
     sh:nodeKind sh:IRI ;
     sh:name "epcClass type constraint" ;
-    sh:message "epcClass must be an xsd:anyURI." 
+    sh:message "epcClass must be a sh:IRI." 
 .
 
 
@@ -395,7 +396,7 @@ epcis:EPCList_TypeConstraint
     sh:path epcis:epcList ;
     sh:nodeKind sh:IRI ;
     sh:name "epcList type constraint" ;
-    sh:message "epcList must be a list of xsd:anyURI. " 
+    sh:message "epcList must be a list of sh:IRI. " 
 .
 
 
@@ -410,7 +411,7 @@ epcis:ErrorReasonID_TypeConstraint
     sh:path epcis:reason ;
     sh:nodeKind sh:IRI ;
     sh:name "error reason type constraint" ;
-    sh:message "reason must be an xsd:anyURI." 
+    sh:message "reason must be a sh:IRI." 
 .
 
 
@@ -418,7 +419,7 @@ epcis:EventID_TypeConstraint
     sh:path epcis:eventID ;
     sh:nodeKind sh:IRI ;
     sh:name "eventID type constraint" ;
-    sh:message "eventID must be an xsd:anyURI." 
+    sh:message "eventID must be a sh:IRI." 
 .
 
 epcis:EventTime_IsMandatory 
@@ -488,7 +489,7 @@ epcis:ParentID_TypeConstraint
     sh:path epcis:parentID ;
     sh:nodeKind sh:IRI ;
     sh:name "parentID type constraint" ;
-    sh:message "parentID must be an xsd:anyURI." 
+    sh:message "parentID must be a sh:IRI." 
 .
 
 
@@ -525,6 +526,7 @@ epcis:creationDate_IsMandatory
      
 epcis:epcisBodyShape
     a sh:NodeShape;
+    sh:targetObjectsOf epcis:epcisBody;
     sh:property epcis:EventList_TypeConstraint .
 
 
@@ -543,6 +545,7 @@ epcis:epcisBody_IsMandatory
 
 epcis:PersistentDispositionShape 
     a sh:NodeShape;
+    sh:targetObjectsOf epcis:persistentDisposition ;
     sh:closed true;
     sh:property epcis:Set_TypeConstraint ;
     sh:property epcis:Unset_TypeConstraint .
@@ -561,7 +564,7 @@ epcis:Set_TypeConstraint
     sh:minCount 0;
     sh:nodeKind sh:IRI ;
     sh:name "set type constraint" ;
-    sh:message "set must be an xsd:anyURI." 
+    sh:message "set must be a sh:IRI." 
 .
 
 epcis:Unset_TypeConstraint
@@ -569,7 +572,7 @@ epcis:Unset_TypeConstraint
     sh:minCount 0;
     sh:nodeKind sh:IRI ;
     sh:name "unset type constraint" ;
-    sh:message "unset must be an xsd:anyURI." 
+    sh:message "unset must be a sh:IRI." 
 .
 
 epcis:QuantityList_TypeConstraint 
@@ -607,7 +610,7 @@ epcis:ReadPoint_TypeConstraint
     sh:path epcis:readPoint ;
     sh:nodeKind sh:IRI ;
     sh:name "readPoint type constraint" ;
-    sh:message "readPoint must be an xsd:anyURI.  Please refer to the GS1 Core Business Vocabulary for standard vocabulary values for readPoint" 
+    sh:message "readPoint must be a sh:IRI.  Please refer to the GS1 Core Business Vocabulary for standard vocabulary values for readPoint" 
 .
 
 epcis:RecordTime_TypeConstraint
@@ -630,7 +633,7 @@ epcis:SourceDest_TypeConstraint
     sh:path epcis:type ;
     sh:nodeKind sh:IRI ;
     sh:name "'type' property type constraint" ;
-    sh:message "type must be an xsd:anyURI" 
+    sh:message "type must be a sh:IRI.";
 .
 
 epcis:SensorMetadataShape
@@ -682,6 +685,7 @@ epcis:SensorElementList_TypeConstraint
 
 epcis:SensorElementListShape
     a sh:NodeShape;
+    sh:targetObjectsOf epcis:sensorElementList;
     sh:property epcis:SensorMetadata_TypeConstraint;
     sh:property epcis:SensorMetadata_IsOptional;
     sh:property epcis:SensorReport_TypeConstraint;
@@ -736,7 +740,7 @@ epcis:Source_TypeConstraint
     sh:path epcis:source ;
     sh:nodeKind sh:IRI ;
     sh:name "source type constraint" ;
-    sh:message "source must be an xsd:anyURI" 
+    sh:message "source must be a sh:IRI.";
 .
 
 
@@ -744,7 +748,7 @@ epcis:TransformationID_TypeConstraint
     sh:path epcis:transformationID ;
     sh:nodeKind sh:IRI ;
     sh:name "transformationID type constraint" ;
-    sh:message "transformationID must be an xsd:anyURI.  Please refer to the GS1 Core Business Vocabulary for standard vocabulary values for transformationID" 
+    sh:message "transformationID must be a sh:IRI.  Please refer to the GS1 Core Business Vocabulary for standard vocabulary values for transformationID" 
 .
 
 epcis:UOM_TypeConstraint
@@ -818,7 +822,7 @@ epcis:SensorReportURIValue_TypeConstraint
     sh:path epcis:uriValue ;
     sh:nodeKind sh:IRI ;
     sh:name "uriValue type constraint" ;
-    sh:message "uriValue must be an xsd:anyURI" 
+    sh:message "uriValue must be a sh:IRI.";
 .
 
 epcis:SensorReportHexBinaryValue_TypeConstraint
@@ -874,47 +878,47 @@ epcis:SensorReportChemicalSubstance_TypeConstraint
     sh:path epcis:chemicalSubstance ;
     sh:nodeKind sh:IRI ;
     sh:name "chemicalSubstance type constraint" ;
-    sh:message "chemicalSubstance must be an xsd:anyURI.  Please refer to the EPCIS 2.0 standard.  Use of InchiKey URI is recommended." 
+    sh:message "chemicalSubstance must be a sh:IRI.  Please refer to the EPCIS 2.0 standard.  Use of InchiKey URI is recommended." 
 .
 
 epcis:SensorReportMicroorganism_TypeConstraint
     sh:path epcis:microorganism ;
     sh:nodeKind sh:IRI ;
     sh:name "microorganism type constraint" ;
-    sh:message "microorganism must be an xsd:anyURI.  Please refer to the EPCIS 2.0 standard." 
+    sh:message "microorganism must be a sh:IRI.  Please refer to the EPCIS 2.0 standard." 
 .
 
 epcis:SensorDeviceID_TypeConstraint
     sh:path epcis:deviceID ;
     sh:nodeKind sh:IRI ;
     sh:name "deviceID type constraint" ;
-    sh:message "deviceID must be an xsd:anyURI.  Please refer to the EPCIS 2.0 standard." 
+    sh:message "deviceID must be a sh:IRI.  Please refer to the EPCIS 2.0 standard." 
 .
 
 epcis:SensorDeviceMetaData_TypeConstraint
     sh:path epcis:deviceMetadata ;
     sh:nodeKind sh:IRI ;
     sh:name "deviceMetadata type constraint" ;
-    sh:message "deviceMetadata must be an xsd:anyURI.  Please refer to the EPCIS 2.0 standard." 
+    sh:message "deviceMetadata must be a sh:IRI.  Please refer to the EPCIS 2.0 standard." 
 .
 
 epcis:SensorRawData_TypeConstraint
     sh:path epcis:rawData ;
     sh:nodeKind sh:IRI ;
     sh:name "rawData type constraint" ;
-    sh:message "rawData must be an xsd:anyURI.  Please refer to the EPCIS 2.0 standard." 
+    sh:message "rawData must be a sh:IRI.  Please refer to the EPCIS 2.0 standard." 
 .
 
 epcis:SensorBizRules_TypeConstraint
     sh:path epcis:bizRules ;
     sh:nodeKind sh:IRI ;
     sh:name "bizRules type constraint" ;
-    sh:message "bizRules must be an xsd:anyURI.  Please refer to the EPCIS 2.0 standard." 
+    sh:message "bizRules must be a sh:IRI.  Please refer to the EPCIS 2.0 standard." 
 .
 
 epcis:SensorDataProcessingMethod_TypeConstraint
     sh:path epcis:dataProcessingMethod ;
     sh:nodeKind sh:IRI ;
     sh:name "dataProcessingMethod type constraint" ;
-    sh:message "dataProcessingMethod must be an xsd:anyURI.  Please refer to the EPCIS 2.0 standard." 
+    sh:message "dataProcessingMethod must be a sh:IRI.  Please refer to the EPCIS 2.0 standard." 
 .
