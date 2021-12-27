@@ -354,11 +354,11 @@
                 {
                     "type": "object",
                     "properties": {
-                        "isA": {
+                        "type": {
                             "$ref": "definitions-JSON-Schema.json#/definitions/vocab-uri"
                         }
                     },
-                    "required": ["isA"]
+                    "required": ["type"]
                 }
             ]
         }

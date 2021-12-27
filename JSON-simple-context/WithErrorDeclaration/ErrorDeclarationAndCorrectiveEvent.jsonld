@@ -2,13 +2,13 @@
   "@context": ["https://gs1.github.io/EPCIS/epcis-context-simple.jsonld",{"example": "http://ns.example.com/epcis/"}],
 
   "id": "_:document1",
-  "isA": "EPCISDocument",
+  "type": "EPCISDocument",
   "creationDate": "2020-01-15T07:47:21.677+00:00",
   "schemaVersion": "2.0",
   "epcisBody": {
     "eventList": [
       {
-        "isA": "TransformationEvent",
+        "type": "TransformationEvent",
         "eventTime": "2020-01-14T00:00:00+01:00",
         "eventTimeZoneOffset": "+01:00",
         "eventID": "urn:uuid:374d95fc-9457-4a51-bd6a-0bba133845a8",
@@ -44,7 +44,7 @@
         }
       },
       {
-        "isA": "TransformationEvent",
+        "type": "TransformationEvent",
         "eventTime": "2021-01-28T00:00:00+01:00",
         "eventTimeZoneOffset": "+01:00",
         "eventID": "urn:uuid:404d95fc-9457-4a51-bd6a-0bba133845a8",

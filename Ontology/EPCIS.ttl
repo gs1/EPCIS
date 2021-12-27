@@ -45,7 +45,7 @@ The default is the property local name, which is captured in rdfs:label."""@en ;
       schema:rangeIncludes xsd:string ;
       sw:term_status    "stable" .
 
-rdf:type epcis:jsonldLabel "isA".
+rdf:type epcis:jsonldLabel "type".
 
 epcis:jsonldUriLabel a owl:DatatypeProperty , rdf:Property ;
       rdfs:comment      """JSONLD term (alias) used for the URI of nodes of this class.

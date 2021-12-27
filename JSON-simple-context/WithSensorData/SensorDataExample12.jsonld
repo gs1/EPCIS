@@ -7,11 +7,11 @@
     {"example3": "https://ns.example3.com/epcis"},
     {"example4": "https://ns.example4.com/epcis"}
   ],
-  "isA": "EPCISDocument",
+  "type": "EPCISDocument",
   "epcisBody": {
     "eventList": [
       {
-	"isA": "TransformationEvent",
+	"type": "TransformationEvent",
 	"eventTime": "2020-09-29T12:00:00.000Z",
 	"eventTimeZoneOffset": "+02:00",
 	"errorDeclaration": {
@@ -32,7 +32,7 @@
 	},
 	"sensorElementList": [
 	  {
-	    "isA": "epcis:SensorElement",
+	    "type": "epcis:SensorElement",
 	    "sensorMetadata": {
 	      "startTime": "2019-04-01T14:00:00.000Z",
 	      "endTime": "2019-04-02T13:59:59.999Z",

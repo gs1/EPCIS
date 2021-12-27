@@ -2,14 +2,14 @@
   "@context": ["https://gs1.github.io/EPCIS/epcis-context-simple.jsonld",{"example": "http://ns.example.com/epcis/"}],
   
   "id": "_:document1",
-  "isA": "EPCISDocument",
+  "type": "EPCISDocument",
   "schemaVersion": "2.0",
   "creationDate":"2005-07-11T11:30:47.0Z",
   "epcisBody": {
   "eventList": [
      {
 		  "eventID": "ni:///sha-256;18454584ed96fbb533e4a69b01eefd1bff3edd1e80ef8598957111f4477a0a64?ver=CBV2.0",
-		  "isA": "AggregationEvent",
+		  "type": "AggregationEvent",
 		  "action": "ADD",
 		  "bizStep": "packing",
 		  "disposition": "in_progress",

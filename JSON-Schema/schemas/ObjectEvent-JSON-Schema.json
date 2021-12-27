@@ -10,7 +10,7 @@
                 {
                     "type": "object",
                     "properties": {
-                        "isA": {
+                        "type": {
                             "type": "string",
                             "enum": ["ObjectEvent"]
                         },
@@ -67,7 +67,7 @@
                         }
                     },
                     "required": [
-                        "isA",
+                        "type",
                         "action"
                     ]
                 },

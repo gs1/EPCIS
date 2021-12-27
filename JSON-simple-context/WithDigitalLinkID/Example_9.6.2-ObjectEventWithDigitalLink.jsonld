@@ -1,14 +1,14 @@
 {
   "@context": ["https://gs1.github.io/EPCIS/epcis-context-simple.jsonld",{"example": "http://ns.example.com/epcis/"}],
   "id": "_:document1",
-  "isA": "EPCISDocument",
+  "type": "EPCISDocument",
   "schemaVersion": "2.0",
   "creationDate": "2005-07-11T11:30:47.0Z",
   "epcisBody": {
     "eventList": [
       {
         "eventID": "ni:///sha-256;115b14983df54a9bcc3dd6a00dc4ebcab000bd52fda0abdd8996907e01dccc23?ver=CBV2.0",
-        "isA": "ObjectEvent",
+        "type": "ObjectEvent",
         "eventTime": "2013-06-08T14:58:56.591Z",
         "eventTimeZoneOffset": "+02:00",
         "action": "OBSERVE",

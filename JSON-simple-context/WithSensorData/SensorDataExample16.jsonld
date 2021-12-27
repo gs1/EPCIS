@@ -1,12 +1,12 @@
 {
   "@context": ["https://gs1.github.io/EPCIS/epcis-context-simple.jsonld"],
-  "isA": "EPCISDocument",
+  "type": "EPCISDocument",
   "schemaVersion": "2.0",
   "creationDate": "2019-10-07T15:00:00.000+01:00",
   "epcisBody": {
     "eventList": [
       {
-	"isA": "ObjectEvent",
+	"type": "ObjectEvent",
 	"eventTime": "2021-05-27T10:00:00.000Z",
 	"eventTimeZoneOffset": "+01:00",
 	"epcList": ["https://id.example.com/8003/040123450007718765"],

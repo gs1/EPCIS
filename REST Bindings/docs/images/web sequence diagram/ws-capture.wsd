@@ -10,7 +10,7 @@ Content-Length: 2051
 ...
 {
     "@context": "https://www.gs1.org/docs/epc/epcis_2_0_draft_schema_20200713/EPCIS-2.0-context.jsonld",
-    "isA": "EPCISDocument",
+    "type": "EPCISDocument",
     "creationDate": "2019-13-06T11:30:47+00:00",
       "epcisBody": {
       "eventList": [

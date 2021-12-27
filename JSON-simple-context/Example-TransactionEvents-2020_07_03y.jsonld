@@ -1,11 +1,11 @@
 {
-  "isA": "EPCISDocument",
+  "type": "EPCISDocument",
   "schemaVersion": "2.0",
   "creationDate": "2020-07-03T09:00:00.0Z",
   "epcisBody": {
     "eventList": [
       {
-        "isA": "TransactionEvent",
+        "type": "TransactionEvent",
         "eventTime": "2019-10-04T13:12:00.000Z",
         "eventTimeZoneOffset": "+01:00",
         "bizTransactionList": [{"bizTransaction": "urn:epc:id:gdti:95252084.0001.0003555480001000"}],
@@ -15,7 +15,7 @@
         "readPoint": {"id": "urn:epc:id:sgln:9524567.98765.0"}
       },
       {
-        "isA": "TransactionEvent",
+        "type": "TransactionEvent",
         "eventTime": "2014-12-12T10:00:00.000Z",
         "eventTimeZoneOffset": "+02:00",
         "bizTransactionList": [{

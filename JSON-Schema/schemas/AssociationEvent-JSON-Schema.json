@@ -9,7 +9,7 @@
             {
                 "type": "object",
                 "properties": {
-                    "isA": {
+                    "type": {
                         "type": "string",
                         "enum": ["AssociationEvent"]
                     },
@@ -71,7 +71,7 @@
                         }
                     }
                 },
-                "required": ["isA", "action", "parentID"]
+                "required": ["type", "action", "parentID"]
             },
             {
                 "anyOf": [{

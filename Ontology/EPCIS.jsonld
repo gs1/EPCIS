@@ -145,7 +145,7 @@
     },
     {
       "@id": "rdf:type",
-      "jsonldLabel": "isA"
+      "jsonldLabel": "type"
     },
     {
       "@id": "epcis:jsonldUriLabel",

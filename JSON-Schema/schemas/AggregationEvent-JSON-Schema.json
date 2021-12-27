@@ -10,7 +10,7 @@
                 {
                     "type": "object",
                     "properties": {
-                        "isA": {
+                        "type": {
                             "type": "string",
                             "enum": ["AggregationEvent"]
                         },
@@ -73,7 +73,7 @@
                         }
                     },
                     "required": [
-                        "isA",
+                        "type",
                         "action"
                     ]
                 },

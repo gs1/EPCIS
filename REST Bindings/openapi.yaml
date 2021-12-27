@@ -3548,7 +3548,7 @@ components:
         A single EPCIS event. The full schema is specified in the JSON-Schema documentation.
       type: object
       required:
-        - isA
+        - type
       properties:
         '@context':
           type: array
@@ -3557,7 +3557,7 @@ components:
               - type: string
                 format: uri
               - type: object
-        isA:
+        type:
           type: string
           example: ObjectEvent
       externalDocs:
@@ -3567,7 +3567,7 @@ components:
       example:
         {
           "@context": "https://gs1.github.io/EPCIS/epcis-context.jsonld",
-          "isA": "ObjectEvent",
+          "type": "ObjectEvent",
           "action": "OBSERVE",
           "bizStep": "inspecting",
           "eventTime": "2021-05-05T15:00:00.000+01:00",
@@ -3684,7 +3684,7 @@ components:
               - type: string
                 format: uri
               - type: object
-        isA:
+        type:
           type: string
           default: EPCISDocument
           example: EPCISDocument
@@ -3723,14 +3723,14 @@ components:
           "@context": [
               "https://gs1.github.io/EPCIS/epcis-context.jsonld",
               { "example": "http://ns.example.com/epcis/" } ],
-          "isA": "EPCISDocument",
+          "type": "EPCISDocument",
           "schemaVersion": 2.0,
           "creationDate": "2005-07-11T11:30:47.0Z",
           "epcisBody": {
             "eventList": [
               {
                 "eventID": "_:event1",
-                "isA": "ObjectEvent",
+                "type": "ObjectEvent",
                 "action": "OBSERVE",
                 "bizStep": "urn:epcglobal:cbv:bizstep:shipping",
                 "disposition": "urn:epcglobal:cbv:disp:in_transit",
@@ -3743,7 +3743,7 @@ components:
               },
               {
                 "eventID": "_:event2",
-                "isA": "ObjectEvent",
+                "type": "ObjectEvent",
                 "action": "OBSERVE",
                 "bizStep": "urn:epcglobal:cbv:bizstep:receiving",
                 "disposition": "urn:epcglobal:cbv:disp:in_progress",
@@ -3844,7 +3844,7 @@ components:
               - type: string
                 format: uri
               - type: object
-        isA:
+        type:
           type: string
           default: EPCISQueryDocument
           example: EPCISQueryDocument
@@ -3894,7 +3894,7 @@ components:
               "example": "http://ns.example.com/epcis/"
             }
           ],
-          "isA": "EPCISQueryDocument",
+          "type": "EPCISQueryDocument",
           "schemaVersion": 2.0,
           "creationDate": "2005-07-11T11:30:47.0Z",
           "epcisBody": {
@@ -3903,7 +3903,7 @@ components:
                 "eventList": [
                   {
                     "eventID": "_:event1",
-                    "isA": "ObjectEvent",
+                    "type": "ObjectEvent",
                     "action": "OBSERVE",
                     "bizStep": "urn:epcglobal:cbv:bizstep:shipping",
                     "disposition": "urn:epcglobal:cbv:disp:in_transit",
@@ -3925,7 +3925,7 @@ components:
                   },
                   {
                     "eventID": "_:event2",
-                    "isA": "ObjectEvent",
+                    "type": "ObjectEvent",
                     "action": "OBSERVE",
                     "bizStep": "urn:epcglobal:cbv:bizstep:receiving",
                     "disposition": "urn:epcglobal:cbv:disp:in_progress",

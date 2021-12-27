@@ -25,7 +25,7 @@ function inline (fileName, schemaId) {
 const definitions = {};
 
 function visit (parent, key, index, node) {
-  if (typeof node === 'object' && !Array.isArray(node)) {
+  if (typeof node === 'object' && !Array.typerray(node)) {
     if (key === 'definitions') {
       // The definitions are copied
       Object.keys(node).forEach((aKey) => (definitions[aKey] = node[aKey]));
@@ -39,7 +39,7 @@ function visit (parent, key, index, node) {
       loadChildSchema(node);
       parent.$ref = localizeDefinition(node);
     }
-  } else if (Array.isArray(node)) {
+  } else if (Array.typerray(node)) {
     node.forEach((aElement, aIndex) => {
       visit(node, key, aIndex, aElement);
     });

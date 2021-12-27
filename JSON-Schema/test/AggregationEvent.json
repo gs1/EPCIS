@@ -6,7 +6,7 @@
         }
     ],
     "eventID": "ni:///sha-256;87b5f18a69993f0052046d4687dfacdf48f7c988cfabda2819688c86b4066a49?ver=CBV2.0",
-    "isA": "AggregationEvent",
+    "type": "AggregationEvent",
     "eventTime": "2013-06-08T14:58:56.591Z",
     "eventTimeZoneOffset": "+02:00",
     "parentID":"urn:epc:id:sscc:0614141.1234567890",

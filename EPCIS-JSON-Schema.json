@@ -2,10 +2,10 @@
   "$id": "https://gs1.github.io/EPCIS/EPCIS-JSON-Schema.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "required": [
-    "isA"
+    "type"
   ],
   "properties": {
-    "isA": {
+    "type": {
       "type": "string"
     }
   },
@@ -13,7 +13,7 @@
     {
       "if": {
         "properties": {
-          "isA": {
+          "type": {
             "const": "EPCISDocument"
           }
         }
@@ -25,7 +25,7 @@
     {
       "if": {
         "properties": {
-          "isA": {
+          "type": {
             "const": "EPCISQueryDocument"
           }
         }
@@ -37,7 +37,7 @@
     {
       "if": {
         "properties": {
-          "isA": {
+          "type": {
             "const": "ObjectEvent"
           }
         }
@@ -56,7 +56,7 @@
     {
       "if": {
         "properties": {
-          "isA": {
+          "type": {
             "const": "AggregationEvent"
           }
         }
@@ -75,7 +75,7 @@
     {
       "if": {
         "properties": {
-          "isA": {
+          "type": {
             "const": "AssociationEvent"
           }
         }
@@ -94,7 +94,7 @@
     {
       "if": {
         "properties": {
-          "isA": {
+          "type": {
             "const": "TransformationEvent"
           }
         }
@@ -113,7 +113,7 @@
     {
       "if": {
         "properties": {
-          "isA": {
+          "type": {
             "const": "TransactionEvent"
           }
         }
@@ -133,7 +133,7 @@
       "if": {
         "not": {
           "properties": {
-            "isA": {
+            "type": {
               "enum": [
                 "AssociationEvent",
                 "ObjectEvent",
@@ -297,7 +297,7 @@
     "epcisDocument": {
       "type": "object",
       "properties": {
-        "isA": {
+        "type": {
           "type": "string",
           "const": "EPCISDocument"
         },
@@ -336,7 +336,7 @@
     "epcisQueryDocument": {
       "type": "object",
       "properties": {
-        "isA": {
+        "type": {
           "type": "string",
           "const": "EPCISQueryDocument"
         },
@@ -713,12 +713,12 @@
         {
           "type": "object",
           "properties": {
-            "isA": {
+            "type": {
               "$ref": "#/definitions/vocab-uri"
             }
           },
           "required": [
-            "isA"
+            "type"
           ]
         }
       ]
@@ -815,13 +815,13 @@
     },
     "EPCIS-Document-Event": {
       "required": [
-        "isA"
+        "type"
       ],
       "allOf": [
         {
           "if": {
             "properties": {
-              "isA": {
+              "type": {
                 "const": "ObjectEvent"
               }
             }
@@ -833,7 +833,7 @@
         {
           "if": {
             "properties": {
-              "isA": {
+              "type": {
                 "const": "AggregationEvent"
               }
             }
@@ -845,7 +845,7 @@
         {
           "if": {
             "properties": {
-              "isA": {
+              "type": {
                 "const": "TransactionEvent"
               }
             }
@@ -857,7 +857,7 @@
         {
           "if": {
             "properties": {
-              "isA": {
+              "type": {
                 "const": "TransformationEvent"
               }
             }
@@ -869,7 +869,7 @@
         {
           "if": {
             "properties": {
-              "isA": {
+              "type": {
                 "const": "AssociationEvent"
               }
             }
@@ -882,7 +882,7 @@
           "if": {
             "not": {
               "properties": {
-                "isA": {
+                "type": {
                   "enum": [
                     "AssociationEvent",
                     "ObjectEvent",
@@ -900,7 +900,7 @@
         }
       ],
       "properties": {
-        "isA": {
+        "type": {
           "type": "string"
         }
       }
@@ -913,7 +913,7 @@
         {
           "type": "object",
           "properties": {
-            "isA": {
+            "type": {
               "type": "string",
               "enum": [
                 "ObjectEvent"
@@ -972,7 +972,7 @@
             }
           },
           "required": [
-            "isA",
+            "type",
             "action"
           ]
         },
@@ -1167,7 +1167,7 @@
         {
           "type": "object",
           "properties": {
-            "isA": {
+            "type": {
               "type": "string",
               "enum": [
                 "AggregationEvent"
@@ -1232,7 +1232,7 @@
             }
           },
           "required": [
-            "isA",
+            "type",
             "action"
           ]
         },
@@ -1283,7 +1283,7 @@
         {
           "type": "object",
           "properties": {
-            "isA": {
+            "type": {
               "type": "string",
               "pattern": "^TransactionEvent$"
             },
@@ -1347,7 +1347,7 @@
             }
           },
           "required": [
-            "isA",
+            "type",
             "bizTransactionList",
             "action"
           ]
@@ -1399,7 +1399,7 @@
         {
           "type": "object",
           "properties": {
-            "isA": {
+            "type": {
               "type": "string",
               "enum": [
                 "TransformationEvent"
@@ -1464,7 +1464,7 @@
             }
           },
           "required": [
-            "isA"
+            "type"
           ],
           "propertyNames": {
             "anyOf": [
@@ -1474,7 +1474,7 @@
               {
                 "type": "string",
                 "enum": [
-                  "isA",
+                  "type",
                   "inputEPCList",
                   "inputQuantityList",
                   "outputEPCList",
@@ -1625,7 +1625,7 @@
         {
           "type": "object",
           "properties": {
-            "isA": {
+            "type": {
               "type": "string",
               "enum": [
                 "AssociationEvent"
@@ -1690,7 +1690,7 @@
             }
           },
           "required": [
-            "isA",
+            "type",
             "action",
             "parentID"
           ]

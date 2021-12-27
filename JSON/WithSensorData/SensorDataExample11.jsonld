@@ -1,14 +1,14 @@
 {
   "@context": ["https://gs1.github.io/EPCIS/epcis-context.jsonld",{"example": "http://ns.example.com/epcis/"}],
 
-  "isA": "EPCISDocument",
+  "type": "EPCISDocument",
   "creationDate": "2020-07-03T00:05:00-06:00",
   "schemaVersion": "2.0",
   "epcisBody": {
     "eventList": [
       {
 		"eventID": "ni:///sha-256;8702ac80df8ac48d19cc0c8d19399249fc7037f8b752acb97baf7148960d2a17?ver=CBV2.0",
-        "isA": "TransactionEvent",
+        "type": "TransactionEvent",
         "eventTime": "2020-07-03T00:05:00-06:00",
         "eventTimeZoneOffset": "-06:00",
         "epcList": [

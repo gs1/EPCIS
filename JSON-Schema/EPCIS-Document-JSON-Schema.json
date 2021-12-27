@@ -139,7 +139,7 @@
         "epcisDocument": {
             "type": "object",
             "properties": {
-                "isA": {
+                "type": {
                     "type": "string",
                     "const": "EPCISDocument"
                 },
@@ -178,7 +178,7 @@
         "epcisQueryDocument": {
             "type": "object",
             "properties": {
-                "isA": {
+                "type": {
                     "type": "string",
                     "const": "EPCISQueryDocument"
                 },

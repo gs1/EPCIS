@@ -10,7 +10,7 @@
                 {
                     "type": "object",
                     "properties": {
-                        "isA": {
+                        "type": {
                             "type": "string",
                             "enum": [
                                 "TransformationEvent"
@@ -75,7 +75,7 @@
                         }
                     },
                     "required": [
-                        "isA"
+                        "type"
                     ],
                     "propertyNames": {
                         "anyOf": [
@@ -85,7 +85,7 @@
                             {
                                 "type": "string",
                                 "enum": [
-                                    "isA",
+                                    "type",
                                     "inputEPCList",
                                     "inputQuantityList",
                                     "outputEPCList",

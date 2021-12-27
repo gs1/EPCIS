@@ -4,13 +4,13 @@
     "definitions": {
       "EPCIS-Document-Event": {
         "required": [
-          "isA"
+          "type"
         ],
         "allOf": [
           {
             "if": {
               "properties": {
-                "isA": {
+                "type": {
                   "const": "ObjectEvent"
                 }
               }
@@ -22,7 +22,7 @@
           {
             "if": {
               "properties": {
-                "isA": {
+                "type": {
                   "const": "AggregationEvent"
                 }
               }
@@ -34,7 +34,7 @@
           {
             "if": {
               "properties": {
-                "isA": {
+                "type": {
                   "const": "TransactionEvent"
                 }
               }
@@ -46,7 +46,7 @@
           {
             "if": {
               "properties": {
-                "isA": {
+                "type": {
                   "const": "TransformationEvent"
                 }
               }
@@ -58,7 +58,7 @@
           {
             "if": {
               "properties": {
-                "isA": {
+                "type": {
                   "const": "AssociationEvent"
                 }
               }
@@ -71,7 +71,7 @@
             "if": {
               "not": {
                 "properties": {
-                  "isA": {
+                  "type": {
                     "enum": [
                       "AssociationEvent",
                       "ObjectEvent",
@@ -89,7 +89,7 @@
           }
         ],
         "properties": {
-          "isA": {
+          "type": {
             "type": "string"
           }
         }

@@ -90,7 +90,7 @@
     "component": {"@type": "@vocab", "@context":{"@vocab":"https://ns.gs1.org/cbv/COMP-"}},
     "exception": {"@type": "@vocab", "@context":{"@vocab":"https://ns.gs1.org/voc/"}},
     
-    "isA": "@type",
+    "type": "@type",
     "id": "@id",
     "eventID": "@id",
     "bizTransaction": "@id",

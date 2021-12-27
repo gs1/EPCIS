@@ -8,7 +8,7 @@
         "xsd": "http://www.w3.org/2001/XMLSchema#",
         "dcterms": "http://purl.org/dc/terms/",
         "id": "@id",
-        "isA": "@type",
+        "type": "@type",
         "ObjectEvent": "epcis:ObjectEvent",
         "AggregationEvent": "epcis:AggregationEvent",
         "TransformationEvent": "epcis:TransformationEvent",
@@ -200,7 +200,7 @@
                     "@id": "epcis:time",
                     "@type": "xsd:dateTimeStamp"
                 },
-               "isA": "@type",
+               "type": "@type",
                "sensorMetadata": {
                     "@id": "epcis:sensorMetadata",
                     "@context": {

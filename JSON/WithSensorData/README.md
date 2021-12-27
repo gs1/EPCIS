@@ -7,7 +7,7 @@ Most of them are derived from the XML examples in [SensorDataExamples.xml](../..
   of a particular SGTIN at different `time` instants (here: 30 minutes apart). 
   Sensor `deviceID` is a GIAI. Includes `deviceMetadata` and `rawData` URLs
 - `SensorDataExample1b.jsonld`: 3 sensor readings, but no GTIN is mentioned, so the readings apply to the `readPoint` itself
-  - Also includes explicit `isA` specifying `SensorElement` (not needed)
+  - Also includes explicit `type` specifying `SensorElement` (not needed)
 - `SensorDataExample2.jsonld`:  Based on the same data as 1, but reports `min/max/meanValue` over a time interval (a more compact form)
 - `SensorDataExample3.jsonld`:  An interval reading, but no GTIN is mentioned (note that there is no object ID in the What dimension), 
   so the reading applies to the `readPoint` itself, i.e. documents the storage conditions of that location 
