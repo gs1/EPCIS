@@ -17,17 +17,10 @@ epcis:EventListShape
 
 epcis:EventType_Constraint
     sh:path rdf:type;
-    sh:in epcis:EventTypeEnum;
+    sh:in ( epcis:ObjectEvent epcis:AggregationEvent epcis:TransactionEvent epcis:TransformationEvent epcis:AssociationEvent epcis:Event);
     sh:message "eventList must contain valid subclasses of EPCISEvent".
 
 
-epcis:EventTypeEnum owl:sameAs (
-   epcis:ObjectEvent
-   epcis:AggregationEvent
-   epcis:TransactionEvent
-   epcis:TransformationEvent
-   epcis:AssociationEvent
-).
 
 
 epcis:ObjectEventShape
@@ -238,267 +231,265 @@ epcis:QuantityElementShape
     
 
 
-epcis:Action_IsMandatory owl:sameAs [
+epcis:Action_IsMandatory 
     sh:path epcis:action ;
     sh:name "action" ;
     sh:minCount 1 ;
     sh:maxCount 1 ;
     sh:message "action is a mandatory field which must have a single value." 
-].
+.
 
-epcis:Action_TypeAndFormat owl:sameAs [
+epcis:Action_TypeAndFormat 
     sh:path epcis:action ;
     sh:datatype xsd:string ;
     sh:name "action" ;
-    sh:in epcis:ActionEnum ; 
+    sh:in ("ADD" "OBSERVE" "DELETE") ; 
     sh:message "action must have an upper case string value - either ADD, OBSERVE or DELETE" 
-].
+.
     
-epcis:ActionEnum owl:sameAs ("ADD" "OBSERVE" "DELETE").
     
 
-epcis:BizLocation_TypeConstraint owl:sameAs [
+epcis:BizLocation_TypeConstraint 
     sh:path epcis:bizLocation ;
     sh:nodeKind sh:IRI ;
     sh:name "bizLocation type constraint" ;
     sh:message "bizLocation must be an xsd:anyURI.  Please refer to the GS1 Core Business Vocabulary for standard vocabulary values for bizLocation" 
-].
+.
 
 
-epcis:BizStep_TypeConstraint owl:sameAs [
+epcis:BizStep_TypeConstraint 
     sh:path epcis:bizStep ;
     sh:nodeKind sh:IRI ;
     sh:name "bizStep type constraint" ;
     sh:message "bizStep must be an xsd:anyURI.  Please refer to the GS1 Core Business Vocabulary for standard vocabulary values for bizStep" 
-].
+.
 
-epcis:BizTransactionList_IsMandatory owl:sameAs [
+epcis:BizTransactionList_IsMandatory 
     sh:path epcis:bizTransactionList ;
     sh:name "bizTransactionList" ;
     sh:minCount 1 ;
     sh:message "bizTransactionList is a mandatory field within a transaction event." 
-].
+.
 
-epcis:BizTransactionList_TypeConstraint  owl:sameAs [
+epcis:BizTransactionList_TypeConstraint  
     sh:path epcis:bizTransactionList ;
     sh:node epcis:BizTransactionListShape ;
     sh:name "bizTransactionList type constraint" ;
     sh:message "bizTransactionList expects a populated epcis:BizTransactionList" 
-].
+.
 
-epcis:BizTransactionType_TypeConstraint owl:sameAs [
+epcis:BizTransactionType_TypeConstraint 
     sh:path epcis:type ;
     sh:nodeKind sh:IRI ;
     sh:name "'type' type constraint" ;
     sh:message "type (within epcis:BusinessTransaction) must be an xsd:anyURI." 
-].
+.
 
-epcis:BizTransaction_TypeConstraint owl:sameAs [
+epcis:BizTransaction_TypeConstraint 
     sh:path epcis:bizTransaction ;
     sh:nodeKind sh:IRI ;
     sh:name "bizTransaction type constraint" ;
     sh:message "bizTransaction (within epcis:BusinessTransaction) must be an xsd:anyURI." 
-].
+.
 
-epcis:ChildEPCs_TypeConstraint owl:sameAs [
+epcis:ChildEPCs_TypeConstraint 
     sh:path epcis:childEPCs ;
     sh:nodeKind sh:IRI ;
     sh:name "childEPCs type constraint" ;
     sh:message "childEPCs must be an xsd:anyURI." 
-].
+.
 
 
-epcis:ChildQuantityList_TypeConstraint  owl:sameAs [
-    sh:path epcis:childQuantityList ;
+epcis:ChildQuantityList_TypeConstraint  
     sh:node epcis:QuantityElementShape ;
     sh:name "childQuantityList type constraint" ;
     sh:message "childQuantityList expects a list of epcis:QuantityElement" 
-].
+.
 
-epcis:InputEPCList_TypeConstraint owl:sameAs [
+epcis:InputEPCList_TypeConstraint 
     sh:path epcis:inputEPCList ;
     sh:nodeKind sh:IRI ;
     sh:name "inputEPCList type constraint" ;
     sh:message "inputEPCList must be an xsd:anyURI." 
-].
+.
 
-epcis:OutputEPCList_TypeConstraint owl:sameAs [
+epcis:OutputEPCList_TypeConstraint 
     sh:path epcis:outputEPCList ;
     sh:nodeKind sh:IRI ;
     sh:name "outputEPCList type constraint" ;
     sh:message "outputEPCList must be an xsd:anyURI." 
-].
+.
 
 
-epcis:CorrectiveEventIDs_IsMandatory owl:sameAs [
+epcis:CorrectiveEventIDs_IsMandatory 
     sh:path epcis:correctiveEventIDs ;
     sh:name "correctiveEventIDs is mandatory within an epcis:ErrorDeclaration" ;
     sh:minCount 1 ;
     sh:maxCount 1 ;
     sh:message "correctiveEventIDs is a mandatory field which must have a single value." 
-].
+.
 
-epcis:DeclarationTime_IsMandatory owl:sameAs [
+epcis:DeclarationTime_IsMandatory 
     sh:path epcis:declarationTime ;
     sh:name "declarationTime is mandatory within an epcis:ErrorDeclaration" ;
     sh:minCount 1 ;
     sh:maxCount 1 ;
     sh:message "declarationTime is a mandatory field which must have a single value." 
-].
+.
 
-epcis:DeclarationTime_TypeConstraint owl:sameAs [
+epcis:DeclarationTime_TypeConstraint 
     sh:path epcis:declarationTime ;
     sh:datatype xsd:dateTimeStamp ;
     sh:name "declarationTime type constraint" ;
     sh:message "declarationTime must be an xsd:dateTimeStamp" 
-].
+.
 
 
-epcis:DestinationList_TypeConstraint  owl:sameAs [
+epcis:DestinationList_TypeConstraint  
     sh:path epcis:destinationList ;
     sh:node epcis:DestinationListShape ;
     sh:name "destinationList type constraint" ;
     sh:message "destinationList expects a populated epcis:DestinationList" 
-].
+.
 
-epcis:Destination_IsMandatory owl:sameAs [
+epcis:Destination_IsMandatory 
     sh:path epcis:destination ;
     sh:name "destination is mandatory within an epcis:DestinationList" ;
     sh:minCount 1 ;
     sh:maxCount 1 ;
     sh:message "destination is a mandatory field within epcis:DestinationList, in which it must have a single value." 
-].
+.
 
-epcis:Destination_TypeConstraint owl:sameAs [
+epcis:Destination_TypeConstraint 
     sh:path epcis:destination ;
     sh:nodeKind sh:IRI ;
     sh:name "destination type constraint" ;
     sh:message "destination must be an xsd:anyURI" 
-].
+.
 
-epcis:Disposition_TypeConstraint owl:sameAs [
+epcis:Disposition_TypeConstraint 
     sh:path epcis:disposition ;
     sh:nodeKind sh:IRI ;
     sh:name "dispsition type constraint" ;
     sh:message "disposition must be an xsd:anyURI.  Please refer to the GS1 Core Business Vocabulary for standard vocabulary values for disposition" 
-].
+.
 
-epcis:EPCClass_IsMandatory owl:sameAs [
+epcis:EPCClass_IsMandatory 
     sh:path epcis:epcClass ;
     sh:name "epcClass is mandatory" ;
     sh:minCount 1;
     sh:maxCount 1;
     sh:message "epcClass is a mandatory field within an epcis:QuantityElement." 
-].
+.
 
 
-epcis:EPCClass_TypeConstraint owl:sameAs [
+epcis:EPCClass_TypeConstraint 
     sh:path epcis:epcClass ;
     sh:nodeKind sh:IRI ;
     sh:name "epcClass type constraint" ;
     sh:message "epcClass must be an xsd:anyURI." 
-].
+.
 
 
-epcis:EPCList_TypeConstraint  owl:sameAs [
+epcis:EPCList_TypeConstraint  
     sh:path epcis:epcList ;
     sh:nodeKind sh:IRI ;
     sh:name "epcList type constraint" ;
     sh:message "epcList must be a list of xsd:anyURI. " 
-].
+.
 
 
-epcis:ErrorDeclaration_TypeConstraint  owl:sameAs [
+epcis:ErrorDeclaration_TypeConstraint  
     sh:path epcis:errorDeclaration ;
     sh:node epcis:ErrorDeclarationShape ;
     sh:name "errorDeclaration type constraint" ;
     sh:message "errorDeclaration expects a populated epcis:ErrorDeclaration" 
-].
+.
 
-epcis:ErrorReasonID_TypeConstraint owl:sameAs [
+epcis:ErrorReasonID_TypeConstraint 
     sh:path epcis:reason ;
     sh:nodeKind sh:IRI ;
     sh:name "error reason type constraint" ;
     sh:message "reason must be an xsd:anyURI." 
-].
+.
 
 
-epcis:EventID_TypeConstraint owl:sameAs [
+epcis:EventID_TypeConstraint 
     sh:path epcis:eventID ;
     sh:nodeKind sh:IRI ;
     sh:name "eventID type constraint" ;
     sh:message "eventID must be an xsd:anyURI." 
- ] .
+.
 
-epcis:EventTime_IsMandatory owl:sameAs [
+epcis:EventTime_IsMandatory 
     sh:path epcis:eventTime ;
     sh:name "eventTime is mandatory" ;
     sh:minCount 1;
     sh:maxCount 1;
     sh:message "eventTime is a mandatory field which must have a single value." 
-].
+.
 
-epcis:EventTime_TypeConstraint owl:sameAs [
+epcis:EventTime_TypeConstraint 
     sh:path epcis:eventTime ;
     sh:datatype xsd:dateTimeStamp ;
     sh:name "eventTime type constraint" ;
     sh:message "eventTime must be an xsd:dateTimeStamp" 
-].
+.
 
 
-epcis:EventTimeZoneOffset_IsMandatory owl:sameAs [
+epcis:EventTimeZoneOffset_IsMandatory 
     sh:path epcis:eventTimeZoneOffset ;
     sh:name "eventTimeZoneOffset is mandatory" ;
     sh:minCount 1 ;
     sh:maxCount 1 ;
     sh:message "eventTimeZoneOffset is a mandatory field which must have a single value." 
-].
+.
 
-epcis:ParentID_IsMandatory owl:sameAs [
+epcis:ParentID_IsMandatory 
     sh:path epcis:parentID ;
     sh:name "parentID is mandatory within association events" ;
     sh:minCount 1;
     sh:maxCount 1;
     sh:message "parentID is a mandatory field within association events, which must have a single value." 
-].
+.
 
 
-epcis:EventTimeZoneOffset_TypeAndFormat owl:sameAs [
+epcis:EventTimeZoneOffset_TypeAndFormat 
     sh:path epcis:eventTimeZoneOffset ;
     sh:datatype xsd:string ;
     sh:name "eventTimeZoneOffset constraint on type and format" ;
     sh:pattern "^(\\+|\\-)((0[0-9]|1[0-3]):([0-5][0-9])|14:00)$";
     sh:message "eventTimeZoneOffset must be an xsd:string in the format +hh:mm or -hh:mm where mm is in the range 00-59 and hh is in the range 00-14" 
-].
+.
 
-epcis:ILMD_TypeConstraint  owl:sameAs [
+epcis:ILMD_TypeConstraint  
     sh:path epcis:ilmd ;
     sh:nodeKind epcis:ILMD ;
     sh:name "ilmd type constraint" ;
     sh:message "ilmd expects an epcis:ILMD class"
-].
+.
 
-epcis:InputQuantityList_TypeConstraint  owl:sameAs [
+epcis:InputQuantityList_TypeConstraint  
     sh:path epcis:inputQuantityList ;
     sh:node epcis:QuantityElementShape ;
     sh:name "inputQuantityList type constraint" ;
     sh:message "inputQuantityList expects a list of epcis:QuantityElement" 
-].
+.
 
 
-epcis:OutputQuantityList_TypeConstraint  owl:sameAs [
+epcis:OutputQuantityList_TypeConstraint  
     sh:path epcis:outputQuantityList ;
     sh:node epcis:QuantityElementShape ;
     sh:name "outputQuantityList type constraint" ;
     sh:message "outputQuantityList expects a list of epcis:QuantityElement" 
-].
+.
 
-epcis:ParentID_TypeConstraint owl:sameAs [
+epcis:ParentID_TypeConstraint 
     sh:path epcis:parentID ;
     sh:nodeKind sh:IRI ;
     sh:name "parentID type constraint" ;
     sh:message "parentID must be an xsd:anyURI." 
-].
+.
 
 
 
@@ -565,82 +556,82 @@ epcis:PersistentDisposition_TypeConstraint
     sh:name  "persistentDisposition type constraint" ;
     sh:message "persistentDisposition expects an object containing properties set and/or unset to be populated." .
 
-epcis:Set_TypeConstraint owl:sameAs [
+epcis:Set_TypeConstraint
     sh:path epcis:set ;
     sh:minCount 0;
     sh:nodeKind sh:IRI ;
     sh:name "set type constraint" ;
     sh:message "set must be an xsd:anyURI." 
-].
+.
 
-epcis:Unset_TypeConstraint owl:sameAs [
+epcis:Unset_TypeConstraint
     sh:path epcis:unset ;
     sh:minCount 0;
     sh:nodeKind sh:IRI ;
     sh:name "unset type constraint" ;
     sh:message "unset must be an xsd:anyURI." 
-].
+.
 
-epcis:QuantityList_TypeConstraint  owl:sameAs [
+epcis:QuantityList_TypeConstraint 
     sh:path epcis:quantityList ;
     sh:node epcis:QuantityElementShape ;
     sh:name "quantityList type constraint" ;
     sh:message "quantityList expects a list of epcis:QuantityElement" 
-].
+.
 
-epcis:Quantity_IsMandatory owl:sameAs [
+epcis:Quantity_IsMandatory
     sh:path epcis:quantity ;
     sh:name "quantity is mandatory" ;
     sh:minCount 1;
     sh:maxCount 1;
     sh:message "quantity is a mandatory field within an epcis:QuantityElement." 
-].
+.
 
-epcis:Quantity_TypeConstraint owl:sameAs [
+epcis:Quantity_TypeConstraint
     sh:path epcis:quantity ;
     sh:datatype xsd:decimal ;
     sh:name "quantity type constraint" ;
     sh:message "quantity must be an xsd:decimal" 
-].
+.
 
-epcis:Reason_IsMandatory owl:sameAs [
+epcis:Reason_IsMandatory
     sh:path epcis:reason ;
     sh:name "reason is mandatory within an epcis:ErrorDeclaration" ;
     sh:minCount 1 ;
     sh:maxCount 1 ;
     sh:message "reason is a mandatory field which must have a single value." 
-].
+.
 
 
-epcis:ReadPoint_TypeConstraint owl:sameAs [
+epcis:ReadPoint_TypeConstraint
     sh:path epcis:readPoint ;
     sh:nodeKind sh:IRI ;
     sh:name "readPoint type constraint" ;
     sh:message "readPoint must be an xsd:anyURI.  Please refer to the GS1 Core Business Vocabulary for standard vocabulary values for readPoint" 
-].
+.
 
-epcis:RecordTime_TypeConstraint owl:sameAs [
+epcis:RecordTime_TypeConstraint
     sh:path epcis:recordTime ;
     sh:datatype xsd:dateTimeStamp ;
     sh:name "recordTime type constraint" ;
     sh:message "recordTime must be an xsd:dateTimeStamp" 
-].
+.
 
 
-epcis:SourceDestType_IsMandatory owl:sameAs [
+epcis:SourceDestType_IsMandatory
     sh:path epcis:type ;
     sh:name "type is mandatory within an epcis:SourceList or epcis:DestinationList" ;
     sh:minCount 1;
     sh:maxCount 1;
     sh:message "type (of source/destination) is a mandatory field within an epcis:Source or epcis:Destination." 
-].
+.
 
-epcis:SourceDest_TypeConstraint owl:sameAs [
+epcis:SourceDest_TypeConstraint
     sh:path epcis:type ;
     sh:nodeKind sh:IRI ;
     sh:name "'type' property type constraint" ;
     sh:message "type must be an xsd:anyURI" 
-].
+.
 
 epcis:SensorMetadataShape
     a sh:NodeShape;
@@ -658,8 +649,6 @@ epcis:SensorMetadataShape
 epcis:SensorReportShape
     a sh:NodeShape;
     sh:targetClass epcis:SensorReport ;
-    sh:property epcis:SensorReportType_TypeConstraint ;
-    sh:property epcis:SensorReportType_IsMandatoryConstraint ;
     sh:property epcis:SensorDeviceID_TypeConstraint ;
     sh:property epcis:SensorDeviceMetaData_TypeConstraint ;
     sh:property epcis:SensorRawData_TypeConstraint ;
@@ -684,12 +673,12 @@ epcis:SensorReportShape
 
 
     
-epcis:SensorElementList_TypeConstraint  owl:sameAs [
+epcis:SensorElementList_TypeConstraint  
     sh:path epcis:sensorElementList ;
     sh:node epcis:SensorElementListShape ;
     sh:name "sensorElementList type constraint" ;
-    sh:message "sensorElementList expects a populated epcis:sensorElementList" 
-].
+    sh:message "sensorElementList expects a populated epcis:sensorElementList; check that any values of 'value' within epcis:sensorReport are xsd:double etc." 
+.
 
 epcis:SensorElementListShape
     a sh:NodeShape;
@@ -698,248 +687,234 @@ epcis:SensorElementListShape
     sh:property epcis:SensorReport_TypeConstraint;
     sh:property epcis:SensorReport_IsMandatory.
 
-epcis:SensorReport_IsMandatory    owl:sameAs [
+epcis:SensorReport_IsMandatory
     sh:path epcis:sensorReport ;
     sh:name "sensorReport is mandatory within each element of sensorElementList" ;
     sh:minCount 1;
     sh:message "sensorReport is mandatory within each element of sensorElementList." 
-].
+.
 
-epcis:SensorMetadata_IsOptional    owl:sameAs [
+epcis:SensorMetadata_IsOptional
     sh:path epcis:sensorMetadata ;
     sh:name "sensorMetadata is optional within each element of sensorElementList" ;
     sh:minCount 0;
     sh:maxCount 1;
     sh:message "sensorMetadata is optional within each element of sensorElementList." 
-].
+.
 
-epcis:SensorMetadata_TypeConstraint  owl:sameAs [
+epcis:SensorMetadata_TypeConstraint
     sh:path epcis:sensorMetadata ;
     sh:node epcis:SensorMetadataShape ;
     sh:name "sensorMetadata type constraint" ;
     sh:message "sensorMetadata expects 0 or 1 of epcis:SensorMetadata" 
-].
+.
 
-epcis:SensorReport_TypeConstraint  owl:sameAs [
+epcis:SensorReport_TypeConstraint
     sh:path epcis:sensorReport ;
     sh:node epcis:SensorReportShape ;
     sh:name "sensorReport type constraint" ;
     sh:message "sensorReport expects a populated epcis:SensorReport" 
-].
+.
     
     
-epcis:SourceList_TypeConstraint  owl:sameAs [
+epcis:SourceList_TypeConstraint
     sh:path epcis:sourceList ;
     sh:node epcis:SourceListShape ;
     sh:name "sourceList type constraint" ;
     sh:message "sourceList expects a populated epcis:SourceList" 
-].
+.
 
-epcis:Source_IsMandatory owl:sameAs [
+epcis:Source_IsMandatory
     sh:path epcis:source ;
     sh:name "source is mandatory within an epcis:SourceList" ;
     sh:minCount 1 ;
     sh:maxCount 1 ;
     sh:message "source is a mandatory field within epcis:SourceList, in which it must have a single value." 
-].
+.
 
-epcis:Source_TypeConstraint owl:sameAs [
+epcis:Source_TypeConstraint
     sh:path epcis:source ;
     sh:nodeKind sh:IRI ;
     sh:name "source type constraint" ;
     sh:message "source must be an xsd:anyURI" 
-].
+.
 
 
-epcis:TransformationID_TypeConstraint  owl:sameAs [
+epcis:TransformationID_TypeConstraint
     sh:path epcis:transformationID ;
     sh:nodeKind sh:IRI ;
     sh:name "transformationID type constraint" ;
     sh:message "transformationID must be an xsd:anyURI.  Please refer to the GS1 Core Business Vocabulary for standard vocabulary values for transformationID" 
-].
+.
 
-epcis:UOM_TypeConstraint owl:sameAs [
+epcis:UOM_TypeConstraint
     sh:path epcis:uom ;
     sh:datatype xsd:string ;
     sh:name "uom type constraint" ;
     sh:message "uom must be an xsd:string" 
-].
+.
 
-epcis:SensorReportComponent_TypeConstraint owl:sameAs [
+epcis:SensorReportComponent_TypeConstraint
     sh:path epcis:component ;
     sh:datatype xsd:string ;
     sh:name "component type constraint" ;
     sh:message "component must be an xsd:string" 
-].
+.
 
-epcis:UOM_TypeAndFormat owl:sameAs [
+epcis:UOM_TypeAndFormat
     sh:path epcis:uom ;
     sh:datatype xsd:string ;
     sh:name "uom (unit of measure)" ;
     sh:pattern "^[A-Z0-9]{2,3}$" ; 
     sh:message "uom must be a UN ECE Rec 20 code value ( 2-3 characters uppercase alphanumeric )" 
-].
+.
 
-epcis:SensorTime_TypeConstraint owl:sameAs [
+epcis:SensorTime_TypeConstraint
     sh:path epcis:time ;
     sh:datatype xsd:dateTimeStamp ;
     sh:name "time type constraint" ;
     sh:message "time must be an xsd:dateTimeStamp" 
-].
+.
 
-epcis:SensorMetadataStartTime_TypeConstraint owl:sameAs [
+epcis:SensorMetadataStartTime_TypeConstraint
     sh:path epcis:startTime ;
     sh:datatype xsd:dateTimeStamp ;
     sh:name "startTime type constraint" ;
     sh:message "startTime must be an xsd:dateTimeStamp" 
-].
+.
 
-epcis:SensorMetadataEndTime_TypeConstraint owl:sameAs [
+epcis:SensorMetadataEndTime_TypeConstraint
     sh:path epcis:endTime ;
     sh:datatype xsd:dateTimeStamp ;
     sh:name "endTime type constraint" ;
     sh:message "endTime must be an xsd:dateTimeStamp" 
-].
+.
 
 
-epcis:SensorReportType_TypeConstraint owl:sameAs [
-    sh:path epcis:type ;
-    sh:nodeKind sh:IRI ;
-    sh:name "type type constraint" ;
-    sh:message "type must be an xsd:anyURI" 
-].
-
-epcis:SensorReportType_IsMandatoryConstraint owl:sameAs [
-    sh:path epcis:type ;
-    sh:name "type is mandatory within an epcis:SensorReport" ;
-    sh:minCount 1 ;
-    sh:maxCount 1 ;
-    sh:message "type is a mandatory field within epcis:SensorReport, in which it must have a single value." 
-].
 
 
-epcis:SensorReportStringValue_TypeConstraint owl:sameAs [
+epcis:SensorReportStringValue_TypeConstraint
     sh:path epcis:stringValue ;
     sh:datatype xsd:string ;
     sh:name "stringValue type constraint" ;
     sh:message "stringValue must be an xsd:string" 
-].
+.
 
-epcis:SensorReportValue_TypeConstraint owl:sameAs [
+epcis:SensorReportValue_TypeConstraint
     sh:path epcis:value ;
-    sh:datatype xsd:float ;
+    sh:datatype xsd:double ;
     sh:name "value type constraint" ;
-    sh:message "value must be an xsd:float" 
-].
+    sh:message "value must be an xsd:double" 
+.
 
-epcis:SensorReportBooleanValue_TypeConstraint owl:sameAs [
+epcis:SensorReportBooleanValue_TypeConstraint
     sh:path epcis:booleanValue ;
     sh:datatype xsd:boolean ;
     sh:name "booleanValue type constraint" ;
     sh:message "booleanValue must be an xsd:boolean" 
-].
+.
 
-epcis:SensorReportURIValue_TypeConstraint owl:sameAs [
+epcis:SensorReportURIValue_TypeConstraint
     sh:path epcis:uriValue ;
     sh:nodeKind sh:IRI ;
     sh:name "uriValue type constraint" ;
     sh:message "uriValue must be an xsd:anyURI" 
-].
+.
 
-epcis:SensorReportHexBinaryValue_TypeConstraint owl:sameAs [
+epcis:SensorReportHexBinaryValue_TypeConstraint
     sh:path epcis:hexBinaryValue ;
     sh:datatype xsd:hexBinary ;
     sh:name "hexBinaryValue type constraint" ;
     sh:message "hexBinaryValue must be an xsd:hexBinary" 
-].
+.
 
-epcis:SensorReportMinValue_TypeConstraint owl:sameAs [
+epcis:SensorReportMinValue_TypeConstraint
     sh:path epcis:minValue ;
-    sh:datatype xsd:float ;
+    sh:datatype xsd:double ;
     sh:name "minValue type constraint" ;
-    sh:message "minValue must be an xsd:float" 
-].
+    sh:message "minValue must be an xsd:double" 
+.
 
-epcis:SensorReportMaxValue_TypeConstraint owl:sameAs [
+epcis:SensorReportMaxValue_TypeConstraint
     sh:path epcis:maxValue ;
-    sh:datatype xsd:float ;
+    sh:datatype xsd:double ;
     sh:name "maxValue type constraint" ;
-    sh:message "maxValue must be an xsd:float" 
-].
+    sh:message "maxValue must be an xsd:double" 
+.
 
-epcis:SensorReportMeanValue_TypeConstraint owl:sameAs [
+epcis:SensorReportMeanValue_TypeConstraint
     sh:path epcis:meanValue ;
-    sh:datatype xsd:float ;
+    sh:datatype xsd:double ;
     sh:name "meanValue type constraint" ;
-    sh:message "meanValue must be an xsd:float" 
-].
+    sh:message "meanValue must be an xsd:double" 
+.
 
-epcis:SensorReportSDev_TypeConstraint owl:sameAs [
+epcis:SensorReportSDev_TypeConstraint
     sh:path epcis:sDev ;
-    sh:datatype xsd:float ;
+    sh:datatype xsd:double ;
     sh:name "sDev type constraint" ;
-    sh:message "sDev must be an xsd:float" 
-].
+    sh:message "sDev must be an xsd:double" 
+.
 
-epcis:SensorReportPercRank_TypeConstraint owl:sameAs [
+epcis:SensorReportPercRank_TypeConstraint
     sh:path epcis:percRank ;
-    sh:datatype xsd:float ;
+    sh:datatype xsd:double ;
     sh:name "percRank type constraint" ;
-    sh:message "percRank must be an xsd:float" 
-].
+    sh:message "percRank must be an xsd:double" 
+.
 
-epcis:SensorReportPercValue_TypeConstraint owl:sameAs [
+epcis:SensorReportPercValue_TypeConstraint
     sh:path epcis:percValue ;
-    sh:datatype xsd:float ;
+    sh:datatype xsd:double ;
     sh:name "percValue type constraint" ;
-    sh:message "percValue must be an xsd:float" 
-].
+    sh:message "percValue must be an xsd:double" 
+.
 
-epcis:SensorReportChemicalSubstance_TypeConstraint owl:sameAs [
+epcis:SensorReportChemicalSubstance_TypeConstraint
     sh:path epcis:chemicalSubstance ;
     sh:nodeKind sh:IRI ;
     sh:name "chemicalSubstance type constraint" ;
     sh:message "chemicalSubstance must be an xsd:anyURI.  Please refer to the EPCIS 2.0 standard.  Use of InchiKey URI is recommended." 
-].
+.
 
-epcis:SensorReportMicroorganism_TypeConstraint owl:sameAs [
+epcis:SensorReportMicroorganism_TypeConstraint
     sh:path epcis:microorganism ;
     sh:nodeKind sh:IRI ;
     sh:name "microorganism type constraint" ;
     sh:message "microorganism must be an xsd:anyURI.  Please refer to the EPCIS 2.0 standard." 
-].
+.
 
-epcis:SensorDeviceID_TypeConstraint owl:sameAs [
+epcis:SensorDeviceID_TypeConstraint
     sh:path epcis:deviceID ;
     sh:nodeKind sh:IRI ;
     sh:name "deviceID type constraint" ;
     sh:message "deviceID must be an xsd:anyURI.  Please refer to the EPCIS 2.0 standard." 
-].
+.
 
-epcis:SensorDeviceMetaData_TypeConstraint owl:sameAs [
+epcis:SensorDeviceMetaData_TypeConstraint
     sh:path epcis:deviceMetadata ;
     sh:nodeKind sh:IRI ;
     sh:name "deviceMetadata type constraint" ;
     sh:message "deviceMetadata must be an xsd:anyURI.  Please refer to the EPCIS 2.0 standard." 
-].
+.
 
-epcis:SensorRawData_TypeConstraint owl:sameAs [
+epcis:SensorRawData_TypeConstraint
     sh:path epcis:rawData ;
     sh:nodeKind sh:IRI ;
     sh:name "rawData type constraint" ;
     sh:message "rawData must be an xsd:anyURI.  Please refer to the EPCIS 2.0 standard." 
-].
+.
 
-epcis:SensorBizRules_TypeConstraint owl:sameAs [
+epcis:SensorBizRules_TypeConstraint
     sh:path epcis:bizRules ;
     sh:nodeKind sh:IRI ;
     sh:name "bizRules type constraint" ;
     sh:message "bizRules must be an xsd:anyURI.  Please refer to the EPCIS 2.0 standard." 
-].
+.
 
-epcis:SensorDataProcessingMethod_TypeConstraint owl:sameAs [
+epcis:SensorDataProcessingMethod_TypeConstraint
     sh:path epcis:dataProcessingMethod ;
     sh:nodeKind sh:IRI ;
     sh:name "dataProcessingMethod type constraint" ;
     sh:message "dataProcessingMethod must be an xsd:anyURI.  Please refer to the EPCIS 2.0 standard." 
-].
+.
