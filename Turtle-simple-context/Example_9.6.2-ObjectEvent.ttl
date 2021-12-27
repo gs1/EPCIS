@@ -25,14 +25,14 @@
         epcis:action               "OBSERVE" ;
         epcis:bizLocation          <urn:epc:id:sgln:0614141.00888.0> ;
         epcis:bizStep              cbv:BizStep-receiving ;
-        epcis:destinationList      [ epcis:sourceOrDestination      <urn:epc:id:sgln:0614141.00777.0> ;
-                                     epcis:sourceOrDestinationType  cbv:SDT-location
-                                   ] ;
         epcis:destinationList      [ epcis:sourceOrDestination      <urn:epc:id:sgln:0614141.00001.0> ;
                                      epcis:sourceOrDestinationType  cbv:SDT-owning_party
                                    ] ;
+        epcis:destinationList      [ epcis:sourceOrDestination      <urn:epc:id:sgln:0614141.00777.0> ;
+                                     epcis:sourceOrDestinationType  cbv:SDT-location
+                                   ] ;
         epcis:disposition          cbv:Disp-in_progress ;
-        epcis:eventTime            "2013-06-08T14:58:56.591Z"^^xsd:dateTime ;
+        epcis:eventTime            "2013-06-08T14:58:56.591Z"^^xsd:dateTimeStamp ;
         epcis:eventTimeZoneOffset  "+02:00" ;
         epcis:quantityList         [ epcis:epcClass  <urn:epc:class:lgtin:4012345.012345.998877> ;
                                      epcis:quantity  2.0E2 ;

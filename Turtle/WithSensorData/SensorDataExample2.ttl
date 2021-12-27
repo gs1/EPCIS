@@ -34,32 +34,32 @@
                                                              epcis:rawData         <https://example.org/8004/401234599999> ;
                                                              epcis:startTime       "2019-04-02T13:55:01.000+01:00"^^xsd:dateTimeStamp
                                                            ] ;
-                                     epcis:sensorReport    [ epcis:maxValue  8.02E2 ;
-                                                             epcis:minValue  8.0E2 ;
-                                                             epcis:type      gs1:Illuminance ;
-                                                             epcis:uom       "LUX"
+                                     epcis:sensorReport    [ epcis:maxValue         8.02E2 ;
+                                                             epcis:measurementType  gs1:Illuminance ;
+                                                             epcis:minValue         8.0E2 ;
+                                                             epcis:uom              "LUX"
                                                            ] ;
-                                     epcis:sensorReport    [ epcis:maxValue  1.62E2 ;
-                                                             epcis:minValue  1.6E2 ;
-                                                             epcis:type      gs1:Speed ;
-                                                             epcis:uom       "KMH"
+                                     epcis:sensorReport    [ epcis:maxValue         1.62E2 ;
+                                                             epcis:measurementType  gs1:Speed ;
+                                                             epcis:minValue         1.6E2 ;
+                                                             epcis:uom              "KMH"
                                                            ] ;
-                                     epcis:sensorReport    [ epcis:maxValue  1.22E1 ;
-                                                             epcis:minValue  1.21E1 ;
-                                                             epcis:type      <file://C:/Humidity> ;
-                                                             epcis:uom       "A93"
+                                     epcis:sensorReport    [ epcis:maxValue         1.22E1 ;
+                                                             epcis:measurementType  gs1:AbsoluteHumidity ;
+                                                             epcis:minValue         1.21E1 ;
+                                                             epcis:uom              "A93"
                                                            ] ;
-                                     epcis:sensorReport    [ epcis:maxValue   2.62E1 ;
-                                                             epcis:meanValue  2.61E1 ;
-                                                             epcis:minValue   2.6E1 ;
-                                                             epcis:sDev       1.0E-1 ;
-                                                             epcis:type       gs1:Temperature ;
-                                                             epcis:uom        "CEL"
+                                     epcis:sensorReport    [ epcis:maxValue         2.62E1 ;
+                                                             epcis:meanValue        2.61E1 ;
+                                                             epcis:measurementType  gs1:Temperature ;
+                                                             epcis:minValue         2.6E1 ;
+                                                             epcis:sDev             1.0E-1 ;
+                                                             epcis:uom              "CEL"
                                                            ]
                                    ] .
 
 [ rdf:type         epcis:EPCISDocument ;
-  dcterms:created  "2005-07-11T11:30:47.0Z" ;
+  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
   owl:versionInfo  "2.0" ;
   epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;0301ed4c40065cde36eb9cc80780312d903a031a91d105639df4e649a9d01200?ver=CBV2.0> ]
 ] .

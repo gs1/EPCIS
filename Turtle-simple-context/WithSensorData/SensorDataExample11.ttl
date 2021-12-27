@@ -19,16 +19,20 @@
 @prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
 
+[ rdf:type         epcis:EPCISDocument ;
+  dcterms:created  "2020-07-03T00:05:00-06:00"^^xsd:dateTime ;
+  owl:versionInfo  "2.0" ;
+  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;8702ac80df8ac48d19cc0c8d19399249fc7037f8b752acb97baf7148960d2a17?ver=CBV2.0> ]
+] .
+
 <ni:///sha-256;8702ac80df8ac48d19cc0c8d19399249fc7037f8b752acb97baf7148960d2a17?ver=CBV2.0>
         rdf:type                   epcis:TransactionEvent ;
         epcis:action               "ADD" ;
         epcis:bizStep              cbv:BizStep-inspecting ;
-        epcis:bizTransactionList   [ epcis:bizTransaction      <urn:epcglobal:cbv:bt:4012345123456:RE100099> ;
-                                     epcis:bizTransactionType  cbv:BTT-po
-                                   ] ;
+        epcis:bizTransactionList   <urn:epcglobal:cbv:bt:4012345123456:RE100099> ;
         epcis:disposition          cbv:Disp-needs_replacement ;
         epcis:epcList              <urn:epc:id:sgtin:0614141.107340.2> , <urn:epc:id:sgtin:0614141.107340.1> ;
-        epcis:eventTime            "2020-07-03T00:05:00-06:00"^^xsd:dateTime ;
+        epcis:eventTime            "2020-07-03T00:05:00-06:00"^^xsd:dateTimeStamp ;
         epcis:eventTimeZoneOffset  "-06:00" ;
         epcis:readPoint            <urn:epc:id:sgln:4012345.00000.5> ;
         epcis:sensorElementList    [ epcis:sensorReport  [ epcis:measurementType  gs1:DoseEquivalentRate ;
@@ -37,8 +41,5 @@
                                                          ]
                                    ] .
 
-[ rdf:type         epcis:EPCISDocument ;
-  dcterms:created  "2020-07-03T00:05:00-06:00"^^xsd:dateTime ;
-  owl:versionInfo  "2.0" ;
-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;8702ac80df8ac48d19cc0c8d19399249fc7037f8b752acb97baf7148960d2a17?ver=CBV2.0> ]
-] .
+<urn:epcglobal:cbv:bt:4012345123456:RE100099>
+        epcis:bizTransactionType  cbv:BTT-po .

@@ -24,7 +24,7 @@
         examp:myField              "Example of a vendor/user extension" ;
         epcis:bizStep              cbv:BizStep-commissioning ;
         epcis:disposition          cbv:Disp-in_progress ;
-        epcis:eventTime            "2013-10-31T14:58:56.591Z"^^xsd:dateTime ;
+        epcis:eventTime            "2013-10-31T14:58:56.591Z"^^xsd:dateTimeStamp ;
         epcis:eventTimeZoneOffset  "+02:00" ;
         epcis:ilmd                 [ examp:batch           "XYZ" ;
                                      examp:bestBeforeDate  "2014-12-10"

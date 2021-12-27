@@ -19,26 +19,21 @@
 @prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
 
+<http://transaction.acme.com/po/12345678>
+        epcis:bizTransactionType  cbv:BTT-po .
+
 <ni:///sha-256;5f7c472bc4905de27a19b2efc8e4a9c6dc195139669b80b515f12218ff07cf65?ver=CBV2.0>
         rdf:type                   epcis:AssociationEvent ;
         examp:myField              "Example of a vendor/user extension" ;
         epcis:action               "ADD" ;
         epcis:bizLocation          <urn:epc:id:sgln:4012345.00002.0> ;
         epcis:bizStep              cbv:BizStep-installing ;
-        epcis:bizTransactionList   [ epcis:bizTransaction      "urn:epcglobal:cbv:bt:0614141073467:1152"^^xsd:anyURI ;
-                                     epcis:bizTransactionType  cbv:BTT-desadv
-                                   ] ;
-        epcis:bizTransactionList   [ epcis:bizTransaction      "urn:epcglobal:cbv:bt:4023333000000:54545"^^xsd:anyURI ;
-                                     epcis:bizTransactionType  cbv:BTT-inv
-                                   ] ;
-        epcis:bizTransactionList   [ epcis:bizTransaction      "http://transaction.acme.com/po/12345678"^^xsd:anyURI ;
-                                     epcis:bizTransactionType  cbv:BTT-po
-                                   ] ;
+        epcis:bizTransactionList   <urn:epcglobal:cbv:bt:4023333000000:54545> , <urn:epcglobal:cbv:bt:0614141073467:1152> , <http://transaction.acme.com/po/12345678> ;
         epcis:childEPCs            <urn:epc:id:giai:4000001.12345> , <urn:epc:id:giai:4000001.12346> ;
         epcis:childQuantityList    [ epcis:epcClass  <urn:epc:class:lgtin:4023333.002000.998877> ;
                                      epcis:quantity  4.0E0
                                    ] ;
-        epcis:destinationList      [ epcis:destination              <urn:epc:id:pgln:4012345.00000> ;
+        epcis:destinationList      [ epcis:sourceOrDestination      <urn:epc:id:pgln:4012345.00000> ;
                                      epcis:sourceOrDestinationType  cbv:SDT-possessing_party
                                    ] ;
         epcis:disposition          cbv:Disp-in_progress ;
@@ -50,18 +45,24 @@
         epcis:sensorElementList    [ epcis:sensorMetadata  [ epcis:endTime    "2019-11-06T13:57:00.000+01:00"^^xsd:dateTimeStamp ;
                                                              epcis:startTime  "2019-11-06T13:55:00.000+01:00"^^xsd:dateTimeStamp
                                                            ] ;
-                                     epcis:sensorReport    [ epcis:maxValue  1.22E1 ;
-                                                             epcis:minValue  1.21E1 ;
-                                                             epcis:type      <file://C:/Humidity> ;
-                                                             epcis:uom       "A93"
+                                     epcis:sensorReport    [ epcis:maxValue         1.22E1 ;
+                                                             epcis:measurementType  gs1:AbsoluteHumidity ;
+                                                             epcis:minValue         1.21E1 ;
+                                                             epcis:uom              "A93"
                                                            ]
                                    ] ;
-        epcis:sourceList           [ epcis:source                   <urn:epc:id:pgln:4000001.00012> ;
+        epcis:sourceList           [ epcis:sourceOrDestination      <urn:epc:id:pgln:4000001.00012> ;
                                      epcis:sourceOrDestinationType  cbv:SDT-possessing_party
                                    ] .
 
+<urn:epcglobal:cbv:bt:4023333000000:54545>
+        epcis:bizTransactionType  cbv:BTT-inv .
+
+<urn:epcglobal:cbv:bt:0614141073467:1152>
+        epcis:bizTransactionType  cbv:BTT-desadv .
+
 [ rdf:type         epcis:EPCISDocument ;
-  dcterms:created  "2005-07-11T11:30:47.0Z" ;
+  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
   owl:versionInfo  "2.0" ;
   epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;5f7c472bc4905de27a19b2efc8e4a9c6dc195139669b80b515f12218ff07cf65?ver=CBV2.0> ]
 ] .

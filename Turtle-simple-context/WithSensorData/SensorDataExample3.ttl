@@ -23,14 +23,14 @@
         rdf:type                   epcis:ObjectEvent ;
         epcis:action               "OBSERVE" ;
         epcis:bizStep              cbv:BizStep-inspecting ;
-        epcis:eventTime            "2019-04-02T15:00:00.000+01:00"^^xsd:dateTime ;
+        epcis:eventTime            "2019-04-02T15:00:00.000+01:00"^^xsd:dateTimeStamp ;
         epcis:eventTimeZoneOffset  "+01:00" ;
         epcis:readPoint            <urn:epc:id:sgln:4012345.00005.0> ;
-        epcis:sensorElementList    [ epcis:sensorMetadata  [ epcis:endTime    "2019-04-02T14:59:59.999+01:00"^^xsd:dateTime ;
-                                                             epcis:startTime  "2019-04-01T15:00:00.000+01:00"^^xsd:dateTime
+        epcis:sensorElementList    [ epcis:sensorMetadata  [ epcis:endTime    "2019-04-02T14:59:59.999+01:00"^^xsd:dateTimeStamp ;
+                                                             epcis:startTime  "2019-04-01T15:00:00.000+01:00"^^xsd:dateTimeStamp
                                                            ] ;
                                      epcis:sensorReport    [ epcis:maxValue         7.25E1 ;
-                                                             epcis:measurementType  gs1:Humidity ;
+                                                             epcis:measurementType  gs1:AbsoluteHumidity ;
                                                              epcis:minValue         6.92E1 ;
                                                              epcis:uom              "A93"
                                                            ] ;

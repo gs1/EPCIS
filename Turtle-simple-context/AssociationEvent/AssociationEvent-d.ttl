@@ -23,7 +23,7 @@
         rdf:type                   epcis:AssociationEvent ;
         epcis:action               "DELETE" ;
         epcis:bizStep              cbv:BizStep-disassembling ;
-        epcis:eventTime            "2019-11-04T14:00:00.000+01:00"^^xsd:dateTime ;
+        epcis:eventTime            "2019-11-04T14:00:00.000+01:00"^^xsd:dateTimeStamp ;
         epcis:eventTimeZoneOffset  "+01:00" ;
         epcis:parentID             <urn:epc:id:grai:4012345.55555.987> ;
         epcis:readPoint            <urn:epc:id:sgln:4012345.00002.0> .

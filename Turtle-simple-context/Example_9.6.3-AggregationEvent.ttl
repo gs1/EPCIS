@@ -19,6 +19,12 @@
 @prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
 
+[ rdf:type         epcis:EPCISDocument ;
+  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
+  owl:versionInfo  "2.0" ;
+  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;87b5f18a69993f0052046d4687dfacdf48f7c988cfabda2819688c86b4066a49?ver=CBV2.0> ]
+] .
+
 <ni:///sha-256;87b5f18a69993f0052046d4687dfacdf48f7c988cfabda2819688c86b4066a49?ver=CBV2.0>
         rdf:type                   epcis:AggregationEvent ;
         examp:myField              "Example of a vendor/user extension" ;
@@ -34,13 +40,7 @@
                                      epcis:quantity  1.0E1
                                    ] ;
         epcis:disposition          cbv:Disp-in_progress ;
-        epcis:eventTime            "2013-06-08T14:58:56.591Z"^^xsd:dateTime ;
+        epcis:eventTime            "2013-06-08T14:58:56.591Z"^^xsd:dateTimeStamp ;
         epcis:eventTimeZoneOffset  "+02:00" ;
         epcis:parentID             <urn:epc:id:sscc:0614141.1234567890> ;
         epcis:readPoint            <urn:epc:id:sgln:0614141.00777.0> .
-
-[ rdf:type         epcis:EPCISDocument ;
-  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
-  owl:versionInfo  "2.0" ;
-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;87b5f18a69993f0052046d4687dfacdf48f7c988cfabda2819688c86b4066a49?ver=CBV2.0> ]
-] .

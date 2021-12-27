@@ -19,14 +19,18 @@
 @prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
 
+[ rdf:type         epcis:EPCISDocument ;
+  dcterms:created  "2019-11-06T14:00:00.000+01:00"^^xsd:dateTime ;
+  owl:versionInfo  "2.0" ;
+  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;5f7c472bc4905de27a19b2efc8e4a9c6dc195139669b80b515f12218ff07cf65?ver=CBV2.0> ]
+] .
+
 <ni:///sha-256;5f7c472bc4905de27a19b2efc8e4a9c6dc195139669b80b515f12218ff07cf65?ver=CBV2.0>
         rdf:type                   epcis:AssociationEvent ;
         epcis:action               "ADD" ;
         epcis:bizLocation          <urn:epc:id:sgln:4012345.00002.0> ;
         epcis:bizStep              cbv:BizStep-installing ;
-        epcis:bizTransactionList   [ epcis:bizTransaction      <urn:epcglobal:cbv:bt:4023333000000:54545> ;
-                                     epcis:bizTransactionType  cbv:BTT-inv
-                                   ] ;
+        epcis:bizTransactionList   <urn:epcglobal:cbv:bt:4023333000000:54545> ;
         epcis:childEPCs            <urn:epc:id:giai:4000001.12345> , <urn:epc:id:giai:4000001.12346> ;
         epcis:childQuantityList    [ epcis:epcClass  <urn:epc:class:lgtin:4023333.002000.998877> ;
                                      epcis:quantity  4.0E0
@@ -35,16 +39,16 @@
                                      epcis:sourceOrDestinationType  cbv:SDT-possessing_party
                                    ] ;
         epcis:disposition          cbv:Disp-in_progress ;
-        epcis:eventTime            "2019-11-06T14:00:00.000+01:00"^^xsd:dateTime ;
+        epcis:eventTime            "2019-11-06T14:00:00.000+01:00"^^xsd:dateTimeStamp ;
         epcis:eventTimeZoneOffset  "+01:00" ;
         epcis:parentID             <urn:epc:id:grai:4012345.55555.98765> ;
         epcis:readPoint            <urn:epc:id:sgln:4012345.00001.0> ;
-        epcis:recordTime           "2019-11-06T14:05:00.000+01:00"^^xsd:dateTime ;
-        epcis:sensorElementList    [ epcis:sensorMetadata  [ epcis:endTime    "2019-11-06T13:57:00.000+01:00"^^xsd:dateTime ;
-                                                             epcis:startTime  "2019-11-06T13:55:00.000+01:00"^^xsd:dateTime
+        epcis:recordTime           "2019-11-06T14:05:00.000+01:00"^^xsd:dateTimeStamp ;
+        epcis:sensorElementList    [ epcis:sensorMetadata  [ epcis:endTime    "2019-11-06T13:57:00.000+01:00"^^xsd:dateTimeStamp ;
+                                                             epcis:startTime  "2019-11-06T13:55:00.000+01:00"^^xsd:dateTimeStamp
                                                            ] ;
                                      epcis:sensorReport    [ epcis:maxValue         1.22E1 ;
-                                                             epcis:measurementType  gs1:Humidity ;
+                                                             epcis:measurementType  gs1:AbsoluteHumidity ;
                                                              epcis:minValue         1.21E1 ;
                                                              epcis:uom              "A93"
                                                            ]
@@ -53,8 +57,5 @@
                                      epcis:sourceOrDestinationType  cbv:SDT-possessing_party
                                    ] .
 
-[ rdf:type         epcis:EPCISDocument ;
-  dcterms:created  "2019-11-06T14:00:00.000+01:00"^^xsd:dateTime ;
-  owl:versionInfo  "2.0" ;
-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;5f7c472bc4905de27a19b2efc8e4a9c6dc195139669b80b515f12218ff07cf65?ver=CBV2.0> ]
-] .
+<urn:epcglobal:cbv:bt:4023333000000:54545>
+        epcis:bizTransactionType  cbv:BTT-inv .

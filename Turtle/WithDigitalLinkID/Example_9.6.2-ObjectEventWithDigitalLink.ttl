@@ -25,10 +25,10 @@
         epcis:action               "OBSERVE" ;
         epcis:bizLocation          <urn:epc:id:sgln:0614141.00888.0> ;
         epcis:bizStep              cbv:BizStep-receiving ;
-        epcis:destinationList      [ epcis:destination              <urn:epc:id:sgln:0614141.00777.0> ;
+        epcis:destinationList      [ epcis:sourceOrDestination      <urn:epc:id:sgln:0614141.00777.0> ;
                                      epcis:sourceOrDestinationType  cbv:SDT-location
                                    ] ;
-        epcis:destinationList      [ epcis:destination              <urn:epc:id:sgln:0614141.00001.0> ;
+        epcis:destinationList      [ epcis:sourceOrDestination      <urn:epc:id:sgln:0614141.00001.0> ;
                                      epcis:sourceOrDestinationType  cbv:SDT-owning_party
                                    ] ;
         epcis:disposition          cbv:Disp-in_progress ;
@@ -39,15 +39,15 @@
                                      epcis:uom       "KGM"
                                    ] ;
         epcis:readPoint            <urn:epc:id:sgln:0614141.00777.0> ;
-        epcis:sourceList           [ epcis:source                   <urn:epc:id:sgln:4012345.00001.0> ;
-                                     epcis:sourceOrDestinationType  cbv:SDT-possessing_party
-                                   ] ;
-        epcis:sourceList           [ epcis:source                   <urn:epc:id:sgln:4012345.00225.0> ;
+        epcis:sourceList           [ epcis:sourceOrDestination      <urn:epc:id:sgln:4012345.00225.0> ;
                                      epcis:sourceOrDestinationType  cbv:SDT-location
+                                   ] ;
+        epcis:sourceList           [ epcis:sourceOrDestination      <urn:epc:id:sgln:4012345.00001.0> ;
+                                     epcis:sourceOrDestinationType  cbv:SDT-possessing_party
                                    ] .
 
 [ rdf:type         epcis:EPCISDocument ;
-  dcterms:created  "2005-07-11T11:30:47.0Z" ;
+  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
   owl:versionInfo  "2.0" ;
   epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;115b14983df54a9bcc3dd6a00dc4ebcab000bd52fda0abdd8996907e01dccc23?ver=CBV2.0> ]
 ] .

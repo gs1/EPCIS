@@ -30,23 +30,23 @@
         epcis:action               "OBSERVE" ;
         epcis:bizStep              cbv:BizStep-sensor_reporting ;
         epcis:epcList              <urn:epc:id:sgtin:4012345.022222.1234> ;
-        epcis:eventTime            "2020-05-08T15:00:00+01:00"^^xsd:dateTime ;
+        epcis:eventTime            "2020-05-08T15:00:00+01:00"^^xsd:dateTimeStamp ;
         epcis:eventTimeZoneOffset  "+01:00" ;
         epcis:readPoint            <urn:epc:id:sgln:4012345.00005.0> ;
         epcis:sensorElementList    [ epcis:sensorReport  [ examp:feature          "ex:product" ;
-                                                           epcis:component        cbv:COMP-Z ;
+                                                           epcis:component        cbv:COMP-z ;
                                                            epcis:measurementType  gs1:Speed ;
                                                            epcis:uom              "MTS" ;
                                                            epcis:value            0.0E0
                                                          ] ;
                                      epcis:sensorReport  [ examp:feature          "ex:product" ;
-                                                           epcis:component        cbv:COMP-Y ;
+                                                           epcis:component        cbv:COMP-y ;
                                                            epcis:measurementType  gs1:Speed ;
                                                            epcis:uom              "MTS" ;
                                                            epcis:value            1.28E1
                                                          ] ;
                                      epcis:sensorReport  [ examp:feature          "ex:product" ;
-                                                           epcis:component        cbv:COMP-X ;
+                                                           epcis:component        cbv:COMP-x ;
                                                            epcis:measurementType  gs1:Speed ;
                                                            epcis:uom              "MTS" ;
                                                            epcis:value            4.5E0

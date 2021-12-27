@@ -348,9 +348,9 @@ epcis:DeclarationTime_IsMandatory owl:sameAs [
 
 epcis:DeclarationTime_TypeConstraint owl:sameAs [
     sh:path epcis:declarationTime ;
-    sh:datatype xsd:dateTime ;
+    sh:datatype xsd:dateTimeStamp ;
     sh:name "declarationTime type constraint" ;
-    sh:message "declarationTime must be an xsd:dateTime" 
+    sh:message "declarationTime must be an xsd:dateTimeStamp" 
 ].
 
 
@@ -440,9 +440,9 @@ epcis:EventTime_IsMandatory owl:sameAs [
 
 epcis:EventTime_TypeConstraint owl:sameAs [
     sh:path epcis:eventTime ;
-    sh:datatype xsd:dateTime ;
+    sh:datatype xsd:dateTimeStamp ;
     sh:name "eventTime type constraint" ;
-    sh:message "eventTime must be an xsd:dateTime" 
+    sh:message "eventTime must be an xsd:dateTimeStamp" 
 ].
 
 
@@ -621,9 +621,9 @@ epcis:ReadPoint_TypeConstraint owl:sameAs [
 
 epcis:RecordTime_TypeConstraint owl:sameAs [
     sh:path epcis:recordTime ;
-    sh:datatype xsd:dateTime ;
+    sh:datatype xsd:dateTimeStamp ;
     sh:name "recordTime type constraint" ;
-    sh:message "recordTime must be an xsd:dateTime" 
+    sh:message "recordTime must be an xsd:dateTimeStamp" 
 ].
 
 
@@ -782,23 +782,23 @@ epcis:UOM_TypeAndFormat owl:sameAs [
 
 epcis:SensorTime_TypeConstraint owl:sameAs [
     sh:path epcis:time ;
-    sh:datatype xsd:dateTime ;
+    sh:datatype xsd:dateTimeStamp ;
     sh:name "time type constraint" ;
-    sh:message "time must be an xsd:dateTime" 
+    sh:message "time must be an xsd:dateTimeStamp" 
 ].
 
 epcis:SensorMetadataStartTime_TypeConstraint owl:sameAs [
     sh:path epcis:startTime ;
-    sh:datatype xsd:dateTime ;
+    sh:datatype xsd:dateTimeStamp ;
     sh:name "startTime type constraint" ;
-    sh:message "startTime must be an xsd:dateTime" 
+    sh:message "startTime must be an xsd:dateTimeStamp" 
 ].
 
 epcis:SensorMetadataEndTime_TypeConstraint owl:sameAs [
     sh:path epcis:endTime ;
-    sh:datatype xsd:dateTime ;
+    sh:datatype xsd:dateTimeStamp ;
     sh:name "endTime type constraint" ;
-    sh:message "endTime must be an xsd:dateTime" 
+    sh:message "endTime must be an xsd:dateTimeStamp" 
 ].
 
 
