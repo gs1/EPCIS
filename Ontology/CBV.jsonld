@@ -976,7 +976,7 @@
         "owl:Class",
         "rdfs:Class"
       ],
-      "comment": "These identifiers populate the disposition or persistentDisposition fields in an EPCIS event.",
+      "comment": "These identifiers populate the disposition field of an EPCIS event or the set / unset fields within the persistentDisposition field of an EPCIS event.",
       "isDefinedBy": "https://ns.gs1.org/cbv/",
       "label": {
         "@language": "en",

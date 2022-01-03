@@ -499,7 +499,7 @@ cbv:BizStep-void_shipping
 #################### Disposition
 
 cbv:Disp  a               owl:Class , rdfs:Class ;
-        rdfs:comment      "These identifiers populate the disposition or persistentDisposition fields in an EPCIS event."@en ;
+        rdfs:comment      "These identifiers populate the disposition field of an EPCIS event or the set / unset fields within the persistentDisposition field of an EPCIS event."@en ;
         rdfs:isDefinedBy  cbv: ;
         rdfs:label        "Disposition ID"@en ;
         rdfs:subClassOf   cbv:TypeCode ;
