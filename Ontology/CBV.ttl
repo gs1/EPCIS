@@ -124,6 +124,13 @@ cbv:BTT-testres  a        cbv:BTT ;
         owl:sameAs        <urn:epcglobal:cbv:btt:testres> ;
         sw:term_status    "stable" .
 
+cbv:BTT-upevt  a        cbv:BTT ;
+        rdfs:comment      "Event ID URI(s) of event(s) provided by an upstream supplier, such as packing and shipping events (e.g., as the basis for the inferred completeness of inbound aggregations)."@en ;
+        rdfs:isDefinedBy  cbv: ;
+        rdfs:label        "Upstream EPCIS Event"@en ;
+        owl:sameAs        <urn:epcglobal:cbv:btt:upevt> ;
+        sw:term_status    "stable" .
+
 #################### Business Step
 
 cbv:BizStep  a            owl:Class , rdfs:Class ;

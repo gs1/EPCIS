@@ -288,6 +288,18 @@
       "term_status": "stable"
     },
     {
+      "@id": "cbv:BTT-upevt",
+      "@type": "cbv:BTT",
+      "comment": "Event ID URI(s) of event(s) provided by an upstream supplier, such as packing and shipping events (e.g., as the basis for the inferred completeness of inbound aggregations).",
+      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "label": {
+        "@language": "en",
+        "@value": "Upstream EPCIS Event"
+      },
+      "sameAs": "urn:epcglobal:cbv:btt:upevt",
+      "term_status": "stable"
+    },
+    {
       "@id": "cbv:BizStep",
       "@type": [
         "owl:Class",
