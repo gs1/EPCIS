@@ -29,12 +29,8 @@
             ]
         },
         "vocab-uri": {
-            "allOf": [
-                {
                     "type": "string",
                     "format": "uri"
-                }
-            ]
         },
         "required-ld-context": {
             "type": "object",
