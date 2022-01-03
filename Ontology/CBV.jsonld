@@ -1611,7 +1611,7 @@
       "term_status": "stable"
     },
     {
-      "@id": "cbv:Comp-x",
+      "@id": "cbv:Comp-X",
       "@type": "cbv:Comp",
       "comment": "Component or projection along the x axis in Cartesian coordinates (X,Y,Z)",
       "isDefinedBy": "https://ns.gs1.org/cbv/",
@@ -1619,11 +1619,11 @@
         "@language": "en",
         "@value": "x coordinate"
       },
-      "sameAs": "urn:epcglobal:cbv:comp:x",
+      "sameAs": "urn:epcglobal:cbv:comp:X",
       "term_status": "stable"
     },
     {
-      "@id": "cbv:Comp-y",
+      "@id": "cbv:Comp-Y",
       "@type": "cbv:Comp",
       "comment": "Component or projection along the y axis in Cartesian coordinates (X,Y,Z)",
       "isDefinedBy": "https://ns.gs1.org/cbv/",
@@ -1631,11 +1631,11 @@
         "@language": "en",
         "@value": "y coordinate"
       },
-      "sameAs": "urn:epcglobal:cbv:comp:y",
+      "sameAs": "urn:epcglobal:cbv:comp:Y",
       "term_status": "stable"
     },
     {
-      "@id": "cbv:Comp-z",
+      "@id": "cbv:Comp-Z",
       "@type": "cbv:Comp",
       "comment": "Component or projection along the z axis in Cartesian coordinates (X,Y,Z)",
       "isDefinedBy": "https://ns.gs1.org/cbv/",
@@ -1643,11 +1643,11 @@
         "@language": "en",
         "@value": "z coordinate"
       },
-      "sameAs": "urn:epcglobal:cbv:comp:z",
+      "sameAs": "urn:epcglobal:cbv:comp:Z",
       "term_status": "stable"
     },
     {
-      "@id": "cbv:Comp-axial_distance",
+      "@id": "cbv:Comp-AXIAL_DISTANCE",
       "@type": "cbv:Comp",
       "comment": "Radial distance from the cylindrical axis in a cylindrical polar coordinate system; the magnitude of the projection of the vector in the plane perpendicular to the cylindrical axis",
       "isDefinedBy": "https://ns.gs1.org/cbv/",
@@ -1655,11 +1655,11 @@
         "@language": "en",
         "@value": "axial distance"
       },
-      "sameAs": "urn:epcglobal:cbv:comp:axial_distance",
+      "sameAs": "urn:epcglobal:cbv:comp:AXIAL_DISTANCE",
       "term_status": "stable"
     },
     {
-      "@id": "cbv:Comp-azimuth",
+      "@id": "cbv:Comp-AZIMUTH",
       "@type": "cbv:Comp",
       "comment": "Angle measured in the XY plane, anticlockwise from the X axis (in cylindrical or spherical polar coordinate systems) to the plane containing the vector and the Z axis",
       "isDefinedBy": "https://ns.gs1.org/cbv/",
@@ -1667,11 +1667,11 @@
         "@language": "en",
         "@value": "azimuth"
       },
-      "sameAs": "urn:epcglobal:cbv:comp:azimuth",
+      "sameAs": "urn:epcglobal:cbv:comp:AZIMUTH",
       "term_status": "stable"
     },
     {
-      "@id": "cbv:Comp-height",
+      "@id": "cbv:Comp-HEIGHT",
       "@type": "cbv:Comp",
       "comment": "Height parallel to the cylindrical axis in a cylindrical polar coordinate system, above a defined reference origin plane (typically the XY plane) ",
       "isDefinedBy": "https://ns.gs1.org/cbv/",
@@ -1679,11 +1679,11 @@
         "@language": "en",
         "@value": "height"
       },
-      "sameAs": "urn:epcglobal:cbv:comp:height",
+      "sameAs": "urn:epcglobal:cbv:comp:HEIGHT",
       "term_status": "stable"
     },
     {
-      "@id": "cbv:Comp-spherical_radius",
+      "@id": "cbv:Comp-SPHERICAL_RADIUS",
       "@type": "cbv:Comp",
       "comment": "Radial distance from the centre of a sphere in a spherical polar coordinate system; the magnitude of the vector",
       "isDefinedBy": "https://ns.gs1.org/cbv/",
@@ -1691,11 +1691,11 @@
         "@language": "en",
         "@value": "spherical radius"
       },
-      "sameAs": "urn:epcglobal:cbv:comp:spherical_radius",
+      "sameAs": "urn:epcglobal:cbv:comp:SPHERICAL_RADIUS",
       "term_status": "stable"
     },
     {
-      "@id": "cbv:Comp-polar_angle",
+      "@id": "cbv:Comp-POLAR_ANGLE",
       "@type": "cbv:Comp",
       "comment": "Angle measured from the Z axis to the vector in a spherical polar coordinate system",
       "isDefinedBy": "https://ns.gs1.org/cbv/",
@@ -1703,11 +1703,11 @@
         "@language": "en",
         "@value": "polar angle"
       },
-      "sameAs": "urn:epcglobal:cbv:comp:polar_angle",
+      "sameAs": "urn:epcglobal:cbv:comp:POLAR_ANGLE",
       "term_status": "stable"
     },
     {
-      "@id": "cbv:Comp-elevation_angle",
+      "@id": "cbv:Comp-ELEVATION_ANGLE",
       "@type": "cbv:Comp",
       "comment": "Angle measured from the XY plane to the vector in a spherical polar coordinate system",
       "isDefinedBy": "https://ns.gs1.org/cbv/",
@@ -1715,11 +1715,11 @@
         "@language": "en",
         "@value": "elevation angle"
       },
-      "sameAs": "urn:epcglobal:cbv:comp:elevation_angle",
+      "sameAs": "urn:epcglobal:cbv:comp:ELEVATION_ANGLE",
       "term_status": "stable"
     },
     {
-      "@id": "cbv:Comp-easting",
+      "@id": "cbv:Comp-EASTING",
       "@type": "cbv:Comp",
       "comment": "A component or projection along an east-pointing axis in a geographic Cartesian coordinate system",
       "isDefinedBy": "https://ns.gs1.org/cbv/",
@@ -1727,11 +1727,11 @@
         "@language": "en",
         "@value": "easting"
       },
-      "sameAs": "urn:epcglobal:cbv:comp:easting",
+      "sameAs": "urn:epcglobal:cbv:comp:EASTING",
       "term_status": "stable"
     },
     {
-      "@id": "cbv:Comp-northing",
+      "@id": "cbv:Comp-NORTHING",
       "@type": "cbv:Comp",
       "comment": "A component or projection along a north-pointing axis in a geographic Cartesian coordinate system",
       "isDefinedBy": "https://ns.gs1.org/cbv/",
@@ -1739,11 +1739,11 @@
         "@language": "en",
         "@value": "northing"
       },
-      "sameAs": "urn:epcglobal:cbv:comp:northing",
+      "sameAs": "urn:epcglobal:cbv:comp:NORTHING",
       "term_status": "stable"
     },
     {
-      "@id": "cbv:Comp-latitude",
+      "@id": "cbv:Comp-LATITUDE",
       "@type": "cbv:Comp",
       "comment": "The angle of elevation from the equatorial plane in a geographic coordinate system",
       "isDefinedBy": "https://ns.gs1.org/cbv/",
@@ -1751,11 +1751,11 @@
         "@language": "en",
         "@value": "latitude"
       },
-      "sameAs": "urn:epcglobal:cbv:comp:latitude",
+      "sameAs": "urn:epcglobal:cbv:comp:LATITUDE",
       "term_status": "stable"
     },
     {
-      "@id": "cbv:Comp-longitude",
+      "@id": "cbv:Comp-LONGITUDE",
       "@type": "cbv:Comp",
       "comment": "The angle (measured within the equatorial plane) to the east of the prime meridian in a geographic coordinate system",
       "isDefinedBy": "https://ns.gs1.org/cbv/",
@@ -1763,11 +1763,11 @@
         "@language": "en",
         "@value": "longitude"
       },
-      "sameAs": "urn:epcglobal:cbv:comp:longitude",
+      "sameAs": "urn:epcglobal:cbv:comp:LONGITUDE",
       "term_status": "stable"
     },
     {
-      "@id": "cbv:Comp-altitude",
+      "@id": "cbv:Comp-ALTITUDE",
       "@type": "cbv:Comp",
       "comment": "The height above a defined surface (such as mean sea level) in a geographic coordinate system",
       "isDefinedBy": "https://ns.gs1.org/cbv/",
@@ -1775,7 +1775,7 @@
         "@language": "en",
         "@value": "altitude"
       },
-      "sameAs": "urn:epcglobal:cbv:comp:altitude",
+      "sameAs": "urn:epcglobal:cbv:comp:ALTITUDE",
       "term_status": "stable"
     }
   ]

@@ -841,102 +841,102 @@ cbv:Comp  a                owl:Class , rdfs:Class ;
         rdfs:subClassOf   cbv:TypeCode ;
         sw:term_status    "stable" .
 
-cbv:Comp-x  a       cbv:Comp ;
+cbv:Comp-X  a       cbv:Comp ;
         rdfs:comment      "Component or projection along the x axis in Cartesian coordinates (X,Y,Z)"@en ;
         rdfs:isDefinedBy  cbv: ;
         rdfs:label        "x coordinate"@en ;
-        owl:sameAs        <urn:epcglobal:cbv:comp:x> ;
+        owl:sameAs        <urn:epcglobal:cbv:comp:X> ;
         sw:term_status    "stable" .
 
-cbv:Comp-y  a       cbv:Comp ;
+cbv:Comp-Y  a       cbv:Comp ;
         rdfs:comment      "Component or projection along the y axis in Cartesian coordinates (X,Y,Z)"@en ;
         rdfs:isDefinedBy  cbv: ;
         rdfs:label        "y coordinate"@en ;
-        owl:sameAs        <urn:epcglobal:cbv:comp:y> ;
+        owl:sameAs        <urn:epcglobal:cbv:comp:Y> ;
         sw:term_status    "stable" .
 
-cbv:Comp-z  a       cbv:Comp ;
+cbv:Comp-Z  a       cbv:Comp ;
         rdfs:comment      "Component or projection along the z axis in Cartesian coordinates (X,Y,Z)"@en ;
         rdfs:isDefinedBy  cbv: ;
         rdfs:label        "z coordinate"@en ;
-        owl:sameAs        <urn:epcglobal:cbv:comp:z> ;
+        owl:sameAs        <urn:epcglobal:cbv:comp:Z> ;
         sw:term_status    "stable" .
 
-cbv:Comp-axial_distance  a       cbv:Comp ;
+cbv:Comp-AXIAL_DISTANCE  a       cbv:Comp ;
         rdfs:comment      "Radial distance from the cylindrical axis in a cylindrical polar coordinate system; the magnitude of the projection of the vector in the plane perpendicular to the cylindrical axis"@en ;
         rdfs:isDefinedBy  cbv: ;
         rdfs:label        "axial distance"@en ;
-        owl:sameAs        <urn:epcglobal:cbv:comp:axial_distance> ;
+        owl:sameAs        <urn:epcglobal:cbv:comp:AXIAL_DISTANCE> ;
         sw:term_status    "stable" .
 
-cbv:Comp-azimuth  a       cbv:Comp ;
+cbv:Comp-AZIMUTH  a       cbv:Comp ;
         rdfs:comment      "Angle measured in the XY plane, anticlockwise from the X axis (in cylindrical or spherical polar coordinate systems) to the plane containing the vector and the Z axis"@en ;
         rdfs:isDefinedBy  cbv: ;
         rdfs:label        "azimuth"@en ;
-        owl:sameAs        <urn:epcglobal:cbv:comp:azimuth> ;
+        owl:sameAs        <urn:epcglobal:cbv:comp:AZIMUTH> ;
         sw:term_status    "stable" .
 
-cbv:Comp-height  a       cbv:Comp ;
+cbv:Comp-HEIGHT  a       cbv:Comp ;
         rdfs:comment      "Height parallel to the cylindrical axis in a cylindrical polar coordinate system, above a defined reference origin plane (typically the XY plane) "@en ;
         rdfs:isDefinedBy  cbv: ;
         rdfs:label        "height"@en ;
-        owl:sameAs        <urn:epcglobal:cbv:comp:height> ;
+        owl:sameAs        <urn:epcglobal:cbv:comp:HEIGHT> ;
         sw:term_status    "stable" .
 
-cbv:Comp-spherical_radius  a       cbv:Comp ;
+cbv:Comp-SPHERICAL_RADIUS  a       cbv:Comp ;
         rdfs:comment      "Radial distance from the centre of a sphere in a spherical polar coordinate system; the magnitude of the vector"@en ;
         rdfs:isDefinedBy  cbv: ;
         rdfs:label        "spherical radius"@en ;
-        owl:sameAs        <urn:epcglobal:cbv:comp:spherical_radius> ;
+        owl:sameAs        <urn:epcglobal:cbv:comp:SPHERICAL_RADIUS> ;
         sw:term_status    "stable" .
 
-cbv:Comp-polar_angle  a       cbv:Comp ;
+cbv:Comp-POLAR_ANGLE  a       cbv:Comp ;
         rdfs:comment      "Angle measured from the Z axis to the vector in a spherical polar coordinate system"@en ;
         rdfs:isDefinedBy  cbv: ;
         rdfs:label        "polar angle"@en ;
-        owl:sameAs        <urn:epcglobal:cbv:comp:polar_angle> ;
+        owl:sameAs        <urn:epcglobal:cbv:comp:POLAR_ANGLE> ;
         sw:term_status    "stable" .
 
-cbv:Comp-elevation_angle  a       cbv:Comp ;
+cbv:Comp-ELEVATION_ANGLE  a       cbv:Comp ;
         rdfs:comment      "Angle measured from the XY plane to the vector in a spherical polar coordinate system"@en ;
         rdfs:isDefinedBy  cbv: ;
         rdfs:label        "elevation angle"@en ;
-        owl:sameAs        <urn:epcglobal:cbv:comp:elevation_angle> ;
+        owl:sameAs        <urn:epcglobal:cbv:comp:ELEVATION_ANGLE> ;
         sw:term_status    "stable" .
 
-cbv:Comp-easting  a       cbv:Comp ;
+cbv:Comp-EASTING  a       cbv:Comp ;
         rdfs:comment      "A component or projection along an east-pointing axis in a geographic Cartesian coordinate system"@en ;
         rdfs:isDefinedBy  cbv: ;
         rdfs:label        "easting"@en ;
-        owl:sameAs        <urn:epcglobal:cbv:comp:easting> ;
+        owl:sameAs        <urn:epcglobal:cbv:comp:EASTING> ;
         sw:term_status    "stable" .
 
-cbv:Comp-northing  a       cbv:Comp ;
+cbv:Comp-NORTHING  a       cbv:Comp ;
         rdfs:comment      "A component or projection along a north-pointing axis in a geographic Cartesian coordinate system"@en ;
         rdfs:isDefinedBy  cbv: ;
         rdfs:label        "northing"@en ;
-        owl:sameAs        <urn:epcglobal:cbv:comp:northing> ;
+        owl:sameAs        <urn:epcglobal:cbv:comp:NORTHING> ;
         sw:term_status    "stable" .
 
-cbv:Comp-latitude  a       cbv:Comp ;
+cbv:Comp-LATITUDE  a       cbv:Comp ;
         rdfs:comment      "The angle of elevation from the equatorial plane in a geographic coordinate system"@en ;
         rdfs:isDefinedBy  cbv: ;
         rdfs:label        "latitude"@en ;
-        owl:sameAs        <urn:epcglobal:cbv:comp:latitude> ;
+        owl:sameAs        <urn:epcglobal:cbv:comp:LATITUDE> ;
         sw:term_status    "stable" .
 
-cbv:Comp-longitude  a       cbv:Comp ;
+cbv:Comp-LONGITUDE  a       cbv:Comp ;
         rdfs:comment      "The angle (measured within the equatorial plane) to the east of the prime meridian in a geographic coordinate system"@en ;
         rdfs:isDefinedBy  cbv: ;
         rdfs:label        "longitude"@en ;
-        owl:sameAs        <urn:epcglobal:cbv:comp:longitude> ;
+        owl:sameAs        <urn:epcglobal:cbv:comp:LONGITUDE> ;
         sw:term_status    "stable" .
 
-cbv:Comp-altitude  a       cbv:Comp ;
+cbv:Comp-ALTITUDE  a       cbv:Comp ;
         rdfs:comment      "The height above a defined surface (such as mean sea level) in a geographic coordinate system"@en ;
         rdfs:isDefinedBy  cbv: ;
         rdfs:label        "altitude"@en ;
-        owl:sameAs        <urn:epcglobal:cbv:comp:altitude> ;
+        owl:sameAs        <urn:epcglobal:cbv:comp:ALTITUDE> ;
         sw:term_status    "stable" .
 
 
