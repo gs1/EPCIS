@@ -441,9 +441,7 @@
         }
       },
       "required": [
-        "declarationTime",
-        "reason",
-        "correctiveEventIDs"
+        "declarationTime"
       ]
     },
     "quantityElement": {
@@ -763,12 +761,8 @@
       ]
     },
     "vocab-uri": {
-      "allOf": [
-        {
-          "type": "string",
-          "format": "uri"
-        }
-      ]
+      "type": "string",
+      "format": "uri"
     },
     "required-ld-context": {
       "type": "object",
