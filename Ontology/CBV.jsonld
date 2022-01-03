@@ -1777,18 +1777,6 @@
       },
       "sameAs": "urn:epcglobal:cbv:comp:altitude",
       "term_status": "stable"
-    },
-    {
-      "@id": "cbv:Comp-geocoordinate",
-      "@type": "cbv:Comp",
-      "comment": "RFC5870-compliant geographic location URI expressed via the uriValue field",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
-      "label": {
-        "@language": "en",
-        "@value": "geocoordinate"
-      },
-      "sameAs": "urn:epcglobal:cbv:comp:geocoordinate",
-      "term_status": "stable"
     }
   ]
 }

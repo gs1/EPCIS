@@ -939,10 +939,4 @@ cbv:Comp-altitude  a       cbv:Comp ;
         owl:sameAs        <urn:epcglobal:cbv:comp:altitude> ;
         sw:term_status    "stable" .
 
-cbv:Comp-geocoordinate  a       cbv:Comp ;
-        rdfs:comment      "RFC5870-compliant geographic location URI expressed via the uriValue field"@en ;
-        rdfs:isDefinedBy  cbv: ;
-        rdfs:label        "geocoordinate"@en ;
-        owl:sameAs        <urn:epcglobal:cbv:comp:geocoordinate> ;
-        sw:term_status    "stable" .
 
