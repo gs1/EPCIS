@@ -148,7 +148,7 @@ epcis:ILMD  a             owl:Class , rdfs:Class ;
         sw:term_status    "stable" .
 
 epcis:PersistentDisposition      a owl:Class , rdfs:Class ;
-        rdfs:comment      "The persistentDisposition field of an event specifies one or more business conditions of the event's objects, subsequent to the event. One or more persistentDisposition values can be set or unset, independently of each other. Values that are set are considered to remain valid until explicity unset. Like disposition, persistentDisposition leverages the DispositionID Standard Vocabulary."@en ;
+        rdfs:comment      "The persistentDisposition field of an event specifies one or more business conditions of the event's objects, subsequent to the event. One or more persistentDisposition values can be set or unset, independently of each other. Values that are set are considered to remain valid until explicitly unset. Like disposition, persistentDisposition leverages the DispositionID Standard Vocabulary."@en ;
         rdfs:isDefinedBy  epcis: ;
         rdfs:label        "PersistentDisposition" ;
         sw:term_status    "stable" .
@@ -614,7 +614,7 @@ epcis:percRank  a         owl:DatatypeProperty , rdf:Property ;
         schema:domainIncludes epcis:SensorReport ;
         rdfs:isDefinedBy  epcis: ;
         rdfs:label        "percRank" ;
-        rdfs:range        xsd:dobule ;
+        rdfs:range        xsd:double ;
         schema:rangeIncludes xsd:double ;
         sw:term_status    "stable" .
 
