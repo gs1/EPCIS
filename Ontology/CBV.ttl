@@ -164,7 +164,7 @@ cbv:BizStep-assembling
         rdfs:label        "assembling"@en ;
         owl:sameAs        <urn:epcglobal:cbv:bizstep:assembling> ;
         sw:term_status    "stable" ;
-        skos:example      "Computer parts (hard drive, battery, RAM) assembled into a consumer ready computer\nMRO processes involving components added to an assembly comprised of multiple parts.\nHealthcare kitting: a surgical kit including drug, syringe, and gauze are combined to create a new 'product': a *kit*."@en .
+        skos:example      "Computer parts (hard drive, battery, RAM) assembled into a consumer ready computer\nMaintenance, repair and overhaul processes involving components added to an assembly comprised of multiple parts.\nHealthcare kitting: a surgical kit including drug, syringe, and gauze are combined to create a new 'product': a *kit*."@en .
 
 cbv:BizStep-collecting
         a                 cbv:BizStep ;
@@ -450,7 +450,7 @@ cbv:BizStep-stocking  a   cbv:BizStep ;
         rdfs:label        "stocking"@en ;
         owl:sameAs        <urn:epcglobal:cbv:bizstep:stocking> ;
         sw:term_status    "stable" ;
-        skos:example      "Retailer X places cans from a case on to a shelf on the sales floor.\nDist X moves goods from a storage area to a picking area."@en .
+        skos:example      "Retailer X places cans from a case on to a shelf on the sales floor.\nDistributor X moves goods from a storage area to a picking area."@en .
 
 cbv:BizStep-storing  a    cbv:BizStep ;
         rdfs:comment      "Denotes a specific activity within a business process where an object is moved into and out of storage within a location."@en ;

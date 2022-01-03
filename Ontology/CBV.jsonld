@@ -358,7 +358,7 @@
       "sameAs": "urn:epcglobal:cbv:bizstep:assembling",
       "skos:example": {
         "@language": "en",
-        "@value": "Computer parts (hard drive, battery, RAM) assembled into a consumer ready computer\nMRO processes involving components added to an assembly comprised of multiple parts.\nHealthcare kitting: a surgical kit including drug, syringe, and gauze are combined to create a new 'product': a *kit*."
+        "@value": "Computer parts (hard drive, battery, RAM) assembled into a consumer ready computer\nMaintenance, repair and overhaul processes involving components added to an assembly comprised of multiple parts.\nHealthcare kitting: a surgical kit including drug, syringe, and gauze are combined to create a new 'product': a *kit*."
       },
       "term_status": "stable"
     },
@@ -886,7 +886,7 @@
       "sameAs": "urn:epcglobal:cbv:bizstep:stocking",
       "skos:example": {
         "@language": "en",
-        "@value": "Retailer X places cans from a case on to a shelf on the sales floor.\nDist X moves goods from a storage area to a picking area."
+        "@value": "Retailer X places cans from a case on to a shelf on the sales floor.\nDistributor X moves goods from a storage area to a picking area."
       },
       "term_status": "stable"
     },
