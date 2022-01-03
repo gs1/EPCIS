@@ -39,7 +39,7 @@ function visit (parent, key, index, node) {
       loadChildSchema(node);
       parent.$ref = localizeDefinition(node);
     }
-  } else if (Array.typerray(node)) {
+  } else if (Array.isArray(node)) {
     node.forEach((aElement, aIndex) => {
       visit(node, key, aIndex, aElement);
     });
