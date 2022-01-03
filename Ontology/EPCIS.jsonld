@@ -267,7 +267,7 @@
         "owl:Class",
         "rdfs:Class"
       ],
-      "comment": "TODO. Includes a list of events (epcis:eventList) and some metadata: dcterms:created, dcterms:format (MIME type), owl:versionInfo (fixed as '2.0')",
+      "comment": "An EPCISDocument is a means to transport a collection of EPCIS events, optionally accompanied by relevant master data, as a single electronic document.  It is used by the concrete bindings of the EPCIS Capture Interface.  In addition, trading partners may by mutual agreement use it as a single electronic document.",
       "isDefinedBy": "https://ns.gs1.org/epcis/",
       "jsonldUriLabel": "id",
       "label": "EPCISDocument",
@@ -755,7 +755,7 @@
         "owl:ObjectProperty",
         "rdf:Property"
       ],
-      "comment": "TODO",
+      "comment": "A class-level identifier for the class to which the specified quantity of objects belongs.",
       "domain": "epcis:QuantityElement",
       "domainIncludes": "epcis:QuantityElement",
       "isDefinedBy": "https://ns.gs1.org/epcis/",
@@ -1171,7 +1171,7 @@
         "owl:DatatypeProperty",
         "rdf:Property"
       ],
-      "comment": "TODO",
+      "comment": "A number that specifies how many or how much of the specified EPCClass is denoted by this QuantityElement.",
       "domain": "epcis:QuantityElement",
       "domainIncludes": "epcis:QuantityElement",
       "isDefinedBy": "https://ns.gs1.org/epcis/",
@@ -1473,7 +1473,7 @@
         "owl:ObjectProperty",
         "rdf:Property"
       ],
-      "comment": "TODO",
+      "comment": "A unique identifier that links this event to other TransformationEvents having an identical value of transformationID. When specified, all inputs to all events sharing the same value of the transformationID may contribute to all outputs of all events sharing that value of transformationID. If transformationID is omitted, then the inputs of this event may contribute to the outputs of this event, but the inputs and outputs of other events are not connected to this one.",
       "domain": "epcis:TransformationEvent",
       "domainIncludes": "epcis:TransformationEvent",
       "isDefinedBy": "https://ns.gs1.org/epcis/",
@@ -1501,7 +1501,7 @@
         "owl:DatatypeProperty",
         "rdf:Property"
       ],
-      "comment": "(Optional) Unit of measure by which the specified value(s) of the property specified by type should be interpreted.  If there is no value, minValue, maxValue, averageValue or percValue field present, uom SHALL be omitted.  When a uom field is present, its value SHALL be the 2- or 3-character code for a physical unit specified in the 'Common Code' column of UN/CEFACT Recommendation'20 [CEFACT20].   Note: GS1 provides a GitHub Repository containing a machine-readable file which enables the automatic conversion between quantitative values expressed using UN/CEFACT common codes. [TODO include URL once the file has been moved into GS1 GitHub Repo]",
+      "comment": "(Optional) Unit of measure by which the specified value(s) of the property specified by type should be interpreted.  If there is no value, minValue, maxValue, averageValue or percValue field present, uom SHALL be omitted.  When a uom field is present, its value SHALL be the 2- or 3-character code for a physical unit specified in the 'Common Code' column of UN/CEFACT Recommendation'20 [CEFACT20].   Note: GS1 provides a GitHub Repository containing a machine-readable file which enables the automatic conversion between quantitative values expressed using UN/CEFACT common codes. [https://github.com/gs1/UnitConverterUNECERec20]",
       "domain": {
         "@type": "owl:Class",
         "unionOf": {
