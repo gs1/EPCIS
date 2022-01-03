@@ -1,6 +1,7 @@
 <epcis:EPCISDocument xmlns:epcis="urn:epcglobal:epcis:xsd:2" schemaVersion="2.0" creationDate="2019-10-07T15:00:00.000+01:00"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:gs1="https://gs1.org/voc/"
+	xmlns:cbv="https://ns.gs1.org/cbv/"
 	xmlns:cbvmda="urn:epcglobal:cbv:mda"
 	xmlns:example="https://ns.example.com/epcis"
 	xmlns:example1="https://ns.example1.com/epcis"
@@ -361,8 +362,8 @@
 				</readPoint>
 				<sensorElementList>
 					<sensorElement>
-						<sensorReport type="gs1:Angle" component="Latitude" value="42.698334" uom="DD" coordinateReferenceSystem="http://www.opengis.net/def/crs/OGC/1.3/CRS84" />
-						<sensorReport type="gs1:Angle" component="Longitude" value="23.319941" uom="DD" coordinateReferenceSystem="http://www.opengis.net/def/crs/OGC/1.3/CRS84" />
+						<sensorReport type="gs1:Angle" component="cbv:Comp-LATITUDE" value="42.698334" uom="DD" coordinateReferenceSystem="http://www.opengis.net/def/crs/OGC/1.3/CRS84" />
+						<sensorReport type="gs1:Angle" component="cbv:Comp-LONGITUDE" value="23.319941" uom="DD" coordinateReferenceSystem="http://www.opengis.net/def/crs/OGC/1.3/CRS84" />
 					</sensorElement>
 				</sensorElementList>
 			</ObjectEvent>
@@ -381,8 +382,8 @@
 				<sensorElementList>
 					<sensorElement>
 						<sensorMetadata time="2021-05-27T13:50:00.000+01:00" />
-						<sensorReport type="gs1:Length" component="northing" value="-477979.89" uom="MTR" coordinateReferenceSystem="http://www.opengis.net/def/crs/EPSG/0/27700" />
-						<sensorReport type="gs1:Length" component="easting" value="2477583.57" uom="MTR" coordinateReferenceSystem="http://www.opengis.net/def/crs/EPSG/0/27700" />
+						<sensorReport type="gs1:Length" component="cbv:Comp-NORTHING" value="-477979.89" uom="MTR" coordinateReferenceSystem="http://www.opengis.net/def/crs/EPSG/0/27700" />
+						<sensorReport type="gs1:Length" component="cbv:Comp-EASTING" value="2477583.57" uom="MTR" coordinateReferenceSystem="http://www.opengis.net/def/crs/EPSG/0/27700" />
 					</sensorElement>
 				</sensorElementList>
 			</ObjectEvent>

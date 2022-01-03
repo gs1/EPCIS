@@ -21,14 +21,14 @@
 	      {
 		"type": "Length",
 		"value": -477979.89,
-		"component": "northing",
+		"component": "NORTHING",
 		"uom": "MTR",
 		"coordinateReferenceSystem": "http://www.opengis.net/def/crs/EPSG/0/27700"
 	      },
 	      {
 		"type": "Length",
 		"value": 2477583.57,
-		"component": "easting",
+		"component": "EASTING",
 		"uom": "MTR",
 		"coordinateReferenceSystem": "http://www.opengis.net/def/crs/EPSG/0/27700"
 	      }
