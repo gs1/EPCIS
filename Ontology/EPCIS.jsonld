@@ -467,7 +467,7 @@
         "owl:ObjectProperty",
         "rdf:Property"
       ],
-      "comment": "An identifier that indicates the type of BizTransaction document (eg Purchase Order, Despatch Advice).",
+      "comment": "An identifier that indicates the type of BizTransaction document (e.g. Purchase Order, Despatch Advice).",
       "domain": "epcis:BizTransaction",
       "domainIncludes": "epcis:BizTransaction",
       "isDefinedBy": "https://ns.gs1.org/epcis/",
@@ -1013,7 +1013,7 @@
         "owl:ObjectProperty",
         "rdf:Property"
       ],
-      "comment": "An identifier that indicates what kind of measurement the SensorReport pertains to (eg Length, Mass, Temperature).",
+      "comment": "An identifier that indicates what kind of measurement the SensorReport pertains to (e.g. Length, Mass, Temperature).",
       "domain": "epcis:SensorReport",
       "domainIncludes": "epcis:SensorReport",
       "isDefinedBy": "https://ns.gs1.org/epcis/",

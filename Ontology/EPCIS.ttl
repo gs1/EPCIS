@@ -236,7 +236,7 @@ epcis:bizTransactionList a owl:ObjectProperty , rdf:Property ;
         sw:term_status    "stable" .
 
 epcis:bizTransactionType a owl:ObjectProperty , rdf:Property ;
-        rdfs:comment      "An identifier that indicates the type of BizTransaction document (eg Purchase Order, Despatch Advice)."@en ;
+        rdfs:comment      "An identifier that indicates the type of BizTransaction document (e.g. Purchase Order, Despatch Advice)."@en ;
         rdfs:domain        epcis:BizTransaction;
         schema:domainIncludes epcis:BizTransaction;
         rdfs:isDefinedBy  epcis: ;
@@ -548,7 +548,7 @@ epcis:meanValue  a        owl:DatatypeProperty , rdf:Property ;
         sw:term_status    "stable" .
 
 epcis:measurementType a owl:ObjectProperty , rdf:Property ;
-        rdfs:comment      "An identifier that indicates what kind of measurement the SensorReport pertains to (eg Length, Mass, Temperature)."@en ;
+        rdfs:comment      "An identifier that indicates what kind of measurement the SensorReport pertains to (e.g. Length, Mass, Temperature)."@en ;
         rdfs:domain       epcis:SensorReport;
         schema:domainIncludes epcis:SensorReport;
         rdfs:isDefinedBy  epcis: ;
