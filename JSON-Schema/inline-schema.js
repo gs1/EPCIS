@@ -25,7 +25,7 @@ function inline (fileName, schemaId) {
 const definitions = {};
 
 function visit (parent, key, index, node) {
-  if (typeof node === 'object' && !Array.typerray(node)) {
+  if (typeof node === 'object' && !Array.isArray(node)) {
     if (key === 'definitions') {
       // The definitions are copied
       Object.keys(node).forEach((aKey) => (definitions[aKey] = node[aKey]));
