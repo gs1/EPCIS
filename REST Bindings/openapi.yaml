@@ -738,6 +738,7 @@ paths:
     get:
       tags:
         - 'Top-level'
+        - 'Discovery'
       summary: Returns all EPCIS event types currently available in the EPCIS repository.
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-Version'
