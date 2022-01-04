@@ -24,7 +24,7 @@ tags:
       Endpoints to capture EPCIS events in bulk or individually.
   - name: 'Queries'
     description: |
-      Endpoints to create large named or anonymous queries using the EPCIS query language. Named queries have a custom
+      Endpoints to create large named or anonymous queries using the <a href="https://github.com/gs1/EPCIS/tree/master/REST%20Bindings/query-schema.json">EPCIS Query Language</a>. Named queries have a custom
       name and are stored until deleted by the user. Anonymous queries are not persisted and only available to the caller.
       EPCIS events queries also support query subscription.
   - name: 'Subscriptions'
@@ -86,6 +86,14 @@ paths:
                     enum:
                       - 'rollback | proceed'
                   - $ref: '#/components/schemas/GS1-Capture-Error-Behaviour'
+        '401':
+          $ref: '#/components/responses/401UnauthorizedRequest'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
 
   /capture:
     options:
@@ -142,7 +150,14 @@ paths:
                     enum:
                       - 'rollback | proceed'
                   - $ref: '#/components/schemas/GS1-Capture-Error-Behaviour'
-
+        '401':
+          $ref: '#/components/responses/401UnauthorizedRequest'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
     post:
       tags:
         - 'Capture'
@@ -377,6 +392,14 @@ paths:
               $ref: '#/components/headers/GS1-EPCIS-Capture-File-Size-Limit'
             GS1-Capture-Error-Behaviour:
               $ref: '#/components/headers/GS1-Capture-Error-Behaviour'
+        '401':
+          $ref: '#/components/responses/401UnauthorizedRequest'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
     get:
       tags:
         - 'Capture'
@@ -469,6 +492,14 @@ paths:
       responses:
         '204':
           $ref: '#/components/responses/204TopLevelResourcesDiscovery'
+        '401':
+          $ref: '#/components/responses/401UnauthorizedRequest'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
     get:
       tags:
         - 'Top-level'
@@ -482,7 +513,7 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-Extensions'
       description: |
         This endpoint returns all EPCIS events that are currently in the repository. It supports
-        refinement via the EPCIS Query Language
+        refinement via the <a href="https://github.com/gs1/EPCIS/tree/master/REST%20Bindings/query-schema.json">EPCIS Query Language</a>)
       responses:
         '200':
           $ref: '#/components/responses/200EPCISQueryDocument'
@@ -619,6 +650,15 @@ paths:
               $ref: '#/components/headers/GS1-Vendor-Version'
             GS1-CBV-Extensions:
               $ref: '#/components/headers/GS1-CBV-Extensions'
+        '401':
+          $ref: '#/components/responses/401UnauthorizedRequest'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
+          
     get:
       tags:
         - 'Events'
@@ -661,6 +701,14 @@ paths:
       responses:
         '204':
           $ref: '#/components/responses/204TopLevelResourcesDiscovery'
+        '401':
+          $ref: '#/components/responses/401UnauthorizedRequest'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
     get:
       tags:
         - 'Top-level'
@@ -701,6 +749,14 @@ paths:
       responses:
         '204':
           $ref: '#/components/responses/204TopLevelResourcesDiscovery'
+        '401':
+          $ref: '#/components/responses/401UnauthorizedRequest'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
     get:
       tags:
         - 'Top-level'
@@ -777,6 +833,14 @@ paths:
               $ref: '#/components/headers/GS1-EPCIS-Capture-Limit'
             GS1-EPCIS-Capture-File-Size-Limit:
               $ref: '#/components/headers/GS1-EPCIS-Capture-File-Size-Limit'
+        '401':
+          $ref: '#/components/responses/401UnauthorizedRequest'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
     get:
       tags:
         - 'Events'
@@ -830,6 +894,14 @@ paths:
       responses:
         '204':
           $ref: '#/components/responses/204TopLevelResourcesDiscovery'
+        '401':
+          $ref: '#/components/responses/401UnauthorizedRequest'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
     get:
       tags:
         - 'Top-level'
@@ -978,6 +1050,14 @@ paths:
       responses:
         '204':
           $ref: '#/components/responses/204EventsEndpointDiscovery'
+        '401':
+          $ref: '#/components/responses/401UnauthorizedRequest'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
     get:
       tags:
         - 'Events'
@@ -998,9 +1078,9 @@ paths:
       description: |
         This endpoint helps to navigate EPCIS events by electronic product codes. It returns
         EPCIS events up to the amount defined in `perPage`. If applicable, the server returns a `Link` header to point to the remaining
-        results. Optionally, EPCIS events can be further filtered using the EPCIS Query Language in as query string parameters.
+        results. Optionally, EPCIS events can be further filtered using the <a href="https://github.com/gs1/EPCIS/tree/master/REST%20Bindings/query-schema.json">EPCIS Query Language</a> in as query string parameters.
 
-        Example 1 - EPC in a URN form with EPCIS Query Language filtering
+        Example 1 - EPC in a URN form with <a href="https://github.com/gs1/EPCIS/tree/master/REST%20Bindings/query-schema.json">EPCIS Query Language</a> filtering
 
         ```
         https://example.com/epcs/urn:epc:id:sgtin:0614141.107346.2018?EQ_bizStep=shipping%7Cdecommissioning&GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
@@ -1041,6 +1121,14 @@ paths:
       responses:
         '204':
           $ref: '#/components/responses/204TopLevelResourcesDiscovery'
+        '401':
+          $ref: '#/components/responses/401UnauthorizedRequest'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
     get:
       tags:
         - 'Top-level'
@@ -1148,6 +1236,14 @@ paths:
               $ref: '#/components/headers/GS1-Vendor-Version'
             GS1-CBV-Extensions:
               $ref: '#/components/headers/GS1-CBV-Extensions'
+        '401':
+          $ref: '#/components/responses/401UnauthorizedRequest'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
     get:
       tags:
         - 'Top-level'
@@ -1188,6 +1284,14 @@ paths:
       responses:
         '204':
           $ref: '#/components/responses/204EventsEndpointDiscovery'
+        '401':
+          $ref: '#/components/responses/401UnauthorizedRequest'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
     get:
       tags:
         - 'Events'
@@ -1206,7 +1310,7 @@ paths:
       description: |
         This endpoint helps to navigate EPCIS events by business steps. It returns
         EPCIS events up to the amount defined in `perPage`. The server returns a `Link` header to point to the
-        remaining results.  Optionally, EPCIS events can be further filtered using the EPCIS query language in as query
+        remaining results.  Optionally, EPCIS events can be further filtered using the <a href="https://github.com/gs1/EPCIS/tree/master/REST%20Bindings/query-schema.json">EPCIS Query Language</a> in as query
         string parameters.
 
         Example:
@@ -1245,6 +1349,14 @@ paths:
       responses:
         '204':
           $ref: '#/components/responses/204TopLevelResourcesDiscovery'
+        '401':
+          $ref: '#/components/responses/401UnauthorizedRequest'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
     get:
       tags:
         - 'Top-level'
@@ -1347,6 +1459,14 @@ paths:
               $ref: '#/components/headers/GS1-Vendor-Version'
             GS1-CBV-Extensions:
               $ref: '#/components/headers/GS1-CBV-Extensions'
+        '401':
+          $ref: '#/components/responses/401UnauthorizedRequest'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
     get:
       tags:
         - 'Top-level'
@@ -1384,6 +1504,14 @@ paths:
       responses:
         '204':
           $ref: '#/components/responses/204TopLevelResourcesDiscovery'
+        '401':
+          $ref: '#/components/responses/401UnauthorizedRequest'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
     get:
       tags:
         - 'Top-level'
@@ -1490,6 +1618,14 @@ paths:
               $ref: '#/components/headers/GS1-Vendor-Version'
             GS1-CBV-Extensions:
               $ref: '#/components/headers/GS1-CBV-Extensions'
+        '401':
+          $ref: '#/components/responses/401UnauthorizedRequest'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
     get:
       tags:
         - 'Top-level'
@@ -1529,6 +1665,14 @@ paths:
       responses:
         '204':
           $ref: '#/components/responses/204EventsEndpointDiscovery'
+        '401':
+          $ref: '#/components/responses/401UnauthorizedRequest'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
     get:
       tags:
         - 'Events'
@@ -1549,7 +1693,7 @@ paths:
         EPCIS events up to the amount defined in `perPage`. The server returns a `Link` header to point to the remaining
         results.
 
-        Optionally, EPCIS events can be further filtered using the EPCIS query language in as query string parameters.
+        Optionally, EPCIS events can be further filtered using the <a href="https://github.com/gs1/EPCIS/tree/master/REST%20Bindings/query-schema.json">EPCIS Query Language</a> in as query string parameters.
 
         Example:
 
@@ -1586,6 +1730,14 @@ paths:
       responses:
         '204':
           $ref: '#/components/responses/204TopLevelResourcesDiscovery'
+        '401':
+          $ref: '#/components/responses/401UnauthorizedRequest'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
     get:
       tags:
         - 'Top-level'
@@ -1688,6 +1840,15 @@ paths:
               $ref: '#/components/headers/GS1-Vendor-Version'
             GS1-CBV-Extensions:
               $ref: '#/components/headers/GS1-CBV-Extensions'
+        '401':
+          $ref: '#/components/responses/401UnauthorizedRequest'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
+        
     get:
       tags:
         - 'Top-level'
@@ -1729,6 +1890,14 @@ paths:
       responses:
         '204':
           $ref: '#/components/responses/204EventsEndpointDiscovery'
+        '401':
+          $ref: '#/components/responses/401UnauthorizedRequest'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
     get:
       tags:
         - 'Events'
@@ -1749,7 +1918,7 @@ paths:
         This endpoint helps to navigate EPCIS events by dispositions. It returns
         EPCIS events up to the amount defined in `perPage`. The server returns a `Link` header to point to the remaining
         results.
-        Optionally, EPCIS events can be further filtered using the EPCIS query language in as query string parameters.
+        Optionally, EPCIS events can be further filtered using the <a href="https://github.com/gs1/EPCIS/tree/master/REST%20Bindings/query-schema.json">EPCIS Query Language</a> in as query string parameters.
 
         Example:
 
@@ -1795,6 +1964,14 @@ paths:
                 example: OPTIONS, GET
                 type: string
                 default: OPTIONS, GET
+        '401':
+          $ref: '#/components/responses/401UnauthorizedRequest'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
     get:
       tags:
         - 'Queries'
@@ -1835,7 +2012,7 @@ paths:
             GS1-Next-Page-Token-Expires:
               $ref: '#/components/headers/GS1-Next-Page-Token-Expires'
           description: |
-            Queries are like views that are created using the EPCIS query language. Each query object
+            Queries are like views that are created using the <a href="https://github.com/gs1/EPCIS/tree/master/REST%20Bindings/query-schema.json">EPCIS Query Language</a>. Each query object
             consists of a query name and the query definition. Performing a `GET` on `/queries` lists all
             existing queries.
           content:
@@ -1892,31 +2069,9 @@ paths:
         Creating a named query creates a view on the events in the repository, accessible through its events resource.
         To obtain the named query results, the client can use the URL in the `Location` header. The client can also use this URL to start a query subscription immediately after creating the query.
       requestBody:
-                  content:
-            application/json:
-              example: {
-                "query": {
-                  "EQ_bizStep": [
-                      "shipping",
-                      "receiving"
-                  ],
-                  "eventType": ["ObjectEvent"]
-                },
-                "name": "myQuery"
-              }
-              schema:
-                type: array
-                items:
-                  allOf:
-                    - type: object
-                      required:
-                        - name
-                      properties:
-                        name:
-                          type: string
-                    - $ref: '#/components/schemas/QueryDefinition'
+        $ref: '#/components/requestBodies/CreateQuery'
       responses:
-        '200':
+        '201':
           headers:
             GS1-EPCIS-Version:
               $ref: '#/components/headers/GS1-EPCIS-Version'
@@ -1983,19 +2138,19 @@ paths:
               $ref: '#/components/headers/GS1-CBV-Extensions'
 
           description: |
-            Queries are like views that are created using the EPCIS query language. Each query object
+            Queries are like views that are created using the <a href="https://github.com/gs1/EPCIS/tree/master/REST%20Bindings/query-schema.json">EPCIS Query Language</a>. Each query object
             consists of a query name and the query definition.
           content:
             application/json:
               example: {
+                "name": "myQuery",
                 "query": {
                   "EQ_bizStep": [
                       "shipping",
                       "receiving"
                   ],
                   "eventType": ["ObjectEvent"]
-                },
-                "name": "myQuery"
+                }
               }
               schema:
                 type: array
@@ -2058,6 +2213,14 @@ paths:
               $ref: '#/components/headers/GS1-Vendor-Version'
             GS1-CBV-Extensions:
               $ref: '#/components/headers/GS1-CBV-Extensions'
+        '401':
+          $ref: '#/components/responses/401UnauthorizedRequest'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
     delete:
       tags:
         - 'Queries'
@@ -2106,6 +2269,14 @@ paths:
               $ref: '#/components/headers/GS1-CBV-Version'
             GS1-Vendor-Version:
               $ref: '#/components/headers/GS1-Vendor-Version'
+        '401':
+          $ref: '#/components/responses/401UnauthorizedRequest'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
     get:
       tags:
         - 'Queries'
@@ -2384,6 +2555,14 @@ paths:
               $ref: '#/components/headers/GS1-CBV-Version'
             GS1-Vendor-Version:
               $ref: '#/components/headers/GS1-Vendor-Version'
+        '401':
+          $ref: '#/components/responses/401UnauthorizedRequest'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
     get:
       tags:
         - 'Queries'
@@ -2462,6 +2641,14 @@ paths:
       responses:
         '204':
           $ref: '#/components/responses/204EventsEndpointDiscovery'
+        '401':
+          $ref: '#/components/responses/401UnauthorizedRequest'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
     get:
       tags:
         - 'Queries'
@@ -3045,7 +3232,7 @@ components:
     QueryDefinition:
       example:
         { 
-          "queryName" : "UniqueQueryName",
+          "name" : "UniqueQueryName",
           "query": {
             "eventType": [ "ObjectEvent" ] ,
             "EQ_bizStep": [
@@ -3057,10 +3244,10 @@ components:
         Creating a new query with query body.
       type: object
       required:
-        - queryName
         - name
+        - query
       properties:
-        queryName:
+        name:
           type: string
         query:
           $ref: '#/components/schemas/EPCISEventsQuery'
