@@ -94,6 +94,32 @@ paths:
           $ref: '#/components/responses/406NotAcceptable'
         '500':
           $ref: '#/components/responses/500ImplementationException'
+    get:
+      tags:
+        - 'Discovery'
+      summary: Returns the list of top level resources available for this EPCIS repository.
+      parameters:
+        - $ref: '#/components/parameters/GS1-EPCIS-Version'
+        - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
+        - $ref: '#/components/parameters/GS1-EPCIS-Min'
+        - $ref: '#/components/parameters/GS1-EPCIS-Max'
+        - $ref: '#/components/parameters/GS1-CBV-Version'
+        - $ref: '#/components/parameters/GS1-CBV-Extensions'
+      description: |
+        This endpoint returns all the top-level resources currently available in the repository.
+      responses:
+        '200':
+          $ref: '#/components/responses/200SupportedTopLevel'
+        '401':
+          $ref: '#/components/responses/401UnauthorizedRequest'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
+
+    
 
   /capture:
     options:
@@ -2834,6 +2860,12 @@ components:
             $ref: '#/components/schemas/EPCISQueryDocument'
     204NextPageTokenInvalidated:
       description: nextPageToken invalidated successfully.
+    200SupportedTopLevel:
+      description: Returns all supported EPCIS top-level resources.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/TopLevelResources'
     200SupportedEventTypes:
       description: Returns all supported EPCIS event types.
       content:
@@ -3274,11 +3306,6 @@ components:
       description: Unique query name.
       type: string
       example: myQuery
-    AllEvent:
-      type: string
-      description: A virtual EPCIS event type that is the union of all EPCIS event types.
-      enum:
-        - all
     SingleEvent:
       description: |
         A single EPCIS event. The full schema is specified in the JSON-Schema documentation.
@@ -3751,7 +3778,29 @@ components:
         - AssociationEvent
         - TransformationEvent
         - TransactionEvent
-
+    TopLevelResources:
+      type: string
+      description: The seven top level resources of an EPCIS.
+      example:
+        - events
+        - eventTypes
+        - epcs
+        - bizSteps
+        - bizLocations
+        - readPoints
+        - dispositions
+        - capture
+        - queries
+      enum:
+        - events
+        - eventTypes
+        - epcs
+        - bizSteps
+        - bizLocations
+        - readPoints
+        - dispositions
+        - capture
+        - queries
     AbstractQuerySubscription:
       example: {
         "dest": "https://client.example.com/queryCallback",
@@ -4105,7 +4154,6 @@ components:
       schema:
         oneOf:
           - $ref: '#/components/schemas/EPCISEventTypes'
-          - $ref: '#/components/schemas/AllEvent'
     QueryName:
       in: path
       name: queryName
