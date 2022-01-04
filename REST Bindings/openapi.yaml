@@ -1875,7 +1875,6 @@ paths:
     post:
       tags:
         - 'Queries'
-        - 'Events'
       summary: |
         Creates and executes a named EPCIS events query and returns results with the option to use
         pagination if needed.
@@ -1891,11 +1890,31 @@ paths:
         - $ref: '#/components/parameters/PerPage'
       description: |
         Creating a named query creates a view on the events in the repository, accessible through its events resource.
-        Creating a query also returns EPCIS events up to the amount defined in `perPage`. To obtain the remaining events,
-        the client can use the URL in the `Link` header. When a query is created, the server returns the query URL in the
-        `Location` header. The client can use this URL to start a query subscription immediately after creating the query.
+        To obtain the named query results, the client can use the URL in the `Location` header. The client can also use this URL to start a query subscription immediately after creating the query.
       requestBody:
-        $ref: '#/components/requestBodies/CreateQuery'
+                  content:
+            application/json:
+              example: {
+                "query": {
+                  "EQ_bizStep": [
+                      "shipping",
+                      "receiving"
+                  ],
+                  "eventType": ["ObjectEvent"]
+                },
+                "name": "myQuery"
+              }
+              schema:
+                type: array
+                items:
+                  allOf:
+                    - type: object
+                      required:
+                        - name
+                      properties:
+                        name:
+                          type: string
+                    - $ref: '#/components/schemas/QueryDefinition'
       responses:
         '200':
           headers:
@@ -1915,31 +1934,14 @@ paths:
               $ref: '#/components/headers/GS1-EPCIS-Extensions'
             GS1-CBV-Extensions:
               $ref: '#/components/headers/GS1-CBV-Extensions'
-            Link:
-              example: <https://example.com/queries/myQuery/events?perPage=30&nextPageToken=3A15506738749783AU6D7DENAKwM2gQRRwGrataeq>; rel="next"
-              description: |
-                The `Link` header is used for pagination. It contains the URL to the next result set. This endpoint does
-                not paginate on the same endpoint where the resource was created:
-
-                ```
-                Link: <https://example.com/queries/myQuery/events?perPage=30&nextPageToken=3A1550673874978%2Ci%3AU6D7DENAKwM2gQRRwGrataeq>; rel="next"
-                ```
-              schema:
-                $ref: '#/components/schemas/Link'
             Location:
               description: |
-                The URL of the created query. The client can use the `Location` URL to obtain more resources
-                synchronously (`events` for EPCIS events for EPCIS vocabulary elements). The client
-                may also receive EPCIS events asynchronously by subscribing to a query.
+                The URL of the created query. The client can use the `Location` URL to obtain the named query definition.
               schema:
                 example: "https://www.example.com/queries/myQuery"
                 type: string
                 format: uri
-          description: Returns the query result.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EPCISQueryDocument'
+          description: Creates the named query.
         '401':
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
