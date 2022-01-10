@@ -53,7 +53,7 @@ There is no default: many EPCIS classes use blank nodes instead of the standard 
       rdfs:domain       rdf:Property;
       schema:domainIncludes rdf:Property ;
       rdfs:isDefinedBy  epcis: ;
-      rdfs:label        "jsonldLabel" ;
+      rdfs:label        "jsonldUriLabel" ;
       rdfs:range        xsd:string ;
       schema:rangeIncludes xsd:string ;
       sw:term_status    "stable" .
