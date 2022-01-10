@@ -748,8 +748,8 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-Version'
         - $ref: '#/components/parameters/GS1-CBV-Extensions'
       description: |
-        EPCIS event types specify the schema of an event. This endpoint returns all EPCIS types that are
-        currently in the repository.
+        EPCIS event types specify the schema of an event. This endpoint returns all EPCIS event types that are
+        currently present in the repository.
       responses:
         '200':
           $ref: '#/components/responses/200SupportedEventTypes'
@@ -2602,12 +2602,18 @@ paths:
             The `GET` method on a query subscription allows the client to see individual subscriptions.
           content:
             application/json:
-              example: [
+              example:
                 {
-                  "createdAt": "2017-07-21T17:32:28Z",
-                  "stream": true
+                  "subscriptionID": "7cec849f-72f7-4a9d-bc86-080d3c5b7c98",
+                  "queryName": "GetIlmdExtension",
+                  "callbackUrl": "http://example.com/testWebhookSubscription",
+                  "initialRecordTime": "2022-01-06T06:52:24.880Z",
+                  "reportIfEmpty": true,
+                  "schedule": {
+                      "second": "0/30"
+                  },
+                  "createdAt": "2022-01-06T06:52:24.889Z"
                 }
-              ]
               schema:
                 allOf:
                   - type: object
@@ -3313,7 +3319,7 @@ components:
         A single EPCIS event. The full schema is specified in the JSON-Schema documentation.
       type: object
       required:
-        - type
+        - isA
       properties:
         '@context':
           type: array
@@ -3322,7 +3328,7 @@ components:
               - type: string
                 format: uri
               - type: object
-        type:
+        isA:
           type: string
           example: ObjectEvent
       externalDocs:
@@ -3332,7 +3338,7 @@ components:
       example:
         {
           "@context": "https://gs1.github.io/EPCIS/epcis-context.jsonld",
-          "type": "ObjectEvent",
+          "isA": "ObjectEvent",
           "action": "OBSERVE",
           "bizStep": "inspecting",
           "eventTime": "2021-05-05T15:00:00.000+01:00",
@@ -3449,7 +3455,7 @@ components:
               - type: string
                 format: uri
               - type: object
-        type:
+        isA:
           type: string
           default: EPCISDocument
           example: EPCISDocument
@@ -3488,14 +3494,14 @@ components:
           "@context": [
               "https://gs1.github.io/EPCIS/epcis-context.jsonld",
               { "example": "http://ns.example.com/epcis/" } ],
-          "type": "EPCISDocument",
+          "isA": "EPCISDocument",
           "schemaVersion": 2.0,
           "creationDate": "2005-07-11T11:30:47.0Z",
           "epcisBody": {
             "eventList": [
               {
                 "eventID": "_:event1",
-                "type": "ObjectEvent",
+                "isA": "ObjectEvent",
                 "action": "OBSERVE",
                 "bizStep": "shipping",
                 "disposition": "in_transit",
@@ -3508,7 +3514,7 @@ components:
               },
               {
                 "eventID": "_:event2",
-                "type": "ObjectEvent",
+                "isA": "ObjectEvent",
                 "action": "OBSERVE",
                 "bizStep": "receiving",
                 "disposition": "in_progress",
@@ -3609,7 +3615,7 @@ components:
               - type: string
                 format: uri
               - type: object
-        type:
+        isA:
           type: string
           default: EPCISQueryDocument
           example: EPCISQueryDocument
@@ -3659,7 +3665,7 @@ components:
               "example": "http://ns.example.com/epcis/"
             }
           ],
-          "type": "EPCISQueryDocument",
+          "isA": "EPCISQueryDocument",
           "schemaVersion": 2.0,
           "creationDate": "2005-07-11T11:30:47.0Z",
           "epcisBody": {
@@ -3668,7 +3674,7 @@ components:
                 "eventList": [
                   {
                     "eventID": "_:event1",
-                    "type": "ObjectEvent",
+                    "isA": "ObjectEvent",
                     "action": "OBSERVE",
                     "bizStep": "shipping",
                     "disposition": "in_transit",
@@ -3690,7 +3696,7 @@ components:
                   },
                   {
                     "eventID": "_:event2",
-                    "type": "ObjectEvent",
+                    "isA": "ObjectEvent",
                     "action": "OBSERVE",
                     "bizStep": "receiving",
                     "disposition": "in_progress",
