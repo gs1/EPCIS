@@ -157,7 +157,7 @@
       "domain": "rdf:Property",
       "domainIncludes": "rdf:Property",
       "isDefinedBy": "https://ns.gs1.org/epcis/",
-      "label": "jsonldLabel",
+      "label": "jsonldUriLabel",
       "range": "xsd:string",
       "rangeIncludes": "xsd:string",
       "term_status": "stable"
