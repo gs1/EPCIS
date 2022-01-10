@@ -23,7 +23,7 @@ Most of them are derived from the XML examples in [SensorDataExamples.xml](../..
      - A `microorganism` (using a NCBI taxonomy URL)
   - It seems the goods have become moldy!
 - `SensorDataExample9.jsonld`:  SensorElement with `ERROR_CONDITION` (further described with a URI) and an `ALARM_CONDITION` (described with boolean `true`)
-- `SensorDataExample10.jsonld`: Reports the speed vector of a SGTIN using 3 `components` (`X, Y, Z`).
+- `SensorDataExample10.jsonld`: Reports the speed vector of a SGTIN using 3 `components` (`x, y, z`).
    - Also uses the custom prop `ex:feature` to state the speed Reading applies to the product itself.
 - `SensorDataExample11.jsonld`: Transaction with step `inspecting` and disposition `needs_replacement` with sensor data showing `EffectiveDoseRate` measured in `P71` (millisievert per hour) of two GTINs.
   It Seems the goods have absorbed too much radiation!
@@ -31,8 +31,8 @@ Most of them are derived from the XML examples in [SensorDataExamples.xml](../..
 - `SensorDataExample13.jsonld`: Uses the custom property `ex:feature` to report the outside `Temperature` (`ex:ambiance`) vs the `Temperature` of the product package (`ex:outerPackage`).
   - Uses bizStep `sensor_reporting`, which is a new addition to CBV 2.0; the other examples use `inspecting`, which is less specific.
   - USes Web URIs (GS1 DL URIs) rather than EPC URNs
-- `SensorDataExample14.jsonld`: Event conveying geographic coordinates as `Latitude, Longitude` (being `Angle` in `DD`) using the default Coordinate Reference System (WGS84), which does not need to be indicated
-- `SensorDataExample15.jsonld`: Event conveying the same coordinates as `Easting, Northing` (being `Length` in `MTR`) using a Coordinate Reference System (CRS) other than WGS84
+- `SensorDataExample14.jsonld`: Event conveying geographic coordinates as `latitude, longitude` (being `Angle` in `DD`) using the default Coordinate Reference System (WGS84), which does not need to be indicated
+- `SensorDataExample15.jsonld`: Event conveying the same coordinates as `easting, northing` (being `Length` in `MTR`) using a Coordinate Reference System (CRS) other than WGS84
   - Namely, this uses https://epsg.io/27700 OSGB 1936 / British National Grid (Ordnance Survey of Great Britain).
   - You can see the conversion at https://epsg.io/transform#s_srs=4326&t_srs=27700&x=23.3199410&y=42.6983340,
   - You can browse for the OGC EPSG URL to use at http://www.opengis.net/def/crs/EPSG/0/ (where /0/ indicates the "latest version" or version-independent URL of that CRS)

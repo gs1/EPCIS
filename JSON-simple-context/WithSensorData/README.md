@@ -23,7 +23,7 @@ Most of them are derived from the XML examples in [SensorDataExamples.xml](../..
      - A `microorganism` (using a NCBI taxonomy URL)
   - It seems the goods have become moldy!
 - `SensorDataExample9.jsonld`:  SensorElement with `ERROR_CONDITION` (further described with a URI) and an `ALARM_CONDITION` (described with boolean `true`)
-- `SensorDataExample10.jsonld`: Reports the speed vector of a SGTIN using 3 `components` (`X, Y, Z`).
+- `SensorDataExample10.jsonld`: Reports the speed vector of a SGTIN using 3 `components` (`x, y, z`).
    - Also uses the custom prop `ex:feature` to state the speed Reading applies to the product itself.
 - `SensorDataExample11.jsonld`: Transaction with step `inspecting` and disposition `needs_replacement` with sensor data showing `EffectiveDoseRate` measured in `P71` (millisievert per hour) of two GTINs.
   It Seems the goods have absorbed too much radiation!

@@ -34,19 +34,19 @@
         epcis:eventTimeZoneOffset  "+01:00" ;
         epcis:readPoint            <urn:epc:id:sgln:4012345.00005.0> ;
         epcis:sensorElementList    [ epcis:sensorReport  [ examp:feature          "ex:product" ;
-                                                           epcis:component        cbv:Comp-Z ;
+                                                           epcis:component        cbv:Comp-z ;
                                                            epcis:measurementType  gs1:Speed ;
                                                            epcis:uom              "MTS" ;
                                                            epcis:value            0.0E0
                                                          ] ;
                                      epcis:sensorReport  [ examp:feature          "ex:product" ;
-                                                           epcis:component        cbv:Comp-Y ;
+                                                           epcis:component        cbv:Comp-y ;
                                                            epcis:measurementType  gs1:Speed ;
                                                            epcis:uom              "MTS" ;
                                                            epcis:value            1.28E1
                                                          ] ;
                                      epcis:sensorReport  [ examp:feature          "ex:product" ;
-                                                           epcis:component        cbv:Comp-X ;
+                                                           epcis:component        cbv:Comp-x ;
                                                            epcis:measurementType  gs1:Speed ;
                                                            epcis:uom              "MTS" ;
                                                            epcis:value            4.5E0

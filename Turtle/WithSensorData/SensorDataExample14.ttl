@@ -30,14 +30,14 @@
                                         epcis:eventTimeZoneOffset  "+01:00" ;
                                         epcis:readPoint            <https://id.example.com/414/4012345000054> ;
                                         epcis:sensorElementList    [ rdf:type            epcis:SensorElement ;
-                                                                     epcis:sensorReport  [ epcis:component        cbv:Comp-LONGITUDE ;
+                                                                     epcis:sensorReport  [ epcis:component        cbv:Comp-longitude ;
                                                                                            epcis:coordinateReferenceSystem
                                                                                                    <http://www.opengis.net/def/crs/OGC/1.3/CRS84> ;
                                                                                            epcis:measurementType  gs1:Angle ;
                                                                                            epcis:uom              "DD" ;
                                                                                            epcis:value            2.3319941E1
                                                                                          ] ;
-                                                                     epcis:sensorReport  [ epcis:component        cbv:Comp-LATITUDE ;
+                                                                     epcis:sensorReport  [ epcis:component        cbv:Comp-latitude ;
                                                                                            epcis:coordinateReferenceSystem
                                                                                                    <http://www.opengis.net/def/crs/OGC/1.3/CRS84> ;
                                                                                            epcis:measurementType  gs1:Angle ;

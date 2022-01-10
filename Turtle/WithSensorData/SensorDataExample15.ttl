@@ -31,14 +31,14 @@
                                         epcis:readPoint            <https://id.example.com/414/4012345000054> ;
                                         epcis:sensorElementList    [ rdf:type              epcis:SensorElement ;
                                                                      epcis:sensorMetadata  [ epcis:time  "2021-05-27T12:50:00.000Z"^^xsd:dateTimeStamp ] ;
-                                                                     epcis:sensorReport    [ epcis:component        cbv:Comp-EASTING ;
+                                                                     epcis:sensorReport    [ epcis:component        cbv:Comp-easting ;
                                                                                              epcis:coordinateReferenceSystem
                                                                                                      <http://www.opengis.net/def/crs/EPSG/0/27700> ;
                                                                                              epcis:measurementType  gs1:Length ;
                                                                                              epcis:uom              "MTR" ;
                                                                                              epcis:value            2.47758357E6
                                                                                            ] ;
-                                                                     epcis:sensorReport    [ epcis:component        cbv:Comp-NORTHING ;
+                                                                     epcis:sensorReport    [ epcis:component        cbv:Comp-northing ;
                                                                                              epcis:coordinateReferenceSystem
                                                                                                      <http://www.opengis.net/def/crs/EPSG/0/27700> ;
                                                                                              epcis:measurementType  gs1:Length ;

@@ -1312,7 +1312,7 @@
 -                                        epcis:eventTime            "2021-05-27T10:00:00.000Z"^^xsd:dateTimeStamp ;
 +                                        epcis:eventTime            "2021-05-27T10:00:00.000Z"^^xsd:dateTime ;
 @@ -33,2 +33,4 @@
--                                                                     epcis:sensorReport  [ epcis:component  "Longitude" ;
+-                                                                     epcis:sensorReport  [ epcis:component  "longitude" ;
 -                                                                                           epcis:type       gs1:Angle ;
 +                                                                     epcis:sensorReport  [ epcis:component        cbv:COMP-Longitude ;
 +                                                                                           epcis:coordinateReferenceSystem

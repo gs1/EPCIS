@@ -87,7 +87,7 @@
     "hexBinaryValue" : {"@type": "xsd:hexBinary"},
     "uriValue" : {"@type": "@id"},
     "uom": {"@type": "xsd:string"},
-    "component": {"@type": "@vocab", "@context":{"@vocab":"https://ns.gs1.org/cbv/COMP-"}},
+    "component": {"@type": "@vocab", "@context":{"@vocab":"https://ns.gs1.org/cbv/Comp-"}},
     "exception": {"@type": "@vocab", "@context":{"@vocab":"https://ns.gs1.org/voc/"}},
     
     "type": "@type",
