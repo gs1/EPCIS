@@ -538,8 +538,8 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-Version'
         - $ref: '#/components/parameters/GS1-CBV-Extensions'
       description: |
-        This endpoint returns all EPCIS events that are currently in the repository. It supports
-        refinement via the <a href="https://github.com/gs1/EPCIS/tree/master/REST%20Bindings/query-schema.json">EPCIS Query Language</a>)
+        This endpoint allows querying EPCIS events that are currently in the repository. 
+        Events can be filtered through URL query string parameters as specified by the <a href="https://github.com/gs1/EPCIS/tree/master/REST%20Bindings/query-schema.json">EPCIS Query Language</a>.
       responses:
         '200':
           $ref: '#/components/responses/200EPCISQueryDocument'
@@ -700,7 +700,7 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-Extensions'
       description: |
         This endpoint accesses individual events using their unique identifier. The response body is an `EPCISQueryDocument` 
-        enclosing the unique event.
+        enclosing the unique event and error declarations.
       responses:
         '200':
           $ref: '#/components/responses/200EPCISQueryDocument'
@@ -882,7 +882,8 @@ paths:
         The server returns a 'Link' header to point to the remaining results.
 
         The client can further restrict the list of events returned by filtering events using the EPCIS query
-        language as URL query string parameters.  The paraneter `eventCountLimit` is used to restrict the maximum number of
+        language using URL query string parameters as specified by the<a href="https://github.com/gs1/EPCIS/tree/master/REST%20Bindings/query-schema.json">EPCIS Query Language</a>.  
+        The parameter `eventCountLimit` is used to restrict the maximum number of
         events to be returned in total, whereas `perPage` restricts the number of events to return per page or paginated results.
 
 
@@ -3499,7 +3500,7 @@ components:
                 "bizStep": "shipping",
                 "disposition": "in_transit",
                 "epcList": [ "urn:epc:id:sgtin:0614141.107346.2017","urn:epc:id:sgtin:0614141.107346.2018" ],
-                "eventTime": "2005-04-03T20:33:31.116000-06:00",
+                "eventTime": "2022-01-08T20:33:31.116-06:00",
                 "eventTimeZoneOffset": "-06:00",
                 "readPoint": { "id": "urn:epc:id:sgln:0614141.07346.1234" },
                 "bizTransactionList": [
@@ -3512,7 +3513,7 @@ components:
                 "bizStep": "receiving",
                 "disposition": "in_progress",
                 "epcList": [ "urn:epc:id:sgtin:0614141.107346.2018" ],
-                "eventTime": "2005-04-04T20:33:31.116-06:00",
+                "eventTime": "2022-01-08T20:33:32.116-06:00",
                 "eventTimeZoneOffset": "-06:00",
                 "readPoint": { "id": "urn:epc:id:sgln:0012345.11111.400" },
                 "bizLocation": { "id": "urn:epc:id:sgln:0012345.11111.0" },

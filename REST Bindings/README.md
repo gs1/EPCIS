@@ -1,7 +1,6 @@
 # GS1 EPCIS 2.0 REST Bindings
 
-This folder contains the work in progress for the EPCIS 2.0 REST interface.
-The [EPCIS 2.0 REST bindings](openapi.yaml) are described using OpenAPI 3.0 Specifications
+This folder contains the work in progress for the EPCIS 2.0 REST interface. The [EPCIS 2.0 REST bindings](openapi.yaml) are described using OpenAPI 3.0 Specifications. A human friendly visualization of this file is provided via the [online Swagger Editor](https://editor.swagger.io/?url=https://raw.githubusercontent.com/gs1/EPCIS/master/REST%20Bindings/openapi.yaml).
 
 Additionally two JSON schema files are available to describe the [EPCIS Query Language](query-schema.json) and the [EPCIS Query Schedule syntax](query-schedule.json).
 
