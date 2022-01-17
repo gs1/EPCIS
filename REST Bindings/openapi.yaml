@@ -3497,7 +3497,7 @@ components:
               { "example": "http://ns.example.com/epcis/" } ],
           "isA": "EPCISDocument",
           "schemaVersion": 2.0,
-          "creationDate": "2005-07-11T11:30:47.0Z",
+          "creationDate": "2021-07-11T11:30:47.0Z",
           "epcisBody": {
             "eventList": [
               {
@@ -3668,7 +3668,7 @@ components:
           ],
           "isA": "EPCISQueryDocument",
           "schemaVersion": 2.0,
-          "creationDate": "2005-07-11T11:30:47.0Z",
+          "creationDate": "2021-07-11T11:30:47.0Z",
           "epcisBody": {
             "queryResults": {
               "resultsBody": {
@@ -3683,7 +3683,7 @@ components:
                         "urn:epc:id:sgtin:0614141.107346.2017",
                         "urn:epc:id:sgtin:0614141.107346.2018"
                     ],
-                    "eventTime": "2005-04-03T20:33:31.116000-06:00",
+                    "eventTime": "2021-04-03T20:33:31.116000-06:00",
                     "eventTimeZoneOffset": "-06:00",
                     "readPoint": {
                       "id": "urn:epc:id:sgln:0614141.07346.1234"
@@ -3704,7 +3704,7 @@ components:
                     "epcList": [
                         "urn:epc:id:sgtin:0614141.107346.2018"
                     ],
-                    "eventTime": "2005-04-04T20:33:31.116-06:00",
+                    "eventTime": "2021-04-04T20:33:31.116-06:00",
                     "eventTimeZoneOffset": "-06:00",
                     "readPoint": {
                       "id": "urn:epc:id:sgln:0012345.11111.400"
