@@ -532,6 +532,8 @@ paths:
         - 'Events'
       summary: Returns all EPCIS events available in the EPCIS repository.
       parameters:
+        - $ref: '#/components/parameters/NextPageToken'
+        - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/GS1-EPCIS-Version'
         - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
         - $ref: '#/components/parameters/GS1-EPCIS-Min'
