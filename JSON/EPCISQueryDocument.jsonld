@@ -12,7 +12,7 @@
   "epcisBody": {
     "queryResults": {
       "subscriptionID": "32d2aec1-a6d2-46d9-900a-24124288cce1",
-      "queryName": "TrackingEventsForGTIN_10614141073464",
+      "queryName": "SimpleEventQuery",
       "resultsBody": {
         "eventList": [
           {
