@@ -335,8 +335,13 @@
             "@id": "epcis:ilmd"
         },
         "EPCISDocument": "epcis:EPCISDocument",
+        "EPCISQueryDocument": "epcis:EPCISQueryDocument",
         "epcisHeader": "epcis:epcisHeader",
         "epcisBody": "epcis:epcisBody",
+        "queryResults": "epcis:queryResults",
+        "subscriptionID": "epcis:subscriptionID",
+        "queryName": "epcis:queryName",
+        "resultsBody": "epcis:resultsBody",
         "eventList": {
             "@id": "epcis:eventList"
         },
