@@ -529,6 +529,7 @@ paths:
     get:
       tags:
         - 'Top-level'
+        - 'Events'
       summary: Returns all EPCIS events available in the EPCIS repository.
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-Version'
