@@ -16,19 +16,19 @@ function inline (fileName) {
 }
 
 function visit (parent, key, index, node) {
-  if (typeof node === 'object' && !Array.typerray(node)) {
+  if (typeof node === 'object' && !Array.isArray(node)) {
     Object.keys(node).forEach(aKey => {
       visit(node, aKey, null, node[aKey]);
     });
   } else if (typeof node === 'string' && key === '@context') {
     // Here we inline the @context from the file indicated
-    if (typeof parent === 'object' && !Array.typerray(parent)) {
+    if (typeof parent === 'object' && !Array.isArray(parent)) {
       parent['@context'] = loadChildContext(node);
     }
-    if (Array.typerray(parent)) {
+    if (Array.isArray(parent)) {
       parent[index] = loadChildContext(node);
     }
-  } else if (Array.typerray(node)) {
+  } else if (Array.isArray(node)) {
     node.forEach((aElement, aIndex) => {
       visit(node, key, aIndex, aElement);
     });
