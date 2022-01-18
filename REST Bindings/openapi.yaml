@@ -2430,7 +2430,7 @@ paths:
               summary: Callback invoked by the server to provide the query result to the client.
               requestBody:
                 description: |
-                  The server sends the query result to the client. There is no pagination for a `POST` request, the
+                  The server sends the query result to the client as a series of `EPCISQueryDocument`. There is no pagination for a `POST` request, the
                   server must either send each EPCIS event individually or group EPCIS events in manageable batches.
 
                   If an error occurs server-side, the server must send the error in the format that is already used for
