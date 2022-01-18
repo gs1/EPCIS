@@ -2192,7 +2192,7 @@ paths:
     delete:
       tags:
         - 'Queries'
-      summary: Removes a named query and terminates open WebSocket connections.
+      summary: Removes a named query and forcibly unsubscribes all active subscriptions, whether by WebSockets or Webhooks
       responses:
         '204':
           $ref: '#/components/responses/204QueryDeleted'
