@@ -1428,13 +1428,7 @@ paths:
           content:
             application/json:
               schema:
-                example:
-                  - urn:epc:id:sgln:0012345.11111.0
-                  - https://id.gs1.org/414/0614141123452
-                type: array
-                items:
-                  type: string
-                  format: uri
+                $ref: '#/components/schemas/BizLocationItemList'
         '401':
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
@@ -3882,6 +3876,26 @@ components:
           const: 'DispositionItemList'
         disposition:
           type: string
+    BizLocationItemList:
+      example: {
+        "@context": "https://gs1.github.io/EPCIS/epcis-context.jsonld",
+        "type": "BizLocationItemList",
+        "bizLocation": ["urn:epc:id:sgln:9524987.20000.0"]
+      }
+      type: object
+      required:
+        - '@context'
+        - 'type'
+        - bizLocation
+      properties:
+        '@context':
+          $ref: '#/components/schemas/LDContext'
+        'type':
+          type: string
+          const: 'BizLocationItemList'
+        bizLocation:
+          type: string
+          format: uri
     AbstractQuerySubscription:
       example: {
         "dest": "https://client.example.com/queryCallback",
