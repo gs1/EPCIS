@@ -3839,7 +3839,7 @@ components:
               $ref: '#/components/schemas/GS1-Query-DayOfWeek'
     GS1-Query-InitialRecordTime:
       description: |
-        Used to specify a time used to constrain what resources are considered when processing a query
+        Used to specify a time to constrain what resources are considered when processing a query
         subscription. This value only applies the first time a subscriber receives events. If omitted, the default
         value is the current time.
       type: string
