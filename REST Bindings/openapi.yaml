@@ -2030,8 +2030,7 @@ paths:
       tags:
         - 'Queries'
       summary: |
-        Creates and executes a named EPCIS events query and returns results with the option to use
-        pagination if needed.
+        Creates a named EPCIS events query.
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-Version'
         - $ref: '#/components/parameters/GS1-EPCIS-Min'
