@@ -14,6 +14,13 @@
     "TransformationEvent": "epcis:TransformationEvent",
     "AssociationEvent": "epcis:AssociationEvent",
     "TransactionEvent": "epcis:TransactionEvent",
+    "eventType": {
+      "@id": "epcis:eventType",
+      "@type": "@vocab"
+    },
+    "EventTypeItemList": {
+      "@id": "epcis:EventTypeItemList"
+    },
     "eventTime": {
       "@id": "epcis:eventTime",
       "@type": "xsd:dateTimeStamp"
@@ -74,6 +81,9 @@
       "@id": "epcis:bizStep",
       "@type": "@vocab"
     },
+    "BizStepItemList": {
+      "@id": "epcis:BizStepItemList"
+    },
     "disposition": {
       "@context": {
         "@protected": true,
@@ -116,17 +126,29 @@
       "@id": "epcis:disposition",
       "@type": "@vocab"
     },
+    "DispositionItemList": {
+      "@id": "epcis:DispositionItemList"
+    },
     "bizLocation": {
       "@id": "epcis:bizLocation",
       "@type": "@id"
+    },
+    "BizLocationItemList": {
+      "@id": "epcis:BizLocationItemList"
     },
     "readPoint": {
       "@id": "epcis:readPoint",
       "@type": "@id"
     },
+    "ReadPointItemList": {
+      "@id": "epcis:ReadPointItemList"
+    },
     "transformationID": {
       "@id": "epcis:transformationID",
       "@type": "@id"
+    },
+    "EpcItemList": {
+      "@id": "epcis:EpcItemList"
     },
     "epcList": {
       "@id": "epcis:epcList",
