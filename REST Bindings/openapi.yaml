@@ -1809,13 +1809,7 @@ paths:
           content:
             application/json:
               schema:
-                example:
-                  - in_progress
-                  - in_transit
-                type: array
-                items:
-                  type: string
-                  format: uri
+                $ref: '#components/schemas/DispositionItemList'
         '401':
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
@@ -3868,6 +3862,25 @@ components:
           type: string
           const: 'BizStepItemList'
         bizStep:
+          type: string
+    DispositionItemList:
+      example: {
+        "@context": "https://gs1.github.io/EPCIS/epcis-context.jsonld",
+        "type": "DispositionItemList",
+        "disposition": ["inline", "active"]
+      }
+      type: object
+      required:
+        - '@context'
+        - 'type'
+        - disposition
+      properties:
+        '@context':
+          $ref: '#/components/schemas/LDContext'
+        'type':
+          type: string
+          const: 'DispositionItemList'
+        disposition:
           type: string
     AbstractQuerySubscription:
       example: {
