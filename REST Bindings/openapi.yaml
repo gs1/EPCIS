@@ -63,12 +63,10 @@ paths:
               $ref: '#/components/headers/GS1-EPC-Format'
             GS1-CBV-XML-Format:
               $ref: '#/components/headers/GS1-CBV-XML-Format'
-            GS1-EPCIS-Extensions:
-              $ref: '#/components/headers/GS1-EPCIS-Extensions'
+            GS1-Extensions:
+              $ref: '#/components/headers/GS1-Extensions'
             GS1-Vendor-Version:
               $ref: '#/components/headers/GS1-Vendor-Version'
-            GS1-CBV-Extensions:
-              $ref: '#/components/headers/GS1-CBV-Extensions'
             GS1-EPCIS-Capture-Limit:
               $ref: '#/components/headers/GS1-EPCIS-Capture-Limit'
             GS1-EPCIS-Capture-File-Size-Limit:
@@ -100,11 +98,10 @@ paths:
       summary: Returns the list of top level resources available for this EPCIS repository.
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-Version'
-        - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
+        - $ref: '#/components/parameters/GS1-Extensions'
         - $ref: '#/components/parameters/GS1-EPCIS-Min'
         - $ref: '#/components/parameters/GS1-EPCIS-Max'
         - $ref: '#/components/parameters/GS1-CBV-Version'
-        - $ref: '#/components/parameters/GS1-CBV-Extensions'
       description: |
         This endpoint returns all the top-level resources currently available in the repository.
       responses:
@@ -157,12 +154,10 @@ paths:
               $ref: '#/components/headers/GS1-EPC-Format'
             GS1-CBV-XML-Format:
               $ref: '#/components/headers/GS1-CBV-XML-Format'
-            GS1-EPCIS-Extensions:
-              $ref: '#/components/headers/GS1-EPCIS-Extensions'
+            GS1-Extensions:
+              $ref: '#/components/headers/GS1-Extensions'
             GS1-Vendor-Version:
               $ref: '#/components/headers/GS1-Vendor-Version'
-            GS1-CBV-Extensions:
-              $ref: '#/components/headers/GS1-CBV-Extensions'
             GS1-EPCIS-Capture-Limit:
               $ref: '#/components/headers/GS1-EPCIS-Capture-Limit'
             GS1-EPCIS-Capture-File-Size-Limit:
@@ -196,8 +191,7 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-Version'
         - $ref: '#/components/parameters/GS1-EPC-Format'
         - $ref: '#/components/parameters/GS1-CBV-XML-Format'
-        - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
-        - $ref: '#/components/parameters/GS1-CBV-Extensions'
+        - $ref: '#/components/parameters/GS1-Extensions'
         - name: GS1-Capture-Error-Behaviour
           in: header
           required: false
@@ -245,12 +239,10 @@ paths:
               $ref: '#/components/headers/GS1-EPC-Format'
             GS1-CBV-XML-Format:
               $ref: '#/components/headers/GS1-CBV-XML-Format'
-            GS1-EPCIS-Extensions:
-              $ref: '#/components/headers/GS1-EPCIS-Extensions'
+            GS1-Extensions:
+              $ref: '#/components/headers/GS1-Extensions'
             GS1-Vendor-Version:
               $ref: '#/components/headers/GS1-Vendor-Version'
-            GS1-CBV-Extensions:
-              $ref: '#/components/headers/GS1-CBV-Extensions'
             GS1-EPCIS-Capture-Limit:
               $ref: '#/components/headers/GS1-EPCIS-Capture-Limit'
             GS1-EPCIS-Capture-File-Size-Limit:
@@ -319,10 +311,8 @@ paths:
               $ref: '#/components/headers/GS1-EPC-Format'
             GS1-CBV-XML-Format:
               $ref: '#/components/headers/GS1-CBV-XML-Format'
-            GS1-EPCIS-Extensions:
-              $ref: '#/components/headers/GS1-EPCIS-Extensions'
-            GS1-CBV-Extensions:
-              $ref: '#/components/headers/GS1-CBV-Extensions'
+            GS1-Extensions:
+              $ref: '#/components/headers/GS1-Extensions'
             Link:
               description: |
                 A pagination header link. This header works together with the `perPage` and `nextPageToken` query string
@@ -406,12 +396,10 @@ paths:
               $ref: '#/components/headers/GS1-EPC-Format'
             GS1-CBV-XML-Format:
               $ref: '#/components/headers/GS1-CBV-XML-Format'
-            GS1-EPCIS-Extensions:
-              $ref: '#/components/headers/GS1-EPCIS-Extensions'
+            GS1-Extensions:
+              $ref: '#/components/headers/GS1-Extensions'
             GS1-Vendor-Version:
               $ref: '#/components/headers/GS1-Vendor-Version'
-            GS1-CBV-Extensions:
-              $ref: '#/components/headers/GS1-CBV-Extensions'
             GS1-EPCIS-Capture-Limit:
               $ref: '#/components/headers/GS1-EPCIS-Capture-Limit'
             GS1-EPCIS-Capture-File-Size-Limit:
@@ -478,12 +466,10 @@ paths:
               $ref: '#/components/headers/GS1-EPC-Format'
             GS1-CBV-XML-Format:
               $ref: '#/components/headers/GS1-CBV-XML-Format'
-            GS1-EPCIS-Extensions:
-              $ref: '#/components/headers/GS1-EPCIS-Extensions'
+            GS1-Extensions:
+              $ref: '#/components/headers/GS1-Extensions'
             GS1-Vendor-Version:
               $ref: '#/components/headers/GS1-Vendor-Version'
-            GS1-CBV-Extensions:
-              $ref: '#/components/headers/GS1-CBV-Extensions'
             GS1-EPCIS-Capture-Limit:
               $ref: '#/components/headers/GS1-EPCIS-Capture-Limit'
             GS1-EPCIS-Capture-File-Size-Limit:
@@ -535,11 +521,10 @@ paths:
         - $ref: '#/components/parameters/NextPageToken'
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/GS1-EPCIS-Version'
-        - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
+        - $ref: '#/components/parameters/GS1-Extensions'
         - $ref: '#/components/parameters/GS1-EPCIS-Min'
         - $ref: '#/components/parameters/GS1-EPCIS-Max'
         - $ref: '#/components/parameters/GS1-CBV-Version'
-        - $ref: '#/components/parameters/GS1-CBV-Extensions'
       description: |
         This endpoint allows querying EPCIS events that are currently in the repository. 
         Events can be filtered through URL query string parameters as specified by the <a href="https://github.com/gs1/EPCIS/tree/master/REST%20Bindings/query-schema.json">EPCIS Query Language</a>.
@@ -588,12 +573,10 @@ paths:
               $ref: '#/components/headers/GS1-EPC-Format'
             GS1-CBV-XML-Format:
               $ref: '#/components/headers/GS1-CBV-XML-Format'
-            GS1-EPCIS-Extensions:
-              $ref: '#/components/headers/GS1-EPCIS-Extensions'
+            GS1-Extensions:
+              $ref: '#/components/headers/GS1-Extensions'
             GS1-Vendor-Version:
               $ref: '#/components/headers/GS1-Vendor-Version'
-            GS1-CBV-Extensions:
-              $ref: '#/components/headers/GS1-CBV-Extensions'
             GS1-EPCIS-Capture-Limit:
               $ref: '#/components/headers/GS1-EPCIS-Capture-Limit'
             GS1-EPCIS-Capture-File-Size-Limit:
@@ -673,12 +656,10 @@ paths:
               $ref: '#/components/headers/GS1-EPC-Format'
             GS1-CBV-XML-Format:
               $ref: '#/components/headers/GS1-CBV-XML-Format'
-            GS1-EPCIS-Extensions:
-              $ref: '#/components/headers/GS1-EPCIS-Extensions'
+            GS1-Extensions:
+              $ref: '#/components/headers/GS1-Extensions'
             GS1-Vendor-Version:
               $ref: '#/components/headers/GS1-Vendor-Version'
-            GS1-CBV-Extensions:
-              $ref: '#/components/headers/GS1-CBV-Extensions'
         '401':
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
@@ -699,8 +680,7 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-Version'
         - $ref: '#/components/parameters/GS1-EPC-Format'
         - $ref: '#/components/parameters/GS1-CBV-XML-Format'
-        - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
-        - $ref: '#/components/parameters/GS1-CBV-Extensions'
+        - $ref: '#/components/parameters/GS1-Extensions'
       description: |
         This endpoint accesses individual events using their unique identifier. The response body is an `EPCISQueryDocument` 
         enclosing the unique event and error declarations.
@@ -747,11 +727,10 @@ paths:
         - $ref: '#/components/parameters/NextPageToken'
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/GS1-EPCIS-Version'
-        - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
+        - $ref: '#/components/parameters/GS1-Extensions'
         - $ref: '#/components/parameters/GS1-EPCIS-Min'
         - $ref: '#/components/parameters/GS1-EPCIS-Max'
         - $ref: '#/components/parameters/GS1-CBV-Version'
-        - $ref: '#/components/parameters/GS1-CBV-Extensions'
       description: |
         EPCIS event types specify the schema of an event. This endpoint returns all EPCIS event types that are
         currently present in the repository.
@@ -821,8 +800,7 @@ paths:
       - $ref: '#/components/parameters/GS1-CBV-Version'
       - $ref: '#/components/parameters/GS1-EPC-Format'
       - $ref: '#/components/parameters/GS1-CBV-XML-Format'
-      - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
-      - $ref: '#/components/parameters/GS1-CBV-Extensions'
+      - $ref: '#/components/parameters/GS1-Extensions'
     options:
       tags:
         - 'Discovery'
@@ -855,12 +833,10 @@ paths:
               $ref: '#/components/headers/GS1-EPC-Format'
             GS1-CBV-XML-Format:
               $ref: '#/components/headers/GS1-CBV-XML-Format'
-            GS1-EPCIS-Extensions:
-              $ref: '#/components/headers/GS1-EPCIS-Extensions'
+            GS1-Extensions:
+              $ref: '#/components/headers/GS1-Extensions'
             GS1-Vendor-Version:
               $ref: '#/components/headers/GS1-Vendor-Version'
-            GS1-CBV-Extensions:
-              $ref: '#/components/headers/GS1-CBV-Extensions'
             GS1-EPCIS-Capture-Limit:
               $ref: '#/components/headers/GS1-EPCIS-Capture-Limit'
             GS1-EPCIS-Capture-File-Size-Limit:
@@ -947,8 +923,7 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-Version'
         - $ref: '#/components/parameters/GS1-EPC-Format'
         - $ref: '#/components/parameters/GS1-CBV-XML-Format'
-        - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
-        - $ref: '#/components/parameters/GS1-CBV-Extensions'
+        - $ref: '#/components/parameters/GS1-Extensions'
       summary: Returns known electronic product codes.
       description: |
         An endpoint to list electronic product codes.
@@ -968,10 +943,8 @@ paths:
               $ref: '#/components/headers/GS1-EPC-Format'
             GS1-CBV-XML-Format:
               $ref: '#/components/headers/GS1-CBV-XML-Format'
-            GS1-EPCIS-Extensions:
-              $ref: '#/components/headers/GS1-EPCIS-Extensions'
-            GS1-CBV-Extensions:
-              $ref: '#/components/headers/GS1-CBV-Extensions'
+            GS1-Extensions:
+              $ref: '#/components/headers/GS1-Extensions'
             Link:
               example: '<https://example.com/epcs?perPage=30&nextPageToken=3A1550673874978CiAU6D7DENAKwM2gQRRwGrataeq>; rel="next"'
               schema:
@@ -1037,12 +1010,10 @@ paths:
               $ref: '#/components/headers/GS1-EPC-Format'
             GS1-CBV-XML-Format:
               $ref: '#/components/headers/GS1-CBV-XML-Format'
-            GS1-EPCIS-Extensions:
-              $ref: '#/components/headers/GS1-EPCIS-Extensions'
+            GS1-Extensions:
+              $ref: '#/components/headers/GS1-Extensions'
             GS1-Vendor-Version:
               $ref: '#/components/headers/GS1-Vendor-Version'
-            GS1-CBV-Extensions:
-              $ref: '#/components/headers/GS1-CBV-Extensions'
     get:
       tags:
         - 'Top-level'
@@ -1104,8 +1075,7 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-Version'
         - $ref: '#/components/parameters/GS1-EPC-Format'
         - $ref: '#/components/parameters/GS1-CBV-XML-Format'
-        - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
-        - $ref: '#/components/parameters/GS1-CBV-Extensions'
+        - $ref: '#/components/parameters/GS1-Extensions'
 
 
       description: |
@@ -1174,8 +1144,6 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-Version'
         - $ref: '#/components/parameters/GS1-EPC-Format'
         - $ref: '#/components/parameters/GS1-CBV-XML-Format'
-        - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
-        - $ref: '#/components/parameters/GS1-CBV-Extensions'
       summary: Returns known business steps.
       description: |
         An endpoint to list business steps.
@@ -1195,10 +1163,8 @@ paths:
               $ref: '#/components/headers/GS1-EPC-Format'
             GS1-CBV-XML-Format:
               $ref: '#/components/headers/GS1-CBV-XML-Format'
-            GS1-EPCIS-Extensions:
-              $ref: '#/components/headers/GS1-EPCIS-Extensions'
-            GS1-CBV-Extensions:
-              $ref: '#/components/headers/GS1-CBV-Extensions'
+            GS1-Extensions:
+              $ref: '#/components/headers/GS1-Extensions'
             Link:
               example: '<https://example.com/bizSteps?perPage=30&nextPageToken=3A1550673874978DENAKwM2gQRRwGrataeq>; rel="next"'
               schema:
@@ -1263,12 +1229,10 @@ paths:
               $ref: '#/components/headers/GS1-EPC-Format'
             GS1-CBV-XML-Format:
               $ref: '#/components/headers/GS1-CBV-XML-Format'
-            GS1-EPCIS-Extensions:
-              $ref: '#/components/headers/GS1-EPCIS-Extensions'
+            GS1-Extensions:
+              $ref: '#/components/headers/GS1-Extensions'
             GS1-Vendor-Version:
               $ref: '#/components/headers/GS1-Vendor-Version'
-            GS1-CBV-Extensions:
-              $ref: '#/components/headers/GS1-CBV-Extensions'
         '401':
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
@@ -1338,8 +1302,7 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-Version'
         - $ref: '#/components/parameters/GS1-EPC-Format'
         - $ref: '#/components/parameters/GS1-CBV-XML-Format'
-        - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
-        - $ref: '#/components/parameters/GS1-CBV-Extensions'
+        - $ref: '#/components/parameters/GS1-Extensions'
       description: |
         This endpoint helps to navigate EPCIS events by business steps. It returns
         EPCIS events up to the amount defined in `perPage`. The server returns a `Link` header to point to the
@@ -1402,8 +1365,7 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-Version'
         - $ref: '#/components/parameters/GS1-EPC-Format'
         - $ref: '#/components/parameters/GS1-CBV-XML-Format'
-        - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
-        - $ref: '#/components/parameters/GS1-CBV-Extensions'
+        - $ref: '#/components/parameters/GS1-Extensions'
       summary: Returns known business locations.
       description: |
         An endpoint to list business locations.
@@ -1419,10 +1381,8 @@ paths:
               $ref: '#/components/headers/GS1-EPCIS-Max'
             GS1-CBV-Version:
               $ref: '#/components/headers/GS1-CBV-Version'
-            GS1-EPCIS-Extensions:
-              $ref: '#/components/headers/GS1-EPCIS-Extensions'
-            GS1-CBV-Extensions:
-              $ref: '#/components/headers/GS1-CBV-Extensions'
+            GS1-Extensions:
+              $ref: '#/components/headers/GS1-Extensions'
             Link:
               example: '<https://example.com/bizLocations?perPage=30&nextPageToken=3A1550673874978AU6D7DENAKwM2gQRRwGrataeq>; rel="next"'
               schema:
@@ -1486,12 +1446,10 @@ paths:
               $ref: '#/components/headers/GS1-EPC-Format'
             GS1-CBV-XML-Format:
               $ref: '#/components/headers/GS1-CBV-XML-Format'
-            GS1-EPCIS-Extensions:
-              $ref: '#/components/headers/GS1-EPCIS-Extensions'
+            GS1-Extensions:
+              $ref: '#/components/headers/GS1-Extensions'
             GS1-Vendor-Version:
               $ref: '#/components/headers/GS1-Vendor-Version'
-            GS1-CBV-Extensions:
-              $ref: '#/components/headers/GS1-CBV-Extensions'
         '401':
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
@@ -1557,8 +1515,7 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-Version'
         - $ref: '#/components/parameters/GS1-EPC-Format'
         - $ref: '#/components/parameters/GS1-CBV-XML-Format'
-        - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
-        - $ref: '#/components/parameters/GS1-CBV-Extensions'
+        - $ref: '#/components/parameters/GS1-Extensions'
       summary: Returns known read points.
       description: |
         An endpoint to list read points.
@@ -1574,14 +1531,12 @@ paths:
               $ref: '#/components/headers/GS1-EPCIS-Max'
             GS1-CBV-Version:
               $ref: '#/components/headers/GS1-CBV-Version'
-            GS1-EPCIS-Extensions:
-              $ref: '#/components/headers/GS1-EPCIS-Extensions'
+            GS1-Extensions:
+              $ref: '#/components/headers/GS1-Extensions'
             GS1-EPC-Format:
               $ref: '#/components/headers/GS1-EPC-Format'
             GS1-CBV-XML-Format:
               $ref: '#/components/headers/GS1-CBV-XML-Format'
-            GS1-CBV-Extensions:
-              $ref: '#/components/headers/GS1-CBV-Extensions'
             Link:
               example: '<https://example.com/readPoints?perPage=30&nextPageToken=3A15506738749783AU6D7DENAKwM2gQRRwGrataeq>; rel="next"'
               schema:
@@ -1645,12 +1600,10 @@ paths:
               $ref: '#/components/headers/GS1-EPC-Format'
             GS1-CBV-XML-Format:
               $ref: '#/components/headers/GS1-CBV-XML-Format'
-            GS1-EPCIS-Extensions:
-              $ref: '#/components/headers/GS1-EPCIS-Extensions'
+            GS1-Extensions:
+              $ref: '#/components/headers/GS1-Extensions'
             GS1-Vendor-Version:
               $ref: '#/components/headers/GS1-Vendor-Version'
-            GS1-CBV-Extensions:
-              $ref: '#/components/headers/GS1-CBV-Extensions'
         '401':
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
@@ -1719,8 +1672,7 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-Version'
         - $ref: '#/components/parameters/GS1-EPC-Format'
         - $ref: '#/components/parameters/GS1-CBV-XML-Format'
-        - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
-        - $ref: '#/components/parameters/GS1-CBV-Extensions'
+        - $ref: '#/components/parameters/GS1-Extensions'
       description: |
         This endpoint helps to navigate EPCIS events by read points. It returns
         EPCIS events up to the amount defined in `perPage`. The server returns a `Link` header to point to the remaining
@@ -1783,8 +1735,7 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-Version'
         - $ref: '#/components/parameters/GS1-EPC-Format'
         - $ref: '#/components/parameters/GS1-CBV-XML-Format'
-        - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
-        - $ref: '#/components/parameters/GS1-CBV-Extensions'
+        - $ref: '#/components/parameters/GS1-Extensions'
       summary: Returns known dispositions.
       description: |
         An endpoint to list dispositions.
@@ -1800,10 +1751,8 @@ paths:
               $ref: '#/components/headers/GS1-EPCIS-Max'
             GS1-CBV-Version:
               $ref: '#/components/headers/GS1-CBV-Version'
-            GS1-EPCIS-Extensions:
-              $ref: '#/components/headers/GS1-EPCIS-Extensions'
-            GS1-CBV-Extensions:
-              $ref: '#/components/headers/GS1-CBV-Extensions'
+            GS1-Extensions:
+              $ref: '#/components/headers/GS1-Extensions'
             Link:
               example: '<https://example.com/dispositions?perPage=30&nextPageToken=3A1550673874979AU6D7DENAKwM2gQRRwGrataeq>; rel="next"'
               schema:
@@ -1867,12 +1816,10 @@ paths:
               $ref: '#/components/headers/GS1-EPC-Format'
             GS1-CBV-XML-Format:
               $ref: '#/components/headers/GS1-CBV-XML-Format'
-            GS1-EPCIS-Extensions:
-              $ref: '#/components/headers/GS1-EPCIS-Extensions'
+            GS1-Extensions:
+              $ref: '#/components/headers/GS1-Extensions'
             GS1-Vendor-Version:
               $ref: '#/components/headers/GS1-Vendor-Version'
-            GS1-CBV-Extensions:
-              $ref: '#/components/headers/GS1-CBV-Extensions'
         '401':
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
@@ -1944,8 +1891,7 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-Version'
         - $ref: '#/components/parameters/GS1-EPC-Format'
         - $ref: '#/components/parameters/GS1-CBV-XML-Format'
-        - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
-        - $ref: '#/components/parameters/GS1-CBV-Extensions'
+        - $ref: '#/components/parameters/GS1-Extensions'
 
       description: |
         This endpoint helps to navigate EPCIS events by dispositions. It returns
@@ -2030,10 +1976,8 @@ paths:
               $ref: '#/components/headers/GS1-EPC-Format'
             GS1-CBV-XML-Format:
               $ref: '#/components/headers/GS1-CBV-XML-Format'
-            GS1-EPCIS-Extensions:
-              $ref: '#/components/headers/GS1-EPCIS-Extensions'
-            GS1-CBV-Extensions:
-              $ref: '#/components/headers/GS1-CBV-Extensions'
+            GS1-Extensions:
+              $ref: '#/components/headers/GS1-Extensions'
             Link:
               description: |
                 A pagination header link. This header works together with the `perPage` and `nextPageToken` query string
@@ -2095,8 +2039,7 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-Version'
         - $ref: '#/components/parameters/GS1-EPC-Format'
         - $ref: '#/components/parameters/GS1-CBV-XML-Format'
-        - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
-        - $ref: '#/components/parameters/GS1-CBV-Extensions'
+        - $ref: '#/components/parameters/GS1-Extensions'
         - $ref: '#/components/parameters/PerPage'
       description: |
         Creating a named query creates a view on the events in the repository, accessible through its events resource.
@@ -2118,10 +2061,8 @@ paths:
               $ref: '#/components/headers/GS1-EPC-Format'
             GS1-CBV-XML-Format:
               $ref: '#/components/headers/GS1-CBV-XML-Format'
-            GS1-EPCIS-Extensions:
-              $ref: '#/components/headers/GS1-EPCIS-Extensions'
-            GS1-CBV-Extensions:
-              $ref: '#/components/headers/GS1-CBV-Extensions'
+            GS1-Extensions:
+              $ref: '#/components/headers/GS1-Extensions'
             Location:
               description: |
                 The URL of the created query. The client can use the `Location` URL to obtain the named query definition.
@@ -2165,11 +2106,8 @@ paths:
               $ref: '#/components/headers/GS1-EPC-Format'
             GS1-CBV-XML-Format:
               $ref: '#/components/headers/GS1-CBV-XML-Format'
-            GS1-EPCIS-Extensions:
-              $ref: '#/components/headers/GS1-EPCIS-Extensions'
-            GS1-CBV-Extensions:
-              $ref: '#/components/headers/GS1-CBV-Extensions'
-
+            GS1-Extensions:
+              $ref: '#/components/headers/GS1-Extensions'
           description: |
             Queries are like views that are created using the <a href="https://github.com/gs1/EPCIS/tree/master/REST%20Bindings/query-schema.json">EPCIS Query Language</a>. Each query object
             consists of a query name and the query definition.
@@ -2240,12 +2178,10 @@ paths:
               $ref: '#/components/headers/GS1-EPC-Format'
             GS1-CBV-XML-Format:
               $ref: '#/components/headers/GS1-CBV-XML-Format'
-            GS1-EPCIS-Extensions:
-              $ref: '#/components/headers/GS1-EPCIS-Extensions'
+            GS1-Extensions:
+              $ref: '#/components/headers/GS1-Extensions'
             GS1-Vendor-Version:
               $ref: '#/components/headers/GS1-Vendor-Version'
-            GS1-CBV-Extensions:
-              $ref: '#/components/headers/GS1-CBV-Extensions'
         '401':
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
@@ -2335,10 +2271,8 @@ paths:
               $ref: '#/components/headers/GS1-EPC-Format'
             GS1-CBV-XML-Format:
               $ref: '#/components/headers/GS1-CBV-XML-Format'
-            GS1-EPCIS-Extensions:
-              $ref: '#/components/headers/GS1-EPCIS-Extensions'
-            GS1-CBV-Extensions:
-              $ref: '#/components/headers/GS1-CBV-Extensions'
+            GS1-Extensions:
+              $ref: '#/components/headers/GS1-Extensions'
             Link:
               example: '<https://example.com/queries/myQuery/subscriptions?perPage=30&nextPageToken=3A15506738749783AU6D7DENAKwM2gQRRwGrataeq>; rel="next"'
               schema:
@@ -2394,8 +2328,7 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-Version'
         - $ref: '#/components/parameters/GS1-EPC-Format'
         - $ref: '#/components/parameters/GS1-CBV-XML-Format'
-        - $ref: '#/components/parameters/GS1-EPCIS-Extensions'
-        - $ref: '#/components/parameters/GS1-CBV-Extensions'
+        - $ref: '#/components/parameters/GS1-Extensions'
       description: |
         Creating a query subscription using Webhooks requires the client to provide a single endpoint to which the
         server will send events and a subscription secret that the server needs to authenticate itself when
@@ -2797,11 +2730,8 @@ components:
           $ref: '#/components/headers/GS1-CBV-XML-Format'
         GS1-CBV-Version:
           $ref: '#/components/headers/GS1-CBV-Version'
-        GS1-EPCIS-Extensions:
-          $ref: '#/components/headers/GS1-EPCIS-Extensions'
-        GS1-CBV-Extensions:
-          $ref: '#/components/headers/GS1-CBV-Extensions'
-
+        GS1-Extensions:
+          $ref: '#/components/headers/GS1-Extensions'
       description: Returns the relative path `events`.
       content:
         application/json:
@@ -2823,14 +2753,12 @@ components:
           $ref: '#/components/headers/GS1-EPCIS-Max'
         GS1-CBV-Version:
           $ref: '#/components/headers/GS1-CBV-Version'
-        GS1-EPCIS-Extensions:
-          $ref: '#/components/headers/GS1-EPCIS-Extensions'
+        GS1-Extensions:
+          $ref: '#/components/headers/GS1-Extensions'
         GS1-EPC-Format:
           $ref: '#/components/headers/GS1-EPC-Format'
         GS1-CBV-XML-Format:
           $ref: '#/components/headers/GS1-CBV-XML-Format'
-        GS1-CBV-Extensions:
-          $ref: '#/components/headers/GS1-CBV-Extensions'
         Link:
           description: |
             A pagination header link. This header works together with the `perPage` and `nextPageToken` query string
@@ -2879,12 +2807,10 @@ components:
           $ref: '#/components/headers/GS1-EPCIS-Max'
         GS1-CBV-Version:
           $ref: '#/components/headers/GS1-CBV-Version'
-        GS1-EPCIS-Extensions:
-          $ref: '#/components/headers/GS1-EPCIS-Extensions'
+        GS1-Extensions:
+          $ref: '#/components/headers/GS1-Extensions'
         GS1-Vendor-Version:
           $ref: '#/components/headers/GS1-Vendor-Version'
-        GS1-CBV-Extensions:
-          $ref: '#/components/headers/GS1-CBV-Extensions'
     204AnonymousQueriesDiscovery:
       description: |
         The `OPTIONS` method is used to discover capabilities for anonymous queries endpoints.
@@ -2907,13 +2833,10 @@ components:
           $ref: '#/components/headers/GS1-EPC-Format'
         GS1-CBV-XML-Format:
           $ref: '#/components/headers/GS1-CBV-XML-Format'
-        GS1-EPCIS-Extensions:
-          $ref: '#/components/headers/GS1-EPCIS-Extensions'
+        GS1-Extensions:
+          $ref: '#/components/headers/GS1-Extensions'
         GS1-Vendor-Version:
           $ref: '#/components/headers/GS1-Vendor-Version'
-        GS1-CBV-Extensions:
-          $ref: '#/components/headers/GS1-CBV-Extensions'
-
     204EventsEndpointDiscovery:
       description: |
         The `OPTIONS` method is used to discover capabilities for `events` endpoints. It describes which EPCIS and CBV
@@ -2937,12 +2860,10 @@ components:
           $ref: '#/components/headers/GS1-EPC-Format'
         GS1-CBV-XML-Format:
           $ref: '#/components/headers/GS1-CBV-XML-Format'
-        GS1-EPCIS-Extensions:
-          $ref: '#/components/headers/GS1-EPCIS-Extensions'
+        GS1-Extensions:
+          $ref: '#/components/headers/GS1-Extensions'
         GS1-Vendor-Version:
           $ref: '#/components/headers/GS1-Vendor-Version'
-        GS1-CBV-Extensions:
-          $ref: '#/components/headers/GS1-CBV-Extensions'
     204QueryDeleted:
       description: Query deleted and clients disconnected.
     400SubscriptionIssues:
@@ -4041,8 +3962,8 @@ components:
         - Always_Web_URI
         - Always_URN
         - Never_Translates
-    GS1-EPCIS-Extensions:
-      description: Specific EPCIS extensions supported (e.g., for FIT).
+    GS1-Extensions:
+      description: Specific EPCIS or CBV extensions supported (e.g., for FIT).
       example: {"example-epc-ext": "http://example.com/epcis/"}
       type: object
     GS1-Vendor-Version:
@@ -4051,10 +3972,6 @@ components:
       anyOf:
         - type: string
         - type: object
-    GS1-CBV-Extensions:
-      description: An optional header to specify the vocabulary for the top-level endpoints.
-      example: {"ex": "http://example.com/vendor1", "vendor": "<https://example.org/defs#"}
-      type: object
     GS1-EPCIS-Capture-Limit:
       example: 500
       description: The maximum number of EPCIS events that can be captured per call.
@@ -4273,16 +4190,11 @@ components:
       name: GS1-CBV-XML-Format
       schema:
         $ref: '#/components/schemas/GS1-CBV-XML-Format'
-    GS1-EPCIS-Extensions:
+    GS1-Extensions:
       in: header
-      name: GS1-EPCIS-Extensions
+      name: GS1-Extensions
       schema:
-        $ref: '#/components/schemas/GS1-EPCIS-Extensions'
-    GS1-CBV-Extensions:
-      in: header
-      name: GS1-CBV-Extensions
-      schema:
-        $ref: '#/components/schemas/GS1-CBV-Extensions'
+        $ref: '#/components/schemas/GS1-Extensions'
 
   headers:
     # response headers from schema
@@ -4304,15 +4216,12 @@ components:
     GS1-CBV-XML-Format:
       schema:
         $ref: '#/components/schemas/GS1-CBV-XML-Format'
-    GS1-EPCIS-Extensions:
+    GS1-Extensions:
       schema:
-        $ref: '#/components/schemas/GS1-EPCIS-Extensions'
+        $ref: '#/components/schemas/GS1-Extensions'
     GS1-Vendor-Version:
       schema:
         $ref: '#/components/schemas/GS1-Vendor-Version'
-    GS1-CBV-Extensions:
-      schema:
-        $ref: '#/components/schemas/GS1-CBV-Extensions'
     GS1-EPCIS-Capture-Limit:
       schema:
         $ref: '#/components/schemas/GS1-EPCIS-Capture-Limit'
