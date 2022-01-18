@@ -2884,7 +2884,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/EPCISEventTypes'
+            $ref: '#/components/schemas/EventTypeItemList'
     204TopLevelResourcesDiscovery:
       description: |
         The `OPTIONS` method is used to discover capabilities for EPCIS 2.0 endpoints.
@@ -3249,6 +3249,18 @@ components:
                       - epcisException:ImplementationException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
   schemas:
+    LDContext:
+      description: JSON-LD @context. 
+      anyOf:
+        - type: array
+          items:
+              anyOf:
+              - type: string
+                format: uri
+              - type: object
+        - type: string 
+          format: uri
+        - type: object
     Location:
       description: Location header of a resource.
       type: string
@@ -3776,6 +3788,32 @@ components:
       description: The `Upgrade` and `Connection` headers are needed to open a Websocket for queries.
       type: string
       default: upgrade
+    EventTypeItemList:
+      type: object
+      description: Event type item list
+      example: {
+        "@context": "https://gs1.github.io/EPCIS/epcis-context.jsonld",
+        "type": "EventTypeItemList",
+        "eventType": ["ObjectEvent", "AssociationEvent"]
+      }
+      required: 
+        - '@context'
+        - 'type'
+        - eventType
+      properties:
+        '@context':
+          $ref: '#/components/schemas/LDContext'
+        'type':
+          type: string
+          const: EventTypeItemList
+        eventType:
+          type: array
+          items:
+            anyOf:
+              - $ref: '#/components/schemas/EPCISEventTypes'
+              - type: string
+                format: uri
+          uniqueItems: true
     EPCISEventTypes:
       type: string
       description: The five types of EPCIS events.
