@@ -1176,15 +1176,8 @@ paths:
             the full resource address is used.
           content:
             application/json:
-              schema:
-                example:
-                  - ex1:qualityCheck
-                  - receiving
-                  - vendor2:QA
-                type: array
-                items:
-                  type: string
-                  format: uri
+              schema: 
+                $ref: '#/components/schemas/BizStepItemList'
         '401':
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
@@ -1395,13 +1388,7 @@ paths:
           content:
             application/json:
               schema:
-                example:
-                  - urn:epc:id:sgln:0012345.11111.0
-                  - https://id.gs1.org/414/0614141123452
-                type: array
-                items:
-                  type: string
-                  format: uri
+                $ref: '#/components/schemas/BizLocationItemList'
         '401':
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
@@ -1549,13 +1536,7 @@ paths:
           content:
             application/json:
               schema:
-                example:
-                  - urn:epc:id:sgln:0012345.11111.400
-                  - urn:epc:id:sgln:0012346.11111.400
-                type: array
-                items:
-                  type: string
-                  format: uri
+                $ref: '#/components/schemas/ReadPointItemList'
         '401':
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
@@ -1765,13 +1746,7 @@ paths:
           content:
             application/json:
               schema:
-                example:
-                  - in_progress
-                  - in_transit
-                type: array
-                items:
-                  type: string
-                  format: uri
+                $ref: '#components/schemas/DispositionItemList'
         '401':
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
@@ -2787,7 +2762,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/EPCISEventTypes'
+            $ref: '#/components/schemas/EventTypeItemList'
     204TopLevelResourcesDiscovery:
       description: |
         The `OPTIONS` method is used to discover capabilities for EPCIS 2.0 endpoints.
@@ -3145,6 +3120,18 @@ components:
                       - epcisException:ImplementationException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
   schemas:
+    LDContext:
+      description: JSON-LD @context. 
+      anyOf:
+        - type: array
+          items:
+              anyOf:
+              - type: string
+                format: uri
+              - type: object
+        - type: string 
+          format: uri
+        - type: object
     Location:
       description: Location header of a resource.
       type: string
@@ -3683,6 +3670,32 @@ components:
       description: The `Upgrade` and `Connection` headers are needed to open a Websocket for queries.
       type: string
       default: upgrade
+    EventTypeItemList:
+      type: object
+      description: Event type item list
+      example: {
+        "@context": "https://gs1.github.io/EPCIS/epcis-context.jsonld",
+        "type": "EventTypeItemList",
+        "eventType": ["ObjectEvent", "AssociationEvent"]
+      }
+      required: 
+        - '@context'
+        - 'type'
+        - eventType
+      properties:
+        '@context':
+          $ref: '#/components/schemas/LDContext'
+        'type':
+          type: string
+          const: EventTypeItemList
+        eventType:
+          type: array
+          items:
+            anyOf:
+              - $ref: '#/components/schemas/EPCISEventTypes'
+              - type: string
+                format: uri
+          uniqueItems: true
     EPCISEventTypes:
       type: string
       description: The five types of EPCIS events.
@@ -3721,6 +3734,92 @@ components:
         - dispositions
         - capture
         - queries
+    BizStepItemList:
+      example: {
+        "@context": [
+          "https://gs1.github.io/EPCIS/epcis-context.jsonld",
+          {
+            "ex": "https://example.org/my-steps/"
+          }
+        ],
+        "type": "BizStepItemList",
+        "bizStep": ["receiving", "shipping", "ex:funding"]
+      }
+      type: object
+      required:
+        - '@context'
+        - 'type'
+        - bizStep
+      properties:
+        '@context':
+          $ref: '#/components/schemas/LDContext'
+        'type':
+          type: string
+          const: 'BizStepItemList'
+        bizStep:
+          type: string
+    DispositionItemList:
+      example: {
+        "@context": "https://gs1.github.io/EPCIS/epcis-context.jsonld",
+        "type": "DispositionItemList",
+        "disposition": ["inline", "active"]
+      }
+      type: object
+      required:
+        - '@context'
+        - 'type'
+        - disposition
+      properties:
+        '@context':
+          $ref: '#/components/schemas/LDContext'
+        'type':
+          type: string
+          const: 'DispositionItemList'
+        disposition:
+          type: string
+    BizLocationItemList:
+      example: {
+        "@context": "https://gs1.github.io/EPCIS/epcis-context.jsonld",
+        "type": "BizLocationItemList",
+        "bizLocation": ["urn:epc:id:sgln:9524987.20000.0"]
+      }
+      type: object
+      required:
+        - '@context'
+        - 'type'
+        - bizLocation
+      properties:
+        '@context':
+          $ref: '#/components/schemas/LDContext'
+        'type':
+          type: string
+          const: 'BizLocationItemList'
+        bizLocation:
+          type: string
+          format: uri
+    ReadPointItemList:
+      example: {
+        "@context": "https://gs1.github.io/EPCIS/epcis-context.jsonld",
+        "type": "ReadPointItemList",
+        "readPoint": [
+          "urn:epc:id:sgln:9524678.90000.WarehouseD2",
+          "urn:epc:id:sgln:9524678.90000.WarehouseD1"
+        ]
+      }
+      type: object
+      required:
+        - '@context'
+        - 'type'
+        - readPoint
+      properties:
+        '@context':
+          $ref: '#/components/schemas/LDContext'
+        'type':
+          type: string
+          const: 'ReadPointItemList'
+        bizLocation:
+          type: string
+          format: uri
     AbstractQuerySubscription:
       example: {
         "dest": "https://client.example.com/queryCallback",
