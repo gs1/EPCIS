@@ -1581,13 +1581,7 @@ paths:
           content:
             application/json:
               schema:
-                example:
-                  - urn:epc:id:sgln:0012345.11111.400
-                  - urn:epc:id:sgln:0012346.11111.400
-                type: array
-                items:
-                  type: string
-                  format: uri
+                $ref: '#/components/schemas/ReadPointItemList'
         '401':
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
@@ -3893,6 +3887,29 @@ components:
         'type':
           type: string
           const: 'BizLocationItemList'
+        bizLocation:
+          type: string
+          format: uri
+    ReadPointItemList:
+      example: {
+        "@context": "https://gs1.github.io/EPCIS/epcis-context.jsonld",
+        "type": "ReadPointItemList",
+        "readPoint": [
+          "urn:epc:id:sgln:9524678.90000.WarehouseD2",
+          "urn:epc:id:sgln:9524678.90000.WarehouseD1"
+        ]
+      }
+      type: object
+      required:
+        - '@context'
+        - 'type'
+        - readPoint
+      properties:
+        '@context':
+          $ref: '#/components/schemas/LDContext'
+        'type':
+          type: string
+          const: 'ReadPointItemList'
         bizLocation:
           type: string
           format: uri
