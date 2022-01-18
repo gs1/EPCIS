@@ -1210,15 +1210,8 @@ paths:
             the full resource address is used.
           content:
             application/json:
-              schema:
-                example:
-                  - ex1:qualityCheck
-                  - receiving
-                  - vendor2:QA
-                type: array
-                items:
-                  type: string
-                  format: uri
+              schema: 
+                $ref: '#/components/schemas/BizStepItemList'
         '401':
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
@@ -3852,6 +3845,30 @@ components:
         - dispositions
         - capture
         - queries
+    BizStepItemList:
+      example: {
+        "@context": [
+          "https://gs1.github.io/EPCIS/epcis-context.jsonld",
+          {
+            "ex": "https://example.org/my-steps/"
+          }
+        ],
+        "type": "BizStepItemList",
+        "bizStep": ["receiving", "shipping", "ex:funding"]
+      }
+      type: object
+      required:
+        - '@context'
+        - 'type'
+        - bizStep
+      properties:
+        '@context':
+          $ref: '#/components/schemas/LDContext'
+        'type':
+          type: string
+          const: 'BizStepItemList'
+        bizStep:
+          type: string
     AbstractQuerySubscription:
       example: {
         "dest": "https://client.example.com/queryCallback",
