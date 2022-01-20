@@ -30,7 +30,18 @@
                         "sellable_accessible",
                         "sellable_not_accessible",
                         "stolen",
-                        "unknown"
+                        "unknown",
+                        "available", 
+                        "completeness_verified", 
+                        "completeness_inferred", 
+                        "conformant",
+                        "container_open", 
+                        "mismatch_instance", 
+                        "mismatch_class", 
+                        "mismatch_quantity", 
+                        "needs_replacement",
+                        "non_conformant", 
+                        "unavailable"
                     ]
                 }
             ]

@@ -2,7 +2,7 @@
   "@context": ["https://gs1.github.io/EPCIS/epcis-context.jsonld", {"ex": "http://ns.example.com/epcis/"}],
   "id": "_:document1",
   "type": "EPCISDocument",
-  "schemaVersion": 2.0,
+  "schemaVersion": "2.0",
   "creationDate": "2021-04-27T15:00:00+01:00",
   "epcisBody": {
     "eventList": [

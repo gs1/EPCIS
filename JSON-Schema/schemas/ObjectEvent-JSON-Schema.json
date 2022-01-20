@@ -69,7 +69,32 @@
                     "required": [
                         "type",
                         "action"
-                    ]
+                    ],
+                    "propertyNames": {
+                        "anyOf": [
+                            {      
+                                "$ref": "event-definitions-JSON-Schema.json#/definitions/common-event-properties"
+                            },
+                            {
+                                "type": "string",
+                                "enum": [
+                                    "action",
+                                    "epcList",
+                                    "quantityList",
+                                    "bizStep",
+                                    "disposition",
+                                    "persistentDisposition",
+                                    "readPoint",
+                                    "bizLocation",
+                                    "bizTransactionList",
+                                    "sourceList",
+                                    "destinationList",
+                                    "sensorElementList",
+                                    "ilmd"
+                                ]
+                            }
+                        ]
+                    }
                 },
                 {
                     "anyOf": [

@@ -394,13 +394,13 @@
         "set": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/uri"
+            "$ref": "#/definitions/disposition"
           }
         },
         "unset": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/uri"
+            "$ref": "#/definitions/disposition"
           }
         }
       }
@@ -554,7 +554,10 @@
       "type": "object",
       "properties": {
         "type": {
-          "$ref": "#/definitions/uri"
+          "$ref": "#/definitions/measurementType"
+        },
+        "exception": {
+          "$ref": "#/definitions/sensorAlertType"
         },
         "deviceID": {
           "$ref": "#/definitions/uri"
@@ -581,7 +584,7 @@
           "$ref": "#/definitions/decimal"
         },
         "component": {
-          "$ref": "#/definitions/string"
+          "$ref": "#/definitions/component"
         },
         "stringValue": {
           "$ref": "#/definitions/string"
@@ -691,6 +694,7 @@
           "type": "string",
           "enum": [
             "@context",
+            "type",
             "eventTime",
             "recordTime",
             "eventTimeZoneOffset",
@@ -721,15 +725,46 @@
         }
       ]
     },
-    "error-reason": {
+    "disposition": {
       "anyOf": [
         {
           "$ref": "#/definitions/vocab-uri"
         },
         {
           "enum": [
-            "did_not_occur",
-            "incorrect_data"
+            "active",
+            "container_closed",
+            "damaged",
+            "destroyed",
+            "dispensed",
+            "disposed",
+            "encoded",
+            "expired",
+            "in_progress",
+            "in_transit",
+            "inactive",
+            "no_pedigree_match",
+            "non_sellable_other",
+            "partially_dispensed",
+            "recalled",
+            "reserved",
+            "retail_sold",
+            "returned",
+            "sellable_accessible",
+            "sellable_not_accessible",
+            "stolen",
+            "unknown",
+            "available",
+            "completeness_verified",
+            "completeness_inferred",
+            "conformant",
+            "container_open",
+            "mismatch_instance",
+            "mismatch_class",
+            "mismatch_quantity",
+            "needs_replacement",
+            "non_conformant",
+            "unavailable"
           ]
         }
       ]
@@ -770,6 +805,19 @@
         "@context"
       ]
     },
+    "error-reason": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/vocab-uri"
+        },
+        {
+          "enum": [
+            "did_not_occur",
+            "incorrect_data"
+          ]
+        }
+      ]
+    },
     "bizTransaction-type": {
       "anyOf": [
         {
@@ -803,6 +851,128 @@
             "owning_party",
             "possessing_party",
             "location"
+          ]
+        }
+      ]
+    },
+    "measurementType": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/vocab-uri"
+        },
+        {
+          "enum": [
+            "AbsoluteHumidity",
+            "AbsorbedDose",
+            "AbsorbedDoseRate",
+            "Acceleration",
+            "Activity",
+            "Altitude",
+            "AmountOfSubstance",
+            "AmountOfSubstancePerUnitVolume",
+            "Angle",
+            "AngularAcceleration",
+            "AngularMomentum",
+            "AngularVelocity",
+            "Area",
+            "Capacitance",
+            "Conductance",
+            "Conductivity",
+            "Count",
+            "Density",
+            "Dimensionless",
+            "DoseEquivalent",
+            "DoseEquivalentRate",
+            "DynamicViscosity",
+            "ElectricCharge",
+            "ElectricCurrent",
+            "ElectricCurrentDensity",
+            "ElectricFieldStrength",
+            "Energy",
+            "Exposure",
+            "Force",
+            "Frequency",
+            "Illuminance",
+            "Inductance",
+            "Irradiance",
+            "KinematicViscosity",
+            "Length",
+            "LinearMomentum",
+            "Luminance",
+            "LuminousFlux",
+            "LuminousIntensity",
+            "MagneticFlux",
+            "MagneticFluxDensity",
+            "MagneticVectorPotential",
+            "Mass",
+            "MassConcentration",
+            "MassFlowRate",
+            "MassPerAreaTime",
+            "MemoryCapacity",
+            "MolalityOfSolute",
+            "MolarEnergy",
+            "MolarMass",
+            "MolarVolume",
+            "Power",
+            "Pressure",
+            "RadiantFlux",
+            "RadiantIntensity",
+            "RelativeHumidity",
+            "Resistance",
+            "Resistivity",
+            "SolidAngle",
+            "SpecificVolume",
+            "Speed",
+            "SurfaceDensity",
+            "SurfaceTension",
+            "Temperature",
+            "Time",
+            "Torque",
+            "Voltage",
+            "Volume",
+            "VolumeFlowRate",
+            "VolumeFraction",
+            "VolumetricFlux",
+            "Wavenumber"
+          ]
+        }
+      ]
+    },
+    "sensorAlertType": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/vocab-uri"
+        },
+        {
+          "enum": [
+            "ALARM_CONDITION",
+            "ERROR_CONDITION"
+          ]
+        }
+      ]
+    },
+    "component": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/vocab-uri"
+        },
+        {
+          "enum": [
+            "x",
+            "y",
+            "z",
+            "axial_distance",
+            "azimuth",
+            "height",
+            "spherical_radius",
+            "polar_angle",
+            "elevation_angle",
+            "easting",
+            "northing",
+            "latitude",
+            "longitude",
+            "altitude",
+            "geocoordinate"
           ]
         }
       ]
@@ -968,7 +1138,32 @@
           "required": [
             "type",
             "action"
-          ]
+          ],
+          "propertyNames": {
+            "anyOf": [
+              {
+                "$ref": "#/definitions/common-event-properties"
+              },
+              {
+                "type": "string",
+                "enum": [
+                  "action",
+                  "epcList",
+                  "quantityList",
+                  "bizStep",
+                  "disposition",
+                  "persistentDisposition",
+                  "readPoint",
+                  "bizLocation",
+                  "bizTransactionList",
+                  "sourceList",
+                  "destinationList",
+                  "sensorElementList",
+                  "ilmd"
+                ]
+              }
+            ]
+          }
         },
         {
           "anyOf": [
@@ -1115,40 +1310,9 @@
             "transporting",
             "unloading",
             "unpacking",
-            "void_shipping"
-          ]
-        }
-      ]
-    },
-    "disposition": {
-      "anyOf": [
-        {
-          "$ref": "#/definitions/vocab-uri"
-        },
-        {
-          "enum": [
-            "active",
-            "container_closed",
-            "damaged",
-            "destroyed",
-            "dispensed",
-            "disposed",
-            "encoded",
-            "expired",
-            "in_progress",
-            "in_transit",
-            "inactive",
-            "no_pedigree_match",
-            "non_sellable_other",
-            "partially_dispensed",
-            "recalled",
-            "reserved",
-            "retail_sold",
-            "returned",
-            "sellable_accessible",
-            "sellable_not_accessible",
-            "stolen",
-            "unknown"
+            "void_shipping",
+            "sensor_reporting",
+            "sampling"
           ]
         }
       ]
@@ -1228,7 +1392,32 @@
           "required": [
             "type",
             "action"
-          ]
+          ],
+          "propertyNames": {
+            "anyOf": [
+              {
+                "$ref": "#/definitions/common-event-properties"
+              },
+              {
+                "type": "string",
+                "enum": [
+                  "parentID",
+                  "childEPCs",
+                  "childQuantityList",
+                  "action",
+                  "bizStep",
+                  "disposition",
+                  "persistentDisposition",
+                  "readPoint",
+                  "bizLocation",
+                  "bizTransactionList",
+                  "sourceList",
+                  "destinationList",
+                  "sensorElementList"
+                ]
+              }
+            ]
+          }
         },
         {
           "anyOf": [
@@ -1279,7 +1468,9 @@
           "properties": {
             "type": {
               "type": "string",
-              "pattern": "^TransactionEvent$"
+              "enum": [
+                "TransactionEvent"
+              ]
             },
             "bizTransactionList": {
               "type": "array",
@@ -1344,7 +1535,32 @@
             "type",
             "bizTransactionList",
             "action"
-          ]
+          ],
+          "propertyNames": {
+            "anyOf": [
+              {
+                "$ref": "#/definitions/common-event-properties"
+              },
+              {
+                "type": "string",
+                "enum": [
+                  "bizTransactionList",
+                  "parentID",
+                  "epcList",
+                  "quantityList",
+                  "action",
+                  "bizStep",
+                  "disposition",
+                  "persistentDisposition",
+                  "readPoint",
+                  "bizLocation",
+                  "sourceList",
+                  "destinationList",
+                  "sensorElementList"
+                ]
+              }
+            ]
+          }
         },
         {
           "anyOf": [
@@ -1468,7 +1684,6 @@
               {
                 "type": "string",
                 "enum": [
-                  "type",
                   "inputEPCList",
                   "inputQuantityList",
                   "outputEPCList",
@@ -1687,7 +1902,32 @@
             "type",
             "action",
             "parentID"
-          ]
+          ],
+          "propertyNames": {
+            "anyOf": [
+              {
+                "$ref": "#/definitions/common-event-properties"
+              },
+              {
+                "type": "string",
+                "enum": [
+                  "parentID",
+                  "childEPCs",
+                  "childQuantityList",
+                  "action",
+                  "bizStep",
+                  "disposition",
+                  "persistentDisposition",
+                  "readPoint",
+                  "bizLocation",
+                  "bizTransactionList",
+                  "sourceList",
+                  "destinationList",
+                  "sensorElementList"
+                ]
+              }
+            ]
+          }
         },
         {
           "anyOf": [

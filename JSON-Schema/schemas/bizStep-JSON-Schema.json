@@ -47,7 +47,9 @@
                         "transporting",
                         "unloading",
                         "unpacking",
-                        "void_shipping"
+                        "void_shipping",
+                        "sensor_reporting",
+                        "sampling"
                     ]
                 }
             ]

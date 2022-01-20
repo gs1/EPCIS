@@ -29,8 +29,8 @@
           "id": "urn:epc:id:sgln:952005385.011.ts4711"
         },
         "bizLocation": {"id": "urn:epc:id:sgln:952005385.011.scA"},
-        "sourceList":      {"type":"location", "source": "urn:epc:id:sgln:952005385.481.0"},
-        "destinationList": {"type":"location", "destination": "urn:epc:id:sgln:952005385.011.0"},
+        "sourceList":      [{"type":"location", "source": "urn:epc:id:sgln:952005385.481.0"}],
+        "destinationList": [{"type":"location", "destination": "urn:epc:id:sgln:952005385.011.0"}],
         "rail:trainVehicleCount": "3",
         "rail:vehicle": [
           {
