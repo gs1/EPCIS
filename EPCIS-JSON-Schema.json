@@ -836,7 +836,8 @@
             "recadv",
             "rma",
             "testprd",
-            "testres"
+            "testres",
+            "upevt"
           ]
         }
       ]
