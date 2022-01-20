@@ -3947,7 +3947,8 @@ components:
     GS1-Query-Min-Record-Time:
       example: "2020-04-04T20:33:31.116-06:00"
       description: |
-       Used to specify the smallest possible record time for EPCIS events in an outstanding query subscription.
+       In the context of an outstanding query subscription, it is used to inform about the maximum record time 
+       of the last batch of events delivered to the client.
       type: string
       format: date-time
     GS1-Query-ReportIfEmpty:
