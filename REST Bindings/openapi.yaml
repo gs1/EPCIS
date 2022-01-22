@@ -3354,7 +3354,8 @@ components:
               - type: object
         'type':
           type: string
-          const: EPCISDocument
+          enum: 
+            - EPCISDocument
           example: EPCISDocument
         schemaVersion:
           type: number
@@ -3516,7 +3517,8 @@ components:
               - type: object
         'type':
           type: string
-          const: EPCISQueryDocument
+          enum: 
+            - EPCISQueryDocument
           example: EPCISQueryDocument
         schemaVersion:
           type: string
@@ -3687,7 +3689,8 @@ components:
           $ref: '#/components/schemas/LDContext'
         'type':
           type: string
-          const: EventTypeItemList
+          enum: 
+            - EventTypeItemList
         eventType:
           type: array
           items:
@@ -3755,9 +3758,13 @@ components:
           $ref: '#/components/schemas/LDContext'
         'type':
           type: string
-          const: 'BizStepItemList'
+          enum: 
+            - 'BizStepItemList'
         bizStep:
-          type: string
+          type: array
+          items:
+            type: string
+          uniqueItems: true
     DispositionItemList:
       example: {
         "@context": "https://gs1.github.io/EPCIS/epcis-context.jsonld",
@@ -3774,9 +3781,13 @@ components:
           $ref: '#/components/schemas/LDContext'
         'type':
           type: string
-          const: 'DispositionItemList'
+          enum: 
+            - 'DispositionItemList'
         disposition:
-          type: string
+          type: array
+          items:
+            type: string
+          uniqueItems: true
     BizLocationItemList:
       example: {
         "@context": "https://gs1.github.io/EPCIS/epcis-context.jsonld",
@@ -3793,10 +3804,14 @@ components:
           $ref: '#/components/schemas/LDContext'
         'type':
           type: string
-          const: 'BizLocationItemList'
+          enum: 
+            - 'BizLocationItemList'
         bizLocation:
-          type: string
-          format: uri
+          type: array
+          items:
+            type: string
+            format: uri
+          uniqueItems: true
     ReadPointItemList:
       example: {
         "@context": "https://gs1.github.io/EPCIS/epcis-context.jsonld",
@@ -3816,10 +3831,14 @@ components:
           $ref: '#/components/schemas/LDContext'
         'type':
           type: string
-          const: 'ReadPointItemList'
-        bizLocation:
-          type: string
-          format: uri
+          enum: 
+            - 'ReadPointItemList'
+        readPoint:
+          type: array
+          items:
+            type: string
+            format: uri
+          uniqueItems: true
     AbstractQuerySubscription:
       example: {
         "dest": "https://client.example.com/queryCallback",
