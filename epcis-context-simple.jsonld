@@ -45,7 +45,7 @@
         "type": {"@id":"epcis:sourceOrDestinationType", "@type":"@vocab", "@context":{"@vocab":"https://ns.gs1.org/cbv/SDT-"}},
         "destination": {"@id":"epcis:sourceOrDestination", "@type":"@id"}}},
 
-    "certification": {"@type": "@id"},
+    "certificationInfo": {"@type": "@id"},
     "epcList": {"@type": "@id"},
     "epcClass": {"@type": "@id"},
     "parentID": {"@type": "@id"},
@@ -87,7 +87,7 @@
     "hexBinaryValue" : {"@type": "xsd:hexBinary"},
     "uriValue" : {"@type": "@id"},
     "uom": {"@type": "xsd:string"},
-    "component": {"@type": "@vocab", "@context":{"@vocab":"https://ns.gs1.org/cbv/COMP-"}},
+    "component": {"@type": "@vocab", "@context":{"@vocab":"https://ns.gs1.org/cbv/Comp-"}},
     "exception": {"@type": "@vocab", "@context":{"@vocab":"https://ns.gs1.org/voc/"}},
     
     "isA": "@type",

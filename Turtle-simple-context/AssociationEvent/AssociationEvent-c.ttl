@@ -19,18 +19,18 @@
 @prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
 
-[ rdf:type         epcis:EPCISDocument ;
-  dcterms:created  "2019-11-03T14:00:00.000+01:00"^^xsd:dateTime ;
+[ dcterms:created  "2019-11-03T14:00:00.000+01:00"^^xsd:dateTime ;
   owl:versionInfo  "2.0" ;
-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;371c8eb1834fe5bca8722458310287d40d046c5bf032a484a8274299f7be2f59?ver=CBV2.0> ]
+  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;371c8eb1834fe5bca8722458310287d40d046c5bf032a484a8274299f7be2f59?ver=CBV2.0> ] ;
+  epcis:isA        "EPCISDocument"
 ] .
 
 <ni:///sha-256;371c8eb1834fe5bca8722458310287d40d046c5bf032a484a8274299f7be2f59?ver=CBV2.0>
-        rdf:type                   epcis:AssociationEvent ;
         epcis:action               "DELETE" ;
         epcis:bizStep              cbv:BizStep-removing ;
         epcis:childEPCs            <urn:epc:id:giai:4000001.12345> ;
         epcis:eventTime            "2019-11-03T14:00:00.000+01:00"^^xsd:dateTimeStamp ;
         epcis:eventTimeZoneOffset  "+01:00" ;
+        epcis:isA                  "AssociationEvent" ;
         epcis:parentID             <urn:epc:id:grai:4012345.55555.987> ;
         epcis:readPoint            <urn:epc:id:sgln:4012345.00002.0> .

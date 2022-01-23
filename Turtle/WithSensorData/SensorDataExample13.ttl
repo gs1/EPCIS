@@ -19,8 +19,12 @@
 @prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
 
+[ dcterms:created  "2021-04-27T15:00:00+01:00"^^xsd:dateTime ;
+  owl:versionInfo  "2.0" ;
+  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;e1f630b9c84c84020eb9bc73f082324a420f4472dd6c14edb1f1ab98ea279f24?ver=CBV2.0> ]
+] .
+
 <ni:///sha-256;e1f630b9c84c84020eb9bc73f082324a420f4472dd6c14edb1f1ab98ea279f24?ver=CBV2.0>
-        rdf:type                   epcis:ObjectEvent ;
         epcis:action               "OBSERVE" ;
         epcis:bizStep              cbv:BizStep-sensor_reporting ;
         epcis:epcList              <https://id.gs1.org/01/09506000134352> ;
@@ -38,9 +42,3 @@
                                                            epcis:value            2.09E1
                                                          ]
                                    ] .
-
-[ rdf:type         epcis:EPCISDocument ;
-  dcterms:created  "2021-04-27T15:00:00+01:00"^^xsd:dateTime ;
-  owl:versionInfo  "2.0" ;
-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;e1f630b9c84c84020eb9bc73f082324a420f4472dd6c14edb1f1ab98ea279f24?ver=CBV2.0> ]
-] .

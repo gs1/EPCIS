@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 --- ../Turtle/WithDigitalLinkID/Example_9.6.2-ObjectEventWithDigitalLink.ttl	2021-10-15 16:14:11.494527800 +0300
 +++ ../Turtle-simple-context/WithDigitalLinkID/Example_9.6.2-ObjectEventWithDigitalLink.ttl	2021-10-15 15:32:02.363960100 +0300
 @@ -28,3 +27,0 @@
@@ -8,3 +9,29 @@
 +                                   ] ;
 +        epcis:destinationList      [ epcis:sourceOrDestination      <urn:epc:id:sgln:0614141.00001.0> ;
 +                                     epcis:sourceOrDestinationType  cbv:SDT-owning_party
+=======
+--- ../Turtle/WithDigitalLinkID/Example_9.6.2-ObjectEventWithDigitalLink.ttl	2021-12-09 17:29:26.518256400 +0200
++++ ../Turtle-simple-context/WithDigitalLinkID/Example_9.6.2-ObjectEventWithDigitalLink.ttl	2021-12-09 17:28:57.495255100 +0200
+@@ -21,0 +22,6 @@
++[ rdf:type         epcis:EPCISDocument ;
++  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
++  owl:versionInfo  "2.0" ;
++  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;115b14983df54a9bcc3dd6a00dc4ebcab000bd52fda0abdd8996907e01dccc23?ver=CBV2.0> ]
++] .
++
+@@ -28,3 +33,0 @@
+-        epcis:destinationList      [ epcis:sourceOrDestination      <urn:epc:id:sgln:0614141.00001.0> ;
+-                                     epcis:sourceOrDestinationType  cbv:SDT-owning_party
+-                                   ] ;
+@@ -33,0 +37,3 @@
++        epcis:destinationList      [ epcis:sourceOrDestination      <urn:epc:id:sgln:0614141.00001.0> ;
++                                     epcis:sourceOrDestinationType  cbv:SDT-owning_party
++                                   ] ;
+@@ -48,6 +53,0 @@
+-
+-[ rdf:type         epcis:EPCISDocument ;
+-  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
+-  owl:versionInfo  "2.0" ;
+-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;115b14983df54a9bcc3dd6a00dc4ebcab000bd52fda0abdd8996907e01dccc23?ver=CBV2.0> ]
+-] .
+>>>>>>> Stashed changes

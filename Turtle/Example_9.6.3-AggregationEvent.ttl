@@ -19,25 +19,23 @@
 @prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
 
-[ rdf:type         epcis:EPCISDocument ;
-  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
+[ dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
   owl:versionInfo  "2.0" ;
   epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;87b5f18a69993f0052046d4687dfacdf48f7c988cfabda2819688c86b4066a49?ver=CBV2.0> ]
 ] .
 
 <ni:///sha-256;87b5f18a69993f0052046d4687dfacdf48f7c988cfabda2819688c86b4066a49?ver=CBV2.0>
-        rdf:type                   epcis:AggregationEvent ;
         examp:myField              "Example of a vendor/user extension" ;
         epcis:action               "OBSERVE" ;
         epcis:bizLocation          <urn:epc:id:sgln:0614141.00888.0> ;
         epcis:bizStep              cbv:BizStep-receiving ;
         epcis:childEPCs            <urn:epc:id:sgtin:0614141.107346.2018> , <urn:epc:id:sgtin:0614141.107346.2017> ;
-        epcis:childQuantityList    [ epcis:epcClass  <urn:epc:idpat:sgtin:4012345.098765.*> ;
-                                     epcis:quantity  1.0E1
-                                   ] ;
         epcis:childQuantityList    [ epcis:epcClass  <urn:epc:class:lgtin:4012345.012345.998877> ;
                                      epcis:quantity  2.005E2 ;
                                      epcis:uom       "KGM"
+                                   ] ;
+        epcis:childQuantityList    [ epcis:epcClass  <urn:epc:idpat:sgtin:4012345.098765.*> ;
+                                     epcis:quantity  1.0E1
                                    ] ;
         epcis:disposition          cbv:Disp-in_progress ;
         epcis:eventTime            "2013-06-08T14:58:56.591Z"^^xsd:dateTimeStamp ;

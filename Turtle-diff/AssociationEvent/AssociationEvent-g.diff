@@ -1,0 +1,19 @@
+<<<<<<< Updated upstream
+=======
+--- ../Turtle/AssociationEvent/AssociationEvent-g.ttl	2021-12-09 17:29:12.194252800 +0200
++++ ../Turtle-simple-context/AssociationEvent/AssociationEvent-g.ttl	2021-12-09 17:28:44.330638100 +0200
+@@ -22,6 +21,0 @@
+-[ rdf:type         epcis:EPCISDocument ;
+-  dcterms:created  "2019-11-04T14:00:00.000+01:00"^^xsd:dateTime ;
+-  owl:versionInfo  "2.0" ;
+-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;3acf0f5d06f13134ea8899b9a711eb4d4039dfefd73f2093136729296d904d9a?ver=CBV2.0> ]
+-] .
+-
+@@ -39,0 +34,6 @@
++
++[ rdf:type         epcis:EPCISDocument ;
++  dcterms:created  "2019-11-04T14:00:00.000+01:00"^^xsd:dateTime ;
++  owl:versionInfo  "2.0" ;
++  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;3acf0f5d06f13134ea8899b9a711eb4d4039dfefd73f2093136729296d904d9a?ver=CBV2.0> ]
++] .
+>>>>>>> Stashed changes

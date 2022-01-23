@@ -1,0 +1,13 @@
+<<<<<<< Updated upstream
+=======
+--- ../Turtle//Example_9.6.2-ObjectEvent.ttl	2021-12-09 17:28:20.741642000 +0200
++++ ../Turtle-simple-context//Example_9.6.2-ObjectEvent.ttl	2021-12-09 17:27:55.395261900 +0200
+@@ -28,3 +27,0 @@
+-        epcis:destinationList      [ epcis:sourceOrDestination      <urn:epc:id:sgln:0614141.00001.0> ;
+-                                     epcis:sourceOrDestinationType  cbv:SDT-owning_party
+-                                   ] ;
+@@ -32,0 +30,3 @@
++                                   ] ;
++        epcis:destinationList      [ epcis:sourceOrDestination      <urn:epc:id:sgln:0614141.00001.0> ;
++                                     epcis:sourceOrDestinationType  cbv:SDT-owning_party
+>>>>>>> Stashed changes

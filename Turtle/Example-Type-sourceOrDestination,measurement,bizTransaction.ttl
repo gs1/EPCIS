@@ -23,7 +23,6 @@
         epcis:bizTransactionType  cbv:BTT-po .
 
 <ni:///sha-256;5f7c472bc4905de27a19b2efc8e4a9c6dc195139669b80b515f12218ff07cf65?ver=CBV2.0>
-        rdf:type                   epcis:AssociationEvent ;
         examp:myField              "Example of a vendor/user extension" ;
         epcis:action               "ADD" ;
         epcis:bizLocation          <urn:epc:id:sgln:4012345.00002.0> ;
@@ -55,8 +54,7 @@
                                      epcis:sourceOrDestinationType  cbv:SDT-possessing_party
                                    ] .
 
-[ rdf:type         epcis:EPCISDocument ;
-  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
+[ dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
   owl:versionInfo  "2.0" ;
   epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;5f7c472bc4905de27a19b2efc8e4a9c6dc195139669b80b515f12218ff07cf65?ver=CBV2.0> ]
 ] .

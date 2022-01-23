@@ -19,13 +19,19 @@
 @prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
 
+[ dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
+  owl:versionInfo  "2.0" ;
+  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;e13ff14a9b4f3dd11bba60315ed9b849eb8ddf4c5b1a9aa794cd250256730834?ver=CBV2.0> ] ;
+  epcis:isA        "EPCISDocument"
+] .
+
 <ni:///sha-256;e13ff14a9b4f3dd11bba60315ed9b849eb8ddf4c5b1a9aa794cd250256730834?ver=CBV2.0>
-        rdf:type                   epcis:ObjectEvent ;
         epcis:action               "OBSERVE" ;
         epcis:bizStep              cbv:BizStep-inspecting ;
         epcis:epcList              <urn:epc:id:sgtin:4012345.011111.9876> ;
         epcis:eventTime            "2019-04-02T15:00:00.000+01:00"^^xsd:dateTimeStamp ;
         epcis:eventTimeZoneOffset  "+01:00" ;
+        epcis:isA                  "ObjectEvent" ;
         epcis:readPoint            <urn:epc:id:sgln:4012345.00005.0> ;
         epcis:sensorElementList    [ epcis:sensorMetadata  [ epcis:deviceID        <urn:epc:id:giai:4000001.111> ;
                                                              epcis:deviceMetadata  <https://id.gs1.org/8004/4000001111>
@@ -61,9 +67,3 @@
                                                              epcis:value            2.6E1
                                                            ]
                                    ] .
-
-[ rdf:type         epcis:EPCISDocument ;
-  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
-  owl:versionInfo  "2.0" ;
-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;e13ff14a9b4f3dd11bba60315ed9b849eb8ddf4c5b1a9aa794cd250256730834?ver=CBV2.0> ]
-] .

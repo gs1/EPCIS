@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 --- ../Turtle/WithFullCombinationOfFields/transaction_event_all_possible_fields.ttl	2021-10-15 16:14:31.176920400 +0300
 +++ ../Turtle-simple-context/WithFullCombinationOfFields/transaction_event_all_possible_fields.ttl	2021-10-15 15:32:27.125636600 +0300
 @@ -22,6 +21,0 @@
@@ -31,3 +32,38 @@
 +
 +<urn:epc:id:gsrn:0614141.0000010253>
 +        epcis:bizTransactionType  cbv:BTT-pedigree .
+=======
+--- ../Turtle/WithFullCombinationOfFields/transaction_event_all_possible_fields.ttl	2021-12-09 17:30:05.795249500 +0200
++++ ../Turtle-simple-context/WithFullCombinationOfFields/transaction_event_all_possible_fields.ttl	2021-12-09 17:29:32.935250300 +0200
+@@ -21,0 +22,6 @@
++<urn:epc:id:gdti:0614141.00001.1618034>
++        epcis:bizTransactionType  cbv:BTT-po .
++
++<urn:epc:id:gsrn:0614141.0000010253>
++        epcis:bizTransactionType  cbv:BTT-pedigree .
++
+@@ -26 +32 @@
+-                                        ext1:array                   "true" , "2013-06-08T14:58:56.591Z" , "22" , "12" , "stringInArray" ;
++                                        ext1:array                   "22" , "2013-06-08T14:58:56.591Z" , "true" , "12" , "stringInArray" ;
+@@ -50,3 +55,0 @@
+-                                        epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:pgln:0614141.00777> ;
+-                                                                       epcis:sourceOrDestinationType  cbv:SDT-possessing_party
+-                                                                     ] ;
+@@ -56,0 +60,3 @@
++                                                                       epcis:sourceOrDestinationType  cbv:SDT-possessing_party
++                                                                     ] ;
++                                        epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:pgln:0614141.00777> ;
+@@ -60 +66 @@
+-                                        epcis:epcList                <urn:epc:id:sgtin:0614141.107346.2017> , <urn:epc:id:sgtin:0614141.107346.2018> ;
++                                        epcis:epcList                <urn:epc:id:sgtin:0614141.107346.2018> , <urn:epc:id:sgtin:0614141.107346.2017> ;
+@@ -73 +79 @@
+-                                                                       ext1:array            "12" , "2013-06-08T14:58:56.591Z" , "22" , "stringInArray" , "true" ;
++                                                                       ext1:array            "2013-06-08T14:58:56.591Z" , "stringInArray" , "true" , "22" , "12" ;
+@@ -139,6 +144,0 @@
+-
+-<urn:epc:id:gdti:0614141.00001.1618034>
+-        epcis:bizTransactionType  cbv:BTT-po .
+-
+-<urn:epc:id:gsrn:0614141.0000010253>
+-        epcis:bizTransactionType  cbv:BTT-pedigree .
+>>>>>>> Stashed changes

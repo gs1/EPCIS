@@ -1,21 +1,36 @@
+<<<<<<< Updated upstream
 --- ../Turtle/WithErrorDeclaration/Example_9.6.1-ObjectEvent-with-error-declaration.ttl	2021-10-15 16:14:27.928920200 +0300
 +++ ../Turtle-simple-context/WithErrorDeclaration/Example_9.6.1-ObjectEvent-with-error-declaration.ttl	2021-10-15 15:32:21.981629900 +0300
 @@ -22,2 +22,5 @@
 -<http://transaction.acme.com/po/12345678>
 -        epcis:bizTransactionType  cbv:BTT-po .
+=======
+--- ../Turtle/WithErrorDeclaration/Example_9.6.1-ObjectEvent-with-error-declaration.ttl	2021-12-09 17:29:45.650253800 +0200
++++ ../Turtle-simple-context/WithErrorDeclaration/Example_9.6.1-ObjectEvent-with-error-declaration.ttl	2021-12-09 17:29:14.511251100 +0200
+@@ -37,0 +38,6 @@
+>>>>>>> Stashed changes
 +[ rdf:type         epcis:EPCISDocument ;
 +  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
 +  owl:versionInfo  "2.0" ;
 +  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;aa49daa1fe0b773e0437e546078dc87de9c864d5b9babe84488f31478887fdf3?ver=CBV2.0> , <ni:///sha-256;00e1e6eba3a7cc6125be4793a631f0af50f8322e0ab5f2c0bab994a11cec1d79?ver=CBV2.0> ]
 +] .
+<<<<<<< Updated upstream
 @@ -38,6 +40,0 @@
+=======
++
+@@ -55,6 +60,0 @@
+-
+>>>>>>> Stashed changes
 -[ rdf:type         epcis:EPCISDocument ;
 -  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
 -  owl:versionInfo  "2.0" ;
 -  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;aa49daa1fe0b773e0437e546078dc87de9c864d5b9babe84488f31478887fdf3?ver=CBV2.0> , <ni:///sha-256;00e1e6eba3a7cc6125be4793a631f0af50f8322e0ab5f2c0bab994a11cec1d79?ver=CBV2.0> ]
 -] .
+<<<<<<< Updated upstream
 -
 @@ -60,0 +58,3 @@
 +
 +<http://transaction.acme.com/po/12345678>
 +        epcis:bizTransactionType  cbv:BTT-po .
+=======
+>>>>>>> Stashed changes

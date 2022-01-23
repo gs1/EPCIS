@@ -19,22 +19,19 @@
 @prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
 
-[ rdf:type         epcis:EPCISDocument ;
-  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
+[ dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
   owl:versionInfo  "2.0" ;
   epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;74f1dc48ee22289bc40ddd9f1d0ecae0dd09a2f4c3dfa66fdbca16cb2d8a4e77?ver=CBV2.0> ]
 ] .
 
 <ni:///sha-256;74f1dc48ee22289bc40ddd9f1d0ecae0dd09a2f4c3dfa66fdbca16cb2d8a4e77?ver=CBV2.0>
-        rdf:type                   epcis:ObjectEvent ;
         epcis:action               "OBSERVE" ;
         epcis:bizStep              cbv:BizStep-inspecting ;
         epcis:epcList              <urn:epc:id:sgtin:4012345.011111.9876> ;
         epcis:eventTime            "2019-04-02T15:00:00.000+01:00"^^xsd:dateTimeStamp ;
         epcis:eventTimeZoneOffset  "+01:00" ;
         epcis:readPoint            <urn:epc:id:sgln:4012345.00005.0> ;
-        epcis:sensorElementList    [ rdf:type              <file://C:/SensorElement> ;
-                                     epcis:sensorMetadata  [ epcis:deviceID        <urn:epc:id:giai:4000001.111> ;
+        epcis:sensorElementList    [ epcis:sensorMetadata  [ epcis:deviceID        <urn:epc:id:giai:4000001.111> ;
                                                              epcis:deviceMetadata  <https://id.gs1.org/giai/4000001111> ;
                                                              epcis:rawData         <https://example.org/giai/401234599999> ;
                                                              epcis:time            "2019-04-02T14:35:00.000+01:00"^^xsd:dateTimeStamp
@@ -56,8 +53,7 @@
                                                              epcis:value            2.61E1
                                                            ]
                                    ] ;
-        epcis:sensorElementList    [ rdf:type              <file://C:/SensorElement> ;
-                                     epcis:sensorMetadata  [ epcis:deviceID        <urn:epc:id:giai:4000001.111> ;
+        epcis:sensorElementList    [ epcis:sensorMetadata  [ epcis:deviceID        <urn:epc:id:giai:4000001.111> ;
                                                              epcis:deviceMetadata  <https://id.gs1.org/giai/4000001111> ;
                                                              epcis:rawData         <https://example.org/giai/401234599999> ;
                                                              epcis:time            "2019-04-02T14:05:00.000+01:00"^^xsd:dateTimeStamp
@@ -79,8 +75,7 @@
                                                              epcis:value            2.6E1
                                                            ]
                                    ] ;
-        epcis:sensorElementList    [ rdf:type              <file://C:/SensorElement> ;
-                                     epcis:sensorMetadata  [ epcis:deviceID        <urn:epc:id:giai:4000001.111> ;
+        epcis:sensorElementList    [ epcis:sensorMetadata  [ epcis:deviceID        <urn:epc:id:giai:4000001.111> ;
                                                              epcis:deviceMetadata  <https://id.gs1.org/giai/4000001111> ;
                                                              epcis:rawData         <https://example.org/giai/401234599999> ;
                                                              epcis:time            "2019-04-02T14:55:00.000+01:00"^^xsd:dateTimeStamp

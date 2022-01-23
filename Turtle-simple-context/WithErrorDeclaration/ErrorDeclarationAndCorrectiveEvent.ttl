@@ -19,14 +19,7 @@
 @prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
 
-[ rdf:type         epcis:EPCISDocument ;
-  dcterms:created  "2020-01-15T07:47:21.677+00:00"^^xsd:dateTime ;
-  owl:versionInfo  "2.0" ;
-  epcis:epcisBody  [ epcis:eventList  <urn:uuid:404d95fc-9457-4a51-bd6a-0bba133845a8> , <urn:uuid:374d95fc-9457-4a51-bd6a-0bba133845a8> ]
-] .
-
 <urn:uuid:374d95fc-9457-4a51-bd6a-0bba133845a8>
-        rdf:type                   epcis:TransformationEvent ;
         epcis:bizStep              cbv:BizStep-commissioning ;
         epcis:errorDeclaration     [ examp:vendorExtension     "Test1" ;
                                      epcis:correctiveEventIDs  <urn:uuid:404d95fc-9457-4a51-bd6a-0bba133845a8> ;
@@ -40,6 +33,7 @@
                                      epcis:quantity  5.0E2 ;
                                      epcis:uom       "KGM"
                                    ] ;
+        epcis:isA                  "TransformationEvent" ;
         epcis:outputEPCList        <urn:epc:id:sgtin:4012345.033333.AGHFG> ;
         epcis:outputQuantityList   [ epcis:epcClass  <urn:epc:idpat:sgtin:4012345.044444.*> ;
                                      epcis:quantity  4.52E2 ;
@@ -48,7 +42,6 @@
         epcis:readPoint            <urn:epc:id:sgln:0614141.07346.1234> .
 
 <urn:uuid:404d95fc-9457-4a51-bd6a-0bba133845a8>
-        rdf:type                   epcis:TransformationEvent ;
         epcis:bizStep              cbv:BizStep-commissioning ;
         epcis:eventTime            "2021-01-28T00:00:00+01:00"^^xsd:dateTimeStamp ;
         epcis:eventTimeZoneOffset  "+01:00" ;
@@ -57,9 +50,16 @@
                                      epcis:quantity  5.0E2 ;
                                      epcis:uom       "KGM"
                                    ] ;
+        epcis:isA                  "TransformationEvent" ;
         epcis:outputEPCList        <urn:epc:id:sgtin:4012345.033333.AGHFG> ;
         epcis:outputQuantityList   [ epcis:epcClass  <urn:epc:idpat:sgtin:4012345.044444.*> ;
                                      epcis:quantity  5.0E2 ;
                                      epcis:uom       "KGM"
                                    ] ;
         epcis:readPoint            <urn:epc:id:sgln:0614141.07346.1234> .
+
+[ dcterms:created  "2020-01-15T07:47:21.677+00:00"^^xsd:dateTime ;
+  owl:versionInfo  "2.0" ;
+  epcis:epcisBody  [ epcis:eventList  <urn:uuid:404d95fc-9457-4a51-bd6a-0bba133845a8> , <urn:uuid:374d95fc-9457-4a51-bd6a-0bba133845a8> ] ;
+  epcis:isA        "EPCISDocument"
+] .

@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 --- ../Turtle/WithFullCombinationOfFields/object_event_all_possible_fields.ttl	2021-10-15 16:14:33.854771000 +0300
 +++ ../Turtle-simple-context/WithFullCombinationOfFields/object_event_all_possible_fields.ttl	2021-10-15 15:32:30.186743300 +0300
 @@ -24,0 +25,3 @@
@@ -16,15 +17,41 @@
 +                                                                       epcis:sourceOrDestinationType  cbv:SDT-owning_party
 +                                                                     ] ;
 @@ -66,7 +69 @@
+=======
+--- ../Turtle/WithFullCombinationOfFields/object_event_all_possible_fields.ttl	2021-12-09 17:29:59.769252000 +0200
++++ ../Turtle-simple-context/WithFullCombinationOfFields/object_event_all_possible_fields.ttl	2021-12-09 17:29:28.825252300 +0200
+@@ -22,3 +21,0 @@
+-<urn:epc:id:gdti:0614141.00001.1618034>
+-        epcis:bizTransactionType  cbv:BTT-po .
+-
+@@ -29 +26 @@
+-                                        ext1:array                   "12" , "stringInArray" , "true" , "22" , "2013-06-08T14:58:56.591Z" ;
++                                        ext1:array                   "stringInArray" , "12" , "22" , "true" , "2013-06-08T14:58:56.591Z" ;
+@@ -53,3 +49,0 @@
+-                                        epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:pgln:0614141.00777> ;
+-                                                                       epcis:sourceOrDestinationType  cbv:SDT-owning_party
+-                                                                     ] ;
+@@ -59,0 +54,3 @@
++                                                                       epcis:sourceOrDestinationType  cbv:SDT-owning_party
++                                                                     ] ;
++                                        epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:pgln:0614141.00777> ;
+@@ -66,7 +63 @@
+>>>>>>> Stashed changes
 -                                        epcis:ilmd                   [ <cbvmda:countryOfExport>  "KR" ;
 -                                                                       <cbvmda:countryOfOrigin>  "GB" ;
 -                                                                       <cbvmda:drainedWeight>    "3.5" ;
 -                                                                       <cbvmda:grossWeight>      "3.5" ;
 -                                                                       <cbvmda:lotNumber>        "ABC123" ;
 -                                                                       <cbvmda:netWeight>        "3.5" ;
+<<<<<<< Updated upstream
 -                                                                       ext1:array                "12" , "true" , "22" , "stringInArray" , "2013-06-08T14:58:56.591Z" ;
 +                                        epcis:ilmd                   [ ext1:array              "12" , "true" , "22" , "stringInArray" , "2013-06-08T14:58:56.591Z" ;
 @@ -91 +88,7 @@
+=======
+-                                                                       ext1:array                "true" , "12" , "2013-06-08T14:58:56.591Z" , "stringInArray" , "22" ;
++                                        epcis:ilmd                   [ ext1:array              "2013-06-08T14:58:56.591Z" , "22" , "12" , "true" , "stringInArray" ;
+@@ -91 +82,7 @@
+>>>>>>> Stashed changes
 -                                                                       ext1:time                 "2013-06-08T14:58:56.591Z"
 +                                                                       ext1:time               "2013-06-08T14:58:56.591Z" ;
 +                                                                       cbvmda:countryOfExport  "KR" ;
@@ -33,6 +60,7 @@
 +                                                                       cbvmda:grossWeight      "3.5" ;
 +                                                                       cbvmda:lotNumber        "ABC123" ;
 +                                                                       cbvmda:netWeight        "3.5"
+<<<<<<< Updated upstream
 @@ -102 +105 @@
 -                                                                       ext1:array            "2013-06-08T14:58:56.591Z" , "true" , "stringInArray" , "12" , "22" ;
 +                                                                       ext1:array            "stringInArray" , "2013-06-08T14:58:56.591Z" , "22" , "12" , "true" ;
@@ -48,3 +76,20 @@
 -
 -<urn:epc:id:gsrn:0614141.0000010253>
 -        epcis:bizTransactionType  cbv:BTT-pedigree .
+=======
+@@ -102 +99 @@
+-                                                                       ext1:array            "stringInArray" , "true" , "22" , "2013-06-08T14:58:56.591Z" , "12" ;
++                                                                       ext1:array            "12" , "2013-06-08T14:58:56.591Z" , "22" , "true" , "stringInArray" ;
+@@ -155,0 +153,3 @@
++                                        epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:sgln:4012345.00225.0> ;
++                                                                       epcis:sourceOrDestinationType  cbv:SDT-location
++                                                                     ] ;
+@@ -161,3 +160,0 @@
+-                                                                     ] ;
+-                                        epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:sgln:4012345.00225.0> ;
+-                                                                       epcis:sourceOrDestinationType  cbv:SDT-location
+@@ -167,0 +165,3 @@
++
++<urn:epc:id:gdti:0614141.00001.1618034>
++        epcis:bizTransactionType  cbv:BTT-po .
+>>>>>>> Stashed changes

@@ -19,14 +19,12 @@
 @prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
 
-[ rdf:type         epcis:EPCISDocument ;
-  dcterms:created  "2019-11-02T14:00:00.000+01:00"^^xsd:dateTime ;
+[ dcterms:created  "2019-11-02T14:00:00.000+01:00"^^xsd:dateTime ;
   owl:versionInfo  "2.0" ;
   epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;a15e0b457cfc95305b6d530978c4cd7965bb29c0b8c312310fc7210c9ef123d9?ver=CBV2.0> ]
 ] .
 
 <ni:///sha-256;a15e0b457cfc95305b6d530978c4cd7965bb29c0b8c312310fc7210c9ef123d9?ver=CBV2.0>
-        rdf:type                   epcis:AssociationEvent ;
         epcis:action               "ADD" ;
         epcis:bizStep              cbv:BizStep-installing ;
         epcis:childEPCs            <urn:epc:id:giai:4000001.12346> ;

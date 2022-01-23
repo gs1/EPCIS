@@ -22,11 +22,9 @@
 <http://transaction.examplerail.com/passage/xyz12345>
         epcis:bizTransactionType  rail:btt:passage .
 
-[ rdf:type         epcis:EPCISDocument ;
-  dcterms:created  "2020-07-03T09:00:00.0Z"^^xsd:dateTime ;
+[ dcterms:created  "2020-07-03T09:00:00.0Z"^^xsd:dateTime ;
   owl:versionInfo  "2.0" ;
-  epcis:epcisBody  [ epcis:eventList  [ rdf:type                   epcis:TransactionEvent ;
-                                        epcis:action               "ADD" ;
+  epcis:epcisBody  [ epcis:eventList  [ epcis:action               "ADD" ;
                                         epcis:bizLocation          <urn:epc:id:sgln:952005385.011.scA> ;
                                         epcis:bizStep              cbv:BizStep-transporting ;
                                         epcis:bizTransactionList   <http://transaction.examplerail.com/passage/xyz12345> ;
@@ -44,8 +42,8 @@
                                         rail:trainAxleCount        12 ;
                                         rail:trainVehicleCount     "3" ;
                                         rail:vehicle               [ rail:vehicleAxleCount           4 ;
-                                                                     rail:vehicleMasterGIAI          <urn:epc:id:giai:952005385.vehicle2> ;
-                                                                     rail:vehiclePosition            1 ;
+                                                                     rail:vehicleMasterGIAI          <urn:epc:id:giai:735005385.vehicle1> ;
+                                                                     rail:vehiclePosition            3 ;
                                                                      rail:vehicleUniquelyIdentified  true
                                                                    ] ;
                                         rail:vehicle               [ rail:vehicleAxleCount           4 ;
@@ -53,13 +51,12 @@
                                                                      rail:vehicleUniquelyIdentified  false
                                                                    ] ;
                                         rail:vehicle               [ rail:vehicleAxleCount           4 ;
-                                                                     rail:vehicleMasterGIAI          <urn:epc:id:giai:735005385.vehicle1> ;
-                                                                     rail:vehiclePosition            3 ;
+                                                                     rail:vehicleMasterGIAI          <urn:epc:id:giai:952005385.vehicle2> ;
+                                                                     rail:vehiclePosition            1 ;
                                                                      rail:vehicleUniquelyIdentified  true
                                                                    ]
                                       ] ;
-                     epcis:eventList  [ rdf:type                   epcis:TransactionEvent ;
-                                        epcis:action               "ADD" ;
+                     epcis:eventList  [ epcis:action               "ADD" ;
                                         epcis:bizStep              <http://epcis.example.org/hc/bizstep/summarising_discharge> ;
                                         epcis:bizTransactionList   <urn:epc:id:gdti:95252084.0001.0003555480001000> ;
                                         epcis:epcList              <urn:epc:id:gsrn:95252084.000000001> ;

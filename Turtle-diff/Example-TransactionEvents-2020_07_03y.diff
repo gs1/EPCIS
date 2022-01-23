@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 --- ../Turtle/Example-TransactionEvents-2020_07_03y.ttl	2021-10-15 16:12:52.294963900 +0300
 +++ ../Turtle-simple-context/Example-TransactionEvents-2020_07_03y.ttl	2021-10-15 15:31:06.640360200 +0300
 @@ -22,3 +21,0 @@
@@ -18,3 +19,15 @@
 +
 +<http://transaction.examplerail.com/passage/xyz12345>
 +        epcis:bizTransactionType  rail:btt:passage .
+=======
+--- ../Turtle//Example-TransactionEvents-2020_07_03y.ttl	2021-12-09 17:28:33.344640300 +0200
++++ ../Turtle-simple-context//Example-TransactionEvents-2020_07_03y.ttl	2021-12-09 17:28:07.096062900 +0200
+@@ -21,0 +22,3 @@
++<http://transaction.examplerail.com/passage/xyz12345>
++        epcis:bizTransactionType  rail:btt:passage .
++
+@@ -69,3 +71,0 @@
+-
+-<http://transaction.examplerail.com/passage/xyz12345>
+-        epcis:bizTransactionType  rail:btt:passage .
+>>>>>>> Stashed changes

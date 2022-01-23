@@ -19,16 +19,16 @@
 @prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
 
-[ rdf:type         epcis:EPCISDocument ;
-  dcterms:created  "2019-10-07T15:00:00.000+01:00"^^xsd:dateTime ;
+[ dcterms:created  "2019-10-07T15:00:00.000+01:00"^^xsd:dateTime ;
   owl:versionInfo  "2.0" ;
-  epcis:epcisBody  [ epcis:eventList  [ rdf:type                   epcis:ObjectEvent ;
-                                        epcis:action               "OBSERVE" ;
+  epcis:epcisBody  [ epcis:eventList  [ epcis:action               "OBSERVE" ;
                                         epcis:bizStep              cbv:BizStep-sensor_reporting ;
                                         epcis:epcList              <https://id.example.com/8003/040123450007718765> ;
                                         epcis:eventTime            "2021-05-27T10:00:00.000Z"^^xsd:dateTimeStamp ;
                                         epcis:eventTimeZoneOffset  "+01:00" ;
+                                        epcis:isA                  "ObjectEvent" ;
                                         epcis:readPoint            <geo:42.698334,23.319941>
                                       ]
-                   ]
+                   ] ;
+  epcis:isA        "EPCISDocument"
 ] .

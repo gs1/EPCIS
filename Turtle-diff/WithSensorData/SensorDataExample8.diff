@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 --- ../Turtle/WithSensorData/SensorDataExample8.ttl	2021-10-15 16:15:01.088595600 +0300
 +++ ../Turtle-simple-context/WithSensorData/SensorDataExample8.ttl	2021-10-15 15:32:56.088801100 +0300
 @@ -35,22 +34,0 @@
@@ -50,3 +51,48 @@
 +                                                             epcis:uom              "A93" ;
 +                                                             epcis:value            1.21E1
 +                                                           ]
+=======
+--- ../Turtle/WithSensorData/SensorDataExample8.ttl	2021-12-09 17:32:18.331469000 +0200
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample8.ttl	2021-12-09 17:31:20.829141600 +0200
+@@ -21,0 +22,6 @@
++[ rdf:type         epcis:EPCISDocument ;
++  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
++  owl:versionInfo  "2.0" ;
++  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;18454584ed96fbb533e4a69b01eefd1bff3edd1e80ef8598957111f4477a0a64?ver=CBV2.0> ]
++] .
++
+@@ -35,12 +40,0 @@
+-        epcis:sensorElementList    [ epcis:sensorReport  [ epcis:measurementType  examp:someSensorProperty ;
+-                                                           epcis:stringValue      "someSensorOutput"
+-                                                         ] ;
+-                                     epcis:sensorReport  [ epcis:dataProcessingMethod  <https://example.com/gdti/4012345000054987> ;
+-                                                           epcis:deviceID              <urn:epc:id:giai:4000001.111> ;
+-                                                           epcis:deviceMetadata        <https://id.gs1.org/8004/4000001111> ;
+-                                                           epcis:measurementType       gs1:Temperature ;
+-                                                           epcis:rawData               <https://example.org/8004/401234599999> ;
+-                                                           epcis:time                  "2019-07-19T14:00:00.000+01:00"^^xsd:dateTimeStamp ;
+-                                                           epcis:uom                   "CEL"
+-                                                         ]
+-                                   ] ;
+@@ -89,0 +84,13 @@
++                                   ] ;
++        epcis:sensorElementList    [ epcis:sensorReport  [ epcis:measurementType  examp:someSensorProperty ;
++                                                           epcis:stringValue      "someSensorOutput"
++                                                         ] ;
++                                     epcis:sensorReport  [ epcis:bizRules              <https://example.org/gdti/4012345000054987> ;
++                                                           epcis:dataProcessingMethod  <https://example.com/gdti/4012345000054987> ;
++                                                           epcis:deviceID              <urn:epc:id:giai:4000001.111> ;
++                                                           epcis:deviceMetadata        <https://id.gs1.org/8004/4000001111> ;
++                                                           epcis:measurementType       gs1:Temperature ;
++                                                           epcis:rawData               <https://example.org/8004/401234599999> ;
++                                                           epcis:time                  "2019-07-19T14:00:00.000+01:00"^^xsd:dateTimeStamp ;
++                                                           epcis:uom                   "CEL"
++                                                         ]
+@@ -91,6 +97,0 @@
+-
+-[ rdf:type         epcis:EPCISDocument ;
+-  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
+-  owl:versionInfo  "2.0" ;
+-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;18454584ed96fbb533e4a69b01eefd1bff3edd1e80ef8598957111f4477a0a64?ver=CBV2.0> ]
+-] .
+>>>>>>> Stashed changes

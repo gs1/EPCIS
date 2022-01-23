@@ -1,5 +1,10 @@
+<<<<<<< Updated upstream
 --- ../Turtle/WithSensorData/SensorDataExample15.ttl	2021-10-15 16:14:51.794808700 +0300
 +++ ../Turtle-simple-context/WithSensorData/SensorDataExample15.ttl	2021-10-15 15:32:47.269293500 +0300
+=======
+--- ../Turtle/WithSensorData/SensorDataExample15.ttl	2021-12-09 17:30:40.210254200 +0200
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample15.ttl	2021-12-09 17:30:12.847252300 +0200
+>>>>>>> Stashed changes
 @@ -34 +34 @@
 -                                                                     epcis:sensorReport    [ epcis:component        cbv:Comp-easting ;
 +                                                                     epcis:sensorReport    [ epcis:component        cbv:COMP-easting ;

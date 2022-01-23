@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 --- ../Turtle/WithDigitalLinkID/Example_9.6.4-TransformationEventWithDigitalLink.ttl	2021-10-15 16:14:05.254055400 +0300
 +++ ../Turtle-simple-context/WithDigitalLinkID/Example_9.6.4-TransformationEventWithDigitalLink.ttl	2021-10-15 15:31:58.714616800 +0300
 @@ -21,0 +22,6 @@
@@ -24,3 +25,15 @@
 -  owl:versionInfo  "2.0" ;
 -  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;4f143d1adf7b2950a34f5e82a240ce5280530b06a9f3c2b9cfe49f5ca5001815?ver=CBV2.0> ]
 -] .
+=======
+--- ../Turtle/WithDigitalLinkID/Example_9.6.4-TransformationEventWithDigitalLink.ttl	2021-12-09 17:29:35.877252400 +0200
++++ ../Turtle-simple-context/WithDigitalLinkID/Example_9.6.4-TransformationEventWithDigitalLink.ttl	2021-12-09 17:29:05.880250100 +0200
+@@ -33,3 +32,0 @@
+-        epcis:inputQuantityList    [ epcis:epcClass  <https://id.gs1.org/01/04012345666663> ;
+-                                     epcis:quantity  2.2E2
+-                                   ] ;
+@@ -41,0 +39,3 @@
++                                   ] ;
++        epcis:inputQuantityList    [ epcis:epcClass  <https://id.gs1.org/01/04012345666663> ;
++                                     epcis:quantity  2.2E2
+>>>>>>> Stashed changes

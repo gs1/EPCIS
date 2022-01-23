@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 --- ../Turtle/Example-Type-sourceOrDestination,measurement,bizTransaction.ttl	2021-10-15 16:12:58.983858100 +0300
 +++ ../Turtle-simple-context/Example-Type-sourceOrDestination,measurement,bizTransaction.ttl	2021-10-15 15:31:14.379396900 +0300
 @@ -57,0 +58,3 @@
@@ -8,3 +9,15 @@
 -
 -<urn:epcglobal:cbv:bt:4023333000000:54545>
 -        epcis:bizTransactionType  cbv:BTT-inv .
+=======
+--- ../Turtle//Example-Type-sourceOrDestination,measurement,bizTransaction.ttl	2021-12-09 17:28:38.035638400 +0200
++++ ../Turtle-simple-context//Example-Type-sourceOrDestination,measurement,bizTransaction.ttl	2021-12-09 17:28:11.273643000 +0200
+@@ -58,3 +57,0 @@
+-<urn:epcglobal:cbv:bt:4023333000000:54545>
+-        epcis:bizTransactionType  cbv:BTT-inv .
+-
+@@ -65,0 +63,3 @@
++
++<urn:epcglobal:cbv:bt:4023333000000:54545>
++        epcis:bizTransactionType  cbv:BTT-inv .
+>>>>>>> Stashed changes

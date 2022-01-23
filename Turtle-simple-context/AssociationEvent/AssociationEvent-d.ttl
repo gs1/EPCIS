@@ -20,16 +20,16 @@
 @prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
 
 <ni:///sha-256;8a2d6f46deae4e62f517b2d2f84d2251b0c2db43b791663575e9ff358560fd85?ver=CBV2.0>
-        rdf:type                   epcis:AssociationEvent ;
         epcis:action               "DELETE" ;
         epcis:bizStep              cbv:BizStep-disassembling ;
         epcis:eventTime            "2019-11-04T14:00:00.000+01:00"^^xsd:dateTimeStamp ;
         epcis:eventTimeZoneOffset  "+01:00" ;
+        epcis:isA                  "AssociationEvent" ;
         epcis:parentID             <urn:epc:id:grai:4012345.55555.987> ;
         epcis:readPoint            <urn:epc:id:sgln:4012345.00002.0> .
 
-[ rdf:type         epcis:EPCISDocument ;
-  dcterms:created  "2019-11-04T14:00:00.000+01:00"^^xsd:dateTime ;
+[ dcterms:created  "2019-11-04T14:00:00.000+01:00"^^xsd:dateTime ;
   owl:versionInfo  "2.0" ;
-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;8a2d6f46deae4e62f517b2d2f84d2251b0c2db43b791663575e9ff358560fd85?ver=CBV2.0> ]
+  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;8a2d6f46deae4e62f517b2d2f84d2251b0c2db43b791663575e9ff358560fd85?ver=CBV2.0> ] ;
+  epcis:isA        "EPCISDocument"
 ] .

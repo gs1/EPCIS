@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 --- ../Turtle/Example_9.6.4-TransformationEvent.ttl	2021-10-15 16:12:48.669968400 +0300
 +++ ../Turtle-simple-context/Example_9.6.4-TransformationEvent.ttl	2021-10-15 15:31:00.367332500 +0300
 @@ -39,3 +39,2 @@
@@ -12,3 +13,5 @@
 +        epcis:inputQuantityList    [ epcis:epcClass  <urn:epc:class:lgtin:4012345.011111.4444> ;
 +                                     epcis:quantity  1.0E1 ;
 +                                     epcis:uom       "KGM"
+=======
+>>>>>>> Stashed changes

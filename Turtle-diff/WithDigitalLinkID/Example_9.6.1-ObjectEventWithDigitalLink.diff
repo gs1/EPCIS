@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 --- ../Turtle/WithDigitalLinkID/Example_9.6.1-ObjectEventWithDigitalLink.ttl	2021-10-15 16:14:17.379670000 +0300
 +++ ../Turtle-simple-context/WithDigitalLinkID/Example_9.6.1-ObjectEventWithDigitalLink.ttl	2021-10-15 15:32:07.253971200 +0300
 @@ -38,6 +37,0 @@
@@ -9,8 +10,24 @@
 -
 @@ -56,0 +51,6 @@
 +
+=======
+--- ../Turtle/WithDigitalLinkID/Example_9.6.1-ObjectEventWithDigitalLink.ttl	2021-12-09 17:29:21.051254200 +0200
++++ ../Turtle-simple-context/WithDigitalLinkID/Example_9.6.1-ObjectEventWithDigitalLink.ttl	2021-12-09 17:28:53.246253200 +0200
+@@ -24,0 +25,6 @@
+>>>>>>> Stashed changes
 +[ rdf:type         epcis:EPCISDocument ;
 +  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
 +  owl:versionInfo  "2.0" ;
 +  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;9fa42e8bf64e1cfe152d582a248646ce0ad2b0c6826c7e8ed95442a7a1545f33?ver=CBV2.0> , <ni:///sha-256;4217c6a122625b7b9d8ae4f9b89890df35ffa0c501471a096cbfdeebd7207e45?ver=CBV2.0> ]
 +] .
+<<<<<<< Updated upstream
+=======
++
+@@ -40,6 +45,0 @@
+-
+-[ rdf:type         epcis:EPCISDocument ;
+-  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
+-  owl:versionInfo  "2.0" ;
+-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;9fa42e8bf64e1cfe152d582a248646ce0ad2b0c6826c7e8ed95442a7a1545f33?ver=CBV2.0> , <ni:///sha-256;4217c6a122625b7b9d8ae4f9b89890df35ffa0c501471a096cbfdeebd7207e45?ver=CBV2.0> ]
+-] .
+>>>>>>> Stashed changes

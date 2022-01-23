@@ -26,7 +26,6 @@
         epcis:bizTransactionType  cbv:BTT-inv .
 
 <ni:///sha-256;56ba4f355c57456b41c3fb60b22d8342e759de503e3e618940ca3b6ad1bf9b00?ver=CBV2.0>
-        rdf:type                     epcis:AggregationEvent ;
         epcis:action                 "OBSERVE" ;
         epcis:bizLocation            <urn:epc:id:sgln:9529999.99999.0> ;
         epcis:bizStep                cbv:BizStep-receiving ;
@@ -48,8 +47,12 @@
 <urn:epcglobal:cbv:bt:9529999999991:XYZ567>
         epcis:bizTransactionType  cbv:BTT-po .
 
+[ dcterms:created  "2020-06-28T13:41:00.000Z"^^xsd:dateTime ;
+  owl:versionInfo  "2.0" ;
+  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;dae7b481207bb87f1d981c5f169b8138368ae152a41b002eaf36eca1f67d56f5?ver=CBV2.0> , <ni:///sha-256;56ba4f355c57456b41c3fb60b22d8342e759de503e3e618940ca3b6ad1bf9b00?ver=CBV2.0> ]
+] .
+
 <ni:///sha-256;dae7b481207bb87f1d981c5f169b8138368ae152a41b002eaf36eca1f67d56f5?ver=CBV2.0>
-        rdf:type                     epcis:AggregationEvent ;
         epcis:action                 "DELETE" ;
         epcis:bizLocation            <urn:epc:id:sgln:9529999.99999.0> ;
         epcis:bizStep                cbv:BizStep-unpacking ;
@@ -69,9 +72,3 @@
         epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:pgln:9520001.11111> ;
                                        epcis:sourceOrDestinationType  cbv:SDT-owning_party
                                      ] .
-
-[ rdf:type         epcis:EPCISDocument ;
-  dcterms:created  "2020-06-28T13:41:00.000Z"^^xsd:dateTime ;
-  owl:versionInfo  "2.0" ;
-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;dae7b481207bb87f1d981c5f169b8138368ae152a41b002eaf36eca1f67d56f5?ver=CBV2.0> , <ni:///sha-256;56ba4f355c57456b41c3fb60b22d8342e759de503e3e618940ca3b6ad1bf9b00?ver=CBV2.0> ]
-] .

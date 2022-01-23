@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 --- ../Turtle/WithSensorData/SensorDataExample1.ttl	2021-10-15 16:15:56.676621100 +0300
 +++ ../Turtle-simple-context/WithSensorData/SensorDataExample1.ttl	2021-10-15 15:33:50.164820200 +0300
 @@ -36 +36 @@
@@ -33,3 +34,53 @@
 @@ -102 +102 @@
 -                                                             epcis:value            2.62E1
 +                                                             epcis:value            2.61E1
+=======
+--- ../Turtle/WithSensorData/SensorDataExample1.ttl	2021-12-09 17:30:14.204253600 +0200
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample1.ttl	2021-12-09 17:29:42.320252500 +0200
+@@ -31 +31 @@
+-        epcis:bizStep              <urn:epcglobal:cbv:bizstep:inspecting> ;
++        epcis:bizStep              cbv:BizStep-inspecting ;
+@@ -38,3 +38,3 @@
+-                                                             epcis:deviceMetadata  <https://id.gs1.org/8004/4000001111> ;
+-                                                             epcis:rawData         <https://example.org/8004/401234599999> ;
+-                                                             epcis:time            "2019-04-02T14:05:00.000+01:00"^^xsd:dateTimeStamp
++                                                             epcis:deviceMetadata  <https://id.gs1.org/giai/4000001111> ;
++                                                             epcis:rawData         <https://example.org/giai/401234599999> ;
++                                                             epcis:time            "2019-04-02T14:35:00.000+01:00"^^xsd:dateTimeStamp
+@@ -44 +44 @@
+-                                                             epcis:value            8.0E2
++                                                             epcis:value            8.01E2
+@@ -48 +48 @@
+-                                                             epcis:value            1.6E2
++                                                             epcis:value            1.61E2
+@@ -52 +52 @@
+-                                                             epcis:value            1.21E1
++                                                             epcis:value            1.22E1
+@@ -56 +56 @@
+-                                                             epcis:value            2.6E1
++                                                             epcis:value            2.61E1
+@@ -61,3 +61,3 @@
+-                                                             epcis:deviceMetadata  <https://id.gs1.org/8004/4000001111> ;
+-                                                             epcis:rawData         <https://example.org/8004/401234599999> ;
+-                                                             epcis:time            "2019-04-02T14:35:00.000+01:00"^^xsd:dateTimeStamp
++                                                             epcis:deviceMetadata  <https://id.gs1.org/giai/4000001111> ;
++                                                             epcis:rawData         <https://example.org/giai/401234599999> ;
++                                                             epcis:time            "2019-04-02T14:05:00.000+01:00"^^xsd:dateTimeStamp
+@@ -67 +67 @@
+-                                                             epcis:value            8.01E2
++                                                             epcis:value            8.0E2
+@@ -71 +71 @@
+-                                                             epcis:value            1.61E2
++                                                             epcis:value            1.6E2
+@@ -75 +75 @@
+-                                                             epcis:value            1.22E1
++                                                             epcis:value            1.21E1
+@@ -79 +79 @@
+-                                                             epcis:value            2.61E1
++                                                             epcis:value            2.6E1
+@@ -84,2 +84,2 @@
+-                                                             epcis:deviceMetadata  <https://id.gs1.org/8004/4000001111> ;
+-                                                             epcis:rawData         <https://example.org/8004/401234599999> ;
++                                                             epcis:deviceMetadata  <https://id.gs1.org/giai/4000001111> ;
++                                                             epcis:rawData         <https://example.org/giai/401234599999> ;
+>>>>>>> Stashed changes

@@ -1,0 +1,13 @@
+<<<<<<< Updated upstream
+=======
+--- ../Turtle/WithSensorData/SensorDataExample11.ttl	2021-12-09 17:30:22.362251600 +0200
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample11.ttl	2021-12-09 17:29:52.490250700 +0200
+@@ -38,3 +37,0 @@
+-<urn:epcglobal:cbv:bt:4012345123456:RE100099>
+-        epcis:bizTransactionType  cbv:BTT-po .
+-
+@@ -45,0 +43,3 @@
++
++<urn:epcglobal:cbv:bt:4012345123456:RE100099>
++        epcis:bizTransactionType  cbv:BTT-po .
+>>>>>>> Stashed changes

@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 --- ../Turtle/WithFullCombinationOfFields/association_event_all_possible_fields.ttl	2021-10-15 16:14:39.418760800 +0300
 +++ ../Turtle-simple-context/WithFullCombinationOfFields/association_event_all_possible_fields.ttl	2021-10-15 15:32:35.229231900 +0300
 @@ -26 +26 @@
@@ -25,3 +26,40 @@
 @@ -76 +76 @@
 -                                                                       ext1:array            "true" , "stringInArray" , "2013-06-08T14:58:56.591Z" , "12" , "22" ;
 +                                                                       ext1:array            "22" , "12" , "stringInArray" , "2013-06-08T14:58:56.591Z" , "true" ;
+=======
+--- ../Turtle/WithFullCombinationOfFields/association_event_all_possible_fields.ttl	2021-12-09 17:29:55.549255000 +0200
++++ ../Turtle-simple-context/WithFullCombinationOfFields/association_event_all_possible_fields.ttl	2021-12-09 17:29:24.004250900 +0200
+@@ -21,0 +22,3 @@
++<urn:epc:id:gdti:0614141.00001.1618034>
++        epcis:bizTransactionType  cbv:BTT-po .
++
+@@ -26 +29 @@
+-                                        ext1:array                   "stringInArray" , "2013-06-08T14:58:56.591Z" , "12" , "true" , "22" ;
++                                        ext1:array                   "true" , "12" , "stringInArray" , "2013-06-08T14:58:56.591Z" , "22" ;
+@@ -49,2 +52,2 @@
+-                                        epcis:bizTransactionList     <urn:epc:id:gdti:0614141.00001.1618034> , <urn:epc:id:gsrn:0614141.0000010253> ;
+-                                        epcis:childEPCs              <urn:epc:id:giai:4000001.12345> , <urn:epc:id:giai:4000001.12346> ;
++                                        epcis:bizTransactionList     <urn:epc:id:gsrn:0614141.0000010253> , <urn:epc:id:gdti:0614141.00001.1618034> ;
++                                        epcis:childEPCs              <urn:epc:id:giai:4000001.12346> , <urn:epc:id:giai:4000001.12345> ;
+@@ -59 +62 @@
+-                                                                       epcis:sourceOrDestinationType  cbv:SDT-possessing_party
++                                                                       epcis:sourceOrDestinationType  cbv:SDT-owning_party
+@@ -65 +68 @@
+-                                                                       epcis:sourceOrDestinationType  cbv:SDT-owning_party
++                                                                       epcis:sourceOrDestinationType  cbv:SDT-possessing_party
+@@ -76 +79 @@
+-                                                                       ext1:array            "true" , "2013-06-08T14:58:56.591Z" , "22" , "stringInArray" , "12" ;
++                                                                       ext1:array            "2013-06-08T14:58:56.591Z" , "12" , "stringInArray" , "true" , "22" ;
+@@ -130,3 +132,0 @@
+-                                        epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:pgln:4012345.00225> ;
+-                                                                       epcis:sourceOrDestinationType  cbv:SDT-possessing_party
+-                                                                     ] ;
+@@ -136,0 +137,3 @@
++                                                                       epcis:sourceOrDestinationType  cbv:SDT-possessing_party
++                                                                     ] ;
++                                        epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:pgln:4012345.00225> ;
+@@ -142,3 +144,0 @@
+-
+-<urn:epc:id:gdti:0614141.00001.1618034>
+-        epcis:bizTransactionType  cbv:BTT-po .
+>>>>>>> Stashed changes

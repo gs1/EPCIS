@@ -20,7 +20,6 @@
 @prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
 
 <ni:///sha-256;e84840e98e15b9c86168ce85ca277af4241dddd3b658f9650a00096c2a09c2f3?ver=CBV2.0>
-        rdf:type                   epcis:ObjectEvent ;
         epcis:action               "OBSERVE" ;
         epcis:bizStep              cbv:BizStep-inspecting ;
         epcis:eventTime            "2019-04-02T15:00:00.000+01:00"^^xsd:dateTimeStamp ;
@@ -93,8 +92,7 @@
                                                            ]
                                    ] .
 
-[ rdf:type         epcis:EPCISDocument ;
-  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
+[ dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
   owl:versionInfo  "2.0" ;
   epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;e84840e98e15b9c86168ce85ca277af4241dddd3b658f9650a00096c2a09c2f3?ver=CBV2.0> ]
 ] .

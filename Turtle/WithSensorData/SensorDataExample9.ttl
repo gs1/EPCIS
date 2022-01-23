@@ -19,11 +19,9 @@
 @prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
 
-[ rdf:type         epcis:EPCISDocument ;
-  dcterms:created  "2019-10-07T15:00:00.000+01:00"^^xsd:dateTime ;
+[ dcterms:created  "2019-10-07T15:00:00.000+01:00"^^xsd:dateTime ;
   owl:versionInfo  "2.0" ;
-  epcis:epcisBody  [ epcis:eventList  [ rdf:type                   epcis:ObjectEvent ;
-                                        epcis:action               "OBSERVE" ;
+  epcis:epcisBody  [ epcis:eventList  [ epcis:action               "OBSERVE" ;
                                         epcis:bizStep              cbv:BizStep-sensor_reporting ;
                                         epcis:epcList              <urn:epc:id:sgtin:4012345.011111.9876> ;
                                         epcis:eventTime            "2020-05-07T15:00:00.000Z"^^xsd:dateTimeStamp ;

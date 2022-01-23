@@ -19,14 +19,13 @@
 @prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
 
-[ rdf:type         epcis:EPCISDocument ;
-  dcterms:created  "2019-11-05T14:00:00.000+01:00"^^xsd:dateTime ;
+[ dcterms:created  "2019-11-05T14:00:00.000+01:00"^^xsd:dateTime ;
   owl:versionInfo  "2.0" ;
-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;8bbf932aa86072c4e5e6e58666b9344447c3811e07823677c336a00d7db67e5a?ver=CBV2.0> ]
+  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;8bbf932aa86072c4e5e6e58666b9344447c3811e07823677c336a00d7db67e5a?ver=CBV2.0> ] ;
+  epcis:isA        "EPCISDocument"
 ] .
 
 <ni:///sha-256;8bbf932aa86072c4e5e6e58666b9344447c3811e07823677c336a00d7db67e5a?ver=CBV2.0>
-        rdf:type                   epcis:AssociationEvent ;
         epcis:action               "ADD" ;
         epcis:bizStep              cbv:BizStep-assembling ;
         epcis:childQuantityList    [ epcis:epcClass  <urn:epc:class:lgtin:4012345.005555.456> ;
@@ -37,5 +36,6 @@
                                    ] ;
         epcis:eventTime            "2019-11-05T14:00:00.000+01:00"^^xsd:dateTimeStamp ;
         epcis:eventTimeZoneOffset  "+01:00" ;
+        epcis:isA                  "AssociationEvent" ;
         epcis:parentID             <urn:epc:id:grai:4012345.55555.987> ;
         epcis:readPoint            <urn:epc:id:sgln:4012345.00001.0> .

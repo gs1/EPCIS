@@ -1,5 +1,10 @@
+<<<<<<< Updated upstream
 --- ../Turtle/WithSensorData/SensorDataExample12.ttl	2021-10-15 16:15:15.656231400 +0300
 +++ ../Turtle-simple-context/WithSensorData/SensorDataExample12.ttl	2021-10-15 15:33:06.382972600 +0300
+=======
+--- ../Turtle/WithSensorData/SensorDataExample12.ttl	2021-12-09 17:30:26.570251500 +0200
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample12.ttl	2021-12-09 17:29:56.796253100 +0200
+>>>>>>> Stashed changes
 @@ -39,2 +39 @@
 -                                        epcis:ilmd                 [ <cbvmda:lotNumber>       "LOTABC" ;
 -                                                                     example:grading          "A" ;

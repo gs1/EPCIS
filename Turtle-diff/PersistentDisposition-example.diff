@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 --- ../Turtle/PersistentDisposition-example.ttl	2021-10-15 16:13:18.227275400 +0300
 +++ ../Turtle-simple-context/PersistentDisposition-example.ttl	2021-10-15 15:31:21.959907000 +0300
 @@ -27,0 +28,6 @@
@@ -14,3 +15,5 @@
 -  owl:versionInfo  "2.0" ;
 -  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;dae7b481207bb87f1d981c5f169b8138368ae152a41b002eaf36eca1f67d56f5?ver=CBV2.0> , <ni:///sha-256;56ba4f355c57456b41c3fb60b22d8342e759de503e3e618940ca3b6ad1bf9b00?ver=CBV2.0> ]
 -] .
+=======
+>>>>>>> Stashed changes

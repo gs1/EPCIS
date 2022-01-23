@@ -23,7 +23,6 @@
         epcis:bizTransactionType  cbv:BTT-po .
 
 <ni:///sha-256;c6407ffcac52ec159528f2b556ba4ac3844c5aa48485c1fd61643e94f0a2d678?ver=CBV2.0>
-        rdf:type                   epcis:ObjectEvent ;
         epcis:action               "OBSERVE" ;
         epcis:bizLocation          <urn:epc:id:sgln:0614141.00888.0> ;
         epcis:bizStep              cbv:BizStep-receiving ;
@@ -36,6 +35,7 @@
                                    ] ;
         epcis:eventTime            "2021-01-11T14:58:56.591Z"^^xsd:dateTimeStamp ;
         epcis:eventTimeZoneOffset  "+02:00" ;
+        epcis:isA                  "ObjectEvent" ;
         epcis:quantityList         [ epcis:epcClass  <urn:epc:class:lgtin:4012345.012345.998877> ;
                                      epcis:quantity  4.0E2 ;
                                      epcis:uom       "KGM"
@@ -52,7 +52,6 @@
         epcis:sourceOrDestinationType  cbv:SDT-owning_party .
 
 <ni:///sha-256;a98f08ae6ac4de3482054314d637c07010b448d3802dccb028a06aafcc6a4b10?ver=CBV2.0>
-        rdf:type                   epcis:ObjectEvent ;
         epcis:action               "OBSERVE" ;
         epcis:bizLocation          <urn:epc:id:sgln:0614141.00888.0> ;
         epcis:bizStep              cbv:BizStep-receiving ;
@@ -65,6 +64,7 @@
                                    ] ;
         epcis:eventTime            "2021-01-11T14:58:56.591Z"^^xsd:dateTimeStamp ;
         epcis:eventTimeZoneOffset  "+02:00" ;
+        epcis:isA                  "ObjectEvent" ;
         epcis:quantityList         [ epcis:epcClass  <urn:epc:class:lgtin:4012345.012345.998877> ;
                                      epcis:quantity  2.0E2 ;
                                      epcis:uom       "KGM"
@@ -76,14 +76,14 @@
         epcis:sourceOrDestination      <urn:epc:id:sgln:4012345.00225.0> ;
         epcis:sourceOrDestinationType  cbv:SDT-location .
 
-[ rdf:type         epcis:EPCISDocument ;
-  dcterms:created  "2021-01-11T11:30:47.0Z"^^xsd:dateTime ;
-  owl:versionInfo  "2.0" ;
-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;c6407ffcac52ec159528f2b556ba4ac3844c5aa48485c1fd61643e94f0a2d678?ver=CBV2.0> , <ni:///sha-256;a98f08ae6ac4de3482054314d637c07010b448d3802dccb028a06aafcc6a4b10?ver=CBV2.0> ]
-] .
-
 <urn:epcglobal:cbv:bt:0614141073467:1152>
         epcis:bizTransactionType  cbv:BTT-desadv .
+
+[ dcterms:created  "2021-01-11T11:30:47.0Z"^^xsd:dateTime ;
+  owl:versionInfo  "2.0" ;
+  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;c6407ffcac52ec159528f2b556ba4ac3844c5aa48485c1fd61643e94f0a2d678?ver=CBV2.0> , <ni:///sha-256;a98f08ae6ac4de3482054314d637c07010b448d3802dccb028a06aafcc6a4b10?ver=CBV2.0> ] ;
+  epcis:isA        "EPCISDocument"
+] .
 
 <http://example.org/gln/0614141.00777.0/type/loc>
         epcis:sourceOrDestination      <urn:epc:id:sgln:0614141.00777.0> ;

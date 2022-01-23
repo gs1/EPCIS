@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 --- ../Turtle/WithSensorData/SensorDataExample10.ttl	2021-10-15 16:14:55.021464500 +0300
 +++ ../Turtle-simple-context/WithSensorData/SensorDataExample10.ttl	2021-10-15 15:32:52.169294100 +0300
 @@ -21,0 +22,6 @@
@@ -23,3 +24,16 @@
 -  owl:versionInfo  "2.0" ;
 -  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;77c5b495d391767b1d3b8e7c669c9fee3965a778a9bfe793e85602c971b98436?ver=CBV2.0> ]
 -] .
+=======
+--- ../Turtle/WithSensorData/SensorDataExample10.ttl	2021-12-09 17:30:18.248252700 +0200
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample10.ttl	2021-12-09 17:29:47.076252200 +0200
+@@ -37 +37 @@
+-                                                           epcis:component        cbv:Comp-z ;
++                                                           epcis:component        cbv:COMP-z ;
+@@ -43 +43 @@
+-                                                           epcis:component        cbv:Comp-y ;
++                                                           epcis:component        cbv:COMP-y ;
+@@ -49 +49 @@
+-                                                           epcis:component        cbv:Comp-x ;
++                                                           epcis:component        cbv:COMP-x ;
+>>>>>>> Stashed changes

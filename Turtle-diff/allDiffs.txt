@@ -44,8 +44,23 @@
 -        examp:custom              cbv:BTT-inv ;
 +        examp:custom              <http://ns.example.com/custom/inv> ;
 
+<<<<<<< Updated upstream
 
 ################# ./Example-TransactionEvents-2020_07_03y.diff
+=======
+./Example-TransactionEvents-2020_07_03y.diff
+
+--- ../Turtle//Example-TransactionEvents-2020_07_03y.ttl	2021-12-09 17:28:33.344640300 +0200
++++ ../Turtle-simple-context//Example-TransactionEvents-2020_07_03y.ttl	2021-12-09 17:28:07.096062900 +0200
+@@ -21,0 +22,3 @@
++<http://transaction.examplerail.com/passage/xyz12345>
++        epcis:bizTransactionType  rail:btt:passage .
++
+@@ -69,3 +71,0 @@
+-
+-<http://transaction.examplerail.com/passage/xyz12345>
+-        epcis:bizTransactionType  rail:btt:passage .
+>>>>>>> Stashed changes
 
 --- ../Turtle/Example-TransactionEvents-2020_07_03y.ttl	2021-10-15 16:12:52.294963900 +0300
 +++ ../Turtle-simple-context/Example-TransactionEvents-2020_07_03y.ttl	2021-10-15 15:31:06.640360200 +0300
@@ -69,6 +84,7 @@
 +        epcis:bizTransactionType  rail:btt:passage .
 
 
+<<<<<<< Updated upstream
 ################# ./Example-Type-sourceOrDestination,measurement,bizTransaction.diff
 
 --- ../Turtle/Example-Type-sourceOrDestination,measurement,bizTransaction.ttl	2021-10-15 16:12:58.983858100 +0300
@@ -147,12 +163,35 @@
 --- ../Turtle/Example_9.6.3-AggregationEvent.ttl	2021-10-15 16:13:26.428460100 +0300
 +++ ../Turtle-simple-context/Example_9.6.3-AggregationEvent.ttl	2021-10-15 15:31:26.533379300 +0300
 @@ -22,6 +21,0 @@
+=======
+./Example-Type-sourceOrDestination,measurement,bizTransaction.diff
+
+--- ../Turtle//Example-Type-sourceOrDestination,measurement,bizTransaction.ttl	2021-12-09 17:28:38.035638400 +0200
++++ ../Turtle-simple-context//Example-Type-sourceOrDestination,measurement,bizTransaction.ttl	2021-12-09 17:28:11.273643000 +0200
+@@ -58,3 +57,0 @@
+-<urn:epcglobal:cbv:bt:4023333000000:54545>
+-        epcis:bizTransactionType  cbv:BTT-inv .
+-
+@@ -65,0 +63,3 @@
++
++<urn:epcglobal:cbv:bt:4023333000000:54545>
++        epcis:bizTransactionType  cbv:BTT-inv .
+
+
+
+./Example_9.6.1-ObjectEvent-with-pseudo-SBDH-headers.diff
+
+--- ../Turtle//Example_9.6.1-ObjectEvent-with-pseudo-SBDH-headers.ttl	2021-12-09 17:28:12.579640600 +0200
++++ ../Turtle-simple-context//Example_9.6.1-ObjectEvent-with-pseudo-SBDH-headers.ttl	2021-12-09 17:40:28.285420000 +0200
+@@ -25,6 +24,0 @@
+>>>>>>> Stashed changes
 -[ rdf:type         epcis:EPCISDocument ;
 -  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
 -  owl:versionInfo  "2.0" ;
--  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;87b5f18a69993f0052046d4687dfacdf48f7c988cfabda2819688c86b4066a49?ver=CBV2.0> ]
+-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;df7bb3c352fef055578554f09f5e2aa41782150ced7bd0b8af24dd3ccb30ba69?ver=CBV2.0> , <ni:///sha-256;00e1e6eba3a7cc6125be4793a631f0af50f8322e0ab5f2c0bab994a11cec1d79?ver=CBV2.0> ]
 -] .
 -
+<<<<<<< Updated upstream
 @@ -35,3 +28,0 @@
 -        epcis:childQuantityList    [ epcis:epcClass  <urn:epc:idpat:sgtin:4012345.098765.*> ;
 -                                     epcis:quantity  1.0E1
@@ -162,16 +201,24 @@
 +                                     epcis:quantity  1.0E1
 +                                   ] ;
 @@ -46,0 +41,6 @@
+=======
+@@ -56,0 +51,10 @@
+>>>>>>> Stashed changes
 +
-+[ rdf:type         epcis:EPCISDocument ;
-+  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
-+  owl:versionInfo  "2.0" ;
-+  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;87b5f18a69993f0052046d4687dfacdf48f7c988cfabda2819688c86b4066a49?ver=CBV2.0> ]
++[ rdf:type                  epcis:EPCISDocument ;
++  dcterms:created           "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
++  owl:versionInfo           "2.0" ;
++  epcis:epcisBody           [ epcis:eventList
++                    <ni:///sha-256;df7bb3c352fef055578554f09f5e2aa41782150ced7bd0b8af24dd3ccb30ba69?ver=CBV2.0> , <ni:///sha-256;00e1e6eba3a7cc6125be4793a631f0af50f8322e0ab5f2c0bab994a11cec1d79?ver=CBV2.0> ] ;
++  epcis:instanceIdentifier  "1234567890" ;
++  epcis:receiver            "urn:epc:id:sgln:5012345.00001.0" ;
++  epcis:sender              "urn:epc:id:sgln:0353579.00001.0"
 +] .
 
 
 ################# ./Example_9.6.4-TransformationEvent.diff
 
+<<<<<<< Updated upstream
 --- ../Turtle/Example_9.6.4-TransformationEvent.ttl	2021-10-15 16:12:48.669968400 +0300
 +++ ../Turtle-simple-context/Example_9.6.4-TransformationEvent.ttl	2021-10-15 15:31:00.367332500 +0300
 @@ -39,3 +39,2 @@
@@ -195,9 +242,17 @@
 --- ../Turtle/PersistentDisposition-example.ttl	2021-10-15 16:13:18.227275400 +0300
 +++ ../Turtle-simple-context/PersistentDisposition-example.ttl	2021-10-15 15:31:21.959907000 +0300
 @@ -27,0 +28,6 @@
+=======
+./Example_9.6.1-ObjectEvent.diff
+
+--- ../Turtle//Example_9.6.1-ObjectEvent.ttl	2021-12-09 17:28:08.402061900 +0200
++++ ../Turtle-simple-context//Example_9.6.1-ObjectEvent.ttl	2021-12-09 17:27:47.534923300 +0200
+@@ -24,0 +25,6 @@
+>>>>>>> Stashed changes
 +[ rdf:type         epcis:EPCISDocument ;
 +  dcterms:created  "2020-06-28T13:41:00.000Z"^^xsd:dateTime ;
 +  owl:versionInfo  "2.0" ;
+<<<<<<< Updated upstream
 +  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;dae7b481207bb87f1d981c5f169b8138368ae152a41b002eaf36eca1f67d56f5?ver=CBV2.0> , <ni:///sha-256;56ba4f355c57456b41c3fb60b22d8342e759de503e3e618940ca3b6ad1bf9b00?ver=CBV2.0> ]
 +] .
 +
@@ -207,15 +262,47 @@
 -  dcterms:created  "2020-06-28T13:41:00.000Z"^^xsd:dateTime ;
 -  owl:versionInfo  "2.0" ;
 -  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;dae7b481207bb87f1d981c5f169b8138368ae152a41b002eaf36eca1f67d56f5?ver=CBV2.0> , <ni:///sha-256;56ba4f355c57456b41c3fb60b22d8342e759de503e3e618940ca3b6ad1bf9b00?ver=CBV2.0> ]
+=======
++  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;df7bb3c352fef055578554f09f5e2aa41782150ced7bd0b8af24dd3ccb30ba69?ver=CBV2.0> , <ni:///sha-256;00e1e6eba3a7cc6125be4793a631f0af50f8322e0ab5f2c0bab994a11cec1d79?ver=CBV2.0> ]
++] .
++
+@@ -37,6 +42,0 @@
+-
+-[ rdf:type         epcis:EPCISDocument ;
+-  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
+-  owl:versionInfo  "2.0" ;
+-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;df7bb3c352fef055578554f09f5e2aa41782150ced7bd0b8af24dd3ccb30ba69?ver=CBV2.0> , <ni:///sha-256;00e1e6eba3a7cc6125be4793a631f0af50f8322e0ab5f2c0bab994a11cec1d79?ver=CBV2.0> ]
+>>>>>>> Stashed changes
 -] .
 
 
 ################# ./prefixes.diff
 
+<<<<<<< Updated upstream
+=======
+./Example_9.6.1-with-comment.diff
+
+
+
+
+./Example_9.6.2-ObjectEvent.diff
+
+--- ../Turtle//Example_9.6.2-ObjectEvent.ttl	2021-12-09 17:28:20.741642000 +0200
++++ ../Turtle-simple-context//Example_9.6.2-ObjectEvent.ttl	2021-12-09 17:27:55.395261900 +0200
+@@ -28,3 +27,0 @@
+-        epcis:destinationList      [ epcis:sourceOrDestination      <urn:epc:id:sgln:0614141.00001.0> ;
+-                                     epcis:sourceOrDestinationType  cbv:SDT-owning_party
+-                                   ] ;
+@@ -32,0 +30,3 @@
++                                   ] ;
++        epcis:destinationList      [ epcis:sourceOrDestination      <urn:epc:id:sgln:0614141.00001.0> ;
++                                     epcis:sourceOrDestinationType  cbv:SDT-owning_party
+>>>>>>> Stashed changes
 
 
 ################# ./README.md
 
+<<<<<<< Updated upstream
 ################# ./AssociationEvent/AssociationEvent-a.diff
 
 --- ../Turtle/AssociationEvent/AssociationEvent-a.ttl	2021-10-15 16:13:57.976547800 +0300
@@ -234,20 +321,45 @@
 +  owl:versionInfo  "2.0" ;
 +  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;025ac144187a8c5e14caf4d1cfa69250a33dc59a5bc42a68d31b1b5e55a3f15a?ver=CBV2.0> ]
 +] .
+=======
+./Example_9.6.3-AggregationEvent.diff
+
+--- ../Turtle//Example_9.6.3-AggregationEvent.ttl	2021-12-09 17:28:25.077641200 +0200
++++ ../Turtle-simple-context//Example_9.6.3-AggregationEvent.ttl	2021-12-09 17:28:01.053805400 +0200
+@@ -29,3 +28,0 @@
+-        epcis:childQuantityList    [ epcis:epcClass  <urn:epc:idpat:sgtin:4012345.098765.*> ;
+-                                     epcis:quantity  1.0E1
+-                                   ] ;
+@@ -34,0 +32,3 @@
++                                   ] ;
++        epcis:childQuantityList    [ epcis:epcClass  <urn:epc:idpat:sgtin:4012345.098765.*> ;
++                                     epcis:quantity  1.0E1
+>>>>>>> Stashed changes
 
 
 ################# ./AssociationEvent/AssociationEvent-b.diff
 
+<<<<<<< Updated upstream
+=======
+./Example_9.6.4-TransformationEvent.diff
+>>>>>>> Stashed changes
 
 
 ################# ./AssociationEvent/AssociationEvent-c.diff
 
 
+<<<<<<< Updated upstream
 
 ################# ./AssociationEvent/AssociationEvent-d.diff
+=======
+./Makefile
+
+>>>>>>> Stashed changes
+
+./PersistentDisposition-example.diff
 
 
-
+<<<<<<< Updated upstream
 ################# ./AssociationEvent/AssociationEvent-e.diff
 
 
@@ -282,10 +394,15 @@
 +  owl:versionInfo  "2.0" ;
 +  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;9fa42e8bf64e1cfe152d582a248646ce0ad2b0c6826c7e8ed95442a7a1545f33?ver=CBV2.0> , <ni:///sha-256;4217c6a122625b7b9d8ae4f9b89890df35ffa0c501471a096cbfdeebd7207e45?ver=CBV2.0> ]
 +] .
+=======
 
+>>>>>>> Stashed changes
+
+./prefixes.diff
 
 ################# ./WithDigitalLinkID/Example_9.6.2-ObjectEventWithDigitalLink.diff
 
+<<<<<<< Updated upstream
 --- ../Turtle/WithDigitalLinkID/Example_9.6.2-ObjectEventWithDigitalLink.ttl	2021-10-15 16:14:11.494527800 +0300
 +++ ../Turtle-simple-context/WithDigitalLinkID/Example_9.6.2-ObjectEventWithDigitalLink.ttl	2021-10-15 15:32:02.363960100 +0300
 @@ -28,3 +27,0 @@
@@ -316,10 +433,25 @@
 -  owl:versionInfo  "2.0" ;
 -  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;20a2b5b9681b7a70413c42bfe72db61386411252a803b6bc212f5f46f26649d7?ver=CBV2.0> ]
 -] .
+=======
+
+
+./README.md
+
+
+./AssociationEvent/AssociationEvent-a.diff
+
+
+
+
+./AssociationEvent/AssociationEvent-b.diff
+
+>>>>>>> Stashed changes
 
 
 ################# ./WithDigitalLinkID/Example_9.6.4-TransformationEventWithDigitalLink.diff
 
+<<<<<<< Updated upstream
 --- ../Turtle/WithDigitalLinkID/Example_9.6.4-TransformationEventWithDigitalLink.ttl	2021-10-15 16:14:05.254055400 +0300
 +++ ../Turtle-simple-context/WithDigitalLinkID/Example_9.6.4-TransformationEventWithDigitalLink.ttl	2021-10-15 15:31:58.714616800 +0300
 @@ -21,0 +22,6 @@
@@ -346,12 +478,26 @@
 -  owl:versionInfo  "2.0" ;
 -  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;4f143d1adf7b2950a34f5e82a240ce5280530b06a9f3c2b9cfe49f5ca5001815?ver=CBV2.0> ]
 -] .
+=======
+./AssociationEvent/AssociationEvent-c.diff
+
+
+
+
+./AssociationEvent/AssociationEvent-d.diff
+
+
+
+
+./AssociationEvent/AssociationEvent-e.diff
+>>>>>>> Stashed changes
 
 
 ################# ./WithErrorDeclaration/ErrorDeclarationAndCorrectiveEvent.diff
 
 
 
+<<<<<<< Updated upstream
 ################# ./WithErrorDeclaration/Example-ObjectEvent-with-reused-source-destination.diff
 
 
@@ -373,6 +519,93 @@
 -  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
 -  owl:versionInfo  "2.0" ;
 -  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;aa49daa1fe0b773e0437e546078dc87de9c864d5b9babe84488f31478887fdf3?ver=CBV2.0> , <ni:///sha-256;00e1e6eba3a7cc6125be4793a631f0af50f8322e0ab5f2c0bab994a11cec1d79?ver=CBV2.0> ]
+=======
+--- ../Turtle/AssociationEvent/AssociationEvent-f.ttl	2021-12-09 17:29:07.638251600 +0200
++++ ../Turtle-simple-context/AssociationEvent/AssociationEvent-f.ttl	2021-12-09 17:28:40.206648200 +0200
+@@ -53,0 +54,3 @@
++<urn:epcglobal:cbv:bt:4023333000000:54545>
++        epcis:bizTransactionType  cbv:BTT-inv .
++
+@@ -59,3 +61,0 @@
+-
+-<urn:epcglobal:cbv:bt:4023333000000:54545>
+-        epcis:bizTransactionType  cbv:BTT-inv .
+
+
+
+./AssociationEvent/AssociationEvent-g.diff
+
+--- ../Turtle/AssociationEvent/AssociationEvent-g.ttl	2021-12-09 17:29:12.194252800 +0200
++++ ../Turtle-simple-context/AssociationEvent/AssociationEvent-g.ttl	2021-12-09 17:28:44.330638100 +0200
+@@ -22,6 +21,0 @@
+-[ rdf:type         epcis:EPCISDocument ;
+-  dcterms:created  "2019-11-04T14:00:00.000+01:00"^^xsd:dateTime ;
+-  owl:versionInfo  "2.0" ;
+-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;3acf0f5d06f13134ea8899b9a711eb4d4039dfefd73f2093136729296d904d9a?ver=CBV2.0> ]
+-] .
+-
+@@ -39,0 +34,6 @@
++
++[ rdf:type         epcis:EPCISDocument ;
++  dcterms:created  "2019-11-04T14:00:00.000+01:00"^^xsd:dateTime ;
++  owl:versionInfo  "2.0" ;
++  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;3acf0f5d06f13134ea8899b9a711eb4d4039dfefd73f2093136729296d904d9a?ver=CBV2.0> ]
++] .
+
+
+
+./AssociationEvent/AssociationEvent-h.diff
+
+
+
+
+./WithDigitalLinkID/Example_9.6.1-ObjectEventWithDigitalLink.diff
+
+--- ../Turtle/WithDigitalLinkID/Example_9.6.1-ObjectEventWithDigitalLink.ttl	2021-12-09 17:29:21.051254200 +0200
++++ ../Turtle-simple-context/WithDigitalLinkID/Example_9.6.1-ObjectEventWithDigitalLink.ttl	2021-12-09 17:28:53.246253200 +0200
+@@ -24,0 +25,6 @@
++[ rdf:type         epcis:EPCISDocument ;
++  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
++  owl:versionInfo  "2.0" ;
++  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;9fa42e8bf64e1cfe152d582a248646ce0ad2b0c6826c7e8ed95442a7a1545f33?ver=CBV2.0> , <ni:///sha-256;4217c6a122625b7b9d8ae4f9b89890df35ffa0c501471a096cbfdeebd7207e45?ver=CBV2.0> ]
++] .
++
+@@ -40,6 +45,0 @@
+-
+-[ rdf:type         epcis:EPCISDocument ;
+-  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
+-  owl:versionInfo  "2.0" ;
+-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;9fa42e8bf64e1cfe152d582a248646ce0ad2b0c6826c7e8ed95442a7a1545f33?ver=CBV2.0> , <ni:///sha-256;4217c6a122625b7b9d8ae4f9b89890df35ffa0c501471a096cbfdeebd7207e45?ver=CBV2.0> ]
+-] .
+
+
+
+./WithDigitalLinkID/Example_9.6.2-ObjectEventWithDigitalLink.diff
+
+--- ../Turtle/WithDigitalLinkID/Example_9.6.2-ObjectEventWithDigitalLink.ttl	2021-12-09 17:29:26.518256400 +0200
++++ ../Turtle-simple-context/WithDigitalLinkID/Example_9.6.2-ObjectEventWithDigitalLink.ttl	2021-12-09 17:28:57.495255100 +0200
+@@ -21,0 +22,6 @@
++[ rdf:type         epcis:EPCISDocument ;
++  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
++  owl:versionInfo  "2.0" ;
++  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;115b14983df54a9bcc3dd6a00dc4ebcab000bd52fda0abdd8996907e01dccc23?ver=CBV2.0> ]
++] .
++
+@@ -28,3 +33,0 @@
+-        epcis:destinationList      [ epcis:sourceOrDestination      <urn:epc:id:sgln:0614141.00001.0> ;
+-                                     epcis:sourceOrDestinationType  cbv:SDT-owning_party
+-                                   ] ;
+@@ -33,0 +37,3 @@
++        epcis:destinationList      [ epcis:sourceOrDestination      <urn:epc:id:sgln:0614141.00001.0> ;
++                                     epcis:sourceOrDestinationType  cbv:SDT-owning_party
++                                   ] ;
+@@ -48,6 +53,0 @@
+-
+-[ rdf:type         epcis:EPCISDocument ;
+-  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
+-  owl:versionInfo  "2.0" ;
+-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;115b14983df54a9bcc3dd6a00dc4ebcab000bd52fda0abdd8996907e01dccc23?ver=CBV2.0> ]
+>>>>>>> Stashed changes
 -] .
 -
 @@ -60,0 +58,3 @@
@@ -383,6 +616,7 @@
 
 ################# ./WithFullCombinationOfFields/aggregation_event_all_possible_fields.diff
 
+<<<<<<< Updated upstream
 --- ../Turtle/WithFullCombinationOfFields/aggregation_event_all_possible_fields.ttl	2021-10-15 16:14:46.953817300 +0300
 +++ ../Turtle-simple-context/WithFullCombinationOfFields/aggregation_event_all_possible_fields.ttl	2021-10-15 15:32:43.466615000 +0300
 @@ -26 +26 @@
@@ -445,10 +679,147 @@
 @@ -76 +76 @@
 -                                                                       ext1:array            "true" , "stringInArray" , "2013-06-08T14:58:56.591Z" , "12" , "22" ;
 +                                                                       ext1:array            "22" , "12" , "stringInArray" , "2013-06-08T14:58:56.591Z" , "true" ;
+=======
+./WithDigitalLinkID/Example_9.6.3-AggregationEventWithDigitalLink.diff
+
+--- ../Turtle/WithDigitalLinkID/Example_9.6.3-AggregationEventWithDigitalLink.ttl	2021-12-09 17:29:31.370250500 +0200
++++ ../Turtle-simple-context/WithDigitalLinkID/Example_9.6.3-AggregationEventWithDigitalLink.ttl	2021-12-09 17:29:01.598252000 +0200
+@@ -21,0 +22,6 @@
++[ rdf:type         epcis:EPCISDocument ;
++  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
++  owl:versionInfo  "2.0" ;
++  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;20a2b5b9681b7a70413c42bfe72db61386411252a803b6bc212f5f46f26649d7?ver=CBV2.0> ]
++] .
++
+@@ -29,3 +34,0 @@
+-        epcis:childQuantityList    [ epcis:epcClass  <https://id.gs1.org/01/04012345987652> ;
+-                                     epcis:quantity  1.0E1
+-                                   ] ;
+@@ -35,0 +39,3 @@
++        epcis:childQuantityList    [ epcis:epcClass  <https://id.gs1.org/01/04012345987652> ;
++                                     epcis:quantity  1.0E1
++                                   ] ;
+@@ -41,6 +46,0 @@
+-
+-[ rdf:type         epcis:EPCISDocument ;
+-  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
+-  owl:versionInfo  "2.0" ;
+-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;20a2b5b9681b7a70413c42bfe72db61386411252a803b6bc212f5f46f26649d7?ver=CBV2.0> ]
+-] .
+
+
+
+./WithDigitalLinkID/Example_9.6.4-TransformationEventWithDigitalLink.diff
+
+--- ../Turtle/WithDigitalLinkID/Example_9.6.4-TransformationEventWithDigitalLink.ttl	2021-12-09 17:29:35.877252400 +0200
++++ ../Turtle-simple-context/WithDigitalLinkID/Example_9.6.4-TransformationEventWithDigitalLink.ttl	2021-12-09 17:29:05.880250100 +0200
+@@ -33,3 +32,0 @@
+-        epcis:inputQuantityList    [ epcis:epcClass  <https://id.gs1.org/01/04012345666663> ;
+-                                     epcis:quantity  2.2E2
+-                                   ] ;
+@@ -41,0 +39,3 @@
++                                   ] ;
++        epcis:inputQuantityList    [ epcis:epcClass  <https://id.gs1.org/01/04012345666663> ;
++                                     epcis:quantity  2.2E2
+
+
+
+./WithErrorDeclaration/ErrorDeclarationAndCorrectiveEvent.diff
+
+
+
+
+./WithErrorDeclaration/Example_9.6.1-ObjectEvent-with-error-declaration.diff
+
+--- ../Turtle/WithErrorDeclaration/Example_9.6.1-ObjectEvent-with-error-declaration.ttl	2021-12-09 17:29:45.650253800 +0200
++++ ../Turtle-simple-context/WithErrorDeclaration/Example_9.6.1-ObjectEvent-with-error-declaration.ttl	2021-12-09 17:29:14.511251100 +0200
+@@ -37,0 +38,6 @@
++[ rdf:type         epcis:EPCISDocument ;
++  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
++  owl:versionInfo  "2.0" ;
++  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;aa49daa1fe0b773e0437e546078dc87de9c864d5b9babe84488f31478887fdf3?ver=CBV2.0> , <ni:///sha-256;00e1e6eba3a7cc6125be4793a631f0af50f8322e0ab5f2c0bab994a11cec1d79?ver=CBV2.0> ]
++] .
++
+@@ -55,6 +60,0 @@
+-
+-[ rdf:type         epcis:EPCISDocument ;
+-  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
+-  owl:versionInfo  "2.0" ;
+-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;aa49daa1fe0b773e0437e546078dc87de9c864d5b9babe84488f31478887fdf3?ver=CBV2.0> , <ni:///sha-256;00e1e6eba3a7cc6125be4793a631f0af50f8322e0ab5f2c0bab994a11cec1d79?ver=CBV2.0> ]
+-] .
+
+
+
+./WithFullCombinationOfFields/aggregation_event_all_possible_fields.diff
+
+--- ../Turtle/WithFullCombinationOfFields/aggregation_event_all_possible_fields.ttl	2021-12-09 17:29:50.689251100 +0200
++++ ../Turtle-simple-context/WithFullCombinationOfFields/aggregation_event_all_possible_fields.ttl	2021-12-09 17:29:19.156252100 +0200
+@@ -32 +32 @@
+-                                        ext1:array                   "true" , "stringInArray" , "12" , "22" , "2013-06-08T14:58:56.591Z" ;
++                                        ext1:array                   "22" , "12" , "2013-06-08T14:58:56.591Z" , "stringInArray" , "true" ;
+@@ -56 +56 @@
+-                                        epcis:childEPCs              <urn:epc:id:sgtin:0614141.107346.2017> , <urn:epc:id:sgtin:0614141.107346.2018> ;
++                                        epcis:childEPCs              <urn:epc:id:sgtin:0614141.107346.2018> , <urn:epc:id:sgtin:0614141.107346.2017> ;
+@@ -64,2 +64,2 @@
+-                                        epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:sgln:0614141.00777.0> ;
+-                                                                       epcis:sourceOrDestinationType  cbv:SDT-location
++                                        epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:pgln:0614141.00777> ;
++                                                                       epcis:sourceOrDestinationType  cbv:SDT-possessing_party
+@@ -70,2 +70,2 @@
+-                                        epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:pgln:0614141.00777> ;
+-                                                                       epcis:sourceOrDestinationType  cbv:SDT-possessing_party
++                                        epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:sgln:0614141.00777.0> ;
++                                                                       epcis:sourceOrDestinationType  cbv:SDT-location
+@@ -82 +82 @@
+-                                                                       ext1:array            "12" , "22" , "2013-06-08T14:58:56.591Z" , "true" , "stringInArray" ;
++                                                                       ext1:array            "2013-06-08T14:58:56.591Z" , "12" , "22" , "true" , "stringInArray" ;
+
+
+
+./WithFullCombinationOfFields/association_event_all_possible_fields.diff
+
+--- ../Turtle/WithFullCombinationOfFields/association_event_all_possible_fields.ttl	2021-12-09 17:29:55.549255000 +0200
++++ ../Turtle-simple-context/WithFullCombinationOfFields/association_event_all_possible_fields.ttl	2021-12-09 17:29:24.004250900 +0200
+@@ -21,0 +22,3 @@
++<urn:epc:id:gdti:0614141.00001.1618034>
++        epcis:bizTransactionType  cbv:BTT-po .
++
+@@ -26 +29 @@
+-                                        ext1:array                   "stringInArray" , "2013-06-08T14:58:56.591Z" , "12" , "true" , "22" ;
++                                        ext1:array                   "true" , "12" , "stringInArray" , "2013-06-08T14:58:56.591Z" , "22" ;
+@@ -49,2 +52,2 @@
+-                                        epcis:bizTransactionList     <urn:epc:id:gdti:0614141.00001.1618034> , <urn:epc:id:gsrn:0614141.0000010253> ;
+-                                        epcis:childEPCs              <urn:epc:id:giai:4000001.12345> , <urn:epc:id:giai:4000001.12346> ;
++                                        epcis:bizTransactionList     <urn:epc:id:gsrn:0614141.0000010253> , <urn:epc:id:gdti:0614141.00001.1618034> ;
++                                        epcis:childEPCs              <urn:epc:id:giai:4000001.12346> , <urn:epc:id:giai:4000001.12345> ;
+@@ -59 +62 @@
+-                                                                       epcis:sourceOrDestinationType  cbv:SDT-possessing_party
++                                                                       epcis:sourceOrDestinationType  cbv:SDT-owning_party
+@@ -65 +68 @@
+-                                                                       epcis:sourceOrDestinationType  cbv:SDT-owning_party
++                                                                       epcis:sourceOrDestinationType  cbv:SDT-possessing_party
+@@ -76 +79 @@
+-                                                                       ext1:array            "true" , "2013-06-08T14:58:56.591Z" , "22" , "stringInArray" , "12" ;
++                                                                       ext1:array            "2013-06-08T14:58:56.591Z" , "12" , "stringInArray" , "true" , "22" ;
+@@ -130,3 +132,0 @@
+-                                        epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:pgln:4012345.00225> ;
+-                                                                       epcis:sourceOrDestinationType  cbv:SDT-possessing_party
+-                                                                     ] ;
+@@ -136,0 +137,3 @@
++                                                                       epcis:sourceOrDestinationType  cbv:SDT-possessing_party
++                                                                     ] ;
++                                        epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:pgln:4012345.00225> ;
+@@ -142,3 +144,0 @@
+-
+-<urn:epc:id:gdti:0614141.00001.1618034>
+-        epcis:bizTransactionType  cbv:BTT-po .
+
+>>>>>>> Stashed changes
 
 
 ################# ./WithFullCombinationOfFields/object_event_all_possible_fields.diff
 
+<<<<<<< Updated upstream
 --- ../Turtle/WithFullCombinationOfFields/object_event_all_possible_fields.ttl	2021-10-15 16:14:33.854771000 +0300
 +++ ../Turtle-simple-context/WithFullCombinationOfFields/object_event_all_possible_fields.ttl	2021-10-15 15:32:30.186743300 +0300
 @@ -24,0 +25,3 @@
@@ -467,15 +838,41 @@
 +                                                                       epcis:sourceOrDestinationType  cbv:SDT-owning_party
 +                                                                     ] ;
 @@ -66,7 +69 @@
+=======
+--- ../Turtle/WithFullCombinationOfFields/object_event_all_possible_fields.ttl	2021-12-09 17:29:59.769252000 +0200
++++ ../Turtle-simple-context/WithFullCombinationOfFields/object_event_all_possible_fields.ttl	2021-12-09 17:29:28.825252300 +0200
+@@ -22,3 +21,0 @@
+-<urn:epc:id:gdti:0614141.00001.1618034>
+-        epcis:bizTransactionType  cbv:BTT-po .
+-
+@@ -29 +26 @@
+-                                        ext1:array                   "12" , "stringInArray" , "true" , "22" , "2013-06-08T14:58:56.591Z" ;
++                                        ext1:array                   "stringInArray" , "12" , "22" , "true" , "2013-06-08T14:58:56.591Z" ;
+@@ -53,3 +49,0 @@
+-                                        epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:pgln:0614141.00777> ;
+-                                                                       epcis:sourceOrDestinationType  cbv:SDT-owning_party
+-                                                                     ] ;
+@@ -59,0 +54,3 @@
++                                                                       epcis:sourceOrDestinationType  cbv:SDT-owning_party
++                                                                     ] ;
++                                        epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:pgln:0614141.00777> ;
+@@ -66,7 +63 @@
+>>>>>>> Stashed changes
 -                                        epcis:ilmd                   [ <cbvmda:countryOfExport>  "KR" ;
 -                                                                       <cbvmda:countryOfOrigin>  "GB" ;
 -                                                                       <cbvmda:drainedWeight>    "3.5" ;
 -                                                                       <cbvmda:grossWeight>      "3.5" ;
 -                                                                       <cbvmda:lotNumber>        "ABC123" ;
 -                                                                       <cbvmda:netWeight>        "3.5" ;
+<<<<<<< Updated upstream
 -                                                                       ext1:array                "12" , "true" , "22" , "stringInArray" , "2013-06-08T14:58:56.591Z" ;
 +                                        epcis:ilmd                   [ ext1:array              "12" , "true" , "22" , "stringInArray" , "2013-06-08T14:58:56.591Z" ;
 @@ -91 +88,7 @@
+=======
+-                                                                       ext1:array                "true" , "12" , "2013-06-08T14:58:56.591Z" , "stringInArray" , "22" ;
++                                        epcis:ilmd                   [ ext1:array              "2013-06-08T14:58:56.591Z" , "22" , "12" , "true" , "stringInArray" ;
+@@ -91 +82,7 @@
+>>>>>>> Stashed changes
 -                                                                       ext1:time                 "2013-06-08T14:58:56.591Z"
 +                                                                       ext1:time               "2013-06-08T14:58:56.591Z" ;
 +                                                                       cbvmda:countryOfExport  "KR" ;
@@ -484,6 +881,7 @@
 +                                                                       cbvmda:grossWeight      "3.5" ;
 +                                                                       cbvmda:lotNumber        "ABC123" ;
 +                                                                       cbvmda:netWeight        "3.5"
+<<<<<<< Updated upstream
 @@ -102 +105 @@
 -                                                                       ext1:array            "2013-06-08T14:58:56.591Z" , "true" , "stringInArray" , "12" , "22" ;
 +                                                                       ext1:array            "stringInArray" , "2013-06-08T14:58:56.591Z" , "22" , "12" , "true" ;
@@ -499,10 +897,67 @@
 -
 -<urn:epc:id:gsrn:0614141.0000010253>
 -        epcis:bizTransactionType  cbv:BTT-pedigree .
+=======
+@@ -102 +99 @@
+-                                                                       ext1:array            "stringInArray" , "true" , "22" , "2013-06-08T14:58:56.591Z" , "12" ;
++                                                                       ext1:array            "12" , "2013-06-08T14:58:56.591Z" , "22" , "true" , "stringInArray" ;
+@@ -155,0 +153,3 @@
++                                        epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:sgln:4012345.00225.0> ;
++                                                                       epcis:sourceOrDestinationType  cbv:SDT-location
++                                                                     ] ;
+@@ -161,3 +160,0 @@
+-                                                                     ] ;
+-                                        epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:sgln:4012345.00225.0> ;
+-                                                                       epcis:sourceOrDestinationType  cbv:SDT-location
+@@ -167,0 +165,3 @@
++
++<urn:epc:id:gdti:0614141.00001.1618034>
++        epcis:bizTransactionType  cbv:BTT-po .
+
+
+
+./WithFullCombinationOfFields/transaction_event_all_possible_fields.diff
+
+--- ../Turtle/WithFullCombinationOfFields/transaction_event_all_possible_fields.ttl	2021-12-09 17:30:05.795249500 +0200
++++ ../Turtle-simple-context/WithFullCombinationOfFields/transaction_event_all_possible_fields.ttl	2021-12-09 17:29:32.935250300 +0200
+@@ -21,0 +22,6 @@
++<urn:epc:id:gdti:0614141.00001.1618034>
++        epcis:bizTransactionType  cbv:BTT-po .
++
++<urn:epc:id:gsrn:0614141.0000010253>
++        epcis:bizTransactionType  cbv:BTT-pedigree .
++
+@@ -26 +32 @@
+-                                        ext1:array                   "true" , "2013-06-08T14:58:56.591Z" , "22" , "12" , "stringInArray" ;
++                                        ext1:array                   "22" , "2013-06-08T14:58:56.591Z" , "true" , "12" , "stringInArray" ;
+@@ -50,3 +55,0 @@
+-                                        epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:pgln:0614141.00777> ;
+-                                                                       epcis:sourceOrDestinationType  cbv:SDT-possessing_party
+-                                                                     ] ;
+@@ -56,0 +60,3 @@
++                                                                       epcis:sourceOrDestinationType  cbv:SDT-possessing_party
++                                                                     ] ;
++                                        epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:pgln:0614141.00777> ;
+@@ -60 +66 @@
+-                                        epcis:epcList                <urn:epc:id:sgtin:0614141.107346.2017> , <urn:epc:id:sgtin:0614141.107346.2018> ;
++                                        epcis:epcList                <urn:epc:id:sgtin:0614141.107346.2018> , <urn:epc:id:sgtin:0614141.107346.2017> ;
+@@ -73 +79 @@
+-                                                                       ext1:array            "12" , "2013-06-08T14:58:56.591Z" , "22" , "stringInArray" , "true" ;
++                                                                       ext1:array            "2013-06-08T14:58:56.591Z" , "stringInArray" , "true" , "22" , "12" ;
+@@ -139,6 +144,0 @@
+-
+-<urn:epc:id:gdti:0614141.00001.1618034>
+-        epcis:bizTransactionType  cbv:BTT-po .
+-
+-<urn:epc:id:gsrn:0614141.0000010253>
+-        epcis:bizTransactionType  cbv:BTT-pedigree .
+
+>>>>>>> Stashed changes
 
 
 ################# ./WithFullCombinationOfFields/transaction_event_all_possible_fields.diff
 
+<<<<<<< Updated upstream
 --- ../Turtle/WithFullCombinationOfFields/transaction_event_all_possible_fields.ttl	2021-10-15 16:14:31.176920400 +0300
 +++ ../Turtle-simple-context/WithFullCombinationOfFields/transaction_event_all_possible_fields.ttl	2021-10-15 15:32:27.125636600 +0300
 @@ -22,6 +21,0 @@
@@ -546,15 +1001,37 @@
 -                                        ext1:array                   "2013-06-08T14:58:56.591Z" , "true" , "stringInArray" , "12" , "22" ;
 +                                        ext1:array                   "2013-06-08T14:58:56.591Z" , "true" , "12" , "22" , "stringInArray" ;
 @@ -61,7 +61 @@
+=======
+--- ../Turtle/WithFullCombinationOfFields/transformation_event_all_possible_fields.ttl	2021-12-09 17:30:10.008251200 +0200
++++ ../Turtle-simple-context/WithFullCombinationOfFields/transformation_event_all_possible_fields.ttl	2021-12-09 17:29:37.477252400 +0200
+@@ -29 +29 @@
+-                                        ext1:array                   "true" , "2013-06-08T14:58:56.591Z" , "12" , "stringInArray" , "22" ;
++                                        ext1:array                   "2013-06-08T14:58:56.591Z" , "22" , "stringInArray" , "12" , "true" ;
+@@ -52,3 +51,0 @@
+-                                        epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:sgln:0614141.00777.0> ;
+-                                                                       epcis:sourceOrDestinationType  cbv:SDT-location
+-                                                                     ] ;
+@@ -60,0 +58,3 @@
++                                        epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:sgln:0614141.00777.0> ;
++                                                                       epcis:sourceOrDestinationType  cbv:SDT-location
++                                                                     ] ;
+@@ -64,7 +64 @@
+>>>>>>> Stashed changes
 -                                        epcis:ilmd                   [ <cbvmda:countryOfExport>  "KR" ;
 -                                                                       <cbvmda:countryOfOrigin>  "GB" ;
 -                                                                       <cbvmda:drainedWeight>    "3.5" ;
 -                                                                       <cbvmda:grossWeight>      "3.5" ;
 -                                                                       <cbvmda:lotNumber>        "ABC123" ;
 -                                                                       <cbvmda:netWeight>        "3.5" ;
+<<<<<<< Updated upstream
 -                                                                       ext1:array                "true" , "2013-06-08T14:58:56.591Z" , "12" , "stringInArray" , "22" ;
 +                                        epcis:ilmd                   [ ext1:array              "22" , "true" , "stringInArray" , "12" , "2013-06-08T14:58:56.591Z" ;
 @@ -86 +80,7 @@
+=======
+-                                                                       ext1:array                "true" , "12" , "22" , "2013-06-08T14:58:56.591Z" , "stringInArray" ;
++                                        epcis:ilmd                   [ ext1:array              "stringInArray" , "2013-06-08T14:58:56.591Z" , "true" , "12" , "22" ;
+@@ -89 +83,7 @@
+>>>>>>> Stashed changes
 -                                                                       ext1:time                 "2013-06-08T14:58:56.591Z"
 +                                                                       ext1:time               "2013-06-08T14:58:56.591Z" ;
 +                                                                       cbvmda:countryOfExport  "KR" ;
@@ -563,6 +1040,7 @@
 +                                                                       cbvmda:grossWeight      "3.5" ;
 +                                                                       cbvmda:lotNumber        "ABC123" ;
 +                                                                       cbvmda:netWeight        "3.5"
+<<<<<<< Updated upstream
 @@ -88,0 +89,6 @@
 +                                        epcis:inputQuantityList      [ epcis:epcClass  <urn:epc:class:lgtin:0614141.077777.987> ;
 +                                                                       epcis:quantity  3.0E1
@@ -581,8 +1059,25 @@
 -                                        epcis:outputEPCList          <urn:epc:id:sgtin:4012345.077889.26> , <urn:epc:id:sgtin:4012345.077889.28> , <urn:epc:id:sgtin:4012345.077889.27> , <urn:epc:id:sgtin:4012345.077889.25> ;
 @@ -104,6 +109,0 @@
 -                                        epcis:outputQuantityList     [ epcis:epcClass  <urn:epc:class:lgtin:0614141.077777.987> ;
+=======
+@@ -95,0 +96,3 @@
++                                        epcis:inputQuantityList      [ epcis:epcClass  <urn:epc:class:lgtin:0614141.077777.987> ;
++                                                                       epcis:quantity  3.0E1
++                                                                     ] ;
+@@ -99,2 +102,3 @@
+-                                        epcis:inputQuantityList      [ epcis:epcClass  <urn:epc:class:lgtin:0614141.077777.987> ;
+>>>>>>> Stashed changes
 -                                                                       epcis:quantity  3.0E1
++                                        epcis:outputEPCList          <urn:epc:id:sgtin:4012345.077889.25> , <urn:epc:id:sgtin:4012345.077889.26> , <urn:epc:id:sgtin:4012345.077889.27> , <urn:epc:id:sgtin:4012345.077889.28> ;
++                                        epcis:outputQuantityList     [ epcis:epcClass  <urn:epc:idpat:sgtin:4012345.066666.*> ;
++                                                                       epcis:quantity  2.2E2
+@@ -102 +105,0 @@
+-                                        epcis:outputEPCList          <urn:epc:id:sgtin:4012345.077889.26> , <urn:epc:id:sgtin:4012345.077889.27> , <urn:epc:id:sgtin:4012345.077889.28> , <urn:epc:id:sgtin:4012345.077889.25> ;
+@@ -110,3 +112,0 @@
+-                                        epcis:outputQuantityList     [ epcis:epcClass  <urn:epc:idpat:sgtin:4012345.066666.*> ;
+-                                                                       epcis:quantity  2.2E2
 -                                                                     ] ;
+<<<<<<< Updated upstream
 -                                        epcis:outputQuantityList     [ epcis:epcClass  <urn:epc:idpat:sgtin:4012345.066666.*> ;
 -                                                                       epcis:quantity  2.2E2
 -                                                                     ] ;
@@ -600,12 +1095,26 @@
 +                                        epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:pgln:4012345.00225> ;
 +                                                                       epcis:sourceOrDestinationType  cbv:SDT-owning_party
 @@ -178 +178 @@
+=======
+@@ -118 +118 @@
+-                                                                       ext1:array            "stringInArray" , "12" , "22" , "2013-06-08T14:58:56.591Z" , "true" ;
++                                                                       ext1:array            "22" , "true" , "stringInArray" , "2013-06-08T14:58:56.591Z" , "12" ;
+@@ -171,0 +172,3 @@
++                                        epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:sgln:4012345.00225.0> ;
++                                                                       epcis:sourceOrDestinationType  cbv:SDT-location
++                                                                     ] ;
+@@ -178,4 +181 @@
+-                                        epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:sgln:4012345.00225.0> ;
+-                                                                       epcis:sourceOrDestinationType  cbv:SDT-location
+-                                                                     ] ;
+>>>>>>> Stashed changes
 -                                        epcis:transformationID       <urn:epc:id:gdti:0614141.12345.400>
 +                                        epcis:transformationID       "urn:epc:id:gdti:0614141.12345.400"
 
 
 ################# ./WithSensorData/SensorDataExample1.diff
 
+<<<<<<< Updated upstream
 --- ../Turtle/WithSensorData/SensorDataExample1.ttl	2021-10-15 16:15:56.676621100 +0300
 +++ ../Turtle-simple-context/WithSensorData/SensorDataExample1.ttl	2021-10-15 15:33:50.164820200 +0300
 @@ -36 +36 @@
@@ -669,12 +1178,131 @@
 -  dcterms:created  "2019-10-07T15:00:00.000+01:00"^^xsd:dateTime ;
 -  owl:versionInfo  "2.0" ;
 -  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;77c5b495d391767b1d3b8e7c669c9fee3965a778a9bfe793e85602c971b98436?ver=CBV2.0> ]
+=======
+./WithSensorData/SensorDataExample1.diff
+
+--- ../Turtle/WithSensorData/SensorDataExample1.ttl	2021-12-09 17:30:14.204253600 +0200
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample1.ttl	2021-12-09 17:29:42.320252500 +0200
+@@ -31 +31 @@
+-        epcis:bizStep              <urn:epcglobal:cbv:bizstep:inspecting> ;
++        epcis:bizStep              cbv:BizStep-inspecting ;
+@@ -38,3 +38,3 @@
+-                                                             epcis:deviceMetadata  <https://id.gs1.org/8004/4000001111> ;
+-                                                             epcis:rawData         <https://example.org/8004/401234599999> ;
+-                                                             epcis:time            "2019-04-02T14:05:00.000+01:00"^^xsd:dateTimeStamp
++                                                             epcis:deviceMetadata  <https://id.gs1.org/giai/4000001111> ;
++                                                             epcis:rawData         <https://example.org/giai/401234599999> ;
++                                                             epcis:time            "2019-04-02T14:35:00.000+01:00"^^xsd:dateTimeStamp
+@@ -44 +44 @@
+-                                                             epcis:value            8.0E2
++                                                             epcis:value            8.01E2
+@@ -48 +48 @@
+-                                                             epcis:value            1.6E2
++                                                             epcis:value            1.61E2
+@@ -52 +52 @@
+-                                                             epcis:value            1.21E1
++                                                             epcis:value            1.22E1
+@@ -56 +56 @@
+-                                                             epcis:value            2.6E1
++                                                             epcis:value            2.61E1
+@@ -61,3 +61,3 @@
+-                                                             epcis:deviceMetadata  <https://id.gs1.org/8004/4000001111> ;
+-                                                             epcis:rawData         <https://example.org/8004/401234599999> ;
+-                                                             epcis:time            "2019-04-02T14:35:00.000+01:00"^^xsd:dateTimeStamp
++                                                             epcis:deviceMetadata  <https://id.gs1.org/giai/4000001111> ;
++                                                             epcis:rawData         <https://example.org/giai/401234599999> ;
++                                                             epcis:time            "2019-04-02T14:05:00.000+01:00"^^xsd:dateTimeStamp
+@@ -67 +67 @@
+-                                                             epcis:value            8.01E2
++                                                             epcis:value            8.0E2
+@@ -71 +71 @@
+-                                                             epcis:value            1.61E2
++                                                             epcis:value            1.6E2
+@@ -75 +75 @@
+-                                                             epcis:value            1.22E1
++                                                             epcis:value            1.21E1
+@@ -79 +79 @@
+-                                                             epcis:value            2.61E1
++                                                             epcis:value            2.6E1
+@@ -84,2 +84,2 @@
+-                                                             epcis:deviceMetadata  <https://id.gs1.org/8004/4000001111> ;
+-                                                             epcis:rawData         <https://example.org/8004/401234599999> ;
++                                                             epcis:deviceMetadata  <https://id.gs1.org/giai/4000001111> ;
++                                                             epcis:rawData         <https://example.org/giai/401234599999> ;
+
+
+
+./WithSensorData/SensorDataExample10.diff
+
+--- ../Turtle/WithSensorData/SensorDataExample10.ttl	2021-12-09 17:30:18.248252700 +0200
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample10.ttl	2021-12-09 17:29:47.076252200 +0200
+@@ -37 +37 @@
+-                                                           epcis:component        cbv:Comp-z ;
++                                                           epcis:component        cbv:COMP-z ;
+@@ -43 +43 @@
+-                                                           epcis:component        cbv:Comp-y ;
++                                                           epcis:component        cbv:COMP-y ;
+@@ -49 +49 @@
+-                                                           epcis:component        cbv:Comp-x ;
++                                                           epcis:component        cbv:COMP-x ;
+
+
+
+./WithSensorData/SensorDataExample11.diff
+
+--- ../Turtle/WithSensorData/SensorDataExample11.ttl	2021-12-09 17:30:22.362251600 +0200
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample11.ttl	2021-12-09 17:29:52.490250700 +0200
+@@ -38,3 +37,0 @@
+-<urn:epcglobal:cbv:bt:4012345123456:RE100099>
+-        epcis:bizTransactionType  cbv:BTT-po .
+-
+@@ -45,0 +43,3 @@
++
++<urn:epcglobal:cbv:bt:4012345123456:RE100099>
++        epcis:bizTransactionType  cbv:BTT-po .
+
+
+
+./WithSensorData/SensorDataExample12.diff
+
+--- ../Turtle/WithSensorData/SensorDataExample12.ttl	2021-12-09 17:30:26.570251500 +0200
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample12.ttl	2021-12-09 17:29:56.796253100 +0200
+@@ -39,2 +39 @@
+-                                        epcis:ilmd                 [ <cbvmda:lotNumber>       "LOTABC" ;
+-                                                                     example:grading          "A" ;
++                                        epcis:ilmd                 [ example:grading          "A" ;
+@@ -42 +41,2 @@
+-                                                                                       "B-2" ]
++                                                                                       "B-2" ] ;
++                                                                     cbvmda:lotNumber         "LOTABC"
+
+
+
+./WithSensorData/SensorDataExample13.diff
+
+--- ../Turtle/WithSensorData/SensorDataExample13.ttl	2021-12-09 17:30:30.520253000 +0200
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample13.ttl	2021-12-09 17:30:03.191249700 +0200
+@@ -22,6 +21,0 @@
+-[ rdf:type         epcis:EPCISDocument ;
+-  dcterms:created  "2021-04-27T15:00:00+01:00"^^xsd:dateTime ;
+-  owl:versionInfo  "2.0" ;
+-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;e1f630b9c84c84020eb9bc73f082324a420f4472dd6c14edb1f1ab98ea279f24?ver=CBV2.0> ]
+>>>>>>> Stashed changes
 -] .
+-
+@@ -46,0 +41,6 @@
++
++[ rdf:type         epcis:EPCISDocument ;
++  dcterms:created  "2021-04-27T15:00:00+01:00"^^xsd:dateTime ;
++  owl:versionInfo  "2.0" ;
++  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;e1f630b9c84c84020eb9bc73f082324a420f4472dd6c14edb1f1ab98ea279f24?ver=CBV2.0> ]
++] .
 
 
 ################# ./WithSensorData/SensorDataExample11.diff
 
 
+<<<<<<< Updated upstream
 
 ################# ./WithSensorData/SensorDataExample12.diff
 
@@ -694,10 +1322,56 @@
 
 --- ../Turtle/WithSensorData/SensorDataExample13.ttl	2021-10-15 16:17:42.923929600 +0300
 +++ ../Turtle-simple-context/WithSensorData/SensorDataExample13.ttl	2021-10-15 15:33:59.760023800 +0300
+=======
+--- ../Turtle/WithSensorData/SensorDataExample14.ttl	2021-12-09 17:30:34.713255700 +0200
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample14.ttl	2021-12-09 17:30:08.232254400 +0200
+@@ -33 +33 @@
+-                                                                     epcis:sensorReport  [ epcis:component        cbv:Comp-longitude ;
++                                                                     epcis:sensorReport  [ epcis:component        cbv:COMP-longitude ;
+@@ -40 +40 @@
+-                                                                     epcis:sensorReport  [ epcis:component        cbv:Comp-latitude ;
++                                                                     epcis:sensorReport  [ epcis:component        cbv:COMP-latitude ;
+
+
+
+./WithSensorData/SensorDataExample15.diff
+
+--- ../Turtle/WithSensorData/SensorDataExample15.ttl	2021-12-09 17:30:40.210254200 +0200
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample15.ttl	2021-12-09 17:30:12.847252300 +0200
+@@ -34 +34 @@
+-                                                                     epcis:sensorReport    [ epcis:component        cbv:Comp-easting ;
++                                                                     epcis:sensorReport    [ epcis:component        cbv:COMP-easting ;
+@@ -41 +41 @@
+-                                                                     epcis:sensorReport    [ epcis:component        cbv:Comp-northing ;
++                                                                     epcis:sensorReport    [ epcis:component        cbv:COMP-northing ;
+
+
+
+./WithSensorData/SensorDataExample16.diff
+
+
+
+
+./WithSensorData/SensorDataExample17.diff
+
+--- ../Turtle/WithSensorData/SensorDataExample17.ttl	2021-12-09 17:30:59.767617800 +0200
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample17.ttl	2021-12-09 17:30:20.770252200 +0200
+@@ -49 +49 @@
+-  owl:versionInfo  2 ;
++  owl:versionInfo  "2" ;
+
+
+
+./WithSensorData/SensorDataExample1b.diff
+
+--- ../Turtle/WithSensorData/SensorDataExample1b.ttl	2021-12-09 17:31:21.778143200 +0200
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample1b.ttl	2021-12-09 17:30:24.977251300 +0200
+>>>>>>> Stashed changes
 @@ -21,0 +22,6 @@
 +[ rdf:type         epcis:EPCISDocument ;
 +  dcterms:created  "2021-04-27T15:00:00+01:00"^^xsd:dateTime ;
 +  owl:versionInfo  "2.0" ;
+<<<<<<< Updated upstream
 +  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;e1f630b9c84c84020eb9bc73f082324a420f4472dd6c14edb1f1ab98ea279f24?ver=CBV2.0> ]
 +] .
 +
@@ -707,11 +1381,23 @@
 -  dcterms:created  "2021-04-27T15:00:00+01:00"^^xsd:dateTime ;
 -  owl:versionInfo  "2.0" ;
 -  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;e1f630b9c84c84020eb9bc73f082324a420f4472dd6c14edb1f1ab98ea279f24?ver=CBV2.0> ]
+=======
++  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;e84840e98e15b9c86168ce85ca277af4241dddd3b658f9650a00096c2a09c2f3?ver=CBV2.0> ]
++] .
++
+@@ -95,6 +100,0 @@
+-
+-[ rdf:type         epcis:EPCISDocument ;
+-  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
+-  owl:versionInfo  "2.0" ;
+-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;e84840e98e15b9c86168ce85ca277af4241dddd3b658f9650a00096c2a09c2f3?ver=CBV2.0> ]
+>>>>>>> Stashed changes
 -] .
 
 
 ################# ./WithSensorData/SensorDataExample14.diff
 
+<<<<<<< Updated upstream
 --- ../Turtle/WithSensorData/SensorDataExample14.ttl	2021-10-15 16:17:47.312475600 +0300
 +++ ../Turtle-simple-context/WithSensorData/SensorDataExample14.ttl	2021-10-15 15:34:02.147022600 +0300
 @@ -33 +33 @@
@@ -745,16 +1431,46 @@
 @@ -49 +49 @@
 -  owl:versionInfo  2 ;
 +  owl:versionInfo  "2" ;
+=======
+./WithSensorData/SensorDataExample2.diff
+
+--- ../Turtle/WithSensorData/SensorDataExample2.ttl	2021-12-09 17:31:27.481361900 +0200
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample2.ttl	2021-12-09 17:30:29.088252500 +0200
+@@ -22,6 +21,0 @@
+-[ rdf:type         epcis:EPCISDocument ;
+-  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
+-  owl:versionInfo  "2.0" ;
+-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;0301ed4c40065cde36eb9cc80780312d903a031a91d105639df4e649a9d01200?ver=CBV2.0> ]
+-] .
+-
+@@ -65,0 +60,6 @@
++
++[ rdf:type         epcis:EPCISDocument ;
++  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
++  owl:versionInfo  "2.0" ;
++  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;0301ed4c40065cde36eb9cc80780312d903a031a91d105639df4e649a9d01200?ver=CBV2.0> ]
++] .
+
+
+
+./WithSensorData/SensorDataExample3.diff
+
+>>>>>>> Stashed changes
 
 
 ################# ./WithSensorData/SensorDataExample1b.diff
 
 
+<<<<<<< Updated upstream
 
 ################# ./WithSensorData/SensorDataExample2.diff
 
 --- ../Turtle/WithSensorData/SensorDataExample2.ttl	2021-10-15 16:15:51.033515200 +0300
 +++ ../Turtle-simple-context/WithSensorData/SensorDataExample2.ttl	2021-10-15 15:33:46.963110900 +0300
+=======
+--- ../Turtle/WithSensorData/SensorDataExample4.ttl	2021-12-09 17:31:46.752374300 +0200
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample4.ttl	2021-12-09 17:30:37.313250500 +0200
+>>>>>>> Stashed changes
 @@ -21,0 +22,6 @@
 +[ rdf:type         epcis:EPCISDocument ;
 +  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
@@ -762,7 +1478,11 @@
 +  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;0301ed4c40065cde36eb9cc80780312d903a031a91d105639df4e649a9d01200?ver=CBV2.0> ]
 +] .
 +
+<<<<<<< Updated upstream
 @@ -60,6 +65,0 @@
+=======
+@@ -63,6 +68,0 @@
+>>>>>>> Stashed changes
 -
 -[ rdf:type         epcis:EPCISDocument ;
 -  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
@@ -773,6 +1493,7 @@
 
 ################# ./WithSensorData/SensorDataExample3.diff
 
+<<<<<<< Updated upstream
 
 
 ################# ./WithSensorData/SensorDataExample4.diff
@@ -797,34 +1518,103 @@
 +  owl:versionInfo  "2.0" ;
 +  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;e13ff14a9b4f3dd11bba60315ed9b849eb8ddf4c5b1a9aa794cd250256730834?ver=CBV2.0> ]
 +] .
+=======
+./WithSensorData/SensorDataExample5.diff
+
+--- ../Turtle/WithSensorData/SensorDataExample5.ttl	2021-12-09 17:31:53.172665600 +0200
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample5.ttl	2021-12-09 17:30:56.070282800 +0200
+@@ -21,0 +22,6 @@
++[ rdf:type         epcis:EPCISDocument ;
++  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
++  owl:versionInfo  "2.0" ;
++  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;e13ff14a9b4f3dd11bba60315ed9b849eb8ddf4c5b1a9aa794cd250256730834?ver=CBV2.0> ]
++] .
++
+@@ -64,6 +69,0 @@
+-
+-[ rdf:type         epcis:EPCISDocument ;
+-  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
+-  owl:versionInfo  "2.0" ;
+-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;e13ff14a9b4f3dd11bba60315ed9b849eb8ddf4c5b1a9aa794cd250256730834?ver=CBV2.0> ]
+-] .
+
+
+
+./WithSensorData/SensorDataExample6.diff
+
+
+
+
+./WithSensorData/SensorDataExample7.diff
+
+>>>>>>> Stashed changes
 
 
 ################# ./WithSensorData/SensorDataExample6.diff
 
+<<<<<<< Updated upstream
 
 
 ################# ./WithSensorData/SensorDataExample7.diff
 
 --- ../Turtle/WithSensorData/SensorDataExample7.ttl	2021-10-15 16:15:06.236587500 +0300
 +++ ../Turtle-simple-context/WithSensorData/SensorDataExample7.ttl	2021-10-15 15:32:58.600854400 +0300
+=======
+./WithSensorData/SensorDataExample8.diff
+
+--- ../Turtle/WithSensorData/SensorDataExample8.ttl	2021-12-09 17:32:18.331469000 +0200
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample8.ttl	2021-12-09 17:31:20.829141600 +0200
+>>>>>>> Stashed changes
 @@ -21,0 +22,6 @@
 +[ rdf:type         epcis:EPCISDocument ;
 +  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
 +  owl:versionInfo  "2.0" ;
-+  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;db924230b77cc4d9a7cea4968fd302b06598a2b63e1b0ea011b31d1b5f45e6ac?ver=CBV2.0> ]
++  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;18454584ed96fbb533e4a69b01eefd1bff3edd1e80ef8598957111f4477a0a64?ver=CBV2.0> ]
 +] .
 +
+<<<<<<< Updated upstream
 @@ -57,6 +62,0 @@
+=======
+@@ -35,12 +40,0 @@
+-        epcis:sensorElementList    [ epcis:sensorReport  [ epcis:measurementType  examp:someSensorProperty ;
+-                                                           epcis:stringValue      "someSensorOutput"
+-                                                         ] ;
+-                                     epcis:sensorReport  [ epcis:dataProcessingMethod  <https://example.com/gdti/4012345000054987> ;
+-                                                           epcis:deviceID              <urn:epc:id:giai:4000001.111> ;
+-                                                           epcis:deviceMetadata        <https://id.gs1.org/8004/4000001111> ;
+-                                                           epcis:measurementType       gs1:Temperature ;
+-                                                           epcis:rawData               <https://example.org/8004/401234599999> ;
+-                                                           epcis:time                  "2019-07-19T14:00:00.000+01:00"^^xsd:dateTimeStamp ;
+-                                                           epcis:uom                   "CEL"
+-                                                         ]
+-                                   ] ;
+@@ -89,0 +84,13 @@
++                                   ] ;
++        epcis:sensorElementList    [ epcis:sensorReport  [ epcis:measurementType  examp:someSensorProperty ;
++                                                           epcis:stringValue      "someSensorOutput"
++                                                         ] ;
++                                     epcis:sensorReport  [ epcis:bizRules              <https://example.org/gdti/4012345000054987> ;
++                                                           epcis:dataProcessingMethod  <https://example.com/gdti/4012345000054987> ;
++                                                           epcis:deviceID              <urn:epc:id:giai:4000001.111> ;
++                                                           epcis:deviceMetadata        <https://id.gs1.org/8004/4000001111> ;
++                                                           epcis:measurementType       gs1:Temperature ;
++                                                           epcis:rawData               <https://example.org/8004/401234599999> ;
++                                                           epcis:time                  "2019-07-19T14:00:00.000+01:00"^^xsd:dateTimeStamp ;
++                                                           epcis:uom                   "CEL"
++                                                         ]
+@@ -91,6 +97,0 @@
+>>>>>>> Stashed changes
 -
 -[ rdf:type         epcis:EPCISDocument ;
 -  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
 -  owl:versionInfo  "2.0" ;
--  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;db924230b77cc4d9a7cea4968fd302b06598a2b63e1b0ea011b31d1b5f45e6ac?ver=CBV2.0> ]
+-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;18454584ed96fbb533e4a69b01eefd1bff3edd1e80ef8598957111f4477a0a64?ver=CBV2.0> ]
 -] .
 
 
 ################# ./WithSensorData/SensorDataExample8.diff
 
+<<<<<<< Updated upstream
 --- ../Turtle/WithSensorData/SensorDataExample8.ttl	2021-10-15 16:15:01.088595600 +0300
 +++ ../Turtle-simple-context/WithSensorData/SensorDataExample8.ttl	2021-10-15 15:32:56.088801100 +0300
 @@ -35,22 +34,0 @@
@@ -883,6 +1673,12 @@
 
 --- ../Turtle/WithSensorData/SensorDataExample9.ttl	2021-10-15 16:15:34.870530400 +0300
 +++ ../Turtle-simple-context/WithSensorData/SensorDataExample9.ttl	2021-10-15 15:33:28.496682000 +0300
+=======
+./WithSensorData/SensorDataExample9.diff
+
+--- ../Turtle/WithSensorData/SensorDataExample9.ttl	2021-12-09 17:32:26.828945600 +0200
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample9.ttl	2021-12-09 17:31:31.297441100 +0200
+>>>>>>> Stashed changes
 @@ -33 +33 @@
 -                                                                                           epcis:exception        gs1:ALARM_CONDITION ;
 +                                                                                           epcis:exception        <https://ns.gs1.org/voc/ALARM_CONDITION> ;

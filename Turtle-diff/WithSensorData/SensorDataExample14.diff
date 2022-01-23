@@ -1,5 +1,10 @@
+<<<<<<< Updated upstream
 --- ../Turtle/WithSensorData/SensorDataExample14.ttl	2021-10-15 16:17:47.312475600 +0300
 +++ ../Turtle-simple-context/WithSensorData/SensorDataExample14.ttl	2021-10-15 15:34:02.147022600 +0300
+=======
+--- ../Turtle/WithSensorData/SensorDataExample14.ttl	2021-12-09 17:30:34.713255700 +0200
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample14.ttl	2021-12-09 17:30:08.232254400 +0200
+>>>>>>> Stashed changes
 @@ -33 +33 @@
 -                                                                     epcis:sensorReport  [ epcis:component        cbv:Comp-longitude ;
 +                                                                     epcis:sensorReport  [ epcis:component        cbv:COMP-longitude ;

@@ -19,8 +19,13 @@
 @prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
 
+[ dcterms:created  "2019-11-06T14:00:00.000+01:00"^^xsd:dateTime ;
+  owl:versionInfo  "2.0" ;
+  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;5f7c472bc4905de27a19b2efc8e4a9c6dc195139669b80b515f12218ff07cf65?ver=CBV2.0> ] ;
+  epcis:isA        "EPCISDocument"
+] .
+
 <ni:///sha-256;5f7c472bc4905de27a19b2efc8e4a9c6dc195139669b80b515f12218ff07cf65?ver=CBV2.0>
-        rdf:type                   epcis:AssociationEvent ;
         epcis:action               "ADD" ;
         epcis:bizLocation          <urn:epc:id:sgln:4012345.00002.0> ;
         epcis:bizStep              cbv:BizStep-installing ;
@@ -35,6 +40,7 @@
         epcis:disposition          cbv:Disp-in_progress ;
         epcis:eventTime            "2019-11-06T14:00:00.000+01:00"^^xsd:dateTimeStamp ;
         epcis:eventTimeZoneOffset  "+01:00" ;
+        epcis:isA                  "AssociationEvent" ;
         epcis:parentID             <urn:epc:id:grai:4012345.55555.98765> ;
         epcis:readPoint            <urn:epc:id:sgln:4012345.00001.0> ;
         epcis:recordTime           "2019-11-06T14:05:00.000+01:00"^^xsd:dateTimeStamp ;
@@ -53,9 +59,3 @@
 
 <urn:epcglobal:cbv:bt:4023333000000:54545>
         epcis:bizTransactionType  cbv:BTT-inv .
-
-[ rdf:type         epcis:EPCISDocument ;
-  dcterms:created  "2019-11-06T14:00:00.000+01:00"^^xsd:dateTime ;
-  owl:versionInfo  "2.0" ;
-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;5f7c472bc4905de27a19b2efc8e4a9c6dc195139669b80b515f12218ff07cf65?ver=CBV2.0> ]
-] .

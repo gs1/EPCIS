@@ -1,18 +1,41 @@
+<<<<<<< Updated upstream
 --- ../Turtle/WithFullCombinationOfFields/transformation_event_all_possible_fields.ttl	2021-10-15 16:14:42.510039700 +0300
 +++ ../Turtle-simple-context/WithFullCombinationOfFields/transformation_event_all_possible_fields.ttl	2021-10-15 15:32:38.209070500 +0300
 @@ -26 +26 @@
 -                                        ext1:array                   "2013-06-08T14:58:56.591Z" , "true" , "stringInArray" , "12" , "22" ;
 +                                        ext1:array                   "2013-06-08T14:58:56.591Z" , "true" , "12" , "22" , "stringInArray" ;
 @@ -61,7 +61 @@
+=======
+--- ../Turtle/WithFullCombinationOfFields/transformation_event_all_possible_fields.ttl	2021-12-09 17:30:10.008251200 +0200
++++ ../Turtle-simple-context/WithFullCombinationOfFields/transformation_event_all_possible_fields.ttl	2021-12-09 17:29:37.477252400 +0200
+@@ -29 +29 @@
+-                                        ext1:array                   "true" , "2013-06-08T14:58:56.591Z" , "12" , "stringInArray" , "22" ;
++                                        ext1:array                   "2013-06-08T14:58:56.591Z" , "22" , "stringInArray" , "12" , "true" ;
+@@ -52,3 +51,0 @@
+-                                        epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:sgln:0614141.00777.0> ;
+-                                                                       epcis:sourceOrDestinationType  cbv:SDT-location
+-                                                                     ] ;
+@@ -60,0 +58,3 @@
++                                        epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:sgln:0614141.00777.0> ;
++                                                                       epcis:sourceOrDestinationType  cbv:SDT-location
++                                                                     ] ;
+@@ -64,7 +64 @@
+>>>>>>> Stashed changes
 -                                        epcis:ilmd                   [ <cbvmda:countryOfExport>  "KR" ;
 -                                                                       <cbvmda:countryOfOrigin>  "GB" ;
 -                                                                       <cbvmda:drainedWeight>    "3.5" ;
 -                                                                       <cbvmda:grossWeight>      "3.5" ;
 -                                                                       <cbvmda:lotNumber>        "ABC123" ;
 -                                                                       <cbvmda:netWeight>        "3.5" ;
+<<<<<<< Updated upstream
 -                                                                       ext1:array                "true" , "2013-06-08T14:58:56.591Z" , "12" , "stringInArray" , "22" ;
 +                                        epcis:ilmd                   [ ext1:array              "22" , "true" , "stringInArray" , "12" , "2013-06-08T14:58:56.591Z" ;
 @@ -86 +80,7 @@
+=======
+-                                                                       ext1:array                "true" , "12" , "22" , "2013-06-08T14:58:56.591Z" , "stringInArray" ;
++                                        epcis:ilmd                   [ ext1:array              "stringInArray" , "2013-06-08T14:58:56.591Z" , "true" , "12" , "22" ;
+@@ -89 +83,7 @@
+>>>>>>> Stashed changes
 -                                                                       ext1:time                 "2013-06-08T14:58:56.591Z"
 +                                                                       ext1:time               "2013-06-08T14:58:56.591Z" ;
 +                                                                       cbvmda:countryOfExport  "KR" ;
@@ -21,6 +44,7 @@
 +                                                                       cbvmda:grossWeight      "3.5" ;
 +                                                                       cbvmda:lotNumber        "ABC123" ;
 +                                                                       cbvmda:netWeight        "3.5"
+<<<<<<< Updated upstream
 @@ -88,0 +89,6 @@
 +                                        epcis:inputQuantityList      [ epcis:epcClass  <urn:epc:class:lgtin:0614141.077777.987> ;
 +                                                                       epcis:quantity  3.0E1
@@ -39,8 +63,25 @@
 -                                        epcis:outputEPCList          <urn:epc:id:sgtin:4012345.077889.26> , <urn:epc:id:sgtin:4012345.077889.28> , <urn:epc:id:sgtin:4012345.077889.27> , <urn:epc:id:sgtin:4012345.077889.25> ;
 @@ -104,6 +109,0 @@
 -                                        epcis:outputQuantityList     [ epcis:epcClass  <urn:epc:class:lgtin:0614141.077777.987> ;
+=======
+@@ -95,0 +96,3 @@
++                                        epcis:inputQuantityList      [ epcis:epcClass  <urn:epc:class:lgtin:0614141.077777.987> ;
++                                                                       epcis:quantity  3.0E1
++                                                                     ] ;
+@@ -99,2 +102,3 @@
+-                                        epcis:inputQuantityList      [ epcis:epcClass  <urn:epc:class:lgtin:0614141.077777.987> ;
+>>>>>>> Stashed changes
 -                                                                       epcis:quantity  3.0E1
++                                        epcis:outputEPCList          <urn:epc:id:sgtin:4012345.077889.25> , <urn:epc:id:sgtin:4012345.077889.26> , <urn:epc:id:sgtin:4012345.077889.27> , <urn:epc:id:sgtin:4012345.077889.28> ;
++                                        epcis:outputQuantityList     [ epcis:epcClass  <urn:epc:idpat:sgtin:4012345.066666.*> ;
++                                                                       epcis:quantity  2.2E2
+@@ -102 +105,0 @@
+-                                        epcis:outputEPCList          <urn:epc:id:sgtin:4012345.077889.26> , <urn:epc:id:sgtin:4012345.077889.27> , <urn:epc:id:sgtin:4012345.077889.28> , <urn:epc:id:sgtin:4012345.077889.25> ;
+@@ -110,3 +112,0 @@
+-                                        epcis:outputQuantityList     [ epcis:epcClass  <urn:epc:idpat:sgtin:4012345.066666.*> ;
+-                                                                       epcis:quantity  2.2E2
 -                                                                     ] ;
+<<<<<<< Updated upstream
 -                                        epcis:outputQuantityList     [ epcis:epcClass  <urn:epc:idpat:sgtin:4012345.066666.*> ;
 -                                                                       epcis:quantity  2.2E2
 -                                                                     ] ;
@@ -58,5 +99,18 @@
 +                                        epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:pgln:4012345.00225> ;
 +                                                                       epcis:sourceOrDestinationType  cbv:SDT-owning_party
 @@ -178 +178 @@
+=======
+@@ -118 +118 @@
+-                                                                       ext1:array            "stringInArray" , "12" , "22" , "2013-06-08T14:58:56.591Z" , "true" ;
++                                                                       ext1:array            "22" , "true" , "stringInArray" , "2013-06-08T14:58:56.591Z" , "12" ;
+@@ -171,0 +172,3 @@
++                                        epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:sgln:4012345.00225.0> ;
++                                                                       epcis:sourceOrDestinationType  cbv:SDT-location
++                                                                     ] ;
+@@ -178,4 +181 @@
+-                                        epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:sgln:4012345.00225.0> ;
+-                                                                       epcis:sourceOrDestinationType  cbv:SDT-location
+-                                                                     ] ;
+>>>>>>> Stashed changes
 -                                        epcis:transformationID       <urn:epc:id:gdti:0614141.12345.400>
 +                                        epcis:transformationID       "urn:epc:id:gdti:0614141.12345.400"

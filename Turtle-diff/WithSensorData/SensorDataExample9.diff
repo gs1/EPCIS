@@ -1,5 +1,10 @@
+<<<<<<< Updated upstream
 --- ../Turtle/WithSensorData/SensorDataExample9.ttl	2021-10-15 16:15:34.870530400 +0300
 +++ ../Turtle-simple-context/WithSensorData/SensorDataExample9.ttl	2021-10-15 15:33:28.496682000 +0300
+=======
+--- ../Turtle/WithSensorData/SensorDataExample9.ttl	2021-12-09 17:32:26.828945600 +0200
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample9.ttl	2021-12-09 17:31:31.297441100 +0200
+>>>>>>> Stashed changes
 @@ -33 +33 @@
 -                                                                                           epcis:exception        gs1:ALARM_CONDITION ;
 +                                                                                           epcis:exception        <https://ns.gs1.org/voc/ALARM_CONDITION> ;

@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 --- ../Turtle/AssociationEvent/AssociationEvent-a.ttl	2021-10-15 16:13:57.976547800 +0300
 +++ ../Turtle-simple-context/AssociationEvent/AssociationEvent-a.ttl	2021-10-15 15:31:50.922607100 +0300
 @@ -22,6 +21,0 @@
@@ -14,3 +15,5 @@
 +  owl:versionInfo  "2.0" ;
 +  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;025ac144187a8c5e14caf4d1cfa69250a33dc59a5bc42a68d31b1b5e55a3f15a?ver=CBV2.0> ]
 +] .
+=======
+>>>>>>> Stashed changes

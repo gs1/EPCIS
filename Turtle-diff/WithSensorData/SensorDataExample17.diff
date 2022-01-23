@@ -1,5 +1,10 @@
+<<<<<<< Updated upstream
 --- ../Turtle/WithSensorData/SensorDataExample17.ttl	2021-10-15 16:15:20.587212100 +0300
 +++ ../Turtle-simple-context/WithSensorData/SensorDataExample17.ttl	2021-10-15 15:33:11.737986500 +0300
+=======
+--- ../Turtle/WithSensorData/SensorDataExample17.ttl	2021-12-09 17:30:59.767617800 +0200
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample17.ttl	2021-12-09 17:30:20.770252200 +0200
+>>>>>>> Stashed changes
 @@ -49 +49 @@
 -  owl:versionInfo  2 ;
 +  owl:versionInfo  "2" ;

@@ -25,14 +25,13 @@
 <urn:epcglobal:cbv:bt:9520011111116:A123>
         epcis:bizTransactionType  cbv:BTT-inv .
 
-[ rdf:type         epcis:EPCISDocument ;
-  dcterms:created  "2020-06-28T13:41:00.000Z"^^xsd:dateTime ;
+[ dcterms:created  "2020-06-28T13:41:00.000Z"^^xsd:dateTime ;
   owl:versionInfo  "2.0" ;
-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;dae7b481207bb87f1d981c5f169b8138368ae152a41b002eaf36eca1f67d56f5?ver=CBV2.0> , <ni:///sha-256;56ba4f355c57456b41c3fb60b22d8342e759de503e3e618940ca3b6ad1bf9b00?ver=CBV2.0> ]
+  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;dae7b481207bb87f1d981c5f169b8138368ae152a41b002eaf36eca1f67d56f5?ver=CBV2.0> , <ni:///sha-256;56ba4f355c57456b41c3fb60b22d8342e759de503e3e618940ca3b6ad1bf9b00?ver=CBV2.0> ] ;
+  epcis:isA        "EPCISDocument"
 ] .
 
 <ni:///sha-256;56ba4f355c57456b41c3fb60b22d8342e759de503e3e618940ca3b6ad1bf9b00?ver=CBV2.0>
-        rdf:type                     epcis:AggregationEvent ;
         epcis:action                 "OBSERVE" ;
         epcis:bizLocation            <urn:epc:id:sgln:9529999.99999.0> ;
         epcis:bizStep                cbv:BizStep-receiving ;
@@ -44,6 +43,7 @@
         epcis:disposition            cbv:Disp-in_progress ;
         epcis:eventTime              "2020-06-07T17:10:16Z"^^xsd:dateTimeStamp ;
         epcis:eventTimeZoneOffset    "+02:00" ;
+        epcis:isA                    "AggregationEvent" ;
         epcis:parentID               <urn:epc:id:sgtin:952001.1012345.22222223333> ;
         epcis:persistentDisposition  [ epcis:set  cbv:Disp-completeness_inferred ] ;
         epcis:readPoint              <urn:epc:id:sgln:9529999.99999.0> ;
@@ -55,7 +55,6 @@
         epcis:bizTransactionType  cbv:BTT-po .
 
 <ni:///sha-256;dae7b481207bb87f1d981c5f169b8138368ae152a41b002eaf36eca1f67d56f5?ver=CBV2.0>
-        rdf:type                     epcis:AggregationEvent ;
         epcis:action                 "DELETE" ;
         epcis:bizLocation            <urn:epc:id:sgln:9529999.99999.0> ;
         epcis:bizStep                cbv:BizStep-unpacking ;
@@ -67,6 +66,7 @@
         epcis:disposition            cbv:Disp-in_progress ;
         epcis:eventTime              "2020-06-08T18:11:16Z"^^xsd:dateTimeStamp ;
         epcis:eventTimeZoneOffset    "+02:00" ;
+        epcis:isA                    "AggregationEvent" ;
         epcis:parentID               <urn:epc:id:sgtin:952001.1012345.22222223333> ;
         epcis:persistentDisposition  [ epcis:set    cbv:Disp-completeness_verified ;
                                        epcis:unset  cbv:Disp-completeness_inferred

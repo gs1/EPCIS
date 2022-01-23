@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 --- ../Turtle/Example_9.6.3-AggregationEvent.ttl	2021-10-15 16:13:26.428460100 +0300
 +++ ../Turtle-simple-context/Example_9.6.3-AggregationEvent.ttl	2021-10-15 15:31:26.533379300 +0300
 @@ -22,6 +21,0 @@
@@ -22,3 +23,15 @@
 +  owl:versionInfo  "2.0" ;
 +  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;87b5f18a69993f0052046d4687dfacdf48f7c988cfabda2819688c86b4066a49?ver=CBV2.0> ]
 +] .
+=======
+--- ../Turtle//Example_9.6.3-AggregationEvent.ttl	2021-12-09 17:28:25.077641200 +0200
++++ ../Turtle-simple-context//Example_9.6.3-AggregationEvent.ttl	2021-12-09 17:28:01.053805400 +0200
+@@ -29,3 +28,0 @@
+-        epcis:childQuantityList    [ epcis:epcClass  <urn:epc:idpat:sgtin:4012345.098765.*> ;
+-                                     epcis:quantity  1.0E1
+-                                   ] ;
+@@ -34,0 +32,3 @@
++                                   ] ;
++        epcis:childQuantityList    [ epcis:epcClass  <urn:epc:idpat:sgtin:4012345.098765.*> ;
++                                     epcis:quantity  1.0E1
+>>>>>>> Stashed changes

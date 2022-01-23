@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 --- ../Turtle/WithSensorData/SensorDataExample5.ttl	2021-10-15 16:15:29.720234700 +0300
 +++ ../Turtle-simple-context/WithSensorData/SensorDataExample5.ttl	2021-10-15 15:33:23.295016900 +0300
 @@ -22,6 +21,0 @@
@@ -9,8 +10,21 @@
 -
 @@ -69,0 +64,6 @@
 +
+=======
+--- ../Turtle/WithSensorData/SensorDataExample5.ttl	2021-12-09 17:31:53.172665600 +0200
++++ ../Turtle-simple-context/WithSensorData/SensorDataExample5.ttl	2021-12-09 17:30:56.070282800 +0200
+@@ -21,0 +22,6 @@
+>>>>>>> Stashed changes
 +[ rdf:type         epcis:EPCISDocument ;
 +  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
 +  owl:versionInfo  "2.0" ;
 +  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;e13ff14a9b4f3dd11bba60315ed9b849eb8ddf4c5b1a9aa794cd250256730834?ver=CBV2.0> ]
 +] .
++
+@@ -64,6 +69,0 @@
+-
+-[ rdf:type         epcis:EPCISDocument ;
+-  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
+-  owl:versionInfo  "2.0" ;
+-  epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;e13ff14a9b4f3dd11bba60315ed9b849eb8ddf4c5b1a9aa794cd250256730834?ver=CBV2.0> ]
+-] .

@@ -1,0 +1,13 @@
+<<<<<<< Updated upstream
+=======
+--- ../Turtle/AssociationEvent/AssociationEvent-f.ttl	2021-12-09 17:29:07.638251600 +0200
++++ ../Turtle-simple-context/AssociationEvent/AssociationEvent-f.ttl	2021-12-09 17:28:40.206648200 +0200
+@@ -53,0 +54,3 @@
++<urn:epcglobal:cbv:bt:4023333000000:54545>
++        epcis:bizTransactionType  cbv:BTT-inv .
++
+@@ -59,3 +61,0 @@
+-
+-<urn:epcglobal:cbv:bt:4023333000000:54545>
+-        epcis:bizTransactionType  cbv:BTT-inv .
+>>>>>>> Stashed changes

@@ -19,14 +19,9 @@
 @prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
 
-<urn:epc:id:gdti:0614141.00001.1618034>
-        epcis:bizTransactionType  cbv:BTT-po .
-
-[ rdf:type         epcis:EPCISDocument ;
-  dcterms:created  "2013-06-04T14:59:02.099+02:00"^^xsd:dateTime ;
+[ dcterms:created  "2013-06-04T14:59:02.099+02:00"^^xsd:dateTime ;
   owl:versionInfo  "2.0" ;
-  epcis:epcisBody  [ epcis:eventList  [ rdf:type                     epcis:ObjectEvent ;
-                                        ext1:array                   "stringInArray" , "true" , "22" , "12" , "2013-06-08T14:58:56.591Z" ;
+  epcis:epcisBody  [ epcis:eventList  [ ext1:array                   "stringInArray" , "12" , "true" , "22" , "2013-06-08T14:58:56.591Z" ;
                                         ext1:array                   [ ext1:object  [ ext1:object  [ ext2:array   "stringInArrayInObjectInArray" , "23.0" , "14" ;
                                                                                                      ext2:int     "13" ;
                                                                                                      ext2:object  [ ext2:object  [ ext3:string  "stringInObjectInObjectInArray" ]
@@ -53,11 +48,11 @@
                                         epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:pgln:0614141.00777> ;
                                                                        epcis:sourceOrDestinationType  cbv:SDT-possessing_party
                                                                      ] ;
-                                        epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:pgln:0614141.00777> ;
-                                                                       epcis:sourceOrDestinationType  cbv:SDT-owning_party
-                                                                     ] ;
                                         epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:sgln:0614141.00777.0> ;
                                                                        epcis:sourceOrDestinationType  cbv:SDT-location
+                                                                     ] ;
+                                        epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:pgln:0614141.00777> ;
+                                                                       epcis:sourceOrDestinationType  cbv:SDT-owning_party
                                                                      ] ;
                                         epcis:disposition            cbv:Disp-in_progress ;
                                         epcis:epcList                <urn:epc:id:sgtin:0614141.107346.2018> ;
@@ -69,7 +64,7 @@
                                                                        <cbvmda:grossWeight>      "3.5" ;
                                                                        <cbvmda:lotNumber>        "ABC123" ;
                                                                        <cbvmda:netWeight>        "3.5" ;
-                                                                       ext1:array                "12" , "true" , "22" , "stringInArray" , "2013-06-08T14:58:56.591Z" ;
+                                                                       ext1:array                "true" , "22" , "12" , "stringInArray" , "2013-06-08T14:58:56.591Z" ;
                                                                        ext1:array                [ ext1:object  [ ext1:object  [ ext2:array   "stringInArrayInObjectInArray" , "23.0" , "14" ;
                                                                                                                                  ext2:int     "13" ;
                                                                                                                                  ext2:object  [ ext2:object  [ ext3:string  "stringInObjectInObjectInArray" ]
@@ -98,8 +93,7 @@
                                                                        epcis:uom       "KGM"
                                                                      ] ;
                                         epcis:readPoint              <urn:epc:id:sgln:0012345.11111.400> ;
-                                        epcis:sensorElementList      [ rdf:type              epcis:SensorElement ;
-                                                                       ext1:array            "2013-06-08T14:58:56.591Z" , "true" , "stringInArray" , "12" , "22" ;
+                                        epcis:sensorElementList      [ ext1:array            "true" , "2013-06-08T14:58:56.591Z" , "stringInArray" , "22" , "12" ;
                                                                        ext1:array            [ ext1:object  [ ext1:object  [ ext2:array   "stringInArrayInObjectInArray" , "23.0" , "14" ;
                                                                                                                              ext2:int     "13" ;
                                                                                                                              ext2:object  [ ext2:object  [ ext3:string  "stringInObjectInObjectInArray" ]
@@ -156,15 +150,18 @@
                                         epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:pgln:4012345.00225> ;
                                                                        epcis:sourceOrDestinationType  cbv:SDT-possessing_party
                                                                      ] ;
-                                        epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:sgln:4012345.00225.0> ;
-                                                                       epcis:sourceOrDestinationType  cbv:SDT-location
-                                                                     ] ;
                                         epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:pgln:4012345.00225> ;
                                                                        epcis:sourceOrDestinationType  cbv:SDT-owning_party
+                                                                     ] ;
+                                        epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:sgln:4012345.00225.0> ;
+                                                                       epcis:sourceOrDestinationType  cbv:SDT-location
                                                                      ]
                                       ]
                    ]
 ] .
+
+<urn:epc:id:gdti:0614141.00001.1618034>
+        epcis:bizTransactionType  cbv:BTT-po .
 
 <urn:epc:id:gsrn:0614141.0000010253>
         epcis:bizTransactionType  cbv:BTT-pedigree .

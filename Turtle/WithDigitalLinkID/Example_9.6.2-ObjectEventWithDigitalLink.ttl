@@ -20,7 +20,6 @@
 @prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
 
 <ni:///sha-256;115b14983df54a9bcc3dd6a00dc4ebcab000bd52fda0abdd8996907e01dccc23?ver=CBV2.0>
-        rdf:type                   epcis:ObjectEvent ;
         examp:myField              "Example of a vendor/user extension" ;
         epcis:action               "OBSERVE" ;
         epcis:bizLocation          <urn:epc:id:sgln:0614141.00888.0> ;
@@ -46,8 +45,7 @@
                                      epcis:sourceOrDestinationType  cbv:SDT-location
                                    ] .
 
-[ rdf:type         epcis:EPCISDocument ;
-  dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
+[ dcterms:created  "2005-07-11T11:30:47.0Z"^^xsd:dateTime ;
   owl:versionInfo  "2.0" ;
   epcis:epcisBody  [ epcis:eventList  <ni:///sha-256;115b14983df54a9bcc3dd6a00dc4ebcab000bd52fda0abdd8996907e01dccc23?ver=CBV2.0> ]
 ] .

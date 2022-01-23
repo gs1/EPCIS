@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 --- ../Turtle/WithFullCombinationOfFields/aggregation_event_all_possible_fields.ttl	2021-10-15 16:14:46.953817300 +0300
 +++ ../Turtle-simple-context/WithFullCombinationOfFields/aggregation_event_all_possible_fields.ttl	2021-10-15 15:32:43.466615000 +0300
 @@ -26 +26 @@
@@ -29,3 +30,26 @@
 +                                                                     ] ;
 +                                        epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:pgln:4012345.00225> ;
 +                                                                       epcis:sourceOrDestinationType  cbv:SDT-possessing_party
+=======
+--- ../Turtle/WithFullCombinationOfFields/aggregation_event_all_possible_fields.ttl	2021-12-09 17:29:50.689251100 +0200
++++ ../Turtle-simple-context/WithFullCombinationOfFields/aggregation_event_all_possible_fields.ttl	2021-12-09 17:29:19.156252100 +0200
+@@ -32 +32 @@
+-                                        ext1:array                   "true" , "stringInArray" , "12" , "22" , "2013-06-08T14:58:56.591Z" ;
++                                        ext1:array                   "22" , "12" , "2013-06-08T14:58:56.591Z" , "stringInArray" , "true" ;
+@@ -56 +56 @@
+-                                        epcis:childEPCs              <urn:epc:id:sgtin:0614141.107346.2017> , <urn:epc:id:sgtin:0614141.107346.2018> ;
++                                        epcis:childEPCs              <urn:epc:id:sgtin:0614141.107346.2018> , <urn:epc:id:sgtin:0614141.107346.2017> ;
+@@ -64,2 +64,2 @@
+-                                        epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:sgln:0614141.00777.0> ;
+-                                                                       epcis:sourceOrDestinationType  cbv:SDT-location
++                                        epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:pgln:0614141.00777> ;
++                                                                       epcis:sourceOrDestinationType  cbv:SDT-possessing_party
+@@ -70,2 +70,2 @@
+-                                        epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:pgln:0614141.00777> ;
+-                                                                       epcis:sourceOrDestinationType  cbv:SDT-possessing_party
++                                        epcis:destinationList        [ epcis:sourceOrDestination      <urn:epc:id:sgln:0614141.00777.0> ;
++                                                                       epcis:sourceOrDestinationType  cbv:SDT-location
+@@ -82 +82 @@
+-                                                                       ext1:array            "12" , "22" , "2013-06-08T14:58:56.591Z" , "true" , "stringInArray" ;
++                                                                       ext1:array            "2013-06-08T14:58:56.591Z" , "12" , "22" , "true" , "stringInArray" ;
+>>>>>>> Stashed changes
