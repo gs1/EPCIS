@@ -8,6 +8,7 @@
                     "$ref": "definitions-JSON-Schema.json#/definitions/vocab-uri"
                 },
                 {
+                    "type": "string",
                     "enum": [
                         "active",
                         "container_closed",
