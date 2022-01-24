@@ -560,7 +560,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '../EPCIS-JSON-Schema.json#/definitions/SingleEvent'
+              $ref: '../EPCIS-JSON-Schema.json#/definitions/EPCISEvent'
 
       responses:
         '201':
@@ -595,7 +595,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '../EPCIS-JSON-Schema.json#/definitions/SingleEvent'
+                $ref: '../EPCIS-JSON-Schema.json#/definitions/EPCISEvent'
         '400':
           description: An error occurred while creating the EPCIS event. The event was rejected.
           content:

@@ -903,7 +903,7 @@
         }
       }
     },
-    "SingleEvent": {
+    "EPCISEvent": {
       "description": "Definition for Open API Spec",
       "oneOf": [
         {

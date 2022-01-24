@@ -792,7 +792,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/SingleEvent"
+                "$ref": "#/components/schemas/EPCISEvent"
               }
             }
           }
@@ -841,7 +841,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/SingleEvent"
+                  "$ref": "#/components/schemas/EPCISEvent"
                 }
               }
             }
@@ -5319,7 +5319,7 @@
       "eventList": {
         "type": "array",
         "items": {
-          "$ref": "#/components/schemas/EPCIS-Document-Event"
+          "$ref": "#/components/schemas/EPCISEvent"
         }
       },
       "vocabularyList": {
@@ -5995,7 +5995,7 @@
           }
         }
       },
-      "SingleEvent": {
+      "EPCISEvent": {
         "description": "Definition for Open API Spec",
         "oneOf": [
           {
