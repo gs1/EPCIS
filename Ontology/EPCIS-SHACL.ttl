@@ -31,10 +31,10 @@ epcis:EventID_Constraint
     a sh:NodeShape ;
     sh:message "Must be a blank node or ni or urn URI";
     sh:or (
-    [ sh:nodeKind sh:BlankNode ]
-    [ sh:nodeKind sh:IRI; sh:pattern "^ni:\\/\\/"]
-    [ sh:nodeKind sh:IRI; sh:pattern "^urn:uuid:"]
-    );
+        [ sh:nodeKind sh:BlankNode ]
+        [ sh:nodeKind sh:IRI; sh:pattern "^ni:\\/\\/"]
+        [ sh:nodeKind sh:IRI; sh:pattern "^urn:uuid:"]
+    ).
 
 
 epcis:ObjectEventShape
