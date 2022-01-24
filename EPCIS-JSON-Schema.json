@@ -299,7 +299,9 @@
       "properties": {
         "type": {
           "type": "string",
-          "const": "EPCISDocument"
+          "enum": [
+            "EPCISDocument"
+          ]
         },
         "@context": {
           "$ref": "#/definitions/@context"
@@ -338,7 +340,9 @@
       "properties": {
         "type": {
           "type": "string",
-          "const": "EPCISQueryDocument"
+          "enum": [
+            "EPCISQueryDocument"
+          ]
         },
         "epcisBody": {
           "$ref": "#/definitions/epcisQueryDocumentBody"
@@ -731,6 +735,7 @@
           "$ref": "#/definitions/vocab-uri"
         },
         {
+          "type": "string",
           "enum": [
             "active",
             "container_closed",
@@ -811,6 +816,7 @@
           "$ref": "#/definitions/vocab-uri"
         },
         {
+          "type": "string",
           "enum": [
             "did_not_occur",
             "incorrect_data"
@@ -824,6 +830,7 @@
           "$ref": "#/definitions/vocab-uri"
         },
         {
+          "type": "string",
           "enum": [
             "bol",
             "cert",
@@ -848,6 +855,7 @@
           "$ref": "#/definitions/vocab-uri"
         },
         {
+          "type": "string",
           "enum": [
             "owning_party",
             "possessing_party",
@@ -862,6 +870,7 @@
           "$ref": "#/definitions/vocab-uri"
         },
         {
+          "type": "string",
           "enum": [
             "AbsoluteHumidity",
             "AbsorbedDose",
@@ -945,6 +954,7 @@
           "$ref": "#/definitions/vocab-uri"
         },
         {
+          "type": "string",
           "enum": [
             "ALARM_CONDITION",
             "ERROR_CONDITION"
@@ -958,6 +968,7 @@
           "$ref": "#/definitions/vocab-uri"
         },
         {
+          "type": "string",
           "enum": [
             "x",
             "y",
@@ -1272,6 +1283,7 @@
           "$ref": "#/definitions/vocab-uri"
         },
         {
+          "type": "string",
           "enum": [
             "accepting",
             "arriving",
