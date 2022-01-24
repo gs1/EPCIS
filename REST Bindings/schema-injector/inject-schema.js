@@ -12,6 +12,9 @@ const definitionTranslations = {
   'EPCIS-Document-Event': 'EPCISEvent'
 };
 
+/* Elements that will not be included for OpenAPI Compatibility */
+const blackList = ['EPCIS-Document-Event', 'propertyNames'];
+
 const EPCIS_JSON_SCHEMA = path.basename(process.argv[3]);
 
 function loadJson(fileName) {
@@ -31,12 +34,14 @@ function inject(fileName, schemaFileName) {
 
   const definitionList = Object.keys(definitions);
   for (const definition of definitionList) {
-    schemas[definition] = definitions[definition];
+    if (!blackList.includes(definition)) {
+      schemas[definition] = definitions[definition];
+    }
   }
 
   const members = Object.keys(spec);
   for (const member of members) {
-    visit(spec[member], null, null);
+    visit(spec[member], member, spec);
   }
 
   return spec;
@@ -49,7 +54,7 @@ function visit(obj, parentKeyName, parent) {
 
   if (Array.isArray(obj)) {
     for (const item of obj) {
-      visit(item, parentKeyName, parent);
+      visit(item, null, obj);
     }
     return;
   }
@@ -71,7 +76,11 @@ function visit(obj, parentKeyName, parent) {
           obj[key] = `#/components/schemas/${getDefinitionName(obj[key])}`;
         }
       }
-    } else {
+    } 
+    else if (blackList.includes(key)) {
+      delete obj[key];
+    }
+    else {
       visit(obj[key], key, obj);
     }
   }

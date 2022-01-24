@@ -361,10 +361,6 @@
                     }
                   ]
                 }
-              },
-              "externalDocs": {
-                "description": "An EPCIS document that must be validated with the [JSON schema](../JSON/EPCIS-JSON-Schema.json) or\n[SHACL file](../JSON/EPCIS-SHACL.ttl).\n",
-                "url": "../JSON/EPCIS-SHACL.ttl"
               }
             }
           }
@@ -3944,10 +3940,6 @@
                   }
                 }
               }
-            },
-            "externalDocs": {
-              "description": "An EPCIS document that must be validated with the [JSON schema](../JSON/EPCIS-JSON-Schema.json) or\n[SHACL file](../JSON/EPCIS-SHACL.ttl).\n",
-              "url": "../JSON/EPCIS-SHACL.ttl"
             }
           }
         }
@@ -5747,11 +5739,7 @@
         }
       },
       "ilmd": {
-        "type": "object",
-        "propertyNames": {
-          "type": "string",
-          "format": "uri"
-        }
+        "type": "object"
       },
       "Event": {
         "type": "object",
@@ -5902,98 +5890,6 @@
             ]
           }
         ]
-      },
-      "EPCIS-Document-Event": {
-        "required": [
-          "type"
-        ],
-        "allOf": [
-          {
-            "if": {
-              "properties": {
-                "type": {
-                  "const": "ObjectEvent"
-                }
-              }
-            },
-            "then": {
-              "$ref": "#/components/schemas/ObjectEvent"
-            }
-          },
-          {
-            "if": {
-              "properties": {
-                "type": {
-                  "const": "AggregationEvent"
-                }
-              }
-            },
-            "then": {
-              "$ref": "#/components/schemas/AggregationEvent"
-            }
-          },
-          {
-            "if": {
-              "properties": {
-                "type": {
-                  "const": "TransactionEvent"
-                }
-              }
-            },
-            "then": {
-              "$ref": "#/components/schemas/TransactionEvent"
-            }
-          },
-          {
-            "if": {
-              "properties": {
-                "type": {
-                  "const": "TransformationEvent"
-                }
-              }
-            },
-            "then": {
-              "$ref": "#/components/schemas/TransformationEvent"
-            }
-          },
-          {
-            "if": {
-              "properties": {
-                "type": {
-                  "const": "AssociationEvent"
-                }
-              }
-            },
-            "then": {
-              "$ref": "#/components/schemas/AssociationEvent"
-            }
-          },
-          {
-            "if": {
-              "not": {
-                "properties": {
-                  "type": {
-                    "enum": [
-                      "AssociationEvent",
-                      "ObjectEvent",
-                      "AggregationEvent",
-                      "TransactionEvent",
-                      "TransformationEvent"
-                    ]
-                  }
-                }
-              }
-            },
-            "then": {
-              "$ref": "#/components/schemas/Extended-Event"
-            }
-          }
-        ],
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        }
       },
       "EPCISEvent": {
         "description": "Definition for Open API Spec",
@@ -6578,35 +6474,7 @@
             },
             "required": [
               "type"
-            ],
-            "propertyNames": {
-              "anyOf": [
-                {
-                  "$ref": "#/components/schemas/common-event-properties"
-                },
-                {
-                  "type": "string",
-                  "enum": [
-                    "type",
-                    "inputEPCList",
-                    "inputQuantityList",
-                    "outputEPCList",
-                    "outputQuantityList",
-                    "transformationID",
-                    "bizStep",
-                    "disposition",
-                    "persistentDisposition",
-                    "readPoint",
-                    "bizLocation",
-                    "bizTransactionList",
-                    "sourceList",
-                    "destinationList",
-                    "sensorElementList",
-                    "ilmd"
-                  ]
-                }
-              ]
-            }
+            ]
           },
           {
             "anyOf": [

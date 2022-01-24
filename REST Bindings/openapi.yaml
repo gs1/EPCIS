@@ -223,11 +223,6 @@ paths:
                       - $ref: '../EPCIS-JSON-Schema.json#/definitions/epcisDocument' 
             example:
               $ref: '../JSON/Example_9.6.1-ObjectEvent.jsonld'
-            externalDocs:
-              description: |
-                An EPCIS document that must be validated with the [JSON schema](../JSON/EPCIS-JSON-Schema.json) or
-                [SHACL file](../JSON/EPCIS-SHACL.ttl).
-              url: ../JSON/EPCIS-SHACL.ttl    
       responses:
         '202':
           description: |
@@ -2755,14 +2750,9 @@ components:
       content:
         application/json:
           schema:
-            $ref: '../EPCIS-JSON-Schema.json#/definitions/epcisQueryDocument'
+              $ref: '../EPCIS-JSON-Schema.json#/definitions/epcisQueryDocument'
           example:
-            $ref: '../JSON/EPCISQueryDocument.jsonld'
-          externalDocs:
-            description: |
-              An EPCIS document that must be validated with the [JSON schema](../JSON/EPCIS-JSON-Schema.json) or
-              [SHACL file](../JSON/EPCIS-SHACL.ttl).
-            url: ../JSON/EPCIS-SHACL.ttl
+              $ref: '../JSON/EPCISQueryDocument.jsonld'
     204NextPageTokenInvalidated:
       description: nextPageToken invalidated successfully.
     200SupportedTopLevel:
