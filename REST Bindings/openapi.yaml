@@ -220,7 +220,9 @@ paths:
             schema:
                     oneOf:
                       - $ref: '#/components/schemas/EPCISQueryDocument'
-                      - $ref: '#/components/schemas/EPCISDocument'      
+                      - $ref: '../EPCIS-JSON-Schema.json#/definitions/epcisDocument' 
+            example:
+              $ref: '../JSON/Example_9.6.1-ObjectEvent.jsonld'    
       responses:
         '202':
           description: |
@@ -1746,7 +1748,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#components/schemas/DispositionItemList'
+                $ref: '#/components/schemas/DispositionItemList'
         '401':
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
@@ -3232,65 +3234,6 @@ components:
         '@context':
           - https://gs1.github.io/EPCIS/epcis-context.jsonld
         $ref: '../JSON/Example_9.6.1-ObjectEvent.jsonld#/epcisBody/eventList/0'
-    EPCISDocument:
-      description: A collection of EPCIS resources.
-      type: object
-      required:
-        - '@context'
-        - schemaVersion
-        - creationDate
-        - 'type'
-        - epcisBody
-      properties:
-        '@context':
-          type: array
-          items:
-            anyOf:
-              - type: string
-                format: uri
-              - type: object
-        'type':
-          type: string
-          enum: 
-            - EPCISDocument
-          example: EPCISDocument
-        schemaVersion:
-          type: number
-        creationDate:
-          type: string
-          format: date-time
-        format:
-          type: string
-          example: "application/ld+json"
-        epcisBody:
-          type: object
-          properties:
-            eventList:
-              type: array
-              uniqueItems: true
-              items:
-                type: object
-          required:
-            - eventList
-        epcisHeader:
-          type: object
-          properties:
-            epcisMasterData:
-              type: object
-              properties:
-                vocabularyList:
-                  type: array
-                  uniqueItems: true
-                  items:
-                    type: object
-
-      example:
-        $ref: '../JSON/Example_9.6.2-ObjectEvent.jsonld'
-      externalDocs:
-        description: |
-          An EPCIS document that must be validated with the [JSON schema](../JSON/EPCIS-JSON-Schema.json) or
-          [SHACL file](../JSON/EPCIS-SHACL.ttl).
-        url: ../JSON/EPCIS-SHACL.ttl
     CaptureJob:
       description: |
         When EPCIS events are added through the capture interface, the capture process can run asynchronously. If the payload
