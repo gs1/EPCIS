@@ -1746,7 +1746,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#components/schemas/DispositionItemList'
+                $ref: '#/components/schemas/DispositionItemList'
         '401':
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
