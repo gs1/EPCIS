@@ -1,14 +1,14 @@
 {
   "@context": ["https://gs1.github.io/EPCIS/epcis-context.jsonld",{"example": "http://ns.example.com/epcis/"}],
   "id": "_:document1",
-  "isA": "EPCISDocument",
+  "type": "EPCISDocument",
   "schemaVersion": "2.0",
   "creationDate":"2005-07-11T11:30:47.0Z",
   "epcisBody": {
    "eventList": [
      {
 		  "eventID": "ni:///sha-256;74f1dc48ee22289bc40ddd9f1d0ecae0dd09a2f4c3dfa66fdbca16cb2d8a4e77?ver=CBV2.0",
-		  "isA": "ObjectEvent",
+		  "type": "ObjectEvent",
 		  "action": "OBSERVE",
 		  "bizStep": "inspecting",
 		  "epcList": ["urn:epc:id:sgtin:4012345.011111.9876"],
@@ -17,7 +17,7 @@
 		  "readPoint": {"id": "urn:epc:id:sgln:4012345.00005.0"},
 		  "sensorElementList": [
 		   {
-	            "isA":"SensorElement",
+	            "type":"SensorElement",
 		    "sensorMetadata" : {"time":"2019-04-02T14:05:00.000+01:00", "deviceID": "urn:epc:id:giai:4000001.111", "deviceMetadata": "https://id.gs1.org/giai/4000001111","rawData":"https://example.org/giai/401234599999"},
 		    "sensorReport" : [
 			 { "type": "Temperature" , "value" : 26.0, "uom": "CEL" },
@@ -28,7 +28,7 @@
 		    },
 		    
 		   {
-	            "isA":"SensorElement",
+	            "type":"SensorElement",
 		    "sensorMetadata" : {"time":"2019-04-02T14:35:00.000+01:00", "deviceID": "urn:epc:id:giai:4000001.111", "deviceMetadata": "https://id.gs1.org/giai/4000001111","rawData":"https://example.org/giai/401234599999"},
 		    "sensorReport" : [
 			 { "type": "Temperature" , "value" : 26.1, "uom": "CEL" },
@@ -39,7 +39,7 @@
 		    },
 
 		   {
-		    "isA":"SensorElement",
+		    "type":"SensorElement",
 		    "sensorMetadata" : {"time":"2019-04-02T14:55:00.000+01:00", "deviceID": "urn:epc:id:giai:4000001.111", "deviceMetadata": "https://id.gs1.org/giai/4000001111","rawData":"https://example.org/giai/401234599999"},
 		    "sensorReport" : [
 			 { "type": "Temperature" , "value" : 26.2, "uom": "CEL" },
