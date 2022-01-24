@@ -30,12 +30,6 @@ function inject (fileName, schemaFileName) {
     visit(spec[member], null);
   }
 
-  // We visit and inline the input Json
-  // visit(null, null, null, inputJson);
-
-  // Once we have the definitions we add them to the root schema
-  // inputJson.definitions = definitions;
-
   return spec;
 }
 
