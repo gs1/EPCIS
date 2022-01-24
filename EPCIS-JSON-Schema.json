@@ -299,7 +299,9 @@
       "properties": {
         "type": {
           "type": "string",
-          "const": "EPCISDocument"
+          "enum": [
+            "EPCISDocument"
+          ]
         },
         "@context": {
           "$ref": "#/definitions/@context"
@@ -338,7 +340,9 @@
       "properties": {
         "type": {
           "type": "string",
-          "const": "EPCISQueryDocument"
+          "enum": [
+            "EPCISQueryDocument"
+          ]
         },
         "epcisBody": {
           "$ref": "#/definitions/epcisQueryDocumentBody"
