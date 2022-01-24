@@ -219,10 +219,15 @@ paths:
           application/json:
             schema:
                     oneOf:
-                      - $ref: '#/components/schemas/EPCISQueryDocument'
+                      - $ref: '../EPCIS-JSON-Schema.json#/definitions/epcisQueryDocument'
                       - $ref: '../EPCIS-JSON-Schema.json#/definitions/epcisDocument' 
             example:
-              $ref: '../JSON/Example_9.6.1-ObjectEvent.jsonld'    
+              $ref: '../JSON/Example_9.6.1-ObjectEvent.jsonld'
+            externalDocs:
+              description: |
+                An EPCIS document that must be validated with the [JSON schema](../JSON/EPCIS-JSON-Schema.json) or
+                [SHACL file](../JSON/EPCIS-SHACL.ttl).
+              url: ../JSON/EPCIS-SHACL.ttl    
       responses:
         '202':
           description: |
@@ -2417,7 +2422,7 @@ paths:
                   application/json:
                     schema:
                       oneOf:
-                        - $ref: '#/components/schemas/EPCISQueryDocument'
+                        - $ref: '../EPCIS-JSON-Schema.json#/definitions/epcisQueryDocument'
                         - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
               responses:
                 '200':
@@ -2750,7 +2755,14 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/EPCISQueryDocument'
+            $ref: '../EPCIS-JSON-Schema.json#/definitions/epcisQueryDocument'
+          example:
+            $ref: '../JSON/EPCISQueryDocument.jsonld'
+          externalDocs:
+            description: |
+              An EPCIS document that must be validated with the [JSON schema](../JSON/EPCIS-JSON-Schema.json) or
+              [SHACL file](../JSON/EPCIS-SHACL.ttl).
+            url: ../JSON/EPCIS-SHACL.ttl
     204NextPageTokenInvalidated:
       description: nextPageToken invalidated successfully.
     200SupportedTopLevel:
@@ -3298,72 +3310,6 @@ components:
                   example: ''
                   type: string
                   format: uri
-    EPCISQueryDocument:
-      description: A collection of EPCIS resources.
-      type: object
-      required:
-        - '@context'
-        - 'type'
-        - epcisBody
-      properties:
-        '@context':
-          type: array
-          items:
-            uniqueItems: true
-            anyOf:
-              - type: string
-                format: uri
-              - type: object
-        'type':
-          type: string
-          enum: 
-            - EPCISQueryDocument
-          example: EPCISQueryDocument
-        schemaVersion:
-          type: string
-          pattern: ^\d+(\.\d+)?$
-          example: "2.0"
-        creationDate:
-          type: string
-          format: date-time
-        epcisBody:
-          type: object
-          properties:
-            queryResults:
-              type: object
-              properties:
-                queryName:
-                  $ref: '#/components/schemas/QueryName'
-                subscriptionID:
-                  $ref: '#/components/schemas/subscriptionID'
-                resultsBody:
-                  type: object
-                  required:
-                    - eventList
-                  properties:
-                    eventList:
-                      type: array
-                      items:
-                        type: object
-        epcisHeader:
-          type: object
-          properties:
-            epcisMasterData:
-              type: object
-              properties:
-                vocabularyList:
-                  type: array
-                  uniqueItems: true
-                  items:
-                    type: object
-
-      example:
-        $ref: '../JSON/EPCISQueryDocument.jsonld'
-      externalDocs:
-        description: |
-          An EPCIS document that must be validated with the [JSON schema](../JSON/EPCIS-JSON-Schema.json) or
-          [SHACL file](../JSON/EPCIS-SHACL.ttl).
-        url: ../JSON/EPCIS-SHACL.ttl
     Link:
       description: |
         A pagination header link. This header works together with the `perPage` and `nextPageToken` query string
