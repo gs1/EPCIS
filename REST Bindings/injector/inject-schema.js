@@ -27,7 +27,7 @@ function inject (fileName, schemaFileName) {
 
   const members = Object.keys(spec);
   for (const member of members) {
-    visit(spec[member], null);
+    visit(spec[member], null, null);
   }
 
   return spec;
@@ -35,6 +35,13 @@ function inject (fileName, schemaFileName) {
 
 function visit(obj, parentKeyName, parent) {
   if (!obj || typeof(obj) !== 'object') {
+    return;
+  }
+
+  if (Array.isArray(obj)) {
+    for(const item of obj) {
+      visit(item, parentKeyName, parent);
+    }
     return;
   }
 

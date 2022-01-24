@@ -93,6 +93,29 @@
             "type": "string"
           }
         }
+      },
+      "SingleEvent": {
+        "description": "Definition for Open API Spec",
+        "oneOf": [
+          {
+            "$ref": "schemas/ObjectEvent-JSON-Schema.json#/definitions/ObjectEvent"
+          },
+          {
+            "$ref": "schemas/AggregationEvent-JSON-Schema.json#/definitions/AggregationEvent"
+          },
+          {
+            "$ref": "schemas/TransactionEvent-JSON-Schema.json#/definitions/TransactionEvent"
+          },
+          {
+            "$ref": "schemas/TransformationEvent-JSON-Schema.json#/definitions/TransformationEvent"
+          },
+          {
+            "$ref": "schemas/AssociationEvent-JSON-Schema.json#/definitions/AssociationEvent"
+          },
+          {
+            "$ref": "schemas/event-definitions-JSON-Schema.json#/definitions/Extended-Event"
+          }
+        ]
       }
     }
   }
