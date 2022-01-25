@@ -199,7 +199,10 @@ paths:
             $ref: '#/components/schemas/GS1-Capture-Error-Behaviour'
 
       description: |
-        EPCIS events are added in bulk using the capture interface. Four design considerations were made to remain compatible with EPCIS 1.2:
+        EPCIS events are added in bulk using the capture interface. They must validate against the normative 
+        <a href="../EPCIS-JSON-Schema.json">EPCIS JSON Schema</a> or <a href="../Ontology/EPCIS-SHACL.ttl">EPCIS SHACL</a>.
+        
+        Four design considerations were made to remain compatible with EPCIS 1.2:
 
         - EPCIS 2.0 keeps event IDs optional. If event IDs are missing, the server should populate the event id with a unique value.
         Otherwise, it won't be possible to retrieve these events by eventID.
@@ -548,7 +551,8 @@ paths:
       summary: Synchronous capture interface for a single EPCIS event.
       description: |
         An individual EPCIS event can be created by making a `POST` request on the `/events` resource. Alternatively, the client can also use the `/capture`
-        interface and capture a single event.
+        interface and capture a single event. The event must validate against the normative 
+        <a href="../EPCIS-JSON-Schema.json">EPCIS JSON Schema</a> or <a href="../Ontology/EPCIS-SHACL.ttl">EPCIS SHACL</a>.
       requestBody:
         required: true
         description: A single EPCIS event with optional JSON-LD context.
@@ -3211,6 +3215,17 @@ components:
       description: Unique query name.
       type: string
       example: myQuery
+    EPCISEvent: 
+      description: |
+        EPCIS Event. It must validate against the normative 
+        <a href="../EPCIS-JSON-Schema.json">EPCIS JSON Schema</a> or <a href="../Ontology/EPCIS-SHACL.ttl">EPCIS SHACL</a>. 
+      oneOf:
+        - $ref: '../EPCIS-JSON-Schema.json#/definitions/ObjectEvent'
+        - $ref: '../EPCIS-JSON-Schema.json#/definitions/AggregationEvent'
+        - $ref: '../EPCIS-JSON-Schema.json#/definitions/TransactionEvent'
+        - $ref: '../EPCIS-JSON-Schema.json#/definitions/TransformationEvent'
+        - $ref: '../EPCIS-JSON-Schema.json#/definitions/AssociationEvent'
+        - $ref: '../EPCIS-JSON-Schema.json#/definitions/Extended-Event'
     CaptureJob:
       description: |
         When EPCIS events are added through the capture interface, the capture process can run asynchronously. If the payload

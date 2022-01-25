@@ -280,7 +280,7 @@
             }
           }
         ],
-        "description": "EPCIS events are added in bulk using the capture interface. Four design considerations were made to remain compatible with EPCIS 1.2:\n\n- EPCIS 2.0 keeps event IDs optional. If event IDs are missing, the server should populate the event id with a unique value.\nOtherwise, it won't be possible to retrieve these events by eventID.\n- By default, EPCIS events are only stored if the entire capture job was successful. This behaviour can be changed with the `GS1-Capture-Error-Behaviour` header.\n- EPCIS master data can be captured in the header (`epcisHeader`) of an `EPCISDocument`.\n- This endpoint should support both `EPCISDocument` and `EPCISQueryDocument` as input.\n\nTo prevent timeouts for large payloads, the client potentially may need to split the payload into several capture calls. To that end, the server can specify a capture\nlimit (number of EPCIS events) and file size limit (payload size).\n\nA successful capturing of events does not guarantee that events will be stored. Instead, the server returns a\ncapture id, which the client can use to obtain information about the capture job.\n",
+        "description": "EPCIS events are added in bulk using the capture interface. They must validate against the normative \n<a href=\"../EPCIS-JSON-Schema.json\">EPCIS JSON Schema</a> or <a href=\"../Ontology/EPCIS-SHACL.ttl\">EPCIS SHACL</a>.\n\nFour design considerations were made to remain compatible with EPCIS 1.2:\n\n- EPCIS 2.0 keeps event IDs optional. If event IDs are missing, the server should populate the event id with a unique value.\nOtherwise, it won't be possible to retrieve these events by eventID.\n- By default, EPCIS events are only stored if the entire capture job was successful. This behaviour can be changed with the `GS1-Capture-Error-Behaviour` header.\n- EPCIS master data can be captured in the header (`epcisHeader`) of an `EPCISDocument`.\n- This endpoint should support both `EPCISDocument` and `EPCISQueryDocument` as input.\n\nTo prevent timeouts for large payloads, the client potentially may need to split the payload into several capture calls. To that end, the server can specify a capture\nlimit (number of EPCIS events) and file size limit (payload size).\n\nA successful capturing of events does not guarantee that events will be stored. Instead, the server returns a\ncapture id, which the client can use to obtain information about the capture job.\n",
         "requestBody": {
           "required": true,
           "content": {
@@ -781,7 +781,7 @@
           "Capture"
         ],
         "summary": "Synchronous capture interface for a single EPCIS event.",
-        "description": "An individual EPCIS event can be created by making a `POST` request on the `/events` resource. Alternatively, the client can also use the `/capture`\ninterface and capture a single event.\n",
+        "description": "An individual EPCIS event can be created by making a `POST` request on the `/events` resource. Alternatively, the client can also use the `/capture`\ninterface and capture a single event. The event must validate against the normative \n<a href=\"../EPCIS-JSON-Schema.json\">EPCIS JSON Schema</a> or <a href=\"../Ontology/EPCIS-SHACL.ttl\">EPCIS SHACL</a>.\n",
         "requestBody": {
           "required": true,
           "description": "A single EPCIS event with optional JSON-LD context.",
@@ -4652,6 +4652,29 @@
         "type": "string",
         "example": "myQuery"
       },
+      "EPCISEvent": {
+        "description": "EPCIS Event. It must validate against the normative \n<a href=\"../EPCIS-JSON-Schema.json\">EPCIS JSON Schema</a> or <a href=\"../Ontology/EPCIS-SHACL.ttl\">EPCIS SHACL</a>. \n",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ObjectEvent"
+          },
+          {
+            "$ref": "#/components/schemas/AggregationEvent"
+          },
+          {
+            "$ref": "#/components/schemas/TransactionEvent"
+          },
+          {
+            "$ref": "#/components/schemas/TransformationEvent"
+          },
+          {
+            "$ref": "#/components/schemas/AssociationEvent"
+          },
+          {
+            "$ref": "#/components/schemas/Extended-Event"
+          }
+        ]
+      },
       "CaptureJob": {
         "description": "When EPCIS events are added through the capture interface, the capture process can run asynchronously. If the payload\nis syntactically correct and the client is allowed to call `/capture`, the server returns a `202`. This\ndoes not guarantee successful storage of all EPCIS events. The capture job endpoint exposes the state\nof the capture job to the client.\n\nA capture job document has at least the following properties:\n\n- `running`: whether or not the capture job is still active\n- `success`: whether or not at least one error occurred,\n- `errors` or `errorFile`: with the errors if `success` is `false`.\n",
         "example": {
@@ -5888,29 +5911,6 @@
               "possessing_party",
               "location"
             ]
-          }
-        ]
-      },
-      "EPCISEvent": {
-        "description": "Definition for Open API Spec",
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/ObjectEvent"
-          },
-          {
-            "$ref": "#/components/schemas/AggregationEvent"
-          },
-          {
-            "$ref": "#/components/schemas/TransactionEvent"
-          },
-          {
-            "$ref": "#/components/schemas/TransformationEvent"
-          },
-          {
-            "$ref": "#/components/schemas/AssociationEvent"
-          },
-          {
-            "$ref": "#/components/schemas/Extended-Event"
           }
         ]
       },
