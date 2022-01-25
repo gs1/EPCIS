@@ -3450,7 +3450,8 @@ components:
 
       example: {
         "captureID": "id9261379075",
-        "createdAt": "2021-08-21T17:32:28Z",
+        "createdAt": "2022-01-21T17:32:28Z",
+        "completedAt" : "2022-01-21T17:45:28Z",
         "running": true,
         "success": true,
         "errors": [ ]
@@ -3478,7 +3479,12 @@ components:
               example: false
             createdAt:
               description: "When the capture job started"
-              example: "2021-08-21T17:32:28Z"
+              example: "2022-01-21T17:32:28Z"
+              type: string
+              format: date-time
+            completedAt:
+              description: "When the capture job finished executing"
+              example: "2022-01-21T17:45:28Z"
               type: string
               format: date-time
         - oneOf:
