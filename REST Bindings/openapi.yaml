@@ -2005,8 +2005,7 @@ paths:
       tags:
         - 'Queries'
       summary: |
-        Creates and executes a named EPCIS events query and returns results with the option to use
-        pagination if needed.
+        Creates a named EPCIS events query.
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-Version'
         - $ref: '#/components/parameters/GS1-EPCIS-Min'
@@ -2168,7 +2167,7 @@ paths:
     delete:
       tags:
         - 'Queries'
-      summary: Removes a named query and terminates open WebSocket connections.
+      summary: Removes a named query and forcibly unsubscribes all active subscriptions, whether by WebSockets or Webhooks
       responses:
         '204':
           $ref: '#/components/responses/204QueryDeleted'
