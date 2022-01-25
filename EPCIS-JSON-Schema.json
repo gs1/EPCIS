@@ -903,29 +903,6 @@
         }
       }
     },
-    "EPCISEvent": {
-      "description": "Definition for Open API Spec",
-      "oneOf": [
-        {
-          "$ref": "#/definitions/ObjectEvent"
-        },
-        {
-          "$ref": "#/definitions/AggregationEvent"
-        },
-        {
-          "$ref": "#/definitions/TransactionEvent"
-        },
-        {
-          "$ref": "#/definitions/TransformationEvent"
-        },
-        {
-          "$ref": "#/definitions/AssociationEvent"
-        },
-        {
-          "$ref": "#/definitions/Extended-Event"
-        }
-      ]
-    },
     "ObjectEvent": {
       "allOf": [
         {
