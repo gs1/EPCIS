@@ -572,8 +572,7 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-Min'
         - $ref: '#/components/parameters/GS1-CBV-Max'
       description: |
-        EPCIS event types specify the schema of an event. This endpoint returns all EPCIS event types that are
-        currently present in the repository.
+        EPCIS event types specify the schema of an event. This endpoint returns the 5 standard event types as well as any custom event type supported by this repository. 
       responses:
         '200':
           $ref: '#/components/responses/200SupportedEventTypes'
