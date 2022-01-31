@@ -121,7 +121,7 @@ paths:
       description: |
         EPCIS events are added in bulk using the capture interface. Four design considerations were made to remain compatible with EPCIS 1.2:
 
-        - EPCIS 2.0 keeps event IDs optional. If event IDs are missing, the server should populate the event id with a unique value.
+        - EPCIS 2.0 keeps event IDs optional. If event IDs are missing, the server should populate the event ID with a unique value.
         Otherwise, it won't be possible to retrieve these events by eventID.
         - By default, EPCIS events are only stored if the entire capture job was successful. This behaviour can be changed with the `GS1-Capture-Error-Behaviour` header.
         - EPCIS master data can be captured in the header (`epcisHeader`) of an `EPCISDocument`.
@@ -417,7 +417,7 @@ paths:
         interface and capture a single event.
       requestBody:
         required: true
-        description: A single EPCIS event with optional JSON-LD context.
+        description: A single EPCIS event.
         content:
           application/json:
             schema:
