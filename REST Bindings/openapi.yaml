@@ -3409,9 +3409,16 @@ components:
       type: object
       description: Event type item list
       example: {
-        "@context": "https://gs1.github.io/EPCIS/epcis-context.jsonld",
-        "type": "EventTypeItemList",
-        "eventType": ["ObjectEvent", "AssociationEvent"]
+          "@context": ["https://gs1.github.io/EPCIS/epcis-context.jsonld", { "ex": "https://example.org/myCustomEventTypes/" }],
+              "type": "EventTypeItemList",
+              "eventType": [
+                "AggregationEvent",
+                "AssociationEvent",
+                "ObjectEvent",
+                "TransactionEvent",
+                "TransformationEvent",
+                "ex:aCustomEventType"
+            ]
       }
       required: 
         - '@context'
@@ -3436,17 +3443,17 @@ components:
       type: string
       description: The five types of EPCIS events.
       example:
-        - ObjectEvent
         - AggregationEvent
         - AssociationEvent
-        - TransformationEvent
+        - ObjectEvent
         - TransactionEvent
+        - TransformationEvent
       enum:
-        - ObjectEvent
         - AggregationEvent
         - AssociationEvent
-        - TransformationEvent
+        - ObjectEvent
         - TransactionEvent
+        - TransformationEvent
     TopLevelResources:
       type: string
       description: The seven top level resources of an EPCIS.
