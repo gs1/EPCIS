@@ -778,14 +778,7 @@ paths:
           content:
             application/json:
               schema:
-                example:
-                  - urn:epc:id:sgtin:0614141.107346.2018
-                  - https://example.com/01/04012345123456
-                  - urn:epc:id:sgtin:0614141.107346.2017
-                type: array
-                items:
-                  type: string
-                  format: uri
+                $ref: '#/components/schemas/EpcItemList'
         '401':
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
@@ -3686,6 +3679,35 @@ components:
           enum: 
             - 'ReadPointItemList'
         readPoint:
+          type: array
+          items:
+            type: string
+            format: uri
+          uniqueItems: true
+    EpcItemList:
+      example: {
+        "@context": "https://gs1.github.io/EPCIS/epcis-context.jsonld",            
+        "type": "EpcItemList",
+        "epc": [
+          "urn:jaif:id:obj:37SUN321456789A111222333AB+123456789012",
+          "urn:epc:id:sgtin:0614141.107346.2018",
+          "https://example.com/01/04012345123456/21/abc234",
+          "urn:epc:id:sgtin:0614141.107346.2017"
+        ]
+      }
+      type: object
+      required:
+        - '@context'
+        - 'type'
+        - epc
+      properties:
+        '@context':
+          $ref: '#/components/schemas/LDContext'
+        'type':
+          type: string
+          enum: 
+            - 'EpcItemList'
+        epc:
           type: array
           items:
             type: string
