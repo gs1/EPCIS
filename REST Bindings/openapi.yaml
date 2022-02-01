@@ -3299,7 +3299,7 @@ components:
                       items:
                         type: object
         epcisHeader:
-          type: object
+          type: object 
           properties:
             epcisMasterData:
               type: object
@@ -4184,7 +4184,7 @@ components:
         If both server and client set `GS1-EPC-Format` to `No_Preference`, the default value is `Always_GS1_Digital_Link`:
 
         - No_Preference: The server chooses the representation.
-        - Always_DL: URIs are returned as GS1 Digital Link.
+        - Always_GS1_Digital_Link: URIs are returned as GS1 Digital Link.
         - Always_EPC_URN: URIs are returned as URN.
         - Never_Translates: The original format is kept.
       schema:
