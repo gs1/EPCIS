@@ -957,8 +957,7 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-XML-Format'
       summary: Returns known business steps.
       description: |
-        An endpoint to list business steps.
-        This endpoint supports pagination.
+        This endpoint returns the CBV standard business steps as well as any custom business step supported by this repository.
       responses:
         '200':
           headers:
@@ -3516,11 +3515,54 @@ components:
         "@context": [
           "https://gs1.github.io/EPCIS/epcis-context.jsonld",
           {
-            "ex": "https://example.org/my-steps/"
+            "ex": "https://example.org/myCustomBizSteps/"
           }
         ],
         "type": "BizStepItemList",
-        "bizStep": ["receiving", "shipping", "ex:funding"]
+        "bizStep": [
+          'accepting',
+          'arriving',
+          'assembling',
+          'collecting',
+          'commissioning',
+          'consigning',
+          'creating_class_instance',
+          'cycle_counting',
+          'decommissioning',
+          'departing',
+          'destroying',
+          'disassembling',
+          'dispensing',
+          'encoding',
+          'entering_exiting',
+          'holding',
+          'inspecting',
+          'installing',
+          'killing',
+          'loading',
+          'other',
+          'packing',
+          'picking',
+          'receiving',
+          'removing',
+          'repackaging',
+          'repairing',
+          'replacing',
+          'reserving',
+          'retail_selling',
+          'sampling',
+          'sensor_reporting',
+          'shipping',
+          'staging_outbound',
+          'stock_taking',
+          'stocking',
+          'storing',
+          'transporting',
+          'unloading',
+          'unpacking',
+          'void_shipping',
+          'ex:aCustomBizStep'
+        ]
       }
       type: object
       required:
