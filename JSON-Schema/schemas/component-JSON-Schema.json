@@ -23,8 +23,7 @@
                         "northing",
                         "latitude",
                         "longitude",
-                        "altitude",
-                        "geocoordinate"
+                        "altitude"
                     ]
                 }
             ]
