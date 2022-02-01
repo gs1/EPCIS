@@ -571,8 +571,8 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-Version'
         - $ref: '#/components/parameters/GS1-CBV-Min'
         - $ref: '#/components/parameters/GS1-CBV-Max'
-      description: |
-        EPCIS event types specify the schema of an event. This endpoint returns the 5 standard event types as well as any custom event type supported by this repository. 
+      description: 
+        EPCIS event types specify the schema of an event. This endpoint returns the 5 standard event types as well as any custom event types supported by this repository. 
       responses:
         '200':
           $ref: '#/components/responses/200SupportedEventTypes'
@@ -956,8 +956,8 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-Max'
         - $ref: '#/components/parameters/GS1-CBV-XML-Format'
       summary: Returns known business steps.
-      description: |
-        This endpoint returns the CBV standard business steps as well as any custom business step supported by this repository.
+      description: 
+        This endpoint returns the CBV standard business steps as well as any custom business steps supported by this repository.
       responses:
         '200':
           headers:
@@ -1462,8 +1462,7 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-XML-Format'
       summary: Returns known dispositions.
       description: |
-        An endpoint to list dispositions.
-        This endpoint supports pagination.
+        This endpoint returns the CBV standard dispositions as well as any custom dispositions supported by this repository.
       responses:
         '200':
           headers:
@@ -3583,9 +3582,49 @@ components:
           uniqueItems: true
     DispositionItemList:
       example: {
-        "@context": "https://gs1.github.io/EPCIS/epcis-context.jsonld",
+        "@context": [
+          "https://gs1.github.io/EPCIS/epcis-context.jsonld",
+          {
+            "ex": "https://example.org/myCustomDispositions/"
+          }
+        ],
         "type": "DispositionItemList",
-        "disposition": ["inline", "active"]
+        "disposition": [
+          'active',
+          'available',
+          'completeness_inferred',
+          'completeness_verified',
+          'conformant',
+          'container_closed',
+          'container_open',
+          'damaged',
+          'destroyed',
+          'dispensed',
+          'disposed',
+          'encoded',
+          'expired',
+          'in_progress',
+          'in_transit',
+          'inactive',
+          'mismatch_class',
+          'mismatch_instance',
+          'mismatch_quantity',
+          'needs_replacement',
+          'no_pedigree_match',
+          'non_conformant',
+          'non_sellable_other',
+          'partially_dispensed',
+          'recalled',
+          'reserved',
+          'retail_sold',
+          'returned',
+          'sellable_accessible',
+          'sellable_not_accessible',
+          'stolen',
+          'unavailable',
+          'unknown',
+          'ex:aCustomDisposition'
+        ]
       }
       type: object
       required:
