@@ -85,7 +85,6 @@
                             {
                                 "type": "string",
                                 "enum": [
-                                    "type",
                                     "inputEPCList",
                                     "inputQuantityList",
                                     "outputEPCList",

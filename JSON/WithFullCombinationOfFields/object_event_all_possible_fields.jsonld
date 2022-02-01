@@ -11,7 +11,7 @@
         "epcList": [
           "urn:epc:id:sgtin:0614141.107346.2018"
         ],
-        "action": "OBSERVE",
+        "action": "ADD",
         "bizStep": "receiving",
         "disposition": "in_progress",
         "readPoint": {
@@ -81,7 +81,7 @@
             },
             "sensorReport": [
               {
-                "type": "gs1:Temperature",
+                "type": "Temperature",
                 "deviceID": "urn:epc:id:giai:4000001.111",
                 "rawData": "https://example.org/giai/401234599999",
                 "dataProcessingMethod": "https://example.com/gdti/4012345000054987",

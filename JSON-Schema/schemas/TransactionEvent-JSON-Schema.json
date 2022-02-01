@@ -12,7 +12,7 @@
                     "properties": {
                         "type": {
                             "type": "string",
-                            "pattern": "^TransactionEvent$"
+                            "enum": ["TransactionEvent"]
                         },
                         "bizTransactionList": {
                             "type": "array",
@@ -77,7 +77,32 @@
                         "type",
                         "bizTransactionList",
                         "action"
-                    ]
+                    ],
+                    "propertyNames": {
+                        "anyOf": [
+                            {      
+                                "$ref": "event-definitions-JSON-Schema.json#/definitions/common-event-properties"
+                            },
+                            {
+                                "type": "string",
+                                "enum": [
+                                    "bizTransactionList",
+                                    "parentID",
+                                    "epcList",
+                                    "quantityList",
+                                    "action",
+                                    "bizStep",
+                                    "disposition",
+                                    "persistentDisposition",
+                                    "readPoint",
+                                    "bizLocation",
+                                    "sourceList",
+                                    "destinationList",
+                                    "sensorElementList"
+                                ]
+                            }
+                        ]
+                    }
                 },
                 {
                     "anyOf": [

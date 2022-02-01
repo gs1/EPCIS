@@ -1,94 +1,137 @@
 {
-  "@context": ["https://gs1.github.io/EPCIS/epcis-context.jsonld",{"example": "http://ns.example.com/epcis/"}],
-  
-  "id": "_:document1",
-  "type": "EPCISDocument",
-  "schemaVersion": "2.0",
-  "creationDate":"2020-06-28T13:41:00.000Z",
-  "epcisBody": {
-   "eventList": [
-     {
-		  "id": "ni:///sha-256;56ba4f355c57456b41c3fb60b22d8342e759de503e3e618940ca3b6ad1bf9b00?ver=CBV2.0",
-		  "type": "AggregationEvent",
-		  "eventTime": "2020-06-07T17:10:16Z",
-		  "eventTimeZoneOffset": "+02:00",
-		  "parentID":"urn:epc:id:sgtin:952001.1012345.22222223333",
-		  "childEPCs":[
-			"urn:epc:id:sgtin:9520001.012346.10000001001",
-			"urn:epc:id:sgtin:9520001.012346.10000001002",
-			"urn:epc:id:sgtin:9520001.012346.10000001003",
-			"urn:epc:id:sgtin:9520001.012346.10000001004",
-			"urn:epc:id:sgtin:9520001.012346.10000001005",
-			"urn:epc:id:sgtin:9520001.012346.10000001006",
-			"urn:epc:id:sgtin:9520001.012346.10000001007",
-			"urn:epc:id:sgtin:9520001.012346.10000001008",
-			"urn:epc:id:sgtin:9520001.012346.10000001009",
-			"urn:epc:id:sgtin:9520001.012346.10000001010"
-		  	],
-		  "action": "OBSERVE",
-		  "bizStep": "receiving",
-		  "disposition": "in_progress",
-		  "readPoint": {"id": "urn:epc:id:sgln:9529999.99999.0"},
-		  "bizLocation": {"id": "urn:epc:id:sgln:9529999.99999.0"},
-		  "bizTransactionList": [  
-		  	{"type":"inv", "bizTransaction": "urn:epcglobal:cbv:bt:9520011111116:A123"},  
-		  	{"type":"po", "bizTransaction": "urn:epcglobal:cbv:bt:9529999999991:XYZ567"},
-		  	{"type":"desadv", "bizTransaction": "urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6"}
-		  ],
-		  "sourceList": [
-		  	{"type":"owning_party","source":"urn:epc:id:pgln:9520001.11111"}
-		  ],
-		  "destinationList": [
-		  	{"type":"owning_party","destination":"urn:epc:id:pgln:9520999.99999"}
-		  ],
-		  "persistentDisposition": {
-		  	"set": ["completeness_inferred"]
-		  }		  
-     },
-     
-     {
-		  "id": "ni:///sha-256;dae7b481207bb87f1d981c5f169b8138368ae152a41b002eaf36eca1f67d56f5?ver=CBV2.0",
-		  "type": "AggregationEvent",
-		  "eventTime": "2020-06-08T18:11:16Z",
-		  "eventTimeZoneOffset": "+02:00",
-		  "parentID":"urn:epc:id:sgtin:952001.1012345.22222223333",
-		  "childEPCs":[
-			"urn:epc:id:sgtin:9520001.012346.10000001001",
-			"urn:epc:id:sgtin:9520001.012346.10000001002",
-			"urn:epc:id:sgtin:9520001.012346.10000001003",
-			"urn:epc:id:sgtin:9520001.012346.10000001004",
-			"urn:epc:id:sgtin:9520001.012346.10000001005",
-			"urn:epc:id:sgtin:9520001.012346.10000001006",
-			"urn:epc:id:sgtin:9520001.012346.10000001007",
-			"urn:epc:id:sgtin:9520001.012346.10000001008",
-			"urn:epc:id:sgtin:9520001.012346.10000001009",
-			"urn:epc:id:sgtin:9520001.012346.10000001010"
-		  	],
-		  "action": "DELETE",
-		  "bizStep": "unpacking",
-		  "disposition": "in_progress",
-		  "readPoint": {"id": "urn:epc:id:sgln:9529999.99999.0"},
-		  "bizLocation": {"id": "urn:epc:id:sgln:9529999.99999.0"},
-		  "bizTransactionList": [  
-		  	{"type":"inv", "bizTransaction": "urn:epcglobal:cbv:bt:9520011111116:A123"},  
-		  	{"type":"po", "bizTransaction": "urn:epcglobal:cbv:bt:9529999999991:XYZ567"},
-		  	{"type":"desadv", "bizTransaction": "urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6"}
-		  ],
-		  "sourceList": [
-		  	{"type":"owning_party","source":"urn:epc:id:pgln:9520001.11111"}
-		  ],
-		  "destinationList": [
-		  	{"type":"owning_party","destination":"urn:epc:id:pgln:9520999.99999"}
-		  ],
-		  "persistentDisposition": {
-		  	"unset": ["completeness_inferred"],
-		  	"set": ["completeness_verified"]
-		  }		  
-     }
-     
-     
-
-   ]
-  }
-  
+	"@context": [
+		"https://gs1.github.io/EPCIS/epcis-context.jsonld",
+		{
+			"example": "http://ns.example.com/epcis/"
+		}
+	],
+	"id": "_:document1",
+	"type": "EPCISDocument",
+	"schemaVersion": "2.0",
+	"creationDate": "2020-06-28T13:41:00.000Z",
+	"epcisBody": {
+		"eventList": [
+			{
+				"eventID": "ni:///sha-256;56ba4f355c57456b41c3fb60b22d8342e759de503e3e618940ca3b6ad1bf9b00?ver=CBV2.0",
+				"type": "AggregationEvent",
+				"eventTime": "2020-06-07T17:10:16Z",
+				"eventTimeZoneOffset": "+02:00",
+				"parentID": "urn:epc:id:sgtin:952001.1012345.22222223333",
+				"childEPCs": [
+					"urn:epc:id:sgtin:9520001.012346.10000001001",
+					"urn:epc:id:sgtin:9520001.012346.10000001002",
+					"urn:epc:id:sgtin:9520001.012346.10000001003",
+					"urn:epc:id:sgtin:9520001.012346.10000001004",
+					"urn:epc:id:sgtin:9520001.012346.10000001005",
+					"urn:epc:id:sgtin:9520001.012346.10000001006",
+					"urn:epc:id:sgtin:9520001.012346.10000001007",
+					"urn:epc:id:sgtin:9520001.012346.10000001008",
+					"urn:epc:id:sgtin:9520001.012346.10000001009",
+					"urn:epc:id:sgtin:9520001.012346.10000001010"
+				],
+				"action": "OBSERVE",
+				"bizStep": "receiving",
+				"disposition": "in_progress",
+				"readPoint": {
+					"id": "urn:epc:id:sgln:9529999.99999.0"
+				},
+				"bizLocation": {
+					"id": "urn:epc:id:sgln:9529999.99999.0"
+				},
+				"bizTransactionList": [
+					{
+						"type": "inv",
+						"bizTransaction": "urn:epcglobal:cbv:bt:9520011111116:A123"
+					},
+					{
+						"type": "po",
+						"bizTransaction": "urn:epcglobal:cbv:bt:9529999999991:XYZ567"
+					},
+					{
+						"type": "desadv",
+						"bizTransaction": "urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6"
+					}
+				],
+				"sourceList": [
+					{
+						"type": "owning_party",
+						"source": "urn:epc:id:pgln:9520001.11111"
+					}
+				],
+				"destinationList": [
+					{
+						"type": "owning_party",
+						"destination": "urn:epc:id:pgln:9520999.99999"
+					}
+				],
+				"persistentDisposition": {
+					"set": [
+						"completeness_inferred"
+					]
+				}
+			},
+			{
+				"eventID": "ni:///sha-256;dae7b481207bb87f1d981c5f169b8138368ae152a41b002eaf36eca1f67d56f5?ver=CBV2.0",
+				"type": "AggregationEvent",
+				"eventTime": "2020-06-08T18:11:16Z",
+				"eventTimeZoneOffset": "+02:00",
+				"parentID": "urn:epc:id:sgtin:952001.1012345.22222223333",
+				"childEPCs": [
+					"urn:epc:id:sgtin:9520001.012346.10000001001",
+					"urn:epc:id:sgtin:9520001.012346.10000001002",
+					"urn:epc:id:sgtin:9520001.012346.10000001003",
+					"urn:epc:id:sgtin:9520001.012346.10000001004",
+					"urn:epc:id:sgtin:9520001.012346.10000001005",
+					"urn:epc:id:sgtin:9520001.012346.10000001006",
+					"urn:epc:id:sgtin:9520001.012346.10000001007",
+					"urn:epc:id:sgtin:9520001.012346.10000001008",
+					"urn:epc:id:sgtin:9520001.012346.10000001009",
+					"urn:epc:id:sgtin:9520001.012346.10000001010"
+				],
+				"action": "DELETE",
+				"bizStep": "unpacking",
+				"disposition": "in_progress",
+				"readPoint": {
+					"id": "urn:epc:id:sgln:9529999.99999.0"
+				},
+				"bizLocation": {
+					"id": "urn:epc:id:sgln:9529999.99999.0"
+				},
+				"bizTransactionList": [
+					{
+						"type": "inv",
+						"bizTransaction": "urn:epcglobal:cbv:bt:9520011111116:A123"
+					},
+					{
+						"type": "po",
+						"bizTransaction": "urn:epcglobal:cbv:bt:9529999999991:XYZ567"
+					},
+					{
+						"type": "desadv",
+						"bizTransaction": "urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6"
+					}
+				],
+				"sourceList": [
+					{
+						"type": "owning_party",
+						"source": "urn:epc:id:pgln:9520001.11111"
+					}
+				],
+				"destinationList": [
+					{
+						"type": "owning_party",
+						"destination": "urn:epc:id:pgln:9520999.99999"
+					}
+				],
+				"persistentDisposition": {
+					"unset": [
+						"completeness_inferred"
+					],
+					"set": [
+						"completeness_verified"
+					]
+				}
+			}
+		]
+	}
 }

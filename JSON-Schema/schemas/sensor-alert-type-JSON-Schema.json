@@ -1,8 +1,8 @@
 {
-    "$id": "https://gs1.github.io/EPCIS/JSON-Schema/schemas/error-reason-JSON-Schema.json",
+    "$id": "https://gs1.github.io/EPCIS/JSON-Schema/schemas/sensor-alert-type-JSON-Schema.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "definitions": {
-        "error-reason": {
+        "sensorAlertType": {
             "anyOf": [
                 {
                     "$ref": "definitions-JSON-Schema.json#/definitions/vocab-uri"
@@ -10,8 +10,8 @@
                 {
                     "type": "string",
                     "enum": [
-                        "did_not_occur",
-                        "incorrect_data"
+                        "ALARM_CONDITION",
+                        "ERROR_CONDITION"
                     ]
                 }
             ]

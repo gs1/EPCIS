@@ -37,13 +37,13 @@
                 "set": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/uri"
+                        "$ref": "disposition-JSON-Schema.json#/definitions/disposition"
                     }
                 },
                 "unset": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/uri"
+                        "$ref": "disposition-JSON-Schema.json#/definitions/disposition"
                     }
                 }
             }
@@ -197,7 +197,10 @@
             "type": "object",
             "properties": {
                 "type": {
-                    "$ref": "#/definitions/uri"
+                    "$ref": "measurement-type-JSON-Schema.json#/definitions/measurementType"
+                },
+                "exception": {
+                    "$ref": "sensor-alert-type-JSON-Schema.json#/definitions/sensorAlertType"
                 },
                 "deviceID": {
                     "$ref": "#/definitions/uri"
@@ -224,7 +227,7 @@
                     "$ref": "#/definitions/decimal"
                 },
                 "component": {
-                    "$ref": "#/definitions/string"
+                    "$ref": "component-JSON-Schema.json#/definitions/component"
                 },
                 "stringValue": {
                     "$ref": "#/definitions/string"
@@ -334,6 +337,7 @@
                     "type": "string",
                     "enum": [
                         "@context",
+                        "type",
                         "eventTime",
                         "recordTime",
                         "eventTimeZoneOffset",

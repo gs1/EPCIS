@@ -141,7 +141,7 @@
             "properties": {
                 "type": {
                     "type": "string",
-                    "const": "EPCISDocument"
+                    "enum": ["EPCISDocument"]
                 },
                 "@context": {
                     "$ref": "schemas/definitions-JSON-Schema.json#/definitions/@context"
@@ -180,7 +180,7 @@
             "properties": {
                 "type": {
                     "type": "string",
-                    "const": "EPCISQueryDocument"
+                    "enum": ["EPCISQueryDocument"]
                 },
                 "epcisBody": {
                     "$ref": "#/definitions/epcisQueryDocumentBody"

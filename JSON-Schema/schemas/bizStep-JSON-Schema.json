@@ -8,6 +8,7 @@
                     "$ref": "definitions-JSON-Schema.json#/definitions/vocab-uri"
                 },
                 {
+                    "type": "string",
                     "enum": [
                         "accepting",
                         "arriving",
@@ -47,7 +48,9 @@
                         "transporting",
                         "unloading",
                         "unpacking",
-                        "void_shipping"
+                        "void_shipping",
+                        "sensor_reporting",
+                        "sampling"
                     ]
                 }
             ]

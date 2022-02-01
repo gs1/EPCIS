@@ -8,6 +8,8 @@
     {"example4": "https://ns.example4.com/epcis"}
   ],
   "type": "EPCISDocument",
+  "schemaVersion": "2.0",
+  "creationDate": "2022-01-20T10:41:49.296Z",
   "epcisBody": {
     "eventList": [
       {
