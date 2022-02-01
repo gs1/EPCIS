@@ -571,8 +571,8 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-Version'
         - $ref: '#/components/parameters/GS1-CBV-Min'
         - $ref: '#/components/parameters/GS1-CBV-Max'
-      description: |
-        EPCIS event types specify the schema of an event. This endpoint returns the 5 standard event types as well as any custom event type supported by this repository. 
+      description: 
+        EPCIS event types specify the schema of an event. This endpoint returns the 5 standard event types as well as any custom event types supported by this repository. 
       responses:
         '200':
           $ref: '#/components/responses/200SupportedEventTypes'
@@ -752,9 +752,8 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-Max'
         - $ref: '#/components/parameters/GS1-EPC-Format'
       summary: Returns known electronic product codes.
-      description: |
-        An endpoint to list electronic product codes.
-        This endpoint supports pagination.
+      description: 
+        An endpoint to list all electronic product codes known to this repository.
       responses:
         '200':
           headers:
@@ -779,14 +778,7 @@ paths:
           content:
             application/json:
               schema:
-                example:
-                  - urn:epc:id:sgtin:0614141.107346.2018
-                  - https://example.com/01/04012345123456
-                  - urn:epc:id:sgtin:0614141.107346.2017
-                type: array
-                items:
-                  type: string
-                  format: uri
+                $ref: '#/components/schemas/EpcItemList'
         '401':
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
@@ -956,9 +948,8 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-Max'
         - $ref: '#/components/parameters/GS1-CBV-XML-Format'
       summary: Returns known business steps.
-      description: |
-        An endpoint to list business steps.
-        This endpoint supports pagination.
+      description: 
+        This endpoint returns the CBV standard business steps as well as any custom business steps supported by this repository.
       responses:
         '200':
           headers:
@@ -1149,8 +1140,7 @@ paths:
         - $ref: '#/components/parameters/GS1-EPC-Format'
       summary: Returns known business locations.
       description: |
-        An endpoint to list business locations.
-        This endpoint supports pagination.
+        An endpoint to list all the business locations known to this repository.
       responses:
         '200':
           headers:
@@ -1269,9 +1259,8 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-Max'
         - $ref: '#/components/parameters/GS1-EPC-Format'
       summary: Returns known read points.
-      description: |
-        An endpoint to list read points.
-        This endpoint supports pagination.
+      description: 
+        An endpoint to list all read points known to this repository.
       responses:
         '200':
           headers:
@@ -1463,8 +1452,7 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-XML-Format'
       summary: Returns known dispositions.
       description: |
-        An endpoint to list dispositions.
-        This endpoint supports pagination.
+        This endpoint returns the CBV standard dispositions as well as any custom dispositions supported by this repository.
       responses:
         '200':
           headers:
@@ -3323,76 +3311,79 @@ components:
                     type: object
 
       example:
-        {
-          "@context": [
-              "https://gs1.github.io/EPCIS/epcis-context.jsonld",
-            {
-              "example": "http://ns.example.com/epcis/"
-            }
-          ],
-          "type": "EPCISQueryDocument",
-          "schemaVersion": 2.0,
-          "creationDate": "2021-07-11T11:30:47.0Z",
-          "epcisBody": {
-            "queryResults": {
-              "resultsBody": {
-                "eventList": [
-                  {
-                    "eventID": "_:event1",
-                    "type": "ObjectEvent",
-                    "action": "OBSERVE",
-                    "bizStep": "shipping",
-                    "disposition": "in_transit",
-                    "epcList": [
-                        "urn:epc:id:sgtin:0614141.107346.2017",
-                        "urn:epc:id:sgtin:0614141.107346.2018"
-                    ],
-                    "eventTime": "2021-04-03T20:33:31.116000-06:00",
-                    "eventTimeZoneOffset": "-06:00",
-                    "readPoint": {
-                      "id": "urn:epc:id:sgln:0614141.07346.1234"
-                    },
-                    "bizTransactionList": [
-                      {
-                        "type": "po",
-                        "bizTransaction": "http://transaction.acme.com/po/12345678"
-                      }
-                    ]
+              {
+        "@context": [
+          "https://gs1.github.io/EPCIS/epcis-context.jsonld",
+          {
+            "example": "http://ns.example.com/epcis/"
+          }
+        ],
+        "id": "_:document1",
+        "type": "EPCISQueryDocument",
+        "schemaVersion": "2.0",
+        "creationDate": "2005-07-11T11:30:47.0Z",
+        "epcisBody": {
+          "queryResults": {
+            "subscriptionID": "32d2aec1-a6d2-46d9-900a-24124288cce1",
+            "queryName": "SimpleEventQuery",
+            "resultsBody": {
+              "eventList": [
+                {
+                  "eventID": "ni:///sha-256;df7bb3c352fef055578554f09f5e2aa41782150ced7bd0b8af24dd3ccb30ba69?ver=CBV2.0",
+                  "type": "ObjectEvent",
+                  "action": "OBSERVE",
+                  "bizStep": "shipping",
+                  "disposition": "in_transit",
+                  "epcList": [
+                    "urn:epc:id:sgtin:0614141.107346.2017",
+                    "urn:epc:id:sgtin:0614141.107346.2018"
+                  ],
+                  "eventTime": "2005-04-03T20:33:31.116000-06:00",
+                  "eventTimeZoneOffset": "-06:00",
+                  "readPoint": {
+                    "id": "urn:epc:id:sgln:0614141.07346.1234"
                   },
-                  {
-                    "eventID": "_:event2",
-                    "type": "ObjectEvent",
-                    "action": "OBSERVE",
-                    "bizStep": "receiving",
-                    "disposition": "in_progress",
-                    "epcList": [
-                        "urn:epc:id:sgtin:0614141.107346.2018"
-                    ],
-                    "eventTime": "2021-04-04T20:33:31.116-06:00",
-                    "eventTimeZoneOffset": "-06:00",
-                    "readPoint": {
-                      "id": "urn:epc:id:sgln:0012345.11111.400"
+                  "bizTransactionList": [
+                    {
+                      "type": "po",
+                      "bizTransaction": "http://transaction.acme.com/po/12345678"
+                    }
+                  ]
+                },
+                {
+                  "eventID": "cc979570-74a3-4dc7-8f3e-2e747d6d31ec",
+                  "type": "ObjectEvent",
+                  "action": "OBSERVE",
+                  "bizStep": "receiving",
+                  "disposition": "in_progress",
+                  "epcList": [
+                    "urn:epc:id:sgtin:0614141.107346.2018"
+                  ],
+                  "eventTime": "2005-04-04T20:33:31.116-06:00",
+                  "eventTimeZoneOffset": "-06:00",
+                  "readPoint": {
+                    "id": "urn:epc:id:sgln:0012345.11111.400"
+                  },
+                  "bizLocation": {
+                    "id": "urn:epc:id:sgln:0012345.11111.0"
+                  },
+                  "bizTransactionList": [
+                    {
+                      "type": "po",
+                      "bizTransaction": "http://transaction.acme.com/po/12345678"
                     },
-                    "bizLocation": {
-                      "id": "urn:epc:id:sgln:0012345.11111.0"
-                    },
-                    "bizTransactionList": [
-                      {
-                        "type": "po",
-                        "bizTransaction": "http://transaction.acme.com/po/12345678"
-                      },
-                      {
-                        "type": "desadv",
-                        "bizTransaction": "urn:epcglobal:cbv:bt:0614141073467:1152"
-                      }
-                    ],
-                    "example:myField": "Example of a vendor/user extension"
-                  }
-                ]
-              }
+                    {
+                      "type": "desadv",
+                      "bizTransaction": "urn:epcglobal:cbv:bt:0614141073467:1152"
+                    }
+                  ],
+                  "example:myField": "Example of a vendor/user extension"
+                }
+              ]
             }
           }
         }
+      }
       externalDocs:
         description: |
           An EPCIS document that must be validated with the [JSON schema](../JSON/EPCIS-JSON-Schema.json) or
@@ -3516,11 +3507,54 @@ components:
         "@context": [
           "https://gs1.github.io/EPCIS/epcis-context.jsonld",
           {
-            "ex": "https://example.org/my-steps/"
+            "ex": "https://example.org/myCustomBizSteps/"
           }
         ],
         "type": "BizStepItemList",
-        "bizStep": ["receiving", "shipping", "ex:funding"]
+        "bizStep": [
+          'accepting',
+          'arriving',
+          'assembling',
+          'collecting',
+          'commissioning',
+          'consigning',
+          'creating_class_instance',
+          'cycle_counting',
+          'decommissioning',
+          'departing',
+          'destroying',
+          'disassembling',
+          'dispensing',
+          'encoding',
+          'entering_exiting',
+          'holding',
+          'inspecting',
+          'installing',
+          'killing',
+          'loading',
+          'other',
+          'packing',
+          'picking',
+          'receiving',
+          'removing',
+          'repackaging',
+          'repairing',
+          'replacing',
+          'reserving',
+          'retail_selling',
+          'sampling',
+          'sensor_reporting',
+          'shipping',
+          'staging_outbound',
+          'stock_taking',
+          'stocking',
+          'storing',
+          'transporting',
+          'unloading',
+          'unpacking',
+          'void_shipping',
+          'ex:aCustomBizStep'
+        ]
       }
       type: object
       required:
@@ -3541,9 +3575,49 @@ components:
           uniqueItems: true
     DispositionItemList:
       example: {
-        "@context": "https://gs1.github.io/EPCIS/epcis-context.jsonld",
+        "@context": [
+          "https://gs1.github.io/EPCIS/epcis-context.jsonld",
+          {
+            "ex": "https://example.org/myCustomDispositions/"
+          }
+        ],
         "type": "DispositionItemList",
-        "disposition": ["inline", "active"]
+        "disposition": [
+          'active',
+          'available',
+          'completeness_inferred',
+          'completeness_verified',
+          'conformant',
+          'container_closed',
+          'container_open',
+          'damaged',
+          'destroyed',
+          'dispensed',
+          'disposed',
+          'encoded',
+          'expired',
+          'in_progress',
+          'in_transit',
+          'inactive',
+          'mismatch_class',
+          'mismatch_instance',
+          'mismatch_quantity',
+          'needs_replacement',
+          'no_pedigree_match',
+          'non_conformant',
+          'non_sellable_other',
+          'partially_dispensed',
+          'recalled',
+          'reserved',
+          'retail_sold',
+          'returned',
+          'sellable_accessible',
+          'sellable_not_accessible',
+          'stolen',
+          'unavailable',
+          'unknown',
+          'ex:aCustomDisposition'
+        ]
       }
       type: object
       required:
@@ -3608,6 +3682,35 @@ components:
           enum: 
             - 'ReadPointItemList'
         readPoint:
+          type: array
+          items:
+            type: string
+            format: uri
+          uniqueItems: true
+    EpcItemList:
+      example: {
+        "@context": "https://gs1.github.io/EPCIS/epcis-context.jsonld",            
+        "type": "EpcItemList",
+        "epc": [
+          "urn:jaif:id:obj:37SUN321456789A111222333AB+123456789012",
+          "urn:epc:id:sgtin:0614141.107346.2018",
+          "https://example.com/01/04012345123456/21/abc234",
+          "urn:epc:id:sgtin:0614141.107346.2017"
+        ]
+      }
+      type: object
+      required:
+        - '@context'
+        - 'type'
+        - epc
+      properties:
+        '@context':
+          $ref: '#/components/schemas/LDContext'
+        'type':
+          type: string
+          enum: 
+            - 'EpcItemList'
+        epc:
           type: array
           items:
             type: string
