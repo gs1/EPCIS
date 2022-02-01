@@ -2775,14 +2775,13 @@ components:
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
     406NotAcceptable:
       description: |
-        The server cannot return the response as requested. For example, the client requested an HTML response
-        but the server does not support this.
+        The server cannot return the response as requested. 
       content:
         application/problem+json:
           schema:
             example:
-              type: "epcisException:ImplementationException"
-              title: "Cannot reproduce response in a desired content type"
+              type: "epcisException:NotAcceptableException"
+              title: "Conflicting request and response headers"
               status: 406
             allOf:
               - properties:
@@ -2795,7 +2794,7 @@ components:
                     type: string
                     format: uri
                     enum:
-                      - epcisException:ImplementationException
+                      - epcisException:NotAcceptableException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
     415UnsupportedMediaType:
       description: |
@@ -2804,7 +2803,7 @@ components:
         application/problem+json:
           schema:
             example:
-              type: "epcisException:ImplementationException"
+              type: "epcisException:UnsupportedMediaTypeException"
               title: "Unsupported Media Type"
               status: 415
             allOf:
@@ -2818,7 +2817,7 @@ components:
                     type: string
                     format: uri
                     enum:
-                      - epcisException:ImplementationException
+                      - epcisException:IUnsupportedMediaTypeException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
     500ImplementationException:
       description: An error occurred on the backend.
