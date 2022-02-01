@@ -752,9 +752,8 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-Max'
         - $ref: '#/components/parameters/GS1-EPC-Format'
       summary: Returns known electronic product codes.
-      description: |
-        An endpoint to list electronic product codes.
-        This endpoint supports pagination.
+      description: 
+        An endpoint to list all electronic product codes known to this repository.
       responses:
         '200':
           headers:
@@ -1148,8 +1147,7 @@ paths:
         - $ref: '#/components/parameters/GS1-EPC-Format'
       summary: Returns known business locations.
       description: |
-        An endpoint to list business locations.
-        This endpoint supports pagination.
+        An endpoint to list all the business locations known to this repository.
       responses:
         '200':
           headers:
@@ -1268,9 +1266,8 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-Max'
         - $ref: '#/components/parameters/GS1-EPC-Format'
       summary: Returns known read points.
-      description: |
-        An endpoint to list read points.
-        This endpoint supports pagination.
+      description: 
+        An endpoint to list all read points known to this repository.
       responses:
         '200':
           headers:
