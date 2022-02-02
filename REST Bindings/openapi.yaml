@@ -2465,7 +2465,7 @@ components:
         GS1-Vendor-Version:
           $ref: '#/components/headers/GS1-Vendor-Version'
     204WritableResourcesDiscovery:
-      description: 
+      description: |
         The `OPTIONS` method is used to discover capabilities for EPCIS 2.0 endpoints.
         It describes which EPCIS and CBV versions are supported and used for the top-level resource as well as EPCIS and
         CBV extensions. The list of headers is not exhaustive. It only describes the functionality specific to EPCIS 2.0.
@@ -2555,7 +2555,7 @@ components:
         GS1-Capture-Error-Behaviour:
           $ref: '#/components/headers/GS1-Capture-Error-Behaviour'
     204SubscriptionEndpointDiscovery:
-      description: 
+      description: |
         The `OPTIONS` method returns information describing individual query subscriptions.
         The list of headers is not exhaustive. It only describes the functionality specific to EPCIS 2.0.
       headers:
@@ -2705,7 +2705,7 @@ components:
           $ref: '#/components/headers/GS1-EPCIS-Capture-Limit'
         GS1-EPCIS-Capture-File-Size-Limit:
           $ref: '#/components/headers/GS1-EPCIS-Capture-File-Size-Limit'
-      description: |
+      description: 
         The `POST` request is too large. It exceeds the limits set in `GS1-EPCIS-Capture-Limit` and/or
         `GS1-EPCIS-Capture-File-Size-Limit`.
       content:
@@ -2774,7 +2774,7 @@ components:
                       - epcisException:URITooLongException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
     406NotAcceptable:
-      description: |
+      description: 
         The server cannot return the response as requested. 
       content:
         application/problem+json:
