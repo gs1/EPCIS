@@ -2465,7 +2465,7 @@ components:
         GS1-Vendor-Version:
           $ref: '#/components/headers/GS1-Vendor-Version'
     204WritableResourcesDiscovery:
-      description: |
+      description: 
         The `OPTIONS` method is used to discover capabilities for EPCIS 2.0 endpoints.
         It describes which EPCIS and CBV versions are supported and used for the top-level resource as well as EPCIS and
         CBV extensions. The list of headers is not exhaustive. It only describes the functionality specific to EPCIS 2.0.
@@ -2555,7 +2555,7 @@ components:
         GS1-Capture-Error-Behaviour:
           $ref: '#/components/headers/GS1-Capture-Error-Behaviour'
     204SubscriptionEndpointDiscovery:
-      description: |
+      description: 
         The `OPTIONS` method returns information describing individual query subscriptions.
         The list of headers is not exhaustive. It only describes the functionality specific to EPCIS 2.0.
       headers:
@@ -3972,6 +3972,7 @@ components:
       enum:
         - 'rollback'
         - 'proceed'
+        - 'all'
     GS1-Next-Page-Token-Expires:
       example: '2017-07-21T17:32:28Z'
       type: string
@@ -4283,6 +4284,7 @@ components:
 
         - `rollback`: "All or nothing". Either the capture job is entirely successful or all EPCIS events are rejected.
         - `proceed`: "Greedy capture". The capture interface tries to capture as many EPCIS events as possible, even if there are errors.
+        - `all`: This is to be used only by the server to announce it supports both `rollback` and `proceed`.
 
         The default behaviour is `rollback`, as in EPCIS 1.2.
       schema:
