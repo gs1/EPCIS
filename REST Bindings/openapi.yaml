@@ -2705,7 +2705,7 @@ components:
           $ref: '#/components/headers/GS1-EPCIS-Capture-Limit'
         GS1-EPCIS-Capture-File-Size-Limit:
           $ref: '#/components/headers/GS1-EPCIS-Capture-File-Size-Limit'
-      description: 
+      description: |
         The `POST` request is too large. It exceeds the limits set in `GS1-EPCIS-Capture-Limit` and/or
         `GS1-EPCIS-Capture-File-Size-Limit`.
       content:
@@ -2774,7 +2774,7 @@ components:
                       - epcisException:URITooLongException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
     406NotAcceptable:
-      description: 
+      description: |
         The server cannot return the response as requested. 
       content:
         application/problem+json:
