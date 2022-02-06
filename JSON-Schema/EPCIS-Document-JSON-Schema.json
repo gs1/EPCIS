@@ -147,11 +147,10 @@
                     "$ref": "schemas/definitions-JSON-Schema.json#/definitions/@context"
                 },
                 "schemaVersion": {
-                    "type": "string"
+                    "$ref": "schemas/definitions-JSON-Schema.json#/definitions/version"
                 },
                 "creationDate": {
-                    "type": "string",
-                    "format": "date-time"
+                    "$ref": "schemas/event-definitions-JSON-Schema.json#/definitions/time"
                 },
                 "epcisHeader": {
                     "$ref": "#/definitions/epcisHeader"
@@ -203,6 +202,12 @@
                 },
                 "epcisBody": {
                     "$ref": "#/definitions/epcisQueryDocumentBody"
+                },
+                "schemaVersion": {
+                    "$ref": "schemas/definitions-JSON-Schema.json#/definitions/version"
+                },
+                "creationDate": {
+                    "$ref": "schemas/event-definitions-JSON-Schema.json#/definitions/time"
                 }
             },
             "required": [
@@ -217,6 +222,8 @@
                         "enum": [
                             "@context",
                             "type",
+                            "schemaVersion",
+                            "creationDate",
                             "epcisBody"
                         ]
                     },

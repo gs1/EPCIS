@@ -307,11 +307,10 @@
           "$ref": "#/definitions/@context"
         },
         "schemaVersion": {
-          "type": "string"
+          "$ref": "#/definitions/version"
         },
         "creationDate": {
-          "type": "string",
-          "format": "date-time"
+          "$ref": "#/definitions/time"
         },
         "epcisHeader": {
           "$ref": "#/definitions/epcisHeader"
@@ -365,6 +364,12 @@
         },
         "epcisBody": {
           "$ref": "#/definitions/epcisQueryDocumentBody"
+        },
+        "schemaVersion": {
+          "$ref": "#/definitions/version"
+        },
+        "creationDate": {
+          "$ref": "#/definitions/time"
         }
       },
       "required": [
@@ -379,6 +384,8 @@
             "enum": [
               "@context",
               "type",
+              "schemaVersion",
+              "creationDate",
               "epcisBody"
             ]
           },
@@ -844,6 +851,10 @@
       "required": [
         "@context"
       ]
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+(\\.\\d+)?$"
     },
     "error-reason": {
       "anyOf": [

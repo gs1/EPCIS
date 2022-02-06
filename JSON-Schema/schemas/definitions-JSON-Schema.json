@@ -35,6 +35,10 @@
         "required-ld-context": {
             "type": "object",
             "required": ["@context"]
+        },
+        "version": {
+            "type": "string",
+            "pattern":  "^\\d+(\\.\\d+)?$"
         }
     }
 }
