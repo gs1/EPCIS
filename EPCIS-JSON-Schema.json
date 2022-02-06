@@ -330,10 +330,29 @@
       },
       "required": [
         "@context",
+        "type",
         "schemaVersion",
         "creationDate",
         "epcisBody"
-      ]
+      ],
+      "propertyNames": {
+        "anyOf": [
+          {
+            "type": "string",
+            "enum": [
+              "@context",
+              "type",
+              "schemaVersion",
+              "creationDate",
+              "epcisHeader",
+              "epcisBody"
+            ]
+          },
+          {
+            "$ref": "#/definitions/vocab-uri"
+          }
+        ]
+      }
     },
     "epcisQueryDocument": {
       "type": "object",
@@ -350,8 +369,24 @@
       },
       "required": [
         "@context",
+        "type",
         "epcisBody"
-      ]
+      ],
+      "propertyNames": {
+        "anyOf": [
+          {
+            "type": "string",
+            "enum": [
+              "@context",
+              "type",
+              "epcisBody"
+            ]
+          },
+          {
+            "$ref": "#/definitions/vocab-uri"
+          }
+        ]
+      }
     },
     "EPCIS-Document": {
       "oneOf": [
