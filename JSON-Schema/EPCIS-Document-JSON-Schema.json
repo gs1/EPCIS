@@ -196,18 +196,21 @@
         "epcisQueryDocument": {
             "type": "object",
             "properties": {
+                "@context": {
+                    "$ref": "schemas/definitions-JSON-Schema.json#/definitions/@context"
+                },
                 "type": {
                     "type": "string",
                     "enum": ["EPCISQueryDocument"]
-                },
-                "epcisBody": {
-                    "$ref": "#/definitions/epcisQueryDocumentBody"
                 },
                 "schemaVersion": {
                     "$ref": "schemas/definitions-JSON-Schema.json#/definitions/version"
                 },
                 "creationDate": {
                     "$ref": "schemas/event-definitions-JSON-Schema.json#/definitions/time"
+                },
+                "epcisBody": {
+                    "$ref": "#/definitions/epcisQueryDocumentBody"
                 }
             },
             "required": [

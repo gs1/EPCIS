@@ -356,20 +356,23 @@
     "epcisQueryDocument": {
       "type": "object",
       "properties": {
+        "@context": {
+          "$ref": "#/definitions/@context"
+        },
         "type": {
           "type": "string",
           "enum": [
             "EPCISQueryDocument"
           ]
         },
-        "epcisBody": {
-          "$ref": "#/definitions/epcisQueryDocumentBody"
-        },
         "schemaVersion": {
           "$ref": "#/definitions/version"
         },
         "creationDate": {
           "$ref": "#/definitions/time"
+        },
+        "epcisBody": {
+          "$ref": "#/definitions/epcisQueryDocumentBody"
         }
       },
       "required": [
