@@ -3951,7 +3951,9 @@ components:
         - Always_URN
         - Never_Translates
     GS1-Extensions:
-      example: {"example-epc-ext": "http://example.com/epcis/"}
+      example: |
+        example-epc-ext=http://org1.example.com/epcis/,
+        example-epc-ext2=http://vendor.example.com/epcis/
       type: object
     GS1-Vendor-Version:
       example: example-version-1.0
@@ -3960,12 +3962,12 @@ components:
         - type: object
     GS1-EPCIS-Capture-Limit:
       example: 500
-      type: string
-      pattern: ^(\d+|\*)$
+      type: integer
+      minimum: 1
     GS1-EPCIS-Capture-File-Size-Limit:
       example: 1024
-      type: string
-      pattern: ^(\d+|\*)$
+      type: integer
+      minimum: 1
     GS1-Capture-Error-Behaviour:
       example: 'rollback'
       type: string
@@ -4210,6 +4212,8 @@ components:
         Specific EPCIS or CBV extensions supported (e.g., for FIT).
       schema:
         $ref: '#/components/schemas/GS1-Extensions'
+      style: simple
+      explode: true
     GS1-Capture-Error-Behaviour:
       name: GS1-Capture-Error-Behaviour
       description: |
