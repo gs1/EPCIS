@@ -58,11 +58,11 @@ paths:
         - 'Discovery'
       summary: Returns the list of top level resources available for this EPCIS repository.
       parameters:
-        - $ref: '#/components/parameters/GS1-EPCIS-Version'
         - $ref: '#/components/parameters/GS1-Extensions'
         - $ref: '#/components/parameters/GS1-EPCIS-Min'
         - $ref: '#/components/parameters/GS1-EPCIS-Max'
-        - $ref: '#/components/parameters/GS1-CBV-Version'
+        - $ref: '#/components/parameters/GS1-CBV-Min'
+        - $ref: '#/components/parameters/GS1-CBV-Max'
       description: |
         This endpoint returns all the top-level resources currently available in the repository.
       responses:
@@ -378,10 +378,8 @@ paths:
       parameters:
         - $ref: '#/components/parameters/NextPageToken'
         - $ref: '#/components/parameters/PerPage'
-        - $ref: '#/components/parameters/GS1-CBV-Version'
         - $ref: '#/components/parameters/GS1-CBV-Min'
         - $ref: '#/components/parameters/GS1-CBV-Max'
-        - $ref: '#/components/parameters/GS1-EPCIS-Version'
         - $ref: '#/components/parameters/GS1-EPCIS-Min'
         - $ref: '#/components/parameters/GS1-EPCIS-Max'
         - $ref: '#/components/parameters/GS1-EPC-Format'
@@ -509,10 +507,8 @@ paths:
         - 'Events'
       summary: Returns an individual EPCIS event.
       parameters:
-        - $ref: '#/components/parameters/GS1-CBV-Version'
         - $ref: '#/components/parameters/GS1-CBV-Min'
         - $ref: '#/components/parameters/GS1-CBV-Max'
-        - $ref: '#/components/parameters/GS1-EPCIS-Version'
         - $ref: '#/components/parameters/GS1-EPCIS-Min'
         - $ref: '#/components/parameters/GS1-EPCIS-Max'
         - $ref: '#/components/parameters/GS1-EPC-Format'
@@ -564,11 +560,9 @@ paths:
       parameters:
         - $ref: '#/components/parameters/NextPageToken'
         - $ref: '#/components/parameters/PerPage'
-        - $ref: '#/components/parameters/GS1-EPCIS-Version'
         - $ref: '#/components/parameters/GS1-Extensions'
         - $ref: '#/components/parameters/GS1-EPCIS-Min'
         - $ref: '#/components/parameters/GS1-EPCIS-Max'
-        - $ref: '#/components/parameters/GS1-CBV-Version'
         - $ref: '#/components/parameters/GS1-CBV-Min'
         - $ref: '#/components/parameters/GS1-CBV-Max'
       description: 
@@ -618,10 +612,8 @@ paths:
         This endpoint returns all sub-resources of an EPCIS event type, which currently is `events`. A server may
         add additional endpoints, for example `schema` to access the EPCIS event type schema.
       parameters:
-        - $ref: '#/components/parameters/GS1-EPCIS-Version'
         - $ref: '#/components/parameters/GS1-EPCIS-Min'
         - $ref: '#/components/parameters/GS1-EPCIS-Max'
-        - $ref: '#/components/parameters/GS1-CBV-Version'
         - $ref: '#/components/parameters/GS1-CBV-Min'
         - $ref: '#/components/parameters/GS1-CBV-Max'
       responses:
@@ -675,10 +667,8 @@ paths:
       parameters:
         - $ref: '#/components/parameters/NextPageToken'
         - $ref: '#/components/parameters/PerPage'
-        - $ref: '#/components/parameters/GS1-CBV-Version'
         - $ref: '#/components/parameters/GS1-CBV-Min'
         - $ref: '#/components/parameters/GS1-CBV-Max'
-        - $ref: '#/components/parameters/GS1-EPCIS-Version'
         - $ref: '#/components/parameters/GS1-EPCIS-Min'
         - $ref: '#/components/parameters/GS1-EPCIS-Max'
         - $ref: '#/components/parameters/GS1-EPC-Format'
@@ -744,10 +734,8 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
-        - $ref: '#/components/parameters/GS1-EPCIS-Version'
         - $ref: '#/components/parameters/GS1-EPCIS-Min'
         - $ref: '#/components/parameters/GS1-EPCIS-Max'
-        - $ref: '#/components/parameters/GS1-CBV-Version'
         - $ref: '#/components/parameters/GS1-CBV-Min'
         - $ref: '#/components/parameters/GS1-CBV-Max'
         - $ref: '#/components/parameters/GS1-EPC-Format'
@@ -869,10 +857,8 @@ paths:
       parameters:
         - $ref: '#/components/parameters/NextPageToken'
         - $ref: '#/components/parameters/PerPage'
-        - $ref: '#/components/parameters/GS1-CBV-Version'
         - $ref: '#/components/parameters/GS1-CBV-Min'
         - $ref: '#/components/parameters/GS1-CBV-Max'
-        - $ref: '#/components/parameters/GS1-EPCIS-Version'
         - $ref: '#/components/parameters/GS1-EPCIS-Min'
         - $ref: '#/components/parameters/GS1-EPCIS-Max'
         - $ref: '#/components/parameters/GS1-EPC-Format'
@@ -940,10 +926,8 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
-        - $ref: '#/components/parameters/GS1-EPCIS-Version'
         - $ref: '#/components/parameters/GS1-EPCIS-Min'
         - $ref: '#/components/parameters/GS1-EPCIS-Max'
-        - $ref: '#/components/parameters/GS1-CBV-Version'
         - $ref: '#/components/parameters/GS1-CBV-Min'
         - $ref: '#/components/parameters/GS1-CBV-Max'
         - $ref: '#/components/parameters/GS1-CBV-XML-Format'
@@ -1065,10 +1049,8 @@ paths:
       parameters:
         - $ref: '#/components/parameters/NextPageToken'
         - $ref: '#/components/parameters/PerPage'
-        - $ref: '#/components/parameters/GS1-CBV-Version'
         - $ref: '#/components/parameters/GS1-CBV-Min'
         - $ref: '#/components/parameters/GS1-CBV-Max'
-        - $ref: '#/components/parameters/GS1-EPCIS-Version'
         - $ref: '#/components/parameters/GS1-EPCIS-Min'
         - $ref: '#/components/parameters/GS1-EPCIS-Max'
         - $ref: '#/components/parameters/GS1-EPC-Format'
@@ -1131,10 +1113,8 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
-        - $ref: '#/components/parameters/GS1-EPCIS-Version'
         - $ref: '#/components/parameters/GS1-EPCIS-Min'
         - $ref: '#/components/parameters/GS1-EPCIS-Max'
-        - $ref: '#/components/parameters/GS1-CBV-Version'
         - $ref: '#/components/parameters/GS1-CBV-Min'
         - $ref: '#/components/parameters/GS1-CBV-Max'
         - $ref: '#/components/parameters/GS1-EPC-Format'
@@ -1251,10 +1231,8 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
-        - $ref: '#/components/parameters/GS1-EPCIS-Version'
         - $ref: '#/components/parameters/GS1-EPCIS-Min'
         - $ref: '#/components/parameters/GS1-EPCIS-Max'
-        - $ref: '#/components/parameters/GS1-CBV-Version'
         - $ref: '#/components/parameters/GS1-CBV-Min'
         - $ref: '#/components/parameters/GS1-CBV-Max'
         - $ref: '#/components/parameters/GS1-EPC-Format'
@@ -1377,10 +1355,8 @@ paths:
       parameters:
         - $ref: '#/components/parameters/NextPageToken'
         - $ref: '#/components/parameters/PerPage'
-        - $ref: '#/components/parameters/GS1-CBV-Version'
         - $ref: '#/components/parameters/GS1-CBV-Min'
         - $ref: '#/components/parameters/GS1-CBV-Max'
-        - $ref: '#/components/parameters/GS1-EPCIS-Version'
         - $ref: '#/components/parameters/GS1-EPCIS-Min'
         - $ref: '#/components/parameters/GS1-EPCIS-Max'
         - $ref: '#/components/parameters/GS1-EPC-Format'
@@ -1443,10 +1419,8 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
-        - $ref: '#/components/parameters/GS1-EPCIS-Version'
         - $ref: '#/components/parameters/GS1-EPCIS-Min'
         - $ref: '#/components/parameters/GS1-EPCIS-Max'
-        - $ref: '#/components/parameters/GS1-CBV-Version'
         - $ref: '#/components/parameters/GS1-CBV-Min'
         - $ref: '#/components/parameters/GS1-CBV-Max'
         - $ref: '#/components/parameters/GS1-CBV-XML-Format'
@@ -1568,10 +1542,8 @@ paths:
       parameters:
         - $ref: '#/components/parameters/NextPageToken'
         - $ref: '#/components/parameters/PerPage'
-        - $ref: '#/components/parameters/GS1-CBV-Version'
         - $ref: '#/components/parameters/GS1-CBV-Min'
         - $ref: '#/components/parameters/GS1-CBV-Max'
-        - $ref: '#/components/parameters/GS1-EPCIS-Version'
         - $ref: '#/components/parameters/GS1-EPCIS-Min'
         - $ref: '#/components/parameters/GS1-EPCIS-Max'
         - $ref: '#/components/parameters/GS1-EPC-Format'
@@ -1635,10 +1607,8 @@ paths:
         - $ref: '#/components/parameters/NextPageToken'
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/GS1-Extensions'
-        - $ref: '#/components/parameters/GS1-CBV-Version'
         - $ref: '#/components/parameters/GS1-CBV-Min'
         - $ref: '#/components/parameters/GS1-CBV-Max'
-        - $ref: '#/components/parameters/GS1-EPCIS-Version'
         - $ref: '#/components/parameters/GS1-EPCIS-Min'
         - $ref: '#/components/parameters/GS1-EPCIS-Max'
       summary: Returns a list of queries available.
@@ -1883,7 +1853,6 @@ paths:
       parameters:
         - $ref: '#/components/parameters/NextPageToken'
         - $ref: '#/components/parameters/PerPage'
-        - $ref: '#/components/parameters/GS1-EPCIS-Version'
         - $ref: '#/components/parameters/GS1-EPCIS-Min'
         - $ref: '#/components/parameters/GS1-EPCIS-Max'
       description: |
@@ -2235,10 +2204,8 @@ paths:
         # Common /events parameters
         - $ref: '#/components/parameters/NextPageToken'
         - $ref: '#/components/parameters/PerPage'
-        - $ref: '#/components/parameters/GS1-CBV-Version'
         - $ref: '#/components/parameters/GS1-CBV-Min'
         - $ref: '#/components/parameters/GS1-CBV-Max'
-        - $ref: '#/components/parameters/GS1-EPCIS-Version'
         - $ref: '#/components/parameters/GS1-EPCIS-Min'
         - $ref: '#/components/parameters/GS1-EPCIS-Max'
         - $ref: '#/components/parameters/GS1-EPC-Format'
@@ -2448,10 +2415,14 @@ components:
             example: OPTIONS, GET
             type: string
             default: 'OPTIONS, GET'
+        GS1-EPCIS-Version:
+          $ref: '#/components/headers/GS1-EPCIS-Version'
         GS1-EPCIS-Min:
           $ref: '#/components/headers/GS1-EPCIS-Min'
         GS1-EPCIS-Max:
           $ref: '#/components/headers/GS1-EPCIS-Max'
+        GS1-CBV-Version:
+          $ref: '#/components/headers/GS1-CBV-Version'
         GS1-CBV-Min:
           $ref: '#/components/headers/GS1-CBV-Min'
         GS1-CBV-Max:
@@ -2476,10 +2447,14 @@ components:
             example: OPTIONS, GET, POST
             type: string
             default: 'OPTIONS, GET, POST'
+        GS1-EPCIS-Version:
+          $ref: '#/components/headers/GS1-EPCIS-Version'
         GS1-EPCIS-Min:
           $ref: '#/components/headers/GS1-EPCIS-Min'
         GS1-EPCIS-Max:
           $ref: '#/components/headers/GS1-EPCIS-Max'
+        GS1-CBV-Version:
+          $ref: '#/components/headers/GS1-CBV-Version'
         GS1-CBV-Min:
           $ref: '#/components/headers/GS1-CBV-Min'
         GS1-CBV-Max:
@@ -2504,10 +2479,14 @@ components:
             example: OPTIONS, GET, DELETE
             type: string
             default: 'OPTIONS, GET, DELETE'
+        GS1-EPCIS-Version:
+          $ref: '#/components/headers/GS1-EPCIS-Version'
         GS1-EPCIS-Min:
           $ref: '#/components/headers/GS1-EPCIS-Min'
         GS1-EPCIS-Max:
           $ref: '#/components/headers/GS1-EPCIS-Max'
+        GS1-CBV-Version:
+          $ref: '#/components/headers/GS1-CBV-Version'
         GS1-CBV-Min:
           $ref: '#/components/headers/GS1-CBV-Min'
         GS1-CBV-Max:
@@ -2532,10 +2511,14 @@ components:
             example: OPTIONS, POST, GET
             type: string
             default: OPTIONS, POST, GET
+        GS1-EPCIS-Version:
+          $ref: '#/components/headers/GS1-EPCIS-Version'
         GS1-EPCIS-Min:
           $ref: '#/components/headers/GS1-EPCIS-Min'
         GS1-EPCIS-Max:
           $ref: '#/components/headers/GS1-EPCIS-Max'
+        GS1-CBV-Version:
+          $ref: '#/components/headers/GS1-CBV-Version'
         GS1-CBV-Min:
           $ref: '#/components/headers/GS1-CBV-Min'
         GS1-CBV-Max:
@@ -2565,18 +2548,12 @@ components:
             example: OPTIONS, DELETE, GET
             type: string
             default: OPTIONS, DELETE, GET
+        GS1-EPCIS-Version:
+          $ref: '#/components/headers/GS1-EPCIS-Version'
         GS1-EPCIS-Min:
           $ref: '#/components/headers/GS1-EPCIS-Min'
         GS1-EPCIS-Max:
           $ref: '#/components/headers/GS1-EPCIS-Max'
-        GS1-CBV-Min:
-          $ref: '#/components/headers/GS1-CBV-Min'
-        GS1-CBV-Max:
-          $ref: '#/components/headers/GS1-CBV-Max'
-        GS1-EPC-Format:
-          $ref: '#/components/headers/GS1-EPC-Format'
-        GS1-CBV-XML-Format:
-          $ref: '#/components/headers/GS1-CBV-XML-Format'
         GS1-Extensions:
           $ref: '#/components/headers/GS1-Extensions'
         GS1-Vendor-Version:
