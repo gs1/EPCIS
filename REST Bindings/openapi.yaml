@@ -200,7 +200,8 @@ paths:
       parameters:
         - $ref: '#/components/parameters/NextPageToken'
         - $ref: '#/components/parameters/PerPage'
-        - $ref: '#/components/parameters/GS1-EPCIS-Version'
+        - $ref: '#/components/parameters/GS1-EPCIS-Min'
+        - $ref: '#/components/parameters/GS1-EPCIS-Max'
         - $ref: '#/components/parameters/GS1-Extensions'
       summary: Returns a list of capture jobs.
       description: |
@@ -284,7 +285,8 @@ paths:
           $ref: '#/components/responses/500ImplementationException'
     get:
       parameters:
-        - $ref: '#/components/parameters/GS1-EPCIS-Version'
+        - $ref: '#/components/parameters/GS1-EPCIS-Min'
+        - $ref: '#/components/parameters/GS1-EPCIS-Max'
       tags:
         - 'Capture'
       summary: Returns information about the capture job.
