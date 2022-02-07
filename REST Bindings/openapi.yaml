@@ -1726,6 +1726,8 @@ paths:
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-Min'
         - $ref: '#/components/parameters/GS1-EPCIS-Max'
+        - $ref: '#/components/parameters/GS1-CBV-Min'
+        - $ref: '#/components/parameters/GS1-CBV-Max'
         - $ref: '#/components/parameters/GS1-Extensions'
       tags:
         - 'Queries'
