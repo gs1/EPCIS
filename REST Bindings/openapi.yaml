@@ -2756,14 +2756,13 @@ components:
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
     406NotAcceptable:
       description: |
-        The server cannot return the response as requested. For example, the client requested an HTML response
-        but the server does not support this.
+        The server cannot return the response as requested. 
       content:
         application/problem+json:
           schema:
             example:
-              type: "epcisException:ImplementationException"
-              title: "Cannot reproduce response in a desired content type"
+              type: "epcisException:NotAcceptableException"
+              title: "Conflicting request and response headers"
               status: 406
             allOf:
               - properties:
@@ -2776,7 +2775,7 @@ components:
                     type: string
                     format: uri
                     enum:
-                      - epcisException:ImplementationException
+                      - epcisException:NotAcceptableException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
     415UnsupportedMediaType:
       description: |
@@ -2785,7 +2784,7 @@ components:
         application/problem+json:
           schema:
             example:
-              type: "epcisException:ImplementationException"
+              type: "epcisException:UnsupportedMediaTypeException"
               title: "Unsupported Media Type"
               status: 415
             allOf:
@@ -2799,7 +2798,7 @@ components:
                     type: string
                     format: uri
                     enum:
-                      - epcisException:ImplementationException
+                      - epcisException:IUnsupportedMediaTypeException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
     500ImplementationException:
       description: An error occurred on the backend.
@@ -3280,7 +3279,7 @@ components:
                       items:
                         type: object
         epcisHeader:
-          type: object
+          type: object 
           properties:
             epcisMasterData:
               type: object
@@ -3956,6 +3955,7 @@ components:
       enum:
         - 'rollback'
         - 'proceed'
+        - 'all'
     GS1-Next-Page-Token-Expires:
       example: '2017-07-21T17:32:28Z'
       type: string
@@ -4167,7 +4167,7 @@ components:
         If both server and client set `GS1-EPC-Format` to `No_Preference`, the default value is `Always_GS1_Digital_Link`:
 
         - No_Preference: The server chooses the representation.
-        - Always_DL: URIs are returned as GS1 Digital Link.
+        - Always_GS1_Digital_Link: URIs are returned as GS1 Digital Link.
         - Always_EPC_URN: URIs are returned as URN.
         - Never_Translates: The original format is kept.
       schema:
@@ -4269,6 +4269,7 @@ components:
 
         - `rollback`: "All or nothing". Either the capture job is entirely successful or all EPCIS events are rejected.
         - `proceed`: "Greedy capture". The capture interface tries to capture as many EPCIS events as possible, even if there are errors.
+        - `all`: This is to be used only by the server to announce it supports both `rollback` and `proceed`.
 
         The default behaviour is `rollback`, as in EPCIS 1.2.
       schema:
