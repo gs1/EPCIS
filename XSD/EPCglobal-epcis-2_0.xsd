@@ -483,7 +483,7 @@ GS1 retains the right to make changes to this document at any time, without noti
   <xsd:complexType name="SensorReportType">
     <xsd:simpleContent>
       <xsd:extension base="xsd:string">
-        <xsd:attribute type="xsd:anyURI" name="type" use="required"/>
+        <xsd:attribute type="xsd:anyURI" name="type" use="optional"/>
         <xsd:attribute type="xsd:double" name="value" use="optional"/>
         <xsd:attribute type="xsd:anyURI" name="component" use="optional"/>
         <xsd:attribute type="xsd:string" name="stringValue" use="optional"/>
