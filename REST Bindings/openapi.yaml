@@ -3947,6 +3947,7 @@ components:
         - Always_GS1_Digital_Link
         - Always_EPC_URN
         - Never_Translates
+    
     GS1-CBV-XML-Format:
       example: Always_Web_URI
       type: string
@@ -4188,13 +4189,14 @@ components:
       in: header
       name: GS1-EPC-Format
       description: |
-       Header to indicate whether EPCs are expressed as GS1 Digital Link URIs or as EPC URNs.
-        If both server and client set `GS1-EPC-Format` to `No_Preference`, the default value is `Always_GS1_Digital_Link`:
+       Header used by the client to indicate whether EPCs are expressed as GS1 Digital Link URIs or as EPC URNs.
+       It is also used by the server to announce which EPC formats are supported. 
+       If absent the default value is `Always_GS1_Digital_Link`:
 
-        - No_Preference: The server chooses the representation.
+        - No_Preference: No preference in the representation, i.e. any format is accepted.
         - Always_GS1_Digital_Link: URIs are returned as GS1 Digital Link.
         - Always_EPC_URN: URIs are returned as URN.
-        - Never_Translates: The original format is kept.
+        - Never_Translates: EPCs are never translated i.e. they are kept in the original format provided by the client.
       schema:
         $ref: '#/components/schemas/GS1-EPC-Format'
     GS1-CBV-XML-Format:
@@ -4259,7 +4261,7 @@ components:
         $ref: '#/components/schemas/GS1-CBV-Max'
     GS1-EPC-Format:
       description: |
-        Request or response header to indicate whether EPCs are expressed as GS1 Digital Link URIs or as EPC URNs.
+        Header to indicate whether EPCs are expressed as GS1 Digital Link URIs or as EPC URNs.
       schema:
         $ref: '#/components/schemas/GS1-EPC-Format'
     GS1-CBV-XML-Format:
