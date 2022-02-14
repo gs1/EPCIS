@@ -114,8 +114,6 @@ paths:
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-Version'
         - $ref: '#/components/parameters/GS1-CBV-Version'
-        - $ref: '#/components/parameters/GS1-EPC-Format'
-        - $ref: '#/components/parameters/GS1-CBV-XML-Format'
         - $ref: '#/components/parameters/GS1-Capture-Error-Behaviour'
 
       description: |
@@ -151,10 +149,6 @@ paths:
               $ref: '#/components/headers/GS1-EPCIS-Version'
             GS1-CBV-Version:
               $ref: '#/components/headers/GS1-CBV-Version'
-            GS1-EPC-Format:
-              $ref: '#/components/headers/GS1-EPC-Format'
-            GS1-CBV-XML-Format:
-              $ref: '#/components/headers/GS1-CBV-XML-Format'
             GS1-Extensions:
               $ref: '#/components/headers/GS1-Extensions'
             Location:
@@ -439,8 +433,6 @@ paths:
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-Version'
         - $ref: '#/components/parameters/GS1-CBV-Version'
-        - $ref: '#/components/parameters/GS1-EPC-Format'
-        - $ref: '#/components/parameters/GS1-CBV-XML-Format'
       tags:
         - 'Capture'
       summary: Synchronous capture interface for a single EPCIS event.
@@ -465,10 +457,6 @@ paths:
               $ref: '#/components/headers/GS1-EPCIS-Version'
             GS1-CBV-Version:
               $ref: '#/components/headers/GS1-CBV-Version'
-            GS1-EPC-Format:
-              $ref: '#/components/headers/GS1-EPC-Format'
-            GS1-CBV-XML-Format:
-              $ref: '#/components/headers/GS1-CBV-XML-Format'
             GS1-Extensions:
               $ref: '#/components/headers/GS1-Extensions'
             Location:
@@ -783,8 +771,6 @@ paths:
               $ref: '#/components/headers/GS1-EPCIS-Version'
             GS1-CBV-Version:
               $ref: '#/components/headers/GS1-CBV-Version'
-            GS1-EPC-Format:
-              $ref: '#/components/headers/GS1-EPC-Format'
             GS1-Extensions:
               $ref: '#/components/headers/GS1-Extensions'
             Link:
@@ -987,8 +973,6 @@ paths:
               $ref: '#/components/headers/GS1-EPCIS-Version'
             GS1-CBV-Version:
               $ref: '#/components/headers/GS1-CBV-Version'
-            GS1-CBV-XML-Format:
-              $ref: '#/components/headers/GS1-CBV-XML-Format'
             Link:
               $ref: '#/components/headers/Link'
             GS1-Next-Page-Token-Expires:
@@ -1174,8 +1158,6 @@ paths:
               $ref: '#/components/headers/GS1-EPCIS-Version'
             GS1-CBV-Version:
               $ref: '#/components/headers/GS1-CBV-Version'
-            GS1-CBV-XML-Format:
-              $ref: '#/components/headers/GS1-CBV-XML-Format'
             Link:
               $ref: '#/components/headers/Link'
             GS1-Next-Page-Token-Expires:
@@ -1297,8 +1279,6 @@ paths:
               $ref: '#/components/headers/GS1-EPCIS-Version'
             GS1-CBV-Version:
               $ref: '#/components/headers/GS1-CBV-Version'
-            GS1-CBV-XML-Format:
-              $ref: '#/components/headers/GS1-CBV-XML-Format'
             Link:
               $ref: '#/components/headers/Link'
             GS1-Next-Page-Token-Expires:
@@ -1493,8 +1473,6 @@ paths:
               $ref: '#/components/headers/GS1-EPCIS-Version'
             GS1-CBV-Version:
               $ref: '#/components/headers/GS1-CBV-Version'
-            GS1-CBV-XML-Format:
-              $ref: '#/components/headers/GS1-CBV-XML-Format'
             Link:
               $ref: '#/components/headers/Link'
             GS1-Next-Page-Token-Expires:
@@ -1679,10 +1657,6 @@ paths:
               $ref: '#/components/headers/GS1-EPCIS-Version'
             GS1-CBV-Version:
               $ref: '#/components/headers/GS1-CBV-Version'
-            GS1-EPC-Format:
-              $ref: '#/components/headers/GS1-EPC-Format'
-            GS1-CBV-XML-Format:
-              $ref: '#/components/headers/GS1-CBV-XML-Format'
             GS1-Extensions:
               $ref: '#/components/headers/GS1-Extensions'
             Link:
@@ -1736,8 +1710,6 @@ paths:
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-Version'
         - $ref: '#/components/parameters/GS1-CBV-Version'
-        - $ref: '#/components/parameters/GS1-EPC-Format'
-        - $ref: '#/components/parameters/GS1-CBV-XML-Format'
         - $ref: '#/components/parameters/GS1-Extensions'
       description: |
         Creating a named query creates a view on the events in the repository, accessible through its events resource.
@@ -1751,10 +1723,6 @@ paths:
               $ref: '#/components/headers/GS1-EPCIS-Version'
             GS1-CBV-Version:
               $ref: '#/components/headers/GS1-CBV-Version'
-            GS1-EPC-Format:
-              $ref: '#/components/headers/GS1-EPC-Format'
-            GS1-CBV-XML-Format:
-              $ref: '#/components/headers/GS1-CBV-XML-Format'
             GS1-Extensions:
               $ref: '#/components/headers/GS1-Extensions'
             Location:
@@ -1796,10 +1764,6 @@ paths:
               $ref: '#/components/headers/GS1-EPCIS-Version'
             GS1-CBV-Version:
               $ref: '#/components/headers/GS1-CBV-Version'
-            GS1-EPC-Format:
-              $ref: '#/components/headers/GS1-EPC-Format'
-            GS1-CBV-XML-Format:
-              $ref: '#/components/headers/GS1-CBV-XML-Format'
             GS1-Extensions:
               $ref: '#/components/headers/GS1-Extensions'
           description: |
@@ -2374,10 +2338,6 @@ components:
       headers:
         GS1-EPCIS-Version:
           $ref: '#/components/headers/GS1-EPCIS-Version'
-        GS1-EPC-Format:
-          $ref: '#/components/headers/GS1-EPC-Format'
-        GS1-CBV-XML-Format:
-          $ref: '#/components/headers/GS1-CBV-XML-Format'
         GS1-CBV-Version:
           $ref: '#/components/headers/GS1-CBV-Version'
         GS1-Extensions:
@@ -2401,10 +2361,6 @@ components:
           $ref: '#/components/headers/GS1-CBV-Version'
         GS1-Extensions:
           $ref: '#/components/headers/GS1-Extensions'
-        GS1-EPC-Format:
-          $ref: '#/components/headers/GS1-EPC-Format'
-        GS1-CBV-XML-Format:
-          $ref: '#/components/headers/GS1-CBV-XML-Format'
         Link:
           $ref: '#/components/headers/Link'
         GS1-Next-Page-Token-Expires:
@@ -2422,10 +2378,6 @@ components:
           $ref: '#/components/headers/GS1-CBV-Version'
         GS1-Extensions:
           $ref: '#/components/headers/GS1-Extensions'
-        GS1-EPC-Format:
-          $ref: '#/components/headers/GS1-EPC-Format'
-        GS1-CBV-XML-Format:
-          $ref: '#/components/headers/GS1-CBV-XML-Format'
       description: EPCIS Query Document containing events with the requested `eventID`.
       content:
         application/json:
@@ -2463,8 +2415,6 @@ components:
           $ref: '#/components/headers/GS1-EPCIS-Version'
         GS1-CBV-Version:
           $ref: '#/components/headers/GS1-CBV-Version'
-        GS1-CBV-XML-Format:
-          $ref: '#/components/headers/GS1-CBV-XML-Format'
         Link:
           $ref: '#/components/headers/Link'
         GS1-Next-Page-Token-Expires:
@@ -4238,7 +4188,7 @@ components:
       in: header
       name: GS1-EPC-Format
       description: |
-        Request or response header to indicate whether EPCs are expressed as GS1 Digital Link URIs or as EPC URNs.
+       Header to indicate whether EPCs are expressed as GS1 Digital Link URIs or as EPC URNs.
         If both server and client set `GS1-EPC-Format` to `No_Preference`, the default value is `Always_GS1_Digital_Link`:
 
         - No_Preference: The server chooses the representation.
