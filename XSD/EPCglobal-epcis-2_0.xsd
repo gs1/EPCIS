@@ -491,18 +491,18 @@ GS1 retains the right to make changes to this document at any time, without noti
         <xsd:attribute type="xsd:hexBinary" name="hexBinaryValue" use="optional"/>
         <xsd:attribute type="xsd:anyURI" name="uriValue" use="optional"/>
         <xsd:attribute type="xsd:string" name="uom" use="optional"/>
-        <xsd:attribute type="xsd:float" name="minValue" use="optional"/>
-        <xsd:attribute type="xsd:float" name="maxValue" use="optional"/>
-        <xsd:attribute type="xsd:float" name="sDev" use="optional"/>
+        <xsd:attribute type="xsd:double" name="minValue" use="optional"/>
+        <xsd:attribute type="xsd:double" name="maxValue" use="optional"/>
+        <xsd:attribute type="xsd:double" name="sDev" use="optional"/>
         <xsd:attribute type="xsd:anyURI" name="chemicalSubstance" use="optional"/>
         <xsd:attribute type="xsd:anyURI" name="microorganism" use="optional"/>
         <xsd:attribute type="xsd:anyURI" name="deviceID" use="optional"/>
         <xsd:attribute type="xsd:anyURI" name="deviceMetadata" use="optional"/>
         <xsd:attribute type="xsd:anyURI" name="rawData" use="optional"/>
         <xsd:attribute type="xsd:dateTimeStamp" name="time" use="optional"/>
-        <xsd:attribute type="xsd:float" name="meanValue" use="optional"/>
-        <xsd:attribute type="xsd:float" name="percRank" use="optional"/>
-        <xsd:attribute type="xsd:float" name="percValue" use="optional"/>
+        <xsd:attribute type="xsd:double" name="meanValue" use="optional"/>
+        <xsd:attribute type="xsd:double" name="percRank" use="optional"/>
+        <xsd:attribute type="xsd:double" name="percValue" use="optional"/>
         <xsd:attribute type="xsd:anyURI" name="dataProcessingMethod" use="optional"/>
         <xsd:attribute type="xsd:anyURI" name="coordinateReferenceSystem" use="optional"/>
         <xsd:attribute type="xsd:anyURI" name="exception" use="required"/>
