@@ -812,8 +812,8 @@ GS1 retains the right to make changes to this document at any time, without noti
           <xsd:element name="sourceList" type="epcis:SourceListType" minOccurs="0"/>
           <xsd:element name="destinationList" type="epcis:DestinationListType" minOccurs="0"/>
           <xsd:element name="sensorElementList" type="epcis:SensorElementListType" minOccurs="0"/>
-          <xsd:element name="persistentDisposition" type="epcis:PersistentDispositionType" minOccurs="0" />
           <xsd:element name="extension" type="epcis:AssociationEventExtensionType" minOccurs="0"/>
+          <xsd:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
         </xsd:sequence>
         <xsd:anyAttribute processContents="lax"/>
       </xsd:extension>
