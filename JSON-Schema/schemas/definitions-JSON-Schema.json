@@ -39,6 +39,18 @@
         "version": {
             "type": "string",
             "pattern":  "^\\d+(\\.\\d+)?$"
+        },
+        "id": {
+            "oneOf": [
+                {
+                    "type": "string",
+                    "format": "uri"
+                },
+                {
+                    "type": "string",
+                    "pattern": "_:([a-z]|[A-Z]|[0-9]|%)*"
+                }
+            ]
         }
     }
 }
