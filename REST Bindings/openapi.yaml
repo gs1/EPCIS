@@ -205,8 +205,10 @@ paths:
         - $ref: '#/components/parameters/GS1-Extensions'
       summary: Returns a list of capture jobs.
       description: |
-        An endpoint to list capture jobs.
-        This endpoint supports pagination.
+        When EPCIS events are added through the capture interface, the capture process can run asynchronously. If the payload
+        is syntactically correct and the client is allowed to call `/capture`, the server returns a `202` HTTP response code. This
+        does not guarantee successful storage of all EPCIS events. This endpoint returns all capture jobs that were created
+        and supports pagination.
       responses:
         '200':
           headers:
@@ -219,17 +221,42 @@ paths:
             GS1-Next-Page-Token-Expires:
               $ref: '#/components/headers/GS1-Next-Page-Token-Expires'
           description: |
-            When EPCIS events are added through the capture interface, the capture process can run asynchronously.
-            A capture job resource exposes the state of the capture job to the client. This endpoint returns all
-            capture jobs that were created.
+            A capture job document has at least the following properties:
+
+            - `running`: whether or not the capture job is still active.
+            - `success`: whether or not at least one error occurred.
+            - `captureErrorBehaviour`: GS1-Capture-Error-Behaviour header value provided with POST data to capture.
+            - `errors` or `errorFile`: with the errors if `success` is `false`.
+
+            ### captureErrorBehaviour value is `rollback`
+
+            | Capture job `running` | Capture job `success` | Capture job outcome |
+            |:--------|:---------|:---------|
+            | `true` | `true` | Still capturing EPCIS events. No errors occurred so far. |
+            | `true` | `false` | At least one error occurred. Rollback is in progress. |
+            | `false` | `true` | All EPCIS events are captured. |
+            | `false` | `false` | All EPCIS events are rejected. |
+
+            ### captureErrorBehaviour value is `proceed`
+
+            | Capture job `running` | Capture job `success` | Capture job outcome |
+            |:--------|:---------|:---------|
+            | `true` | `true` | Still capturing EPCIS events. No errors occurred so far. |
+            | `true` | `false` | At least one error occurred but more EPCIS events are currently being captured. |
+            | `false` | `true` | All EPCIS events were captured without an error. |
+            | `false` | `false` | Some EPCIS events were captured but errors occurred. |
+
+            If `success` is `false`, check the `errors` or `errorFile` property for details.
           content:
             application/json:
               example: [
                 {
                   "captureID": "id261378658356",
                   "createdAt": "2021-07-21T17:32:28Z",
+                  "finishedAt" : "2022-01-21T17:45:28Z",
                   "running": false,
                   "success": true,
+                  "captureErrorBehaviour": "rollback",
                   "errors": [ ]
                 },
                 {
@@ -237,6 +264,7 @@ paths:
                   "createdAt": "2021-08-21T17:32:28Z",
                   "running": true,
                   "success": true,
+                  "captureErrorBehaviour": "proceed",
                   "errors": [ ]
                 }]
               schema:
@@ -290,39 +318,11 @@ paths:
       tags:
         - 'Capture'
       summary: Returns information about the capture job.
-
       description: |
-
         When EPCIS events are added through the capture interface, the capture process can run asynchronously. If the payload
         is syntactically correct and the client is allowed to call `/capture`, the server returns a `202` HTTP response code. This
         does not guarantee successful storage of all EPCIS events. The capture job endpoint exposes the state
         of the capture job to the client.
-
-        A capture job document has at least the following properties:
-
-        - `running`: whether or not the capture job is still active
-        - `success`: whether or not at least one error occurred,
-        - `errors` or `errorFile`: with the errors if `success` is `false`.
-
-        ### GS1-Capture-Error-Behaviour header value is `rollback`
-
-        | Capture job `running` | Capture job `success` | Capture job outcome |
-        |:--------|:---------|:---------|
-        | `true` | `true` | Still capturing EPCIS events. No errors occurred so far. |
-        | `true` | `false` | At least one error occurred. Rollback is in progress. |
-        | `false` | `true` | All EPCIS events are captured. |
-        | `false` | `false` | All EPCIS events are rejected. |
-
-        ### GS1-Capture-Error-Behaviour header value is `proceed`
-
-        | Capture job `running` | Capture job `success` | Capture job outcome |
-        |:--------|:---------|:---------|
-        | `true` | `true` | Still capturing EPCIS events. No errors occurred so far. |
-        | `true` | `false` | At least one error occurred but more EPCIS events are currently being captured. |
-        | `false` | `true` | All EPCIS events were captured without an error. |
-        | `false` | `false` | Some EPCIS events were captured but errors occurred. |
-
-        If `success` is `false`, check the `errors` or `errorFile` property for details.
       responses:
         '200':
           headers:
@@ -330,12 +330,44 @@ paths:
               $ref: '#/components/headers/GS1-EPCIS-Version'
             GS1-Extensions:
               $ref: '#/components/headers/GS1-Extensions'
-            GS1-Capture-Error-Behaviour:
-              $ref: '#/components/headers/GS1-Capture-Error-Behaviour'
           description: |
-            Returns the state of the capture job.
+            A capture job document has at least the following properties:
+
+            - `running`: whether or not the capture job is still active.
+            - `success`: whether or not at least one error occurred.
+            - `captureErrorBehaviour`: GS1-Capture-Error-Behaviour header value provided with POST data to capture.
+            - `errors` or `errorFile`: with the errors if `success` is `false`.
+
+            ### captureErrorBehaviour value is `rollback`
+
+            | Capture job `running` | Capture job `success` | Capture job outcome |
+            |:--------|:---------|:---------| 
+            | `true` | `true` | Still capturing EPCIS events. No errors occurred so far. |
+            | `true` | `false` | At least one error occurred. Rollback is in progress. |
+            | `false` | `true` | All EPCIS events are captured. |
+            | `false` | `false` | All EPCIS events are rejected. |
+
+            ### captureErrorBehaviour value is `proceed`
+
+            | Capture job `running` | Capture job `success` | Capture job outcome |
+            |:--------|:---------|:---------|
+            | `true` | `true` | Still capturing EPCIS events. No errors occurred so far. |
+            | `true` | `false` | At least one error occurred but more EPCIS events are currently being captured. |
+            | `false` | `true` | All EPCIS events were captured without an error. |
+            | `false` | `false` | Some EPCIS events were captured but errors occurred. |
+
+            If `success` is `false`, check the `errors` or `errorFile` property for details.
           content:
-            application/json:
+            application/json:             
+              example: {
+                  "captureID": "id261378658356",
+                  "createdAt": "2021-07-21T17:32:28Z",
+                  "finishedAt" : "2022-01-21T17:45:28Z",
+                  "running": false,
+                  "success": true,
+                  "captureErrorBehaviour": "rollback",
+                  "errors": [ ]
+                }
               schema:
                 $ref: '#/components/schemas/CaptureJob'
         '401':
@@ -3164,22 +3196,42 @@ components:
     CaptureJob:
       description: |
         When EPCIS events are added through the capture interface, the capture process can run asynchronously. If the payload
-        is syntactically correct and the client is allowed to call `/capture`, the server returns a `202`. This
-        does not guarantee successful storage of all EPCIS events. The capture job endpoint exposes the state
-        of the capture job to the client.
+        is syntactically correct and the client is allowed to call `/capture`, the server returns a `202` HTTP response code. This
+        does not guarantee successful storage of all EPCIS events. The capture job exposes the state of the capture job to the client.
 
         A capture job document has at least the following properties:
 
-        - `running`: whether or not the capture job is still active
-        - `success`: whether or not at least one error occurred,
+        - `running`: whether or not the capture job is still active.
+        - `success`: whether or not at least one error occurred.
+        - `captureErrorBehaviour`: GS1-Capture-Error-Behaviour header value provided with POST data to capture.
         - `errors` or `errorFile`: with the errors if `success` is `false`.
 
+        ### captureErrorBehaviour value is `rollback`
+
+        | Capture job `running` | Capture job `success` | Capture job outcome |
+        |:--------|:---------|:---------|
+        | `true` | `true` | Still capturing EPCIS events. No errors occurred so far. |
+        | `true` | `false` | At least one error occurred. Rollback is in progress. |
+        | `false` | `true` | All EPCIS events are captured. |
+        | `false` | `false` | All EPCIS events are rejected. |
+
+        ### captureErrorBehaviour value is `proceed`
+
+        | Capture job `running` | Capture job `success` | Capture job outcome |
+        |:--------|:---------|:---------|
+        | `true` | `true` | Still capturing EPCIS events. No errors occurred so far. |
+        | `true` | `false` | At least one error occurred but more EPCIS events are currently being captured. |
+        | `false` | `true` | All EPCIS events were captured without an error. |
+        | `false` | `false` | Some EPCIS events were captured but errors occurred. |
+
+        If `success` is `false`, check the `errors` or `errorFile` property for details.
       example: {
         "captureID": "id9261379075",
         "createdAt": "2022-01-21T17:32:28Z",
-        "completedAt" : "2022-01-21T17:45:28Z",
-        "running": true,
+        "finishedAt" : "2022-01-21T17:45:28Z",
+        "running": false,
         "success": true,
+        "captureErrorBehaviour": "rollback",
         "errors": [ ]
       }
       type: object
@@ -3208,11 +3260,18 @@ components:
               example: "2022-01-21T17:32:28Z"
               type: string
               format: date-time
-            completedAt:
+            finishedAt:
               description: "When the capture job finished executing"
               example: "2022-01-21T17:45:28Z"
               type: string
               format: date-time
+            captureErrorBehaviour:
+              description: "GS1-Capture-Error-Behaviour header value provided with POST data to capture"
+              example: "rollback"
+              type: string
+              enum:
+                - 'rollback'
+                - 'proceed'
         - oneOf:
             - properties:
                 errors:
