@@ -924,16 +924,8 @@
       "pattern": "^\\d+(\\.\\d+)?$"
     },
     "id": {
-      "oneOf": [
-        {
-          "type": "string",
-          "format": "uri"
-        },
-        {
-          "type": "string",
-          "pattern": "_:([a-z]|[A-Z]|[0-9]|%|-)+"
-        }
-      ]
+      "type": "string",
+      "format": "uri"
     },
     "error-reason": {
       "anyOf": [

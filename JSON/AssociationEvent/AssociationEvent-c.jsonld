@@ -1,25 +1,31 @@
 {
-  "@context": ["https://gs1.github.io/EPCIS/epcis-context.jsonld",{"example": "http://ns.example.com/epcis/"}],
-  
-  "id": "_:document1",
+  "@context": [
+    "https://gs1.github.io/EPCIS/epcis-context.jsonld",
+    {
+      "example": "http://ns.example.com/epcis/"
+    }
+  ],
+  "id": "https://id.example.org/document1",
   "type": "EPCISDocument",
   "schemaVersion": "2.0",
-  "creationDate":"2019-11-03T14:00:00.000+01:00",
+  "creationDate": "2019-11-03T14:00:00.000+01:00",
   "epcisBody": {
-   "eventList": [
-     {
-		  "eventID": "ni:///sha-256;371c8eb1834fe5bca8722458310287d40d046c5bf032a484a8274299f7be2f59?ver=CBV2.0",
-		  "type": "AssociationEvent",
-		  "eventTime": "2019-11-03T14:00:00.000+01:00",
-		  "eventTimeZoneOffset": "+01:00",
-		  "parentID":"urn:epc:id:grai:4012345.55555.987",
-		  "childEPCs":["urn:epc:id:giai:4000001.12345"],
-		  "action": "DELETE",
-		  "bizStep": "removing",
-		  "readPoint": {"id": "urn:epc:id:sgln:4012345.00002.0"}
-     }
-
-   ]
+    "eventList": [
+      {
+        "eventID": "ni:///sha-256;371c8eb1834fe5bca8722458310287d40d046c5bf032a484a8274299f7be2f59?ver=CBV2.0",
+        "type": "AssociationEvent",
+        "eventTime": "2019-11-03T14:00:00.000+01:00",
+        "eventTimeZoneOffset": "+01:00",
+        "parentID": "urn:epc:id:grai:4012345.55555.987",
+        "childEPCs": [
+          "urn:epc:id:giai:4000001.12345"
+        ],
+        "action": "DELETE",
+        "bizStep": "removing",
+        "readPoint": {
+          "id": "urn:epc:id:sgln:4012345.00002.0"
+        }
+      }
+    ]
   }
-  
 }
