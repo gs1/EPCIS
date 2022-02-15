@@ -8,7 +8,7 @@
 			"gs1": "https://gs1.org/voc/"
 		}
 	],
-	"id": "_:document1",
+	"id": "https://id.example.org/document1",
 	"type": "EPCISDocument",
 	"schemaVersion": "2.0",
 	"creationDate": "2021-04-27T15:00:00+01:00",
@@ -30,8 +30,18 @@
 				"sensorElementList": [
 					{
 						"sensorReport": [
-							{"type": "Temperature", "value": 20.9, "ex:feature": "ex:ambiance", "uom": "CEL"},
-							{"type": "Temperature", "value": 20.7, "ex:feature": "ex:outerPackage", "uom": "CEL"}
+							{
+								"type": "Temperature",
+								"value": 20.9,
+								"ex:feature": "ex:ambiance",
+								"uom": "CEL"
+							},
+							{
+								"type": "Temperature",
+								"value": 20.7,
+								"ex:feature": "ex:outerPackage",
+								"uom": "CEL"
+							}
 						]
 					}
 				]

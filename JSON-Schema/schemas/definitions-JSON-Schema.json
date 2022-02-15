@@ -35,6 +35,14 @@
         "required-ld-context": {
             "type": "object",
             "required": ["@context"]
+        },
+        "version": {
+            "type": "string",
+            "pattern":  "^\\d+(\\.\\d+)?$"
+        },
+        "id": {
+            "type": "string",
+            "format": "uri"
         }
     }
 }

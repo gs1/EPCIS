@@ -5,7 +5,7 @@
       "example": "http://ns.example.com/epcis/"
     }
   ],
-  "id": "_:document1",
+  "id": "https://id.example.org/document1",
   "type": "EPCISQueryDocument",
   "schemaVersion": "2.0",
   "creationDate": "2005-07-11T11:30:47.0Z",

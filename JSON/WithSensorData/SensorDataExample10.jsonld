@@ -8,7 +8,7 @@
 			"gs1": "https://gs1.org/voc/"
 		}
 	],
-	"id": "_:document1",
+	"id": "https://id.example.org/document1",
 	"type": "EPCISDocument",
 	"schemaVersion": "2.0",
 	"creationDate": "2019-10-07T15:00:00.000+01:00",
@@ -30,9 +30,27 @@
 				"sensorElementList": [
 					{
 						"sensorReport": [
-							{"type": "Speed", "value": 4.5,  "component": "x", "ex:feature": "ex:product", "uom": "MTS"},
-							{"type": "Speed", "value": 12.8, "component": "y", "ex:feature": "ex:product", "uom": "MTS"},
-							{"type": "Speed", "value": 0,    "component": "z", "ex:feature": "ex:product", "uom": "MTS"}
+							{
+								"type": "Speed",
+								"value": 4.5,
+								"component": "x",
+								"ex:feature": "ex:product",
+								"uom": "MTS"
+							},
+							{
+								"type": "Speed",
+								"value": 12.8,
+								"component": "y",
+								"ex:feature": "ex:product",
+								"uom": "MTS"
+							},
+							{
+								"type": "Speed",
+								"value": 0,
+								"component": "z",
+								"ex:feature": "ex:product",
+								"uom": "MTS"
+							}
 						]
 					}
 				]

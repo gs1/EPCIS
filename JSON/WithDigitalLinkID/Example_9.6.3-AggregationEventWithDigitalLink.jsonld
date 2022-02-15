@@ -1,6 +1,11 @@
 {
-  "@context": ["https://gs1.github.io/EPCIS/epcis-context.jsonld",{"example": "http://ns.example.com/epcis/"}],
-  "id": "_:document1",
+  "@context": [
+    "https://gs1.github.io/EPCIS/epcis-context.jsonld",
+    {
+      "example": "http://ns.example.com/epcis/"
+    }
+  ],
+  "id": "https://id.example.org/document1",
   "type": "EPCISDocument",
   "schemaVersion": "2.0",
   "creationDate": "2005-07-11T11:30:47.0Z",
@@ -12,19 +17,32 @@
         "eventTime": "2013-06-08T14:58:56.591Z",
         "eventTimeZoneOffset": "+02:00",
         "parentID": "urn:epc:id:sscc:0614141.1234567890",
-        "childEPCs": [ "https://id.gs1.org/01/70614141123451/21/2017", "https://id.gs1.org/01/70614141123451/21/2018" ],
+        "childEPCs": [
+          "https://id.gs1.org/01/70614141123451/21/2017",
+          "https://id.gs1.org/01/70614141123451/21/2018"
+        ],
         "action": "OBSERVE",
         "bizStep": "receiving",
         "disposition": "in_progress",
-        "readPoint": {"id": "urn:epc:id:sgln:0614141.00777.0"},
-        "bizLocation": {"id": "urn:epc:id:sgln:0614141.00888.0"},
+        "readPoint": {
+          "id": "urn:epc:id:sgln:0614141.00777.0"
+        },
+        "bizLocation": {
+          "id": "urn:epc:id:sgln:0614141.00888.0"
+        },
         "childQuantityList": [
-          { "epcClass": "https://id.gs1.org/01/04012345987652", "quantity": 10 },
-          { "epcClass": "https://id.gs1.org/01/04012345123456/10/998877", "quantity": 200.5, "uom": "KGM" }
+          {
+            "epcClass": "https://id.gs1.org/01/04012345987652",
+            "quantity": 10
+          },
+          {
+            "epcClass": "https://id.gs1.org/01/04012345123456/10/998877",
+            "quantity": 200.5,
+            "uom": "KGM"
+          }
         ],
         "example:myField": "Example of a vendor/user extension"
       }
     ]
   }
 }
-

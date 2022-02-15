@@ -248,7 +248,21 @@
       },
       "required": [
         "eventList"
-      ]
+      ],
+      "propertyNames": {
+        "anyOf": [
+          {
+            "type": "string",
+            "enum": [
+              "eventList",
+              "vocabularyList"
+            ]
+          },
+          {
+            "$ref": "#/definitions/vocab-uri"
+          }
+        ]
+      }
     },
     "queryResults": {
       "type": "object",
@@ -264,8 +278,24 @@
         }
       },
       "required": [
+        "queryName",
         "resultsBody"
-      ]
+      ],
+      "propertyNames": {
+        "anyOf": [
+          {
+            "type": "string",
+            "enum": [
+              "queryName",
+              "subscriptionID",
+              "resultsBody"
+            ]
+          },
+          {
+            "$ref": "#/definitions/vocab-uri"
+          }
+        ]
+      }
     },
     "epcisQueryDocumentBody": {
       "type": "object",
@@ -276,7 +306,20 @@
       },
       "required": [
         "queryResults"
-      ]
+      ],
+      "propertyNames": {
+        "anyOf": [
+          {
+            "type": "string",
+            "enum": [
+              "queryResults"
+            ]
+          },
+          {
+            "$ref": "#/definitions/vocab-uri"
+          }
+        ]
+      }
     },
     "epcisHeader": {
       "type": "object",
@@ -292,11 +335,27 @@
             }
           }
         }
+      },
+      "propertyNames": {
+        "anyOf": [
+          {
+            "type": "string",
+            "enum": [
+              "epcisMasterData"
+            ]
+          },
+          {
+            "$ref": "#/definitions/vocab-uri"
+          }
+        ]
       }
     },
     "epcisDocument": {
       "type": "object",
       "properties": {
+        "id": {
+          "$ref": "#/definitions/id"
+        },
         "type": {
           "type": "string",
           "enum": [
@@ -307,11 +366,10 @@
           "$ref": "#/definitions/@context"
         },
         "schemaVersion": {
-          "type": "string"
+          "$ref": "#/definitions/version"
         },
         "creationDate": {
-          "type": "string",
-          "format": "date-time"
+          "$ref": "#/definitions/time"
         },
         "epcisHeader": {
           "$ref": "#/definitions/epcisHeader"
@@ -330,19 +388,51 @@
       },
       "required": [
         "@context",
+        "type",
         "schemaVersion",
         "creationDate",
         "epcisBody"
-      ]
+      ],
+      "propertyNames": {
+        "anyOf": [
+          {
+            "type": "string",
+            "enum": [
+              "@context",
+              "id",
+              "type",
+              "schemaVersion",
+              "creationDate",
+              "epcisHeader",
+              "epcisBody"
+            ]
+          },
+          {
+            "$ref": "#/definitions/vocab-uri"
+          }
+        ]
+      }
     },
     "epcisQueryDocument": {
       "type": "object",
       "properties": {
+        "@context": {
+          "$ref": "#/definitions/@context"
+        },
+        "id": {
+          "$ref": "#/definitions/id"
+        },
         "type": {
           "type": "string",
           "enum": [
             "EPCISQueryDocument"
           ]
+        },
+        "schemaVersion": {
+          "$ref": "#/definitions/version"
+        },
+        "creationDate": {
+          "$ref": "#/definitions/time"
         },
         "epcisBody": {
           "$ref": "#/definitions/epcisQueryDocumentBody"
@@ -350,8 +440,27 @@
       },
       "required": [
         "@context",
+        "type",
         "epcisBody"
-      ]
+      ],
+      "propertyNames": {
+        "anyOf": [
+          {
+            "type": "string",
+            "enum": [
+              "@context",
+              "id",
+              "type",
+              "schemaVersion",
+              "creationDate",
+              "epcisBody"
+            ]
+          },
+          {
+            "$ref": "#/definitions/vocab-uri"
+          }
+        ]
+      }
     },
     "EPCIS-Document": {
       "oneOf": [
@@ -809,6 +918,14 @@
       "required": [
         "@context"
       ]
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+(\\.\\d+)?$"
+    },
+    "id": {
+      "type": "string",
+      "format": "uri"
     },
     "error-reason": {
       "anyOf": [
