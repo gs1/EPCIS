@@ -1937,6 +1937,8 @@ paths:
       summary: Creates a query subscription.
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-Version'
+        - $ref: '#/components/parameters/GS1-EPC-Format'
+        - $ref: '#/components/parameters/GS1-CBV-XML-Format'
       description: |
         Creating a query subscription requires the client to provide a single endpoint to which the
         server will send events (as `EPCISQueryDocument`) and a subscription secret that the server needs to authenticate itself when
@@ -3770,6 +3772,8 @@ components:
           $ref: '#/components/schemas/GS1-Query-InitialRecordTime'
         minRecordTime:
           $ref: '#/components/schemas/GS1-Query-Min-Record-Time'
+        epcFormat:
+            $ref: '#/components/schemas/GS1-EPC-Format'
 
     QueryStreamSubscription:
       description: |
@@ -4196,7 +4200,7 @@ components:
         - No_Preference: No preference in the representation, i.e. any format is accepted.
         - Always_GS1_Digital_Link: URIs are returned as GS1 Digital Link.
         - Always_EPC_URN: URIs are returned as URN.
-        - Never_Translates: EPCs are never translated i.e. they are kept in the original format provided by the client.
+        - Never_Translates: EPCs are never translated, i.e. the original format is kept.
       schema:
         $ref: '#/components/schemas/GS1-EPC-Format'
     GS1-CBV-XML-Format:
