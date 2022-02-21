@@ -800,7 +800,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UriItemList'
+                $ref: '#/components/schemas/UriCollection'
               example: {
                   "@context": "https://gs1.github.io/EPCIS/epcis-context.jsonld",            
                   "type": "Collection",
@@ -1001,7 +1001,7 @@ paths:
           content:
             application/json:
               schema: 
-                $ref: '#/components/schemas/BizStepItemList'
+                $ref: '#/components/schemas/BizStepCollection'
         '401':
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
@@ -1188,7 +1188,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UriItemList'
+                $ref: '#/components/schemas/UriCollection'
               example: {
                 "@context": "https://gs1.github.io/EPCIS/epcis-context.jsonld",
                 "type": "Collection",
@@ -1311,7 +1311,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UriItemList'
+                $ref: '#/components/schemas/UriCollection'
               example: {
                  "@context": "https://gs1.github.io/EPCIS/epcis-context.jsonld",
                  "type": "Collection",
@@ -1507,7 +1507,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DispositionItemList'
+                $ref: '#/components/schemas/DispositionCollection'
         '401':
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
@@ -2382,7 +2382,7 @@ components:
           $ref: '#/components/headers/GS1-CBV-Version'
         GS1-Extensions:
           $ref: '#/components/headers/GS1-Extensions'
-      description: Returns a sub-resource list that contains at least `events`.
+      description: Returns a sub-resource list that contains at least the `events` sub-resource.
       content:
         application/json:
           example:
@@ -2438,7 +2438,22 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/TopLevelResources'
+            $ref: '#/components/schemas/TopLevelResourceCollection'
+          example: {
+            "@context": "https://gs1.github.io/EPCIS/epcis-context.jsonld",
+            "type": "Collection",
+            "member": [
+              "queries",
+              "capture",
+              "events",
+              "eventTypes",
+              "epcs", 
+              "readPoints",
+              "bizLocations",
+              "dispositions",
+              "bizSteps"
+            ]
+          }
     200SupportedEventTypes:
       description: Returns all supported EPCIS event types.
       headers:
@@ -2457,7 +2472,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/EventTypeItemList'
+            $ref: '#/components/schemas/EventTypeCollection'
     204DefaultDiscoveryResponse:
       description: |
         The `OPTIONS` method is used to discover capabilities for EPCIS 2.0 endpoints.
@@ -3488,7 +3503,7 @@ components:
       description: The `Upgrade` and `Connection` headers are needed to open a Websocket for queries.
       type: string
       default: upgrade
-    EventTypeItemList:
+    EventTypeCollection:
       type: object
       description: Event type item list
       example: {
@@ -3560,7 +3575,26 @@ components:
         - dispositions
         - capture
         - queries
-    BizStepItemList:
+    TopLevelResourceCollection:
+      type: object
+      required:
+        - '@context'
+        - 'type'
+        - member
+      properties:
+        '@context':
+          $ref: '#/components/schemas/LDContext'
+        'type':
+          type: string
+          enum: 
+            - 'Collection'
+        member:
+          type: array
+          items:
+            $ref: '#/components/schemas/TopLevelResources'
+          uniqueItems: true
+          minItems: 9
+    BizStepCollection:
       example: {
         "@context": [
           "https://gs1.github.io/EPCIS/epcis-context.jsonld",
@@ -3626,12 +3660,12 @@ components:
           type: string
           enum: 
             - 'Collection'
-        bizStep:
+        member:
           type: array
           items:
             type: string
           uniqueItems: true
-    DispositionItemList:
+    DispositionCollection:
       example: {
         "@context": [
           "https://gs1.github.io/EPCIS/epcis-context.jsonld",
@@ -3689,12 +3723,12 @@ components:
           type: string
           enum: 
             - 'Collection'
-        disposition:
+        member:
           type: array
           items:
             type: string
           uniqueItems: true
-    UriItemList:
+    UriCollection:
       description: A list of items which are URIs such as EPCs or business locations. 
       type: object
       required:
@@ -3715,7 +3749,7 @@ components:
             format: uri
           uniqueItems: true
     ResourceCollection:
-      description: A collection of sub-resources. 
+      description: A collection of sub-resources that includes at least the `events` one. 
       type: object
       required:
         - '@context'
@@ -3732,7 +3766,11 @@ components:
           type: array
           items:
             type: string
+            minLength: 1
+            enum:
+              - events
           uniqueItems: true
+          minItems: 1
     AbstractQuerySubscription:
       example: {
         "dest": "https://client.example.com/queryCallback",
