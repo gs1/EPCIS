@@ -800,7 +800,17 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EpcItemList'
+                $ref: '#/components/schemas/UriItemList'
+              example: {
+                  "@context": "https://gs1.github.io/EPCIS/epcis-context.jsonld",            
+                  "type": "Collection",
+                  "member": [
+                    "urn:jaif:id:obj:37SUN321456789A111222333AB+123456789012",
+                    "urn:epc:id:sgtin:0614141.107346.2018",
+                    "https://example.com/01/04012345123456/21/abc234",
+                    "urn:epc:id:sgtin:0614141.107346.2017"
+                  ]
+                }
         '401':
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
@@ -1178,7 +1188,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BizLocationItemList'
+                $ref: '#/components/schemas/UriItemList'
+              example: {
+                "@context": "https://gs1.github.io/EPCIS/epcis-context.jsonld",
+                "type": "Collection",
+                "member": ["urn:epc:id:sgln:9524987.20000.0"]
+              }
         '401':
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
@@ -1296,7 +1311,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ReadPointItemList'
+                $ref: '#/components/schemas/UriItemList'
+              example: {
+                 "@context": "https://gs1.github.io/EPCIS/epcis-context.jsonld",
+                 "type": "Collection",
+                 "member": [
+                  "urn:epc:id:sgln:9524678.90000.WarehouseD2",
+                  "urn:epc:id:sgln:9524678.90000.WarehouseD1"
+                ]
+              }
         '401':
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
@@ -3474,8 +3497,8 @@ components:
       description: Event type item list
       example: {
           "@context": ["https://gs1.github.io/EPCIS/epcis-context.jsonld", { "ex": "https://example.org/myCustomEventTypes/" }],
-              "type": "EventTypeItemList",
-              "eventType": [
+              "type": "Collection",
+              "member": [
                 "AggregationEvent",
                 "AssociationEvent",
                 "ObjectEvent",
@@ -3487,15 +3510,15 @@ components:
       required: 
         - '@context'
         - 'type'
-        - eventType
+        - member
       properties:
         '@context':
           $ref: '#/components/schemas/LDContext'
         'type':
           type: string
           enum: 
-            - EventTypeItemList
-        eventType:
+            - Collection
+        member:
           type: array
           items:
             anyOf:
@@ -3549,8 +3572,8 @@ components:
             "ex": "https://example.org/myCustomBizSteps/"
           }
         ],
-        "type": "BizStepItemList",
-        "bizStep": [
+        "type": "Collection",
+        "member": [
           'accepting',
           'arriving',
           'assembling',
@@ -3599,14 +3622,14 @@ components:
       required:
         - '@context'
         - 'type'
-        - bizStep
+        - member
       properties:
         '@context':
           $ref: '#/components/schemas/LDContext'
         'type':
           type: string
           enum: 
-            - 'BizStepItemList'
+            - 'Collection'
         bizStep:
           type: array
           items:
@@ -3620,8 +3643,8 @@ components:
             "ex": "https://example.org/myCustomDispositions/"
           }
         ],
-        "type": "DispositionItemList",
-        "disposition": [
+        "type": "Collection",
+        "member": [
           'active',
           'available',
           'completeness_inferred',
@@ -3662,94 +3685,34 @@ components:
       required:
         - '@context'
         - 'type'
-        - disposition
+        - member
       properties:
         '@context':
           $ref: '#/components/schemas/LDContext'
         'type':
           type: string
           enum: 
-            - 'DispositionItemList'
+            - 'Collection'
         disposition:
           type: array
           items:
             type: string
           uniqueItems: true
-    BizLocationItemList:
-      example: {
-        "@context": "https://gs1.github.io/EPCIS/epcis-context.jsonld",
-        "type": "BizLocationItemList",
-        "bizLocation": ["urn:epc:id:sgln:9524987.20000.0"]
-      }
+    UriItemList:
+      description: A list of items which are URIs such as EPCs or business locations. 
       type: object
       required:
         - '@context'
         - 'type'
-        - bizLocation
+        - member
       properties:
         '@context':
           $ref: '#/components/schemas/LDContext'
         'type':
           type: string
           enum: 
-            - 'BizLocationItemList'
-        bizLocation:
-          type: array
-          items:
-            type: string
-            format: uri
-          uniqueItems: true
-    ReadPointItemList:
-      example: {
-        "@context": "https://gs1.github.io/EPCIS/epcis-context.jsonld",
-        "type": "ReadPointItemList",
-        "readPoint": [
-          "urn:epc:id:sgln:9524678.90000.WarehouseD2",
-          "urn:epc:id:sgln:9524678.90000.WarehouseD1"
-        ]
-      }
-      type: object
-      required:
-        - '@context'
-        - 'type'
-        - readPoint
-      properties:
-        '@context':
-          $ref: '#/components/schemas/LDContext'
-        'type':
-          type: string
-          enum: 
-            - 'ReadPointItemList'
-        readPoint:
-          type: array
-          items:
-            type: string
-            format: uri
-          uniqueItems: true
-    EpcItemList:
-      example: {
-        "@context": "https://gs1.github.io/EPCIS/epcis-context.jsonld",            
-        "type": "EpcItemList",
-        "epc": [
-          "urn:jaif:id:obj:37SUN321456789A111222333AB+123456789012",
-          "urn:epc:id:sgtin:0614141.107346.2018",
-          "https://example.com/01/04012345123456/21/abc234",
-          "urn:epc:id:sgtin:0614141.107346.2017"
-        ]
-      }
-      type: object
-      required:
-        - '@context'
-        - 'type'
-        - epc
-      properties:
-        '@context':
-          $ref: '#/components/schemas/LDContext'
-        'type':
-          type: string
-          enum: 
-            - 'EpcItemList'
-        epc:
+            - 'Collection'
+        member:
           type: array
           items:
             type: string
