@@ -2374,10 +2374,6 @@ components:
       headers:
         GS1-EPCIS-Version:
           $ref: '#/components/headers/GS1-EPCIS-Version'
-        GS1-EPCIS-Min:
-          $ref: '#/components/headers/GS1-EPCIS-Min'
-        GS1-EPCIS-Max:
-          $ref: '#/components/headers/GS1-EPCIS-Max'
         GS1-EPC-Format:
           $ref: '#/components/headers/GS1-EPC-Format'
         GS1-CBV-XML-Format:
@@ -2386,17 +2382,17 @@ components:
           $ref: '#/components/headers/GS1-CBV-Version'
         GS1-Extensions:
           $ref: '#/components/headers/GS1-Extensions'
-      description: Returns the relative path `events`.
+      description: Returns a sub-resource list that contains at least `events`.
       content:
         application/json:
           example:
-            - events
+           { 
+             "@context": "https://gs1.github.io/EPCIS/epcis-context.jsonld",
+             "type": "Collection",
+             "member": ["events"]
+           }
           schema:
-            type: array
-            items:
-              format: string
-              enum:
-                - events
+            $ref: '#/components/schemas/ResourceCollection'
     200EPCISQueryDocument:
       headers:
         GS1-EPCIS-Version:
@@ -3717,6 +3713,25 @@ components:
           items:
             type: string
             format: uri
+          uniqueItems: true
+    ResourceCollection:
+      description: A collection of sub-resources. 
+      type: object
+      required:
+        - '@context'
+        - 'type'
+        - member
+      properties:
+        '@context':
+          $ref: '#/components/schemas/LDContext'
+        'type':
+          type: string
+          enum: 
+            - 'Collection'
+        member:
+          type: array
+          items:
+            type: string
           uniqueItems: true
     AbstractQuerySubscription:
       example: {
