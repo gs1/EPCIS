@@ -10,6 +10,7 @@
         "dcterms": "http://purl.org/dc/terms/",
         "id": "@id",
         "type": "@type",
+        "baseURL": "@base",
         "ObjectEvent": "epcis:ObjectEvent",
         "AggregationEvent": "epcis:AggregationEvent",
         "TransformationEvent": "epcis:TransformationEvent",
