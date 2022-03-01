@@ -26,7 +26,6 @@
 				},
 				"sensorElementList": [
 					{
-						"type": "SensorElement",
 						"sensorMetadata": {
 							"time": "2019-04-02T14:05:00.000+01:00",
 							"deviceID": "urn:epc:id:giai:4000001.111",
@@ -57,7 +56,6 @@
 						]
 					},
 					{
-						"type": "SensorElement",
 						"sensorMetadata": {
 							"time": "2019-04-02T14:35:00.000+01:00",
 							"deviceID": "urn:epc:id:giai:4000001.111",
@@ -88,7 +86,6 @@
 						]
 					},
 					{
-						"type": "SensorElement",
 						"sensorMetadata": {
 							"time": "2019-04-02T14:55:00.000+01:00",
 							"deviceID": "urn:epc:id:giai:4000001.111",
