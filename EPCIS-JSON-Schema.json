@@ -371,6 +371,15 @@
         "creationDate": {
           "$ref": "#/definitions/time"
         },
+        "instanceIdentifier": {
+          "type": "string"
+        },
+        "sender": {
+          "$ref": "#/definitions/id"
+        },
+        "receiver": {
+          "$ref": "#/definitions/id"
+        },
         "epcisHeader": {
           "$ref": "#/definitions/epcisHeader"
         },
