@@ -1,0 +1,81 @@
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd"
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.gs1.epcis</groupId>
+    <artifactId>apache-cxf-bindings</artifactId>
+    <version>2.0.0</version>
+
+    <properties>
+        <cxf.version>3.5.0</cxf.version>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+    </properties>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-core</artifactId>
+            <version>${cxf.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-tools-common</artifactId>
+            <version>${cxf.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-codegen-plugin</artifactId>
+                <version>${cxf.version}</version>
+                <executions>
+                    <execution>
+                        <id>generate-sources</id>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <wsdlOptions>
+                                <wsdlOption>
+                                    <wsdl>${basedir}/EPCglobal-epcis-capture-2_0.wsdl</wsdl>
+                                    <extraargs>
+                                        <extraarg>-verbose</extraarg>
+                                        <extraarg>-p</extraarg>
+                                        <extraarg>urn:epcglobal:epcis-capture:xsd:2=org.gs1.epcis.capture</extraarg>
+                                        <extraarg>-p</extraarg>
+                                        <extraarg>urn:epcglobal:epcis:wsdl:2=org.gs1.epcis.service</extraarg>
+                                        <extraarg>-p</extraarg>
+                                        <extraarg>urn:epcglobal:xsd:1=org.gs1.epc</extraarg>
+                                        <extraarg>-b</extraarg>
+                                        <extraarg>${basedir}/global-xjb.xml</extraarg>
+                                    </extraargs>
+                                </wsdlOption>
+                                <!--
+                                <wsdlOption>
+                                    <wsdl>${basedir}/EPCglobal-epcis-query-2_0.wsdl</wsdl>
+                                    <extraargs>
+                                        <extraarg>-server</extraarg>
+                                        <extraarg>-verbose</extraarg>
+                                        <extraarg>-p</extraarg>
+                                        <extraarg>urn:epcglobal:epcis-query:xsd:2=org.gs1.epcis.query</extraarg>
+                                        <extraarg>-p</extraarg>
+                                        <extraarg>urn:epcglobal:epcis:wsdl:2=org.gs1.epcis.service</extraarg>
+                                        <extraarg>-p</extraarg>
+                                        <extraarg>urn:epcglobal:xsd:1=org.gs1.epc</extraarg>
+                                    </extraargs>
+                                </wsdlOption>
+                                -->
+                            </wsdlOptions>
+                        </configuration>
+                        <goals>
+                            <goal>wsdl2java</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

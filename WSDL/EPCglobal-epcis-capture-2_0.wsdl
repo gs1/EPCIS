@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- EPCIS QUERY SERVICE DEFINITIONS -->
+<wsdl:definitions targetNamespace="urn:epcglobal:epcis:wsdl:2"
+    xmlns="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:impl="urn:epcglobal:epcis:wsdl:2"
+    xmlns:apachesoap="http://xml.apache.org/xml-soap"
+    xmlns:epcglobal="urn:epcglobal:xsd:1"
+    xmlns:epcisc="urn:epcglobal:epcis-capture:xsd:2"
+    xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+    <wsdl:documentation>
+        <epcglobal:copyright>
+       Copyright (C) 2006-2022 GS1 AISBL, All Rights Reserved
+        </epcglobal:copyright>
+        <epcglobal:disclaimer>
+THIS DOCUMENT IS PROVIDED “AS IS” WITH NO WARRANTIES WHATSOEVER, INCLUDING ANY WARRANTY OF MERCHANTABILITY, NONINFRINGMENT, FITNESS FOR PARTICULAR PURPOSE, OR ANY WARRANTY OTHER WISE ARISING OUT OF THIS SPECIFICATION. GS1 disclaims all liability for any damages arising from use or misuse of this Standard, whether special, indirect, consequential, or compensatory damages, and including liability for infringement of any intellectual property rights, relating to use of information in or reliance upon this document.
+GS1 retains the right to make changes to this document at any time, without notice. GS1 makes no warranty for the use of this document and assumes no responsibility for any errors which may appear in the document, nor does it make a commitment to update the information contained herein.
+        </epcglobal:disclaimer>
+        <epcglobal:specification>
+        </epcglobal:specification>
+    </wsdl:documentation>
+
+    <!-- EPCISSERVICE TYPES -->
+    <wsdl:types>
+        <xsd:schema targetNamespace="urn:epcglobal:epcis:wsdl:2"
+            xmlns:impl="urn:epcglobal:epcis:wsdl:2"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="urn:epcglobal:xsd:1" schemaLocation="../XSD/EPCglobal.xsd"/>
+
+            <xsd:import namespace="urn:epcglobal:epcis-capture:xsd:2" schemaLocation="../XSD/EPCglobal-epcis-capture-2_0.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+
+    <!-- EPCIS QUERY SERVICE MESSAGES -->
+
+    <wsdl:message name="getCaptureJobRequest">
+        <wsdl:part name="captureID" type="xsd:string"/>
+    </wsdl:message>
+
+    <wsdl:message name="getCaptureJobResponse">
+        <wsdl:part name="getCaptureJobReturn" element="epcisc:EPCISCaptureJob"/>
+    </wsdl:message>
+
+    <wsdl:portType name="EPCISCapturePortType">
+        <wsdl:operation name="getCaptureJob">
+            <wsdl:input message="impl:getCaptureJobRequest" name="getCaptureJobRequest"/>
+            <wsdl:output message="impl:getCaptureJobResponse" name="getCaptureJobResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+
+
+    <wsdl:binding name="EPCISCaptureServiceBinding" type="impl:EPCISCapturePortType">
+        <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="getCaptureJob">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input name="getCaptureJobRequest">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getCaptureJobResponse">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+
+
+    <wsdl:service name="EPCISCaptureService">
+        <wsdl:port binding="impl:EPCISCaptureServiceBinding" name="EPCISCaptureServiceBinding">
+            <!-- The address shown below is an example; an implementation MAY specify
+         any port it wishes
+        -->
+            <wsdlsoap:address location="http://localhost:8080/services/EPCISCaptureService"/>
+        </wsdl:port>
+    </wsdl:service>
+
+</wsdl:definitions>
