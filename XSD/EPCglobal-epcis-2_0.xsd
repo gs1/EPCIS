@@ -483,27 +483,29 @@ GS1 retains the right to make changes to this document at any time, without noti
   <xsd:complexType name="SensorReportType">
     <xsd:simpleContent>
       <xsd:extension base="xsd:string">
-        <xsd:attribute type="xsd:anyURI" name="type" use="required"/>
-        <xsd:attribute type="xsd:float" name="value" use="optional"/>
-        <xsd:attribute type="xsd:string" name="component" use="optional"/>
+        <xsd:attribute type="xsd:anyURI" name="type" use="optional"/>
+        <xsd:attribute type="xsd:double" name="value" use="optional"/>
+        <xsd:attribute type="xsd:anyURI" name="component" use="optional"/>
         <xsd:attribute type="xsd:string" name="stringValue" use="optional"/>
         <xsd:attribute type="xsd:boolean" name="booleanValue" use="optional"/>
         <xsd:attribute type="xsd:hexBinary" name="hexBinaryValue" use="optional"/>
         <xsd:attribute type="xsd:anyURI" name="uriValue" use="optional"/>
         <xsd:attribute type="xsd:string" name="uom" use="optional"/>
-        <xsd:attribute type="xsd:float" name="minValue" use="optional"/>
-        <xsd:attribute type="xsd:float" name="maxValue" use="optional"/>
-        <xsd:attribute type="xsd:float" name="sDev" use="optional"/>
+        <xsd:attribute type="xsd:double" name="minValue" use="optional"/>
+        <xsd:attribute type="xsd:double" name="maxValue" use="optional"/>
+        <xsd:attribute type="xsd:double" name="sDev" use="optional"/>
         <xsd:attribute type="xsd:anyURI" name="chemicalSubstance" use="optional"/>
         <xsd:attribute type="xsd:anyURI" name="microorganism" use="optional"/>
         <xsd:attribute type="xsd:anyURI" name="deviceID" use="optional"/>
         <xsd:attribute type="xsd:anyURI" name="deviceMetadata" use="optional"/>
         <xsd:attribute type="xsd:anyURI" name="rawData" use="optional"/>
         <xsd:attribute type="xsd:dateTimeStamp" name="time" use="optional"/>
-        <xsd:attribute type="xsd:float" name="meanValue" use="optional"/>
-        <xsd:attribute type="xsd:float" name="percRank" use="optional"/>
-        <xsd:attribute type="xsd:float" name="percValue" use="optional"/>
+        <xsd:attribute type="xsd:double" name="meanValue" use="optional"/>
+        <xsd:attribute type="xsd:double" name="percRank" use="optional"/>
+        <xsd:attribute type="xsd:double" name="percValue" use="optional"/>
         <xsd:attribute type="xsd:anyURI" name="dataProcessingMethod" use="optional"/>
+        <xsd:attribute type="xsd:anyURI" name="coordinateReferenceSystem" use="optional"/>
+        <xsd:attribute type="xsd:anyURI" name="exception" use="required"/>
         <xsd:anyAttribute processContents="lax"/>
       </xsd:extension>
     </xsd:simpleContent>
@@ -616,7 +618,6 @@ GS1 retains the right to make changes to this document at any time, without noti
           <xsd:element name="sourceList" type="epcis:SourceListType" minOccurs="0"/>
           <xsd:element name="destinationList" type="epcis:DestinationListType" minOccurs="0"/>
           <xsd:element name="sensorElementList" type="epcis:SensorElementListType" minOccurs="0"/>
-          <xsd:element name="persistentDisposition" type="epcis:PersistentDispositionType" minOccurs="0" />
           <xsd:element name="extension" type="epcis:AggregationEventExtensionType" minOccurs="0"/>
           <xsd:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
         </xsd:sequence>
@@ -703,7 +704,6 @@ GS1 retains the right to make changes to this document at any time, without noti
           <xsd:element name="sourceList" type="epcis:SourceListType" minOccurs="0"/>
           <xsd:element name="destinationList" type="epcis:DestinationListType" minOccurs="0"/>
           <xsd:element name="sensorElementList" type="epcis:SensorElementListType" minOccurs="0"/>
-          <xsd:element name="persistentDisposition" type="epcis:PersistentDispositionType" minOccurs="0" />
           <xsd:element name="extension" type="epcis:TransactionEventExtensionType" minOccurs="0"/>
           <xsd:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
         </xsd:sequence>
@@ -814,7 +814,6 @@ GS1 retains the right to make changes to this document at any time, without noti
           <xsd:element name="sourceList" type="epcis:SourceListType" minOccurs="0"/>
           <xsd:element name="destinationList" type="epcis:DestinationListType" minOccurs="0"/>
           <xsd:element name="sensorElementList" type="epcis:SensorElementListType" minOccurs="0"/>
-          <xsd:element name="persistentDisposition" type="epcis:PersistentDispositionType" minOccurs="0" />
           <xsd:element name="extension" type="epcis:AssociationEventExtensionType" minOccurs="0"/>
           <xsd:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
         </xsd:sequence>

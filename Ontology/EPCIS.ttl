@@ -527,6 +527,17 @@ epcis:inputQuantityList  a owl:ObjectProperty , rdf:Property ;
         schema:rangeIncludes epcis:QuantityElement ;
         sw:term_status    "stable" .
 
+epcis:instanceIdentifier  a        owl:DatatypeProperty , rdf:Property ;
+       rdfs:comment      "(Optional) the instance identifier of an EPCISDocument."@en ;
+       rdfs:domain       epcis:EPCISDocument ;
+       schema:domainIncludes epcis:EPCISDocument ;
+       rdfs:isDefinedBy  epcis: ;
+       rdfs:label        "instanceIdentifier" ;
+       rdfs:range        xsd:string ;
+       schema:rangeIncludes xsd:string ;
+       sw:term_status    "stable" .
+
+
 epcis:maxValue  a         owl:DatatypeProperty , rdf:Property ;
         rdfs:comment      "(Optional) Similar to minValue, for the maximum quantitative value."@en ;
         rdfs:domain       epcis:SensorReport ;
@@ -688,6 +699,16 @@ epcis:reason  a           owl:ObjectProperty , rdf:Property ;
         schema:rangeIncludes cbv:ER ;
         sw:term_status    "stable" .
 
+epcis:receiver  a        owl:ObjectProperty , rdf:Property ;
+        rdfs:comment      "(Optional) The intended receiver of an EPCISDocument."@en ;
+        rdfs:domain       epcis:EPCISDocument ;
+        schema:domainIncludes epcis:EPCISDocument ;
+        rdfs:isDefinedBy  epcis: ;
+        rdfs:label        "receiver" ;
+        rdfs:range        gs1:Organization ;
+        schema:rangeIncludes gs1:Organization ;
+        sw:term_status    "stable" .
+
 epcis:recordTime  a       owl:DatatypeProperty , rdf:Property ;
         rdfs:comment      "(Optional) The date and time at which this event was recorded by an EPCIS Repository. This field SHALL be ignored when an event is presented to the EPCIS Capture Interface, and SHALL be present when an event is retrieved through the EPCIS Query Interfaces. The recordTime does not describe anything about the real-world event, but is rather a bookkeeping mechanism that plays a role in the interpretation of standing queries"@en ;
         rdfs:domain       epcis:EPCISEvent ;
@@ -706,6 +727,16 @@ epcis:sDev  a             owl:DatatypeProperty , rdf:Property ;
         rdfs:label        "sDev" ;
         rdfs:range        xsd:double ;
         schema:rangeIncludes xsd:double ;
+        sw:term_status    "stable" .
+
+epcis:sender  a        owl:ObjectProperty , rdf:Property ;
+        rdfs:comment      "(Optional) The sender of an EPCISDocument."@en ;
+        rdfs:domain       epcis:EPCISDocument ;
+        schema:domainIncludes epcis:EPCISDocument ;
+        rdfs:isDefinedBy  epcis: ;
+        rdfs:label        "sender" ;
+        rdfs:range        gs1:Organization ;
+        schema:rangeIncludes gs1:Organization ;
         sw:term_status    "stable" .
 
 epcis:sensorElementList  a           owl:ObjectProperty , rdf:Property ;

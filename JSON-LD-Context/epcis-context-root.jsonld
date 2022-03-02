@@ -4,22 +4,23 @@
         "@version": 1.1,
         "epcis": "https://ns.gs1.org/epcis/",
         "gs1": "https://gs1.org/voc/",
+        "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
         "owl": "http://www.w3.org/2002/07/owl#",
         "xsd": "http://www.w3.org/2001/XMLSchema#",
         "dcterms": "http://purl.org/dc/terms/",
         "id": "@id",
         "type": "@type",
+        "baseURL": "@base",
         "ObjectEvent": "epcis:ObjectEvent",
         "AggregationEvent": "epcis:AggregationEvent",
         "TransformationEvent": "epcis:TransformationEvent",
         "AssociationEvent": "epcis:AssociationEvent",
         "TransactionEvent": "epcis:TransactionEvent",
-        "eventType": {
-            "@id": "epcis:eventType",
-            "@type": "@vocab"
-        },
-        "EventTypeItemList": {
-            "@id": "epcis:EventTypeItemList"
+        "Collection": "epcis:Collection",
+        "member": {
+            "@id": "rdfs:member",
+            "@type": "@id",
+            "@container": "@set"
         },
         "eventTime": {
             "@id": "epcis:eventTime",
@@ -36,37 +37,22 @@
             "@id": "epcis:bizStep",
             "@type": "@vocab"
         },
-        "BizStepItemList": {
-            "@id": "epcis:BizStepItemList"
-        },
         "disposition": {
             "@context": "https://gs1.github.io/EPCIS/cbv-context-disposition.jsonld",
             "@id": "epcis:disposition",
             "@type": "@vocab"
         },
-        "DispositionItemList": {
-            "@id": "epcis:DispositionItemList"
-        },
         "bizLocation": {
             "@id": "epcis:bizLocation",
             "@type": "@id"
-        },
-        "BizLocationItemList": {
-            "@id": "epcis:BizLocationItemList"
         },
         "readPoint": {
             "@id": "epcis:readPoint",
             "@type": "@id"
         },
-        "ReadPointItemList": {
-            "@id": "epcis:ReadPointItemList"
-        },
         "transformationID": {
             "@id": "epcis:transformationID",
             "@type": "@id"
-        },
-        "EpcItemList": {
-            "@id": "epcis:EpcItemList"
         },
         "epcList": {
             "@id": "epcis:epcList",
@@ -348,6 +334,9 @@
         },
         "eventID": "@id",
         "creationDate": {"@id":"dcterms:created","@type":"xsd:dateTime"},
+        "sender": {"@id":"epcis:sender","@type":"@id"},
+        "receiver": {"@id":"epcis:receiver","@type":"@id"},
+        "instanceIdentifier" : "epcis:instanceIdentifier",
         "schemaVersion": "owl:versionInfo",
         "ilmd": {
             "@id": "epcis:ilmd"
