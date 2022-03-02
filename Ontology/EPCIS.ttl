@@ -528,7 +528,7 @@ epcis:inputQuantityList  a owl:ObjectProperty , rdf:Property ;
         sw:term_status    "stable" .
 
 epcis:instanceIdentifier  a        owl:DatatypeProperty , rdf:Property ;
-       rdfs:comment      "(Optional) the instance identifier of an EPCISDocument"@en ;
+       rdfs:comment      "(Optional) the instance identifier of an EPCISDocument."@en ;
        rdfs:domain       epcis:EPCISDocument ;
        schema:domainIncludes epcis:EPCISDocument ;
        rdfs:isDefinedBy  epcis: ;
