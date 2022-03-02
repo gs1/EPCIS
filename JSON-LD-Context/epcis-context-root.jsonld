@@ -334,6 +334,9 @@
         },
         "eventID": "@id",
         "creationDate": {"@id":"dcterms:created","@type":"xsd:dateTime"},
+        "sender": {"@id":"epcis:sender","@type":"@id"},
+        "receiver": {"@id":"epcis:receiver","@type":"@id"},
+        "instanceIdentifier" : "epcis:instanceIdentifier",
         "schemaVersion": "owl:versionInfo",
         "ilmd": {
             "@id": "epcis:ilmd"
