@@ -211,6 +211,15 @@
                 "creationDate": {
                     "$ref": "schemas/event-definitions-JSON-Schema.json#/definitions/time"
                 },
+                "instanceIdentifier": {
+                    "type": "string"
+                },
+                "sender": {
+                    "$ref": "schemas/definitions-JSON-Schema.json#/definitions/id"
+                },
+                "receiver": {
+                    "$ref": "schemas/definitions-JSON-Schema.json#/definitions/id"
+                },
                 "epcisHeader": {
                     "$ref": "#/definitions/epcisHeader"
                 },
