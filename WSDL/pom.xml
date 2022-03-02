@@ -30,6 +30,74 @@
     <build>
         <plugins>
             <plugin>
+                <!-- 
+                    copy resources and replace xsd:dateTimeStamp with xsd:dateTime
+                    Java can validate against XML Schema Version 1.1 
+                    but unfortunately XJC is unable to generate code based on XML Schema 1.1 XSDs
+                 -->
+                <artifactId>maven-resources-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-wsdl-resources</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${basedir}/src/resources/WSDL</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${basedir}</directory>
+                                    <includes>
+                                        <include>*.wsdl</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>copy-xsd-resources</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${basedir}/src/resources/XSD</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${basedir}/../XSD</directory>
+                                    <includes>
+                                        <include>*.xsd</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.google.code.maven-replacer-plugin</groupId>
+                <artifactId>replacer</artifactId>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>replace</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <includes>
+                        <include>${basedir}/src/resources/XSD/*.xsd</include>
+                    </includes>
+                    <token>xsd:dateTimeStamp</token>
+                    <value>xsd:dateTime</value>
+                </configuration>
+            </plugin>
+            <!--
+                execute Apache CXF code generation
+            -->
+            <plugin>
                 <groupId>org.apache.cxf</groupId>
                 <artifactId>cxf-codegen-plugin</artifactId>
                 <version>${cxf.version}</version>
@@ -40,7 +108,7 @@
                         <configuration>
                             <wsdlOptions>
                                 <wsdlOption>
-                                    <wsdl>${basedir}/EPCglobal-epcis-capture-2_0.wsdl</wsdl>
+                                    <wsdl>${basedir}/src/resources/WSDL/EPCglobal-epcis-capture-2_0.wsdl</wsdl>
                                     <extraargs>
                                         <extraarg>-verbose</extraarg>
                                         <extraarg>-p</extraarg>
@@ -49,15 +117,11 @@
                                         <extraarg>urn:epcglobal:epcis:wsdl:2=org.gs1.epcis.service</extraarg>
                                         <extraarg>-p</extraarg>
                                         <extraarg>urn:epcglobal:xsd:1=org.gs1.epc</extraarg>
-                                        <extraarg>-b</extraarg>
-                                        <extraarg>${basedir}/global-xjb.xml</extraarg>
                                     </extraargs>
                                 </wsdlOption>
-                                <!--
                                 <wsdlOption>
-                                    <wsdl>${basedir}/EPCglobal-epcis-query-2_0.wsdl</wsdl>
+                                    <wsdl>${basedir}/src/resources/WSDL/EPCglobal-epcis-query-2_0.wsdl</wsdl>
                                     <extraargs>
-                                        <extraarg>-server</extraarg>
                                         <extraarg>-verbose</extraarg>
                                         <extraarg>-p</extraarg>
                                         <extraarg>urn:epcglobal:epcis-query:xsd:2=org.gs1.epcis.query</extraarg>
@@ -65,9 +129,10 @@
                                         <extraarg>urn:epcglobal:epcis:wsdl:2=org.gs1.epcis.service</extraarg>
                                         <extraarg>-p</extraarg>
                                         <extraarg>urn:epcglobal:xsd:1=org.gs1.epc</extraarg>
+                                        <extraarg>-b</extraarg>
+                                        <extraarg>${basedir}/epcis-query-xjb.xml</extraarg>
                                     </extraargs>
                                 </wsdlOption>
-                                -->
                             </wsdlOptions>
                         </configuration>
                         <goals>
