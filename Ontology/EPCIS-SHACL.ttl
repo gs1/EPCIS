@@ -14,6 +14,9 @@ epcis:EPCISDocumentShape
     sh:targetClass epcis:EPCISDocument;
     sh:property epcis:SchemaVersionShape;
     sh:property epcis:CreationDateShape;
+    sh:property epcis:InstanceIdentifierShape;
+    sh:property epcis:SenderShape;
+    sh:property epcis:ReceiverShape;
     sh:node epcis:EpcisHeaderShape;
     sh:node epcis:EpcisBodyShape;
 .
@@ -34,6 +37,35 @@ epcis:CreationDateShape
     sh:minCount 1 ;
     sh:maxCount 1 ;
     sh:message "In every EPCISDocument, creationDate (dcterms:created) is mandatory, single valued and an xsd:dateTime" ;
+.
+
+epcis:InstanceIdentifierShape
+    a sh:PropertyShape ;
+    sh:path epcis:instanceIdentifier ;
+    sh:datatype xsd:string ;
+    sh:minCount 0 ;
+    sh:maxCount 1 ;
+    sh:message "In an EPCISDocument, instanceIdentifier is optional, single valued and an xsd:string" ;
+.
+
+epcis:SenderShape
+    a sh:PropertyShape ;
+    sh:path epcis:sender ;
+    sh:nodeKind sh:IRI ;
+    sh:pattern "^(.+?):(.+)$" ;
+    sh:minCount 0 ;
+    sh:maxCount 1 ;
+    sh:message "In an EPCISDocument, sender is optional, single valued and a URI/IRI that typically expresses a SGLN of the sender, either as an EPC URN or the equivalent constrained GS1 Digital Link URI" ;
+.
+
+epcis:ReceiverShape
+    a sh:PropertyShape ;
+    sh:path epcis:receiver ;
+    sh:nodeKind sh:IRI ;
+    sh:pattern "^(.+?):(.+)$" ;
+    sh:minCount 0 ;
+    sh:maxCount 1 ;
+    sh:message "In an EPCISDocument, receiver is optional, single valued and a URI/IRI that typically expresses a SGLN of the intended receiver, either as an EPC URN or the equivalent constrained GS1 Digital Link URI" ;
 .
 
 epcis:EpcisHeaderShape
