@@ -15,7 +15,6 @@
 	"readPoint": {"id": "https://id.example.com/414/4012345000054"},
 	"sensorElementList": [
 	  {
-	    "type": "SensorElement",
 	    "sensorReport": [
 	      {
 		"type": "Angle",
