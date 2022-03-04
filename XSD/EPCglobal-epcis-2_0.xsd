@@ -505,7 +505,7 @@ GS1 retains the right to make changes to this document at any time, without noti
         <xsd:attribute type="xsd:double" name="percValue" use="optional"/>
         <xsd:attribute type="xsd:anyURI" name="dataProcessingMethod" use="optional"/>
         <xsd:attribute type="xsd:anyURI" name="coordinateReferenceSystem" use="optional"/>
-        <xsd:attribute type="xsd:anyURI" name="exception" use="required"/>
+        <xsd:attribute type="xsd:anyURI" name="exception" use="optional"/>
         <xsd:anyAttribute processContents="lax"/>
       </xsd:extension>
     </xsd:simpleContent>
@@ -618,6 +618,7 @@ GS1 retains the right to make changes to this document at any time, without noti
           <xsd:element name="sourceList" type="epcis:SourceListType" minOccurs="0"/>
           <xsd:element name="destinationList" type="epcis:DestinationListType" minOccurs="0"/>
           <xsd:element name="sensorElementList" type="epcis:SensorElementListType" minOccurs="0"/>
+          <xsd:element name="persistentDisposition" type="epcis:PersistentDispositionType" minOccurs="0" />
           <xsd:element name="extension" type="epcis:AggregationEventExtensionType" minOccurs="0"/>
           <xsd:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
         </xsd:sequence>
@@ -704,6 +705,7 @@ GS1 retains the right to make changes to this document at any time, without noti
           <xsd:element name="sourceList" type="epcis:SourceListType" minOccurs="0"/>
           <xsd:element name="destinationList" type="epcis:DestinationListType" minOccurs="0"/>
           <xsd:element name="sensorElementList" type="epcis:SensorElementListType" minOccurs="0"/>
+          <xsd:element name="persistentDisposition" type="epcis:PersistentDispositionType" minOccurs="0" />
           <xsd:element name="extension" type="epcis:TransactionEventExtensionType" minOccurs="0"/>
           <xsd:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
         </xsd:sequence>
@@ -814,6 +816,7 @@ GS1 retains the right to make changes to this document at any time, without noti
           <xsd:element name="sourceList" type="epcis:SourceListType" minOccurs="0"/>
           <xsd:element name="destinationList" type="epcis:DestinationListType" minOccurs="0"/>
           <xsd:element name="sensorElementList" type="epcis:SensorElementListType" minOccurs="0"/>
+          <xsd:element name="persistentDisposition" type="epcis:PersistentDispositionType" minOccurs="0" />
           <xsd:element name="extension" type="epcis:AssociationEventExtensionType" minOccurs="0"/>
           <xsd:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
         </xsd:sequence>
@@ -830,5 +833,51 @@ GS1 retains the right to make changes to this document at any time, without noti
     <xsd:anyAttribute processContents="lax"/>
   </xsd:complexType>
 
+  <!-- Capture 2.0 -->
+
+   <xsd:complexType name="RFC7807ProblemResponseBodyType" mixed="true">
+      <xsd:sequence>
+         <xsd:element name="type" type="xsd:anyURI" minOccurs="1" maxOccurs="1" />
+         <xsd:element name="title" type="xsd:string" minOccurs="1" maxOccurs="1" />
+         <xsd:element name="status" type="xsd:int" minOccurs="0" maxOccurs="1" />
+         <xsd:element name="detail" type="xsd:string" minOccurs="0" maxOccurs="1" />
+         <xsd:element name="instance" type="xsd:anyURI" minOccurs="0" maxOccurs="1" />
+         <xsd:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+   </xsd:complexType>
+
+   <xsd:simpleType name="EPCISCaptureErrorBehaviourType">
+      <xsd:restriction base="xsd:string">
+         <xsd:enumeration value="rollback"/>
+         <xsd:enumeration value="proceed"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+
+   <xsd:complexType name="EPCISCaptureDocumentErrorListType">
+      <xsd:sequence>
+         <xsd:element name="error" type="epcis:RFC7807ProblemResponseBodyType" minOccurs="1" maxOccurs="unbounded" />
+      </xsd:sequence>
+   </xsd:complexType>
+
+   <xsd:complexType name="EPCISCaptureDocumentType" mixed="true">
+      <xsd:sequence>
+         <xsd:element name="captureErrorBehaviour" type="epcis:EPCISCaptureErrorBehaviourType" minOccurs="1" maxOccurs="1" />
+         <xsd:element name="createdAt" type="xsd:dateTimeStamp" minOccurs="0" maxOccurs="1" />
+         <xsd:element name="finishedAt" type="xsd:dateTimeStamp" minOccurs="0" maxOccurs="1" />
+         <xsd:choice minOccurs="0" maxOccurs="1">
+            <xsd:element name="errors" type="epcis:EPCISCaptureDocumentErrorListType" />
+            <xsd:element name="errorFile" type="xsd:anyURI" />
+         </xsd:choice>
+         <xsd:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="running" use="required" type="xsd:boolean" />
+      <xsd:attribute name="success" use="required" type="xsd:boolean" />
+      <xsd:attribute name="captureID" use="required" type="xsd:string" />
+      <xsd:anyAttribute processContents="lax"/>
+   </xsd:complexType>
+
+   <xsd:element name="EPCISCaptureDocument" type="epcis:EPCISCaptureDocumentType"/>
+
+   <xsd:element name="EPCISException" type="epcis:RFC7807ProblemResponseBodyType"/>  
 
 </xsd:schema>

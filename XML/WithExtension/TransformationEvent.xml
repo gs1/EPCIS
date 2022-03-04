@@ -52,6 +52,13 @@
 						<example:someUserField>abc123</example:someUserField>
 					</sensorElement>
 				</sensorElementList>
+				<ilmd>
+					<cbvmda:lotNumber>LOTABC</cbvmda:lotNumber>
+					<example:grading>A</example:grading>
+					<example2:userMasterData>
+						<example2:sizeCode>B-2</example2:sizeCode>
+					</example2:userMasterData>
+				</ilmd>                
                 <extension>
                     <extension>
                         <moreExtensions>
@@ -63,13 +70,6 @@
                         </moreExtensions>
                     </extension>
                 </extension>
-				<ilmd>
-					<cbvmda:lotNumber>LOTABC</cbvmda:lotNumber>
-					<example:grading>A</example:grading>
-					<example2:userMasterData>
-						<example2:sizeCode>B-2</example2:sizeCode>
-					</example2:userMasterData>
-				</ilmd>                
 				<example:internalData>
 					<example:machine>urn:epc:id:giai:4012345.ABC</example:machine>
 					<example:procedure>A-1</example:procedure>

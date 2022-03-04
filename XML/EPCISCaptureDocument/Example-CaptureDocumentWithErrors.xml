@@ -1,0 +1,19 @@
+<epcis:EPCISCaptureDocument
+    xmlns:epcis="urn:epcglobal:epcis:xsd:2"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    running="false" 
+    success="false"
+    captureID="f3755dab-1d90-46a5-b837-01032b232cf0">
+    <captureErrorBehaviour>rollback</captureErrorBehaviour>
+    <createdAt>2022-03-03T10:33:31.116+01:00</createdAt>
+    <finishedAt>2022-03-03T10:33:45.001+01:00</finishedAt>
+    <errors>
+        <error>
+            <type>https://example.com/probs/validation-failed</type>
+            <title>EPCIS Event Validation Failure</title>
+            <status>-1</status>
+            <detail>One or more EPCIS Events failed validation</detail>
+            <instance>https://example.com/instance-detail/f3755dab-1d90-46a5-b837-01032b232cf0</instance>
+        </error>
+    </errors>
+</epcis:EPCISCaptureDocument>

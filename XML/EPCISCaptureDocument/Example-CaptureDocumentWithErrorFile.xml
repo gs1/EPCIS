@@ -1,0 +1,11 @@
+<epcis:EPCISCaptureDocument
+    xmlns:epcis="urn:epcglobal:epcis:xsd:2"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    running="false" 
+    success="false"
+    captureID="928c8567-3469-4ccd-930c-6aa31ef1ba66">
+    <captureErrorBehaviour>rollback</captureErrorBehaviour>
+    <createdAt>2022-03-03T10:33:31.116+01:00</createdAt>
+    <finishedAt>2022-03-03T10:33:45.001+01:00</finishedAt>
+    <errorFile>https://example.com/error/928c8567-3469-4ccd-930c-6aa31ef1ba66</errorFile>
+</epcis:EPCISCaptureDocument>

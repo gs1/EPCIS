@@ -108,25 +108,15 @@
                         <configuration>
                             <wsdlOptions>
                                 <wsdlOption>
-                                    <wsdl>${basedir}/src/resources/WSDL/EPCglobal-epcis-capture-2_0.wsdl</wsdl>
-                                    <extraargs>
-                                        <extraarg>-verbose</extraarg>
-                                        <extraarg>-p</extraarg>
-                                        <extraarg>urn:epcglobal:epcis-capture:xsd:2=org.gs1.epcis.capture</extraarg>
-                                        <extraarg>-p</extraarg>
-                                        <extraarg>urn:epcglobal:epcis:wsdl:2=org.gs1.epcis.service</extraarg>
-                                        <extraarg>-p</extraarg>
-                                        <extraarg>urn:epcglobal:xsd:1=org.gs1.epc</extraarg>
-                                    </extraargs>
-                                </wsdlOption>
-                                <wsdlOption>
                                     <wsdl>${basedir}/src/resources/WSDL/EPCglobal-epcis-query-2_0.wsdl</wsdl>
                                     <extraargs>
                                         <extraarg>-verbose</extraarg>
                                         <extraarg>-p</extraarg>
-                                        <extraarg>urn:epcglobal:epcis-query:xsd:2=org.gs1.epcis.query</extraarg>
+                                        <extraarg>urn:epcglobal:epcis-query:xsd:2=org.gs1.epcis.ws.query</extraarg>
                                         <extraarg>-p</extraarg>
-                                        <extraarg>urn:epcglobal:epcis:wsdl:2=org.gs1.epcis.service</extraarg>
+                                        <extraarg>urn:epcglobal:epcis:xsd:2=org.gs1.epcis.jaxb</extraarg>
+                                        <extraarg>-p</extraarg>
+                                        <extraarg>urn:epcglobal:epcis:wsdl:2=org.gs1.epcis.ws</extraarg>
                                         <extraarg>-p</extraarg>
                                         <extraarg>urn:epcglobal:xsd:1=org.gs1.epc</extraarg>
                                         <extraarg>-b</extraarg>

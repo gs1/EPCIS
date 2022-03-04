@@ -176,6 +176,21 @@ paths:
                         enum:
                           - epcisException:ValidationException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+            application/problem+xml:
+              schema:
+                allOf:
+                  - properties:
+                      status:
+                        type: integer
+                        enum:
+                          - 400
+                        default: 400
+                      type:
+                        type: string
+                        format: uri
+                        enum:
+                          - epcisException:ValidationException
+                  - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
         '401':
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
@@ -362,6 +377,16 @@ paths:
                   "captureErrorBehaviour": "rollback",
                   "errors": [ ]
                 }
+              schema:
+                $ref: '#/components/schemas/CaptureJob'
+            application/xml:             
+              example: 
+                  "captureID": "id261378658356"
+                  "running": false
+                  "success": true
+                  "captureErrorBehaviour": "rollback"
+                  "createdAt": "2021-07-21T17:32:28Z"
+                  "finishedAt" : "2022-01-21T17:45:28Z"
               schema:
                 $ref: '#/components/schemas/CaptureJob'
         '401':
@@ -2654,10 +2679,48 @@ components:
                     enum:
                       - epcisException:SecurityException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+        application/problem+xml:
+          schema:
+            example:
+              type: "epcisException:SecurityException"
+              title: "Unauthorised request"
+              status: 401
+            allOf:
+              - properties:
+                  status:
+                    type: integer
+                    enum:
+                      - 401
+                    default: 401
+                  type:
+                    type: string
+                    format: uri
+                    enum:
+                      - epcisException:SecurityException
+              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
     403ClientUnauthorized:
       description: Client is unauthorized to access this resource.
       content:
         application/problem+json:
+          schema:
+            example:
+              type: "epcisException:SecurityException"
+              title: "Access to resource forbidden"
+              status: 403
+            allOf:
+              - properties:
+                  status:
+                    type: integer
+                    enum:
+                      - 403
+                    default: 403
+                  type:
+                    type: string
+                    format: uri
+                    enum:
+                      - epcisException:SecurityException
+              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+        application/problem+xml:
           schema:
             example:
               type: "epcisException:SecurityException"
@@ -2698,6 +2761,25 @@ components:
                     enum:
                       - epcisException:NoSuchNameException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+        application/problem+xml:
+          schema:
+            example:
+              type: "epcisException:NoSuchNameException"
+              title: "Resource not found"
+              status: 404
+            allOf:
+              - properties:
+                  status:
+                    type: integer
+                    enum:
+                      - 404
+                    default: 404
+                  type:
+                    type: string
+                    format: uri
+                    enum:
+                      - epcisException:NoSuchNameException
+              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
     413CapturePayloadTooLarge:
       headers:
         GS1-EPCIS-Capture-Limit:
@@ -2709,6 +2791,25 @@ components:
         `GS1-EPCIS-Capture-File-Size-Limit`.
       content:
         application/problem+json:
+          schema:
+            example:
+              type: "epcisException:CaptureLimitExceededException"
+              title: "Capture Payload too large"
+              status: 413
+            allOf:
+              - properties:
+                  status:
+                    type: integer
+                    enum:
+                      - 413
+                    default: 413
+                  type:
+                    type: string
+                    format: uri
+                    enum:
+                      - epcisException:CaptureLimitExceededException
+              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+        application/problem+xml:
           schema:
             example:
               type: "epcisException:CaptureLimitExceededException"
@@ -2795,6 +2896,25 @@ components:
                     enum:
                       - epcisException:NotAcceptableException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+        application/problem+xml:
+          schema:
+            example:
+              type: "epcisException:NotAcceptableException"
+              title: "Conflicting request and response headers"
+              status: 406
+            allOf:
+              - properties:
+                  status:
+                    type: integer
+                    enum:
+                      - 406
+                    default: 406
+                  type:
+                    type: string
+                    format: uri
+                    enum:
+                      - epcisException:NotAcceptableException
+              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
     415UnsupportedMediaType:
       description: |
         The client sent data in a format that is not supported by the server.
@@ -2818,10 +2938,48 @@ components:
                     enum:
                       - epcisException:IUnsupportedMediaTypeException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+        application/problem+xml:
+          schema:
+            example:
+              type: "epcisException:UnsupportedMediaTypeException"
+              title: "Unsupported Media Type"
+              status: 415
+            allOf:
+              - properties:
+                  status:
+                    type: integer
+                    enum:
+                      - 415
+                    default: 415
+                  type:
+                    type: string
+                    format: uri
+                    enum:
+                      - epcisException:IUnsupportedMediaTypeException
+              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
     500ImplementationException:
       description: An error occurred on the backend.
       content:
         application/problem+json:
+          schema:
+            example:
+              type: "epcisException:ImplementationException"
+              title: "A server-side error occurred"
+              status: 500
+            allOf:
+              - properties:
+                  status:
+                    type: integer
+                    enum:
+                      - 500
+                    default: 500
+                  type:
+                    type: string
+                    format: uri
+                    enum:
+                      - epcisException:ImplementationException
+              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+        application/problem+xml:
           schema:
             example:
               type: "epcisException:ImplementationException"
@@ -2900,6 +3058,8 @@ components:
         instance:
           type: string
           format: uri
+      xml:
+        name: "EPCISException"
 
     QueryDefinition:
       example:
@@ -3227,11 +3387,15 @@ components:
               example: id9261379075
               description: A unique value identifying a capture job generated by the server.
               type: string
+              xml:
+                attribute: true
             running:
               description: |
                 If the job is still running, the state is `true`, otherwise `false`.
               type: boolean
               example: true
+              xml:
+                attribute: true
             success:
               description: |
                 If `success` is `false`, there was at least one error. Otherwise, `success` is `true`.
@@ -3241,6 +3405,8 @@ components:
                 if `success` is `false`.
               type: boolean
               example: false
+              xml:
+                attribute: true
             createdAt:
               description: "When the capture job started"
               example: "2022-01-21T17:32:28Z"
@@ -3276,6 +3442,10 @@ components:
                   example: ''
                   type: string
                   format: uri
+      xml:
+        name: "EPCISCaptureDocument"
+        prefix: "capture"
+        namespace: "urn:epcglobal:epcis-capture:xsd:2"
     EPCISQueryDocument:
       description: A collection of EPCIS resources.
       type: object
