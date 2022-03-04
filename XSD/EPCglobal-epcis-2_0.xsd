@@ -835,7 +835,7 @@ GS1 retains the right to make changes to this document at any time, without noti
 
   <!-- Capture 2.0 -->
 
-   <xsd:complexType name="RFC7807ProblemResponseBodyType" mixed="true">
+   <xsd:complexType name="RFC7807ProblemResponseBodyType">
       <xsd:sequence>
          <xsd:element name="type" type="xsd:anyURI" minOccurs="1" maxOccurs="1" />
          <xsd:element name="title" type="xsd:string" minOccurs="1" maxOccurs="1" />
@@ -859,7 +859,7 @@ GS1 retains the right to make changes to this document at any time, without noti
       </xsd:sequence>
    </xsd:complexType>
 
-   <xsd:complexType name="EPCISCaptureDocumentType" mixed="true">
+   <xsd:complexType name="EPCISCaptureDocumentType">
       <xsd:sequence>
          <xsd:element name="captureErrorBehaviour" type="epcis:EPCISCaptureErrorBehaviourType" minOccurs="1" maxOccurs="1" />
          <xsd:element name="createdAt" type="xsd:dateTimeStamp" minOccurs="0" maxOccurs="1" />
