@@ -1,4 +1,4 @@
-<epcis:EPCISCaptureDocument
+<epcis:EPCISCaptureJob
     xmlns:epcis="urn:epcglobal:epcis:xsd:2"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     running="false" 
@@ -16,4 +16,4 @@
             <instance>https://example.com/instance-detail/f3755dab-1d90-46a5-b837-01032b232cf0</instance>
         </error>
     </errors>
-</epcis:EPCISCaptureDocument>
+</epcis:EPCISCaptureJob>

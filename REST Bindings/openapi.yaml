@@ -3547,7 +3547,7 @@ components:
                   type: string
                   format: uri
       xml:
-        name: "EPCISCaptureDocument"
+        name: "EPCISCaptureJob"
         prefix: "epcis"
         namespace: "urn:epcglobal:epcis:xsd:2"
     EPCISQueryDocument:

@@ -1,4 +1,4 @@
-<epcis:EPCISCaptureDocument
+<epcis:EPCISCaptureJob
     xmlns:epcis="urn:epcglobal:epcis:xsd:2"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     running="false" 
@@ -7,4 +7,4 @@
     <captureErrorBehaviour>proceed</captureErrorBehaviour>
     <createdAt>2022-03-03T10:33:31.116+01:00</createdAt>
     <finishedAt>2022-03-03T10:33:45.001+01:00</finishedAt>
-</epcis:EPCISCaptureDocument>
+</epcis:EPCISCaptureJob>

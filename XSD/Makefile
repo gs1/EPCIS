@@ -13,7 +13,7 @@ EVENT_XMLS:=$(wildcard ../XML/*.xml) $(wildcard ../XML/*Event*/*.xml) $(wildcard
 
 VOCABULARY_XMLS:=$(wildcard ../XML/CBV/*.xml) $(wildcard ../XML/Mimasu/*masterData.xml)
 
-CAPTURE_XMLS:=$(wildcard ../XML/EPCISCaptureDocument/*.xml)
+CAPTURE_XMLS:=$(wildcard ../XML/CaptureJob/*.xml)
 
 # create tests from filenames
 EVENT_XMLTESTS:=$(patsubst %.xml,%.event-test,$(EVENT_XMLS))

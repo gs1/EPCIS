@@ -835,8 +835,8 @@ GS1 retains the right to make changes to this document at any time, without noti
 
   <!-- Capture 2.0 -->
 
-   <xsd:element name="EPCISCaptureDocument" type="epcis:EPCISCaptureDocumentType"/>
-   <xsd:complexType name="EPCISCaptureDocumentType">
+   <xsd:element name="EPCISCaptureJob" type="epcis:EPCISCaptureJobType"/>
+   <xsd:complexType name="EPCISCaptureJobType">
       <xsd:sequence>
          <xsd:element name="captureErrorBehaviour" type="epcis:EPCISCaptureErrorBehaviourType" minOccurs="1" maxOccurs="1" />
          <xsd:element name="createdAt" type="xsd:dateTimeStamp" minOccurs="0" maxOccurs="1" />
@@ -852,7 +852,7 @@ GS1 retains the right to make changes to this document at any time, without noti
       <xsd:attribute name="captureID" use="required" type="xsd:string" />
       <xsd:anyAttribute processContents="lax"/>
    </xsd:complexType>
-   
+
    <xsd:element name="EPCISException" type="epcis:RFC7807ProblemResponseBodyType"/>  
    <xsd:complexType name="RFC7807ProblemResponseBodyType">
       <xsd:sequence>
