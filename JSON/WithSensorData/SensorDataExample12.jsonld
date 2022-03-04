@@ -34,7 +34,6 @@
 	},
 	"sensorElementList": [
 	  {
-	    "type": "SensorElement",
 	    "sensorMetadata": {
 	      "startTime": "2019-04-01T14:00:00.000Z",
 	      "endTime": "2019-04-02T13:59:59.999Z",
