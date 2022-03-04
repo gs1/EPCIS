@@ -2397,6 +2397,9 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/EPCISQueryDocument'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/EPCISXMLQueryDocument'
     200EPCISQueryDocumentSinglePage:
       headers:
         GS1-EPCIS-Version:
@@ -2410,12 +2413,33 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/EPCISQueryDocument'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/EPCISXMLQueryDocument'
     204NextPageTokenInvalidated:
       description: nextPageToken invalidated successfully.
     200SupportedTopLevel:
       description: Returns all supported EPCIS top-level resources.
       content:
         application/json:
+          schema:
+            $ref: '#/components/schemas/TopLevelResourceCollection'
+          example: {
+            "@context": "https://gs1.github.io/EPCIS/epcis-context.jsonld",
+            "type": "Collection",
+            "member": [
+              "queries",
+              "capture",
+              "events",
+              "eventTypes",
+              "epcs", 
+              "readPoints",
+              "bizLocations",
+              "dispositions",
+              "bizSteps"
+            ]
+          }
+        application/xml:
           schema:
             $ref: '#/components/schemas/TopLevelResourceCollection'
           example: {
@@ -2614,6 +2638,26 @@ components:
       description: An issue with a subscription occurred.
       content:
         application/json:
+          schema:
+            example:
+              type: "epcisException:SubscriptionControlsException"
+              title: "Subscription error"
+              status: 400
+            allOf:
+              - properties:
+                  status:
+                    type: integer
+                    enum:
+                      - 400
+                    default: 400
+                  type:
+                    type: string
+                    format: uri
+                    enum:
+                      - epcisException:SubscriptionControlsException
+                      - epcisException:ValidationException
+              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+        application/xml:
           schema:
             example:
               type: "epcisException:SubscriptionControlsException"
@@ -2851,10 +2895,49 @@ components:
                       - epcisException:QueryTooLargeException
                       - epcisException:QueryTooComplexException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+        application/problem+xml:
+          schema:
+            example:
+              type: "epcisException:QueryTooComplexException"
+              title: "Capture Payload too large"
+              status: 413
+            allOf:
+              - properties:
+                  status:
+                    type: integer
+                    enum:
+                      - 413
+                    default: 413
+                  type:
+                    type: string
+                    format: uri
+                    enum:
+                      - epcisException:QueryTooLargeException
+                      - epcisException:QueryTooComplexException
+              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
     414URLTooLong:
       description: URL is too long. This is usually a problem with large EPCIS queries in the URL.
       content:
         application/problem+json:
+          schema:
+            example:
+              type: "epcisException:URITooLongException"
+              title: "URI Too Long"
+              status: 414
+            allOf:
+              - properties:
+                  status:
+                    type: integer
+                    enum:
+                      - 414
+                    default: 414
+                  type:
+                    type: string
+                    format: uri
+                    enum:
+                      - epcisException:URITooLongException
+              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+        application/problem+xml:
           schema:
             example:
               type: "epcisException:URITooLongException"
@@ -3020,7 +3103,25 @@ components:
                     enum:
                       - epcisException:ImplementationException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-
+        application/problem+xml:
+          schema:
+            example:
+              type: "epcisException:ImplementationException"
+              title: "Functionality not supported by server"
+              status: 501
+            allOf:
+              - properties:
+                  status:
+                    type: integer
+                    enum:
+                      - 501
+                    default: 501
+                  type:
+                    type: string
+                    format: uri
+                    enum:
+                      - epcisException:ImplementationException
+              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
   schemas:
     LDContext:
       description: JSON-LD @context. 
@@ -3060,6 +3161,9 @@ components:
           format: uri
       xml:
         name: "EPCISException"
+        prefix: "epcis"
+        namespace: "urn:epcglobal:epcis:xsd:2"
+        
 
     QueryDefinition:
       example:
@@ -3444,8 +3548,8 @@ components:
                   format: uri
       xml:
         name: "EPCISCaptureDocument"
-        prefix: "capture"
-        namespace: "urn:epcglobal:epcis-capture:xsd:2"
+        prefix: "epcis"
+        namespace: "urn:epcglobal:epcis:xsd:2"
     EPCISQueryDocument:
       description: A collection of EPCIS resources.
       type: object
@@ -3584,6 +3688,20 @@ components:
           An EPCIS document that must be validated with the [JSON schema](../JSON/EPCIS-JSON-Schema.json) or
           [SHACL file](../JSON/EPCIS-SHACL.ttl).
         url: ../JSON/EPCIS-SHACL.ttl
+
+    EPCISXMLQueryDocument:
+      description: A collection of EPCIS resources.
+      type: object
+      xml:
+        name: "EPCISQueryDocument"
+        prefix: "epcis"
+        namespace: "urn:epcglobal:epcis-query:xsd:2"
+
+      externalDocs:
+        description: |
+          An EPCIS document that must be validated with the [XML Schema](../XSD/EPCglobal-epcis-query-2_0.xsd)
+        url: ../XSD/EPCglobal-epcis-query-2_0.xsd
+
     Link:
       description: |
         A pagination header link. This header works together with the `perPage` and `nextPageToken` query string
@@ -3592,7 +3710,7 @@ components:
       format: uri
       example: 
         '<https://example.com/epcis/events?perPage=30&nextPageToken=3A15506738749783AU6D7DENAKwM2gQRRwGrataeq>; rel="next"'
-        
+
     PerPage:
       description: |
         This parameter helps to control the amount of data returned to the client through pagination.
