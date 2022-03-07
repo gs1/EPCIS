@@ -2142,7 +2142,8 @@ paths:
                   "schedule": {
                       "second": "0/30"
                   },
-                  "createdAt": "2022-01-06T06:52:24.889Z"
+                  "createdAt": "2022-01-06T06:52:24.889Z",
+                  "lastNotifiedAt": "2022-01-08T06:51:21.889Z"
                 }
               schema:
                 allOf:
