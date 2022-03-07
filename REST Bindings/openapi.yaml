@@ -2816,7 +2816,7 @@ components:
                     type: string
                     format: uri
                     enum:
-                      - epcisException:IUnsupportedMediaTypeException
+                      - epcisException:UnsupportedMediaTypeException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
     500ImplementationException:
       description: An error occurred on the backend.
