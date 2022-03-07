@@ -32,21 +32,45 @@
             ]
         },
         "persistentDisposition": {
-            "type": "object",
-            "properties": {
-                "set": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "disposition-JSON-Schema.json#/definitions/disposition"
+            "allOf": [
+                {
+                    "type": "object",
+                    "properties": {
+                        "set": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "disposition-JSON-Schema.json#/definitions/disposition"
+                            },
+                            "minItems": 1,
+                            "uniqueItems": true
+                        },
+                        "unset": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "disposition-JSON-Schema.json#/definitions/disposition"
+                            },
+                            "minItems": 1,
+                            "uniqueItems": true
+                        }
                     }
                 },
-                "unset": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "disposition-JSON-Schema.json#/definitions/disposition"
-                    }
+                {
+                    "anyOf": [
+                        {
+                            "type": "object",
+                            "required": [
+                                "set"
+                            ]
+                        },
+                        {
+                            "type": "object",
+                            "required": [
+                                "unset"
+                            ]
+                        }
+                    ]
                 }
-            }
+            ]
         },
         "epcList": {
             "type": "array",
@@ -362,7 +386,9 @@
                             "$ref": "definitions-JSON-Schema.json#/definitions/vocab-uri"
                         }
                     },
-                    "required": ["type"]
+                    "required": [
+                        "type"
+                    ]
                 }
             ]
         }
