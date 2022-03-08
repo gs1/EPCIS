@@ -3751,7 +3751,8 @@ components:
         "dest": "https://client.example.com/queryCallback",
         "subscriptionID" : "df5a33e3-5aa3-4403-ae01-99b83234e27b",
         "stream": true,
-        "createdAt": "2017-08-21T17:32:28Z"
+        "createdAt": "2017-08-21T17:32:28Z",
+        "lastNotifiedAt": "2022-01-08T06:51:21.889Z"
       }
       type: object
       description: |
@@ -3766,9 +3767,14 @@ components:
         subscriptionID:
           $ref: '#/components/schemas/subscriptionID'
         createdAt:
-          example: "2017-08-21T17:32:28Z"
+          example: "2022-02-27T17:32:28Z"
           type: string
           format: date-time
+        lastNotifiedAt:
+          example: "2022-07-09T17:32:28Z"
+          type: string
+          format: date-time
+          description: The last time the target client was notified and responded with a 200 OK.   
         initialRecordTime:
           $ref: '#/components/schemas/GS1-Query-InitialRecordTime'
         minRecordTime:
