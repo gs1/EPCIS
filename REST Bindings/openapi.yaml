@@ -152,9 +152,12 @@ paths:
             GS1-Extensions:
               $ref: '#/components/headers/GS1-Extensions'
             Location:
-              example: "https://example.com/capture/id9261379075"
+              description: |
+                URL of the capture job
               schema:
-                $ref: '#/components/schemas/Location'
+                example: "https://example.com/capture/id9261379075"
+                type: string
+                format: uri
 
         '400':
           description: |
@@ -460,9 +463,12 @@ paths:
             GS1-Extensions:
               $ref: '#/components/headers/GS1-Extensions'
             Location:
-              example: "https://example.com/eventTypes/ObjectEvent/events/eventId123"
+              description: |
+                URL of the newly captured EPCIS event. 
               schema:
-                $ref: '#/components/schemas/Location'
+                example: "https://example.com/events/cc979570-74a3-4dc7-8f3e-2e747d6d31ec"
+                type: string
+                format: uri
           content:
             application/json:
               schema:
@@ -2003,7 +2009,6 @@ paths:
         '201':
           headers:
             Location:
-              example: 'https://www.example.com/queries/MyQuery/subscriptions/df5a33e3-5aa3-4403-ae01-99b83234e27b'
               description: |
                 The server creates a new subscription for each client and query subscription. The client needs that URL
                 to unsubscribe by deleting this resource. The `Location` URL must point to the `subscriptionID` returned
@@ -2012,6 +2017,7 @@ paths:
               schema:
                 type: string
                 format: uri
+                example: 'https://www.example.com/queries/MyQuery/subscriptions/df5a33e3-5aa3'
           description: Query subscription successful. The subscription is valid until the client unsubscribes.
           content:
             application/json:
