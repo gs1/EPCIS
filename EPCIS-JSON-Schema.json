@@ -531,7 +531,8 @@
       "type": "array",
       "items": {
         "$ref": "#/definitions/uri"
-      }
+      },
+      "uniqueItems": true
     },
     "quantityList": {
       "type": "array",
@@ -564,7 +565,8 @@
       },
       "required": [
         "declarationTime"
-      ]
+      ],
+      "additionalProperties": false
     },
     "quantityElement": {
       "type": "object",
@@ -582,7 +584,8 @@
       "required": [
         "epcClass",
         "quantity"
-      ]
+      ],
+      "additionalProperties": false
     },
     "bizTransaction": {
       "type": "object",
@@ -596,7 +599,8 @@
       },
       "required": [
         "bizTransaction"
-      ]
+      ],
+      "additionalProperties": false
     },
     "readPoint": {
       "type": "object",
@@ -664,13 +668,15 @@
       },
       "required": [
         "sensorReport"
-      ]
+      ],
+      "additionalProperties": false
     },
     "sensorReportList": {
       "type": "array",
       "items": {
         "$ref": "#/definitions/sensorReport"
-      }
+      },
+      "minItems": 1
     },
     "sensorReport": {
       "type": "object",
@@ -744,7 +750,8 @@
       },
       "required": [
         "type"
-      ]
+      ],
+      "additionalProperties": false
     },
     "sensorMetadata": {
       "type": "object",
