@@ -2690,12 +2690,12 @@ components:
                       - epcisException:SecurityException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
     404ResourceNotFound:
-      description: The resource was not found. For example, the EPCIS event does not exist or the query does not exist.
+      description: At least one resource was not found. For example, the EPCIS event does not exist or the query does not exist.
       content:
         application/problem+json:
           schema:
             example:
-              type: "epcisException:NoSuchNameException"
+              type: "epcisException:NoSuchResourceException"
               title: "Resource not found"
               status: 404
             allOf:
