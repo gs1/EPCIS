@@ -4,7 +4,6 @@ info:
   title: EPCIS 2.0 REST Bindings
   license:
     name: Apache2
-
 tags:
   - name: 'Top-level'
     description: |
@@ -397,6 +396,8 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '406':
           $ref: '#/components/responses/406NotAcceptable'
+        '409':
+          $ref: '#/components/responses/409ResourceAlreadyExistsException'
         '414':
           $ref: '#/components/responses/414URLTooLong'
         '500':
@@ -499,6 +500,8 @@ paths:
           $ref: '#/components/responses/413CapturePayloadTooLarge'
         '406':
           $ref: '#/components/responses/406NotAcceptable'
+        '409':
+          $ref: '#/components/responses/409ResourceAlreadyExistsException'
         '415':
           $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
@@ -1639,6 +1642,8 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '406':
           $ref: '#/components/responses/406NotAcceptable'
+        '409':
+          $ref: '#/components/responses/409ResourceAlreadyExistsException'
         '500':
           $ref: '#/components/responses/500ImplementationException'
     get:
@@ -1745,6 +1750,8 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '406':
           $ref: '#/components/responses/406NotAcceptable'
+        '409':
+          $ref: '#/components/responses/409ResourceAlreadyExistsException'
         '415':
           $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
@@ -2807,6 +2814,29 @@ components:
                     format: uri
                     enum:
                       - epcisException:NotAcceptableException
+              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+    409ResourceAlreadyExistsException:
+      description: |
+        A resource with the provided identifier already exists. E.g., a named query or an event.
+      content:
+        application/problem+json:
+          schema:
+            example:
+              type: "epcisException:ResourceAlreadyExistsException"
+              title: "A resource with the provided identifier already exists."
+              status: 409
+            allOf:
+              - properties:
+                  status:
+                    type: integer
+                    enum:
+                      - 409
+                    default: 409
+                  type:
+                    type: string
+                    format: uri
+                    enum:
+                      - epcisException:ResourceAlreadyExistsException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
     415UnsupportedMediaType:
       description: |
