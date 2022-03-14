@@ -13,11 +13,10 @@
 		"eventList": [
 			{
 				"eventID": "ni:///sha-256;56ba4f355c57456b41c3fb60b22d8342e759de503e3e618940ca3b6ad1bf9b00?ver=CBV2.0",
-				"type": "AggregationEvent",
+				"type": "ObjectEvent",
 				"eventTime": "2020-06-07T17:10:16Z",
 				"eventTimeZoneOffset": "+02:00",
-				"parentID": "urn:epc:id:sgtin:952001.1012345.22222223333",
-				"childEPCs": [
+				"epcList": [
 					"urn:epc:id:sgtin:9520001.012346.10000001001",
 					"urn:epc:id:sgtin:9520001.012346.10000001002",
 					"urn:epc:id:sgtin:9520001.012346.10000001003",
@@ -72,11 +71,10 @@
 			},
 			{
 				"eventID": "ni:///sha-256;dae7b481207bb87f1d981c5f169b8138368ae152a41b002eaf36eca1f67d56f5?ver=CBV2.0",
-				"type": "AggregationEvent",
+				"type": "ObjectEvent",
 				"eventTime": "2020-06-08T18:11:16Z",
 				"eventTimeZoneOffset": "+02:00",
-				"parentID": "urn:epc:id:sgtin:952001.1012345.22222223333",
-				"childEPCs": [
+				"epcList": [
 					"urn:epc:id:sgtin:9520001.012346.10000001001",
 					"urn:epc:id:sgtin:9520001.012346.10000001002",
 					"urn:epc:id:sgtin:9520001.012346.10000001003",
@@ -88,8 +86,8 @@
 					"urn:epc:id:sgtin:9520001.012346.10000001009",
 					"urn:epc:id:sgtin:9520001.012346.10000001010"
 				],
-				"action": "DELETE",
-				"bizStep": "unpacking",
+				"action": "OBSERVE",
+				"bizStep": "inspecting",
 				"disposition": "in_progress",
 				"readPoint": {
 					"id": "urn:epc:id:sgln:9529999.99999.0"
