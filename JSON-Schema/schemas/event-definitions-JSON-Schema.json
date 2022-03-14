@@ -342,6 +342,9 @@
                 "eventID": {
                     "$ref": "#/definitions/eventID"
                 },
+                "certificationInfo": {
+                    "$ref": "#/definitions/certificationInfo"
+                },
                 "errorDeclaration": {
                     "$ref": "#/definitions/errorDeclaration"
                 }
@@ -362,6 +365,7 @@
                         "recordTime",
                         "eventTimeZoneOffset",
                         "eventID",
+                        "certificationInfo",
                         "errorDeclaration"
                     ]
                 },
