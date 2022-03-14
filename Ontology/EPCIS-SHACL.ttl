@@ -555,7 +555,7 @@ epcis:SourceListShape
     sh:path epcis:sourceList ;
     sh:name "sourceList" ;
     sh:property epcis:SourceShape ;
-    sh:property epcis:SourceOrDestinationTypeShape ;
+    sh:property epcis:SourceOrDestinationTypeShape ; 
 .
 
 epcis:DestinationListShape
@@ -572,7 +572,9 @@ epcis:SourceShape
     sh:name "'source' within sourceList" ;
     sh:nodeKind sh:IRI ;
     sh:pattern "^(.+?):(.+)$" ;
-    sh:message "Within sourceList, sourceOrDestination ('source') must be an IRI/URI" ;
+    sh:minCount 1;
+    sh:maxCount 1;
+    sh:message "Within sourceList, sourceOrDestination ('source') is mandatory, single-valued and must be an IRI/URI" ;
 .
 
 epcis:DestinationShape 
@@ -581,7 +583,9 @@ epcis:DestinationShape
     sh:name "'destination' within destinationList" ;
     sh:nodeKind sh:IRI ;
     sh:pattern "^(.+?):(.+)$" ;
-    sh:message "Within destinationList, sourceOrDestination ('destination') must be an IRI/URI" ;
+    sh:minCount 1;
+    sh:maxCount 1;
+    sh:message "Within destinationList, sourceOrDestination ('destination') is mandatory, single-valued and must be an IRI/URI" ;
 .
 
 epcis:SourceOrDestinationTypeShape 
@@ -590,7 +594,9 @@ epcis:SourceOrDestinationTypeShape
     sh:name "'type' within sourceList or destinationList" ;
     sh:nodeKind sh:IRI ;
     sh:pattern "^(.+?):(.+)$" ;
-    sh:message "Within sourceList or destinationList, sourceOrDestinationType ('type') must be an IRI/URI" ;
+    sh:minCount 1;
+    sh:maxCount 1;
+    sh:message "Within sourceList or destinationList, sourceOrDestinationType ('type') is mandatory, single-valued and must be an IRI/URI" ;
 .
 
 epcis:QuantityElementShape
