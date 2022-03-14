@@ -439,9 +439,8 @@ epcis:TransformationIDConditionsShape
 epcis:TransformationIDRequiredShape
 	a sh:PropertyShape;
 	sh:path epcis:transformationID;
-    sh:name "transformationID conditionally required" ;
+    sh:name "transformationID" ;
 	sh:minCount 1;
-	sh:message "transformationID is required within TransformationEvent unless at least one of (inputEPCList or inputQuantityList) AND at least one of (outputEPCList or outputQuantityList) is specified.";
 .
 
 epcis:outputEPCListNonEmptyShape
@@ -449,7 +448,6 @@ epcis:outputEPCListNonEmptyShape
 	sh:path epcis:outputEPCList;
     sh:name "outputEPCList" ;
 	sh:minCount 1;
-	sh:message "transformationID is required within TransformationEvent unless at least one of (inputEPCList or inputQuantityList) AND at least one of (outputEPCList or outputQuantityList) is specified.";
 .
 
 epcis:inputEPCListNonEmptyShape
@@ -457,7 +455,6 @@ epcis:inputEPCListNonEmptyShape
 	sh:path epcis:inputEPCList;
     sh:name "inputEPCList" ;
 	sh:minCount 1;
-	sh:message "transformationID is required within TransformationEvent unless at least one of (inputEPCList or inputQuantityList) AND at least one of (outputEPCList or outputQuantityList) is specified.";
 .
 
 epcis:outputQuantityListNonEmptyShape
@@ -465,7 +462,6 @@ epcis:outputQuantityListNonEmptyShape
 	sh:path epcis:outputQuantityList;
     sh:name "outputQuantityList" ;
 	sh:minCount 1;
-	sh:message "transformationID is required within TransformationEvent unless at least one of (inputEPCList or inputQuantityList) AND at least one of (outputEPCList or outputQuantityList) is specified.";
 .
 
 epcis:inputQuantityListNonEmptyShape
@@ -473,7 +469,6 @@ epcis:inputQuantityListNonEmptyShape
 	sh:path epcis:inputQuantityList;
     sh:name "inputQuantityList" ;
 	sh:minCount 1;
-	sh:message "transformationID is required within TransformationEvent unless at least one of (inputEPCList or inputQuantityList) AND at least one of (outputEPCList or outputQuantityList) is specified.";
 .
 
 epcis:EPCListShape
