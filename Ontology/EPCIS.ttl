@@ -256,7 +256,7 @@ epcis:booleanValue  a     owl:DatatypeProperty , rdf:Property ;
         schema:rangeIncludes xsd:boolean ;
         sw:term_status    "stable" .
 
-epcis:certification a   owl:ObjectProperty , rdf:Property ;
+epcis:certificationInfo a   owl:ObjectProperty , rdf:Property ;
       rdfs:comment      "CertificationDetails relevant for Objects, Places and/or Organizations mentioned in this Event"@en ;
       rdfs:domain       epcis:EPCISEvent ;
       schema:domainIncludes epcis:EPCISEvent ;
