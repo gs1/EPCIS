@@ -55,7 +55,10 @@ epcis:SenderShape
     a sh:PropertyShape ;
     sh:path epcis:sender ;
     sh:name "sender" ;
-    sh:nodeKind sh:IRI ;
+    sh:or (
+    	[ sh:nodeKind sh:IRI ; ]
+    	[ sh:datatype xsd:string; ]
+    );
     sh:pattern "^(.+?):(.+)$" ;
     sh:minCount 0 ;
     sh:maxCount 1 ;
@@ -66,7 +69,10 @@ epcis:ReceiverShape
     a sh:PropertyShape ;
     sh:path epcis:receiver ;
     sh:name "receiver" ;
-    sh:nodeKind sh:IRI ;
+    sh:or (
+    	[ sh:nodeKind sh:IRI ; ]
+    	[ sh:datatype xsd:string; ]
+    );
     sh:pattern "^(.+?):(.+)$" ;
     sh:minCount 0 ;
     sh:maxCount 1 ;
