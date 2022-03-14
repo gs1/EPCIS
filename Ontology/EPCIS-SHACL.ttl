@@ -536,7 +536,8 @@ epcis:BizTransactionTypeShape
     sh:name "type (within epcis:BizTransaction)" ;
     sh:nodeKind sh:IRI ;
     sh:pattern "^(.+?):(.+)$" ;
-    sh:message "Within each value of bizTransactionList, bizTransactionType ('type') must be an IRI/URI" ;
+	sh:maxCount 1;
+    sh:message "Within each value of bizTransactionList, bizTransactionType ('type') is optional, single-valued and must be an IRI/URI" ;
 .
 
 epcis:BizTransactionMandatoryShape
