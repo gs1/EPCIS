@@ -384,10 +384,10 @@
           "type": "string"
         },
         "sender": {
-          "$ref": "#/definitions/id"
+          "type": "string"
         },
         "receiver": {
-          "$ref": "#/definitions/id"
+          "type": "string"
         },
         "epcisHeader": {
           "$ref": "#/definitions/epcisHeader"
