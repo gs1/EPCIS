@@ -730,6 +730,9 @@
         "chemicalSubstance": {
           "$ref": "#/definitions/uri"
         },
+        "coordinateReferenceSystem": {
+          "$ref": "#/definitions/uri"
+        },
         "value": {
           "$ref": "#/definitions/decimal"
         },
