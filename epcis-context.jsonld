@@ -32,6 +32,11 @@
     },
     "eventTimeZoneOffset": "epcis:eventTimeZoneOffset",
     "action": "epcis:action",
+    "certificationInfo": {
+      "@id": "epcis:certificationInfo",
+      "@type": "@id",
+      "@container": "@set"
+    },
     "bizStep": {
       "@context": {
         "@protected": true,
