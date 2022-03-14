@@ -68,6 +68,19 @@
         "eventID": {
             "$ref": "#/definitions/uri"
         },
+        "certificationInfo": {
+            "anyOf": [
+                {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/uri"
+                    }
+                },
+                {
+                    "$ref": "#/definitions/uri"
+                }
+            ]
+        },
         "errorDeclaration": {
             "type": "object",
             "properties": {
