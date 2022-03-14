@@ -440,6 +440,7 @@ GS1 retains the right to make changes to this document at any time, without noti
       <xsd:element name="eventTimeZoneOffset" type="xsd:string"/>
       <xsd:element name="eventID" type="epcis:EventIDType" minOccurs="0"/>
       <xsd:element name="errorDeclaration" type="epcis:ErrorDeclarationType" minOccurs="0"/>
+      <xsd:element name="certificationInfo" type="xsd:anyURI" minOccurs="0"/>
       <xsd:element name="baseExtension" type="epcis:EPCISEventExtensionType" minOccurs="0"/>
     </xsd:sequence>
     <xsd:anyAttribute processContents="lax"/>
