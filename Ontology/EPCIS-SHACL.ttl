@@ -700,6 +700,8 @@ epcis:ErrorDeclarationShape
     sh:property epcis:CorrectiveEventIDsShape ;
     sh:property epcis:ReasonShape ;
     sh:property epcis:DeclarationTimeShape ;
+    sh:maxCount 1;
+    sh:message "errorDeclaration is optional and single-valued within each event";
 .
 
 epcis:CorrectiveEventIDsShape 
