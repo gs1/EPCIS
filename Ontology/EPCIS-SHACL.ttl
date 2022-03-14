@@ -144,7 +144,7 @@ epcis:AggregationEventShape
     sh:property epcis:DispositionShape ;
     sh:property epcis:ReadPointShape ;
     sh:property epcis:BizLocationShape ;
-    sh:property epcis:ParentIDShape ;
+    sh:property epcis:MandatoryParentIDShape ;
     sh:property epcis:ChildEPCsShape ;
     sh:property epcis:EPCListForbiddenShape ;
     sh:property epcis:InputEPCListForbiddenShape ; 
@@ -177,7 +177,7 @@ epcis:AssociationEventShape
     sh:property epcis:DispositionShape ;
     sh:property epcis:ReadPointShape ;
     sh:property epcis:BizLocationShape ;
-    sh:property epcis:ParentIDShape ;
+    sh:property epcis:MandatoryParentIDShape ;
     sh:property epcis:ChildEPCsShape ;
     sh:property epcis:EPCListForbiddenShape ;
     sh:property epcis:InputEPCListForbiddenShape ; 
@@ -378,13 +378,25 @@ epcis:ChildEPCsForbiddenShape
     sh:message "childEPCs should not appear within ObjectEvent, TransactionEvent or TransformationEvent" ;
 .
 
+epcis:MandatoryParentIDShape
+    a sh:PropertyShape ;
+    sh:path epcis:parentID ;
+    sh:name "parentID" ;
+    sh:nodeKind sh:IRI ;
+    sh:pattern "^(.+?):(.+)$" ;
+	sh:minCount 1;
+	sh:maxCount 1;
+    sh:message "Within AggregationEvent and AssociationEvent, parentID is mandatory, single-valued and must be an IRI/URI" ;
+.
+
 epcis:ParentIDShape
     a sh:PropertyShape ;
     sh:path epcis:parentID ;
     sh:name "parentID" ;
     sh:nodeKind sh:IRI ;
     sh:pattern "^(.+?):(.+)$" ;
-    sh:message "Any values of parentID must be IRIs/URIs" ;
+    sh:maxCount 1;
+    sh:message "Within TransactionEvent, parentID is optional, single-valued and must be an IRI/URI" ;
 .
 
 epcis:ParentIDForbiddenShape
@@ -504,7 +516,8 @@ epcis:TransformationIDShape
     sh:name "transformationID" ;
     sh:nodeKind sh:IRI ;
     sh:pattern "^(.+?):(.+)$" ;
-    sh:message "Within a TransformationEvent, values of transformationID must be IRIs/URIs" ;
+    sh:maxCount 1;
+    sh:message "Within a TransformationEvent, transformationID is optional, single-valued and must be an IRI/URI" ;
 .
 
 epcis:BizTransactionShape
