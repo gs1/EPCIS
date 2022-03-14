@@ -450,8 +450,11 @@ epcis:PersistentDispositionShape
     a sh:NodeShape ;
     sh:path epcis:persistentDisposition ;
     sh:name "persistentDisposition" ;
+    sh:maxCount 1;
     sh:property epcis:SetShape ;
     sh:property epcis:UnsetShape ;
+    sh:property epcis:SpecifySetOrUnsetShape;
+    sh:message "Within each event, persistentDisposition must not appear more than once, although its properties 'set' and 'unset' may each specify multiple values.";
 .
 
 epcis:PersistentDispositionForbiddenShape
@@ -478,6 +481,21 @@ epcis:UnsetShape
     sh:nodeKind sh:IRI ;
     sh:pattern "^(.+?):(.+)$" ;
     sh:message "Within persistentDisposition, values of unset must be IRIs/URIs" ;
+.
+
+epcis:SpecifySetOrUnsetShape
+	a sh:NodeShape ;
+	sh:or (
+		[
+			sh:path epcis:set ;
+			sh:minCount 1 ;
+		]
+		[
+			sh:path epcis:unset ;
+			sh:minCount 1 ;
+		]
+	);
+	sh:message "If persistentDisposition is specified within an event, then at least one disposition value must be specified by either of 'set' or 'unset'";
 .
 
 epcis:TransformationIDShape
