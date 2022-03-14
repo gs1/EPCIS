@@ -144,7 +144,7 @@ epcis:AggregationEventShape
     sh:property epcis:DispositionShape ;
     sh:property epcis:ReadPointShape ;
     sh:property epcis:BizLocationShape ;
-    sh:property epcis:MandatoryParentIDShape ;
+    sh:property epcis:ParentIDShape ;
     sh:property epcis:ChildEPCsShape ;
     sh:property epcis:EPCListForbiddenShape ;
     sh:property epcis:InputEPCListForbiddenShape ; 
@@ -177,7 +177,7 @@ epcis:AssociationEventShape
     sh:property epcis:DispositionShape ;
     sh:property epcis:ReadPointShape ;
     sh:property epcis:BizLocationShape ;
-    sh:property epcis:MandatoryParentIDShape ;
+    sh:property epcis:ParentIDShape ;
     sh:property epcis:ChildEPCsShape ;
     sh:property epcis:EPCListForbiddenShape ;
     sh:property epcis:InputEPCListForbiddenShape ; 
@@ -387,7 +387,7 @@ epcis:MandatoryParentIDShape
     sh:pattern "^(.+?):(.+)$" ;
 	sh:minCount 1;
 	sh:maxCount 1;
-    sh:message "Within AggregationEvent and AssociationEvent, parentID is mandatory, single-valued and must be an IRI/URI" ;
+    sh:message "parentID is mandatory, single-valued and must be an IRI/URI" ;
 .
 
 epcis:ParentIDShape
@@ -397,7 +397,7 @@ epcis:ParentIDShape
     sh:nodeKind sh:IRI ;
     sh:pattern "^(.+?):(.+)$" ;
     sh:maxCount 1;
-    sh:message "Within TransactionEvent, parentID is optional, single-valued and must be an IRI/URI" ;
+    sh:message "Within AggregationEvent and AssociationEvent, TransactionEvent, parentID is optional, single-valued and must be an IRI/URI" ;
 .
 
 epcis:ParentIDForbiddenShape
