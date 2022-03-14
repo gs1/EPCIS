@@ -248,18 +248,19 @@ epcis:TransformationEventShape
 	sh:property epcis:ParentIDForbiddenShape;
     sh:property epcis:ChildEPCsForbiddenShape ;    
     sh:property epcis:EPCListForbiddenShape ;
+    sh:property epcis:TransformationIDShape ;    
     sh:node epcis:InputQuantityElementShape ;
     sh:node epcis:OutputQuantityElementShape ;
     sh:node epcis:QuantityElementForbiddenShape ;
     sh:node epcis:ChildQuantityElementForbiddenShape ;
     sh:node epcis:PersistentDispositionShape ;
-    sh:node epcis:TransformationIDShape ;    
     sh:node epcis:BizTransactionShape ;
     sh:node epcis:SourceListShape ;
     sh:node epcis:DestinationListShape ;
     sh:node epcis:ErrorDeclarationShape ;
     sh:node epcis:SensorElementShape ;
     sh:node epcis:CertificationInfoShape ;
+    sh:node epcis:TransformationIDConditionsShape ;
 .    
 
     
@@ -405,6 +406,74 @@ epcis:ParentIDForbiddenShape
     sh:name "parentID (forbidden within ObjectEvent or TransformationEvent)" ;
 	sh:maxCount 0;
 	sh:message "parentID should not appear within ObjectEvent or TransformationEvent";
+.
+
+epcis:TransformationIDConditionsShape
+	a sh:NodeShape;
+    sh:targetClass epcis:TransformationEvent;
+	sh:or(
+     	[sh:and (
+				[ sh:property epcis:TransformationIDRequiredShape ; ]
+      		[sh:or(
+ 				[ sh:property epcis:outputEPCListNonEmptyShape ; ]
+				[ sh:property epcis:outputQuantityListNonEmptyShape ; ]
+				[ sh:property epcis:inputEPCListNonEmptyShape ; ]
+				[ sh:property epcis:inputQuantityListNonEmptyShape ; ]
+				)]
+		)]
+      
+        [sh:and (
+			[sh:or(
+				[ sh:property epcis:outputEPCListNonEmptyShape ; ]
+				[ sh:property epcis:outputQuantityListNonEmptyShape ; ]
+			)]
+			[sh:or(
+				[ sh:property epcis:inputEPCListNonEmptyShape ; ]
+				[ sh:property epcis:inputQuantityListNonEmptyShape ; ]
+			)]
+		)]
+    );
+	sh:message "Within each TransformationEvent, transformationID is required unless at least one of (inputEPCList or inputQuantityList) AND at least one of (outputEPCList or outputQuantityList) are specified. If transactionID is specified then at least one of (inputEPCList, inputQuantityList, outputEPCList, outputQuantityList) must be specified.";
+.
+
+epcis:TransformationIDRequiredShape
+	a sh:PropertyShape;
+	sh:path epcis:transformationID;
+    sh:name "transformationID conditionally required" ;
+	sh:minCount 1;
+	sh:message "transformationID is required within TransformationEvent unless at least one of (inputEPCList or inputQuantityList) AND at least one of (outputEPCList or outputQuantityList) is specified.";
+.
+
+epcis:outputEPCListNonEmptyShape
+	a sh:PropertyShape;
+	sh:path epcis:outputEPCList;
+    sh:name "outputEPCList" ;
+	sh:minCount 1;
+	sh:message "transformationID is required within TransformationEvent unless at least one of (inputEPCList or inputQuantityList) AND at least one of (outputEPCList or outputQuantityList) is specified.";
+.
+
+epcis:inputEPCListNonEmptyShape
+	a sh:PropertyShape;
+	sh:path epcis:inputEPCList;
+    sh:name "inputEPCList" ;
+	sh:minCount 1;
+	sh:message "transformationID is required within TransformationEvent unless at least one of (inputEPCList or inputQuantityList) AND at least one of (outputEPCList or outputQuantityList) is specified.";
+.
+
+epcis:outputQuantityListNonEmptyShape
+	a sh:PropertyShape;
+	sh:path epcis:outputQuantityList;
+    sh:name "outputQuantityList" ;
+	sh:minCount 1;
+	sh:message "transformationID is required within TransformationEvent unless at least one of (inputEPCList or inputQuantityList) AND at least one of (outputEPCList or outputQuantityList) is specified.";
+.
+
+epcis:inputQuantityListNonEmptyShape
+	a sh:PropertyShape;
+	sh:path epcis:inputQuantityList;
+    sh:name "inputQuantityList" ;
+	sh:minCount 1;
+	sh:message "transformationID is required within TransformationEvent unless at least one of (inputEPCList or inputQuantityList) AND at least one of (outputEPCList or outputQuantityList) is specified.";
 .
 
 epcis:EPCListShape
