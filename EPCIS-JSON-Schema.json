@@ -556,6 +556,19 @@
     "eventID": {
       "$ref": "#/definitions/uri"
     },
+    "certificationInfo": {
+      "anyOf": [
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/uri"
+          }
+        },
+        {
+          "$ref": "#/definitions/uri"
+        }
+      ]
+    },
     "errorDeclaration": {
       "type": "object",
       "properties": {
@@ -817,6 +830,9 @@
         "eventID": {
           "$ref": "#/definitions/eventID"
         },
+        "certificationInfo": {
+          "$ref": "#/definitions/certificationInfo"
+        },
         "errorDeclaration": {
           "$ref": "#/definitions/errorDeclaration"
         }
@@ -837,6 +853,7 @@
             "recordTime",
             "eventTimeZoneOffset",
             "eventID",
+            "certificationInfo",
             "errorDeclaration"
           ]
         },
