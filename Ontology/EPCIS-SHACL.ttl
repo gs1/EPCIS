@@ -181,7 +181,7 @@ epcis:AssociationEventShape
     sh:property epcis:DispositionShape ;
     sh:property epcis:ReadPointShape ;
     sh:property epcis:BizLocationShape ;
-    sh:property epcis:ParentIDShape ;
+    sh:property epcis:MandatoryParentIDShape ;
     sh:property epcis:ChildEPCsShape ;
     sh:property epcis:EPCListForbiddenShape ;
     sh:property epcis:InputEPCListForbiddenShape ; 
@@ -768,6 +768,15 @@ epcis:UOMShape
     sh:message "uom must be an xsd:string and can only have one value" ;
 .
 
+epcis:UOMAnyStringShape 
+    a sh:PropertyShape ;
+    sh:path epcis:uom ;
+    sh:name "uom" ;
+    sh:datatype xsd:string ;
+    sh:maxCount 1 ;
+    sh:message "uom must be an xsd:string and can only have one value" ;
+.
+
 epcis:ErrorDeclarationShape
     a sh:NodeShape ;
     sh:path epcis:errorDeclaration ;
@@ -841,7 +850,7 @@ epcis:SensorReportShape
     sh:property epcis:BooleanValueShape ;
     sh:property epcis:HexBinaryValueShape ;
     sh:property epcis:StringValueShape ;
-    sh:property epcis:UOMShape ;
+    sh:property epcis:UOMAnyStringShape ;
     sh:property epcis:ComponentShape ;
     sh:minCount 1 ;
 .
