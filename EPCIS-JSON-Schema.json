@@ -520,21 +520,43 @@
       ]
     },
     "persistentDisposition": {
-      "type": "object",
-      "properties": {
-        "set": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/disposition"
+      "allOf": [
+        {
+          "type": "object",
+          "properties": {
+            "set": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/disposition"
+              },
+              "minItems": 1
+            },
+            "unset": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/disposition"
+              },
+              "minItems": 1
+            }
           }
         },
-        "unset": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/disposition"
-          }
+        {
+          "anyOf": [
+            {
+              "type": "object",
+              "required": [
+                "set"
+              ]
+            },
+            {
+              "type": "object",
+              "required": [
+                "unset"
+              ]
+            }
+          ]
         }
-      }
+      ]
     },
     "epcList": {
       "type": "array",
