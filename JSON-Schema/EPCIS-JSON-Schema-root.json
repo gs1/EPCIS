@@ -16,7 +16,7 @@
                 "type": "object",
                 "properties": {
                     "type": {
-                        "const": "EPCISDocument"
+                        "enum": ["EPCISDocument"]
                     }
                 }
             },
@@ -29,7 +29,7 @@
                 "type": "object",
                 "properties": {
                     "type": {
-                        "const": "EPCISQueryDocument"
+                        "enum": ["EPCISQueryDocument"]
                     }
                 }
             },
@@ -42,7 +42,7 @@
                 "type": "object",
                 "properties": {
                     "type": {
-                        "const": "ObjectEvent"
+                        "enum": ["ObjectEvent"]
                     }
                 }
             },
@@ -62,7 +62,7 @@
                 "type": "object",
                 "properties": {
                     "type": {
-                        "const": "AggregationEvent"
+                        "enum": ["AggregationEvent"]
                     }
                 }
             },
@@ -82,7 +82,7 @@
                 "type": "object",
                 "properties": {
                     "type": {
-                        "const": "AssociationEvent"
+                        "enum": ["AssociationEvent"]
                     }
                 }
             },
@@ -102,7 +102,7 @@
                 "type": "object",
                 "properties": {
                     "type": {
-                        "const": "TransformationEvent"
+                        "enum": ["TransformationEvent"]
                     }
                 }
             },
@@ -122,7 +122,7 @@
                 "type": "object",
                 "properties": {
                     "type": {
-                        "const": "TransactionEvent"
+                        "enum": ["TransactionEvent"]
                     }
                 }
             },
