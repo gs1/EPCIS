@@ -3,8 +3,10 @@
 <epcis:EPCISDocument schemaVersion="2.0"
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:ext1="http://example.com/ext1/" xmlns:ext2="http://example.com/ext2/"
-	xmlns:ext3="http://example.com/ext3/" xmlns:cbvmda="urn:epcglobal:cbv:mda"
+	xmlns:ext1="http://example.com/ext1/" 
+	xmlns:ext2="http://example.com/ext2/"
+	xmlns:ext3="http://example.com/ext3/" 
+	xmlns:cbvmda="urn:epcglobal:cbv:mda"
 	creationDate="2013-06-04T14:59:02.099+02:00"
 	xmlns:epcis="urn:epcglobal:epcis:xsd:2">
 	<EPCISBody>
@@ -74,116 +76,21 @@
 							dataProcessingMethod="https://example.com/gdti/4012345000054987"
 							ext1:someFurtherReportData="someText" />
 						<ext1:default>stringAsDefaultValue</ext1:default>
-						<ext1:int xsi:type="xsd:integer">10</ext1:int>
-						<ext1:float xsi:type="xsd:double">20</ext1:float>
-						<ext1:time xsi:type="xsd:dateTime">2013-06-08T14:58:56.591Z</ext1:time>
 						<ext1:boolean xsi:type="xsd:boolean">true</ext1:boolean>
 						<ext1:string xsi:type="xsd:string">string</ext1:string>
 						<ext1:object>
 							<ext2:string xsi:type="xsd:string">stringInObject</ext2:string>
 							<ext2:array xsi:type="xsd:integer">11</ext2:array>
-							<ext2:array xsi:type="xsd:double">21</ext2:array>
-							<ext2:array xsi:type="xsd:string">stringInArrayInObject</ext2:array>
 							<ext2:object>
 								<ext3:string xsi:type="xsd:string">stringInObjectInObject</ext3:string>
 							</ext2:object>
 						</ext1:object>
-						<ext1:array xsi:type="xsd:integer">12</ext1:array>
-						<ext1:array xsi:type="xsd:double">22</ext1:array>
-						<ext1:array xsi:type="xsd:dateTime">2013-06-08T14:58:56.591Z</ext1:array>
-						<ext1:array xsi:type="xsd:boolean">true</ext1:array>
-						<ext1:array xsi:type="xsd:string">stringInArray</ext1:array>
-						<ext1:array>
-							<ext1:object>
-								<ext2:int xsi:type="xsd:integer">13</ext2:int>
-								<ext2:string xsi:type="xsd:string">stringInObjectInArray</ext2:string>
-								<ext2:array xsi:type="xsd:integer">14</ext2:array>
-								<ext2:array xsi:type="xsd:double">23.0</ext2:array>
-								<ext2:array xsi:type="xsd:string">stringInArrayInObjectInArray</ext2:array>
-								<ext2:object>
-									<ext3:string xsi:type="xsd:string">stringInObjectInObjectInArray</ext3:string>
-								</ext2:object>
-							</ext1:object>
-						</ext1:array>
 					</sensorElement>
 				</sensorElementList>
 				<persistentDisposition>
 					<unset>urn:epcglobal:cbv:disp:completeness_inferred</unset>
 					<set>urn:epcglobal:cbv:disp:completeness_verified</set>
 				</persistentDisposition>
-				<ilmd>
-					<cbvmda:countryOfOrigin>GB</cbvmda:countryOfOrigin>
-					<cbvmda:countryOfExport>KR</cbvmda:countryOfExport>
-					<cbvmda:drainedWeight
-						measurementUnitCode="KGM">3.5</cbvmda:drainedWeight>
-					<cbvmda:grossWeight measurementUnitCode="KGM">3.5</cbvmda:grossWeight>
-					<cbvmda:lotNumber>ABC123</cbvmda:lotNumber>
-					<cbvmda:netWeight measurementUnitCode="KGM">3.5</cbvmda:netWeight>
-					<ext1:default>stringAsDefaultValue</ext1:default>
-					<ext1:int xsi:type="xsd:integer">10</ext1:int>
-					<ext1:float xsi:type="xsd:double">20</ext1:float>
-					<ext1:time xsi:type="xsd:dateTime">2013-06-08T14:58:56.591Z</ext1:time>
-					<ext1:boolean xsi:type="xsd:boolean">true</ext1:boolean>
-					<ext1:string xsi:type="xsd:string">string</ext1:string>
-					<ext1:object>
-						<ext2:string xsi:type="xsd:string">stringInObject</ext2:string>
-						<ext2:array xsi:type="xsd:integer">11</ext2:array>
-						<ext2:array xsi:type="xsd:double">21</ext2:array>
-						<ext2:array xsi:type="xsd:string">stringInArrayInObject</ext2:array>
-						<ext2:object>
-							<ext3:string xsi:type="xsd:string">stringInObjectInObject</ext3:string>
-						</ext2:object>
-					</ext1:object>
-					<ext1:array xsi:type="xsd:integer">12</ext1:array>
-					<ext1:array xsi:type="xsd:double">22</ext1:array>
-					<ext1:array xsi:type="xsd:dateTime">2013-06-08T14:58:56.591Z</ext1:array>
-					<ext1:array xsi:type="xsd:boolean">true</ext1:array>
-					<ext1:array xsi:type="xsd:string">stringInArray</ext1:array>
-					<ext1:array>
-						<ext1:object>
-							<ext2:int xsi:type="xsd:integer">13</ext2:int>
-							<ext2:string xsi:type="xsd:string">stringInObjectInArray</ext2:string>
-							<ext2:array xsi:type="xsd:integer">14</ext2:array>
-							<ext2:array xsi:type="xsd:double">23.0</ext2:array>
-							<ext2:array xsi:type="xsd:string">stringInArrayInObjectInArray</ext2:array>
-							<ext2:object>
-								<ext3:string xsi:type="xsd:string">stringInObjectInObjectInArray</ext3:string>
-							</ext2:object>
-						</ext1:object>
-					</ext1:array>
-				</ilmd>
-				<ext1:default>stringAsDefaultValue</ext1:default>
-				<ext1:int xsi:type="xsd:integer">10</ext1:int>
-				<ext1:float xsi:type="xsd:double">20</ext1:float>
-				<ext1:time xsi:type="xsd:dateTime">2013-06-08T14:58:56.591Z</ext1:time>
-				<ext1:boolean xsi:type="xsd:boolean">true</ext1:boolean>
-				<ext1:string xsi:type="xsd:string">string</ext1:string>
-				<ext1:object>
-					<ext2:string xsi:type="xsd:string">stringInObject</ext2:string>
-					<ext2:array xsi:type="xsd:integer">11</ext2:array>
-					<ext2:array xsi:type="xsd:double">21</ext2:array>
-					<ext2:array xsi:type="xsd:string">stringInArrayInObject</ext2:array>
-					<ext2:object>
-						<ext3:string xsi:type="xsd:string">stringInObjectInObject</ext3:string>
-					</ext2:object>
-				</ext1:object>
-				<ext1:array xsi:type="xsd:integer">12</ext1:array>
-				<ext1:array xsi:type="xsd:double">22</ext1:array>
-				<ext1:array xsi:type="xsd:dateTime">2013-06-08T14:58:56.591Z</ext1:array>
-				<ext1:array xsi:type="xsd:boolean">true</ext1:array>
-				<ext1:array xsi:type="xsd:string">stringInArray</ext1:array>
-				<ext1:array>
-					<ext1:object>
-						<ext2:int xsi:type="xsd:integer">13</ext2:int>
-						<ext2:string xsi:type="xsd:string">stringInObjectInArray</ext2:string>
-						<ext2:array xsi:type="xsd:integer">14</ext2:array>
-						<ext2:array xsi:type="xsd:double">23.0</ext2:array>
-						<ext2:array xsi:type="xsd:string">stringInArrayInObjectInArray</ext2:array>
-						<ext2:object>
-							<ext3:string xsi:type="xsd:string">stringInObjectInObjectInArray</ext3:string>
-						</ext2:object>
-					</ext1:object>
-				</ext1:array>
 			</ObjectEvent>
 		</EventList>
 	</EPCISBody>
