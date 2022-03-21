@@ -40,11 +40,6 @@
                         <uom>KGM</uom>
                     </quantityElement>
                 </quantityList>
-                <extension>
-                    <extension>
-                        <futureExtension/>
-                    </extension>
-                </extension>
                 <ilmd>
                     <example:userIlmd>
                         <part1>1</part1>
@@ -52,6 +47,11 @@
                         <part3>3</part3>
                     </example:userIlmd>
                 </ilmd>
+                <extension>
+                    <extension>
+                        <futureExtension/>
+                    </extension>
+                </extension>
                 <example:userElement>
                     <anotherElement>elementData</anotherElement>
                 </example:userElement>
