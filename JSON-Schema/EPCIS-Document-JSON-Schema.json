@@ -252,6 +252,9 @@
                             "type",
                             "schemaVersion",
                             "creationDate",
+                            "instanceIdentifier",
+                            "sender",
+                            "receiver",
                             "epcisHeader",
                             "epcisBody"
                         ]
