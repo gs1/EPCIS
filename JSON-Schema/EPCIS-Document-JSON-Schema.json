@@ -215,10 +215,10 @@
                     "type": "string"
                 },
                 "sender": {
-                    "$ref": "schemas/definitions-JSON-Schema.json#/definitions/id"
+                    "type": "string"
                 },
                 "receiver": {
-                    "$ref": "schemas/definitions-JSON-Schema.json#/definitions/id"
+                    "type": "string"
                 },
                 "epcisHeader": {
                     "$ref": "#/definitions/epcisHeader"
