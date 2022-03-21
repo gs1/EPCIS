@@ -3299,7 +3299,7 @@ components:
           example: EPCISQueryDocument
         schemaVersion:
           type: string
-          pattern: ^\d+(\.\d+)?$
+          pattern: ^\d+(\.\d+)*$
           example: "2.0"
         creationDate:
           type: string
@@ -3915,7 +3915,7 @@ components:
     # describe header schema
     version:
       type: string
-      pattern: ^\d+(\.\d+)?$
+      pattern: ^\d+(\.\d+)*$
       
     GS1-EPCIS-Version:
       allOf: 
