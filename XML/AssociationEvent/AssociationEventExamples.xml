@@ -1,5 +1,4 @@
-<epcis:EPCISDocument xmlns:epcis="urn:epcglobal:epcis:xsd:2" schemaVersion="2.0" creationDate="2019-11-28T14:59:02.000+01:00"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<epcis:EPCISDocument xmlns:epcis="urn:epcglobal:epcis:xsd:2" schemaVersion="2.0" creationDate="2019-11-28T14:59:02.000+01:00" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:epcglobal:epcis:xsd:2 S:\Projekte\5 Mitarbeiter\Tröger\Working Groups\EPCIS_CBV_2dot0\MessageTests_2022-03-16\EPCglobal-epcis-2_0.xsd">
 	<EPCISBody>
 		<EventList>
 			<!-- Association event - case (a): for phyiscal objects such as assets and products  -->
