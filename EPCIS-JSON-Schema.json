@@ -421,6 +421,9 @@
               "type",
               "schemaVersion",
               "creationDate",
+              "instanceIdentifier",
+              "sender",
+              "receiver",
               "epcisHeader",
               "epcisBody"
             ]
@@ -529,14 +532,16 @@
               "items": {
                 "$ref": "#/definitions/disposition"
               },
-              "minItems": 1
+              "minItems": 1,
+              "uniqueItems": true
             },
             "unset": {
               "type": "array",
               "items": {
                 "$ref": "#/definitions/disposition"
               },
-              "minItems": 1
+              "minItems": 1,
+              "uniqueItems": true
             }
           }
         },
@@ -988,7 +993,7 @@
     },
     "version": {
       "type": "string",
-      "pattern": "^\\d+(\\.\\d+)*$"
+      "pattern": "^\\d+(\\.\\d+)?$"
     },
     "id": {
       "type": "string",
