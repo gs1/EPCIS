@@ -124,6 +124,7 @@ epcis:ObjectEventShape
     sh:node epcis:InputQuantityElementForbiddenShape ;
     sh:node epcis:OutputQuantityElementForbiddenShape ;
     sh:node epcis:ChildQuantityElementForbiddenShape ;
+    sh:node epcis:ILMDConditionallyForbiddenShape ;
     sh:node epcis:PersistentDispositionShape ;
     sh:node epcis:BizTransactionShape ;
     sh:node epcis:SourceListShape ;
@@ -745,6 +746,16 @@ epcis:OutputQuantityElementForbiddenShape
     sh:name "outputQuantityList (forbidden)" ;
 	sh:maxCount 0;
     sh:message "outputQuantityList should not appear within ObjectEvent, AggregationEvent, AssociationEvent or TransactionEvent - only within TransformationEvent" ;	
+.
+
+epcis:ILMDConditionallyForbiddenShape
+	a sh:NodeShape;
+    sh:or( 
+    [ sh:path epcis:ilmd;
+      sh:maxCount 0; ]
+    [ sh:path epcis:action;
+      sh:in ("ADD"); ]
+    )
 .
 
 epcis:EPCClassShape 
