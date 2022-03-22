@@ -153,6 +153,7 @@ epcis:AggregationEventShape
     sh:property epcis:EPCListForbiddenShape ;
     sh:property epcis:InputEPCListForbiddenShape ; 
     sh:property epcis:OutputEPCListForbiddenShape ;
+    sh:property epcis:ILMDForbiddenShape ;
     sh:node epcis:ChildQuantityElementShape ;
     sh:node epcis:QuantityElementForbiddenShape ;
     sh:node epcis:InputQuantityElementForbiddenShape ;
@@ -186,6 +187,7 @@ epcis:AssociationEventShape
     sh:property epcis:EPCListForbiddenShape ;
     sh:property epcis:InputEPCListForbiddenShape ; 
     sh:property epcis:OutputEPCListForbiddenShape ; 
+    sh:property epcis:ILMDForbiddenShape ;
     sh:node epcis:ChildQuantityElementShape ;
     sh:node epcis:QuantityElementForbiddenShape ;
     sh:node epcis:InputQuantityElementForbiddenShape ;
@@ -219,6 +221,7 @@ epcis:TransactionEventShape
     sh:property epcis:ChildEPCsForbiddenShape ;    
     sh:property epcis:InputEPCListForbiddenShape ; 
     sh:property epcis:OutputEPCListForbiddenShape ; 
+    sh:property epcis:ILMDForbiddenShape ;
     sh:node epcis:QuantityElementShape ;
     sh:node epcis:ChildQuantityElementForbiddenShape ;
     sh:node epcis:InputQuantityElementForbiddenShape ;
@@ -381,6 +384,14 @@ epcis:ChildEPCsForbiddenShape
     sh:name "childEPCs (forbidden)" ;
     sh:maxCount 0 ;
     sh:message "childEPCs should not appear within ObjectEvent, TransactionEvent or TransformationEvent" ;
+.
+
+epcis:ILMDForbiddenShape
+    a sh:PropertyShape ;
+    sh:path epcis:ilmd ;
+    sh:name "ilmd (forbidden)" ;
+    sh:maxCount 0 ;
+    sh:message "ilmd should not appear within AggregationEvent, AssociationEvent or TransactionEvent" ;
 .
 
 epcis:MandatoryParentIDShape
@@ -1113,4 +1124,3 @@ epcis:StringValueShape
     sh:maxCount 1 ;
     sh:message "Within each value of sensorReport, stringValue is optional but must be an xsd:string and can only have one value" ;
 .
-
