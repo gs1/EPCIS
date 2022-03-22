@@ -3891,7 +3891,7 @@ components:
               $ref: '#/components/schemas/GS1-Query-DayOfWeek'
     GS1-Signature:
       description: |
-        Used to sign events sent by the repository to subscribers. The choice of signature type implementation specific but examples would be using HMAC with SHA-256 directly or a wrapper supporting various symmetric or asymetric 
+        Used to sign events sent by the repository to subscribers. The choice of signature type is implementation specific but examples would be using HMAC with SHA-256 directly or a wrapper supporting various symmetric or asymetric 
         cryptographic algorithms such as Json Web Signature (JWS). 
       type: string
       example: "eyJpc3MiOiJqb2UiLA0KICJleHAiOjEzMDA4MTkzODAsDQogImh0dHA6Ly9leGFtcGxlLmNvbS9pc19yb290Ijp0cnVlfQ"
