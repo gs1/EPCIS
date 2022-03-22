@@ -152,9 +152,9 @@ paths:
               $ref: '#/components/headers/GS1-Extensions'
             Location:
               description: |
-                URL of the capture job
+                Absolute or relative URL of the capture job
               schema:
-                example: "https://example.com/capture/id9261379075"
+                example: "/id9261379075"
                 type: string
                 format: uri
 
@@ -465,7 +465,7 @@ paths:
               $ref: '#/components/headers/GS1-Extensions'
             Location:
               description: |
-                URL of the newly captured EPCIS event. 
+                Absolute or relative URL of the newly captured EPCIS event. 
               schema:
                 example: "https://example.com/events/cc979570-74a3-4dc7-8f3e-2e747d6d31ec"
                 type: string
@@ -1738,7 +1738,7 @@ paths:
               $ref: '#/components/headers/GS1-Extensions'
             Location:
               description: |
-                The URL of the created query. The client can use the `Location` URL to obtain the named query definition.
+                Absolute or relative URL of the created query. The client can use the `Location` URL to obtain the named query definition.
               schema:
                 example: "https://www.example.com/queries/myQuery"
                 type: string
