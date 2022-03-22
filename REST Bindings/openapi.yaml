@@ -500,8 +500,6 @@ paths:
           $ref: '#/components/responses/413CapturePayloadTooLarge'
         '406':
           $ref: '#/components/responses/406NotAcceptable'
-        '409':
-          $ref: '#/components/responses/409ResourceAlreadyExistsException'
         '415':
           $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
