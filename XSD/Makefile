@@ -24,21 +24,22 @@ valid-events: $(EVENT_XMLTESTS)
 valid-vocabulary: $(VOCABULARY_XMLTESTS)
 valid-capture: $(CAPTURE_XMLTESTS)
 
-valid: prepare valid-events valid-vocabulary valid-capture clean
+valid: valid-events valid-vocabulary valid-capture
 
-prepare:
-	mkdir tmp; find ./ -name '*.xsd' -maxdepth 1 -exec sh -c 'sed "s/xsd\:dateTimeStamp/xsd:\dateTime/g"  {} > tmp/{}' \;
+# prepare XML Schema 1.0 by relaxing Schema 1.1 definitions
+#prepare:
+#	mkdir tmp; find ./ -name '*.xsd' -maxdepth 1 -exec sh -c 'sed "s/xsd\:dateTimeStamp/xsd:\dateTime/g"  {} > tmp/{}' \;
 
-clean:
-	rm -Rf tmp;
+#clean:
+#	rm -Rf tmp;
 
 # Each test depends on the XML file
 # Now we have a pattern on both sides of the generic rule
 %.event-test: %.xml
-	xmllint --noout --schema ./tmp/EPCglobal-epcis-2_0.xsd  $<
+	xmllint --noout --schema EPCglobal-epcis-2_0_alt.xsd  $<
 
 %.vocabulary-test: %.xml
-	xmllint --noout --schema ./tmp/EPCglobal-epcis-masterdata-2_0.xsd  $<
+	xmllint --noout --schema EPCglobal-epcis-masterdata-2_0_alt.xsd  $<
 
 %.capture-test: %.xml
-	xmllint --noout --schema ./tmp/EPCglobal-epcis-2_0.xsd  $<	
+	xmllint --noout --schema EPCglobal-epcis-2_0_alt.xsd  $<	

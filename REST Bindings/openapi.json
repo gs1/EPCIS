@@ -5412,7 +5412,7 @@
           },
           "schemaVersion": {
             "type": "string",
-            "pattern": "^\\d+(\\.\\d+)?$",
+            "pattern": "^\\d+(\\.\\d+)*$",
             "example": "2.0"
           },
           "creationDate": {
@@ -5736,26 +5736,26 @@
       "GS1-EPCIS-Version": {
         "description": "The EPCIS version.",
         "type": "string",
-        "pattern": "^\\d+(\\.\\d+)?$",
+        "pattern": "^\\d+(\\.\\d+)*$",
         "example": "2.0"
       },
       "GS1-EPCIS-Min": {
         "description": "The lowest EPCIS version supported.",
         "type": "string",
-        "pattern": "^\\d+(\\.\\d+)?$",
+        "pattern": "^\\d+(\\.\\d+)*$",
         "example": "2.0"
       },
       "GS1-EPCIS-Max": {
         "example": "1.0",
         "description": "The highest EPCIS version supported.",
         "type": "string",
-        "pattern": "^\\d+(\\.\\d+)?$"
+        "pattern": "^\\d+(\\.\\d+)*$"
       },
       "GS1-CBV-Version": {
         "example": "2.0",
         "description": "The core business vocabulary version.",
         "type": "string",
-        "pattern": "^\\d+(\\.\\d+)?$"
+        "pattern": "^\\d+(\\.\\d+)*$"
       },
       "GS1-EPC-Format": {
         "example": "Always_GS1_Digital_Link",

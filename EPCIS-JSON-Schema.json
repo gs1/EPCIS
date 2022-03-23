@@ -1,6 +1,7 @@
 {
   "$id": "https://gs1.github.io/EPCIS/EPCIS-JSON-Schema.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
   "required": [
     "type"
   ],
@@ -12,6 +13,7 @@
   "allOf": [
     {
       "if": {
+        "type": "object",
         "properties": {
           "type": {
             "const": "EPCISDocument"
@@ -24,6 +26,7 @@
     },
     {
       "if": {
+        "type": "object",
         "properties": {
           "type": {
             "const": "EPCISQueryDocument"
@@ -36,6 +39,7 @@
     },
     {
       "if": {
+        "type": "object",
         "properties": {
           "type": {
             "const": "ObjectEvent"
@@ -55,6 +59,7 @@
     },
     {
       "if": {
+        "type": "object",
         "properties": {
           "type": {
             "const": "AggregationEvent"
@@ -74,6 +79,7 @@
     },
     {
       "if": {
+        "type": "object",
         "properties": {
           "type": {
             "const": "AssociationEvent"
@@ -93,6 +99,7 @@
     },
     {
       "if": {
+        "type": "object",
         "properties": {
           "type": {
             "const": "TransformationEvent"
@@ -112,6 +119,7 @@
     },
     {
       "if": {
+        "type": "object",
         "properties": {
           "type": {
             "const": "TransactionEvent"
@@ -132,6 +140,7 @@
     {
       "if": {
         "not": {
+          "type": "object",
           "properties": {
             "type": {
               "enum": [
@@ -375,10 +384,10 @@
           "type": "string"
         },
         "sender": {
-          "$ref": "#/definitions/id"
+          "type": "string"
         },
         "receiver": {
-          "$ref": "#/definitions/id"
+          "type": "string"
         },
         "epcisHeader": {
           "$ref": "#/definitions/epcisHeader"
@@ -412,6 +421,9 @@
               "type",
               "schemaVersion",
               "creationDate",
+              "instanceIdentifier",
+              "sender",
+              "receiver",
               "epcisHeader",
               "epcisBody"
             ]
@@ -511,27 +523,52 @@
       ]
     },
     "persistentDisposition": {
-      "type": "object",
-      "properties": {
-        "set": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/disposition"
+      "allOf": [
+        {
+          "type": "object",
+          "properties": {
+            "set": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/disposition"
+              },
+              "minItems": 1,
+              "uniqueItems": true
+            },
+            "unset": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/disposition"
+              },
+              "minItems": 1,
+              "uniqueItems": true
+            }
           }
         },
-        "unset": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/disposition"
-          }
+        {
+          "anyOf": [
+            {
+              "type": "object",
+              "required": [
+                "set"
+              ]
+            },
+            {
+              "type": "object",
+              "required": [
+                "unset"
+              ]
+            }
+          ]
         }
-      }
+      ]
     },
     "epcList": {
       "type": "array",
       "items": {
         "$ref": "#/definitions/uri"
-      }
+      },
+      "uniqueItems": true
     },
     "quantityList": {
       "type": "array",
@@ -545,6 +582,19 @@
     },
     "eventID": {
       "$ref": "#/definitions/uri"
+    },
+    "certificationInfo": {
+      "anyOf": [
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/uri"
+          }
+        },
+        {
+          "$ref": "#/definitions/uri"
+        }
+      ]
     },
     "errorDeclaration": {
       "type": "object",
@@ -564,7 +614,8 @@
       },
       "required": [
         "declarationTime"
-      ]
+      ],
+      "additionalProperties": false
     },
     "quantityElement": {
       "type": "object",
@@ -582,7 +633,8 @@
       "required": [
         "epcClass",
         "quantity"
-      ]
+      ],
+      "additionalProperties": false
     },
     "bizTransaction": {
       "type": "object",
@@ -596,7 +648,8 @@
       },
       "required": [
         "bizTransaction"
-      ]
+      ],
+      "additionalProperties": false
     },
     "readPoint": {
       "type": "object",
@@ -664,13 +717,15 @@
       },
       "required": [
         "sensorReport"
-      ]
+      ],
+      "additionalProperties": false
     },
     "sensorReportList": {
       "type": "array",
       "items": {
         "$ref": "#/definitions/sensorReport"
-      }
+      },
+      "minItems": 1
     },
     "sensorReport": {
       "type": "object",
@@ -700,6 +755,9 @@
           "$ref": "#/definitions/uri"
         },
         "chemicalSubstance": {
+          "$ref": "#/definitions/uri"
+        },
+        "coordinateReferenceSystem": {
           "$ref": "#/definitions/uri"
         },
         "value": {
@@ -744,7 +802,8 @@
       },
       "required": [
         "type"
-      ]
+      ],
+      "additionalProperties": false
     },
     "sensorMetadata": {
       "type": "object",
@@ -801,6 +860,9 @@
         "eventID": {
           "$ref": "#/definitions/eventID"
         },
+        "certificationInfo": {
+          "$ref": "#/definitions/certificationInfo"
+        },
         "errorDeclaration": {
           "$ref": "#/definitions/errorDeclaration"
         }
@@ -821,6 +883,7 @@
             "recordTime",
             "eventTimeZoneOffset",
             "eventID",
+            "certificationInfo",
             "errorDeclaration"
           ]
         },
@@ -930,7 +993,7 @@
     },
     "version": {
       "type": "string",
-      "pattern": "^\\d+(\\.\\d+)?$"
+      "pattern": "^\\d+(\\.\\d+)*$"
     },
     "id": {
       "type": "string",
@@ -1115,12 +1178,14 @@
       ]
     },
     "EPCIS-Document-Event": {
+      "type": "object",
       "required": [
         "type"
       ],
       "allOf": [
         {
           "if": {
+            "type": "object",
             "properties": {
               "type": {
                 "const": "ObjectEvent"
@@ -1133,6 +1198,7 @@
         },
         {
           "if": {
+            "type": "object",
             "properties": {
               "type": {
                 "const": "AggregationEvent"
@@ -1145,6 +1211,7 @@
         },
         {
           "if": {
+            "type": "object",
             "properties": {
               "type": {
                 "const": "TransactionEvent"
@@ -1169,6 +1236,7 @@
         },
         {
           "if": {
+            "type": "object",
             "properties": {
               "type": {
                 "const": "AssociationEvent"
@@ -1182,6 +1250,7 @@
         {
           "if": {
             "not": {
+              "type": "object",
               "properties": {
                 "type": {
                   "enum": [

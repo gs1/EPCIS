@@ -29,12 +29,13 @@
 
     <build>
         <plugins>
+            <!-- 
+                copy resources and replace xsd:dateTimeStamp with xsd:dateTime
+                Java can validate against XML Schema Version 1.1 
+                but unfortunately XJC is unable to generate code based on XML Schema 1.1 XSDs
+            -->
+            <!-- disable to test alt approach 
             <plugin>
-                <!-- 
-                    copy resources and replace xsd:dateTimeStamp with xsd:dateTime
-                    Java can validate against XML Schema Version 1.1 
-                    but unfortunately XJC is unable to generate code based on XML Schema 1.1 XSDs
-                 -->
                 <artifactId>maven-resources-plugin</artifactId>
                 <executions>
                     <execution>
@@ -94,6 +95,7 @@
                     <value>xsd:dateTime</value>
                 </configuration>
             </plugin>
+            -->
             <!--
                 execute Apache CXF code generation
             -->
@@ -108,7 +110,11 @@
                         <configuration>
                             <wsdlOptions>
                                 <wsdlOption>
+                                    <!--
                                     <wsdl>${basedir}/src/resources/WSDL/EPCglobal-epcis-query-2_0.wsdl</wsdl>
+                                    -->
+                                    <!-- use alt approach -->
+                                    <wsdl>${basedir}/EPCglobal-epcis-query-2_0_alt.wsdl</wsdl>
                                     <extraargs>
                                         <extraarg>-verbose</extraarg>
                                         <extraarg>-p</extraarg>

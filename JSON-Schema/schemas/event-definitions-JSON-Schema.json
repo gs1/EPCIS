@@ -32,27 +32,52 @@
             ]
         },
         "persistentDisposition": {
-            "type": "object",
-            "properties": {
-                "set": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "disposition-JSON-Schema.json#/definitions/disposition"
+            "allOf": [
+                {
+                    "type": "object",
+                    "properties": {
+                        "set": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "disposition-JSON-Schema.json#/definitions/disposition"
+                            },
+                            "minItems": 1,
+                            "uniqueItems": true
+                        },
+                        "unset": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "disposition-JSON-Schema.json#/definitions/disposition"
+                            },
+                            "minItems": 1,
+                            "uniqueItems": true
+                        }
                     }
                 },
-                "unset": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "disposition-JSON-Schema.json#/definitions/disposition"
-                    }
+                {
+                    "anyOf": [
+                        {
+                            "type": "object",
+                            "required": [
+                                "set"
+                            ]
+                        },
+                        {
+                            "type": "object",
+                            "required": [
+                                "unset"
+                            ]
+                        }
+                    ]
                 }
-            }
+            ]
         },
         "epcList": {
             "type": "array",
             "items": {
                 "$ref": "#/definitions/uri"
-            }
+            },
+            "uniqueItems": true
         },
         "quantityList": {
             "type": "array",
@@ -66,6 +91,19 @@
         },
         "eventID": {
             "$ref": "#/definitions/uri"
+        },
+        "certificationInfo": {
+            "anyOf": [
+                {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/uri"
+                    }
+                },
+                {
+                    "$ref": "#/definitions/uri"
+                }
+            ]
         },
         "errorDeclaration": {
             "type": "object",
@@ -85,7 +123,8 @@
             },
             "required": [
                 "declarationTime"
-            ]
+            ],
+            "additionalProperties": false
         },
         "quantityElement": {
             "type": "object",
@@ -103,7 +142,8 @@
             "required": [
                 "epcClass",
                 "quantity"
-            ]
+            ],
+            "additionalProperties": false
         },
         "bizTransaction": {
             "type": "object",
@@ -117,7 +157,8 @@
             },
             "required": [
                 "bizTransaction"
-            ]
+            ],
+            "additionalProperties": false
         },
         "readPoint": {
             "type": "object",
@@ -185,13 +226,15 @@
             },
             "required": [
                 "sensorReport"
-            ]
+            ],
+            "additionalProperties": false
         },
         "sensorReportList": {
             "type": "array",
             "items": {
                 "$ref": "#/definitions/sensorReport"
-            }
+            },
+            "minItems": 1
         },
         "sensorReport": {
             "type": "object",
@@ -221,6 +264,9 @@
                     "$ref": "#/definitions/uri"
                 },
                 "chemicalSubstance": {
+                    "$ref": "#/definitions/uri"
+                },
+                "coordinateReferenceSystem": {
                     "$ref": "#/definitions/uri"
                 },
                 "value": {
@@ -265,7 +311,8 @@
             },
             "required": [
                 "type"
-            ]
+            ],
+            "additionalProperties": false
         },
         "sensorMetadata": {
             "type": "object",
@@ -322,6 +369,9 @@
                 "eventID": {
                     "$ref": "#/definitions/eventID"
                 },
+                "certificationInfo": {
+                    "$ref": "#/definitions/certificationInfo"
+                },
                 "errorDeclaration": {
                     "$ref": "#/definitions/errorDeclaration"
                 }
@@ -342,6 +392,7 @@
                         "recordTime",
                         "eventTimeZoneOffset",
                         "eventID",
+                        "certificationInfo",
                         "errorDeclaration"
                     ]
                 },
@@ -362,7 +413,9 @@
                             "$ref": "definitions-JSON-Schema.json#/definitions/vocab-uri"
                         }
                     },
-                    "required": ["type"]
+                    "required": [
+                        "type"
+                    ]
                 }
             ]
         }
