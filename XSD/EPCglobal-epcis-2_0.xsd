@@ -463,7 +463,7 @@ GS1 retains the right to make changes to this document at any time, without noti
 
   <xsd:complexType name="EPCISEventExtensionType">
     <xsd:sequence>
-      <xsd:any namespace="##local" processContents="lax" maxOccurs="unbounded"/>
+      <xsd:any namespace="##other" processContents="lax" maxOccurs="unbounded"/>
     </xsd:sequence>
     <xsd:anyAttribute processContents="lax"/>
   </xsd:complexType>
@@ -594,7 +594,7 @@ GS1 retains the right to make changes to this document at any time, without noti
   <!-- ObjectEvent extension in since 2.0 -->
   <xsd:complexType name="ObjectEventExtensionType">
     <xsd:sequence>
-      <xsd:any namespace="##local" processContents="lax" maxOccurs="unbounded"/>
+      <xsd:any namespace="##other" processContents="lax" maxOccurs="unbounded"/>
     </xsd:sequence>
     <xsd:anyAttribute processContents="lax"/>
   </xsd:complexType>
@@ -649,7 +649,7 @@ GS1 retains the right to make changes to this document at any time, without noti
   <!-- Since 1.1 -->
   <xsd:complexType name="AggregationEventExtensionType">
     <xsd:sequence>
-      <xsd:any namespace="##local" processContents="lax" maxOccurs="unbounded"/>
+      <xsd:any namespace="##other" processContents="lax" maxOccurs="unbounded"/>
     </xsd:sequence>
     <xsd:anyAttribute processContents="lax"/>
   </xsd:complexType>
@@ -736,7 +736,7 @@ GS1 retains the right to make changes to this document at any time, without noti
   <!-- Since 1.1 -->
   <xsd:complexType name="TransactionEventExtensionType">
     <xsd:sequence>
-      <xsd:any namespace="##local" processContents="lax" maxOccurs="unbounded"/>
+      <xsd:any namespace="##other" processContents="lax" maxOccurs="unbounded"/>
     </xsd:sequence>
     <xsd:anyAttribute processContents="lax"/>
   </xsd:complexType>
@@ -791,7 +791,7 @@ GS1 retains the right to make changes to this document at any time, without noti
   <!-- Since 1.1 -->
   <xsd:complexType name="TransformationEventExtensionType">
     <xsd:sequence>
-      <xsd:any namespace="##local" processContents="lax" maxOccurs="unbounded"/>
+      <xsd:any namespace="##other" processContents="lax" maxOccurs="unbounded"/>
     </xsd:sequence>
     <xsd:anyAttribute processContents="lax"/>
   </xsd:complexType>
@@ -832,7 +832,7 @@ GS1 retains the right to make changes to this document at any time, without noti
   <!-- Since 2.0 -->
   <xsd:complexType name="AssociationEventExtensionType">
     <xsd:sequence>
-      <xsd:any namespace="##local" processContents="lax" maxOccurs="unbounded"/>
+      <xsd:any namespace="##other" processContents="lax" maxOccurs="unbounded"/>
     </xsd:sequence>
     <xsd:anyAttribute processContents="lax"/>
   </xsd:complexType>
