@@ -177,13 +177,15 @@ riot --formatted ttl EPCIS.jsonld | less
 
 To try out Shape Constraint Language (SHACL) validation, you can use this online validation tool:
 
-https://shacl.org/playground/
+https://shacl-playground.zazuko.com/
 
 - Paste the contents of EPCIS-SHACL.ttl into the 'Shapes Graph' window on the left-hand side
 - Paste the contents of one of the EPCIS example files into the 'Data Graph' window on the right-hand side.
-- Press both 'Update' buttons under the two  main text areas where you have just pasted in contents of files.
-- If there are validation errors, they will appear in the Validation Report window (bottom-right).
-- If there are no validation errors, the Validation Report window should be empty.
+- If there are validation errors, they will appear in the Validation Report panel.
+- If there are no validation errors, the Validation Report window should say 'Success'.
+- For details about errors, click on the 'bug' icon top-left, then select 'Display errors as Raw RDF'.
+
+Note that https://shacl.org/playground/ appears not to fully support JSON-LD v1.1 features used in our JSON-LD context file for EPCIS/CBV, so it is no longer recommended for testing SHACL validation for EPCIS/CBV.
 
 Further information about W3C Shape Constraint Language (SHACL)
 

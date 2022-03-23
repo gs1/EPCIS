@@ -493,7 +493,7 @@
       "term_status": "stable"
     },
     {
-      "@id": "epcis:certification",
+      "@id": "epcis:certificationInfo",
       "@type": [
         "owl:ObjectProperty",
         "rdf:Property"

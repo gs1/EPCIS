@@ -384,10 +384,10 @@
           "type": "string"
         },
         "sender": {
-          "$ref": "#/definitions/id"
+          "type": "string"
         },
         "receiver": {
-          "$ref": "#/definitions/id"
+          "type": "string"
         },
         "epcisHeader": {
           "$ref": "#/definitions/epcisHeader"
@@ -421,6 +421,9 @@
               "type",
               "schemaVersion",
               "creationDate",
+              "instanceIdentifier",
+              "sender",
+              "receiver",
               "epcisHeader",
               "epcisBody"
             ]
@@ -520,21 +523,45 @@
       ]
     },
     "persistentDisposition": {
-      "type": "object",
-      "properties": {
-        "set": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/disposition"
+      "allOf": [
+        {
+          "type": "object",
+          "properties": {
+            "set": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/disposition"
+              },
+              "minItems": 1,
+              "uniqueItems": true
+            },
+            "unset": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/disposition"
+              },
+              "minItems": 1,
+              "uniqueItems": true
+            }
           }
         },
-        "unset": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/disposition"
-          }
+        {
+          "anyOf": [
+            {
+              "type": "object",
+              "required": [
+                "set"
+              ]
+            },
+            {
+              "type": "object",
+              "required": [
+                "unset"
+              ]
+            }
+          ]
         }
-      }
+      ]
     },
     "epcList": {
       "type": "array",
@@ -555,6 +582,19 @@
     },
     "eventID": {
       "$ref": "#/definitions/uri"
+    },
+    "certificationInfo": {
+      "anyOf": [
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/uri"
+          }
+        },
+        {
+          "$ref": "#/definitions/uri"
+        }
+      ]
     },
     "errorDeclaration": {
       "type": "object",
@@ -717,6 +757,9 @@
         "chemicalSubstance": {
           "$ref": "#/definitions/uri"
         },
+        "coordinateReferenceSystem": {
+          "$ref": "#/definitions/uri"
+        },
         "value": {
           "$ref": "#/definitions/decimal"
         },
@@ -817,6 +860,9 @@
         "eventID": {
           "$ref": "#/definitions/eventID"
         },
+        "certificationInfo": {
+          "$ref": "#/definitions/certificationInfo"
+        },
         "errorDeclaration": {
           "$ref": "#/definitions/errorDeclaration"
         }
@@ -837,6 +883,7 @@
             "recordTime",
             "eventTimeZoneOffset",
             "eventID",
+            "certificationInfo",
             "errorDeclaration"
           ]
         },
@@ -946,7 +993,7 @@
     },
     "version": {
       "type": "string",
-      "pattern": "^\\d+(\\.\\d+)?$"
+      "pattern": "^\\d+(\\.\\d+)*$"
     },
     "id": {
       "type": "string",

@@ -32,21 +32,45 @@
             ]
         },
         "persistentDisposition": {
-            "type": "object",
-            "properties": {
-                "set": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "disposition-JSON-Schema.json#/definitions/disposition"
+            "allOf": [
+                {
+                    "type": "object",
+                    "properties": {
+                        "set": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "disposition-JSON-Schema.json#/definitions/disposition"
+                            },
+                            "minItems": 1,
+                            "uniqueItems": true
+                        },
+                        "unset": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "disposition-JSON-Schema.json#/definitions/disposition"
+                            },
+                            "minItems": 1,
+                            "uniqueItems": true
+                        }
                     }
                 },
-                "unset": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "disposition-JSON-Schema.json#/definitions/disposition"
-                    }
+                {
+                    "anyOf": [
+                        {
+                            "type": "object",
+                            "required": [
+                                "set"
+                            ]
+                        },
+                        {
+                            "type": "object",
+                            "required": [
+                                "unset"
+                            ]
+                        }
+                    ]
                 }
-            }
+            ]
         },
         "epcList": {
             "type": "array",
@@ -67,6 +91,19 @@
         },
         "eventID": {
             "$ref": "#/definitions/uri"
+        },
+        "certificationInfo": {
+            "anyOf": [
+                {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/uri"
+                    }
+                },
+                {
+                    "$ref": "#/definitions/uri"
+                }
+            ]
         },
         "errorDeclaration": {
             "type": "object",
@@ -229,6 +266,9 @@
                 "chemicalSubstance": {
                     "$ref": "#/definitions/uri"
                 },
+                "coordinateReferenceSystem": {
+                    "$ref": "#/definitions/uri"
+                },
                 "value": {
                     "$ref": "#/definitions/decimal"
                 },
@@ -329,6 +369,9 @@
                 "eventID": {
                     "$ref": "#/definitions/eventID"
                 },
+                "certificationInfo": {
+                    "$ref": "#/definitions/certificationInfo"
+                },
                 "errorDeclaration": {
                     "$ref": "#/definitions/errorDeclaration"
                 }
@@ -349,6 +392,7 @@
                         "recordTime",
                         "eventTimeZoneOffset",
                         "eventID",
+                        "certificationInfo",
                         "errorDeclaration"
                     ]
                 },
@@ -369,7 +413,9 @@
                             "$ref": "definitions-JSON-Schema.json#/definitions/vocab-uri"
                         }
                     },
-                    "required": ["type"]
+                    "required": [
+                        "type"
+                    ]
                 }
             ]
         }

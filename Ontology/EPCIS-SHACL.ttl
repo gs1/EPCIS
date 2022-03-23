@@ -24,6 +24,7 @@ epcis:EPCISDocumentShape
 epcis:SchemaVersionShape
     a sh:PropertyShape ;
     sh:path owl:versionInfo ;
+    sh:name "schemaVersion" ;
     sh:datatype xsd:string ;
     sh:minCount 1 ;
     sh:maxCount 1 ;
@@ -33,6 +34,7 @@ epcis:SchemaVersionShape
 epcis:CreationDateShape
     a sh:PropertyShape ;
     sh:path dcterms:created ;
+    sh:name "creationDate" ;
     sh:datatype xsd:dateTime ;
     sh:minCount 1 ;
     sh:maxCount 1 ;
@@ -42,6 +44,7 @@ epcis:CreationDateShape
 epcis:InstanceIdentifierShape
     a sh:PropertyShape ;
     sh:path epcis:instanceIdentifier ;
+    sh:name "instanceIdentifier" ;
     sh:datatype xsd:string ;
     sh:minCount 0 ;
     sh:maxCount 1 ;
@@ -51,8 +54,11 @@ epcis:InstanceIdentifierShape
 epcis:SenderShape
     a sh:PropertyShape ;
     sh:path epcis:sender ;
-    sh:nodeKind sh:IRI ;
-    sh:pattern "^(.+?):(.+)$" ;
+    sh:name "sender" ;
+    sh:or (
+    	[ sh:nodeKind sh:IRI ; ]
+    	[ sh:datatype xsd:string; ]
+    );
     sh:minCount 0 ;
     sh:maxCount 1 ;
     sh:message "In an EPCISDocument, sender is optional, single valued and a URI/IRI that typically expresses a SGLN of the sender, either as an EPC URN or the equivalent constrained GS1 Digital Link URI" ;
@@ -61,8 +67,11 @@ epcis:SenderShape
 epcis:ReceiverShape
     a sh:PropertyShape ;
     sh:path epcis:receiver ;
-    sh:nodeKind sh:IRI ;
-    sh:pattern "^(.+?):(.+)$" ;
+    sh:name "receiver" ;
+    sh:or (
+    	[ sh:nodeKind sh:IRI ; ]
+    	[ sh:datatype xsd:string; ]
+    );
     sh:minCount 0 ;
     sh:maxCount 1 ;
     sh:message "In an EPCISDocument, receiver is optional, single valued and a URI/IRI that typically expresses a SGLN of the intended receiver, either as an EPC URN or the equivalent constrained GS1 Digital Link URI" ;
@@ -71,12 +80,14 @@ epcis:ReceiverShape
 epcis:EpcisHeaderShape
     a sh:NodeShape;
     sh:path epcis:epcisHeader;
+    sh:name "epcisHeader" ;
     sh:maxCount 1;
 .
 
 epcis:EpcisBodyShape
     a sh:NodeShape;
     sh:path epcis:epcisBody;
+    sh:name "epcisBody" ;
     sh:minCount 1;
     sh:maxCount 1;
     sh:node epcis:EventListShape;
@@ -85,6 +96,7 @@ epcis:EpcisBodyShape
 epcis:EventListShape
     a sh:NodeShape;
     sh:path epcis:eventList;
+    sh:name "eventList" ;
 .
 
 
@@ -112,6 +124,7 @@ epcis:ObjectEventShape
     sh:node epcis:InputQuantityElementForbiddenShape ;
     sh:node epcis:OutputQuantityElementForbiddenShape ;
     sh:node epcis:ChildQuantityElementForbiddenShape ;
+    sh:node epcis:ILMDConditionallyForbiddenShape ;
     sh:node epcis:PersistentDispositionShape ;
     sh:node epcis:BizTransactionShape ;
     sh:node epcis:SourceListShape ;
@@ -141,6 +154,7 @@ epcis:AggregationEventShape
     sh:property epcis:EPCListForbiddenShape ;
     sh:property epcis:InputEPCListForbiddenShape ; 
     sh:property epcis:OutputEPCListForbiddenShape ;
+    sh:property epcis:ILMDForbiddenShape ;
     sh:node epcis:ChildQuantityElementShape ;
     sh:node epcis:QuantityElementForbiddenShape ;
     sh:node epcis:InputQuantityElementForbiddenShape ;
@@ -169,11 +183,12 @@ epcis:AssociationEventShape
     sh:property epcis:DispositionShape ;
     sh:property epcis:ReadPointShape ;
     sh:property epcis:BizLocationShape ;
-    sh:property epcis:ParentIDShape ;
+    sh:property epcis:MandatoryParentIDShape ;
     sh:property epcis:ChildEPCsShape ;
     sh:property epcis:EPCListForbiddenShape ;
     sh:property epcis:InputEPCListForbiddenShape ; 
     sh:property epcis:OutputEPCListForbiddenShape ; 
+    sh:property epcis:ILMDForbiddenShape ;
     sh:node epcis:ChildQuantityElementShape ;
     sh:node epcis:QuantityElementForbiddenShape ;
     sh:node epcis:InputQuantityElementForbiddenShape ;
@@ -207,6 +222,7 @@ epcis:TransactionEventShape
     sh:property epcis:ChildEPCsForbiddenShape ;    
     sh:property epcis:InputEPCListForbiddenShape ; 
     sh:property epcis:OutputEPCListForbiddenShape ; 
+    sh:property epcis:ILMDForbiddenShape ;
     sh:node epcis:QuantityElementShape ;
     sh:node epcis:ChildQuantityElementForbiddenShape ;
     sh:node epcis:InputQuantityElementForbiddenShape ;
@@ -240,24 +256,26 @@ epcis:TransformationEventShape
 	sh:property epcis:ParentIDForbiddenShape;
     sh:property epcis:ChildEPCsForbiddenShape ;    
     sh:property epcis:EPCListForbiddenShape ;
+    sh:property epcis:TransformationIDShape ;    
     sh:node epcis:InputQuantityElementShape ;
     sh:node epcis:OutputQuantityElementShape ;
     sh:node epcis:QuantityElementForbiddenShape ;
     sh:node epcis:ChildQuantityElementForbiddenShape ;
     sh:node epcis:PersistentDispositionShape ;
-    sh:node epcis:TransformationIDShape ;    
     sh:node epcis:BizTransactionShape ;
     sh:node epcis:SourceListShape ;
     sh:node epcis:DestinationListShape ;
     sh:node epcis:ErrorDeclarationShape ;
     sh:node epcis:SensorElementShape ;
     sh:node epcis:CertificationInfoShape ;
+    sh:node epcis:TransformationIDConditionsShape ;
 .    
 
     
 epcis:EventTimeShape
     a sh:PropertyShape ;
     sh:path epcis:eventTime ;
+    sh:name "eventTime" ;
     sh:datatype xsd:dateTimeStamp ;
     sh:minCount 1 ;
     sh:maxCount 1 ;
@@ -267,6 +285,7 @@ epcis:EventTimeShape
 epcis:EventTimeZoneOffsetShape
     a sh:PropertyShape ;
     sh:path epcis:eventTimeZoneOffset ;
+    sh:name "eventTimeZoneOffset" ;
     sh:datatype xsd:string ;
     sh:minCount 1 ;
     sh:maxCount 1 ;
@@ -277,8 +296,8 @@ epcis:EventTimeZoneOffsetShape
 epcis:RecordTimeShape
     a sh:PropertyShape ;
     sh:path epcis:recordTime ;
-    sh:datatype xsd:dateTimeStamp ;
     sh:name "recordTime" ;
+    sh:datatype xsd:dateTimeStamp ;
     sh:maxCount 1 ;
     sh:message "recordTime is optional; if present, a xsd:dateTimeStamp with only one value" ;
 .
@@ -286,6 +305,7 @@ epcis:RecordTimeShape
 epcis:CertificationInfoShape
     a sh:PropertyShape ;
     sh:path epcis:certificationInfo ;
+    sh:name "certificationInfo" ;
     sh:nodeKind sh:IRI ;
     sh:pattern "^(.+?):(.+)$" ;
     sh:message "Any values of certificationInfo must be IRIs/URIs" ;
@@ -294,6 +314,7 @@ epcis:CertificationInfoShape
 epcis:ActionShape
     a sh:PropertyShape ;
     sh:path epcis:action ;
+    sh:name "action" ;
     sh:datatype xsd:string ;
     sh:in ("ADD" "OBSERVE" "DELETE") ;
     sh:minCount 1 ;
@@ -304,6 +325,7 @@ epcis:ActionShape
 epcis:ActionForbiddenShape
     a sh:PropertyShape ;
     sh:path epcis:action ;
+    sh:name "action (forbidden within TransformationEvent)" ;
     sh:maxCount 0 ;
     sh:message "action should not appear within TransformationEvent" ;
 .
@@ -311,38 +333,47 @@ epcis:ActionForbiddenShape
 epcis:BizStepShape
     a sh:PropertyShape ;
     sh:path epcis:bizStep ;
+    sh:name "bizStep" ;
     sh:nodeKind sh:IRI ;
     sh:pattern "^(.+?):(.+)$" ;
-    sh:message "Any values of bizStep must be IRIs/URIs" ;
+    sh:maxCount 1;
+    sh:message "bizStep must be single-valued and an IRI/URI" ;
 .
 
 epcis:DispositionShape
     a sh:PropertyShape ;
     sh:path epcis:disposition ;
+    sh:name "disposition" ;
     sh:nodeKind sh:IRI ;
     sh:pattern "^(.+?):(.+)$" ;
-    sh:message "Any values of disposition must be IRIs/URIs" ;
+    sh:maxCount 1;
+    sh:message "disposition must be single-valued and an IRI/URI" ;
 .
 
 epcis:ReadPointShape
     a sh:PropertyShape ;
     sh:path epcis:readPoint ;
+    sh:name "readPoint" ;
     sh:nodeKind sh:IRI ;
     sh:pattern "^(.+?):(.+)$" ;
-    sh:message "Any values of readPoint must be IRIs/URIs" ;
+    sh:maxCount 1;
+    sh:message "readPoint must be single-valued and an IRI/URI" ;
 .
 
 epcis:BizLocationShape
     a sh:PropertyShape ;
     sh:path epcis:bizLocation ;
+    sh:name "bizLocation" ;
     sh:nodeKind sh:IRI ;
     sh:pattern "^(.+?):(.+)$" ;
-    sh:message "Any values of bizLocation must be IRIs/URIs" ;
+    sh:maxCount 1;
+    sh:message "bizLocation must be single-valued and an IRI/URI" ;
 .
 
 epcis:ChildEPCsShape
     a sh:PropertyShape ;
     sh:path epcis:childEPCs ;
+    sh:name "childEPCs" ;
     sh:nodeKind sh:IRI ;
     sh:pattern "^(.+?):(.+)$" ;
     sh:message "Any values within childEPCs must be IRIs/URIs" ;
@@ -351,28 +382,115 @@ epcis:ChildEPCsShape
 epcis:ChildEPCsForbiddenShape
     a sh:PropertyShape ;
     sh:path epcis:childEPCs ;
+    sh:name "childEPCs (forbidden)" ;
     sh:maxCount 0 ;
     sh:message "childEPCs should not appear within ObjectEvent, TransactionEvent or TransformationEvent" ;
+.
+
+epcis:ILMDForbiddenShape
+    a sh:PropertyShape ;
+    sh:path epcis:ilmd ;
+    sh:name "ilmd (forbidden)" ;
+    sh:maxCount 0 ;
+    sh:message "ilmd should not appear within AggregationEvent, AssociationEvent or TransactionEvent" ;
+.
+
+epcis:MandatoryParentIDShape
+    a sh:PropertyShape ;
+    sh:path epcis:parentID ;
+    sh:name "parentID" ;
+    sh:nodeKind sh:IRI ;
+    sh:pattern "^(.+?):(.+)$" ;
+	sh:minCount 1;
+	sh:maxCount 1;
+    sh:message "parentID is mandatory, single-valued and must be an IRI/URI" ;
 .
 
 epcis:ParentIDShape
     a sh:PropertyShape ;
     sh:path epcis:parentID ;
+    sh:name "parentID" ;
     sh:nodeKind sh:IRI ;
     sh:pattern "^(.+?):(.+)$" ;
-    sh:message "Any values of parentID must be IRIs/URIs" ;
+    sh:maxCount 1;
+    sh:message "Within AggregationEvent and AssociationEvent, TransactionEvent, parentID is optional, single-valued and must be an IRI/URI" ;
 .
 
 epcis:ParentIDForbiddenShape
 	a sh:PropertyShape;
 	sh:path epcis:parentID;
+    sh:name "parentID (forbidden within ObjectEvent or TransformationEvent)" ;
 	sh:maxCount 0;
 	sh:message "parentID should not appear within ObjectEvent or TransformationEvent";
+.
+
+epcis:TransformationIDConditionsShape
+	a sh:NodeShape;
+    sh:targetClass epcis:TransformationEvent;
+	sh:or(
+     	[sh:and (
+				[ sh:property epcis:TransformationIDRequiredShape ; ]
+      		[sh:or(
+ 				[ sh:property epcis:outputEPCListNonEmptyShape ; ]
+				[ sh:property epcis:outputQuantityListNonEmptyShape ; ]
+				[ sh:property epcis:inputEPCListNonEmptyShape ; ]
+				[ sh:property epcis:inputQuantityListNonEmptyShape ; ]
+				)]
+		)]
+      
+        [sh:and (
+			[sh:or(
+				[ sh:property epcis:outputEPCListNonEmptyShape ; ]
+				[ sh:property epcis:outputQuantityListNonEmptyShape ; ]
+			)]
+			[sh:or(
+				[ sh:property epcis:inputEPCListNonEmptyShape ; ]
+				[ sh:property epcis:inputQuantityListNonEmptyShape ; ]
+			)]
+		)]
+    );
+	sh:message "Within each TransformationEvent, transformationID is required unless at least one of (inputEPCList or inputQuantityList) AND at least one of (outputEPCList or outputQuantityList) are specified. If transactionID is specified then at least one of (inputEPCList, inputQuantityList, outputEPCList, outputQuantityList) must be specified.";
+.
+
+epcis:TransformationIDRequiredShape
+	a sh:PropertyShape;
+	sh:path epcis:transformationID;
+    sh:name "transformationID" ;
+	sh:minCount 1;
+.
+
+epcis:outputEPCListNonEmptyShape
+	a sh:PropertyShape;
+	sh:path epcis:outputEPCList;
+    sh:name "outputEPCList" ;
+	sh:minCount 1;
+.
+
+epcis:inputEPCListNonEmptyShape
+	a sh:PropertyShape;
+	sh:path epcis:inputEPCList;
+    sh:name "inputEPCList" ;
+	sh:minCount 1;
+.
+
+epcis:outputQuantityListNonEmptyShape
+	a sh:PropertyShape;
+	sh:path epcis:outputQuantityList;
+    sh:name "outputQuantityList" ;
+	sh:minCount 1;
+.
+
+epcis:inputQuantityListNonEmptyShape
+	a sh:PropertyShape;
+	sh:path epcis:inputQuantityList;
+    sh:name "inputQuantityList" ;
+	sh:minCount 1;
 .
 
 epcis:EPCListShape
     a sh:PropertyShape ;
     sh:path epcis:epcList ;
+    sh:name "epcList" ;
     sh:nodeKind sh:IRI ;
     sh:pattern "^(.+?):(.+)$" ;
     sh:message "Any values within epcList must be IRIs/URIs" ;
@@ -381,6 +499,7 @@ epcis:EPCListShape
 epcis:EPCListForbiddenShape
     a sh:PropertyShape ;
     sh:path epcis:epcList ;
+    sh:name "epcList (forbidden within AggregationEvent, AssociationEvent or TransformationEvent)" ;
     sh:maxCount 0 ;
     sh:message "epcList should not appear within AggregationEvent, AssociationEvent or TransformationEvent" ;
 .
@@ -388,6 +507,7 @@ epcis:EPCListForbiddenShape
 epcis:InputEPCListShape
     a sh:PropertyShape ;
     sh:path epcis:inputEPCList ;
+    sh:name "inputEPCList" ;
     sh:nodeKind sh:IRI ;
     sh:pattern "^(.+?):(.+)$" ;
     sh:message "Any values within inputEPCList must be IRIs/URIs" ;
@@ -396,6 +516,7 @@ epcis:InputEPCListShape
 epcis:OutputEPCListShape
     a sh:PropertyShape ;
     sh:path epcis:outputEPCList ;
+    sh:name "outputEPCList" ;
     sh:nodeKind sh:IRI ;
     sh:pattern "^(.+?):(.+)$" ;
     sh:message "Any values within outputEPCList must be IRIs/URIs" ;
@@ -404,6 +525,7 @@ epcis:OutputEPCListShape
 epcis:InputEPCListForbiddenShape
     a sh:PropertyShape ;
     sh:path epcis:inputEPCList ;
+    sh:name "inputEPCList (forbidden)" ;
     sh:maxCount 0 ;
     sh:message "inputEPCList should not appear within ObjectEvent, AggregationEvent, AssociationEvent or TransactionEvent - only within TransformationEvent" ;
 .
@@ -411,6 +533,7 @@ epcis:InputEPCListForbiddenShape
 epcis:OutputEPCListForbiddenShape
     a sh:PropertyShape ;
     sh:path epcis:outputEPCList ;
+    sh:name "outputEPCList (forbidden)" ;
     sh:maxCount 0 ;
     sh:message "outputEPCList should not appear within ObjectEvent, AggregationEvent, AssociationEvent or TransactionEvent - only within TransformationEvent" ;
 .
@@ -418,13 +541,18 @@ epcis:OutputEPCListForbiddenShape
 epcis:PersistentDispositionShape
     a sh:NodeShape ;
     sh:path epcis:persistentDisposition ;
+    sh:name "persistentDisposition" ;
+    sh:maxCount 1;
     sh:property epcis:SetShape ;
     sh:property epcis:UnsetShape ;
+    sh:property epcis:SpecifySetOrUnsetShape;
+    sh:message "Within each event, persistentDisposition must not appear more than once, although its properties 'set' and 'unset' may each specify multiple values.";
 .
 
 epcis:PersistentDispositionForbiddenShape
 	a sh:NodeShape ;
 	sh:path epcis:persistentDisposition ;
+    sh:name "persistentDisposition (forbidden)" ;
 	sh:maxCount 0;
 	sh:message "persistentDisposition may not appear in an AggregationEvent, AssociationEvent or TransactionEvent";
 .
@@ -432,6 +560,7 @@ epcis:PersistentDispositionForbiddenShape
 epcis:SetShape
     a sh:PropertyShape ;
     sh:path epcis:set ;
+    sh:name "set" ;
     sh:nodeKind sh:IRI ;
     sh:pattern "^(.+?):(.+)$" ;
     sh:message "Within persistentDisposition, values of set must be IRIs/URIs" ;
@@ -440,22 +569,41 @@ epcis:SetShape
 epcis:UnsetShape
     a sh:PropertyShape ;
     sh:path epcis:unset ;
+    sh:name "unset" ;
     sh:nodeKind sh:IRI ;
     sh:pattern "^(.+?):(.+)$" ;
     sh:message "Within persistentDisposition, values of unset must be IRIs/URIs" ;
 .
 
+epcis:SpecifySetOrUnsetShape
+	a sh:NodeShape ;
+	sh:or (
+		[
+			sh:path epcis:set ;
+			sh:minCount 1 ;
+		]
+		[
+			sh:path epcis:unset ;
+			sh:minCount 1 ;
+		]
+	);
+	sh:message "If persistentDisposition is specified within an event, then at least one disposition value must be specified by either of 'set' or 'unset'";
+.
+
 epcis:TransformationIDShape
     a sh:PropertyShape ;
     sh:path epcis:transformationID ;
+    sh:name "transformationID" ;
     sh:nodeKind sh:IRI ;
     sh:pattern "^(.+?):(.+)$" ;
-    sh:message "Within a TransformationEvent, values of transformationID must be IRIs/URIs" ;
+    sh:maxCount 1;
+    sh:message "Within a TransformationEvent, transformationID is optional, single-valued and must be an IRI/URI" ;
 .
 
 epcis:BizTransactionShape
     a sh:NodeShape ;
     sh:path epcis:bizTransactionList ;
+    sh:name "bizTransactionList" ;
     sh:nodeKind sh:IRI ;
     sh:pattern "^(.+?):(.+)$" ;
     sh:property epcis:BizTransactionTypeShape ;
@@ -465,14 +613,17 @@ epcis:BizTransactionShape
 epcis:BizTransactionTypeShape 
     a sh:PropertyShape ;
     sh:path epcis:bizTransactionType ;
+    sh:name "type (within epcis:BizTransaction)" ;
     sh:nodeKind sh:IRI ;
     sh:pattern "^(.+?):(.+)$" ;
-    sh:message "Within each value of bizTransactionList, bizTransactionType ('type') must be an IRI/URI" ;
+	sh:maxCount 1;
+    sh:message "Within each value of bizTransactionList, bizTransactionType ('type') is optional, single-valued and must be an IRI/URI" ;
 .
 
 epcis:BizTransactionMandatoryShape
     a sh:NodeShape ;
     sh:path epcis:bizTransactionList ;
+    sh:name "bizTransactionList" ;
     sh:nodeKind sh:IRI ;
     sh:pattern "^(.+?):(.+)$" ;
     sh:minCount 1;
@@ -483,13 +634,15 @@ epcis:BizTransactionMandatoryShape
 epcis:SourceListShape
     a sh:NodeShape ;
     sh:path epcis:sourceList ;
+    sh:name "sourceList" ;
     sh:property epcis:SourceShape ;
-    sh:property epcis:SourceOrDestinationTypeShape ;
+    sh:property epcis:SourceOrDestinationTypeShape ; 
 .
 
 epcis:DestinationListShape
     a sh:NodeShape ;
     sh:path epcis:destinationList ;
+    sh:name "destinationList" ;
     sh:property epcis:DestinationShape ;
     sh:property epcis:SourceOrDestinationTypeShape ;
 .
@@ -497,30 +650,40 @@ epcis:DestinationListShape
 epcis:SourceShape 
     a sh:PropertyShape ;
     sh:path epcis:sourceOrDestination ;
+    sh:name "'source' within sourceList" ;
     sh:nodeKind sh:IRI ;
     sh:pattern "^(.+?):(.+)$" ;
-    sh:message "Within sourceList, sourceOrDestination ('source') must be an IRI/URI" ;
+    sh:minCount 1;
+    sh:maxCount 1;
+    sh:message "Within sourceList, sourceOrDestination ('source') is mandatory, single-valued and must be an IRI/URI" ;
 .
 
 epcis:DestinationShape 
     a sh:PropertyShape ;
     sh:path epcis:sourceOrDestination ;
+    sh:name "'destination' within destinationList" ;
     sh:nodeKind sh:IRI ;
     sh:pattern "^(.+?):(.+)$" ;
-    sh:message "Within destinationList, sourceOrDestination ('destination') must be an IRI/URI" ;
+    sh:minCount 1;
+    sh:maxCount 1;
+    sh:message "Within destinationList, sourceOrDestination ('destination') is mandatory, single-valued and must be an IRI/URI" ;
 .
 
 epcis:SourceOrDestinationTypeShape 
     a sh:PropertyShape ;
     sh:path epcis:sourceOrDestinationType ;
+    sh:name "'type' within sourceList or destinationList" ;
     sh:nodeKind sh:IRI ;
     sh:pattern "^(.+?):(.+)$" ;
-    sh:message "Within sourceList or destinationList, sourceOrDestinationType ('type') must be an IRI/URI" ;
+    sh:minCount 1;
+    sh:maxCount 1;
+    sh:message "Within sourceList or destinationList, sourceOrDestinationType ('type') is mandatory, single-valued and must be an IRI/URI" ;
 .
 
 epcis:QuantityElementShape
     a sh:NodeShape ;
     sh:path epcis:quantityList ;
+    sh:name "quantityList" ;
     sh:property epcis:EPCClassShape ;
     sh:property epcis:QuantityShape ;
     sh:property epcis:UOMShape ;
@@ -529,6 +692,7 @@ epcis:QuantityElementShape
 epcis:QuantityElementForbiddenShape
     a sh:NodeShape ;
     sh:path epcis:quantityList ;
+    sh:name "quantityList (forbidden)" ;
     sh:maxCount 0;
     sh:message "quantityList should not appear within AggregationEvent, AssociationEvent or TransformationEvent";
 .
@@ -536,6 +700,7 @@ epcis:QuantityElementForbiddenShape
 epcis:ChildQuantityElementShape
     a sh:NodeShape ;
     sh:path epcis:childQuantityList ;
+    sh:name "childQuantityList" ;
     sh:property epcis:EPCClassShape ;
     sh:property epcis:QuantityShape ;
     sh:property epcis:UOMShape ;
@@ -544,6 +709,7 @@ epcis:ChildQuantityElementShape
 epcis:ChildQuantityElementForbiddenShape
     a sh:NodeShape ;
     sh:path epcis:childQuantityList ;
+    sh:name "childQuantityList (forbidden)" ;
     sh:maxCount 0;
     sh:message "childQuantityList should not appear within ObjectEvent, TransactionEvent or TransformationEvent";
 .
@@ -551,6 +717,7 @@ epcis:ChildQuantityElementForbiddenShape
 epcis:InputQuantityElementShape
     a sh:NodeShape ;
     sh:path epcis:inputQuantityList ;
+    sh:name "inputQuantityList" ;
     sh:property epcis:EPCClassShape ;
     sh:property epcis:QuantityShape ;
     sh:property epcis:UOMShape ;
@@ -559,6 +726,7 @@ epcis:InputQuantityElementShape
 epcis:OutputQuantityElementShape
     a sh:NodeShape ;
     sh:path epcis:outputQuantityList ;
+    sh:name "outputQuantityList" ;
     sh:property epcis:EPCClassShape ;
     sh:property epcis:QuantityShape ;
     sh:property epcis:UOMShape ;
@@ -567,6 +735,7 @@ epcis:OutputQuantityElementShape
 epcis:InputQuantityElementForbiddenShape
     a sh:NodeShape ;
     sh:path epcis:inputQuantityList ;
+    sh:name "inputQuantityList (forbidden)" ;
 	sh:maxCount 0;
     sh:message "inputQuantityList should not appear within ObjectEvent, AggregationEvent, AssociationEvent or TransactionEvent - only within TransformationEvent" ;
 .
@@ -574,13 +743,25 @@ epcis:InputQuantityElementForbiddenShape
 epcis:OutputQuantityElementForbiddenShape
     a sh:NodeShape ;
     sh:path epcis:outputQuantityList ;
+    sh:name "outputQuantityList (forbidden)" ;
 	sh:maxCount 0;
     sh:message "outputQuantityList should not appear within ObjectEvent, AggregationEvent, AssociationEvent or TransactionEvent - only within TransformationEvent" ;	
+.
+
+epcis:ILMDConditionallyForbiddenShape
+	a sh:NodeShape;
+    sh:or( 
+    [ sh:path epcis:ilmd;
+      sh:maxCount 0; ]
+    [ sh:path epcis:action;
+      sh:in ("ADD"); ]
+    )
 .
 
 epcis:EPCClassShape 
     a sh:PropertyShape ;
     sh:path epcis:epcClass ;
+    sh:name "epcClass" ;
     sh:minCount 1 ;
     sh:maxCount 1 ;
     sh:nodeKind sh:IRI ;
@@ -591,6 +772,7 @@ epcis:EPCClassShape
 epcis:QuantityShape 
     a sh:PropertyShape ;
     sh:path epcis:quantity ;
+    sh:name "quantity" ;
     sh:minCount 1 ;
     sh:maxCount 1 ;
     sh:datatype xsd:double ;
@@ -601,23 +783,37 @@ epcis:QuantityShape
 epcis:UOMShape 
     a sh:PropertyShape ;
     sh:path epcis:uom ;
+    sh:name "uom" ;
     sh:datatype xsd:string ;
     sh:maxCount 1 ;
     sh:pattern "^[A-Z0-9]{2,3}$";
     sh:message "uom must be an xsd:string and can only have one value" ;
 .
 
+epcis:UOMAnyStringShape 
+    a sh:PropertyShape ;
+    sh:path epcis:uom ;
+    sh:name "uom" ;
+    sh:datatype xsd:string ;
+    sh:maxCount 1 ;
+    sh:message "uom must be an xsd:string and can only have one value" ;
+.
+
 epcis:ErrorDeclarationShape
     a sh:NodeShape ;
     sh:path epcis:errorDeclaration ;
+    sh:name "errorDeclaration" ;
     sh:property epcis:CorrectiveEventIDsShape ;
     sh:property epcis:ReasonShape ;
     sh:property epcis:DeclarationTimeShape ;
+    sh:maxCount 1;
+    sh:message "errorDeclaration is optional and single-valued within each event";
 .
 
 epcis:CorrectiveEventIDsShape 
     a sh:PropertyShape ;
     sh:path epcis:correctiveEventIDs ;
+    sh:name "correctiveEventIDs" ;
     sh:nodeKind sh:IRI ;
     sh:pattern "^(.+?):(.+)$" ;
     sh:message "Within errorDeclaration, correctiveEventIDs must be IRIs/URIs" ;
@@ -626,15 +822,17 @@ epcis:CorrectiveEventIDsShape
 epcis:ReasonShape 
     a sh:PropertyShape ;
     sh:path epcis:reason ;
+    sh:name "reason" ;
     sh:maxCount 1;
     sh:nodeKind sh:IRI ;
     sh:pattern "^(.+?):(.+)$" ;
-    sh:message "Within errorDeclaration, reason is optional but must be an IRI/URI" ;
+    sh:message "Within errorDeclaration, reason is optional but must be single-valued and an IRI/URI" ;
 .
 
 epcis:DeclarationTimeShape
     a sh:PropertyShape ;
     sh:path epcis:declarationTime ;
+    sh:name "declarationTime" ;
     sh:datatype xsd:dateTimeStamp ;
     sh:minCount 1 ;
     sh:maxCount 1 ;
@@ -644,6 +842,7 @@ epcis:DeclarationTimeShape
 epcis:SensorElementShape
     a sh:NodeShape ;
     sh:path epcis:sensorElementList ;
+    sh:name "sensorElementList" ;
     sh:property epcis:SensorMetadataShape ;
     sh:property epcis:SensorReportShape ;
 .
@@ -651,6 +850,7 @@ epcis:SensorElementShape
 epcis:SensorReportShape
     a sh:NodeShape ;
     sh:path epcis:sensorReport ;
+    sh:name "sensorReport" ;
     sh:property epcis:TimeShape ;
     sh:property epcis:DeviceIDShape ;
     sh:property epcis:DeviceMetadataShape ;
@@ -672,7 +872,7 @@ epcis:SensorReportShape
     sh:property epcis:BooleanValueShape ;
     sh:property epcis:HexBinaryValueShape ;
     sh:property epcis:StringValueShape ;
-    sh:property epcis:UOMShape ;
+    sh:property epcis:UOMAnyStringShape ;
     sh:property epcis:ComponentShape ;
     sh:minCount 1 ;
 .
@@ -680,6 +880,7 @@ epcis:SensorReportShape
 epcis:SensorMetadataShape
     a sh:NodeShape ;
     sh:path epcis:sensorMetadata ;
+    sh:name "sensorMetadata" ;
     sh:property epcis:TimeShape ;
     sh:property epcis:StartTimeShape ;
     sh:property epcis:EndTimeShape ;
@@ -694,6 +895,7 @@ epcis:SensorMetadataShape
 epcis:TimeShape
     a sh:PropertyShape ;
     sh:path epcis:time ;
+    sh:name "time" ;
     sh:datatype xsd:dateTimeStamp ;
     sh:maxCount 1 ;
     sh:message "Within each value of sensorReport or sensorMetadata, tine is optional but must be an xsd:dateTimeStamp and can only have one value" ;
@@ -702,6 +904,7 @@ epcis:TimeShape
 epcis:StartTimeShape
     a sh:PropertyShape ;
     sh:path epcis:startTime ;
+    sh:name "startTime" ;
     sh:datatype xsd:dateTimeStamp ;
     sh:maxCount 1 ;
     sh:message "Within each value of sensorMetadata, startTime is optional but must be an xsd:dateTimeStamp and can only have one value" ;
@@ -710,6 +913,7 @@ epcis:StartTimeShape
 epcis:EndTimeShape
     a sh:PropertyShape ;
     sh:path epcis:endTime ;
+    sh:name "endTime" ;
     sh:datatype xsd:dateTimeStamp ;
     sh:maxCount 1 ;
     sh:message "Within each value of sensorMetadata, endTime is optional but must be an xsd:dateTimeStamp and can only have one value" ;
@@ -718,6 +922,7 @@ epcis:EndTimeShape
 epcis:DeviceIDShape
     a sh:PropertyShape ;
     sh:path epcis:deviceID ;
+    sh:name "deviceID" ;
     sh:nodeKind sh:IRI ;
     sh:pattern "^(.+?):(.+)$" ;
     sh:maxCount 1 ;
@@ -727,6 +932,7 @@ epcis:DeviceIDShape
 epcis:DeviceMetadataShape
     a sh:PropertyShape ;
     sh:path epcis:deviceMetadata ;
+    sh:name "deviceMetadata" ;
     sh:nodeKind sh:IRI ;
     sh:pattern "^(.+?):(.+)$" ;
     sh:maxCount 1 ;
@@ -736,6 +942,7 @@ epcis:DeviceMetadataShape
 epcis:RawDataShape
     a sh:PropertyShape ;
     sh:path epcis:rawData ;
+    sh:name "rawData" ;
     sh:nodeKind sh:IRI ;
     sh:pattern "^(.+?):(.+)$" ;
     sh:maxCount 1 ;
@@ -745,6 +952,7 @@ epcis:RawDataShape
 epcis:DataProcessingMethodShape
     a sh:PropertyShape ;
     sh:path epcis:dataProcessingMethod ;
+    sh:name "dataProcessingMethod" ;
     sh:nodeKind sh:IRI ;
     sh:pattern "^(.+?):(.+)$" ;
     sh:maxCount 1 ;
@@ -754,6 +962,7 @@ epcis:DataProcessingMethodShape
 epcis:BizRulesShape
     a sh:PropertyShape ;
     sh:path epcis:bizRules ;
+    sh:name "bizRules" ;
     sh:nodeKind sh:IRI ;
     sh:pattern "^(.+?):(.+)$" ;
     sh:maxCount 1 ;
@@ -763,6 +972,7 @@ epcis:BizRulesShape
 epcis:MeasurementTypeShape
     a sh:PropertyShape ;
     sh:path epcis:measurementType ;
+    sh:name "measurementType" ;
     sh:nodeKind sh:IRI ;
     sh:pattern "^(.+?):(.+)$" ;
     sh:maxCount 1 ;
@@ -772,6 +982,7 @@ epcis:MeasurementTypeShape
 epcis:ExceptionShape
     a sh:PropertyShape ;
     sh:path epcis:exception ;
+    sh:name "exception" ;
     sh:nodeKind sh:IRI ;
     sh:pattern "^(.+?):(.+)$" ;
     sh:maxCount 1 ;
@@ -781,6 +992,7 @@ epcis:ExceptionShape
 epcis:MicroorganismShape
     a sh:PropertyShape ;
     sh:path epcis:microorganism ;
+    sh:name "microorganism" ;
     sh:nodeKind sh:IRI ;
     sh:pattern "^(.+?):(.+)$" ;
     sh:maxCount 1 ;
@@ -790,6 +1002,7 @@ epcis:MicroorganismShape
 epcis:ChemicalSubstanceShape
     a sh:PropertyShape ;
     sh:path epcis:chemicalSubstance ;
+    sh:name "chemicalSubstance" ;
     sh:nodeKind sh:IRI ;
     sh:pattern "^(.+?):(.+)$" ;
     sh:maxCount 1 ;
@@ -799,6 +1012,7 @@ epcis:ChemicalSubstanceShape
 epcis:CoordinateReferenceSystemShape
     a sh:PropertyShape ;
     sh:path epcis:coordinateReferenceSystem ;
+    sh:name "coordinateReferenceSystem" ;
     sh:nodeKind sh:IRI ;
     sh:pattern "^(.+?):(.+)$" ;
     sh:maxCount 1 ;
@@ -808,6 +1022,7 @@ epcis:CoordinateReferenceSystemShape
 epcis:ComponentShape
     a sh:PropertyShape ;
     sh:path epcis:component ;
+    sh:name "component" ;
     sh:nodeKind sh:IRI ;
     sh:pattern "^(.+?):(.+)$" ;
     sh:maxCount 1 ;
@@ -817,6 +1032,7 @@ epcis:ComponentShape
 epcis:URIValueShape
     a sh:PropertyShape ;
     sh:path epcis:uriValue ;
+    sh:name "uriValue" ;
     sh:nodeKind sh:IRI ;
     sh:pattern "^(.+?):(.+)$" ;
     sh:maxCount 1 ;
@@ -826,6 +1042,7 @@ epcis:URIValueShape
 epcis:ValueShape
     a sh:PropertyShape ;
     sh:path epcis:value ;
+    sh:name "value" ;
     sh:datatype xsd:double ;
     sh:not [ sh:hasValue "NaN"^^xsd:double ; ];
     sh:maxCount 1 ;
@@ -835,6 +1052,7 @@ epcis:ValueShape
 epcis:MinValueShape
     a sh:PropertyShape ;
     sh:path epcis:minValue ;
+    sh:name "minValue" ;
     sh:datatype xsd:double ;
     sh:not [ sh:hasValue "NaN"^^xsd:double ; ];
     sh:maxCount 1 ;
@@ -844,6 +1062,7 @@ epcis:MinValueShape
 epcis:MaxValueShape
     a sh:PropertyShape ;
     sh:path epcis:maxValue ;
+    sh:name "maxValue" ;
     sh:datatype xsd:double ;
     sh:not [ sh:hasValue "NaN"^^xsd:double ; ];
     sh:maxCount 1 ;
@@ -853,6 +1072,7 @@ epcis:MaxValueShape
 epcis:MeanValueShape
     a sh:PropertyShape ;
     sh:path epcis:meanValue ;
+    sh:name "meanValue" ;
     sh:datatype xsd:double ;
     sh:not [ sh:hasValue "NaN"^^xsd:double ; ];
     sh:maxCount 1 ;
@@ -862,6 +1082,7 @@ epcis:MeanValueShape
 epcis:SDevShape
     a sh:PropertyShape ;
     sh:path epcis:sDev ;
+    sh:name "sDev" ;
     sh:datatype xsd:double ;
     sh:not [ sh:hasValue "NaN"^^xsd:double ; ];
     sh:maxCount 1 ;
@@ -871,6 +1092,7 @@ epcis:SDevShape
 epcis:PercRankShape
     a sh:PropertyShape ;
     sh:path epcis:percRank ;
+    sh:name "percRank" ;
     sh:datatype xsd:double ;
     sh:not [ sh:hasValue "NaN"^^xsd:double ; ];
     sh:maxCount 1 ;
@@ -880,6 +1102,7 @@ epcis:PercRankShape
 epcis:PercValueShape
     a sh:PropertyShape ;
     sh:path epcis:percValue ;
+    sh:name "percValue" ;
     sh:datatype xsd:double ;
     sh:not [ sh:hasValue "NaN"^^xsd:double ; ];
     sh:maxCount 1 ;
@@ -889,6 +1112,7 @@ epcis:PercValueShape
 epcis:BooleanValueShape
     a sh:PropertyShape ;
     sh:path epcis:booleanValue ;
+    sh:name "booleanValue" ;
     sh:datatype xsd:boolean ;
     sh:maxCount 1 ;
     sh:message "Within each value of sensorReport, booleanValue is optional but must be an xsd:boolean and can only have one value" ;
@@ -897,6 +1121,7 @@ epcis:BooleanValueShape
 epcis:HexBinaryValueShape
     a sh:PropertyShape ;
     sh:path epcis:hexBinaryValue ;
+    sh:name "hexBinaryValue" ;
     sh:datatype xsd:hexBinary ;
     sh:maxCount 1 ;
     sh:message "Within each value of sensorReport, hexBinaryValue is optional but must be an xsd:hexBinary and can only have one value" ;
@@ -905,8 +1130,8 @@ epcis:HexBinaryValueShape
 epcis:StringValueShape
     a sh:PropertyShape ;
     sh:path epcis:stringValue ;
+    sh:name "stringValue" ;
     sh:datatype xsd:string ;
     sh:maxCount 1 ;
     sh:message "Within each value of sensorReport, stringValue is optional but must be an xsd:string and can only have one value" ;
 .
-

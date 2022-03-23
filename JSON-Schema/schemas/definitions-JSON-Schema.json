@@ -38,7 +38,7 @@
         },
         "version": {
             "type": "string",
-            "pattern":  "^\\d+(\\.\\d+)?$"
+            "pattern":  "^\\d+(\\.\\d+)*$"
         },
         "id": {
             "type": "string",
