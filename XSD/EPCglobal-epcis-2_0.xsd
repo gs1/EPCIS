@@ -556,7 +556,7 @@ GS1 retains the right to make changes to this document at any time, without noti
     <xsd:complexContent>
       <xsd:extension base="epcis:EPCISEventType">
         <xsd:sequence>
-          <xsd:element name="epcList" type="epcis:EPCListType"/>
+          <xsd:element name="epcList" type="epcis:EPCListType" minOccurs="0"/>
           <xsd:element name="action" type="epcis:ActionType"/>
           <xsd:element name="bizStep" type="epcis:BusinessStepIDType" minOccurs="0"/>
           <xsd:element name="disposition" type="epcis:DispositionIDType" minOccurs="0"/>
@@ -699,7 +699,7 @@ GS1 retains the right to make changes to this document at any time, without noti
         <xsd:sequence>
           <xsd:element name="bizTransactionList" type="epcis:BusinessTransactionListType"/>
           <xsd:element name="parentID" type="epcis:ParentIDType" minOccurs="0"/>
-          <xsd:element name="epcList" type="epcis:EPCListType"/>
+          <xsd:element name="epcList" type="epcis:EPCListType" minOccurs="0"/>
           <xsd:element name="action" type="epcis:ActionType"/>
           <xsd:element name="bizStep" type="epcis:BusinessStepIDType" minOccurs="0"/>
           <xsd:element name="disposition" type="epcis:DispositionIDType" minOccurs="0"/>
