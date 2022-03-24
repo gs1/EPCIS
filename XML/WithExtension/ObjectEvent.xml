@@ -27,6 +27,7 @@
             <ObjectEvent>
                 <eventTime>2005-04-03T20:33:31.116-06:00</eventTime>
                 <eventTimeZoneOffset>-06:00</eventTimeZoneOffset>
+                <epcList/>
                 <action>ADD</action>
                 <bizStep>urn:epcglobal:cbv:bizstep:commissioning</bizStep>
                 <disposition>urn:epcglobal:cbv:disp:in_transit</disposition>
@@ -40,11 +41,6 @@
                         <uom>KGM</uom>
                     </quantityElement>
                 </quantityList>
-                <extension>
-                    <extension>
-                        <futureExtension/>
-                    </extension>
-                </extension>
                 <ilmd>
                     <example:userIlmd>
                         <part1>1</part1>
@@ -52,6 +48,11 @@
                         <part3>3</part3>
                     </example:userIlmd>
                 </ilmd>
+                <extension>
+                    <extension>
+                        <futureExtension/>
+                    </extension>
+                </extension>
                 <example:userElement>
                     <anotherElement>elementData</anotherElement>
                 </example:userElement>

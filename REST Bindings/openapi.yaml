@@ -178,6 +178,21 @@ paths:
                         enum:
                           - epcisException:ValidationException
                   - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+            application/problem+xml:
+              schema:
+                allOf:
+                  - properties:
+                      status:
+                        type: integer
+                        enum:
+                          - 400
+                        default: 400
+                      type:
+                        type: string
+                        format: uri
+                        enum:
+                          - epcisException:ValidationException
+                  - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
         '401':
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
@@ -364,6 +379,16 @@ paths:
                   "captureErrorBehaviour": "rollback",
                   "errors": [ ]
                 }
+              schema:
+                $ref: '#/components/schemas/CaptureJob'
+            application/xml:             
+              example: 
+                  "captureID": "id261378658356"
+                  "running": false
+                  "success": true
+                  "captureErrorBehaviour": "rollback"
+                  "createdAt": "2021-07-21T17:32:28Z"
+                  "finishedAt" : "2022-01-21T17:45:28Z"
               schema:
                 $ref: '#/components/schemas/CaptureJob'
         '401':
@@ -2389,6 +2414,9 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/EPCISQueryDocument'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/EPCISXMLQueryDocument'
     200EPCISQueryDocumentSinglePage:
       headers:
         GS1-EPCIS-Version:
@@ -2402,12 +2430,33 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/EPCISQueryDocument'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/EPCISXMLQueryDocument'
     204NextPageTokenInvalidated:
       description: nextPageToken invalidated successfully.
     200SupportedTopLevel:
       description: Returns all supported EPCIS top-level resources.
       content:
         application/json:
+          schema:
+            $ref: '#/components/schemas/TopLevelResourceCollection'
+          example: {
+            "@context": "https://gs1.github.io/EPCIS/epcis-context.jsonld",
+            "type": "Collection",
+            "member": [
+              "queries",
+              "capture",
+              "events",
+              "eventTypes",
+              "epcs", 
+              "readPoints",
+              "bizLocations",
+              "dispositions",
+              "bizSteps"
+            ]
+          }
+        application/xml:
           schema:
             $ref: '#/components/schemas/TopLevelResourceCollection'
           example: {
@@ -2625,6 +2674,26 @@ components:
                       - epcisException:SubscriptionControlsException
                       - epcisException:ValidationException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+        application/xml:
+          schema:
+            example:
+              type: "epcisException:SubscriptionControlsException"
+              title: "Subscription error"
+              status: 400
+            allOf:
+              - properties:
+                  status:
+                    type: integer
+                    enum:
+                      - 400
+                    default: 400
+                  type:
+                    type: string
+                    format: uri
+                    enum:
+                      - epcisException:SubscriptionControlsException
+                      - epcisException:ValidationException
+              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
     400QueryIssues:
       description: Query exceptions defined in EPCIS.
       content:
@@ -2671,10 +2740,48 @@ components:
                     enum:
                       - epcisException:SecurityException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+        application/problem+xml:
+          schema:
+            example:
+              type: "epcisException:SecurityException"
+              title: "Unauthorised request"
+              status: 401
+            allOf:
+              - properties:
+                  status:
+                    type: integer
+                    enum:
+                      - 401
+                    default: 401
+                  type:
+                    type: string
+                    format: uri
+                    enum:
+                      - epcisException:SecurityException
+              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
     403ClientUnauthorized:
       description: Client is unauthorized to access this resource.
       content:
         application/problem+json:
+          schema:
+            example:
+              type: "epcisException:SecurityException"
+              title: "Access to resource forbidden"
+              status: 403
+            allOf:
+              - properties:
+                  status:
+                    type: integer
+                    enum:
+                      - 403
+                    default: 403
+                  type:
+                    type: string
+                    format: uri
+                    enum:
+                      - epcisException:SecurityException
+              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+        application/problem+xml:
           schema:
             example:
               type: "epcisException:SecurityException"
@@ -2700,6 +2807,25 @@ components:
           schema:
             example:
               type: "epcisException:NoSuchResourceException"
+              title: "Resource not found"
+              status: 404
+            allOf:
+              - properties:
+                  status:
+                    type: integer
+                    enum:
+                      - 404
+                    default: 404
+                  type:
+                    type: string
+                    format: uri
+                    enum:
+                      - epcisException:NoSuchNameException
+              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+        application/problem+xml:
+          schema:
+            example:
+              type: "epcisException:NoSuchNameException"
               title: "Resource not found"
               status: 404
             allOf:
@@ -2744,10 +2870,49 @@ components:
                     enum:
                       - epcisException:CaptureLimitExceededException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+        application/problem+xml:
+          schema:
+            example:
+              type: "epcisException:CaptureLimitExceededException"
+              title: "Capture Payload too large"
+              status: 413
+            allOf:
+              - properties:
+                  status:
+                    type: integer
+                    enum:
+                      - 413
+                    default: 413
+                  type:
+                    type: string
+                    format: uri
+                    enum:
+                      - epcisException:CaptureLimitExceededException
+              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
     413QueryScopeOrSize:
       description: Query result is too large.
       content:
         application/problem+json:
+          schema:
+            example:
+              type: "epcisException:QueryTooComplexException"
+              title: "Capture Payload too large"
+              status: 413
+            allOf:
+              - properties:
+                  status:
+                    type: integer
+                    enum:
+                      - 413
+                    default: 413
+                  type:
+                    type: string
+                    format: uri
+                    enum:
+                      - epcisException:QueryTooLargeException
+                      - epcisException:QueryTooComplexException
+              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+        application/problem+xml:
           schema:
             example:
               type: "epcisException:QueryTooComplexException"
@@ -2789,11 +2954,49 @@ components:
                     enum:
                       - epcisException:URITooLongException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+        application/problem+xml:
+          schema:
+            example:
+              type: "epcisException:URITooLongException"
+              title: "URI Too Long"
+              status: 414
+            allOf:
+              - properties:
+                  status:
+                    type: integer
+                    enum:
+                      - 414
+                    default: 414
+                  type:
+                    type: string
+                    format: uri
+                    enum:
+                      - epcisException:URITooLongException
+              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
     406NotAcceptable:
       description: |
         The server cannot return the response as requested. 
       content:
         application/problem+json:
+          schema:
+            example:
+              type: "epcisException:NotAcceptableException"
+              title: "Conflicting request and response headers"
+              status: 406
+            allOf:
+              - properties:
+                  status:
+                    type: integer
+                    enum:
+                      - 406
+                    default: 406
+                  type:
+                    type: string
+                    format: uri
+                    enum:
+                      - epcisException:NotAcceptableException
+              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+        application/problem+xml:
           schema:
             example:
               type: "epcisException:NotAcceptableException"
@@ -2827,14 +3030,33 @@ components:
                   status:
                     type: integer
                     enum:
-                      - 409
-                    default: 409
+                      - 406
+                    default: 406
                   type:
                     type: string
                     format: uri
                     enum:
                       - epcisException:ResourceAlreadyExistsException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+        application/problem+xml:
+          schema:
+            example:
+              type: "epcisException:ResourceAlreadyExistsException"
+              title: "A resource with the provided identifier already exists."
+              status: 409
+            allOf:
+              - properties:
+                  status:
+                    type: integer
+                    enum:
+                      - 406
+                    default: 406
+                  type:
+                    type: string
+                    format: uri
+                    enum:
+                      - epcisException:ResourceAlreadyExistsException
+              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'              
     415UnsupportedMediaType:
       description: |
         The client sent data in a format that is not supported by the server.
@@ -2858,10 +3080,48 @@ components:
                     enum:
                       - epcisException:UnsupportedMediaTypeException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+        application/problem+xml:
+          schema:
+            example:
+              type: "epcisException:UnsupportedMediaTypeException"
+              title: "Unsupported Media Type"
+              status: 415
+            allOf:
+              - properties:
+                  status:
+                    type: integer
+                    enum:
+                      - 415
+                    default: 415
+                  type:
+                    type: string
+                    format: uri
+                    enum:
+                      - epcisException:IUnsupportedMediaTypeException
+              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
     500ImplementationException:
       description: An error occurred on the backend.
       content:
         application/problem+json:
+          schema:
+            example:
+              type: "epcisException:ImplementationException"
+              title: "A server-side error occurred"
+              status: 500
+            allOf:
+              - properties:
+                  status:
+                    type: integer
+                    enum:
+                      - 500
+                    default: 500
+                  type:
+                    type: string
+                    format: uri
+                    enum:
+                      - epcisException:ImplementationException
+              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+        application/problem+xml:
           schema:
             example:
               type: "epcisException:ImplementationException"
@@ -2902,7 +3162,25 @@ components:
                     enum:
                       - epcisException:ImplementationException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-
+        application/problem+xml:
+          schema:
+            example:
+              type: "epcisException:ImplementationException"
+              title: "Functionality not supported by server"
+              status: 501
+            allOf:
+              - properties:
+                  status:
+                    type: integer
+                    enum:
+                      - 501
+                    default: 501
+                  type:
+                    type: string
+                    format: uri
+                    enum:
+                      - epcisException:ImplementationException
+              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
   schemas:
     LDContext:
       description: JSON-LD @context. 
@@ -2940,6 +3218,11 @@ components:
         instance:
           type: string
           format: uri
+      xml:
+        name: "EPCISException"
+        prefix: "epcis"
+        namespace: "urn:epcglobal:epcis:xsd:2"
+        
 
     QueryDefinition:
       example:
@@ -3267,11 +3550,15 @@ components:
               example: id9261379075
               description: A unique value identifying a capture job generated by the server.
               type: string
+              xml:
+                attribute: true
             running:
               description: |
                 If the job is still running, the state is `true`, otherwise `false`.
               type: boolean
               example: true
+              xml:
+                attribute: true
             success:
               description: |
                 If `success` is `false`, there was at least one error. Otherwise, `success` is `true`.
@@ -3281,6 +3568,8 @@ components:
                 if `success` is `false`.
               type: boolean
               example: false
+              xml:
+                attribute: true
             createdAt:
               description: "When the capture job started"
               example: "2022-01-21T17:32:28Z"
@@ -3316,6 +3605,10 @@ components:
                   example: ''
                   type: string
                   format: uri
+      xml:
+        name: "EPCISCaptureJob"
+        prefix: "epcis"
+        namespace: "urn:epcglobal:epcis:xsd:2"
     EPCISQueryDocument:
       description: A collection of EPCIS resources.
       type: object
@@ -3454,6 +3747,20 @@ components:
           An EPCIS document that must be validated with the [JSON schema](../JSON/EPCIS-JSON-Schema.json) or
           [SHACL file](../JSON/EPCIS-SHACL.ttl).
         url: ../JSON/EPCIS-SHACL.ttl
+
+    EPCISXMLQueryDocument:
+      description: A collection of EPCIS resources.
+      type: object
+      xml:
+        name: "EPCISQueryDocument"
+        prefix: "epcis"
+        namespace: "urn:epcglobal:epcis-query:xsd:2"
+
+      externalDocs:
+        description: |
+          An EPCIS document that must be validated with the [XML Schema](../XSD/EPCglobal-epcis-query-2_0.xsd)
+        url: ../XSD/EPCglobal-epcis-query-2_0.xsd
+
     Link:
       description: |
         A pagination header link. This header works together with the `perPage` and `nextPageToken` query string
@@ -3462,7 +3769,7 @@ components:
       format: uri
       example: 
         '<https://example.com/epcis/events?perPage=30&nextPageToken=3A15506738749783AU6D7DENAKwM2gQRRwGrataeq>; rel="next"'
-        
+
     PerPage:
       description: |
         This parameter helps to control the amount of data returned to the client through pagination.

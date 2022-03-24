@@ -24,7 +24,7 @@ GS1 retains the right to make changes to this document at any time, without noti
      schemaLocation="./StandardBusinessDocumentHeader.xsd"/>
   <xsd:import 
     namespace="urn:epcglobal:epcis:xsd:2" 
-    schemaLocation="./EPCglobal-epcis-2_0.xsd"/>
+    schemaLocation="./EPCglobal-epcis-2_0_alt.xsd"/>
 
   <!-- MasterData CORE ELEMENTS -->
   <xsd:element name="EPCISMasterDataDocument" type="epcismd:EPCISMasterDataDocumentType"/>
