@@ -217,8 +217,8 @@ paths:
       summary: Returns a list of capture jobs.
       description: |
         When EPCIS events are added through the capture interface, the capture process can run asynchronously. If the payload
-        is syntactically correct and the client is allowed to call `/capture`, the server returns a `202` HTTP response code. This
-        does not guarantee successful storage of all EPCIS events. This endpoint returns all capture jobs that were created
+        is syntactically correct and the client is allowed to call `/capture`, the server returns a `202` HTTP response code. 
+        This endpoint returns all capture jobs that were created
         and supports pagination.
       responses:
         '200':
@@ -331,9 +331,8 @@ paths:
       summary: Returns information about the capture job.
       description: |
         When EPCIS events are added through the capture interface, the capture process can run asynchronously. If the payload
-        is syntactically correct and the client is allowed to call `/capture`, the server returns a `202` HTTP response code. This
-        does not guarantee successful storage of all EPCIS events. The capture job endpoint exposes the state
-        of the capture job to the client.
+        is syntactically correct and the client is allowed to call `/capture`, the server returns a `202` HTTP response code. 
+        This endpoint exposes the state of the capture job to the client.
       responses:
         '200':
           headers:
