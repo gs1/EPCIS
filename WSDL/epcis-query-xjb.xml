@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jaxb:bindings version="2.0"
+    xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+    xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" jaxb:extensionBindingPrefixes="xjc">
+    <jaxb:bindings schemaLocation="../XSD/EPCglobal-epcis-2_0_alt.xsd">
+        <jaxb:bindings node="//xsd:complexType[@name='SensorReportType']">
+            <jaxb:bindings node=".//xsd:attribute[@name='value']">
+                <jaxb:property name="numericValue"/>
+            </jaxb:bindings>
+        </jaxb:bindings>
+    </jaxb:bindings>
+</jaxb:bindings>

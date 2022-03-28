@@ -48,9 +48,9 @@
                     </example:userIlmd>
                 </ilmd>
                 <extension>
-                    <extension>
+                    <example:extension>
                         <futureExtension/>
-                    </extension>
+                    </example:extension>
                 </extension>
                 <example:userElement>
                     <anotherElement>elementData</anotherElement>

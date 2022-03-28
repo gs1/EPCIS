@@ -6,8 +6,8 @@ note over Client, Server:
 {
   "query": {
     "EQ_bizStep": [
-      "urn:epcglobal:cbv:bizstep:shipping",
-      "urn:epcglobal:cbv:bizstep:receiving"
+      "shipping",
+      "receiving"
     ],
     "eventTypes": "ObjectEvent"
   },
