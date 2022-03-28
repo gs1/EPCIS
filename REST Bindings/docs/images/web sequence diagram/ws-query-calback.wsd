@@ -6,8 +6,8 @@ note over Client, Server:
 {
   "query": {
     "EQ_bizStep": [
-      "urn:epcglobal:cbv:bizstep:shipping",
-      "urn:epcglobal:cbv:bizstep:receiving"
+      "shipping",
+      "receiving"
     ],
     "eventTypes": "ObjectEvent"
   },
@@ -30,6 +30,6 @@ s->s: CuckooClock()
 note left of s: The time is 01:05h
 s<->c: wss://example.com/queries/MyQuery/events?minute=5&hour=1
 note over Client, Server:
-{..., "bizStep": "urn:epcglobal:cbv:bizstep:shipping",...}
+{..., "bizStep": "shipping",...}
 end note
 c->s: close() 
