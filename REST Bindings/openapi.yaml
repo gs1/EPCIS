@@ -136,8 +136,10 @@ paths:
           application/json:
             schema:
                     oneOf:
-                      - $ref: '#/components/schemas/EPCISQueryDocument'
-                      - $ref: '#/components/schemas/EPCISDocument'      
+                      - $ref: 'https://gs1.github.io/EPCIS/REST%20Bindings/JSON-Schema-Stub.json#/definitions/epcisQueryDocument'
+                      - $ref: 'https://gs1.github.io/EPCIS/REST%20Bindings/JSON-Schema-Stub.json#/definitions/epcisDocument'
+            example:
+              $ref: 'https://gs1.github.io/EPCIS/JSON/Example_9.6.1-ObjectEvent.jsonld'
       responses:
         '202':
           description: |
@@ -473,7 +475,9 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SingleEvent'
+              $ref: 'https://gs1.github.io/EPCIS/REST%20Bindings/JSON-Schema-Stub.json#/definitions/EPCIS-Document-Event'
+            example:
+              $ref: 'https://gs1.github.io/EPCIS/JSON-Schema/test/ObjectEvent.json'
 
       responses:
         '201':
@@ -497,7 +501,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SingleEvent'
+                $ref: 'https://gs1.github.io/EPCIS/REST%20Bindings/JSON-Schema-Stub.json#/definitions/EPCIS-Document-Event'
         '400':
           description: An error occurred while creating the EPCIS event. The event was rejected.
           content:
@@ -2091,7 +2095,7 @@ paths:
                   application/json:
                     schema:
                       oneOf:
-                        - $ref: '#/components/schemas/EPCISQueryDocument'
+                        - $ref: 'https://gs1.github.io/EPCIS/REST%20Bindings/JSON-Schema-Stub.json#/definitions/epcisQueryDocument'
                         - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
               responses:
                 '200':
@@ -2412,10 +2416,14 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/EPCISQueryDocument'
+            $ref: 'https://gs1.github.io/EPCIS/REST%20Bindings/JSON-Schema-Stub.json#/definitions/epcisQueryDocument'
+          example:
+            $ref: 'https://gs1.github.io/EPCIS/JSON/EPCISQueryDocument.jsonld'
         application/xml:
           schema:
             $ref: '#/components/schemas/EPCISXMLQueryDocument'
+          example:
+            $ref: 'https://gs1.github.io/EPCIS/XML/Example-PersistentDisposition.xml'
     200EPCISQueryDocumentSinglePage:
       headers:
         GS1-EPCIS-Version:
@@ -2428,7 +2436,9 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/EPCISQueryDocument'
+            $ref: 'https://gs1.github.io/EPCIS/REST%20Bindings/JSON-Schema-Stub.json#/definitions/epcisQueryDocument'
+          example: 
+            $ref: 'https://gs1.github.io/EPCIS/JSON/EPCISQueryDocument.jsonld'
         application/xml:
           schema:
             $ref: '#/components/schemas/EPCISXMLQueryDocument'
@@ -3273,234 +3283,17 @@ components:
       description: Unique query name.
       type: string
       example: myQuery
-    SingleEvent:
+    EPCISEvent: 
       description: |
-        A single EPCIS event. The full schema is specified in the JSON-Schema documentation.
-      type: object
-      required:
-        - 'type'
-      properties:
-        '@context':
-          type: array
-          items:
-            anyOf:
-              - type: string
-                format: uri
-              - type: object
-        'type':
-          type: string
-          example: ObjectEvent
-      externalDocs:
-        description: |
-          A SingleEvent that must be validated with the external JSON Schema.
-        url: ../JSON/EPCIS-JSON-Schema.json
-      example:
-        {
-          "@context": "https://gs1.github.io/EPCIS/epcis-context.jsonld",
-          "type": "ObjectEvent",
-          "action": "OBSERVE",
-          "bizStep": "inspecting",
-          "eventTime": "2021-05-05T15:00:00.000+01:00",
-          "eventTimeZoneOffset": "+01:00",
-          "readPoint": {
-            "id": "urn:epc:id:sgln:4012345.00005.0"
-          },
-          "epcList": [
-              "urn:epc:id:sgtin:4012345.011111.9876"
-          ],
-          "sensorElementList": [
-            {
-              "sensorMetadata": {
-                "time": "2019-04-02T14:05:00.000+01:00",
-                "deviceID": "urn:epc:id:giai:4000001.111",
-                "deviceMetadata": "https://id.gs1.org/8004/4000001111",
-                "rawData": "https://example.org/8004/401234599999"
-              },
-              "sensorReport": [
-                {
-                  "type": "gs1:Temperature",
-                  "value": 26.0,
-                  "uom": "CEL"
-                },
-                {
-                  "type": "gs1:AbsoluteHumidity",
-                  "value": 12.1,
-                  "uom": "A93"
-                },
-                {
-                  "type": "gs1:Speed",
-                  "value": 160.0,
-                  "uom": "KMH"
-                },
-                {
-                  "type": "gs1:Illuminance",
-                  "value": 800.0,
-                  "uom": "LUX"
-                }
-              ]
-            },
-            {
-              "sensorMetadata": {
-                "time": "2019-04-02T14:35:00.000+01:00",
-                "deviceID": "urn:epc:id:giai:4000001.111",
-                "deviceMetadata": "https://id.gs1.org/8004/4000001111",
-                "rawData": "https://example.org/8004/401234599999"
-              },
-              "sensorReport": [
-                {
-                  "type": "gs1:Temperature",
-                  "value": 26.1,
-                  "uom": "CEL"
-                },
-                {
-                  "type": "gs1:AbsoluteHumidity",
-                  "value": 12.2,
-                  "uom": "A93"
-                },
-                {
-                  "type": "gs1:Speed",
-                  "value": 161.0,
-                  "uom": "KMH"
-                },
-                {
-                  "type": "gs1:Illuminance",
-                  "value": 801.0,
-                  "uom": "LUX"
-                }
-              ]
-            },
-            {
-              "sensorMetadata": {
-                "time": "2019-04-02T14:55:00.000+01:00",
-                "deviceID": "urn:epc:id:giai:4000001.111",
-                "deviceMetadata": "https://id.gs1.org/8004/4000001111",
-                "rawData": "https://example.org/8004/401234599999"
-              },
-              "sensorReport": [
-                {
-                  "type": "gs1:Temperature",
-                  "value": 26.2,
-                  "uom": "CEL"
-                },
-                {
-                  "type": "gs1:AbsoluteHumidity",
-                  "value": 12.2,
-                  "uom": "A93"
-                },
-                {
-                  "type": "gs1:Speed",
-                  "value": 162.0,
-                  "uom": "KMH"
-                },
-                {
-                  "type": "gs1:Illuminance",
-                  "value": 802.0,
-                  "uom": "LUX"
-                }
-              ]
-            }
-          ]
-        }
-    EPCISDocument:
-      description: A collection of EPCIS resources.
-      type: object
-      required:
-        - '@context'
-        - schemaVersion
-        - creationDate
-        - 'type'
-        - epcisBody
-      properties:
-        '@context':
-          type: array
-          items:
-            anyOf:
-              - type: string
-                format: uri
-              - type: object
-        'type':
-          type: string
-          enum: 
-            - EPCISDocument
-          example: EPCISDocument
-        schemaVersion:
-          type: number
-        creationDate:
-          type: string
-          format: date-time
-        format:
-          type: string
-          example: "application/ld+json"
-        epcisBody:
-          type: object
-          properties:
-            eventList:
-              type: array
-              uniqueItems: true
-              items:
-                type: object
-          required:
-            - eventList
-        epcisHeader:
-          type: object
-          properties:
-            epcisMasterData:
-              type: object
-              properties:
-                vocabularyList:
-                  type: array
-                  uniqueItems: true
-                  items:
-                    type: object
-
-      example:
-        {
-          "@context": [
-              "https://gs1.github.io/EPCIS/epcis-context.jsonld",
-              { "example": "http://ns.example.com/epcis/" } ],
-          "type": "EPCISDocument",
-          "schemaVersion": 2.0,
-          "creationDate": "2021-07-11T11:30:47.0Z",
-          "epcisBody": {
-            "eventList": [
-              {
-                "eventID": "_:event1",
-                "type": "ObjectEvent",
-                "action": "OBSERVE",
-                "bizStep": "shipping",
-                "disposition": "in_transit",
-                "epcList": [ "urn:epc:id:sgtin:0614141.107346.2017","urn:epc:id:sgtin:0614141.107346.2018" ],
-                "eventTime": "2022-01-08T20:33:31.116-06:00",
-                "eventTimeZoneOffset": "-06:00",
-                "readPoint": { "id": "urn:epc:id:sgln:0614141.07346.1234" },
-                "bizTransactionList": [
-                  { "type": "po", "bizTransaction": "http://transaction.acme.com/po/12345678" } ]
-              },
-              {
-                "eventID": "_:event2",
-                "type": "ObjectEvent",
-                "action": "OBSERVE",
-                "bizStep": "receiving",
-                "disposition": "in_progress",
-                "epcList": [ "urn:epc:id:sgtin:0614141.107346.2018" ],
-                "eventTime": "2022-01-08T20:33:32.116-06:00",
-                "eventTimeZoneOffset": "-06:00",
-                "readPoint": { "id": "urn:epc:id:sgln:0012345.11111.400" },
-                "bizLocation": { "id": "urn:epc:id:sgln:0012345.11111.0" },
-                "bizTransactionList": [
-                  { "type": "po", "bizTransaction": "http://transaction.acme.com/po/12345678" },
-                  { "type": "desadv", "bizTransaction": "urn:epcglobal:cbv:bt:0614141073467:1152" }
-                ],
-                "example:myField": "Example of a vendor/user extension"
-              }
-            ]
-          }
-        }
-      externalDocs:
-        description: |
-          An EPCIS document that must be validated with the [JSON schema](../JSON/EPCIS-JSON-Schema.json) or
-          [SHACL file](../JSON/EPCIS-SHACL.ttl).
-        url: ../JSON/EPCIS-SHACL.ttl
+        EPCIS Event. It must validate against the normative 
+        <a href="../EPCIS-JSON-Schema.json">EPCIS JSON Schema</a> or <a href="../Ontology/EPCIS-SHACL.ttl">EPCIS SHACL</a>. 
+      oneOf:
+        - $ref: 'https://gs1.github.io/EPCIS/REST%20Bindings/JSON-Schema-Stub.json#/definitions/ObjectEvent'
+        - $ref: 'https://gs1.github.io/EPCIS/REST%20Bindings/JSON-Schema-Stub.json#/definitions/AggregationEvent'
+        - $ref: 'https://gs1.github.io/EPCIS/REST%20Bindings/JSON-Schema-Stub.json#/definitions/TransactionEvent'
+        - $ref: 'https://gs1.github.io/EPCIS/REST%20Bindings/JSON-Schema-Stub.json#/definitions/TransformationEvent'
+        - $ref: 'https://gs1.github.io/EPCIS/REST%20Bindings/JSON-Schema-Stub.json#/definitions/AssociationEvent'
+        - $ref: 'https://gs1.github.io/EPCIS/REST%20Bindings/JSON-Schema-Stub.json#/definitions/Extended-Event'
     CaptureJob:
       description: |
         When EPCIS events are added through the capture interface, the capture process can run asynchronously. If the payload
@@ -3608,145 +3401,7 @@ components:
         name: "EPCISCaptureJob"
         prefix: "epcis"
         namespace: "urn:epcglobal:epcis:xsd:2"
-    EPCISQueryDocument:
-      description: A collection of EPCIS resources.
-      type: object
-      required:
-        - '@context'
-        - 'type'
-        - epcisBody
-      properties:
-        '@context':
-          type: array
-          items:
-            uniqueItems: true
-            anyOf:
-              - type: string
-                format: uri
-              - type: object
-        'type':
-          type: string
-          enum: 
-            - EPCISQueryDocument
-          example: EPCISQueryDocument
-        schemaVersion:
-          type: string
-          pattern: ^\d+(\.\d+)*$
-          example: "2.0"
-        creationDate:
-          type: string
-          format: date-time
-        epcisBody:
-          type: object
-          properties:
-            queryResults:
-              type: object
-              properties:
-                queryName:
-                  $ref: '#/components/schemas/QueryName'
-                subscriptionID:
-                  $ref: '#/components/schemas/subscriptionID'
-                resultsBody:
-                  type: object
-                  required:
-                    - eventList
-                  properties:
-                    eventList:
-                      type: array
-                      items:
-                        type: object
-        epcisHeader:
-          type: object 
-          properties:
-            epcisMasterData:
-              type: object
-              properties:
-                vocabularyList:
-                  type: array
-                  uniqueItems: true
-                  items:
-                    type: object
-
-      example:
-              {
-        "@context": [
-          "https://gs1.github.io/EPCIS/epcis-context.jsonld",
-          {
-            "example": "http://ns.example.com/epcis/"
-          }
-        ],
-        "id": "_:document1",
-        "type": "EPCISQueryDocument",
-        "schemaVersion": "2.0",
-        "creationDate": "2005-07-11T11:30:47.0Z",
-        "epcisBody": {
-          "queryResults": {
-            "subscriptionID": "32d2aec1-a6d2-46d9-900a-24124288cce1",
-            "queryName": "SimpleEventQuery",
-            "resultsBody": {
-              "eventList": [
-                {
-                  "eventID": "ni:///sha-256;df7bb3c352fef055578554f09f5e2aa41782150ced7bd0b8af24dd3ccb30ba69?ver=CBV2.0",
-                  "type": "ObjectEvent",
-                  "action": "OBSERVE",
-                  "bizStep": "shipping",
-                  "disposition": "in_transit",
-                  "epcList": [
-                    "urn:epc:id:sgtin:0614141.107346.2017",
-                    "urn:epc:id:sgtin:0614141.107346.2018"
-                  ],
-                  "eventTime": "2005-04-03T20:33:31.116000-06:00",
-                  "eventTimeZoneOffset": "-06:00",
-                  "readPoint": {
-                    "id": "urn:epc:id:sgln:0614141.07346.1234"
-                  },
-                  "bizTransactionList": [
-                    {
-                      "type": "po",
-                      "bizTransaction": "http://transaction.acme.com/po/12345678"
-                    }
-                  ]
-                },
-                {
-                  "eventID": "cc979570-74a3-4dc7-8f3e-2e747d6d31ec",
-                  "type": "ObjectEvent",
-                  "action": "OBSERVE",
-                  "bizStep": "receiving",
-                  "disposition": "in_progress",
-                  "epcList": [
-                    "urn:epc:id:sgtin:0614141.107346.2018"
-                  ],
-                  "eventTime": "2005-04-04T20:33:31.116-06:00",
-                  "eventTimeZoneOffset": "-06:00",
-                  "readPoint": {
-                    "id": "urn:epc:id:sgln:0012345.11111.400"
-                  },
-                  "bizLocation": {
-                    "id": "urn:epc:id:sgln:0012345.11111.0"
-                  },
-                  "bizTransactionList": [
-                    {
-                      "type": "po",
-                      "bizTransaction": "http://transaction.acme.com/po/12345678"
-                    },
-                    {
-                      "type": "desadv",
-                      "bizTransaction": "urn:epcglobal:cbv:bt:0614141073467:1152"
-                    }
-                  ],
-                  "example:myField": "Example of a vendor/user extension"
-                }
-              ]
-            }
-          }
-        }
-      }
-      externalDocs:
-        description: |
-          An EPCIS document that must be validated with the [JSON schema](../JSON/EPCIS-JSON-Schema.json) or
-          [SHACL file](../JSON/EPCIS-SHACL.ttl).
-        url: ../JSON/EPCIS-SHACL.ttl
-
+    
     EPCISXMLQueryDocument:
       description: A collection of EPCIS resources.
       type: object

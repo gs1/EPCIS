@@ -16,7 +16,9 @@
         "type": "object",
         "properties": {
           "type": {
-            "const": "EPCISDocument"
+            "enum": [
+              "EPCISDocument"
+            ]
           }
         }
       },
@@ -29,7 +31,9 @@
         "type": "object",
         "properties": {
           "type": {
-            "const": "EPCISQueryDocument"
+            "enum": [
+              "EPCISQueryDocument"
+            ]
           }
         }
       },
@@ -42,7 +46,9 @@
         "type": "object",
         "properties": {
           "type": {
-            "const": "ObjectEvent"
+            "enum": [
+              "ObjectEvent"
+            ]
           }
         }
       },
@@ -62,7 +68,9 @@
         "type": "object",
         "properties": {
           "type": {
-            "const": "AggregationEvent"
+            "enum": [
+              "AggregationEvent"
+            ]
           }
         }
       },
@@ -82,7 +90,9 @@
         "type": "object",
         "properties": {
           "type": {
-            "const": "AssociationEvent"
+            "enum": [
+              "AssociationEvent"
+            ]
           }
         }
       },
@@ -102,7 +112,9 @@
         "type": "object",
         "properties": {
           "type": {
-            "const": "TransformationEvent"
+            "enum": [
+              "TransformationEvent"
+            ]
           }
         }
       },
@@ -122,7 +134,9 @@
         "type": "object",
         "properties": {
           "type": {
-            "const": "TransactionEvent"
+            "enum": [
+              "TransactionEvent"
+            ]
           }
         }
       },
@@ -1188,7 +1202,9 @@
             "type": "object",
             "properties": {
               "type": {
-                "const": "ObjectEvent"
+                "enum": [
+                  "ObjectEvent"
+                ]
               }
             }
           },
@@ -1201,7 +1217,9 @@
             "type": "object",
             "properties": {
               "type": {
-                "const": "AggregationEvent"
+                "enum": [
+                  "AggregationEvent"
+                ]
               }
             }
           },
@@ -1214,7 +1232,9 @@
             "type": "object",
             "properties": {
               "type": {
-                "const": "TransactionEvent"
+                "enum": [
+                  "TransactionEvent"
+                ]
               }
             }
           },
@@ -1226,7 +1246,9 @@
           "if": {
             "properties": {
               "type": {
-                "const": "TransformationEvent"
+                "enum": [
+                  "TransformationEvent"
+                ]
               }
             }
           },
@@ -1239,7 +1261,9 @@
             "type": "object",
             "properties": {
               "type": {
-                "const": "AssociationEvent"
+                "enum": [
+                  "AssociationEvent"
+                ]
               }
             }
           },
@@ -1378,7 +1402,10 @@
               "properties": {
                 "epcList": {
                   "type": "array",
-                  "minItems": 0
+                  "minItems": 0,
+                  "items": {
+                    "$ref": "#/definitions/id"
+                  }
                 }
               },
               "required": [
@@ -1633,7 +1660,10 @@
               "properties": {
                 "childEPCs": {
                   "type": "array",
-                  "minItems": 1
+                  "minItems": 1,
+                  "items": {
+                    "$ref": "#/definitions/id"
+                  }
                 }
               },
               "required": [
@@ -1645,7 +1675,10 @@
               "properties": {
                 "childQuantityList": {
                   "type": "array",
-                  "minItems": 1
+                  "minItems": 1,
+                  "items": {
+                    "$ref": "#/definitions/quantityElement"
+                  }
                 }
               },
               "required": [
@@ -1776,7 +1809,10 @@
               "properties": {
                 "epcList": {
                   "type": "array",
-                  "minItems": 0
+                  "minItems": 0,
+                  "items": {
+                    "$ref": "#/definitions/id"
+                  }
                 }
               },
               "required": [
@@ -1788,7 +1824,10 @@
               "properties": {
                 "quantityList": {
                   "type": "array",
-                  "minItems": 1
+                  "minItems": 1,
+                  "items": {
+                    "$ref": "#/definitions/quantityElement"
+                  }
                 }
               },
               "required": [
@@ -1922,7 +1961,10 @@
                       "properties": {
                         "inputEPCList": {
                           "type": "array",
-                          "minItems": 1
+                          "minItems": 1,
+                          "items": {
+                            "$ref": "#/definitions/id"
+                          }
                         }
                       },
                       "required": [
@@ -1934,7 +1976,10 @@
                       "properties": {
                         "inputQuantityList": {
                           "type": "array",
-                          "minItems": 1
+                          "minItems": 1,
+                          "items": {
+                            "$ref": "#/definitions/quantityElement"
+                          }
                         }
                       },
                       "required": [
@@ -1950,7 +1995,10 @@
                       "properties": {
                         "outputEPCList": {
                           "type": "array",
-                          "minItems": 1
+                          "minItems": 1,
+                          "items": {
+                            "$ref": "#/definitions/id"
+                          }
                         }
                       },
                       "required": [
@@ -1962,7 +2010,10 @@
                       "properties": {
                         "outputQuantityList": {
                           "type": "array",
-                          "minItems": 1
+                          "minItems": 1,
+                          "items": {
+                            "$ref": "#/definitions/quantityElement"
+                          }
                         }
                       },
                       "required": [
@@ -1980,7 +2031,10 @@
                   "properties": {
                     "inputEPCList": {
                       "type": "array",
-                      "minItems": 1
+                      "minItems": 1,
+                      "items": {
+                        "$ref": "#/definitions/id"
+                      }
                     }
                   },
                   "required": [
@@ -1992,7 +2046,10 @@
                   "properties": {
                     "inputQuantityList": {
                       "type": "array",
-                      "minItems": 1
+                      "minItems": 1,
+                      "items": {
+                        "$ref": "#/definitions/quantityElement"
+                      }
                     }
                   },
                   "required": [
@@ -2004,7 +2061,10 @@
                   "properties": {
                     "outputEPCList": {
                       "type": "array",
-                      "minItems": 1
+                      "minItems": 1,
+                      "items": {
+                        "$ref": "#/definitions/id"
+                      }
                     }
                   },
                   "required": [
@@ -2016,7 +2076,10 @@
                   "properties": {
                     "outputQuantityList": {
                       "type": "array",
-                      "minItems": 1
+                      "minItems": 1,
+                      "items": {
+                        "$ref": "#/definitions/quantityElement"
+                      }
                     }
                   },
                   "required": [
@@ -2143,7 +2206,10 @@
               "properties": {
                 "childEPCs": {
                   "type": "array",
-                  "minItems": 1
+                  "minItems": 1,
+                  "items": {
+                    "$ref": "#/definitions/id"
+                  }
                 }
               },
               "required": [
@@ -2155,7 +2221,10 @@
               "properties": {
                 "childQuantityList": {
                   "type": "array",
-                  "minItems": 1
+                  "minItems": 1,
+                  "items": {
+                    "$ref": "#/definitions/quantityElement"
+                  }
                 }
               },
               "required": [

@@ -1,0 +1,16 @@
+{
+    "name": "open-api-injector",
+    "version": "1.0.0",
+    "description": "Inject Schema definitions into the Open API Spec",
+    "main": "inject-schema.js",
+    "type": "module",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "Apache 2.0",
+    "dependencies": {
+        "js-yaml": "^4.1.0",
+        "node-fetch": "^3.2.3"
+    }
+}
