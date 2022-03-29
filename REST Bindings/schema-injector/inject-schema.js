@@ -1,9 +1,10 @@
 /* Injects on the Open API Spec the schema definitions from the EPCIS JSON Schema */
 
-const process = require("process");
-const fs = require("fs");
-const path = require("path");
-const yaml = require("js-yaml");
+import process from "process";
+import fs from "fs";
+import path from "path";
+import yaml from "js-yaml";
+import fetch from 'node-fetch';
 
 /*  Translation table so that certain JSON Schema definitions are translated
  *  to the Open API compatible definitions
@@ -26,7 +27,7 @@ function loadYaml(fileName) {
   return yaml.load(fs.readFileSync(fileName, { encoding: "utf-8" }));
 }
 
-function inject(fileName, schemaFileName) {
+async function inject(fileName, schemaFileName) {
   const spec = loadYaml(fileName);
   const schemaJson = loadJson(schemaFileName);
 
@@ -42,13 +43,13 @@ function inject(fileName, schemaFileName) {
 
   const members = Object.keys(spec);
   for (const member of members) {
-    visit(spec[member], member, spec);
+    await visit(spec[member], member, spec);
   }
 
   return spec;
 }
 
-function visit(obj, parentKeyName, parent) {
+async function visit(obj, parentKeyName, parent) {
   if (!obj || typeof obj !== "object") {
     return;
   }
@@ -70,7 +71,7 @@ function visit(obj, parentKeyName, parent) {
         // Here there is a Reference to an example or to an schema
         if (parentKeyName === "example") {
           // The example is just inlined
-          const example = loadExample(pointer);
+          const example = await loadExample(pointer);
           parent[parentKeyName] = example;
         } else if (pointer.includes(EPCIS_JSON_SCHEMA)) {
           // We just reference the schema
@@ -82,7 +83,7 @@ function visit(obj, parentKeyName, parent) {
       delete obj[key];
     }
     else {
-      visit(obj[key], key, obj);
+      await visit(obj[key], key, obj);
     }
   }
 }
@@ -97,27 +98,20 @@ function getDefinitionName(reference) {
   return result;
 }
 
-function loadExample(definitionPointer) {
-  let fileName;
-
-  fileName = definitionPointer.split("#")[0];
-
-  // We obtain the file relative to the folder where the openapi.yaml is
-  const folder = path.dirname(process.argv[2]);
-  const finalFileLocation = path.join(folder, fileName);
-
-  const example = loadJson(finalFileLocation);
+async function loadExample(uri) {
+  const response = await fetch(uri)
+  const example = await response.json();
 
   return example;
 }
 
-function main() {
+async function main() {
   const inputFile = process.argv[2];
   const schemaFile = process.argv[3];
 
-  const finalSpec = inject(inputFile, schemaFile);
+  const finalSpec = await inject(inputFile, schemaFile);
 
   console.log(JSON.stringify(finalSpec, null, 2));
 }
 
-main();
+main().then().catch((err) => console.error(err));

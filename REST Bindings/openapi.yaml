@@ -2091,7 +2091,7 @@ paths:
                   application/json:
                     schema:
                       oneOf:
-                        - $ref: '#/components/schemas/EPCISQueryDocument'
+                        - $ref: 'http://gs1.github.io/EPCIS/EPCIS-JSON-Schema.json#/definitions/epcisQueryDocument'
                         - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
               responses:
                 '200':
@@ -2412,7 +2412,9 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/EPCISQueryDocument'
+            $ref: 'http://gs1.github.io/EPCIS/EPCIS-JSON-Schema.json#/definitions/epcisQueryDocument'
+          example:
+            $ref: 'http://gs1.github.io/EPCIS/JSON/EPCISQueryDocument.jsonld'
         application/xml:
           schema:
             $ref: '#/components/schemas/EPCISXMLQueryDocument'
@@ -2428,7 +2430,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/EPCISQueryDocument'
+            $ref: 'http://gs1.github.io/EPCIS/EPCIS-JSON-Schema.json#/definitions/epcisQueryDocument'
         application/xml:
           schema:
             $ref: '#/components/schemas/EPCISXMLQueryDocument'
@@ -3391,145 +3393,7 @@ components:
         name: "EPCISCaptureJob"
         prefix: "epcis"
         namespace: "urn:epcglobal:epcis:xsd:2"
-    EPCISQueryDocument:
-      description: A collection of EPCIS resources.
-      type: object
-      required:
-        - '@context'
-        - 'type'
-        - epcisBody
-      properties:
-        '@context':
-          type: array
-          items:
-            uniqueItems: true
-            anyOf:
-              - type: string
-                format: uri
-              - type: object
-        'type':
-          type: string
-          enum: 
-            - EPCISQueryDocument
-          example: EPCISQueryDocument
-        schemaVersion:
-          type: string
-          pattern: ^\d+(\.\d+)*$
-          example: "2.0"
-        creationDate:
-          type: string
-          format: date-time
-        epcisBody:
-          type: object
-          properties:
-            queryResults:
-              type: object
-              properties:
-                queryName:
-                  $ref: '#/components/schemas/QueryName'
-                subscriptionID:
-                  $ref: '#/components/schemas/subscriptionID'
-                resultsBody:
-                  type: object
-                  required:
-                    - eventList
-                  properties:
-                    eventList:
-                      type: array
-                      items:
-                        type: object
-        epcisHeader:
-          type: object 
-          properties:
-            epcisMasterData:
-              type: object
-              properties:
-                vocabularyList:
-                  type: array
-                  uniqueItems: true
-                  items:
-                    type: object
-
-      example:
-              {
-        "@context": [
-          "https://gs1.github.io/EPCIS/epcis-context.jsonld",
-          {
-            "example": "http://ns.example.com/epcis/"
-          }
-        ],
-        "id": "_:document1",
-        "type": "EPCISQueryDocument",
-        "schemaVersion": "2.0",
-        "creationDate": "2005-07-11T11:30:47.0Z",
-        "epcisBody": {
-          "queryResults": {
-            "subscriptionID": "32d2aec1-a6d2-46d9-900a-24124288cce1",
-            "queryName": "SimpleEventQuery",
-            "resultsBody": {
-              "eventList": [
-                {
-                  "eventID": "ni:///sha-256;df7bb3c352fef055578554f09f5e2aa41782150ced7bd0b8af24dd3ccb30ba69?ver=CBV2.0",
-                  "type": "ObjectEvent",
-                  "action": "OBSERVE",
-                  "bizStep": "shipping",
-                  "disposition": "in_transit",
-                  "epcList": [
-                    "urn:epc:id:sgtin:0614141.107346.2017",
-                    "urn:epc:id:sgtin:0614141.107346.2018"
-                  ],
-                  "eventTime": "2005-04-03T20:33:31.116000-06:00",
-                  "eventTimeZoneOffset": "-06:00",
-                  "readPoint": {
-                    "id": "urn:epc:id:sgln:0614141.07346.1234"
-                  },
-                  "bizTransactionList": [
-                    {
-                      "type": "po",
-                      "bizTransaction": "http://transaction.acme.com/po/12345678"
-                    }
-                  ]
-                },
-                {
-                  "eventID": "cc979570-74a3-4dc7-8f3e-2e747d6d31ec",
-                  "type": "ObjectEvent",
-                  "action": "OBSERVE",
-                  "bizStep": "receiving",
-                  "disposition": "in_progress",
-                  "epcList": [
-                    "urn:epc:id:sgtin:0614141.107346.2018"
-                  ],
-                  "eventTime": "2005-04-04T20:33:31.116-06:00",
-                  "eventTimeZoneOffset": "-06:00",
-                  "readPoint": {
-                    "id": "urn:epc:id:sgln:0012345.11111.400"
-                  },
-                  "bizLocation": {
-                    "id": "urn:epc:id:sgln:0012345.11111.0"
-                  },
-                  "bizTransactionList": [
-                    {
-                      "type": "po",
-                      "bizTransaction": "http://transaction.acme.com/po/12345678"
-                    },
-                    {
-                      "type": "desadv",
-                      "bizTransaction": "urn:epcglobal:cbv:bt:0614141073467:1152"
-                    }
-                  ],
-                  "example:myField": "Example of a vendor/user extension"
-                }
-              ]
-            }
-          }
-        }
-      }
-      externalDocs:
-        description: |
-          An EPCIS document that must be validated with the [JSON schema](../JSON/EPCIS-JSON-Schema.json) or
-          [SHACL file](../JSON/EPCIS-SHACL.ttl).
-        url: ../JSON/EPCIS-SHACL.ttl
-
+    
     EPCISXMLQueryDocument:
       description: A collection of EPCIS resources.
       type: object
