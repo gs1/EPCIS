@@ -138,6 +138,8 @@ paths:
                     oneOf:
                       - $ref: 'https://gs1.github.io/EPCIS/EPCIS-JSON-Schema.json#/definitions/epcisQueryDocument'
                       - $ref: 'https://gs1.github.io/EPCIS/EPCIS-JSON-Schema.json#/definitions/epcisDocument'
+            example:
+              $ref: 'https://gs1.github.io/EPCIS/JSON/Example_9.6.1-ObjectEvent.jsonld'
       responses:
         '202':
           description: |
@@ -474,6 +476,8 @@ paths:
           application/json:
             schema:
               $ref: 'https://gs1.github.io/EPCIS/EPCIS-JSON-Schema.json#/definitions/EPCIS-Document-Event'
+            example:
+              $ref: 'https://gs1.github.io/EPCIS/JSON-Schema/test/ObjectEvent.json'
 
       responses:
         '201':
@@ -2091,7 +2095,7 @@ paths:
                   application/json:
                     schema:
                       oneOf:
-                        - $ref: 'http://gs1.github.io/EPCIS/EPCIS-JSON-Schema.json#/definitions/epcisQueryDocument'
+                        - $ref: 'https://gs1.github.io/EPCIS/EPCIS-JSON-Schema.json#/definitions/epcisQueryDocument'
                         - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
               responses:
                 '200':
@@ -2412,12 +2416,14 @@ components:
       content:
         application/json:
           schema:
-            $ref: 'http://gs1.github.io/EPCIS/EPCIS-JSON-Schema.json#/definitions/epcisQueryDocument'
+            $ref: 'https://gs1.github.io/EPCIS/EPCIS-JSON-Schema.json#/definitions/epcisQueryDocument'
           example:
-            $ref: 'http://gs1.github.io/EPCIS/JSON/EPCISQueryDocument.jsonld'
+            $ref: 'https://gs1.github.io/EPCIS/JSON/EPCISQueryDocument.jsonld'
         application/xml:
           schema:
             $ref: '#/components/schemas/EPCISXMLQueryDocument'
+          example:
+            $ref: 'https://gs1.github.io/EPCIS/XML/Example-PersistentDisposition.xml'
     200EPCISQueryDocumentSinglePage:
       headers:
         GS1-EPCIS-Version:
@@ -2430,7 +2436,9 @@ components:
       content:
         application/json:
           schema:
-            $ref: 'http://gs1.github.io/EPCIS/EPCIS-JSON-Schema.json#/definitions/epcisQueryDocument'
+            $ref: 'https://gs1.github.io/EPCIS/EPCIS-JSON-Schema.json#/definitions/epcisQueryDocument'
+          example: 
+            $ref: 'https://gs1.github.io/EPCIS/JSON/EPCISQueryDocument.jsonld'
         application/xml:
           schema:
             $ref: '#/components/schemas/EPCISXMLQueryDocument'

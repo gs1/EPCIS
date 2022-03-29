@@ -161,6 +161,73 @@
                     "$ref": "#/components/schemas/epcisDocument"
                   }
                 ]
+              },
+              "example": {
+                "@context": [
+                  "https://gs1.github.io/EPCIS/epcis-context.jsonld",
+                  {
+                    "example": "http://ns.example.com/epcis/"
+                  }
+                ],
+                "id": "https://id.example.org/document1",
+                "type": "EPCISDocument",
+                "schemaVersion": "2.0",
+                "creationDate": "2005-07-11T11:30:47.0Z",
+                "epcisBody": {
+                  "eventList": [
+                    {
+                      "eventID": "ni:///sha-256;df7bb3c352fef055578554f09f5e2aa41782150ced7bd0b8af24dd3ccb30ba69?ver=CBV2.0",
+                      "type": "ObjectEvent",
+                      "action": "OBSERVE",
+                      "bizStep": "shipping",
+                      "disposition": "in_transit",
+                      "epcList": [
+                        "urn:epc:id:sgtin:0614141.107346.2017",
+                        "urn:epc:id:sgtin:0614141.107346.2018"
+                      ],
+                      "eventTime": "2005-04-03T20:33:31.116000-06:00",
+                      "eventTimeZoneOffset": "-06:00",
+                      "readPoint": {
+                        "id": "urn:epc:id:sgln:0614141.07346.1234"
+                      },
+                      "bizTransactionList": [
+                        {
+                          "type": "po",
+                          "bizTransaction": "http://transaction.acme.com/po/12345678"
+                        }
+                      ]
+                    },
+                    {
+                      "eventID": "ni:///sha-256;00e1e6eba3a7cc6125be4793a631f0af50f8322e0ab5f2c0bab994a11cec1d79?ver=CBV2.0",
+                      "type": "ObjectEvent",
+                      "action": "OBSERVE",
+                      "bizStep": "receiving",
+                      "disposition": "in_progress",
+                      "epcList": [
+                        "urn:epc:id:sgtin:0614141.107346.2018"
+                      ],
+                      "eventTime": "2005-04-04T20:33:31.116-06:00",
+                      "eventTimeZoneOffset": "-06:00",
+                      "readPoint": {
+                        "id": "urn:epc:id:sgln:0012345.11111.400"
+                      },
+                      "bizLocation": {
+                        "id": "urn:epc:id:sgln:0012345.11111.0"
+                      },
+                      "bizTransactionList": [
+                        {
+                          "type": "po",
+                          "bizTransaction": "http://transaction.acme.com/po/12345678"
+                        },
+                        {
+                          "type": "desadv",
+                          "bizTransaction": "urn:epcglobal:cbv:bt:0614141073467:1152"
+                        }
+                      ],
+                      "example:myField": "Example of a vendor/user extension"
+                    }
+                  ]
+                }
               }
             }
           }
@@ -580,6 +647,29 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/EPCISEvent"
+              },
+              "example": {
+                "@context": "https://gs1.github.io/EPCIS/epcis-context.jsonld",
+                "eventID": "ni:///sha-256;df7bb3c352fef055578554f09f5e2aa41782150ced7bd0b8af24dd3ccb30ba69?ver=CBV2.0",
+                "type": "ObjectEvent",
+                "action": "OBSERVE",
+                "bizStep": "shipping",
+                "disposition": "in_transit",
+                "epcList": [
+                  "urn:epc:id:sgtin:0614141.107346.2017",
+                  "urn:epc:id:sgtin:0614141.107346.2018"
+                ],
+                "eventTime": "2005-04-03T20:33:31.116000-06:00",
+                "eventTimeZoneOffset": "-06:00",
+                "readPoint": {
+                  "id": "urn:epc:id:sgln:0614141.07346.1234"
+                },
+                "bizTransactionList": [
+                  {
+                    "type": "po",
+                    "bizTransaction": "http://transaction.acme.com/po/12345678"
+                  }
+                ]
               }
             }
           }
@@ -1095,6 +1185,7 @@
                   "$ref": "#/components/schemas/UriCollection"
                 },
                 "example": {
+                  "@context": "https://gs1.github.io/EPCIS/epcis-context.jsonld",
                   "type": "Collection",
                   "member": [
                     "urn:jaif:id:obj:37SUN321456789A111222333AB+123456789012",
@@ -1640,6 +1731,7 @@
                   "$ref": "#/components/schemas/UriCollection"
                 },
                 "example": {
+                  "@context": "https://gs1.github.io/EPCIS/epcis-context.jsonld",
                   "type": "Collection",
                   "member": [
                     "urn:epc:id:sgln:9524987.20000.0"
@@ -1820,6 +1912,7 @@
                   "$ref": "#/components/schemas/UriCollection"
                 },
                 "example": {
+                  "@context": "https://gs1.github.io/EPCIS/epcis-context.jsonld",
                   "type": "Collection",
                   "member": [
                     "urn:epc:id:sgln:9524678.90000.WarehouseD2",
@@ -3307,6 +3400,7 @@
         "content": {
           "application/json": {
             "example": {
+              "@context": "https://gs1.github.io/EPCIS/epcis-context.jsonld",
               "type": "Collection",
               "member": [
                 "events"
@@ -3419,7 +3513,8 @@
           "application/xml": {
             "schema": {
               "$ref": "#/components/schemas/EPCISXMLQueryDocument"
-            }
+            },
+            "example": "<epcis:EPCISDocument xmlns:epcis=\"urn:epcglobal:epcis:xsd:2\"\r\n\txmlns:cbvmda=\"urn:epcglobal:cbv:mda\" schemaVersion=\"2.0\" creationDate=\"2020-06-28T13:41:00.000Z\">\r\n\t<EPCISBody>\r\n\t\t<EventList>\r\n\t\t\t<!-- INFERENCE example with COMPLETENESS INFERRED -->\r\n\t\t\t<AggregationEvent>\r\n\t\t\t\t<eventTime>2020-06-07T17:10:16Z</eventTime>\r\n\t\t\t\t<eventTimeZoneOffset>+02:00</eventTimeZoneOffset>\r\n\t\t\t\t<parentID>urn:epc:id:sgtin:952001.1012345.22222223333</parentID>\r\n\t\t\t\t<childEPCs>\r\n\t\t\t\t\t<epc>urn:epc:id:sgtin:9520001.012346.10000001001</epc>\r\n\t\t\t\t\t<epc>urn:epc:id:sgtin:9520001.012346.10000001002</epc>\r\n\t\t\t\t\t<epc>urn:epc:id:sgtin:9520001.012346.10000001003</epc>\r\n\t\t\t\t\t<epc>urn:epc:id:sgtin:9520001.012346.10000001004</epc>\r\n\t\t\t\t\t<epc>urn:epc:id:sgtin:9520001.012346.10000001005</epc>\r\n\t\t\t\t\t<epc>urn:epc:id:sgtin:9520001.012346.10000001006</epc>\r\n\t\t\t\t\t<epc>urn:epc:id:sgtin:9520001.012346.10000001007</epc>\r\n\t\t\t\t\t<epc>urn:epc:id:sgtin:9520001.012346.10000001008</epc>\r\n\t\t\t\t\t<epc>urn:epc:id:sgtin:9520001.012346.10000001009</epc>\r\n\t\t\t\t\t<epc>urn:epc:id:sgtin:9520001.012346.10000001010</epc>\r\n\t\t\t\t</childEPCs>\r\n\t\t\t\t<action>OBSERVE</action>\r\n\t\t\t\t<bizStep>urn:epcglobal:cbv:bizstep:receiving</bizStep>\r\n\t\t\t\t<disposition>urn:epcglobal:cbv:disp:in_progress</disposition>\r\n\t\t\t\t<readPoint>\r\n\t\t\t\t\t<id>urn:epc:id:sgln:9529999.99999.0</id>\r\n\t\t\t\t</readPoint>\r\n\t\t\t\t<bizLocation>\r\n\t\t\t\t\t<id>urn:epc:id:sgln:9529999.99999.0</id>\r\n\t\t\t\t</bizLocation>\r\n\t\t\t\t<bizTransactionList>\r\n\t\t\t\t\t<bizTransaction type=\"urn:epcglobal:cbv:btt:inv\">urn:epcglobal:cbv:bt:9520011111116:A123</bizTransaction>\r\n\t\t\t\t\t<bizTransaction type=\"urn:epcglobal:cbv:btt:po\">urn:epcglobal:cbv:bt:9529999999991:XYZ567</bizTransaction>\r\n\t\t\t\t\t<!-- suggestion: allow for reference to packing event(s)\r\n\t\t\t\t\t<bizTransaction type=\"urn:epcglobal:cbv:btt:packevent\">urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6</bizTransaction>\r\n\t\t\t\t\t-->\r\n\t\t\t\t\t<bizTransaction type=\"urn:epcglobal:cbv:btt:desadv\">urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6</bizTransaction>\r\n\t\t\t\t</bizTransactionList>\r\n\t\t\t\t<sourceList>\r\n\t\t\t\t\t<source type=\"urn:epcglobal:cbv:sdt:owning_party\">urn:epc:id:pgln:9520001.11111</source>\r\n\t\t\t\t</sourceList>\r\n\t\t\t\t<destinationList>\r\n\t\t\t\t\t<destination type=\"urn:epcglobal:cbv:sdt:owning_party\">urn:epc:id:pgln:9520999.99999</destination>\r\n\t\t\t\t</destinationList>\r\n\t\t\t\t<!-- COMPLETENESS INFERRED -->\r\n\t\t\t\t<persistentDisposition>\r\n\t\t\t\t\t<set>urn:epcglobal:cbv:disp:completeness_inferred</set>\r\n\t\t\t\t</persistentDisposition>\r\n\t\t\t</AggregationEvent>\r\n\t\t\t<!-- UNPACKING event with VERIFICATION of COMPLETENESS -->\r\n\t\t\t<AggregationEvent>\r\n\t\t\t\t<eventTime>2020-06-08T18:11:16Z</eventTime>\r\n\t\t\t\t<eventTimeZoneOffset>+02:00</eventTimeZoneOffset>\r\n\t\t\t\t<parentID>urn:epc:id:sgtin:952001.1012345.22222223333</parentID>\r\n\t\t\t\t<childEPCs>\r\n\t\t\t\t\t<epc>urn:epc:id:sgtin:9520001.012346.10000001001</epc>\r\n\t\t\t\t\t<epc>urn:epc:id:sgtin:9520001.012346.10000001002</epc>\r\n\t\t\t\t\t<epc>urn:epc:id:sgtin:9520001.012346.10000001003</epc>\r\n\t\t\t\t\t<epc>urn:epc:id:sgtin:9520001.012346.10000001004</epc>\r\n\t\t\t\t\t<epc>urn:epc:id:sgtin:9520001.012346.10000001005</epc>\r\n\t\t\t\t\t<epc>urn:epc:id:sgtin:9520001.012346.10000001006</epc>\r\n\t\t\t\t\t<epc>urn:epc:id:sgtin:9520001.012346.10000001007</epc>\r\n\t\t\t\t\t<epc>urn:epc:id:sgtin:9520001.012346.10000001008</epc>\r\n\t\t\t\t\t<epc>urn:epc:id:sgtin:9520001.012346.10000001009</epc>\r\n\t\t\t\t\t<epc>urn:epc:id:sgtin:9520001.012346.10000001010</epc>\r\n\t\t\t\t</childEPCs>\r\n\t\t\t\t<action>DELETE</action>\r\n\t\t\t\t<bizStep>urn:epcglobal:cbv:bizstep:unpacking</bizStep>\r\n\t\t\t\t<disposition>urn:epcglobal:cbv:disp:in_progress</disposition>\r\n\t\t\t\t<readPoint>\r\n\t\t\t\t\t<id>urn:epc:id:sgln:9529999.99999.0</id>\r\n\t\t\t\t</readPoint>\r\n\t\t\t\t<bizLocation>\r\n\t\t\t\t\t<id>urn:epc:id:sgln:9529999.99999.0</id>\r\n\t\t\t\t</bizLocation>\r\n\t\t\t\t<bizTransactionList>\r\n\t\t\t\t\t<bizTransaction type=\"urn:epcglobal:cbv:btt:inv\">urn:epcglobal:cbv:bt:9520011111116:A123</bizTransaction>\r\n\t\t\t\t\t<bizTransaction type=\"urn:epcglobal:cbv:btt:po\">urn:epcglobal:cbv:bt:9529999999991:XYZ567</bizTransaction>\r\n\t\t\t\t\t<!-- suggestion: allow for reference to packing event(s)\r\n\t\t\t\t\t<bizTransaction type=\"urn:epcglobal:cbv:btt:packevent\">urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6</bizTransaction>\r\n\t\t\t\t\t-->\r\n\t\t\t\t\t<bizTransaction type=\"urn:epcglobal:cbv:btt:desadv\">urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6</bizTransaction>\r\n\t\t\t\t</bizTransactionList>\r\n\t\t\t\t<sourceList>\r\n\t\t\t\t\t<source type=\"urn:epcglobal:cbv:sdt:owning_party\">urn:epc:id:pgln:9520001.11111</source>\r\n\t\t\t\t</sourceList>\r\n\t\t\t\t<destinationList>\r\n\t\t\t\t\t<destination type=\"urn:epcglobal:cbv:sdt:owning_party\">urn:epc:id:pgln:9520999.99999</destination>\r\n\t\t\t\t</destinationList>\r\n\t\t\t\t<!-- COMPLETENESS VERIFIED -->\r\n\t\t\t\t<persistentDisposition>\r\n\t\t\t\t\t<unset>urn:epcglobal:cbv:disp:completeness_inferred</unset>\r\n\t\t\t\t\t<set>urn:epcglobal:cbv:disp:completeness_verified</set>\r\n\t\t\t\t</persistentDisposition>\r\n\t\t\t</AggregationEvent>\r\n\t\t</EventList>\r\n\t</EPCISBody>\r\n</epcis:EPCISDocument>\r\n"
           }
         }
       },
@@ -3440,6 +3535,79 @@
           "application/json": {
             "schema": {
               "$ref": "#/components/schemas/epcisQueryDocument"
+            },
+            "example": {
+              "@context": [
+                "https://gs1.github.io/EPCIS/epcis-context.jsonld",
+                {
+                  "example": "http://ns.example.com/epcis/"
+                }
+              ],
+              "id": "https://id.example.org/document1",
+              "type": "EPCISQueryDocument",
+              "schemaVersion": "2.0",
+              "creationDate": "2005-07-11T11:30:47.0Z",
+              "epcisBody": {
+                "queryResults": {
+                  "subscriptionID": "32d2aec1-a6d2-46d9-900a-24124288cce1",
+                  "queryName": "SimpleEventQuery",
+                  "resultsBody": {
+                    "eventList": [
+                      {
+                        "eventID": "ni:///sha-256;df7bb3c352fef055578554f09f5e2aa41782150ced7bd0b8af24dd3ccb30ba69?ver=CBV2.0",
+                        "type": "ObjectEvent",
+                        "action": "OBSERVE",
+                        "bizStep": "shipping",
+                        "disposition": "in_transit",
+                        "epcList": [
+                          "urn:epc:id:sgtin:0614141.107346.2017",
+                          "urn:epc:id:sgtin:0614141.107346.2018"
+                        ],
+                        "eventTime": "2005-04-03T20:33:31.116000-06:00",
+                        "eventTimeZoneOffset": "-06:00",
+                        "readPoint": {
+                          "id": "urn:epc:id:sgln:0614141.07346.1234"
+                        },
+                        "bizTransactionList": [
+                          {
+                            "type": "po",
+                            "bizTransaction": "http://transaction.acme.com/po/12345678"
+                          }
+                        ]
+                      },
+                      {
+                        "eventID": "ni:///sha-256;00e1e6eba3a7cc6125be4793a631f0af50f8322e0ab5f2c0bab994a11cec1d79?ver=CBV2.0",
+                        "type": "ObjectEvent",
+                        "action": "OBSERVE",
+                        "bizStep": "receiving",
+                        "disposition": "in_progress",
+                        "epcList": [
+                          "urn:epc:id:sgtin:0614141.107346.2018"
+                        ],
+                        "eventTime": "2005-04-04T20:33:31.116-06:00",
+                        "eventTimeZoneOffset": "-06:00",
+                        "readPoint": {
+                          "id": "urn:epc:id:sgln:0012345.11111.400"
+                        },
+                        "bizLocation": {
+                          "id": "urn:epc:id:sgln:0012345.11111.0"
+                        },
+                        "bizTransactionList": [
+                          {
+                            "type": "po",
+                            "bizTransaction": "http://transaction.acme.com/po/12345678"
+                          },
+                          {
+                            "type": "desadv",
+                            "bizTransaction": "urn:epcglobal:cbv:bt:0614141073467:1152"
+                          }
+                        ],
+                        "example:myField": "Example of a vendor/user extension"
+                      }
+                    ]
+                  }
+                }
+              }
             }
           },
           "application/xml": {
@@ -3460,6 +3628,7 @@
               "$ref": "#/components/schemas/TopLevelResourceCollection"
             },
             "example": {
+              "@context": "https://gs1.github.io/EPCIS/epcis-context.jsonld",
               "type": "Collection",
               "member": [
                 "queries",
@@ -3479,6 +3648,7 @@
               "$ref": "#/components/schemas/TopLevelResourceCollection"
             },
             "example": {
+              "@context": "https://gs1.github.io/EPCIS/epcis-context.jsonld",
               "type": "Collection",
               "member": [
                 "queries",
@@ -4909,6 +5079,12 @@
         "type": "object",
         "description": "Event type item list",
         "example": {
+          "@context": [
+            "https://gs1.github.io/EPCIS/epcis-context.jsonld",
+            {
+              "ex": "https://example.org/myCustomEventTypes/"
+            }
+          ],
           "type": "Collection",
           "member": [
             "AggregationEvent",
@@ -4925,6 +5101,9 @@
           "member"
         ],
         "properties": {
+          "@context": {
+            "$ref": "#/components/schemas/LDContext"
+          },
           "type": {
             "type": "string",
             "enum": [
@@ -5000,6 +5179,9 @@
           "member"
         ],
         "properties": {
+          "@context": {
+            "$ref": "#/components/schemas/LDContext"
+          },
           "type": {
             "type": "string",
             "enum": [
@@ -5018,6 +5200,12 @@
       },
       "BizStepCollection": {
         "example": {
+          "@context": [
+            "https://gs1.github.io/EPCIS/epcis-context.jsonld",
+            {
+              "ex": "https://example.org/myCustomBizSteps/"
+            }
+          ],
           "type": "Collection",
           "member": [
             "accepting",
@@ -5071,6 +5259,9 @@
           "member"
         ],
         "properties": {
+          "@context": {
+            "$ref": "#/components/schemas/LDContext"
+          },
           "type": {
             "type": "string",
             "enum": [
@@ -5088,6 +5279,12 @@
       },
       "DispositionCollection": {
         "example": {
+          "@context": [
+            "https://gs1.github.io/EPCIS/epcis-context.jsonld",
+            {
+              "ex": "https://example.org/myCustomDispositions/"
+            }
+          ],
           "type": "Collection",
           "member": [
             "active",
@@ -5133,6 +5330,9 @@
           "member"
         ],
         "properties": {
+          "@context": {
+            "$ref": "#/components/schemas/LDContext"
+          },
           "type": {
             "type": "string",
             "enum": [
@@ -5157,6 +5357,9 @@
           "member"
         ],
         "properties": {
+          "@context": {
+            "$ref": "#/components/schemas/LDContext"
+          },
           "type": {
             "type": "string",
             "enum": [
@@ -5182,6 +5385,9 @@
           "member"
         ],
         "properties": {
+          "@context": {
+            "$ref": "#/components/schemas/LDContext"
+          },
           "type": {
             "type": "string",
             "enum": [
@@ -5665,6 +5871,9 @@
               "EPCISDocument"
             ]
           },
+          "@context": {
+            "$ref": "#/components/schemas/LDContext"
+          },
           "schemaVersion": {
             "$ref": "#/components/schemas/version"
           },
@@ -5706,6 +5915,9 @@
       "epcisQueryDocument": {
         "type": "object",
         "properties": {
+          "@context": {
+            "$ref": "#/components/schemas/LDContext"
+          },
           "id": {
             "$ref": "#/components/schemas/id"
           },
@@ -6088,6 +6300,9 @@
       "Event": {
         "type": "object",
         "properties": {
+          "@context": {
+            "$ref": "#/components/schemas/LDContext"
+          },
           "eventTime": {
             "$ref": "#/components/schemas/time"
           },

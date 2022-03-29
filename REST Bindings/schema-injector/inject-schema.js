@@ -14,8 +14,10 @@ const definitionTranslations = {
   '@context': 'LDContext'
 };
 
-/* Elements that will not be included for OpenAPI Compatibility */
-const blackList = ['EPCIS-Document-Event', 'propertyNames', '@context'];
+/* Definitions that will not be included for OpenAPI Compatibility */
+const definitionsBlackList = ['EPCIS-Document-Event', '@context'];
+
+const schemaBlackList = ['propertyNames'];
 
 const EPCIS_JSON_SCHEMA = path.basename(process.argv[3]);
 
@@ -36,7 +38,7 @@ async function inject(fileName, schemaFileName) {
 
   const definitionList = Object.keys(definitions);
   for (const definition of definitionList) {
-    if (!blackList.includes(definition)) {
+    if (!definitionsBlackList.includes(definition)) {
       schemas[definition] = definitions[definition];
     }
   }
@@ -79,7 +81,7 @@ async function visit(obj, parentKeyName, parent) {
         }
       }
     } 
-    else if (blackList.includes(key)) {
+    else if (schemaBlackList.includes(key)) {
       delete obj[key];
     }
     else {
@@ -99,8 +101,20 @@ function getDefinitionName(reference) {
 }
 
 async function loadExample(uri) {
-  const response = await fetch(uri)
-  const example = await response.json();
+  let example;
+  const response = await fetch(uri);
+
+  if (response.ok) {
+    if (response.headers.get("content-type").includes("json")) {
+      example = await response.json();
+    }
+    else if (response.headers.get("content-type").includes("xml")) {
+      example = await response.text();
+    }
+  } 
+  else {
+    console.error("Cannot load example: ", uri);
+  }
 
   return example;
 }
