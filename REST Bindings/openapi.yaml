@@ -156,6 +156,7 @@ paths:
               schema:
                 example: "/capture/id9261379075"
                 type: string
+                minLength: 1
 
         '400':
           description: |
@@ -492,6 +493,7 @@ paths:
               schema:
                 example: "https://example.com/events/urn:uuid:831c0292-4de1-430a-8255-2aca821abaab"
                 type: string
+                minLength: 1
           content:
             application/json:
               schema:
@@ -658,9 +660,9 @@ paths:
     get:
       tags:
         - 'Top-level'
-      summary: Returns all sub-resources of an EPCIS event type (for HATEOAS discovery).
+      summary: Returns all sub-resources of an EPCIS event type.
       description: |
-        This endpoint returns all sub-resources of an EPCIS event type, which currently is `events`. A server may
+        This endpoint returns all sub-resources of an EPCIS event type (for HATEOAS discovery), which includes at least `events`. A server may
         add additional endpoints, for example `schema` to access the EPCIS event type schema.
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-Min'
@@ -863,9 +865,9 @@ paths:
     get:
       tags:
         - 'Top-level'
-      summary: Returns all sub-resources of an electronic product code (for HATEOAS discovery).
+      summary: Returns all sub-resources of an electronic product code.
       description: |
-        This endpoint returns all sub-resources of an electronic product code, which currently is `events`.
+        This endpoint returns all sub-resources of an electronic product code (for HATEOAS discovery), which includes at least `events`.
       responses:
         '200':
           $ref: '#/components/responses/200TopLevelOrEventTypeSubResource'
@@ -1052,9 +1054,9 @@ paths:
     get:
       tags:
         - 'Top-level'
-      summary: Returns all sub-resources of a business step (for HATEOAS discovery).
+      summary: Returns all sub-resources of a business step.
       description: |
-        This endpoint returns all sub-resources of a business step, which currently is `events`.
+        This endpoint returns all sub-resources of a business step (for HATEOAS discovery), which includes at least `events`.
       responses:
         '200':
           $ref: '#/components/responses/200TopLevelOrEventTypeSubResource'
@@ -1241,12 +1243,12 @@ paths:
     get:
       tags:
         - 'Top-level'
-      summary: Returns all sub-resources of a business location (for HATEOAS discovery).
+      summary: Returns all sub-resources of a business location.
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
       description: |
-        This endpoint returns all sub-resources of a business location, which currently is `events`.
+        This endpoint returns all sub-resources of a business location (for HATEOAS discovery), which includes at least `events`.
       responses:
         '200':
           $ref: '#/components/responses/200TopLevelOrEventTypeSubResource'
@@ -1365,12 +1367,12 @@ paths:
     get:
       tags:
         - 'Top-level'
-      summary: Returns all sub-resources of a read point (for HATEOAS discovery).
+      summary: Returns all sub-resources of a read point.
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
       description: |
-        This endpoint returns all sub-resources of a read point, which currently is `events`.
+        This endpoint returns all sub-resources of a read point (for HATEOAS discovery), which includes at least `events`.
       responses:
         '200':
           $ref: '#/components/responses/200TopLevelOrEventTypeSubResource'
@@ -1553,9 +1555,9 @@ paths:
     get:
       tags:
         - 'Top-level'
-      summary: Returns all sub-resources of a disposition (for HATEOAS discovery).
+      summary: Returns all sub-resources of a disposition.
       description: |
-        This endpoint returns all sub-resources of a disposition, which currently is `events`.
+        This endpoint returns all sub-resources of a disposition (for HATEOAS discovery), which includes at least `events`.
       responses:
         '200':
           $ref: '#/components/responses/200TopLevelOrEventTypeSubResource'
@@ -1762,6 +1764,7 @@ paths:
               schema:
                 example: "/queries/myQuery"
                 type: string
+                minLength: 1
           description: Creates the named query.
         '401':
           $ref: '#/components/responses/401UnauthorizedRequest'
@@ -3193,6 +3196,7 @@ components:
     Location:
       description: Location header of a resource as a relative or absolute URL. 
       type: string
+      minLength: 1
       example: /events/urn:uuid:831c0292-4de1-430a-8255-2aca821abaab
     RFC7807ProblemResponseBody:
       description: A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807).
