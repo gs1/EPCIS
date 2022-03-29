@@ -152,11 +152,10 @@ paths:
               $ref: '#/components/headers/GS1-Extensions'
             Location:
               description: |
-                Absolute or relative URL of the capture job
+                Absolute or relative URL of the capture job.
               schema:
-                example: "/id9261379075"
+                example: "/capture/id9261379075"
                 type: string
-                format: uri
 
         '400':
           description: |
@@ -491,9 +490,8 @@ paths:
               description: |
                 Absolute or relative URL of the newly captured EPCIS event. 
               schema:
-                example: "https://example.com/events/cc979570-74a3-4dc7-8f3e-2e747d6d31ec"
+                example: "https://example.com/events/urn:uuid:831c0292-4de1-430a-8255-2aca821abaab"
                 type: string
-                format: uri
           content:
             application/json:
               schema:
@@ -1762,9 +1760,8 @@ paths:
               description: |
                 Absolute or relative URL of the created query. The client can use the `Location` URL to obtain the named query definition.
               schema:
-                example: "https://www.example.com/queries/myQuery"
+                example: "/queries/myQuery"
                 type: string
-                format: uri
           description: Creates the named query.
         '401':
           $ref: '#/components/responses/401UnauthorizedRequest'
@@ -3194,10 +3191,9 @@ components:
           format: uri
         - type: object
     Location:
-      description: Location header of a resource.
+      description: Location header of a resource as a relative or absolute URL. 
       type: string
-      format: uri
-      example: /eventTypes/ObjectEvent/events/eventId123
+      example: /events/urn:uuid:831c0292-4de1-430a-8255-2aca821abaab
     RFC7807ProblemResponseBody:
       description: A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807).
       type: object
