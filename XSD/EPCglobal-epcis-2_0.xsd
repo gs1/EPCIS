@@ -198,7 +198,7 @@ GS1 retains the right to make changes to this document at any time, without noti
   <!-- Modified in 2.0 -->
   <xsd:complexType name="EPCISEventListExtensionType">
     <xsd:sequence>
-      <xsd:any namespace="##local" processContents="lax" maxOccurs="unbounded"/>
+      <xsd:any namespace="##other" processContents="lax" maxOccurs="unbounded"/>
     </xsd:sequence>
     <xsd:anyAttribute processContents="lax"/>
   </xsd:complexType>
