@@ -658,7 +658,7 @@ paths:
     get:
       tags:
         - 'Top-level'
-      summary: Returns all sub-resources of an EPCIS event type.
+      summary: Returns all sub-resources of an EPCIS event type (for HATEOAS discovery).
       description: |
         This endpoint returns all sub-resources of an EPCIS event type, which currently is `events`. A server may
         add additional endpoints, for example `schema` to access the EPCIS event type schema.
@@ -863,7 +863,7 @@ paths:
     get:
       tags:
         - 'Top-level'
-      summary: Returns all sub-resources of an electronic product code.
+      summary: Returns all sub-resources of an electronic product code (for HATEOAS discovery).
       description: |
         This endpoint returns all sub-resources of an electronic product code, which currently is `events`.
       responses:
@@ -1052,7 +1052,7 @@ paths:
     get:
       tags:
         - 'Top-level'
-      summary: Returns all sub-resources of a business step.
+      summary: Returns all sub-resources of a business step (for HATEOAS discovery).
       description: |
         This endpoint returns all sub-resources of a business step, which currently is `events`.
       responses:
@@ -1241,7 +1241,7 @@ paths:
     get:
       tags:
         - 'Top-level'
-      summary: Returns all sub-resources of a business location.
+      summary: Returns all sub-resources of a business location (for HATEOAS discovery).
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
@@ -1365,7 +1365,7 @@ paths:
     get:
       tags:
         - 'Top-level'
-      summary: Returns all sub-resources of a read point.
+      summary: Returns all sub-resources of a read point (for HATEOAS discovery).
       parameters:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
@@ -1553,7 +1553,7 @@ paths:
     get:
       tags:
         - 'Top-level'
-      summary: Returns all sub-resources of a disposition.
+      summary: Returns all sub-resources of a disposition (for HATEOAS discovery).
       description: |
         This endpoint returns all sub-resources of a disposition, which currently is `events`.
       responses:
@@ -2382,7 +2382,7 @@ components:
           $ref: '#/components/headers/GS1-CBV-Version'
         GS1-Extensions:
           $ref: '#/components/headers/GS1-Extensions'
-      description: Returns a sub-resource list that contains at least the `events` sub-resource.
+      description: Returns a sub-resource list that contains at least the `events` sub-resource (for HATEOAS discovery).
       content:
         application/json:
           example:
@@ -4043,7 +4043,7 @@ components:
             format: uri
           uniqueItems: true
     ResourceCollection:
-      description: A collection of sub-resources that includes at least the `events` one. 
+      description: A collection of sub-resources that includes at least the `events` one (for HATEOAS discovery).
       type: object
       required:
         - '@context'
