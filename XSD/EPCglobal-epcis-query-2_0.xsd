@@ -152,7 +152,7 @@ GS1 retains the right to make changes to this document at any time, without noti
     <xsd:sequence>
       <xsd:element name="schedule" type="epcisq:QuerySchedule" minOccurs="0"/>
       <xsd:element name="trigger" type="xsd:anyURI" minOccurs="0"/>
-      <xsd:element name="initialRecordTime" type="xsd:dateTimeStamp" minOccurs="0"/>
+      <xsd:element name="initialRecordTime" type="epcis:DateTimeStamp" minOccurs="0"/>
       <xsd:element name="reportIfEmpty" type="xsd:boolean"/>
       <xsd:element name="extension" type="epcisq:SubscriptionControlsExtensionType" minOccurs="0"/>
       <xsd:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>

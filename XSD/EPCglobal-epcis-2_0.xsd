@@ -198,7 +198,7 @@ GS1 retains the right to make changes to this document at any time, without noti
   <!-- Modified in 2.0 -->
   <xsd:complexType name="EPCISEventListExtensionType">
     <xsd:sequence>
-      <xsd:any namespace="##local" processContents="lax" maxOccurs="unbounded"/>
+      <xsd:any namespace="##other" processContents="lax" maxOccurs="unbounded"/>
     </xsd:sequence>
     <xsd:anyAttribute processContents="lax"/>
   </xsd:complexType>
@@ -393,7 +393,7 @@ GS1 retains the right to make changes to this document at any time, without noti
   <xsd:complexType name="ErrorDeclarationType">
     <xsd:sequence>
       <xsd:choice minOccurs="0" maxOccurs="unbounded">
-        <xsd:element name="declarationTime" type="xsd:dateTimeStamp"/>
+  	    <xsd:element name="declarationTime" type="epcis:DateTimeStamp"/>
         <xsd:element name="reason" type="epcis:ErrorReasonIDType" minOccurs="0"/>
         <xsd:element name="correctiveEventIDs" type="epcis:CorrectiveEventIDsType" minOccurs="0"/>
         <xsd:element name="extension" type="epcis:ErrorDeclarationExtensionType" minOccurs="0"/>
@@ -416,16 +416,13 @@ GS1 retains the right to make changes to this document at any time, without noti
   <!-- Some element types accommodate extensibility in the manner of
         "Versioning XML Vocabularies" by David Orchard (see
         http://www.xml.com/pub/a/2003/12/03/versioning.html).
-
         In this approach, an optional <extension> element is defined
         for each extensible element type, where an <extension> element
         may contain future elements defined in the target namespace.
-
         In addition to the optional <extension> element, extensible element
         types are declared with a final xsd:any wildcard to accommodate
         future elements defined by third parties (as denoted by the ##other
         namespace).
-
         Finally, the xsd:anyAttribute facility is used to allow arbitrary
         attributes to be added to extensible element types. -->
   <xsd:complexType name="EPCISEventType" abstract="true">
@@ -435,8 +432,8 @@ GS1 retains the right to make changes to this document at any time, without noti
       </xsd:documentation>
     </xsd:annotation>
     <xsd:sequence>
-      <xsd:element name="eventTime" type="xsd:dateTimeStamp"/>
-      <xsd:element name="recordTime" type="xsd:dateTimeStamp" minOccurs="0"/>
+  	  <xsd:element name="eventTime" type="epcis:DateTimeStamp"/>
+  	  <xsd:element name="recordTime" minOccurs="0" type="epcis:DateTimeStamp"/>
       <xsd:element name="eventTimeZoneOffset" type="xsd:string"/>
       <xsd:element name="eventID" type="epcis:EventIDType" minOccurs="0"/>
       <xsd:element name="errorDeclaration" type="epcis:ErrorDeclarationType" minOccurs="0"/>
@@ -457,10 +454,16 @@ GS1 retains the right to make changes to this document at any time, without noti
     <xsd:anyAttribute processContents="lax"/>
   </xsd:complexType>
 -->
+	<xsd:simpleType name="DateTimeStamp">
+		<xsd:restriction base="xsd:dateTime">
+			<xsd:pattern value="([0-9]{4})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|(([+]|[-])((0[0-9]|1[0-3]):([0-5][0-9])|14:00)))"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+
 
   <xsd:complexType name="EPCISEventExtensionType">
     <xsd:sequence>
-      <xsd:any namespace="##local" processContents="lax" maxOccurs="unbounded"/>
+      <xsd:any namespace="##other" processContents="lax" maxOccurs="unbounded"/>
     </xsd:sequence>
     <xsd:anyAttribute processContents="lax"/>
   </xsd:complexType>
@@ -468,12 +471,12 @@ GS1 retains the right to make changes to this document at any time, without noti
   <xsd:complexType name="SensorMetadataType">
     <xsd:simpleContent>
       <xsd:extension base="xsd:string">
-        <xsd:attribute type="xsd:dateTimeStamp" name="time" use="optional"/>
+        <xsd:attribute type="epcis:DateTimeStamp" name="time" use="optional"/>
         <xsd:attribute type="xsd:anyURI" name="deviceID" use="optional"/>
         <xsd:attribute type="xsd:anyURI" name="deviceMetadata" use="optional"/>
         <xsd:attribute type="xsd:anyURI" name="rawData" use="optional"/>
-        <xsd:attribute type="xsd:dateTimeStamp" name="startTime" use="optional"/>
-        <xsd:attribute type="xsd:dateTimeStamp" name="endTime" use="optional"/>
+        <xsd:attribute type="epcis:DateTimeStamp" name="startTime" use="optional"/>
+        <xsd:attribute type="epcis:DateTimeStamp" name="endTime" use="optional"/>
         <xsd:attribute type="xsd:anyURI" name="bizRules" use="optional"/>
         <xsd:attribute type="xsd:anyURI" name="dataProcessingMethod" use="optional"/>
         <xsd:anyAttribute processContents="lax"/>
@@ -500,7 +503,7 @@ GS1 retains the right to make changes to this document at any time, without noti
         <xsd:attribute type="xsd:anyURI" name="deviceID" use="optional"/>
         <xsd:attribute type="xsd:anyURI" name="deviceMetadata" use="optional"/>
         <xsd:attribute type="xsd:anyURI" name="rawData" use="optional"/>
-        <xsd:attribute type="xsd:dateTimeStamp" name="time" use="optional"/>
+        <xsd:attribute type="epcis:DateTimeStamp" name="time" use="optional"/>
         <xsd:attribute type="xsd:double" name="meanValue" use="optional"/>
         <xsd:attribute type="xsd:double" name="percRank" use="optional"/>
         <xsd:attribute type="xsd:double" name="percValue" use="optional"/>
@@ -553,7 +556,7 @@ GS1 retains the right to make changes to this document at any time, without noti
     <xsd:complexContent>
       <xsd:extension base="epcis:EPCISEventType">
         <xsd:sequence>
-          <xsd:element name="epcList" type="epcis:EPCListType"/>
+          <xsd:element name="epcList" type="epcis:EPCListType" minOccurs="0"/>
           <xsd:element name="action" type="epcis:ActionType"/>
           <xsd:element name="bizStep" type="epcis:BusinessStepIDType" minOccurs="0"/>
           <xsd:element name="disposition" type="epcis:DispositionIDType" minOccurs="0"/>
@@ -591,7 +594,7 @@ GS1 retains the right to make changes to this document at any time, without noti
   <!-- ObjectEvent extension in since 2.0 -->
   <xsd:complexType name="ObjectEventExtensionType">
     <xsd:sequence>
-      <xsd:any namespace="##local" processContents="lax" maxOccurs="unbounded"/>
+      <xsd:any namespace="##other" processContents="lax" maxOccurs="unbounded"/>
     </xsd:sequence>
     <xsd:anyAttribute processContents="lax"/>
   </xsd:complexType>
@@ -608,7 +611,7 @@ GS1 retains the right to make changes to this document at any time, without noti
       <xsd:extension base="epcis:EPCISEventType">
         <xsd:sequence>
           <xsd:element name="parentID" type="epcis:ParentIDType" minOccurs="0"/>
-          <xsd:element name="childEPCs" type="epcis:EPCListType"/>
+          <xsd:element name="childEPCs" type="epcis:EPCListType" minOccurs="0"/>
           <xsd:element name="action" type="epcis:ActionType"/>
           <xsd:element name="bizStep" type="epcis:BusinessStepIDType" minOccurs="0"/>
           <xsd:element name="disposition" type="epcis:DispositionIDType" minOccurs="0"/>
@@ -646,7 +649,7 @@ GS1 retains the right to make changes to this document at any time, without noti
   <!-- Since 1.1 -->
   <xsd:complexType name="AggregationEventExtensionType">
     <xsd:sequence>
-      <xsd:any namespace="##local" processContents="lax" maxOccurs="unbounded"/>
+      <xsd:any namespace="##other" processContents="lax" maxOccurs="unbounded"/>
     </xsd:sequence>
     <xsd:anyAttribute processContents="lax"/>
   </xsd:complexType>
@@ -696,7 +699,7 @@ GS1 retains the right to make changes to this document at any time, without noti
         <xsd:sequence>
           <xsd:element name="bizTransactionList" type="epcis:BusinessTransactionListType"/>
           <xsd:element name="parentID" type="epcis:ParentIDType" minOccurs="0"/>
-          <xsd:element name="epcList" type="epcis:EPCListType"/>
+          <xsd:element name="epcList" type="epcis:EPCListType" minOccurs="0"/>
           <xsd:element name="action" type="epcis:ActionType"/>
           <xsd:element name="bizStep" type="epcis:BusinessStepIDType" minOccurs="0"/>
           <xsd:element name="disposition" type="epcis:DispositionIDType" minOccurs="0"/>
@@ -706,7 +709,7 @@ GS1 retains the right to make changes to this document at any time, without noti
           <xsd:element name="sourceList" type="epcis:SourceListType" minOccurs="0"/>
           <xsd:element name="destinationList" type="epcis:DestinationListType" minOccurs="0"/>
           <xsd:element name="sensorElementList" type="epcis:SensorElementListType" minOccurs="0"/>
-          <xsd:element name="persistentDisposition" type="epcis:PersistentDispositionType" minOccurs="0" />
+          <xsd:element name="persistentDisposition" type="epcis:PersistentDispositionType" minOccurs="0" />          
           <xsd:element name="extension" type="epcis:TransactionEventExtensionType" minOccurs="0"/>
           <xsd:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
         </xsd:sequence>
@@ -733,7 +736,7 @@ GS1 retains the right to make changes to this document at any time, without noti
   <!-- Since 1.1 -->
   <xsd:complexType name="TransactionEventExtensionType">
     <xsd:sequence>
-      <xsd:any namespace="##local" processContents="lax" maxOccurs="unbounded"/>
+      <xsd:any namespace="##other" processContents="lax" maxOccurs="unbounded"/>
     </xsd:sequence>
     <xsd:anyAttribute processContents="lax"/>
   </xsd:complexType>
@@ -788,7 +791,7 @@ GS1 retains the right to make changes to this document at any time, without noti
   <!-- Since 1.1 -->
   <xsd:complexType name="TransformationEventExtensionType">
     <xsd:sequence>
-      <xsd:any namespace="##local" processContents="lax" maxOccurs="unbounded"/>
+      <xsd:any namespace="##other" processContents="lax" maxOccurs="unbounded"/>
     </xsd:sequence>
     <xsd:anyAttribute processContents="lax"/>
   </xsd:complexType>
@@ -817,7 +820,7 @@ GS1 retains the right to make changes to this document at any time, without noti
           <xsd:element name="sourceList" type="epcis:SourceListType" minOccurs="0"/>
           <xsd:element name="destinationList" type="epcis:DestinationListType" minOccurs="0"/>
           <xsd:element name="sensorElementList" type="epcis:SensorElementListType" minOccurs="0"/>
-          <xsd:element name="persistentDisposition" type="epcis:PersistentDispositionType" minOccurs="0" />
+          <xsd:element name="persistentDisposition" type="epcis:PersistentDispositionType" minOccurs="0" />          
           <xsd:element name="extension" type="epcis:AssociationEventExtensionType" minOccurs="0"/>
           <xsd:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
         </xsd:sequence>
@@ -829,19 +832,18 @@ GS1 retains the right to make changes to this document at any time, without noti
   <!-- Since 2.0 -->
   <xsd:complexType name="AssociationEventExtensionType">
     <xsd:sequence>
-      <xsd:any namespace="##local" processContents="lax" maxOccurs="unbounded"/>
+      <xsd:any namespace="##other" processContents="lax" maxOccurs="unbounded"/>
     </xsd:sequence>
     <xsd:anyAttribute processContents="lax"/>
   </xsd:complexType>
 
   <!-- Capture 2.0 -->
-
    <xsd:element name="EPCISCaptureJob" type="epcis:EPCISCaptureJobType"/>
    <xsd:complexType name="EPCISCaptureJobType">
       <xsd:sequence>
          <xsd:element name="captureErrorBehaviour" type="epcis:EPCISCaptureErrorBehaviourType" minOccurs="1" maxOccurs="1" />
-         <xsd:element name="createdAt" type="xsd:dateTimeStamp" minOccurs="0" maxOccurs="1" />
-         <xsd:element name="finishedAt" type="xsd:dateTimeStamp" minOccurs="0" maxOccurs="1" />
+         <xsd:element name="createdAt" type="epcis:DateTimeStamp" minOccurs="0" maxOccurs="1" />
+         <xsd:element name="finishedAt" type="epcis:DateTimeStamp" minOccurs="0" maxOccurs="1" />
          <xsd:choice minOccurs="0" maxOccurs="1">
             <xsd:element name="errors" type="epcis:EPCISCaptureDocumentErrorListType" />
             <xsd:element name="errorFile" type="xsd:anyURI" />
@@ -878,5 +880,4 @@ GS1 retains the right to make changes to this document at any time, without noti
          <xsd:element name="error" type="epcis:RFC7807ProblemResponseBodyType" minOccurs="1" maxOccurs="unbounded" />
       </xsd:sequence>
    </xsd:complexType>
-
 </xsd:schema>

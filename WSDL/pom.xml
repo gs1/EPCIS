@@ -114,7 +114,7 @@
                                     <wsdl>${basedir}/src/resources/WSDL/EPCglobal-epcis-query-2_0.wsdl</wsdl>
                                     -->
                                     <!-- use alt approach -->
-                                    <wsdl>${basedir}/EPCglobal-epcis-query-2_0_alt.wsdl</wsdl>
+                                    <wsdl>${basedir}/EPCglobal-epcis-query-2_0.wsdl</wsdl>
                                     <extraargs>
                                         <extraarg>-verbose</extraarg>
                                         <extraarg>-p</extraarg>
