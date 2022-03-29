@@ -74,7 +74,7 @@
     "chemicalSubstance": {"@type": "@id"},
     "microorganism": {"@type": "@id"},
     "coordinateReferenceSystem": {"@type": "@id"},
-    "quantity": {"@type": "xsd:double"},
+    "quantity": {"@type": "xsd:decimal"},
     "value" : {"@type": "xsd:double"},
     "minValue" : {"@type": "xsd:double"},
     "maxValue" : {"@type": "xsd:double"},

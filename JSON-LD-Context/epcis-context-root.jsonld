@@ -126,7 +126,7 @@
 
         "quantity": {
             "@id": "epcis:quantity",
-            "@type": "xsd:double"
+            "@type": "xsd:decimal"
         },
         "epcClass": {
             "@id": "epcis:epcClass",

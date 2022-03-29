@@ -655,8 +655,8 @@ epcis:quantity  a           owl:DatatypeProperty , rdf:Property ;
       schema:domainIncludes epcis:QuantityElement ;
       rdfs:isDefinedBy  epcis: ;
       rdfs:label        "quantity" ;
-      rdfs:range        xsd:double ;
-      schema:rangeIncludes xsd:double ;
+      rdfs:range        xsd:decimal ;
+      schema:rangeIncludes xsd:decimal ;
       sw:term_status    "stable" .
 
 epcis:quantityList  a     owl:ObjectProperty , rdf:Property ;

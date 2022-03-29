@@ -775,9 +775,9 @@ epcis:QuantityShape
     sh:name "quantity" ;
     sh:minCount 1 ;
     sh:maxCount 1 ;
-    sh:datatype xsd:double ;
-    sh:not [ sh:hasValue "NaN"^^xsd:double ; ];
-    sh:message "Within a QuantityElement, quantity is mandatory and must be an xsd:double with only one value" ;
+    sh:datatype xsd:decimal ;
+    sh:not [ sh:hasValue "NaN"^^xsd:decimal ; ];
+    sh:message "Within a QuantityElement, quantity is mandatory and must be an xsd:decimal with only one value" ;
 .
 
 epcis:UOMShape 

@@ -1191,8 +1191,8 @@
       "domainIncludes": "epcis:QuantityElement",
       "isDefinedBy": "https://ns.gs1.org/epcis/",
       "label": "quantity",
-      "range": "xsd:double",
-      "rangeIncludes": "xsd:double",
+      "range": "xsd:decimal",
+      "rangeIncludes": "xsd:decimal",
       "term_status": "stable"
     },
     {
