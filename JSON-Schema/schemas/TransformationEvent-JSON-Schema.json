@@ -116,7 +116,10 @@
                                             "properties": {
                                                 "inputEPCList": {
                                                     "type": "array",
-                                                    "minItems": 1
+                                                    "minItems": 1,
+                                                    "items": {
+                                                        "$ref": "definitions-JSON-Schema.json#/definitions/id"
+                                                    }
                                                 }
                                             },
                                             "required": [
@@ -128,7 +131,10 @@
                                             "properties": {
                                                 "inputQuantityList": {
                                                     "type": "array",
-                                                    "minItems": 1
+                                                    "minItems": 1,
+                                                    "items": {
+                                                        "$ref": "event-definitions-JSON-Schema.json#/definitions/quantityElement"
+                                                    }
                                                 }
                                             },
                                             "required": [
@@ -144,7 +150,10 @@
                                             "properties": {
                                                 "outputEPCList": {
                                                     "type": "array",
-                                                    "minItems": 1
+                                                    "minItems": 1,
+                                                    "items": {
+                                                        "$ref": "definitions-JSON-Schema.json#/definitions/id"
+                                                    }
                                                 }
                                             },
                                             "required": [
@@ -156,7 +165,10 @@
                                             "properties": {
                                                 "outputQuantityList": {
                                                     "type": "array",
-                                                    "minItems": 1
+                                                    "minItems": 1,
+                                                    "items": {
+                                                        "$ref": "event-definitions-JSON-Schema.json#/definitions/quantityElement"
+                                                    }
                                                 }
                                             },
                                             "required": [
@@ -174,7 +186,10 @@
                                     "properties": {
                                         "inputEPCList": {
                                             "type": "array",
-                                            "minItems": 1
+                                            "minItems": 1,
+                                            "items": {
+                                                "$ref": "definitions-JSON-Schema.json#/definitions/id"
+                                            }
                                         }
                                     },
                                     "required": [
@@ -186,7 +201,10 @@
                                     "properties": {
                                         "inputQuantityList": {
                                             "type": "array",
-                                            "minItems": 1
+                                            "minItems": 1,
+                                            "items": {
+                                                "$ref": "event-definitions-JSON-Schema.json#/definitions/quantityElement"
+                                            }
                                         }
                                     },
                                     "required": [
@@ -198,7 +216,10 @@
                                     "properties": {
                                         "outputEPCList": {
                                             "type": "array",
-                                            "minItems": 1
+                                            "minItems": 1,
+                                            "items": {
+                                                "$ref": "definitions-JSON-Schema.json#/definitions/id"
+                                            }
                                         }
                                     },
                                     "required": [
@@ -210,7 +231,10 @@
                                     "properties": {
                                         "outputQuantityList": {
                                             "type": "array",
-                                            "minItems": 1
+                                            "minItems": 1,
+                                            "items": {
+                                                "$ref": "event-definitions-JSON-Schema.json#/definitions/quantityElement"
+                                            }
                                         }
                                     },
                                     "required": [
