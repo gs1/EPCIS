@@ -136,8 +136,8 @@ paths:
           application/json:
             schema:
                     oneOf:
-                      - $ref: '../EPCIS-JSON-Schema.json#/definitions/epcisQueryDocument'
-                      - $ref: '../EPCIS-JSON-Schema.json#/definitions/epcisDocument'
+                      - $ref: 'https://gs1.github.io/EPCIS/EPCIS-JSON-Schema.json#/definitions/epcisQueryDocument'
+                      - $ref: 'https://gs1.github.io/EPCIS/EPCIS-JSON-Schema.json#/definitions/epcisDocument'
       responses:
         '202':
           description: |
@@ -473,7 +473,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '../EPCIS-JSON-Schema.json#/definitions/EPCIS-Document-Event'
+              $ref: 'https://gs1.github.io/EPCIS/EPCIS-JSON-Schema.json#/definitions/EPCIS-Document-Event'
 
       responses:
         '201':
@@ -497,7 +497,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '../EPCIS-JSON-Schema.json#/definitions/EPCIS-Document-Event'
+                $ref: 'https://gs1.github.io/EPCIS/EPCIS-JSON-Schema.json#/definitions/EPCIS-Document-Event'
         '400':
           description: An error occurred while creating the EPCIS event. The event was rejected.
           content:
@@ -3278,12 +3278,12 @@ components:
         EPCIS Event. It must validate against the normative 
         <a href="../EPCIS-JSON-Schema.json">EPCIS JSON Schema</a> or <a href="../Ontology/EPCIS-SHACL.ttl">EPCIS SHACL</a>. 
       oneOf:
-        - $ref: '../EPCIS-JSON-Schema.json#/definitions/ObjectEvent'
-        - $ref: '../EPCIS-JSON-Schema.json#/definitions/AggregationEvent'
-        - $ref: '../EPCIS-JSON-Schema.json#/definitions/TransactionEvent'
-        - $ref: '../EPCIS-JSON-Schema.json#/definitions/TransformationEvent'
-        - $ref: '../EPCIS-JSON-Schema.json#/definitions/AssociationEvent'
-        - $ref: '../EPCIS-JSON-Schema.json#/definitions/Extended-Event'
+        - $ref: 'https://gs1.github.io/EPCIS/EPCIS-JSON-Schema.json#/definitions/ObjectEvent'
+        - $ref: 'https://gs1.github.io/EPCIS/EPCIS-JSON-Schema.json#/definitions/AggregationEvent'
+        - $ref: 'https://gs1.github.io/EPCIS/EPCIS-JSON-Schema.json#/definitions/TransactionEvent'
+        - $ref: 'https://gs1.github.io/EPCIS/EPCIS-JSON-Schema.json#/definitions/TransformationEvent'
+        - $ref: 'https://gs1.github.io/EPCIS/EPCIS-JSON-Schema.json#/definitions/AssociationEvent'
+        - $ref: 'https://gs1.github.io/EPCIS/EPCIS-JSON-Schema.json#/definitions/Extended-Event'
     CaptureJob:
       description: |
         When EPCIS events are added through the capture interface, the capture process can run asynchronously. If the payload
