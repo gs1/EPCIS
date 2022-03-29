@@ -155,10 +155,10 @@
               "schema": {
                 "oneOf": [
                   {
-                    "$ref": "#/components/schemas/epcisQueryDocument"
+                    "$ref": "https://jmcanterafonseca-iota.github.io/EPCIS/REST%20Bindings/JSON-Schema-Stub.json#/definitions/epcisQueryDocument"
                   },
                   {
-                    "$ref": "#/components/schemas/epcisDocument"
+                    "$ref": "https://jmcanterafonseca-iota.github.io/EPCIS/REST%20Bindings/JSON-Schema-Stub.json#/definitions/epcisDocument"
                   }
                 ]
               },
@@ -646,7 +646,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/EPCISEvent"
+                "$ref": "https://jmcanterafonseca-iota.github.io/EPCIS/REST%20Bindings/JSON-Schema-Stub.json#/definitions/EPCIS-Document-Event"
               },
               "example": {
                 "@context": "https://gs1.github.io/EPCIS/epcis-context.jsonld",
@@ -699,7 +699,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/EPCISEvent"
+                  "$ref": "https://jmcanterafonseca-iota.github.io/EPCIS/REST%20Bindings/JSON-Schema-Stub.json#/definitions/EPCIS-Document-Event"
                 }
               }
             }
@@ -2979,7 +2979,7 @@
                       "schema": {
                         "oneOf": [
                           {
-                            "$ref": "#/components/schemas/epcisQueryDocument"
+                            "$ref": "https://jmcanterafonseca-iota.github.io/EPCIS/REST%20Bindings/JSON-Schema-Stub.json#/definitions/epcisQueryDocument"
                           },
                           {
                             "$ref": "#/components/schemas/RFC7807ProblemResponseBody"
@@ -3434,7 +3434,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/epcisQueryDocument"
+              "$ref": "https://jmcanterafonseca-iota.github.io/EPCIS/REST%20Bindings/JSON-Schema-Stub.json#/definitions/epcisQueryDocument"
             },
             "example": {
               "@context": [
@@ -3534,7 +3534,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/epcisQueryDocument"
+              "$ref": "https://jmcanterafonseca-iota.github.io/EPCIS/REST%20Bindings/JSON-Schema-Stub.json#/definitions/epcisQueryDocument"
             },
             "example": {
               "@context": [
@@ -4919,22 +4919,22 @@
         "description": "EPCIS Event. It must validate against the normative \n<a href=\"../EPCIS-JSON-Schema.json\">EPCIS JSON Schema</a> or <a href=\"../Ontology/EPCIS-SHACL.ttl\">EPCIS SHACL</a>. \n",
         "oneOf": [
           {
-            "$ref": "#/components/schemas/ObjectEvent"
+            "$ref": "https://jmcanterafonseca-iota.github.io/EPCIS/REST%20Bindings/JSON-Schema-Stub.json#/definitions/ObjectEvent"
           },
           {
-            "$ref": "#/components/schemas/AggregationEvent"
+            "$ref": "https://jmcanterafonseca-iota.github.io/EPCIS/REST%20Bindings/JSON-Schema-Stub.json#/definitions/AggregationEvent"
           },
           {
-            "$ref": "#/components/schemas/TransactionEvent"
+            "$ref": "https://jmcanterafonseca-iota.github.io/EPCIS/REST%20Bindings/JSON-Schema-Stub.json#/definitions/TransactionEvent"
           },
           {
-            "$ref": "#/components/schemas/TransformationEvent"
+            "$ref": "https://jmcanterafonseca-iota.github.io/EPCIS/REST%20Bindings/JSON-Schema-Stub.json#/definitions/TransformationEvent"
           },
           {
-            "$ref": "#/components/schemas/AssociationEvent"
+            "$ref": "https://jmcanterafonseca-iota.github.io/EPCIS/REST%20Bindings/JSON-Schema-Stub.json#/definitions/AssociationEvent"
           },
           {
-            "$ref": "#/components/schemas/Extended-Event"
+            "$ref": "https://jmcanterafonseca-iota.github.io/EPCIS/REST%20Bindings/JSON-Schema-Stub.json#/definitions/Extended-Event"
           }
         ]
       },
