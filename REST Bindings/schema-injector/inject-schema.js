@@ -2,7 +2,6 @@
 
 import process from "process";
 import fs from "fs";
-import path from "path";
 import yaml from "js-yaml";
 import fetch from 'node-fetch';
 
@@ -17,9 +16,10 @@ const definitionTranslations = {
 /* Definitions that will not be included for OpenAPI Compatibility */
 const definitionsBlackList = ['EPCIS-Document-Event', '@context'];
 
+// The JSON Schema elements that are not to be included
 const schemaBlackList = ['propertyNames'];
 
-const EPCIS_JSON_SCHEMA = path.basename(process.argv[3]);
+const EPCIS_JSON_SCHEMA = 'JSON-Schema-Stub.json';
 
 function loadJson(fileName) {
   return JSON.parse(fs.readFileSync(fileName, "utf8"));
