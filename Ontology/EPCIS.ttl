@@ -699,14 +699,14 @@ epcis:reason  a           owl:ObjectProperty , rdf:Property ;
         schema:rangeIncludes cbv:ER ;
         sw:term_status    "stable" .
 
-epcis:receiver  a        owl:ObjectProperty , rdf:Property ;
+epcis:receiver  a        owl:DatatypeProperty , rdf:Property ;
         rdfs:comment      "(Optional) The intended receiver of an EPCISDocument."@en ;
         rdfs:domain       epcis:EPCISDocument ;
         schema:domainIncludes epcis:EPCISDocument ;
         rdfs:isDefinedBy  epcis: ;
         rdfs:label        "receiver" ;
-        rdfs:range        gs1:Organization ;
-        schema:rangeIncludes gs1:Organization ;
+        rdfs:range        xsd:string ;
+        schema:rangeIncludes xsd:string ;
         sw:term_status    "stable" .
 
 epcis:recordTime  a       owl:DatatypeProperty , rdf:Property ;
@@ -729,14 +729,14 @@ epcis:sDev  a             owl:DatatypeProperty , rdf:Property ;
         schema:rangeIncludes xsd:double ;
         sw:term_status    "stable" .
 
-epcis:sender  a        owl:ObjectProperty , rdf:Property ;
+epcis:sender  a        owl:DatatypeProperty , rdf:Property ;
         rdfs:comment      "(Optional) The sender of an EPCISDocument."@en ;
         rdfs:domain       epcis:EPCISDocument ;
         schema:domainIncludes epcis:EPCISDocument ;
         rdfs:isDefinedBy  epcis: ;
         rdfs:label        "sender" ;
-        rdfs:range        gs1:Organization ;
-        schema:rangeIncludes gs1:Organization ;
+        rdfs:range        xsd:string ;
+        schema:rangeIncludes xsd:string ;
         sw:term_status    "stable" .
 
 epcis:sensorElementList  a           owl:ObjectProperty , rdf:Property ;

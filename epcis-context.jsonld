@@ -599,11 +599,11 @@
     },
     "sender": {
       "@id": "epcis:sender",
-      "@type": "@id"
+      "@type": "xsd:string"
     },
     "receiver": {
       "@id": "epcis:receiver",
-      "@type": "@id"
+      "@type": "xsd:string"
     },
     "instanceIdentifier": "epcis:instanceIdentifier",
     "schemaVersion": "owl:versionInfo",
