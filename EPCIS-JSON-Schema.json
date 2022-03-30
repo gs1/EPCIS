@@ -629,7 +629,21 @@
       "required": [
         "declarationTime"
       ],
-      "additionalProperties": false
+      "propertyNames": {
+        "anyOf": [
+          {
+            "$ref": "#/definitions/vocab-uri"
+          },
+          {
+            "type": "string",
+            "enum": [
+              "declarationTime",
+              "reason",
+              "correctiveEventIDs"
+            ]
+          }
+        ]
+      }
     },
     "quantityElement": {
       "type": "object",
