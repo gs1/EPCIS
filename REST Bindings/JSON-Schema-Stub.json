@@ -1,6 +1,6 @@
 {
     "$id": "https://gs1.github.io/EPCIS/JSON-Schema-Stub.json",
-    "$comment": "This is just an stub of JSON Schema definitions for the REST API YAML validation",
+    "$comment": "A stub of JSON Schema definitions for the validation of the REST API YAML specification. The final definitions will be injected from the actual EPCIS JSON Schema",
     "definitions": {
         "epcisQueryDocument": {
             "type": "object"
