@@ -25,6 +25,9 @@
         },
         "EPCIS-Document-Event": {
             "type": "object"
+        },
+        "Extended-Event": {
+            "type": "object"
         }
     }
 }
