@@ -246,11 +246,11 @@
                 "$ref": "#/components/headers/GS1-Extensions"
               },
               "Location": {
-                "description": "Absolute or relative URL of the capture job\n",
+                "description": "Absolute or relative URL of the capture job.\n",
                 "schema": {
-                  "example": "/id9261379075",
+                  "example": "/capture/id9261379075",
                   "type": "string",
-                  "format": "uri"
+                  "minLength": 1
                 }
               }
             }
@@ -690,9 +690,9 @@
               "Location": {
                 "description": "Absolute or relative URL of the newly captured EPCIS event. \n",
                 "schema": {
-                  "example": "https://example.com/events/cc979570-74a3-4dc7-8f3e-2e747d6d31ec",
+                  "example": "https://example.com/events/urn:uuid:831c0292-4de1-430a-8255-2aca821abaab",
                   "type": "string",
-                  "format": "uri"
+                  "minLength": 1
                 }
               }
             },
@@ -961,7 +961,7 @@
           "Top-level"
         ],
         "summary": "Returns all sub-resources of an EPCIS event type.",
-        "description": "This endpoint returns all sub-resources of an EPCIS event type, which currently is `events`. A server may\nadd additional endpoints, for example `schema` to access the EPCIS event type schema.\n",
+        "description": "This endpoint returns all sub-resources of an EPCIS event type (for HATEOAS discovery), which includes at least `events`. A server may\nadd additional endpoints, for example `schema` to access the EPCIS event type schema.\n",
         "parameters": [
           {
             "$ref": "#/components/parameters/GS1-EPCIS-Min"
@@ -1253,7 +1253,7 @@
           "Top-level"
         ],
         "summary": "Returns all sub-resources of an electronic product code.",
-        "description": "This endpoint returns all sub-resources of an electronic product code, which currently is `events`.\n",
+        "description": "This endpoint returns all sub-resources of an electronic product code (for HATEOAS discovery), which includes at least `events`.\n",
         "responses": {
           "200": {
             "$ref": "#/components/responses/200TopLevelOrEventTypeSubResource"
@@ -1521,7 +1521,7 @@
           "Top-level"
         ],
         "summary": "Returns all sub-resources of a business step.",
-        "description": "This endpoint returns all sub-resources of a business step, which currently is `events`.\n",
+        "description": "This endpoint returns all sub-resources of a business step (for HATEOAS discovery), which includes at least `events`.\n",
         "responses": {
           "200": {
             "$ref": "#/components/responses/200TopLevelOrEventTypeSubResource"
@@ -1801,7 +1801,7 @@
             "$ref": "#/components/parameters/NextPageToken"
           }
         ],
-        "description": "This endpoint returns all sub-resources of a business location, which currently is `events`.\n",
+        "description": "This endpoint returns all sub-resources of a business location (for HATEOAS discovery), which includes at least `events`.\n",
         "responses": {
           "200": {
             "$ref": "#/components/responses/200TopLevelOrEventTypeSubResource"
@@ -1983,7 +1983,7 @@
             "$ref": "#/components/parameters/NextPageToken"
           }
         ],
-        "description": "This endpoint returns all sub-resources of a read point, which currently is `events`.\n",
+        "description": "This endpoint returns all sub-resources of a read point (for HATEOAS discovery), which includes at least `events`.\n",
         "responses": {
           "200": {
             "$ref": "#/components/responses/200TopLevelOrEventTypeSubResource"
@@ -2251,7 +2251,7 @@
           "Top-level"
         ],
         "summary": "Returns all sub-resources of a disposition.",
-        "description": "This endpoint returns all sub-resources of a disposition, which currently is `events`.\n",
+        "description": "This endpoint returns all sub-resources of a disposition (for HATEOAS discovery), which includes at least `events`.\n",
         "responses": {
           "200": {
             "$ref": "#/components/responses/200TopLevelOrEventTypeSubResource"
@@ -2536,9 +2536,9 @@
               "Location": {
                 "description": "Absolute or relative URL of the created query. The client can use the `Location` URL to obtain the named query definition.\n",
                 "schema": {
-                  "example": "https://www.example.com/queries/myQuery",
+                  "example": "/queries/myQuery",
                   "type": "string",
-                  "format": "uri"
+                  "minLength": 1
                 }
               }
             },
@@ -3396,7 +3396,7 @@
             "$ref": "#/components/headers/GS1-Extensions"
           }
         },
-        "description": "Returns a sub-resource list that contains at least the `events` sub-resource.",
+        "description": "Returns a sub-resource list that contains at least the `events` sub-resource (for HATEOAS discovery).",
         "content": {
           "application/json": {
             "example": {
@@ -4815,10 +4815,10 @@
         ]
       },
       "Location": {
-        "description": "Location header of a resource.",
+        "description": "Location header of a resource as a relative or absolute URL.",
         "type": "string",
-        "format": "uri",
-        "example": "/eventTypes/ObjectEvent/events/eventId123"
+        "minLength": 1,
+        "example": "/events/urn:uuid:831c0292-4de1-430a-8255-2aca821abaab"
       },
       "RFC7807ProblemResponseBody": {
         "description": "A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807).",
@@ -5377,7 +5377,7 @@
         }
       },
       "ResourceCollection": {
-        "description": "A collection of sub-resources that includes at least the `events` one.",
+        "description": "A collection of sub-resources that includes at least the `events` one (for HATEOAS discovery).",
         "type": "object",
         "required": [
           "@context",

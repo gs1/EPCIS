@@ -3,7 +3,7 @@
 import process from "process";
 import fs from "fs";
 import yaml from "js-yaml";
-import fetch from 'node-fetch';
+import fetch from 'sync-fetch';
 
 /*  Translation table so that certain JSON Schema definitions are translated
  *  to the Open API compatible definitions
@@ -29,7 +29,7 @@ function loadYaml(fileName) {
   return yaml.load(fs.readFileSync(fileName, { encoding: "utf-8" }));
 }
 
-async function inject(fileName, schemaFileName) {
+function inject(fileName, schemaFileName) {
   const spec = loadYaml(fileName);
   const schemaJson = loadJson(schemaFileName);
 
@@ -45,13 +45,13 @@ async function inject(fileName, schemaFileName) {
 
   const members = Object.keys(spec);
   for (const member of members) {
-    await visit(spec[member], member, spec);
+    visit(spec[member], member, spec);
   }
 
   return spec;
 }
 
-async function visit(obj, parentKeyName, parent) {
+function visit(obj, parentKeyName, parent) {
   if (!obj || typeof obj !== "object") {
     return;
   }
@@ -73,7 +73,7 @@ async function visit(obj, parentKeyName, parent) {
         // Here there is a Reference to an example or to an schema
         if (parentKeyName === "example") {
           // The example is just inlined
-          const example = await loadExample(pointer);
+          const example = loadExample(pointer);
           parent[parentKeyName] = example;
         } else if (pointer.includes(EPCIS_JSON_SCHEMA)) {
           // We just reference the schema
@@ -85,7 +85,7 @@ async function visit(obj, parentKeyName, parent) {
       delete obj[key];
     }
     else {
-      await visit(obj[key], key, obj);
+      visit(obj[key], key, obj);
     }
   }
 }
@@ -100,16 +100,16 @@ function getDefinitionName(reference) {
   return result;
 }
 
-async function loadExample(uri) {
+function loadExample(uri) {
   let example;
-  const response = await fetch(uri);
+  const response = fetch(uri);
 
   if (response.ok) {
     if (response.headers.get("content-type").includes("json")) {
-      example = await response.json();
+      example = response.json();
     }
     else if (response.headers.get("content-type").includes("xml")) {
-      example = await response.text();
+      example = response.text();
     }
   } 
   else {
@@ -119,13 +119,13 @@ async function loadExample(uri) {
   return example;
 }
 
-async function main() {
+function main() {
   const inputFile = process.argv[2];
   const schemaFile = process.argv[3];
 
-  const finalSpec = await inject(inputFile, schemaFile);
+  const finalSpec = inject(inputFile, schemaFile);
 
   console.log(JSON.stringify(finalSpec, null, 2));
 }
 
-main().then().catch((err) => console.error(err));
+main();
