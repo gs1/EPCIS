@@ -310,26 +310,24 @@
         },
         "errorDeclaration": {
             "@id": "epcis:errorDeclaration",
-            "@context": [
-                "https://gs1.github.io/EPCIS/cbv-context-error-reason.jsonld",
-                {
-                    "@protected": true,
-                    "epcis": "https://ns.gs1.org/epcis/",
-                    "reason": {
-                        "@id": "epcis:reason",
-                        "@type": "@vocab"
-                    },
-                    "correctiveEventIDs": {
-                        "@id": "epcis:correctiveEventIDs",
-                        "@type": "@id",
-                        "@container": "@set"
-                    },
-                    "declarationTime": {
-                        "@id": "epcis:declarationTime",
-                        "@type": "xsd:dateTimeStamp"
-                    }
+            "@context": {
+                "@protected": true,
+                "epcis": "https://ns.gs1.org/epcis/",
+                "reason": {
+                    "@id": "epcis:reason",
+                    "@type": "@vocab",
+                    "@context": "https://gs1.github.io/EPCIS/cbv-context-error-reason.jsonld"
+                },
+                "correctiveEventIDs": {
+                    "@id": "epcis:correctiveEventIDs",
+                    "@type": "@id",
+                    "@container": "@set"
+                },
+                "declarationTime": {
+                    "@id": "epcis:declarationTime",
+                    "@type": "xsd:dateTimeStamp"
                 }
-            ]
+            }
         },
         "eventID": "@id",
         "creationDate": {"@id":"dcterms:created","@type":"xsd:dateTime"},
