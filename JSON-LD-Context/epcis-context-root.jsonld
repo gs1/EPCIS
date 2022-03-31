@@ -67,40 +67,36 @@
         "sourceList": {
             "@id": "epcis:sourceList",
             "@container": "@set",
-            "@context": [
-                "https://gs1.github.io/EPCIS/cbv-context-sourcedest-type.jsonld",
-                {
-                    "@protected": true,
-                    "epcis": "https://ns.gs1.org/epcis/",
-                    "source": {
-                        "@id": "epcis:sourceOrDestination",
-                        "@type": "@id"
-                    },
-                    "type": {
-                        "@id": "epcis:sourceOrDestinationType",
-                        "@type": "@vocab"
-                    }
+            "@context": {
+                "@protected": true,
+                "epcis": "https://ns.gs1.org/epcis/",
+                "source": {
+                    "@id": "epcis:sourceOrDestination",
+                    "@type": "@id"
+                },
+                "type": {
+                    "@id": "epcis:sourceOrDestinationType",
+                    "@type": "@vocab",
+                    "@context": "https://gs1.github.io/EPCIS/cbv-context-sourcedest-type.jsonld"
                 }
-            ]
+            }
         },
         "destinationList": {
             "@id": "epcis:destinationList",
             "@container": "@set",
-            "@context": [
-                "https://gs1.github.io/EPCIS/cbv-context-sourcedest-type.jsonld",
-                {
-                    "@protected": true,
-                    "epcis": "https://ns.gs1.org/epcis/",
-                    "destination": {
-                        "@id": "epcis:sourceOrDestination",
-                        "@type": "@id"
-                    },
-                    "type": {
-                        "@id": "epcis:sourceOrDestinationType",
-                        "@type": "@vocab"
-                    }
+            "@context": {
+                "@protected": true,
+                "epcis": "https://ns.gs1.org/epcis/",
+                "destination": {
+                    "@id": "epcis:sourceOrDestination",
+                    "@type": "@id"
+                },
+                "type": {
+                    "@id": "epcis:sourceOrDestinationType",
+                    "@type": "@vocab",
+                    "@context": "https://gs1.github.io/EPCIS/cbv-context-sourcedest-type.jsonld"
                 }
-            ]
+            }
         },
         "persistentDisposition": {
             "@id": "epcis:persistentDisposition",
