@@ -140,21 +140,19 @@
         "bizTransactionList": {
             "@id": "epcis:bizTransactionList",
             "@container": "@set",
-            "@context": [
-                "https://gs1.github.io/EPCIS/cbv-context-biztransaction-type.jsonld",
-                {
-                    "@protected": true,
-                    "epcis": "https://ns.gs1.org/epcis/",
-                    "bizTransaction": {
-                        "@id": "@id",
-                        "@type": "@id"
-                    },
-                    "type": {
-                        "@id": "epcis:bizTransactionType",
-                        "@type": "@vocab"
-                    }
+            "@context": {
+                "@protected": true,
+                "epcis": "https://ns.gs1.org/epcis/",
+                "bizTransaction": {
+                    "@id": "@id",
+                    "@type": "@id"
+                },
+                "type": {
+                    "@id": "epcis:bizTransactionType",
+                    "@type": "@vocab",
+                    "@context": "https://gs1.github.io/EPCIS/cbv-context-biztransaction-type.jsonld"
                 }
-            ]
+            }
         },
         "parentID": {
             "@id": "epcis:parentID",
