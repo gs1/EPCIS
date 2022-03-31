@@ -422,8 +422,6 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '406':
           $ref: '#/components/responses/406NotAcceptable'
-        '409':
-          $ref: '#/components/responses/409ResourceAlreadyExistsException'
         '414':
           $ref: '#/components/responses/414URLTooLong'
         '500':
@@ -524,6 +522,8 @@ paths:
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
           $ref: '#/components/responses/403ClientUnauthorized'
+        '409':
+          $ref: '#/components/responses/409ResourceAlreadyExistsException'
         '413':
           $ref: '#/components/responses/413CapturePayloadTooLarge'
         '406':
@@ -1668,8 +1668,6 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '406':
           $ref: '#/components/responses/406NotAcceptable'
-        '409':
-          $ref: '#/components/responses/409ResourceAlreadyExistsException'
         '500':
           $ref: '#/components/responses/500ImplementationException'
     get:
