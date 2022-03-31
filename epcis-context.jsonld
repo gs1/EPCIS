@@ -149,54 +149,50 @@
     "sourceList": {
       "@id": "epcis:sourceList",
       "@container": "@set",
-      "@context": [
-        {
-          "@protected": true,
-          "@version": 1.1,
-          "cbv": "https://ns.gs1.org/cbv/",
-          "owning_party": "cbv:SDT-owning_party",
-          "possessing_party": "cbv:SDT-possessing_party",
-          "location": "cbv:SDT-location"
+      "@context": {
+        "@protected": true,
+        "epcis": "https://ns.gs1.org/epcis/",
+        "source": {
+          "@id": "epcis:sourceOrDestination",
+          "@type": "@id"
         },
-        {
-          "@protected": true,
-          "epcis": "https://ns.gs1.org/epcis/",
-          "source": {
-            "@id": "epcis:sourceOrDestination",
-            "@type": "@id"
-          },
-          "type": {
-            "@id": "epcis:sourceOrDestinationType",
-            "@type": "@vocab"
+        "type": {
+          "@id": "epcis:sourceOrDestinationType",
+          "@type": "@vocab",
+          "@context": {
+            "@protected": true,
+            "@version": 1.1,
+            "cbv": "https://ns.gs1.org/cbv/",
+            "owning_party": "cbv:SDT-owning_party",
+            "possessing_party": "cbv:SDT-possessing_party",
+            "location": "cbv:SDT-location"
           }
         }
-      ]
+      }
     },
     "destinationList": {
       "@id": "epcis:destinationList",
       "@container": "@set",
-      "@context": [
-        {
-          "@protected": true,
-          "@version": 1.1,
-          "cbv": "https://ns.gs1.org/cbv/",
-          "owning_party": "cbv:SDT-owning_party",
-          "possessing_party": "cbv:SDT-possessing_party",
-          "location": "cbv:SDT-location"
+      "@context": {
+        "@protected": true,
+        "epcis": "https://ns.gs1.org/epcis/",
+        "destination": {
+          "@id": "epcis:sourceOrDestination",
+          "@type": "@id"
         },
-        {
-          "@protected": true,
-          "epcis": "https://ns.gs1.org/epcis/",
-          "destination": {
-            "@id": "epcis:sourceOrDestination",
-            "@type": "@id"
-          },
-          "type": {
-            "@id": "epcis:sourceOrDestinationType",
-            "@type": "@vocab"
+        "type": {
+          "@id": "epcis:sourceOrDestinationType",
+          "@type": "@vocab",
+          "@context": {
+            "@protected": true,
+            "@version": 1.1,
+            "cbv": "https://ns.gs1.org/cbv/",
+            "owning_party": "cbv:SDT-owning_party",
+            "possessing_party": "cbv:SDT-possessing_party",
+            "location": "cbv:SDT-location"
           }
         }
-      ]
+      }
     },
     "persistentDisposition": {
       "@id": "epcis:persistentDisposition",
@@ -272,38 +268,36 @@
     "bizTransactionList": {
       "@id": "epcis:bizTransactionList",
       "@container": "@set",
-      "@context": [
-        {
-          "@protected": true,
-          "@version": 1.1,
-          "cbv": "https://ns.gs1.org/cbv/",
-          "bol": "cbv:BTT-bol",
-          "cert": "cbv:BTT-cert",
-          "desadv": "cbv:BTT-desadv",
-          "inv": "cbv:BTT-inv",
-          "pedigree": "cbv:BTT-pedigree",
-          "po": "cbv:BTT-po",
-          "poc": "cbv:BTT-poc",
-          "prodorder": "cbv:BTT-prodorder",
-          "recadv": "cbv:BTT-recadv",
-          "rma": "cbv:BTT-rma",
-          "testprd": "cbv:BTT-testprd",
-          "testres": "cbv:BTT-testres",
-          "upevt": "cbv:BTT-upevt"
+      "@context": {
+        "@protected": true,
+        "epcis": "https://ns.gs1.org/epcis/",
+        "bizTransaction": {
+          "@id": "@id",
+          "@type": "@id"
         },
-        {
-          "@protected": true,
-          "epcis": "https://ns.gs1.org/epcis/",
-          "bizTransaction": {
-            "@id": "@id",
-            "@type": "@id"
-          },
-          "type": {
-            "@id": "epcis:bizTransactionType",
-            "@type": "@vocab"
+        "type": {
+          "@id": "epcis:bizTransactionType",
+          "@type": "@vocab",
+          "@context": {
+            "@protected": true,
+            "@version": 1.1,
+            "cbv": "https://ns.gs1.org/cbv/",
+            "bol": "cbv:BTT-bol",
+            "cert": "cbv:BTT-cert",
+            "desadv": "cbv:BTT-desadv",
+            "inv": "cbv:BTT-inv",
+            "pedigree": "cbv:BTT-pedigree",
+            "po": "cbv:BTT-po",
+            "poc": "cbv:BTT-poc",
+            "prodorder": "cbv:BTT-prodorder",
+            "recadv": "cbv:BTT-recadv",
+            "rma": "cbv:BTT-rma",
+            "testprd": "cbv:BTT-testprd",
+            "testres": "cbv:BTT-testres",
+            "upevt": "cbv:BTT-upevt"
           }
         }
-      ]
+      }
     },
     "parentID": {
       "@id": "epcis:parentID",
@@ -565,32 +559,30 @@
     },
     "errorDeclaration": {
       "@id": "epcis:errorDeclaration",
-      "@context": [
-        {
-          "@protected": true,
-          "@version": 1.1,
-          "cbv": "https://ns.gs1.org/cbv/",
-          "did_not_occur": "cbv:ER-did_not_occur",
-          "incorrect_data": "cbv:ER-incorrect_data"
-        },
-        {
-          "@protected": true,
-          "epcis": "https://ns.gs1.org/epcis/",
-          "reason": {
-            "@id": "epcis:reason",
-            "@type": "@vocab"
-          },
-          "correctiveEventIDs": {
-            "@id": "epcis:correctiveEventIDs",
-            "@type": "@id",
-            "@container": "@set"
-          },
-          "declarationTime": {
-            "@id": "epcis:declarationTime",
-            "@type": "xsd:dateTimeStamp"
+      "@context": {
+        "@protected": true,
+        "epcis": "https://ns.gs1.org/epcis/",
+        "reason": {
+          "@id": "epcis:reason",
+          "@type": "@vocab",
+          "@context": {
+            "@protected": true,
+            "@version": 1.1,
+            "cbv": "https://ns.gs1.org/cbv/",
+            "did_not_occur": "cbv:ER-did_not_occur",
+            "incorrect_data": "cbv:ER-incorrect_data"
           }
+        },
+        "correctiveEventIDs": {
+          "@id": "epcis:correctiveEventIDs",
+          "@type": "@id",
+          "@container": "@set"
+        },
+        "declarationTime": {
+          "@id": "epcis:declarationTime",
+          "@type": "xsd:dateTimeStamp"
         }
-      ]
+      }
     },
     "eventID": "@id",
     "creationDate": {

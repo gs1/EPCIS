@@ -67,40 +67,36 @@
         "sourceList": {
             "@id": "epcis:sourceList",
             "@container": "@set",
-            "@context": [
-                "https://gs1.github.io/EPCIS/cbv-context-sourcedest-type.jsonld",
-                {
-                    "@protected": true,
-                    "epcis": "https://ns.gs1.org/epcis/",
-                    "source": {
-                        "@id": "epcis:sourceOrDestination",
-                        "@type": "@id"
-                    },
-                    "type": {
-                        "@id": "epcis:sourceOrDestinationType",
-                        "@type": "@vocab"
-                    }
+            "@context": {
+                "@protected": true,
+                "epcis": "https://ns.gs1.org/epcis/",
+                "source": {
+                    "@id": "epcis:sourceOrDestination",
+                    "@type": "@id"
+                },
+                "type": {
+                    "@id": "epcis:sourceOrDestinationType",
+                    "@type": "@vocab",
+                    "@context": "https://gs1.github.io/EPCIS/cbv-context-sourcedest-type.jsonld"
                 }
-            ]
+            }
         },
         "destinationList": {
             "@id": "epcis:destinationList",
             "@container": "@set",
-            "@context": [
-                "https://gs1.github.io/EPCIS/cbv-context-sourcedest-type.jsonld",
-                {
-                    "@protected": true,
-                    "epcis": "https://ns.gs1.org/epcis/",
-                    "destination": {
-                        "@id": "epcis:sourceOrDestination",
-                        "@type": "@id"
-                    },
-                    "type": {
-                        "@id": "epcis:sourceOrDestinationType",
-                        "@type": "@vocab"
-                    }
+            "@context": {
+                "@protected": true,
+                "epcis": "https://ns.gs1.org/epcis/",
+                "destination": {
+                    "@id": "epcis:sourceOrDestination",
+                    "@type": "@id"
+                },
+                "type": {
+                    "@id": "epcis:sourceOrDestinationType",
+                    "@type": "@vocab",
+                    "@context": "https://gs1.github.io/EPCIS/cbv-context-sourcedest-type.jsonld"
                 }
-            ]
+            }
         },
         "persistentDisposition": {
             "@id": "epcis:persistentDisposition",
@@ -140,21 +136,19 @@
         "bizTransactionList": {
             "@id": "epcis:bizTransactionList",
             "@container": "@set",
-            "@context": [
-                "https://gs1.github.io/EPCIS/cbv-context-biztransaction-type.jsonld",
-                {
-                    "@protected": true,
-                    "epcis": "https://ns.gs1.org/epcis/",
-                    "bizTransaction": {
-                        "@id": "@id",
-                        "@type": "@id"
-                    },
-                    "type": {
-                        "@id": "epcis:bizTransactionType",
-                        "@type": "@vocab"
-                    }
+            "@context": {
+                "@protected": true,
+                "epcis": "https://ns.gs1.org/epcis/",
+                "bizTransaction": {
+                    "@id": "@id",
+                    "@type": "@id"
+                },
+                "type": {
+                    "@id": "epcis:bizTransactionType",
+                    "@type": "@vocab",
+                    "@context": "https://gs1.github.io/EPCIS/cbv-context-biztransaction-type.jsonld"
                 }
-            ]
+            }
         },
         "parentID": {
             "@id": "epcis:parentID",
@@ -316,26 +310,24 @@
         },
         "errorDeclaration": {
             "@id": "epcis:errorDeclaration",
-            "@context": [
-                "https://gs1.github.io/EPCIS/cbv-context-error-reason.jsonld",
-                {
-                    "@protected": true,
-                    "epcis": "https://ns.gs1.org/epcis/",
-                    "reason": {
-                        "@id": "epcis:reason",
-                        "@type": "@vocab"
-                    },
-                    "correctiveEventIDs": {
-                        "@id": "epcis:correctiveEventIDs",
-                        "@type": "@id",
-                        "@container": "@set"
-                    },
-                    "declarationTime": {
-                        "@id": "epcis:declarationTime",
-                        "@type": "xsd:dateTimeStamp"
-                    }
+            "@context": {
+                "@protected": true,
+                "epcis": "https://ns.gs1.org/epcis/",
+                "reason": {
+                    "@id": "epcis:reason",
+                    "@type": "@vocab",
+                    "@context": "https://gs1.github.io/EPCIS/cbv-context-error-reason.jsonld"
+                },
+                "correctiveEventIDs": {
+                    "@id": "epcis:correctiveEventIDs",
+                    "@type": "@id",
+                    "@container": "@set"
+                },
+                "declarationTime": {
+                    "@id": "epcis:declarationTime",
+                    "@type": "xsd:dateTimeStamp"
                 }
-            ]
+            }
         },
         "eventID": "@id",
         "creationDate": {"@id":"dcterms:created","@type":"xsd:dateTime"},
