@@ -557,7 +557,8 @@
               "minItems": 1,
               "uniqueItems": true
             }
-          }
+          },
+          "additionalProperties": false
         },
         {
           "anyOf": [
