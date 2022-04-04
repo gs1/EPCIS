@@ -113,10 +113,6 @@
 						</ext1:array>
 					</sensorElement>
 				</sensorElementList>
-				<persistentDisposition>
-					<unset>urn:epcglobal:cbv:disp:completeness_inferred</unset>
-					<set>urn:epcglobal:cbv:disp:completeness_verified</set>
-				</persistentDisposition>
 				<ext1:default>stringAsDefaultValue</ext1:default>
 				<ext1:int xsi:type="xsd:integer">10</ext1:int>
 				<ext1:float xsi:type="xsd:double">20</ext1:float>
