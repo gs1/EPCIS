@@ -561,9 +561,6 @@
           "406": {
             "$ref": "#/components/responses/406NotAcceptable"
           },
-          "409": {
-            "$ref": "#/components/responses/409ResourceAlreadyExistsException"
-          },
           "414": {
             "$ref": "#/components/responses/414URLTooLong"
           },
@@ -744,6 +741,9 @@
           },
           "406": {
             "$ref": "#/components/responses/406NotAcceptable"
+          },
+          "409": {
+            "$ref": "#/components/responses/409ResourceAlreadyExistsException"
           },
           "413": {
             "$ref": "#/components/responses/413CapturePayloadTooLarge"
@@ -2400,9 +2400,6 @@
           },
           "406": {
             "$ref": "#/components/responses/406NotAcceptable"
-          },
-          "409": {
-            "$ref": "#/components/responses/409ResourceAlreadyExistsException"
           },
           "500": {
             "$ref": "#/components/responses/500ImplementationException"
@@ -6074,8 +6071,7 @@
         },
         "required": [
           "declarationTime"
-        ],
-        "additionalProperties": false
+        ]
       },
       "quantityElement": {
         "type": "object",
