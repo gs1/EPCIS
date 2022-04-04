@@ -52,7 +52,8 @@
                             "minItems": 1,
                             "uniqueItems": true
                         }
-                    }
+                    },
+                    "additionalProperties": false
                 },
                 {
                     "anyOf": [
@@ -124,7 +125,21 @@
             "required": [
                 "declarationTime"
             ],
-            "additionalProperties": false
+            "propertyNames": {
+                "anyOf": [
+                    {
+                        "$ref": "definitions-JSON-Schema.json#/definitions/vocab-uri"
+                    },
+                    {
+                        "type": "string",
+                        "enum": [
+                            "declarationTime",
+                            "reason",
+                            "correctiveEventIDs"
+                        ]
+                    }
+                ]
+            }
         },
         "quantityElement": {
             "type": "object",

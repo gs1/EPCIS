@@ -104,7 +104,10 @@
                         "properties": {
                             "childEPCs": {
                                 "type": "array",
-                                "minItems": 1
+                                "minItems": 1,
+                                "items": {
+                                    "$ref": "definitions-JSON-Schema.json#/definitions/id"
+                                }
                             }
                         },
                         "required": ["childEPCs"]
@@ -114,7 +117,10 @@
                         "properties": {
                             "childQuantityList": {
                                 "type": "array",
-                                "minItems": 1
+                                "minItems": 1,
+                                "items": {
+                                    "$ref": "event-definitions-JSON-Schema.json#/definitions/quantityElement"
+                                }
                             }
                         },
                         "required": ["childQuantityList"]

@@ -1,0 +1,142 @@
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd"
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.gs1.epcis</groupId>
+    <artifactId>apache-cxf-bindings</artifactId>
+    <version>2.0.0</version>
+
+    <properties>
+        <cxf.version>3.5.0</cxf.version>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+    </properties>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-core</artifactId>
+            <version>${cxf.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-tools-common</artifactId>
+            <version>${cxf.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- 
+                copy resources and replace xsd:dateTimeStamp with xsd:dateTime
+                Java can validate against XML Schema Version 1.1 
+                but unfortunately XJC is unable to generate code based on XML Schema 1.1 XSDs
+            -->
+            <!-- disable to test alt approach 
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-wsdl-resources</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${basedir}/src/resources/WSDL</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${basedir}</directory>
+                                    <includes>
+                                        <include>*.wsdl</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>copy-xsd-resources</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${basedir}/src/resources/XSD</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${basedir}/../XSD</directory>
+                                    <includes>
+                                        <include>*.xsd</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.google.code.maven-replacer-plugin</groupId>
+                <artifactId>replacer</artifactId>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>replace</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <includes>
+                        <include>${basedir}/src/resources/XSD/*.xsd</include>
+                    </includes>
+                    <token>xsd:dateTimeStamp</token>
+                    <value>xsd:dateTime</value>
+                </configuration>
+            </plugin>
+            -->
+            <!--
+                execute Apache CXF code generation
+            -->
+            <plugin>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-codegen-plugin</artifactId>
+                <version>${cxf.version}</version>
+                <executions>
+                    <execution>
+                        <id>generate-sources</id>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <wsdlOptions>
+                                <wsdlOption>
+                                    <!--
+                                    <wsdl>${basedir}/src/resources/WSDL/EPCglobal-epcis-query-2_0.wsdl</wsdl>
+                                    -->
+                                    <!-- use alt approach -->
+                                    <wsdl>${basedir}/EPCglobal-epcis-query-2_0.wsdl</wsdl>
+                                    <extraargs>
+                                        <extraarg>-verbose</extraarg>
+                                        <extraarg>-p</extraarg>
+                                        <extraarg>urn:epcglobal:epcis-query:xsd:2=org.gs1.epcis.ws.query</extraarg>
+                                        <extraarg>-p</extraarg>
+                                        <extraarg>urn:epcglobal:epcis:xsd:2=org.gs1.epcis.jaxb</extraarg>
+                                        <extraarg>-p</extraarg>
+                                        <extraarg>urn:epcglobal:epcis:wsdl:2=org.gs1.epcis.ws</extraarg>
+                                        <extraarg>-p</extraarg>
+                                        <extraarg>urn:epcglobal:xsd:1=org.gs1.epc</extraarg>
+                                        <extraarg>-b</extraarg>
+                                        <extraarg>${basedir}/epcis-query-xjb.xml</extraarg>
+                                    </extraargs>
+                                </wsdlOption>
+                            </wsdlOptions>
+                        </configuration>
+                        <goals>
+                            <goal>wsdl2java</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

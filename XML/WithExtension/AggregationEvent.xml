@@ -35,7 +35,7 @@
                     </quantityElement>
                 </childQuantityList>
                 <extension>
-                    <extension>
+                    <example:extension>
                         <moreExtensions>
                             <futureExtension>
                                 <tag1>1</tag1>
@@ -43,7 +43,7 @@
                                 <tag3>3</tag3>
                             </futureExtension>
                         </moreExtensions>
-                    </extension>
+                    </example:extension>
                 </extension>
                 <example:myField>Example of a vendor/user extension</example:myField>
             </AggregationEvent>

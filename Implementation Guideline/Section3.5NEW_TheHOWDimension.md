@@ -35,7 +35,7 @@ Both contain a set of pertinent attributes, which can be outlined as follows:
 | type | `type` | Property identifier |
 | | `microorganism` | Microorganism species identifier |
 | | `chemicalSubstance` | Chemical substance identifier |
-| value | `value` | Quantitative (float) value of a property |
+| value | `value` | Quantitative (double-precision float) value of a property |
 | | `component` | Dimension indicator of a vector value |
 | | `stringValue` | String value of a property |
 | | `booleanValue` | Boolean value of a property |

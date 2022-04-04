@@ -103,7 +103,10 @@
                             "properties": {
                                 "epcList": {
                                     "type": "array",
-                                    "minItems": 0
+                                    "minItems": 0,
+                                    "items": {
+                                        "$ref": "definitions-JSON-Schema.json#/definitions/id"
+                                    }
                                 }
                             },
                             "required": [

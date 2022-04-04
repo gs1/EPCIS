@@ -1191,8 +1191,8 @@
       "domainIncludes": "epcis:QuantityElement",
       "isDefinedBy": "https://ns.gs1.org/epcis/",
       "label": "quantity",
-      "range": "xsd:double",
-      "rangeIncludes": "xsd:double",
+      "range": "xsd:decimal",
+      "rangeIncludes": "xsd:decimal",
       "term_status": "stable"
     },
     {
@@ -1278,16 +1278,16 @@
     {
       "@id": "epcis:receiver",
       "@type": [
-        "owl:ObjectProperty",
+        "owl:DatatypeProperty",
         "rdf:Property"
       ],
       "comment": "(Optional) The intended receiver of an EPCISDocument.",
       "domain": "epcis:EPCISDocument",
       "domainIncludes": "epcis:EPCISDocument",
       "isDefinedBy": "https://ns.gs1.org/epcis/",
+      "range": "xsd:string",
+      "rangeIncludes": "xsd:string",
       "label": "receiver",
-      "range": "gs1:Organization",
-      "rangeIncludes": "gs1:Organization",
       "term_status": "stable"
     },
     {
@@ -1323,7 +1323,7 @@
     {
       "@id": "epcis:sender",
       "@type": [
-        "owl:ObjectProperty",
+        "owl:DatatypeProperty",
         "rdf:Property"
       ],
       "comment": "(Optional) The sender of an EPCISDocument.",
@@ -1331,8 +1331,8 @@
       "domainIncludes": "epcis:EPCISDocument",
       "isDefinedBy": "https://ns.gs1.org/epcis/",
       "label": "sender",
-      "range": "gs1:Organization",
-      "rangeIncludes": "gs1:Organization",
+      "range": "xsd:string",
+      "rangeIncludes": "xsd:string",
       "term_status": "stable"
     },
     {

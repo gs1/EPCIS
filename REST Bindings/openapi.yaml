@@ -4,7 +4,6 @@ info:
   title: EPCIS 2.0 REST Bindings
   license:
     name: Apache2
-
 tags:
   - name: 'Top-level'
     description: |
@@ -137,8 +136,10 @@ paths:
           application/json:
             schema:
                     oneOf:
-                      - $ref: '#/components/schemas/EPCISQueryDocument'
-                      - $ref: '#/components/schemas/EPCISDocument'      
+                      - $ref: 'https://gs1.github.io/EPCIS/REST%20Bindings/JSON-Schema-Stub.json#/definitions/epcisQueryDocument'
+                      - $ref: 'https://gs1.github.io/EPCIS/REST%20Bindings/JSON-Schema-Stub.json#/definitions/epcisDocument'
+            example:
+              $ref: 'https://gs1.github.io/EPCIS/JSON/Example_9.6.1-ObjectEvent.jsonld'
       responses:
         '202':
           description: |
@@ -152,9 +153,12 @@ paths:
             GS1-Extensions:
               $ref: '#/components/headers/GS1-Extensions'
             Location:
-              example: "https://example.com/capture/id9261379075"
+              description: |
+                Absolute or relative URL of the capture job.
               schema:
-                $ref: '#/components/schemas/Location'
+                example: "/capture/id9261379075"
+                type: string
+                minLength: 1
 
         '400':
           description: |
@@ -162,6 +166,21 @@ paths:
             an error while capturing EPCIS events. To monitor the capture job, use the `/capture/{captureID}` endpoint.
           content:
             application/problem+json:
+              schema:
+                allOf:
+                  - properties:
+                      status:
+                        type: integer
+                        enum:
+                          - 400
+                        default: 400
+                      type:
+                        type: string
+                        format: uri
+                        enum:
+                          - epcisException:ValidationException
+                  - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+            application/problem+xml:
               schema:
                 allOf:
                   - properties:
@@ -200,8 +219,8 @@ paths:
       summary: Returns a list of capture jobs.
       description: |
         When EPCIS events are added through the capture interface, the capture process can run asynchronously. If the payload
-        is syntactically correct and the client is allowed to call `/capture`, the server returns a `202` HTTP response code. This
-        does not guarantee successful storage of all EPCIS events. This endpoint returns all capture jobs that were created
+        is syntactically correct and the client is allowed to call `/capture`, the server returns a `202` HTTP response code. 
+        This endpoint returns all capture jobs that were created
         and supports pagination.
       responses:
         '200':
@@ -314,9 +333,8 @@ paths:
       summary: Returns information about the capture job.
       description: |
         When EPCIS events are added through the capture interface, the capture process can run asynchronously. If the payload
-        is syntactically correct and the client is allowed to call `/capture`, the server returns a `202` HTTP response code. This
-        does not guarantee successful storage of all EPCIS events. The capture job endpoint exposes the state
-        of the capture job to the client.
+        is syntactically correct and the client is allowed to call `/capture`, the server returns a `202` HTTP response code. 
+        This endpoint exposes the state of the capture job to the client.
       responses:
         '200':
           headers:
@@ -364,6 +382,16 @@ paths:
                 }
               schema:
                 $ref: '#/components/schemas/CaptureJob'
+            application/xml:             
+              example: 
+                  "captureID": "id261378658356"
+                  "running": false
+                  "success": true
+                  "captureErrorBehaviour": "rollback"
+                  "createdAt": "2021-07-21T17:32:28Z"
+                  "finishedAt" : "2022-01-21T17:45:28Z"
+              schema:
+                $ref: '#/components/schemas/CaptureJob'
         '401':
           $ref: '#/components/responses/401UnauthorizedRequest'
         '403':
@@ -394,6 +422,8 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '406':
           $ref: '#/components/responses/406NotAcceptable'
+        '409':
+          $ref: '#/components/responses/409ResourceAlreadyExistsException'
         '414':
           $ref: '#/components/responses/414URLTooLong'
         '500':
@@ -445,7 +475,9 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SingleEvent'
+              $ref: 'https://gs1.github.io/EPCIS/REST%20Bindings/JSON-Schema-Stub.json#/definitions/EPCIS-Document-Event'
+            example:
+              $ref: 'https://gs1.github.io/EPCIS/JSON-Schema/test/ObjectEvent.json'
 
       responses:
         '201':
@@ -460,13 +492,16 @@ paths:
             GS1-Extensions:
               $ref: '#/components/headers/GS1-Extensions'
             Location:
-              example: "https://example.com/eventTypes/ObjectEvent/events/eventId123"
+              description: |
+                Absolute or relative URL of the newly captured EPCIS event. 
               schema:
-                $ref: '#/components/schemas/Location'
+                example: "https://example.com/events/urn:uuid:831c0292-4de1-430a-8255-2aca821abaab"
+                type: string
+                minLength: 1
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SingleEvent'
+                $ref: 'https://gs1.github.io/EPCIS/REST%20Bindings/JSON-Schema-Stub.json#/definitions/EPCIS-Document-Event'
         '400':
           description: An error occurred while creating the EPCIS event. The event was rejected.
           content:
@@ -631,7 +666,7 @@ paths:
         - 'Top-level'
       summary: Returns all sub-resources of an EPCIS event type.
       description: |
-        This endpoint returns all sub-resources of an EPCIS event type, which currently is `events`. A server may
+        This endpoint returns all sub-resources of an EPCIS event type (for HATEOAS discovery), which includes at least `events`. A server may
         add additional endpoints, for example `schema` to access the EPCIS event type schema.
       parameters:
         - $ref: '#/components/parameters/GS1-EPCIS-Min'
@@ -836,7 +871,7 @@ paths:
         - 'Top-level'
       summary: Returns all sub-resources of an electronic product code.
       description: |
-        This endpoint returns all sub-resources of an electronic product code, which currently is `events`.
+        This endpoint returns all sub-resources of an electronic product code (for HATEOAS discovery), which includes at least `events`.
       responses:
         '200':
           $ref: '#/components/responses/200TopLevelOrEventTypeSubResource'
@@ -1025,7 +1060,7 @@ paths:
         - 'Top-level'
       summary: Returns all sub-resources of a business step.
       description: |
-        This endpoint returns all sub-resources of a business step, which currently is `events`.
+        This endpoint returns all sub-resources of a business step (for HATEOAS discovery), which includes at least `events`.
       responses:
         '200':
           $ref: '#/components/responses/200TopLevelOrEventTypeSubResource'
@@ -1217,7 +1252,7 @@ paths:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
       description: |
-        This endpoint returns all sub-resources of a business location, which currently is `events`.
+        This endpoint returns all sub-resources of a business location (for HATEOAS discovery), which includes at least `events`.
       responses:
         '200':
           $ref: '#/components/responses/200TopLevelOrEventTypeSubResource'
@@ -1341,7 +1376,7 @@ paths:
         - $ref: '#/components/parameters/PerPage'
         - $ref: '#/components/parameters/NextPageToken'
       description: |
-        This endpoint returns all sub-resources of a read point, which currently is `events`.
+        This endpoint returns all sub-resources of a read point (for HATEOAS discovery), which includes at least `events`.
       responses:
         '200':
           $ref: '#/components/responses/200TopLevelOrEventTypeSubResource'
@@ -1526,7 +1561,7 @@ paths:
         - 'Top-level'
       summary: Returns all sub-resources of a disposition.
       description: |
-        This endpoint returns all sub-resources of a disposition, which currently is `events`.
+        This endpoint returns all sub-resources of a disposition (for HATEOAS discovery), which includes at least `events`.
       responses:
         '200':
           $ref: '#/components/responses/200TopLevelOrEventTypeSubResource'
@@ -1633,6 +1668,8 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '406':
           $ref: '#/components/responses/406NotAcceptable'
+        '409':
+          $ref: '#/components/responses/409ResourceAlreadyExistsException'
         '500':
           $ref: '#/components/responses/500ImplementationException'
     get:
@@ -1727,11 +1764,11 @@ paths:
               $ref: '#/components/headers/GS1-Extensions'
             Location:
               description: |
-                The URL of the created query. The client can use the `Location` URL to obtain the named query definition.
+                Absolute or relative URL of the created query. The client can use the `Location` URL to obtain the named query definition.
               schema:
-                example: "https://www.example.com/queries/myQuery"
+                example: "/queries/myQuery"
                 type: string
-                format: uri
+                minLength: 1
           description: Creates the named query.
         '401':
           $ref: '#/components/responses/401UnauthorizedRequest'
@@ -1739,6 +1776,8 @@ paths:
           $ref: '#/components/responses/403ClientUnauthorized'
         '406':
           $ref: '#/components/responses/406NotAcceptable'
+        '409':
+          $ref: '#/components/responses/409ResourceAlreadyExistsException'
         '415':
           $ref: '#/components/responses/415UnsupportedMediaType'
         '500':
@@ -1940,10 +1979,13 @@ paths:
         - $ref: '#/components/parameters/GS1-EPC-Format'
         - $ref: '#/components/parameters/GS1-CBV-XML-Format'
       description: |
-        Creating a query subscription requires the client to provide a single endpoint to which the
-        server will send events (as `EPCISQueryDocument`) and a subscription secret that the server needs to authenticate itself when
-        sending events. The subscription secret must be generated by the client. 
         EPCIS 2.0 implementations must support Webhook subscriptions. 
+        Creating a query subscription requires the client to provide a single endpoint to which the
+        server will send events (as `EPCISQueryDocument`) and an optional string `signatureToken`. 
+        This `signatureToken` must be generated by the client and is used by the server to authenticate itself and sign messages when sending events. The signature must be contained on the `GS1-Signature` HTTP header of the server request. 
+        
+        The choice of signature type is implementation specific but examples would be using HMAC with SHA-256 directly or a wrapper supporting various symmetric or asymetric 
+        cryptographic algorithms such as Json Web Signature (JWS).
 
         When the client subscribes to a query, it must either set `stream` to `true`, to be notified whenever a new EPCIS
         event matches the query, or the client must define a query schedule. If these are missing the query subscription is invalid because the server won't
@@ -1962,7 +2004,7 @@ paths:
         POST /queries/MyQuery/subscriptions
         {
           "dest": "https://client.example.com/queryCallback",
-          "secret": "0435ojtojt02",
+          "signatureToken": "13df38d8275b13f05704629e5f1cf3d45d6132d5",
           "reportIfEmpty": true,
           "schedule": {
             "hour":"1",
@@ -1980,7 +2022,7 @@ paths:
         POST /queries/MyQuery/subscriptions
         {
           "dest": "https://client.example.com/queryCallback",
-          "secret": "0435ojtojt02",
+          "signatureToken": "13df38d8275b13f05704629e5f1cf3d45d6132d5",
           "stream": true
         }
         ```
@@ -1990,7 +2032,7 @@ paths:
           application/json:
             example: {
               "dest": "https://client.example.com/queryCallback",
-              "secret": "0435ojtojt02",
+              "signatureToken": "13df38d8275b13f05704629e5f1cf3d45d6132d5",
               "schedule": { "hour": "1", "minute": "5" }
             }
             schema:
@@ -2003,7 +2045,6 @@ paths:
         '201':
           headers:
             Location:
-              example: 'https://www.example.com/queries/MyQuery/subscriptions/df5a33e3-5aa3-4403-ae01-99b83234e27b'
               description: |
                 The server creates a new subscription for each client and query subscription. The client needs that URL
                 to unsubscribe by deleting this resource. The `Location` URL must point to the `subscriptionID` returned
@@ -2012,6 +2053,7 @@ paths:
               schema:
                 type: string
                 format: uri
+                example: 'https://www.example.com/queries/MyQuery/subscriptions/df5a33e3-5aa3'
           description: Query subscription successful. The subscription is valid until the client unsubscribes.
           content:
             application/json:
@@ -2036,9 +2078,11 @@ paths:
 
       callbacks:
         querySubscriptionResults:
-          '{$request.body#/dest}?secret={$request.body#/secret}':
+          '{$request.body#/dest}':
             post:
               summary: Callback invoked by the server to provide the query result to the client.
+              parameters:
+                - $ref: '#/components/parameters/GS1-Signature'
               requestBody:
                 description: |
                   The server sends the query result to the client as a series of `EPCISQueryDocument`. There is no pagination for a `POST` request, the
@@ -2051,7 +2095,7 @@ paths:
                   application/json:
                     schema:
                       oneOf:
-                        - $ref: '#/components/schemas/EPCISQueryDocument'
+                        - $ref: 'https://gs1.github.io/EPCIS/REST%20Bindings/JSON-Schema-Stub.json#/definitions/epcisQueryDocument'
                         - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
               responses:
                 '200':
@@ -2142,7 +2186,8 @@ paths:
                   "schedule": {
                       "second": "0/30"
                   },
-                  "createdAt": "2022-01-06T06:52:24.889Z"
+                  "createdAt": "2022-01-06T06:52:24.889Z",
+                  "lastNotifiedAt": "2022-01-08T06:51:21.889Z"
                 }
               schema:
                 allOf:
@@ -2344,7 +2389,7 @@ components:
           $ref: '#/components/headers/GS1-CBV-Version'
         GS1-Extensions:
           $ref: '#/components/headers/GS1-Extensions'
-      description: Returns a sub-resource list that contains at least the `events` sub-resource.
+      description: Returns a sub-resource list that contains at least the `events` sub-resource (for HATEOAS discovery).
       content:
         application/json:
           example:
@@ -2371,7 +2416,14 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/EPCISQueryDocument'
+            $ref: 'https://gs1.github.io/EPCIS/REST%20Bindings/JSON-Schema-Stub.json#/definitions/epcisQueryDocument'
+          example:
+            $ref: 'https://gs1.github.io/EPCIS/JSON/EPCISQueryDocument.jsonld'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/EPCISXMLQueryDocument'
+          example:
+            $ref: 'https://gs1.github.io/EPCIS/XML/Example-PersistentDisposition.xml'
     200EPCISQueryDocumentSinglePage:
       headers:
         GS1-EPCIS-Version:
@@ -2384,13 +2436,36 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/EPCISQueryDocument'
+            $ref: 'https://gs1.github.io/EPCIS/REST%20Bindings/JSON-Schema-Stub.json#/definitions/epcisQueryDocument'
+          example: 
+            $ref: 'https://gs1.github.io/EPCIS/JSON/EPCISQueryDocument.jsonld'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/EPCISXMLQueryDocument'
     204NextPageTokenInvalidated:
       description: nextPageToken invalidated successfully.
     200SupportedTopLevel:
       description: Returns all supported EPCIS top-level resources.
       content:
         application/json:
+          schema:
+            $ref: '#/components/schemas/TopLevelResourceCollection'
+          example: {
+            "@context": "https://gs1.github.io/EPCIS/epcis-context.jsonld",
+            "type": "Collection",
+            "member": [
+              "queries",
+              "capture",
+              "events",
+              "eventTypes",
+              "epcs", 
+              "readPoints",
+              "bizLocations",
+              "dispositions",
+              "bizSteps"
+            ]
+          }
+        application/xml:
           schema:
             $ref: '#/components/schemas/TopLevelResourceCollection'
           example: {
@@ -2608,6 +2683,26 @@ components:
                       - epcisException:SubscriptionControlsException
                       - epcisException:ValidationException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+        application/xml:
+          schema:
+            example:
+              type: "epcisException:SubscriptionControlsException"
+              title: "Subscription error"
+              status: 400
+            allOf:
+              - properties:
+                  status:
+                    type: integer
+                    enum:
+                      - 400
+                    default: 400
+                  type:
+                    type: string
+                    format: uri
+                    enum:
+                      - epcisException:SubscriptionControlsException
+                      - epcisException:ValidationException
+              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
     400QueryIssues:
       description: Query exceptions defined in EPCIS.
       content:
@@ -2654,6 +2749,25 @@ components:
                     enum:
                       - epcisException:SecurityException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+        application/problem+xml:
+          schema:
+            example:
+              type: "epcisException:SecurityException"
+              title: "Unauthorised request"
+              status: 401
+            allOf:
+              - properties:
+                  status:
+                    type: integer
+                    enum:
+                      - 401
+                    default: 401
+                  type:
+                    type: string
+                    format: uri
+                    enum:
+                      - epcisException:SecurityException
+              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
     403ClientUnauthorized:
       description: Client is unauthorized to access this resource.
       content:
@@ -2676,10 +2790,48 @@ components:
                     enum:
                       - epcisException:SecurityException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+        application/problem+xml:
+          schema:
+            example:
+              type: "epcisException:SecurityException"
+              title: "Access to resource forbidden"
+              status: 403
+            allOf:
+              - properties:
+                  status:
+                    type: integer
+                    enum:
+                      - 403
+                    default: 403
+                  type:
+                    type: string
+                    format: uri
+                    enum:
+                      - epcisException:SecurityException
+              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
     404ResourceNotFound:
-      description: The resource was not found. For example, the EPCIS event does not exist or the query does not exist.
+      description: At least one resource was not found. For example, the EPCIS event does not exist or the query does not exist.
       content:
         application/problem+json:
+          schema:
+            example:
+              type: "epcisException:NoSuchResourceException"
+              title: "Resource not found"
+              status: 404
+            allOf:
+              - properties:
+                  status:
+                    type: integer
+                    enum:
+                      - 404
+                    default: 404
+                  type:
+                    type: string
+                    format: uri
+                    enum:
+                      - epcisException:NoSuchNameException
+              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+        application/problem+xml:
           schema:
             example:
               type: "epcisException:NoSuchNameException"
@@ -2727,10 +2879,49 @@ components:
                     enum:
                       - epcisException:CaptureLimitExceededException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+        application/problem+xml:
+          schema:
+            example:
+              type: "epcisException:CaptureLimitExceededException"
+              title: "Capture Payload too large"
+              status: 413
+            allOf:
+              - properties:
+                  status:
+                    type: integer
+                    enum:
+                      - 413
+                    default: 413
+                  type:
+                    type: string
+                    format: uri
+                    enum:
+                      - epcisException:CaptureLimitExceededException
+              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
     413QueryScopeOrSize:
       description: Query result is too large.
       content:
         application/problem+json:
+          schema:
+            example:
+              type: "epcisException:QueryTooComplexException"
+              title: "Capture Payload too large"
+              status: 413
+            allOf:
+              - properties:
+                  status:
+                    type: integer
+                    enum:
+                      - 413
+                    default: 413
+                  type:
+                    type: string
+                    format: uri
+                    enum:
+                      - epcisException:QueryTooLargeException
+                      - epcisException:QueryTooComplexException
+              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+        application/problem+xml:
           schema:
             example:
               type: "epcisException:QueryTooComplexException"
@@ -2772,6 +2963,25 @@ components:
                     enum:
                       - epcisException:URITooLongException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+        application/problem+xml:
+          schema:
+            example:
+              type: "epcisException:URITooLongException"
+              title: "URI Too Long"
+              status: 414
+            allOf:
+              - properties:
+                  status:
+                    type: integer
+                    enum:
+                      - 414
+                    default: 414
+                  type:
+                    type: string
+                    format: uri
+                    enum:
+                      - epcisException:URITooLongException
+              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
     406NotAcceptable:
       description: |
         The server cannot return the response as requested. 
@@ -2795,11 +3005,91 @@ components:
                     enum:
                       - epcisException:NotAcceptableException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+        application/problem+xml:
+          schema:
+            example:
+              type: "epcisException:NotAcceptableException"
+              title: "Conflicting request and response headers"
+              status: 406
+            allOf:
+              - properties:
+                  status:
+                    type: integer
+                    enum:
+                      - 406
+                    default: 406
+                  type:
+                    type: string
+                    format: uri
+                    enum:
+                      - epcisException:NotAcceptableException
+              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+    409ResourceAlreadyExistsException:
+      description: |
+        A resource with the provided identifier already exists. E.g., a named query or an event.
+      content:
+        application/problem+json:
+          schema:
+            example:
+              type: "epcisException:ResourceAlreadyExistsException"
+              title: "A resource with the provided identifier already exists."
+              status: 409
+            allOf:
+              - properties:
+                  status:
+                    type: integer
+                    enum:
+                      - 406
+                    default: 406
+                  type:
+                    type: string
+                    format: uri
+                    enum:
+                      - epcisException:ResourceAlreadyExistsException
+              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+        application/problem+xml:
+          schema:
+            example:
+              type: "epcisException:ResourceAlreadyExistsException"
+              title: "A resource with the provided identifier already exists."
+              status: 409
+            allOf:
+              - properties:
+                  status:
+                    type: integer
+                    enum:
+                      - 406
+                    default: 406
+                  type:
+                    type: string
+                    format: uri
+                    enum:
+                      - epcisException:ResourceAlreadyExistsException
+              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'              
     415UnsupportedMediaType:
       description: |
         The client sent data in a format that is not supported by the server.
       content:
         application/problem+json:
+          schema:
+            example:
+              type: "epcisException:UnsupportedMediaTypeException"
+              title: "Unsupported Media Type"
+              status: 415
+            allOf:
+              - properties:
+                  status:
+                    type: integer
+                    enum:
+                      - 415
+                    default: 415
+                  type:
+                    type: string
+                    format: uri
+                    enum:
+                      - epcisException:UnsupportedMediaTypeException
+              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+        application/problem+xml:
           schema:
             example:
               type: "epcisException:UnsupportedMediaTypeException"
@@ -2840,6 +3130,25 @@ components:
                     enum:
                       - epcisException:ImplementationException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
+        application/problem+xml:
+          schema:
+            example:
+              type: "epcisException:ImplementationException"
+              title: "A server-side error occurred"
+              status: 500
+            allOf:
+              - properties:
+                  status:
+                    type: integer
+                    enum:
+                      - 500
+                    default: 500
+                  type:
+                    type: string
+                    format: uri
+                    enum:
+                      - epcisException:ImplementationException
+              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
     501NotImplemented:
       description: Functionality not supported by server.
       content:
@@ -2862,7 +3171,25 @@ components:
                     enum:
                       - epcisException:ImplementationException
               - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
-
+        application/problem+xml:
+          schema:
+            example:
+              type: "epcisException:ImplementationException"
+              title: "Functionality not supported by server"
+              status: 501
+            allOf:
+              - properties:
+                  status:
+                    type: integer
+                    enum:
+                      - 501
+                    default: 501
+                  type:
+                    type: string
+                    format: uri
+                    enum:
+                      - epcisException:ImplementationException
+              - $ref: '#/components/schemas/RFC7807ProblemResponseBody'
   schemas:
     LDContext:
       description: JSON-LD @context. 
@@ -2877,10 +3204,10 @@ components:
           format: uri
         - type: object
     Location:
-      description: Location header of a resource.
+      description: Location header of a resource as a relative or absolute URL. 
       type: string
-      format: uri
-      example: /eventTypes/ObjectEvent/events/eventId123
+      minLength: 1
+      example: /events/urn:uuid:831c0292-4de1-430a-8255-2aca821abaab
     RFC7807ProblemResponseBody:
       description: A response as specified in [RFC 7807](https://tools.ietf.org/html/rfc7807).
       type: object
@@ -2900,6 +3227,11 @@ components:
         instance:
           type: string
           format: uri
+      xml:
+        name: "EPCISException"
+        prefix: "epcis"
+        namespace: "urn:epcglobal:epcis:xsd:2"
+        
 
     QueryDefinition:
       example:
@@ -2951,234 +3283,17 @@ components:
       description: Unique query name.
       type: string
       example: myQuery
-    SingleEvent:
+    EPCISEvent: 
       description: |
-        A single EPCIS event. The full schema is specified in the JSON-Schema documentation.
-      type: object
-      required:
-        - 'type'
-      properties:
-        '@context':
-          type: array
-          items:
-            anyOf:
-              - type: string
-                format: uri
-              - type: object
-        'type':
-          type: string
-          example: ObjectEvent
-      externalDocs:
-        description: |
-          A SingleEvent that must be validated with the external JSON Schema.
-        url: ../JSON/EPCIS-JSON-Schema.json
-      example:
-        {
-          "@context": "https://gs1.github.io/EPCIS/epcis-context.jsonld",
-          "type": "ObjectEvent",
-          "action": "OBSERVE",
-          "bizStep": "inspecting",
-          "eventTime": "2021-05-05T15:00:00.000+01:00",
-          "eventTimeZoneOffset": "+01:00",
-          "readPoint": {
-            "id": "urn:epc:id:sgln:4012345.00005.0"
-          },
-          "epcList": [
-              "urn:epc:id:sgtin:4012345.011111.9876"
-          ],
-          "sensorElementList": [
-            {
-              "sensorMetadata": {
-                "time": "2019-04-02T14:05:00.000+01:00",
-                "deviceID": "urn:epc:id:giai:4000001.111",
-                "deviceMetadata": "https://id.gs1.org/8004/4000001111",
-                "rawData": "https://example.org/8004/401234599999"
-              },
-              "sensorReport": [
-                {
-                  "type": "gs1:Temperature",
-                  "value": 26.0,
-                  "uom": "CEL"
-                },
-                {
-                  "type": "gs1:AbsoluteHumidity",
-                  "value": 12.1,
-                  "uom": "A93"
-                },
-                {
-                  "type": "gs1:Speed",
-                  "value": 160.0,
-                  "uom": "KMH"
-                },
-                {
-                  "type": "gs1:Illuminance",
-                  "value": 800.0,
-                  "uom": "LUX"
-                }
-              ]
-            },
-            {
-              "sensorMetadata": {
-                "time": "2019-04-02T14:35:00.000+01:00",
-                "deviceID": "urn:epc:id:giai:4000001.111",
-                "deviceMetadata": "https://id.gs1.org/8004/4000001111",
-                "rawData": "https://example.org/8004/401234599999"
-              },
-              "sensorReport": [
-                {
-                  "type": "gs1:Temperature",
-                  "value": 26.1,
-                  "uom": "CEL"
-                },
-                {
-                  "type": "gs1:AbsoluteHumidity",
-                  "value": 12.2,
-                  "uom": "A93"
-                },
-                {
-                  "type": "gs1:Speed",
-                  "value": 161.0,
-                  "uom": "KMH"
-                },
-                {
-                  "type": "gs1:Illuminance",
-                  "value": 801.0,
-                  "uom": "LUX"
-                }
-              ]
-            },
-            {
-              "sensorMetadata": {
-                "time": "2019-04-02T14:55:00.000+01:00",
-                "deviceID": "urn:epc:id:giai:4000001.111",
-                "deviceMetadata": "https://id.gs1.org/8004/4000001111",
-                "rawData": "https://example.org/8004/401234599999"
-              },
-              "sensorReport": [
-                {
-                  "type": "gs1:Temperature",
-                  "value": 26.2,
-                  "uom": "CEL"
-                },
-                {
-                  "type": "gs1:AbsoluteHumidity",
-                  "value": 12.2,
-                  "uom": "A93"
-                },
-                {
-                  "type": "gs1:Speed",
-                  "value": 162.0,
-                  "uom": "KMH"
-                },
-                {
-                  "type": "gs1:Illuminance",
-                  "value": 802.0,
-                  "uom": "LUX"
-                }
-              ]
-            }
-          ]
-        }
-    EPCISDocument:
-      description: A collection of EPCIS resources.
-      type: object
-      required:
-        - '@context'
-        - schemaVersion
-        - creationDate
-        - 'type'
-        - epcisBody
-      properties:
-        '@context':
-          type: array
-          items:
-            anyOf:
-              - type: string
-                format: uri
-              - type: object
-        'type':
-          type: string
-          enum: 
-            - EPCISDocument
-          example: EPCISDocument
-        schemaVersion:
-          type: number
-        creationDate:
-          type: string
-          format: date-time
-        format:
-          type: string
-          example: "application/ld+json"
-        epcisBody:
-          type: object
-          properties:
-            eventList:
-              type: array
-              uniqueItems: true
-              items:
-                type: object
-          required:
-            - eventList
-        epcisHeader:
-          type: object
-          properties:
-            epcisMasterData:
-              type: object
-              properties:
-                vocabularyList:
-                  type: array
-                  uniqueItems: true
-                  items:
-                    type: object
-
-      example:
-        {
-          "@context": [
-              "https://gs1.github.io/EPCIS/epcis-context.jsonld",
-              { "example": "http://ns.example.com/epcis/" } ],
-          "type": "EPCISDocument",
-          "schemaVersion": 2.0,
-          "creationDate": "2021-07-11T11:30:47.0Z",
-          "epcisBody": {
-            "eventList": [
-              {
-                "eventID": "_:event1",
-                "type": "ObjectEvent",
-                "action": "OBSERVE",
-                "bizStep": "shipping",
-                "disposition": "in_transit",
-                "epcList": [ "urn:epc:id:sgtin:0614141.107346.2017","urn:epc:id:sgtin:0614141.107346.2018" ],
-                "eventTime": "2022-01-08T20:33:31.116-06:00",
-                "eventTimeZoneOffset": "-06:00",
-                "readPoint": { "id": "urn:epc:id:sgln:0614141.07346.1234" },
-                "bizTransactionList": [
-                  { "type": "po", "bizTransaction": "http://transaction.acme.com/po/12345678" } ]
-              },
-              {
-                "eventID": "_:event2",
-                "type": "ObjectEvent",
-                "action": "OBSERVE",
-                "bizStep": "receiving",
-                "disposition": "in_progress",
-                "epcList": [ "urn:epc:id:sgtin:0614141.107346.2018" ],
-                "eventTime": "2022-01-08T20:33:32.116-06:00",
-                "eventTimeZoneOffset": "-06:00",
-                "readPoint": { "id": "urn:epc:id:sgln:0012345.11111.400" },
-                "bizLocation": { "id": "urn:epc:id:sgln:0012345.11111.0" },
-                "bizTransactionList": [
-                  { "type": "po", "bizTransaction": "http://transaction.acme.com/po/12345678" },
-                  { "type": "desadv", "bizTransaction": "urn:epcglobal:cbv:bt:0614141073467:1152" }
-                ],
-                "example:myField": "Example of a vendor/user extension"
-              }
-            ]
-          }
-        }
-      externalDocs:
-        description: |
-          An EPCIS document that must be validated with the [JSON schema](../JSON/EPCIS-JSON-Schema.json) or
-          [SHACL file](../JSON/EPCIS-SHACL.ttl).
-        url: ../JSON/EPCIS-SHACL.ttl
+        EPCIS Event. It must validate against the normative 
+        <a href="../EPCIS-JSON-Schema.json">EPCIS JSON Schema</a> or <a href="../Ontology/EPCIS-SHACL.ttl">EPCIS SHACL</a>. 
+      oneOf:
+        - $ref: 'https://gs1.github.io/EPCIS/REST%20Bindings/JSON-Schema-Stub.json#/definitions/ObjectEvent'
+        - $ref: 'https://gs1.github.io/EPCIS/REST%20Bindings/JSON-Schema-Stub.json#/definitions/AggregationEvent'
+        - $ref: 'https://gs1.github.io/EPCIS/REST%20Bindings/JSON-Schema-Stub.json#/definitions/TransactionEvent'
+        - $ref: 'https://gs1.github.io/EPCIS/REST%20Bindings/JSON-Schema-Stub.json#/definitions/TransformationEvent'
+        - $ref: 'https://gs1.github.io/EPCIS/REST%20Bindings/JSON-Schema-Stub.json#/definitions/AssociationEvent'
+        - $ref: 'https://gs1.github.io/EPCIS/REST%20Bindings/JSON-Schema-Stub.json#/definitions/Extended-Event'
     CaptureJob:
       description: |
         When EPCIS events are added through the capture interface, the capture process can run asynchronously. If the payload
@@ -3227,11 +3342,15 @@ components:
               example: id9261379075
               description: A unique value identifying a capture job generated by the server.
               type: string
+              xml:
+                attribute: true
             running:
               description: |
                 If the job is still running, the state is `true`, otherwise `false`.
               type: boolean
               example: true
+              xml:
+                attribute: true
             success:
               description: |
                 If `success` is `false`, there was at least one error. Otherwise, `success` is `true`.
@@ -3241,6 +3360,8 @@ components:
                 if `success` is `false`.
               type: boolean
               example: false
+              xml:
+                attribute: true
             createdAt:
               description: "When the capture job started"
               example: "2022-01-21T17:32:28Z"
@@ -3276,144 +3397,24 @@ components:
                   example: ''
                   type: string
                   format: uri
-    EPCISQueryDocument:
+      xml:
+        name: "EPCISCaptureJob"
+        prefix: "epcis"
+        namespace: "urn:epcglobal:epcis:xsd:2"
+    
+    EPCISXMLQueryDocument:
       description: A collection of EPCIS resources.
       type: object
-      required:
-        - '@context'
-        - 'type'
-        - epcisBody
-      properties:
-        '@context':
-          type: array
-          items:
-            uniqueItems: true
-            anyOf:
-              - type: string
-                format: uri
-              - type: object
-        'type':
-          type: string
-          enum: 
-            - EPCISQueryDocument
-          example: EPCISQueryDocument
-        schemaVersion:
-          type: string
-          pattern: ^\d+(\.\d+)?$
-          example: "2.0"
-        creationDate:
-          type: string
-          format: date-time
-        epcisBody:
-          type: object
-          properties:
-            queryResults:
-              type: object
-              properties:
-                queryName:
-                  $ref: '#/components/schemas/QueryName'
-                subscriptionID:
-                  $ref: '#/components/schemas/subscriptionID'
-                resultsBody:
-                  type: object
-                  required:
-                    - eventList
-                  properties:
-                    eventList:
-                      type: array
-                      items:
-                        type: object
-        epcisHeader:
-          type: object 
-          properties:
-            epcisMasterData:
-              type: object
-              properties:
-                vocabularyList:
-                  type: array
-                  uniqueItems: true
-                  items:
-                    type: object
+      xml:
+        name: "EPCISQueryDocument"
+        prefix: "epcis"
+        namespace: "urn:epcglobal:epcis-query:xsd:2"
 
-      example:
-              {
-        "@context": [
-          "https://gs1.github.io/EPCIS/epcis-context.jsonld",
-          {
-            "example": "http://ns.example.com/epcis/"
-          }
-        ],
-        "id": "_:document1",
-        "type": "EPCISQueryDocument",
-        "schemaVersion": "2.0",
-        "creationDate": "2005-07-11T11:30:47.0Z",
-        "epcisBody": {
-          "queryResults": {
-            "subscriptionID": "32d2aec1-a6d2-46d9-900a-24124288cce1",
-            "queryName": "SimpleEventQuery",
-            "resultsBody": {
-              "eventList": [
-                {
-                  "eventID": "ni:///sha-256;df7bb3c352fef055578554f09f5e2aa41782150ced7bd0b8af24dd3ccb30ba69?ver=CBV2.0",
-                  "type": "ObjectEvent",
-                  "action": "OBSERVE",
-                  "bizStep": "shipping",
-                  "disposition": "in_transit",
-                  "epcList": [
-                    "urn:epc:id:sgtin:0614141.107346.2017",
-                    "urn:epc:id:sgtin:0614141.107346.2018"
-                  ],
-                  "eventTime": "2005-04-03T20:33:31.116000-06:00",
-                  "eventTimeZoneOffset": "-06:00",
-                  "readPoint": {
-                    "id": "urn:epc:id:sgln:0614141.07346.1234"
-                  },
-                  "bizTransactionList": [
-                    {
-                      "type": "po",
-                      "bizTransaction": "http://transaction.acme.com/po/12345678"
-                    }
-                  ]
-                },
-                {
-                  "eventID": "cc979570-74a3-4dc7-8f3e-2e747d6d31ec",
-                  "type": "ObjectEvent",
-                  "action": "OBSERVE",
-                  "bizStep": "receiving",
-                  "disposition": "in_progress",
-                  "epcList": [
-                    "urn:epc:id:sgtin:0614141.107346.2018"
-                  ],
-                  "eventTime": "2005-04-04T20:33:31.116-06:00",
-                  "eventTimeZoneOffset": "-06:00",
-                  "readPoint": {
-                    "id": "urn:epc:id:sgln:0012345.11111.400"
-                  },
-                  "bizLocation": {
-                    "id": "urn:epc:id:sgln:0012345.11111.0"
-                  },
-                  "bizTransactionList": [
-                    {
-                      "type": "po",
-                      "bizTransaction": "http://transaction.acme.com/po/12345678"
-                    },
-                    {
-                      "type": "desadv",
-                      "bizTransaction": "urn:epcglobal:cbv:bt:0614141073467:1152"
-                    }
-                  ],
-                  "example:myField": "Example of a vendor/user extension"
-                }
-              ]
-            }
-          }
-        }
-      }
       externalDocs:
         description: |
-          An EPCIS document that must be validated with the [JSON schema](../JSON/EPCIS-JSON-Schema.json) or
-          [SHACL file](../JSON/EPCIS-SHACL.ttl).
-        url: ../JSON/EPCIS-SHACL.ttl
+          An EPCIS document that must be validated with the [XML Schema](../XSD/EPCglobal-epcis-query-2_0.xsd)
+        url: ../XSD/EPCglobal-epcis-query-2_0.xsd
+
     Link:
       description: |
         A pagination header link. This header works together with the `perPage` and `nextPageToken` query string
@@ -3422,7 +3423,7 @@ components:
       format: uri
       example: 
         '<https://example.com/epcis/events?perPage=30&nextPageToken=3A15506738749783AU6D7DENAKwM2gQRRwGrataeq>; rel="next"'
-        
+
     PerPage:
       description: |
         This parameter helps to control the amount of data returned to the client through pagination.
@@ -3701,7 +3702,7 @@ components:
             format: uri
           uniqueItems: true
     ResourceCollection:
-      description: A collection of sub-resources that includes at least the `events` one. 
+      description: A collection of sub-resources that includes at least the `events` one (for HATEOAS discovery).
       type: object
       required:
         - '@context'
@@ -3726,7 +3727,7 @@ components:
     AbstractQuerySubscription:
       example: {
         "dest": "https://client.example.com/queryCallback",
-        "secret": "0435ojtojt02"
+        "signatureToken": "13df38d8275b13f05704629e5f1cf3d45d6132d5"
       }
       type: object
       description: |
@@ -3738,8 +3739,8 @@ components:
       properties:
         dest:
           $ref: '#/components/schemas/dest'
-        secret:
-          example: '0435ojtojt02'
+        signatureToken:
+          example: '13df38d8275b13f05704629e5f1cf3d45d6132d5'
           type: string
           description: Secret generated by the client for the server.
         initialRecordTime:
@@ -3750,7 +3751,8 @@ components:
         "dest": "https://client.example.com/queryCallback",
         "subscriptionID" : "df5a33e3-5aa3-4403-ae01-99b83234e27b",
         "stream": true,
-        "createdAt": "2017-08-21T17:32:28Z"
+        "createdAt": "2017-08-21T17:32:28Z",
+        "lastNotifiedAt": "2022-01-08T06:51:21.889Z"
       }
       type: object
       description: |
@@ -3765,9 +3767,14 @@ components:
         subscriptionID:
           $ref: '#/components/schemas/subscriptionID'
         createdAt:
-          example: "2017-08-21T17:32:28Z"
+          example: "2022-02-27T17:32:28Z"
           type: string
           format: date-time
+        lastNotifiedAt:
+          example: "2022-07-09T17:32:28Z"
+          type: string
+          format: date-time
+          description: The last time the target client was notified and responded with a 200 OK.   
         initialRecordTime:
           $ref: '#/components/schemas/GS1-Query-InitialRecordTime'
         minRecordTime:
@@ -3786,7 +3793,7 @@ components:
         POST /queries/MyQuery/subscriptions
         {
           "dest": "https://client.example.com/queryCallback",
-          "secret": "0435ojtojt02",
+          "signatureToken": "13df38d8275b13f05704629e5f1cf3d45d6132d5",
           "stream": true
         }
         ```
@@ -3811,7 +3818,7 @@ components:
         POST /queries/MyQuery/subscriptions
         {
           "dest": "https://client.example.com/queryCallback",
-          "secret": "0435ojtojt02",
+          "signatureToken": "13df38d8275b13f05704629e5f1cf3d45d6132d5",
           "reportIfEmpty": true,
           "schedule": {
             "hour":"1",
@@ -3841,6 +3848,12 @@ components:
               $ref: '#/components/schemas/GS1-Query-Month'
             dayOfWeek:
               $ref: '#/components/schemas/GS1-Query-DayOfWeek'
+    GS1-Signature:
+      description: |
+        Used to sign events sent by the repository to subscribers. The choice of signature type is implementation specific but examples would be using HMAC with SHA-256 directly or a wrapper supporting various symmetric or asymetric 
+        cryptographic algorithms such as Json Web Signature (JWS). 
+      type: string
+      example: "eyJpc3MiOiJqb2UiLA0KICJleHAiOjEzMDA4MTkzODAsDQogImh0dHA6Ly9leGFtcGxlLmNvbS9pc19yb290Ijp0cnVlfQ"
     GS1-Query-InitialRecordTime:
       description: |
         Used to specify a time to constrain what resources are considered when processing a query
@@ -3915,7 +3928,7 @@ components:
     # describe header schema
     version:
       type: string
-      pattern: ^\d+(\.\d+)?$
+      pattern: ^\d+(\.\d+)*$
       
     GS1-EPCIS-Version:
       allOf: 
@@ -4093,6 +4106,13 @@ components:
       required: false
       schema:
         $ref: '#/components/schemas/Connection'
+    GS1-Signature:
+      in: header
+      name: GS1-Signature
+      description: Header containing the signature of events sent by the respository to a subscriber.
+      required: false
+      schema:
+        $ref: '#/components/schemas/GS1-Signature'
     GS1-Query-Second:
       in: query
       name: second

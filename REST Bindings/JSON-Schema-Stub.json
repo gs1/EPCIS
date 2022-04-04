@@ -1,0 +1,33 @@
+{
+    "$id": "https://gs1.github.io/EPCIS/JSON-Schema-Stub.json",
+    "$comment": "A stub of JSON Schema definitions for the validation of the REST API YAML specification. The final definitions will be injected from the actual EPCIS JSON Schema",
+    "definitions": {
+        "epcisQueryDocument": {
+            "type": "object"
+        },
+        "epcisDocument": {
+            "type": "object"
+        },
+        "ObjectEvent": {
+            "type": "object"
+        },
+        "AssociationEvent": {
+            "type": "object"
+        },
+        "TransformationEvent": {
+            "type": "object"
+        },
+        "TransactionEvent": {
+            "type": "object"
+        },
+        "AggregationEvent": {
+            "type": "object"
+        },
+        "EPCIS-Document-Event": {
+            "type": "object"
+        },
+        "Extended-Event": {
+            "type": "object"
+        }
+    }
+}

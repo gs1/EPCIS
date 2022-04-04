@@ -58,9 +58,9 @@
 					<example2:userMasterData>
 						<example2:sizeCode>B-2</example2:sizeCode>
 					</example2:userMasterData>
-				</ilmd>  
+				</ilmd>                
                 <extension>
-                    <extension>
+                    <example:extension>
                         <moreExtensions>
                             <futureExtension>
                                 <tag1>1</tag1>
@@ -68,8 +68,8 @@
                                 <tag3>3</tag3>
                             </futureExtension>
                         </moreExtensions>
-                    </extension>
-                </extension>              
+                    </example:extension>
+                </extension>
 				<example:internalData>
 					<example:machine>urn:epc:id:giai:4012345.ABC</example:machine>
 					<example:procedure>A-1</example:procedure>
