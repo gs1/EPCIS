@@ -242,7 +242,20 @@
             "required": [
                 "sensorReport"
             ],
-            "additionalProperties": false
+            "propertyNames": {
+                "anyOf": [
+                    {
+                        "$ref": "definitions-JSON-Schema.json#/definitions/vocab-uri"
+                    },
+                    {
+                        "type": "string",
+                        "enum": [
+                            "sensorMetadata",
+                            "sensorReport"
+                        ]
+                    }
+                ]
+            }
         },
         "sensorReportList": {
             "type": "array",
@@ -327,7 +340,41 @@
             "required": [
                 "type"
             ],
-            "additionalProperties": false
+            "propertyNames": {
+                "anyOf": [
+                    {
+                        "$ref": "definitions-JSON-Schema.json#/definitions/vocab-uri"
+                    },
+                    {
+                        "type": "string",
+                        "enum": [
+                            "type",
+                            "exception",
+                            "deviceID",
+                            "deviceMetadata",
+                            "rawData",
+                            "dataProcessingMethod",
+                            "time",
+                            "microorganism",
+                            "chemicalSubstance",
+                            "coordinateReferenceSystem",
+                            "value",
+                            "component",
+                            "stringValue",
+                            "booleanValue",
+                            "hexBinaryValue",
+                            "uriValue",
+                            "minValue",
+                            "maxValue",
+                            "meanValue",
+                            "sDev",
+                            "percRank",
+                            "percValue",
+                            "uom"
+                        ]
+                    }
+                ]
+            }
         },
         "sensorMetadata": {
             "type": "object",
@@ -356,6 +403,26 @@
                 "bizRules": {
                     "$ref": "#/definitions/uri"
                 }
+            },
+            "propertyNames": {
+                "anyOf": [
+                    {
+                        "$ref": "definitions-JSON-Schema.json#/definitions/vocab-uri"
+                    },
+                    {
+                        "type": "string",
+                        "enum": [
+                            "time",
+                            "deviceID",
+                            "deviceMetadata",
+                            "rawData",
+                            "startTime",
+                            "endTime",
+                            "dataProcessingMethod",
+                            "bizRules"
+                        ]
+                    }
+                ]
             }
         },
         "ilmd": {
