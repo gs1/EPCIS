@@ -32,6 +32,16 @@
                     "type": "string",
                     "format": "uri"
         },
+        "vocab-other-uri": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "^(?!(urn:epcglobal:cbv|https?:\\/\\/ns\\.gs1\\.org\/cbv\\/))"
+        },
+        "vocab-nonGS1WebVoc-uri": {
+                    "type": "string",
+                    "format": "uri",
+                    "pattern": "^(?!(https?:\\/\\/gs1\\.org\\/voc\\/|https?:\\/\\/www\\.gs1\\.org\\/voc\\/))"
+        },
         "required-ld-context": {
             "type": "object",
             "required": ["@context"]

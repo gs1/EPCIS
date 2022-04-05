@@ -942,7 +942,7 @@
     "disposition": {
       "anyOf": [
         {
-          "$ref": "#/definitions/vocab-uri"
+          "$ref": "#/definitions/vocab-other-uri"
         },
         {
           "type": "string",
@@ -1014,6 +1014,16 @@
       "type": "string",
       "format": "uri"
     },
+    "vocab-other-uri": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^(?!(urn:epcglobal:cbv|https?:\\/\\/ns\\.gs1\\.org/cbv\\/))"
+    },
+    "vocab-nonGS1WebVoc-uri": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^(?!(https?:\\/\\/gs1\\.org\\/voc\\/|https?:\\/\\/www\\.gs1\\.org\\/voc\\/))"
+    },
     "required-ld-context": {
       "type": "object",
       "required": [
@@ -1031,7 +1041,7 @@
     "error-reason": {
       "anyOf": [
         {
-          "$ref": "#/definitions/vocab-uri"
+          "$ref": "#/definitions/vocab-other-uri"
         },
         {
           "type": "string",
@@ -1045,7 +1055,7 @@
     "bizTransaction-type": {
       "anyOf": [
         {
-          "$ref": "#/definitions/vocab-uri"
+          "$ref": "#/definitions/vocab-other-uri"
         },
         {
           "type": "string",
@@ -1070,7 +1080,7 @@
     "source-dest-type": {
       "anyOf": [
         {
-          "$ref": "#/definitions/vocab-uri"
+          "$ref": "#/definitions/vocab-other-uri"
         },
         {
           "type": "string",
@@ -1085,7 +1095,7 @@
     "measurementType": {
       "anyOf": [
         {
-          "$ref": "#/definitions/vocab-uri"
+          "$ref": "#/definitions/vocab-nonGS1WebVoc-uri"
         },
         {
           "type": "string",
@@ -1169,7 +1179,7 @@
     "sensorAlertType": {
       "anyOf": [
         {
-          "$ref": "#/definitions/vocab-uri"
+          "$ref": "#/definitions/vocab-nonGS1WebVoc-uri"
         },
         {
           "type": "string",
@@ -1183,7 +1193,7 @@
     "component": {
       "anyOf": [
         {
-          "$ref": "#/definitions/vocab-uri"
+          "$ref": "#/definitions/vocab-other-uri"
         },
         {
           "type": "string",
@@ -1516,7 +1526,7 @@
     "bizStep": {
       "anyOf": [
         {
-          "$ref": "#/definitions/vocab-uri"
+          "$ref": "#/definitions/vocab-other-uri"
         },
         {
           "type": "string",
