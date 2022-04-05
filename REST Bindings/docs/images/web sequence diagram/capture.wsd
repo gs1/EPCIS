@@ -2,4 +2,8 @@ title Example Content and EPCIS version negotiation
 
 Client->Server: OPTIONS * HTTP/1.1
 Server-->Client: HTTP/1.1 204 No Content
-note over Server, Client:\nResponse Header\nAccess-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS\nAccess-Control-Allow-Origin: *\nAccept: application/ld+json  application/soap+xml\nAccess-Control-Expose-Headers: Link, Location, X-Result-Count, X-Calculation-Date\nAccess-Control-Allow-Headers: Content-Type, Accept, X-EPCIS-version, X-EPCIS-min, \n X-EPCIS-max, X-CBV-version, X-EPCIS-extensions, X-CBV-extensions\nX-Vendor-version: generic EPCIS server\nX-EPCIS-min: 2.0\nX-EPCIS-max: 2.0\nX-CBV-version: 1.2.2\nAllow: OPTIONS\nContent-length: 0\nDate: Thu, 13 Jun 2019 14:50:02 GMT\nClient->Server: GET /events/urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6 HTTP/1.1
+note over Server, Client
+\nResponse Header
+\nAccess-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS\nAccess-Control-Allow-Origin: *\nAccept: application/ld+json  application/soap+xml\nAccess-Control-Expose-Headers: Link, Location, Result-Count, Calculation-Date\nAccess-Control-Allow-Headers: Content-Type, Accept, GS1-EPCIS-Version, GS1-EPCIS-Min, \n GS1-EPCIS-Max, GS1-CBV-Version, GS1-Extensions\nGS1-Vendor-Version: example-version-1.0\nGS1-EPCIS-Min: 2.0\nGS1-EPCIS-Max: 2.0\nGS1-CBV-Version: 2.0\nAllow: OPTIONS\nContent-length: 0\nDate: Thu, 13 Jun 2019 14:50:02 GMT\n
+end note
+Client->Server: GET /events/urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6 HTTP/1.1
