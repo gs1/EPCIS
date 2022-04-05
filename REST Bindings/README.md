@@ -4,7 +4,7 @@ This folder contains the work in progress for the EPCIS 2.0 REST interface. The 
 
 Additionally two JSON schema files are available to describe the [EPCIS Query Language](query-schema.json) and the [EPCIS Query Schedule syntax](query-schedule.json).
 
-The [openapi.yaml](openapi.yaml) file is the one that can be edited. Conversely, the [openapi.json](openapi.json) file is generated automatically (from `openapi.yaml`and the EPCIS JSON Schema) through the [Schema Injector tool)(./schema-injector).
+The [openapi.yaml](openapi.yaml) file is the one that can be edited. Conversely, the [openapi.json](openapi.json) file is generated automatically (from `openapi.yaml`and the EPCIS JSON Schema) through the [Schema Injector tool](./schema-injector).
 
 ## Validating the OpenAPI specification for EPCIS 2.0
 
