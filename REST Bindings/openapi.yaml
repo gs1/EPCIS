@@ -3863,8 +3863,9 @@ components:
     GS1-Query-Min-Record-Time:
       example: "2020-04-04T20:33:31.116-06:00"
       description: |
-       In the context of an outstanding query subscription, it is used to inform about the maximum record time 
-       of the last batch of events delivered to the client.
+       In the context of an active query subscription, its value is set initially to 
+       `initialRecordTime` and then updated to the most recent execution timestamp 
+       for the standing query.
       type: string
       format: date-time
     GS1-Query-ReportIfEmpty:
