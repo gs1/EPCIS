@@ -5543,7 +5543,7 @@
       },
       "GS1-Query-Min-Record-Time": {
         "example": "2020-04-04T20:33:31.116-06:00",
-        "description": "Used to specify the smallest possible record time for EPCIS events in an outstanding query subscription.\n",
+        "description": "In the context of an active query subscription, its value is set initially to \n`initialRecordTime` and then updated to the most recent execution timestamp \nfor the standing query.\n",
         "type": "string",
         "format": "date-time"
       },
