@@ -6000,7 +6000,8 @@
                 "minItems": 1,
                 "uniqueItems": true
               }
-            }
+            },
+            "additionalProperties": false
           },
           {
             "anyOf": [
@@ -6173,8 +6174,7 @@
         },
         "required": [
           "sensorReport"
-        ],
-        "additionalProperties": false
+        ]
       },
       "sensorReportList": {
         "type": "array",
@@ -6202,6 +6202,9 @@
             "$ref": "#/components/schemas/uri"
           },
           "dataProcessingMethod": {
+            "$ref": "#/components/schemas/uri"
+          },
+          "bizRules": {
             "$ref": "#/components/schemas/uri"
           },
           "time": {
@@ -6258,8 +6261,7 @@
         },
         "required": [
           "type"
-        ],
-        "additionalProperties": false
+        ]
       },
       "sensorMetadata": {
         "type": "object",
@@ -6365,7 +6367,7 @@
       "disposition": {
         "anyOf": [
           {
-            "$ref": "#/components/schemas/vocab-uri"
+            "$ref": "#/components/schemas/vocab-other-uri"
           },
           {
             "type": "string",
@@ -6411,6 +6413,16 @@
         "type": "string",
         "format": "uri"
       },
+      "vocab-other-uri": {
+        "type": "string",
+        "format": "uri",
+        "pattern": "^(?!(urn:epcglobal:cbv|https?:\\/\\/ns\\.gs1\\.org/cbv\\/))"
+      },
+      "vocab-nonGS1WebVoc-uri": {
+        "type": "string",
+        "format": "uri",
+        "pattern": "^(?!(https?:\\/\\/gs1\\.org\\/voc\\/|https?:\\/\\/www\\.gs1\\.org\\/voc\\/))"
+      },
       "required-ld-context": {
         "type": "object",
         "required": [
@@ -6424,7 +6436,7 @@
       "error-reason": {
         "anyOf": [
           {
-            "$ref": "#/components/schemas/vocab-uri"
+            "$ref": "#/components/schemas/vocab-other-uri"
           },
           {
             "type": "string",
@@ -6438,7 +6450,7 @@
       "bizTransaction-type": {
         "anyOf": [
           {
-            "$ref": "#/components/schemas/vocab-uri"
+            "$ref": "#/components/schemas/vocab-other-uri"
           },
           {
             "type": "string",
@@ -6463,7 +6475,7 @@
       "source-dest-type": {
         "anyOf": [
           {
-            "$ref": "#/components/schemas/vocab-uri"
+            "$ref": "#/components/schemas/vocab-other-uri"
           },
           {
             "type": "string",
@@ -6478,7 +6490,7 @@
       "measurementType": {
         "anyOf": [
           {
-            "$ref": "#/components/schemas/vocab-uri"
+            "$ref": "#/components/schemas/vocab-nonGS1WebVoc-uri"
           },
           {
             "type": "string",
@@ -6562,7 +6574,7 @@
       "sensorAlertType": {
         "anyOf": [
           {
-            "$ref": "#/components/schemas/vocab-uri"
+            "$ref": "#/components/schemas/vocab-nonGS1WebVoc-uri"
           },
           {
             "type": "string",
@@ -6576,7 +6588,7 @@
       "component": {
         "anyOf": [
           {
-            "$ref": "#/components/schemas/vocab-uri"
+            "$ref": "#/components/schemas/vocab-other-uri"
           },
           {
             "type": "string",
@@ -6776,7 +6788,7 @@
       "bizStep": {
         "anyOf": [
           {
-            "$ref": "#/components/schemas/vocab-uri"
+            "$ref": "#/components/schemas/vocab-other-uri"
           },
           {
             "type": "string",
