@@ -1587,7 +1587,17 @@
     "bizStep": {
       "anyOf": [
         {
-          "$ref": "#/definitions/vocab-uri"
+          "allOf": [
+            {
+              "$ref": "#/definitions/vocab-uri"
+            },
+            {
+              "type": "string",
+              "not": {
+                "pattern": "^(https:\\/\\/ns\\.gs1\\.org\\/cbv\\/BizStep-|urn:epcglobal:cbv:bizstep)"
+              }
+            }
+          ]
         },
         {
           "type": "string",

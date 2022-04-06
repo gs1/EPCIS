@@ -5,7 +5,17 @@
         "bizStep": {
             "anyOf": [
                 {
-                    "$ref": "definitions-JSON-Schema.json#/definitions/vocab-uri"
+                    "allOf": [
+                        {
+                            "$ref": "definitions-JSON-Schema.json#/definitions/vocab-uri"
+                        },
+                        {
+                            "type": "string",
+                            "not": {
+                                "pattern": "^(https:\\/\\/ns\\.gs1\\.org\\/cbv\\/BizStep-|urn:epcglobal:cbv:bizstep)"
+                            }
+                        }
+                    ]
                 },
                 {
                     "type": "string",
