@@ -6499,7 +6499,7 @@
               "AbsorbedDose",
               "AbsorbedDoseRate",
               "Acceleration",
-              "Activity",
+              "Radioactivity",
               "Altitude",
               "AmountOfSubstance",
               "AmountOfSubstancePerUnitVolume",

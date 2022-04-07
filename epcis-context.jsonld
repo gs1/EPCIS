@@ -390,7 +390,7 @@
                 "AbsorbedDose": "gs1:AbsorbedDose",
                 "AbsorbedDoseRate": "gs1:AbsorbedDoseRate",
                 "Acceleration": "gs1:Acceleration",
-                "Activity": "gs1:Activity",
+                "Radioactivity": "gs1:Radioactivity",
                 "Altitude": "gs1:Altitude",
                 "AmountOfSubstance": "gs1:AmountOfSubstance",
                 "AmountOfSubstancePerUnitVolume": "gs1:AmountOfSubstancePerUnitVolume",
