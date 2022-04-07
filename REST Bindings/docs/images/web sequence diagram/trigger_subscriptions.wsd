@@ -1,38 +1,40 @@
 title Query Subscriptions
-Client->Server: POST /queries/query1/subscriptions?trigger=query1&query2
+Client->Server: POST /queries/query1/subscriptions
 note over Client,Server: 
 Request Body
 {
-	eventUrl:https://client/onEvent
-	errorUrl:https://client/onError
+	{
+  "dest": "https://client.example.com/queryCallback",
+  "signatureToken": "13df38d8275b13f05704629e5f1cf3d45d6132d5",
+  "reportIfEmpty": true,
+  "schedule": {
+    "hour":"1",
+    "minute": "5"
+  }
 }
 end note
 alt: Subscription successful
-Server-->Client: 201 Created \n Location:https://server/queries/query1/subscriptions/42
-else: Trigger query too long
-Server-->Client: 414 QueryTooComplexException
+Server-->Client: 201 Created \n Location:https://example.com/queries/query1/subscriptions/42
 else: Query does not exist
-Server-->Client: 404 NoSuchNameException
+Server-->Client: 404 NoSuchResourceException
 else: Other EPCIS Exceptions
-Server-->Client: 400 ...
+Server-->Client: 40X ...
 end
 Server->+Server: onEvent
-Server->+Client: POST /onEvent
+Server->+Client: POST to https://client.example.com/queryCallback
 note over Server, Client:
 {
-    "@context": "https://www.gs1.org/docs/epc/epcis_2_0_draft_schema_20200713/EPCIS-2.0-context.jsonld",
-    "type": "EPCISDocument",
-    "creationDate": "2019-07-11T11:30:47+00:00",
-    "schemaVersion": 1.2,
+    "@context": ...
+    "type": "EPCISQueryDocument",
+    "creationDate": "2022-07-11T11:30:47+00:00",
+    "schemaVersion": 2.0,
       "epcisBody": {
-      "eventList": [
-        {
-          "eventID": "urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6",
-          ...}]}}
+      "queryResults": {....
+        
 end note
 Client-->-Server: 200 success
 Server-->-Server:
 Server->+Server: onError
-Server->+Client: POST /onError \n An EPCIS error
+Server->+Client: POST https://client.example.com/queryCallback \n An EPCIS error
 Client-->Server: 200 success
-Server-->-Server:
+Server-->-Server: onEvent ...
