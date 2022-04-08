@@ -15,5 +15,5 @@ note over Client, Server:
 }
 end note
 s-->c: \n Location: https://www.example.com/queries/myQuery \n Link: '<https://example.com/queries/myQuery/events?perPage=30&nextPageToken=3A..eq>; rel="next"' \n EPCISQueryDocument(Many EPCIS Events)
-c->s: GET https://example.com/queries/myQuery/events?perPage=30&nextPageToken=3A...eq
-s-->c: \n Link: '<https://example.com/queries/myQuery/events?perPage=30&nextPageToken=3A...eq>; rel="next"' \n EPCISQueryDocument(Many EPCIS Events)
+c->s: GET https://example.com/queries/myQuery/events?perPage=30&nextPageToken=3B...ee
+s-->c: \n Link: '<https://example.com/queries/myQuery/events?perPage=30&nextPageToken=3E...2q>; rel="next"' \n EPCISQueryDocument(Many EPCIS Events)
