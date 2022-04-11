@@ -11,6 +11,11 @@
         "type": "AssociationEvent",
         "eventTime": "2019-11-01T13:00:00.000Z",
         "eventTimeZoneOffset": "+01:00",
+        "errorDeclaration": {
+          "declarationTime":"2019-11-07T14:00:00.000+01:00",
+          "reason":"incorrect_data",
+          "correctiveEventIDs":["ni:///sha-256;fec9667280c4710a3fa9558b7bc8ddc2ced0dc442d87f82becae24bb6ca6a46f?ver=CBV2.0"]},
+        },
         "parentID": "urn:epc:id:grai:4012345.55555.987",
         "childEPCs": [
           "urn:epc:id:giai:4000001.12345",

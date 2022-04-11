@@ -11,6 +11,11 @@
         "type": "ObjectEvent",
         "eventTime": "2005-04-05T02:33:31.116Z",
         "eventTimeZoneOffset": "-06:00",
+        "errorDeclaration": {
+          "declarationTime":"2006-11-07T14:00:00.000+01:00",
+          "reason":"incorrect_data",
+          "correctiveEventIDs":["ni:///sha-256;fec9667280c4710a3fa9558b7bc8ddc2ced0dc442d87f82becae24bb6ca6a46f?ver=CBV2.0"]},
+        },
         "epcList": [
           "urn:epc:id:sgtin:0614141.107346.2018"
         ],
