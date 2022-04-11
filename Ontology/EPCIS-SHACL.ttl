@@ -773,11 +773,11 @@ epcis:QuantityShape
     a sh:PropertyShape ;
     sh:path epcis:quantity ;
     sh:name "quantity" ;
-    sh:minCount 1 ;
+    sh:minCount 0 ;
     sh:maxCount 1 ;
     sh:datatype xsd:decimal ;
     sh:not [ sh:hasValue "NaN"^^xsd:decimal ; ];
-    sh:message "Within a QuantityElement, quantity is mandatory and must be an xsd:decimal with only one value" ;
+    sh:message "Within a QuantityElement, quantity is optional and must be an xsd:decimal with only one value" ;
 .
 
 epcis:UOMShape 

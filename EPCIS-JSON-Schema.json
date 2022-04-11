@@ -660,8 +660,7 @@
         }
       },
       "required": [
-        "epcClass",
-        "quantity"
+        "epcClass"
       ],
       "additionalProperties": false
     },
