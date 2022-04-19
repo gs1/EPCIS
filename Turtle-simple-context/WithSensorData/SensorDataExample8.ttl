@@ -35,8 +35,8 @@
         epcis:sensorElementList    [ epcis:sensorReport  [ epcis:measurementType  examp:someSensorProperty ;
                                                            epcis:stringValue      "someSensorOutput"
                                                          ] ;
-                                     epcis:sensorReport  [ epcis:bizRules              <https://example.org/gdti/4012345000054987> ;
-                                                           epcis:dataProcessingMethod  <https://example.com/gdti/4012345000054987> ;
+                                     epcis:sensorReport  [ epcis:bizRules              <https://example.org/253/4012345000054987> ;
+                                                           epcis:dataProcessingMethod  <https://example.com/253/4012345000054987> ;
                                                            epcis:deviceID              <urn:epc:id:giai:4000001.111> ;
                                                            epcis:deviceMetadata        <https://id.gs1.org/8004/4000001111> ;
                                                            epcis:measurementType       gs1:Temperature ;
@@ -45,8 +45,8 @@
                                                            epcis:uom                   "CEL"
                                                          ]
                                    ] ;
-        epcis:sensorElementList    [ epcis:sensorMetadata  [ epcis:bizRules              <https://example.org/gdti/4012345000054987> ;
-                                                             epcis:dataProcessingMethod  <https://example.com/gdti/4012345000054987> ;
+        epcis:sensorElementList    [ epcis:sensorMetadata  [ epcis:bizRules              <https://example.org/253/4012345000054987> ;
+                                                             epcis:dataProcessingMethod  <https://example.com/253/4012345000054987> ;
                                                              epcis:deviceID              <urn:epc:id:giai:4000001.111> ;
                                                              epcis:deviceMetadata        <https://id.gs1.org/8004/4000001111> ;
                                                              epcis:rawData               <https://example.org/8004/401234599999> ;

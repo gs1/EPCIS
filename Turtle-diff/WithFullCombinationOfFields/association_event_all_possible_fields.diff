@@ -67,8 +67,8 @@
 -                                                                                               epcis:type                  gs1:Temperature ;
 +                                                                                               epcis:time                   "2019-07-19T13:00:00.000Z"^^xsd:dateTime ;
 @@ -130 +131 @@
--                                                                                               epcis:uriValue              "https://id.gs1.org/giai/4000001111"^^xsd:anyURI ;
-+                                                                                               epcis:uriValue               <https://id.gs1.org/giai/4000001111> ;
+-                                                                                               epcis:uriValue              "https://id.gs1.org/8004/4000001111"^^xsd:anyURI ;
++                                                                                               epcis:uriValue               <https://id.gs1.org/8004/4000001111> ;
 @@ -134 +135 @@
 -                                        epcis:sourceList             [ epcis:source                   <urn:epc:id:sgln:4012345.00225.0> ;
 +                                        epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:sgln:4012345.00225.0> ;

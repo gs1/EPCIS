@@ -707,8 +707,8 @@
 -                                                                                               epcis:type                  gs1:Temperature ;
 +                                                                                               epcis:time                   "2019-07-19T13:00:00.000Z"^^xsd:dateTime ;
 @@ -130 +131 @@
--                                                                                               epcis:uriValue              "https://id.gs1.org/giai/4000001111"^^xsd:anyURI ;
-+                                                                                               epcis:uriValue               <https://id.gs1.org/giai/4000001111> ;
+-                                                                                               epcis:uriValue              "https://id.gs1.org/8004/4000001111"^^xsd:anyURI ;
++                                                                                               epcis:uriValue               <https://id.gs1.org/8004/4000001111> ;
 @@ -134 +135 @@
 -                                        epcis:sourceList             [ epcis:source                   <urn:epc:id:sgln:4012345.00225.0> ;
 +                                        epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:sgln:4012345.00225.0> ;
@@ -793,8 +793,8 @@
 -                                                                                               epcis:type                  gs1:Temperature ;
 +                                                                                               epcis:time                   "2019-07-19T13:00:00.000Z"^^xsd:dateTime ;
 @@ -130 +131 @@
--                                                                                               epcis:uriValue              "https://id.gs1.org/giai/4000001111"^^xsd:anyURI ;
-+                                                                                               epcis:uriValue               <https://id.gs1.org/giai/4000001111> ;
+-                                                                                               epcis:uriValue              "https://id.gs1.org/8004/4000001111"^^xsd:anyURI ;
++                                                                                               epcis:uriValue               <https://id.gs1.org/8004/4000001111> ;
 @@ -134,4 +135 @@
 -                                        epcis:sourceList             [ epcis:source                   <urn:epc:id:pgln:4012345.00225> ;
 -                                                                       epcis:sourceOrDestinationType  cbv:SDT-possessing_party
@@ -874,8 +874,8 @@
 -                                                                                               epcis:type                  gs1:Temperature ;
 +                                                                                               epcis:time                   "2019-07-19T13:00:00.000Z"^^xsd:dateTime ;
 @@ -127 +128 @@
--                                                                                               epcis:uriValue              "https://id.gs1.org/giai/4000001111"^^xsd:anyURI ;
-+                                                                                               epcis:uriValue               <https://id.gs1.org/giai/4000001111> ;
+-                                                                                               epcis:uriValue              "https://id.gs1.org/8004/4000001111"^^xsd:anyURI ;
++                                                                                               epcis:uriValue               <https://id.gs1.org/8004/4000001111> ;
 @@ -131 +132 @@
 -                                        epcis:sourceList             [ epcis:source                   <urn:epc:id:pgln:4012345.00225> ;
 +                                        epcis:sourceList             [ epcis:sourceOrDestination      <urn:epc:id:pgln:4012345.00225> ;
@@ -974,8 +974,8 @@
 -                                                                                               epcis:type                  gs1:Temperature ;
 +                                                                                               epcis:time                   "2019-07-19T13:00:00.000Z"^^xsd:dateTime ;
 @@ -153 +154 @@
--                                                                                               epcis:uriValue              "https://id.gs1.org/giai/4000001111"^^xsd:anyURI ;
-+                                                                                               epcis:uriValue               <https://id.gs1.org/giai/4000001111> ;
+-                                                                                               epcis:uriValue              "https://id.gs1.org/8004/4000001111"^^xsd:anyURI ;
++                                                                                               epcis:uriValue               <https://id.gs1.org/8004/4000001111> ;
 @@ -157,4 +158 @@
 -                                        epcis:sourceList             [ epcis:source                   <urn:epc:id:sgln:4012345.00225.0> ;
 -                                                                       epcis:sourceOrDestinationType  cbv:SDT-location
@@ -1093,8 +1093,8 @@
 -                                                                                               epcis:type                  gs1:Temperature ;
 +                                                                                               epcis:time                   "2019-07-19T13:00:00.000Z"^^xsd:dateTime ;
 @@ -169 +170 @@
--                                                                                               epcis:uriValue              "https://id.gs1.org/giai/4000001111"^^xsd:anyURI ;
-+                                                                                               epcis:uriValue               <https://id.gs1.org/giai/4000001111> ;
+-                                                                                               epcis:uriValue              "https://id.gs1.org/8004/4000001111"^^xsd:anyURI ;
++                                                                                               epcis:uriValue               <https://id.gs1.org/8004/4000001111> ;
 @@ -173,2 +174,2 @@
 -                                        epcis:sourceList             [ epcis:source                   <urn:epc:id:pgln:4012345.00225> ;
 -                                                                       epcis:sourceOrDestinationType  cbv:SDT-owning_party
@@ -1130,9 +1130,9 @@
 +        epcis:sensorElementList    [ epcis:sensorReport  [ epcis:measurementType  examp:someSensorProperty ;
 +                                                           epcis:stringValue      "someSensorOutput"
 @@ -44 +44,2 @@
--                                     epcis:sensorReport  [ epcis:dataProcessingMethod  <https://example.com/gdti/4012345000054987> ;
-+                                     epcis:sensorReport  [ epcis:bizRules              <https://example.org/gdti/4012345000054987> ;
-+                                                           epcis:dataProcessingMethod  <https://example.com/gdti/4012345000054987> ;
+-                                     epcis:sensorReport  [ epcis:dataProcessingMethod  <https://example.com/253/4012345000054987> ;
++                                     epcis:sensorReport  [ epcis:bizRules              <https://example.org/253/4012345000054987> ;
++                                                           epcis:dataProcessingMethod  <https://example.com/253/4012345000054987> ;
 @@ -46,0 +48 @@
 +                                                           epcis:measurementType       gs1:Temperature ;
 @@ -48,2 +50 @@

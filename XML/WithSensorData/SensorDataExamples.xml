@@ -60,7 +60,7 @@
 				</readPoint>
 				<sensorElementList>
 					<sensorElement>
-						<sensorMetadata startTime="2019-04-02T13:55:01.000+01:00" endTime="2019-04-02T14:55:00.000+01:00" deviceID="urn:epc:id:giai:4000001.111" deviceMetadata="https://id.gs1.org/8004/4000001111" rawData="https://example.org/8004/401234599999" bizRules="https://example.com/gdti/4012345000054987" />
+						<sensorMetadata startTime="2019-04-02T13:55:01.000+01:00" endTime="2019-04-02T14:55:00.000+01:00" deviceID="urn:epc:id:giai:4000001.111" deviceMetadata="https://id.gs1.org/8004/4000001111" rawData="https://example.org/8004/401234599999" bizRules="https://example.com/253/4012345000054987" />
 						<sensorReport type="gs1:Temperature" minValue="26.0" maxValue="26.2" uom="CEL" meanValue="26.1" sDev="0.1" />
 						<sensorReport type="gs1:AbsoluteHumidity" minValue="12.1" maxValue="12.2" uom="A93" />
 						<sensorReport type="gs1:Speed" minValue="160.0" maxValue="162.0" uom="KMH" />
@@ -204,7 +204,7 @@
 				</childQuantityList>
 				<sensorElementList>
 					<sensorElement>
-						<sensorMetadata time="2019-07-19T14:00:00.000+01:00" deviceID="urn:epc:id:giai:4000001.111" deviceMetadata="https://id.gs1.org/8004/4000001111" rawData="https://example.org/8004/401234599999" dataProcessingMethod="https://example.com/gdti/4012345000054987" bizRules="https://example.org/gdti/4012345000054987" />
+						<sensorMetadata time="2019-07-19T14:00:00.000+01:00" deviceID="urn:epc:id:giai:4000001.111" deviceMetadata="https://id.gs1.org/8004/4000001111" rawData="https://example.org/8004/401234599999" dataProcessingMethod="https://example.com/253/4012345000054987" bizRules="https://example.org/253/4012345000054987" />
 						<sensorReport type="gs1:AbsoluteHumidity" value="12.1" uom="A93" />
 						<sensorReport type="gs1:Molar_concentration" chemicalSubstance="https://identifiers.org/inchikey:CZMRCDWAGMRECN-UGDNZRGBSA-N" value="0.18" uom="C35" />
 						<sensorReport type="gs1:Molar_concentration" microorganism="https://www.ncbi.nlm.nih.gov/taxonomy/1126011" value="0.05" uom="C35" />
@@ -219,7 +219,7 @@
 						</example:furtherSensorData>
 					</sensorElement>
 					<sensorElement>
-						<sensorReport type="gs1:Temperature" uom="CEL" time="2019-07-19T14:00:00.000+01:00" deviceID="urn:epc:id:giai:4000001.111" deviceMetadata="https://id.gs1.org/8004/4000001111" rawData="https://example.org/8004/401234599999" dataProcessingMethod="https://example.com/gdti/4012345000054987" bizRules="https://example.org/gdti/4012345000054987" />
+						<sensorReport type="gs1:Temperature" uom="CEL" time="2019-07-19T14:00:00.000+01:00" deviceID="urn:epc:id:giai:4000001.111" deviceMetadata="https://id.gs1.org/8004/4000001111" rawData="https://example.org/8004/401234599999" dataProcessingMethod="https://example.com/253/4012345000054987" bizRules="https://example.org/253/4012345000054987" />
 						<sensorReport type="example:someSensorProperty" stringValue="someSensorOutput" />
 					</sensorElement>
 				</sensorElementList>

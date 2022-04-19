@@ -12,9 +12,9 @@
 +        epcis:sensorElementList    [ epcis:sensorReport  [ epcis:measurementType  examp:someSensorProperty ;
 +                                                           epcis:stringValue      "someSensorOutput"
 @@ -44 +44,2 @@
--                                     epcis:sensorReport  [ epcis:dataProcessingMethod  <https://example.com/gdti/4012345000054987> ;
-+                                     epcis:sensorReport  [ epcis:bizRules              <https://example.org/gdti/4012345000054987> ;
-+                                                           epcis:dataProcessingMethod  <https://example.com/gdti/4012345000054987> ;
+-                                     epcis:sensorReport  [ epcis:dataProcessingMethod  <https://example.com/253/4012345000054987> ;
++                                     epcis:sensorReport  [ epcis:bizRules              <https://example.org/253/4012345000054987> ;
++                                                           epcis:dataProcessingMethod  <https://example.com/253/4012345000054987> ;
 @@ -46,0 +48 @@
 +                                                           epcis:measurementType       gs1:Temperature ;
 @@ -48,2 +50 @@
