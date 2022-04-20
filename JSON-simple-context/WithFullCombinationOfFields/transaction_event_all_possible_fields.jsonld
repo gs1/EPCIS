@@ -73,20 +73,20 @@
             "sensorMetadata": {
               "time": "2019-04-02T13:05:00.000Z",
               "deviceID": "urn:epc:id:giai:4000001.111",
-              "deviceMetadata": "https://id.gs1.org/giai/4000001111",
-              "rawData": "https://example.org/giai/401234599999",
+              "deviceMetadata": "https://id.gs1.org/8004/4000001111",
+              "rawData": "https://example.org/8004/401234599999",
               "startTime": "2019-04-02T12:55:01.000Z",
               "endTime": "2019-04-02T13:55:00.000Z",
-              "dataProcessingMethod": "https://example.com/gdti/4012345000054987",
-              "bizRules": "https://example.com/gdti/4012345000054987",
+              "dataProcessingMethod": "https://example.com/253/4012345000054987",
+              "bizRules": "https://example.com/253/4012345000054987",
               "ext1:someFurtherMetadata": "someText"
             },
             "sensorReport": [
               {
                 "type": "gs1:Temperature",
                 "deviceID": "urn:epc:id:giai:4000001.111",
-                "rawData": "https://example.org/giai/401234599999",
-                "dataProcessingMethod": "https://example.com/gdti/4012345000054987",
+                "rawData": "https://example.org/8004/401234599999",
+                "dataProcessingMethod": "https://example.com/253/4012345000054987",
                 "time": "2019-07-19T13:00:00.000Z",
                 "microorganism": "https://www.ncbi.nlm.nih.gov/taxonomy/1126011",
                 "chemicalSubstance": "https://identifiers.org/inchikey:CZMRCDWAGMRECN-UGDNZRGBSA-N",
@@ -95,7 +95,7 @@
                 "stringValue": "SomeString",
                 "booleanValue": true,
                 "hexBinaryValue": "f0f0f0",
-                "uriValue": "https://id.gs1.org/giai/4000001111",
+                "uriValue": "https://id.gs1.org/8004/4000001111",
                 "minValue": 26,
                 "maxValue": 26.2,
                 "meanValue": 13.2,
@@ -104,7 +104,7 @@
                 "uom": "CEL",
                 "sDev": 0.1,
                 "ext1:someFurtherReportData": "someText",
-                "deviceMetadata": "https://id.gs1.org/giai/4000001111"
+                "deviceMetadata": "https://id.gs1.org/8004/4000001111"
               }
             ],
             "ext1:float": "20",

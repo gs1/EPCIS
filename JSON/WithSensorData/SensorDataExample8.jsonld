@@ -37,8 +37,8 @@
 							"deviceID": "urn:epc:id:giai:4000001.111",
 							"deviceMetadata": "https://id.gs1.org/8004/4000001111",
 							"rawData": "https://example.org/8004/401234599999",
-							"dataProcessingMethod": "https://example.com/gdti/4012345000054987",
-							"bizRules": "https://example.org/gdti/4012345000054987"
+							"dataProcessingMethod": "https://example.com/253/4012345000054987",
+							"bizRules": "https://example.org/253/4012345000054987"
 						},
 						"sensorReport": [
 							{
@@ -101,8 +101,8 @@
 								"deviceID": "urn:epc:id:giai:4000001.111",
 								"deviceMetadata": "https://id.gs1.org/8004/4000001111",
 								"rawData": "https://example.org/8004/401234599999",
-								"dataProcessingMethod": "https://example.com/gdti/4012345000054987",
-								"bizRules": "https://example.org/gdti/4012345000054987"
+								"dataProcessingMethod": "https://example.com/253/4012345000054987",
+								"bizRules": "https://example.org/253/4012345000054987"
 							},
 							{
 								"type": "example:someSensorProperty",
