@@ -1,5 +1,5 @@
-@prefix epcis:    <https://ns.gs1.org/epcis/> .
-@prefix cbv:      <https://ns.gs1.org/cbv/> .
+@prefix epcis:    <https://ref.gs1.org/epcis/> .
+@prefix cbv:      <https://ref.gs1.org/cbv/> .
 @prefix gs1:      <https://gs1.org/gdd/> .
 
 @prefix owl:      <http://www.w3.org/2002/07/owl#> .

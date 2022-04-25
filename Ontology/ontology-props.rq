@@ -1,10 +1,10 @@
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX schema: <http://schema.org/>
-PREFIX epcis: <https://ns.gs1.org/epcis/>
+PREFIX epcis: <https://ref.gs1.org/epcis/>
 PREFIX gs1: <https://gs1.org/gdd/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX cbv: <https://ns.gs1.org/cbv/>
+PREFIX cbv: <https://ref.gs1.org/cbv/>
 
 select 
   ?property

@@ -1,5 +1,5 @@
-@prefix epcis:  <https://ns.gs1.org/epcis/> .
-@prefix cbv:    <https://ns.gs1.org/cbv/> .
+@prefix epcis:  <https://ref.gs1.org/epcis/> .
+@prefix cbv:    <https://ref.gs1.org/cbv/> .
 @prefix gs1:    <https://gs1.org/voc/> .
 
 @prefix dct:    <http://purl.org/dc/terms/> .
@@ -25,7 +25,7 @@ Version 2.0 is a major release that adds JSON, JSONLD and RDF payload formats, s
   # dct:issued   "2021-06-30"^^xsd:date; # after release
   rdfs:seeAlso cbv:, gs1: ;
   owl:versionInfo "2.0";
-  vann:preferredNamespaceUri "https://ns.gs1.org/epcis/";
+  vann:preferredNamespaceUri "https://ref.gs1.org/epcis/";
   vann:preferredNamespacePrefix "epcis".
 
 <https://gs1.org/> a schema:Organization;

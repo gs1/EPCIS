@@ -1,4 +1,4 @@
-PREFIX epcis: <https://ns.gs1.org/epcis/>
+PREFIX epcis: <https://ref.gs1.org/epcis/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX schema: <http://schema.org/>

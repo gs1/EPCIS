@@ -7,8 +7,8 @@ skinparam shadowing false
 
 legend bottom right
 **Prefixes**
-epcis: <https://ns.gs1.org/epcis/>
-cbv:   <https://ns.gs1.org/cbv/>
+epcis: <https://ref.gs1.org/epcis/>
+cbv:   <https://ref.gs1.org/cbv/>
 gs1:   <https://gs1.org/voc/>
 xsd:   <http://www.w3.org/2001/XMLSchema#>
 end legend

@@ -2,7 +2,7 @@
     "@context": {
         "@protected": true,
         "@version": 1.1,
-        "cbv": "https://ns.gs1.org/cbv/",
+        "cbv": "https://ref.gs1.org/cbv/",
 
         "accepting": "cbv:BizStep-accepting",
         "arriving": "cbv:BizStep-arriving",

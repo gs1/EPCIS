@@ -1,6 +1,6 @@
 {
   "@context": {
-    "cbv": "https://ns.gs1.org/cbv/",
+    "cbv": "https://ref.gs1.org/cbv/",
     "comment": {
       "@id": "http://www.w3.org/2000/01/rdf-schema#comment",
       "@language": "en"
@@ -25,7 +25,7 @@
       "@id": "http://schema.org/domainIncludes",
       "@type": "@id"
     },
-    "epcis": "https://ns.gs1.org/epcis/",
+    "epcis": "https://ref.gs1.org/epcis/",
     "first": {
       "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#first",
       "@type": "@id"
@@ -36,10 +36,10 @@
       "@type": "@id"
     },
     "jsonldLabel": {
-      "@id": "https://ns.gs1.org/epcis/jsonldLabel"
+      "@id": "https://ref.gs1.org/epcis/jsonldLabel"
     },
     "jsonldUriLabel": {
-      "@id": "https://ns.gs1.org/epcis/jsonldUriLabel"
+      "@id": "https://ref.gs1.org/epcis/jsonldUriLabel"
     },
     "label": {
       "@id": "http://www.w3.org/2000/01/rdf-schema#label"
@@ -106,18 +106,18 @@
   },
   "@graph": [
     {
-      "@id": "https://ns.gs1.org/cbv/",
+      "@id": "https://ref.gs1.org/cbv/",
       "@type": "owl:Ontology",
       "created": "2021-06-01",
       "creator": "https://gs1.org/",
       "label": "CBV Ontology",
       "modified": "2021-09-30",
       "preferredNamespacePrefix": "cbv",
-      "preferredNamespaceUri": "https://ns.gs1.org/cbv/",
+      "preferredNamespaceUri": "https://ref.gs1.org/cbv/",
       "publisher": "https://gs1.org/",
       "rdfs:comment": "The Comprehensive Business Vocabulary defines various enumerations used by EPCIS.",
       "seeAlso": [
-        "https://ns.gs1.org/epcis/",
+        "https://ref.gs1.org/epcis/",
         "https://gs1.org/voc/"
       ],
       "versionInfo": "2.0"
@@ -135,7 +135,7 @@
         "rdfs:Class"
       ],
       "comment": "These identifiers may be used to populate the type attribute of a bizTransaction element in an EPCIS event.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "Business Transaction Type"
@@ -147,7 +147,7 @@
       "@id": "cbv:BTT-bol",
       "@type": "cbv:BTT",
       "comment": "A document issued by a carrier to a shipper, listing and acknowledging receipt of goods for transport and specifying terms of delivery.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "Bill of Lading"
@@ -159,7 +159,7 @@
       "@id": "cbv:BTT-cert",
       "@type": "cbv:BTT",
       "comment": "A document confirming certain characteristics of an object (e.g. product), person, or organisation, typically issued by a third party.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "Certificate"
@@ -171,7 +171,7 @@
       "@id": "cbv:BTT-desadv",
       "@type": "cbv:BTT",
       "comment": "A document/message by means of which the seller or consignor informs the consignee about the despatch of goods. \nAlso called an 'Advanced Shipment Notice', but the value `desadv` is always used regardless of local nomenclature.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "Despatch Advice"
@@ -183,7 +183,7 @@
       "@id": "cbv:BTT-inv",
       "@type": "cbv:BTT",
       "comment": "A document/message claiming payment for goods or services supplied under conditions agreed by the seller and buyer.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "Invoice"
@@ -195,7 +195,7 @@
       "@id": "cbv:BTT-pedigree",
       "@type": "cbv:BTT",
       "comment": "A record that traces the ownership or custody and transactions of a product as it moves among various trading partners.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "Pedigree"
@@ -207,7 +207,7 @@
       "@id": "cbv:BTT-po",
       "@type": "cbv:BTT",
       "comment": "A document/message that specifies details for goods and services ordered under conditions agreed by the seller and buyer.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "Purchase Order"
@@ -219,7 +219,7 @@
       "@id": "cbv:BTT-poc",
       "@type": "cbv:BTT",
       "comment": "A document that provides confirmation from an external supplier to the request of a purchaser to deliver a specified quantity of material, or perform a specified service, at a specified price within a specified time. \n(Sometimes internally referred to as a 'Sales Order'.)",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "Purchase Order Confirmation"
@@ -231,7 +231,7 @@
       "@id": "cbv:BTT-prodorder",
       "@type": "cbv:BTT",
       "comment": "An organisation-internal document or message issued by a producer that initiates a manufacturing process of goods.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "Production Order"
@@ -243,7 +243,7 @@
       "@id": "cbv:BTT-recadv",
       "@type": "cbv:BTT",
       "comment": "A document/message that provides the receiver of the shipment the capability to inform the shipper of actual goods received, compared to what was advised as being sent.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "Receiving Advice"
@@ -255,7 +255,7 @@
       "@id": "cbv:BTT-rma",
       "@type": "cbv:BTT",
       "comment": "A document issued by the seller that authorises a buyer to return merchandise for credit determination.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "Return Merchandise Authorisation"
@@ -267,7 +267,7 @@
       "@id": "cbv:BTT-testprd",
       "@type": "cbv:BTT",
       "comment": "A document that provides a formal specification of a sequence of instructions for the purpose of verifying one or several criteria.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "Test Procedure"
@@ -279,7 +279,7 @@
       "@id": "cbv:BTT-testres",
       "@type": "cbv:BTT",
       "comment": "A document that includes the outcome of the execution of a given test procedure.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "Test Result"
@@ -291,7 +291,7 @@
       "@id": "cbv:BTT-upevt",
       "@type": "cbv:BTT",
       "comment": "Event ID URI(s) of event(s) provided by an upstream supplier, such as packing and shipping events (e.g., as the basis for the inferred completeness of inbound aggregations).",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "Upstream EPCIS Event"
@@ -306,7 +306,7 @@
         "rdfs:Class"
       ],
       "comment": "These identifiers populate the bizStep field in an EPCIS event.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "Business Step ID"
@@ -318,7 +318,7 @@
       "@id": "cbv:BizStep-accepting",
       "@type": "cbv:BizStep",
       "comment": "Denotes a specific activity within a business process where an object changes possession and/or ownership.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "accepting"
@@ -334,7 +334,7 @@
       "@id": "cbv:BizStep-arriving",
       "@type": "cbv:BizStep",
       "comment": "Denotes a specific activity within a business process where an object arrives at a location.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "arriving"
@@ -350,7 +350,7 @@
       "@id": "cbv:BizStep-assembling",
       "@type": "cbv:BizStep",
       "comment": "Denotes an activity within a business process whereby one or more objects are combined to create a new finished product. \nIn contrast to transformation, in the output of `assembling` the original objects are still recognisable and/or the process is reversible; hence, `assembling` would be used preferably in an Association Event or, alternatively, an Aggregation Event, but not a Transformation Event.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "assembling"
@@ -366,7 +366,7 @@
       "@id": "cbv:BizStep-collecting",
       "@type": "cbv:BizStep",
       "comment": "Denotes a specific activity within a business process where an object is picked up and collected for future disposal, recycling or re-used.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "collecting"
@@ -382,7 +382,7 @@
       "@id": "cbv:BizStep-commissioning",
       "@type": "cbv:BizStep",
       "comment": "Process of associating an instance-level identifier (such as an EPC) with a specific object, or the process of associating a class-level identifier, not previously used, with one or more objects. \nA tag may have been encoded and applied in this step, or may have been previously encoded. \n`commissioning` is applied to this association of object and serialised identifier, regardless of industry/sector; it encompasses sector-specific process steps including, but not limited to: \n- catching (of fish), \n- harvesting (of fruit/vegetable), \n- picking (of fruit/vegetables), \n- producing (on an automated line), \n- slaughtering (of livestock). \nIn the case of a class-level identifier, `commissioning` differs from `creating_class_instance` in that `commissioning` always indicates that this is the first use of the class-level identifier, whereas `creating_class_instance` does not specify whether the class-level identifier has been used before.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "commissioning"
@@ -398,7 +398,7 @@
       "@id": "cbv:BizStep-consigning",
       "@type": "cbv:BizStep",
       "comment": "Indicates the overall process of `staging_outbound`, `loading`, `departing`, and `accepting`. \nIt may be used when more granular process step information is unknown or inaccessible. \nThe use of `consigning` is mutually exclusive from the use of `staging_outbound`, `loading`, `departing`, and `accepting`. \nNote: This business step is similar to `shipping`, but includes a change of possession and/or ownership at the outbound side.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "consigning"
@@ -414,7 +414,7 @@
       "@id": "cbv:BizStep-creating_class_instance",
       "@type": "cbv:BizStep",
       "comment": "Denotes a step in a business process where an instance or increased quantity of a class-level identifier is produced. \nUnlike `commissioning`, this business step may be repeated for the same class-level identifier.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "creating class instance"
@@ -430,7 +430,7 @@
       "@id": "cbv:BizStep-cycle_counting",
       "@type": "cbv:BizStep",
       "comment": "Process of counting objects within a location in order to obtain an accurate inventory for business needs other than accounting purposes (e.g., replenishment and allocation).",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "cycle counting"
@@ -446,7 +446,7 @@
       "@id": "cbv:BizStep-decommissioning",
       "@type": "cbv:BizStep",
       "comment": "Process of disassociating an instance-level identifier (such as an EPC) with an object.\nThe object may be re-commissioned at some point in the future - however only with a new instance-level identifier.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "decommissioning"
@@ -462,7 +462,7 @@
       "@id": "cbv:BizStep-departing",
       "@type": "cbv:BizStep",
       "comment": "Denotes a specific activity within a business process where an object leaves a location on its way to a destination.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "departing"
@@ -478,7 +478,7 @@
       "@id": "cbv:BizStep-destroying",
       "@type": "cbv:BizStep",
       "comment": "Process of terminating an object. \nFor an instance-level identifier, the object should not be the subject of subsequent events; subsequent events are likely indicative of error (such as a stray read of a tag inside an incinerator). \nFor a class level identifier, quantities are reduced; however, the class-level identifier may still be used in subsequent events (referring to different instances that were not destroyed).",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "destroying"
@@ -494,7 +494,7 @@
       "@id": "cbv:BizStep-disassembling",
       "@type": "cbv:BizStep",
       "comment": "Denotes a specific activity within a business process where an object is broken down into separate, uniquely identified component parts.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "disassembling"
@@ -510,7 +510,7 @@
       "@id": "cbv:BizStep-dispensing",
       "@type": "cbv:BizStep",
       "comment": "Denotes a specific activity within a business process where a product is made available in full or part to a consumer.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "dispensing"
@@ -526,7 +526,7 @@
       "@id": "cbv:BizStep-encoding",
       "@type": "cbv:BizStep",
       "comment": "Process of writing an instance-level identifier (typically an EPC) to a barcode or RFID tag, where the identifier is not yet associated with an object at this step in the process. \n Encoding SHOULD only be used in a `TransactionEvent`.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "encoding"
@@ -542,7 +542,7 @@
       "@id": "cbv:BizStep-entering_exiting",
       "@type": "cbv:BizStep",
       "comment": "Denotes a specific activity at the Entrance/Exit door of a facility where customers are either leaving with purchased product or entering with product to be returned to the facility.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "entering / exiting"
@@ -558,7 +558,7 @@
       "@id": "cbv:BizStep-holding",
       "@type": "cbv:BizStep",
       "comment": "Denotes a specific activity within a business process where an object is segregated for further review.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "holding"
@@ -574,7 +574,7 @@
       "@id": "cbv:BizStep-inspecting",
       "@type": "cbv:BizStep",
       "comment": "Process of reviewing objects to address potential physical or documentation defects. \n In contrast to *sampled* objects, *inspected* objects **remain viable** in the supply chain. \n `inspecting` is non-destructive and typically only checks the plausibility of the product packaging, security devices (e.g. holograms, watermarks, etc.) and integrity of any tamper-evident seals, whereas `sampling` is always destructive, i.e., makes the sampled product instance no longer viable for sale or onward distribution in the retail/dispensing supply chain).",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "inspecting"
@@ -590,7 +590,7 @@
       "@id": "cbv:BizStep-installing",
       "@type": "cbv:BizStep",
       "comment": "Denotes a specific activity within a business process where an object is put into a composite object (not merely a container). \nIn `installing` the composite object exists prior to this step, whereas in `assembling` the composite object is created during the step.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "installing"
@@ -606,7 +606,7 @@
       "@id": "cbv:BizStep-killing",
       "@type": "cbv:BizStep",
       "comment": "Process of terminating an RFID tag previously associated with an object. \nThe object and its instance-level identifier may continue to exist and be the subject of subsequent events (via a barcode, manual data entry, replacement tag, etc.).",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "killing"
@@ -622,7 +622,7 @@
       "@id": "cbv:BizStep-loading",
       "@type": "cbv:BizStep",
       "comment": "Denotes a specific activity within a business process where an object is loaded into shipping conveyance.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "loading"
@@ -638,7 +638,7 @@
       "@id": "cbv:BizStep-other",
       "@type": "cbv:BizStep",
       "comment": "A business step not identified by any of the values listed in the CBV.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "other"
@@ -654,7 +654,7 @@
       "@id": "cbv:BizStep-packing",
       "@type": "cbv:BizStep",
       "comment": "Denotes a specific activity within a business process that includes putting objects into a larger container - usually for shipping. \nAggregation of one unit to another typically occurs at this point.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "packing"
@@ -670,7 +670,7 @@
       "@id": "cbv:BizStep-picking",
       "@type": "cbv:BizStep",
       "comment": "Denotes a specific activity within a business process that includes the selecting of objects to fill an order.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "picking"
@@ -686,7 +686,7 @@
       "@id": "cbv:BizStep-receiving",
       "@type": "cbv:BizStep",
       "comment": "Denotes a specific activity within a business process that indicates that an object is being received at a location and is added to the receiver's inventory. \nThe use of `receiving` is mutually exclusive from the use of `arriving` and `accepting`.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "receiving"
@@ -702,7 +702,7 @@
       "@id": "cbv:BizStep-removing",
       "@type": "cbv:BizStep",
       "comment": "Denotes a specific activity within a business process where an object is taken out of a composite object. \nOpposite of `installing`.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "removing"
@@ -718,7 +718,7 @@
       "@id": "cbv:BizStep-repackaging",
       "@type": "cbv:BizStep",
       "comment": "Denotes a specific activity within a business process where an object's packaging configuration is changed.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "repackaging"
@@ -734,7 +734,7 @@
       "@id": "cbv:BizStep-repairing",
       "@type": "cbv:BizStep",
       "comment": "Denotes a specific activity within a business process where a malfunctioning product is repaired (typically by a post-sales service), without replacing it by a new one.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "repairing"
@@ -750,7 +750,7 @@
       "@id": "cbv:BizStep-replacing",
       "@type": "cbv:BizStep",
       "comment": "Denotes a specific activity within a business process where an object is substituted or exchanged for another object.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "replacing"
@@ -766,7 +766,7 @@
       "@id": "cbv:BizStep-reserving",
       "@type": "cbv:BizStep",
       "comment": "Process in which a set of instance-level identifiers, not yet commissioned, are provided for use by another party.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "reserving"
@@ -782,7 +782,7 @@
       "@id": "cbv:BizStep-retail_selling",
       "@type": "cbv:BizStep",
       "comment": "Denotes a specific activity within a business process at a point-of-sale for the purpose of transferring ownership to a customer in exchange for something of value (currency, credit, etc.).",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "retail selling"
@@ -798,7 +798,7 @@
       "@id": "cbv:BizStep-sampling",
       "@type": "cbv:BizStep",
       "comment": "Denotes a testing activity within a business process where one or more portions of an object are examined for quality testing, quality inspection, or customs clearance purposes. \nIn contrast to *inspected* objects, *sampled* objects are **no longer viable** in the supply chain. \n`inspecting` is non-destructive and typically only checks the plausibility of the product packaging, security devices (e.g. holograms, watermarks, etc.) and integrity of any tamper-evident seals, whereas `sampling` is always destructive, i.e., makes the sampled product instance no longer viable for sale or onward distribution in the retail/dispensing supply chain). \nWhen a serialised instance undergoes `sampling`, the subsequent business step SHALL be an end-of-life event (i.e., with action DELETE), to prevent the return of the sampled object (or its identifier) into the supply chain.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "sampling"
@@ -814,7 +814,7 @@
       "@id": "cbv:BizStep-sensor_reporting",
       "@type": "cbv:BizStep",
       "comment": "Denotes a specific activity within a business process where sensor data, pertaining to the physical properties and condition of an object or location, is returned. \nIf an EPCIS event accommodates sensor data in conjunction with specific business process steps (e.g. sensor observations in the context of a `commissioning`, `packing`, or `sampling`), the business step value describing the process step SHOULD be used. \n`sensor_reporting` SHOULD only be used when no other business step is in progress.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "sensor reporting"
@@ -830,7 +830,7 @@
       "@id": "cbv:BizStep-shipping",
       "@type": "cbv:BizStep",
       "comment": "Indicates the overall process of `staging_outbound`, `loading` and `departing`. \nIt may be used when more granular process step information is unknown or inaccessible. \nIt may indicate a final event from a shipping point. \nThe use of `shipping` is mutually exclusive from the use of `staging_outbound`, `departing`, or `loading`.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "shipping"
@@ -846,7 +846,7 @@
       "@id": "cbv:BizStep-staging_outbound",
       "@type": "cbv:BizStep",
       "comment": "Denotes a specific activity within a business process in which an object moves from a facility to an area where it will await transport pick-up.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "staging outbound"
@@ -862,7 +862,7 @@
       "@id": "cbv:BizStep-stock_taking",
       "@type": "cbv:BizStep",
       "comment": "Process of counting objects within a location following established rules and/or standards to serve as a basis for accounting purposes.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "stock taking"
@@ -878,7 +878,7 @@
       "@id": "cbv:BizStep-stocking",
       "@type": "cbv:BizStep",
       "comment": "Denotes a specific activity within a business process within a location to make an object available to the customer or for order fulfilment within a DC.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "stocking"
@@ -894,7 +894,7 @@
       "@id": "cbv:BizStep-storing",
       "@type": "cbv:BizStep",
       "comment": "Denotes a specific activity within a business process where an object is moved into and out of storage within a location.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "storing"
@@ -910,7 +910,7 @@
       "@id": "cbv:BizStep-transporting",
       "@type": "cbv:BizStep",
       "comment": "Process of moving an object from one location to another using a vehicle (e.g., a ship, a train, a lorry, an aircraft).",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "transporting"
@@ -926,7 +926,7 @@
       "@id": "cbv:BizStep-unloading",
       "@type": "cbv:BizStep",
       "comment": "Denotes a specific activity within a business process where an object is unloaded from a shipping conveyance.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "unloading"
@@ -942,7 +942,7 @@
       "@id": "cbv:BizStep-unpacking",
       "@type": "cbv:BizStep",
       "comment": "Denotes a specific activity within a business process that includes removing products (individuals, inners, cases, pallets) from a larger container - usually after receiving or accepting. \nDisaggregation of one unit from another typically occurs at this point.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "unpacking"
@@ -958,7 +958,7 @@
       "@id": "cbv:BizStep-void_shipping",
       "@type": "cbv:BizStep",
       "comment": "Denotes a process of declaring that one or more objects in a prior outbound process (captured in an EPCIS event having business step `shipping`, `departing`, or `consigning`) were not shipped (or departed or consigned) as previously indicated.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "void shipping"
@@ -977,7 +977,7 @@
         "rdfs:Class"
       ],
       "comment": "These identifiers populate the disposition field of an EPCIS event or the set / unset fields within the persistentDisposition field of an EPCIS event.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "Disposition ID"
@@ -993,7 +993,7 @@
       "@id": "cbv:Disp-active",
       "@type": "cbv:Disp",
       "comment": "A commissioned object has just been introduced into the supply chain.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "active"
@@ -1009,7 +1009,7 @@
       "@id": "cbv:Disp-available",
       "@type": "cbv:Disp",
       "comment": "Object has been returned to service or to the supply chain (e.g., following a successfully completed `repairing` step).",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "available"
@@ -1025,7 +1025,7 @@
       "@id": "cbv:Disp-completeness_inferred",
       "@type": "cbv:Disp",
       "comment": "Applied as `persistentDisposition` of an `AggregationEvent` or `ObjectEvent` with action `OBSERVE` to indicate the **inferred** integrity of that aggregation (without unpacking the aggregated children from the parent) on the basis of aggregation information (e.g., earlier EPCIS packing event data and/or ASN/DESADV) provided by an upstream supplier. \nInferred children SHALL be explicitly listed when captured in an `AggregationEvent`, but SHALL NOT be listed when captured in an `ObjectEvent`.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "completeness inferred"
@@ -1041,7 +1041,7 @@
       "@id": "cbv:Disp-completeness_verified",
       "@type": "cbv:Disp",
       "comment": "Applied as `disposition` of an `AggregationEvent` with action `DELETE` and business step `unpacking` to explicitly indicate the verified integrity of that aggregation when the aggregated children are unpacked from their parent. \nApplied as `persistentDisposition` of an `ObjectEvent` with business step `inspecting`, if the inspection has verified the presence of each of the aggregated children.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "completeness verified"
@@ -1057,7 +1057,7 @@
       "@id": "cbv:Disp-conformant",
       "@type": "cbv:Disp",
       "comment": "Outcome of a successful/passed inspection in an `inspecting` or `repairing` step.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "conformant"
@@ -1073,7 +1073,7 @@
       "@id": "cbv:Disp-container_closed",
       "@type": "cbv:Disp",
       "comment": "Object has been loaded onto a container, the doors have been closed and the shipment sealed.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "container closed"
@@ -1089,7 +1089,7 @@
       "@id": "cbv:Disp-container_open",
       "@type": "cbv:Disp",
       "comment": "A container's doors have been opened; or a seal of a shipment has been broken. \nThis disposition makes no indication as to whether the act of opening was authorised.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "container open"
@@ -1105,7 +1105,7 @@
       "@id": "cbv:Disp-damaged",
       "@type": "cbv:Disp",
       "comment": "Object is impaired in its usefulness and/or reduced in value due to a defect.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "damaged"
@@ -1121,7 +1121,7 @@
       "@id": "cbv:Disp-destroyed",
       "@type": "cbv:Disp",
       "comment": "Object has been fully rendered non-usable.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "destroyed"
@@ -1137,7 +1137,7 @@
       "@id": "cbv:Disp-dispensed",
       "@type": "cbv:Disp",
       "comment": "A full quantity of product is distributed to a consumer.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "dispensed"
@@ -1153,7 +1153,7 @@
       "@id": "cbv:Disp-disposed",
       "@type": "cbv:Disp",
       "comment": "Object has been returned for disposal.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "disposed"
@@ -1169,7 +1169,7 @@
       "@id": "cbv:Disp-encoded",
       "@type": "cbv:Disp",
       "comment": "An instance-level identifier has been written to a barcode or RFID tag, but not yet commissioned.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "encoded"
@@ -1185,7 +1185,7 @@
       "@id": "cbv:Disp-expired",
       "@type": "cbv:Disp",
       "comment": "Object's expiration date is in the past.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "expired"
@@ -1201,7 +1201,7 @@
       "@id": "cbv:Disp-in_progress",
       "@type": "cbv:Disp",
       "comment": "Optional disposition for object proceeding through points in the supply chain.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "in progress"
@@ -1217,7 +1217,7 @@
       "@id": "cbv:Disp-in_transit",
       "@type": "cbv:Disp",
       "comment": "Object being shipped between two trading partners.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "in transit"
@@ -1233,7 +1233,7 @@
       "@id": "cbv:Disp-inactive",
       "@type": "cbv:Disp",
       "comment": "Decommissioned object that may be reintroduced to the supply chain.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "inactive"
@@ -1249,7 +1249,7 @@
       "@id": "cbv:Disp-mismatch_class",
       "@type": "cbv:Disp",
       "comment": "Class-level identifiers do not correspond to the identifiers that were expected.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "mismatch class"
@@ -1265,7 +1265,7 @@
       "@id": "cbv:Disp-mismatch_instance",
       "@type": "cbv:Disp",
       "comment": "Instance-level identifiers do not correspond to the identifiers that were expected.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "mismatch instance"
@@ -1281,7 +1281,7 @@
       "@id": "cbv:Disp-mismatch_quantity",
       "@type": "cbv:Disp",
       "comment": "Quantity do not correspond to the quantity that was expected.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "mismatch quantity"
@@ -1297,7 +1297,7 @@
       "@id": "cbv:Disp-needs_replacement",
       "@type": "cbv:Disp",
       "comment": "Component(s) or other asset(s) must be replaced to ensure fulfilment of functional requirements.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "needs replacement"
@@ -1313,7 +1313,7 @@
       "@id": "cbv:Disp-no_pedigree_match",
       "@type": "cbv:Disp",
       "comment": "In validating the pedigree for the object, no match was found, causing the product to be quarantined for further investigation and disposition.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "no pedigree match"
@@ -1329,7 +1329,7 @@
       "@id": "cbv:Disp-non_conformant",
       "@type": "cbv:Disp",
       "comment": "Outcome of an unsuccessful/failed inspection in an `inspecting` or `repairing` step. \n(`non_conformant` is the opposite of `available`).",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "non conformant"
@@ -1345,7 +1345,7 @@
       "@id": "cbv:Disp-non_sellable_other",
       "@type": "cbv:Disp",
       "comment": "Object cannot be sold to a customer.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "non sellable other"
@@ -1361,7 +1361,7 @@
       "@id": "cbv:Disp-partially_dispensed",
       "@type": "cbv:Disp",
       "comment": "A portion of a product is distributed to a customer, while additional product is retained for subsequent distribution.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "partially dispensed"
@@ -1377,7 +1377,7 @@
       "@id": "cbv:Disp-recalled",
       "@type": "cbv:Disp",
       "comment": "Object is non-sellable because of public safety reasons.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "recalled"
@@ -1393,7 +1393,7 @@
       "@id": "cbv:Disp-reserved",
       "@type": "cbv:Disp",
       "comment": "Instance-level identifier has been allocated for a third party.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "reserved"
@@ -1409,7 +1409,7 @@
       "@id": "cbv:Disp-retail_sold",
       "@type": "cbv:Disp",
       "comment": "Product has been purchased by a customer.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "retail sold"
@@ -1425,7 +1425,7 @@
       "@id": "cbv:Disp-returned",
       "@type": "cbv:Disp",
       "comment": "Object has been sent or brought back for various reasons. \nIt may or may not be sellable.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "returned"
@@ -1441,7 +1441,7 @@
       "@id": "cbv:Disp-sellable_accessible",
       "@type": "cbv:Disp",
       "comment": "Product can be sold as is and customer can access product for purchase.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "sellable accessible"
@@ -1457,7 +1457,7 @@
       "@id": "cbv:Disp-sellable_not_accessible",
       "@type": "cbv:Disp",
       "comment": "Product can be sold as is, but customer cannot access product for purchase.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "sellable not accessible"
@@ -1473,7 +1473,7 @@
       "@id": "cbv:Disp-stolen",
       "@type": "cbv:Disp",
       "comment": "An object has been taken without permission or right.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "stolen"
@@ -1489,7 +1489,7 @@
       "@id": "cbv:Disp-unavailable",
       "@type": "cbv:Disp",
       "comment": "Object has been removed from service or from the supply chain (e.g., pending repair).",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "unavailable"
@@ -1505,7 +1505,7 @@
       "@id": "cbv:Disp-unknown",
       "@type": "cbv:Disp",
       "comment": "An object's condition is not known.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "unknown"
@@ -1524,7 +1524,7 @@
         "rdfs:Class"
       ],
       "comment": "These identifiers may be used to populate the reason attribute of an errorDeclaration element in an EPCIS event.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "Error Reason"
@@ -1536,7 +1536,7 @@
       "@id": "cbv:ER-did_not_occur",
       "@type": "cbv:ER",
       "comment": "The prior event is considered erroneous because it did not actually occur. \nThere are no corrective events. \n(In a CBV-Compliant Document, this error reason SHALL NOT be used in an error declaration that contains one or more corrective event IDs.)",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "did not occur"
@@ -1548,7 +1548,7 @@
       "@id": "cbv:ER-incorrect_data",
       "@type": "cbv:ER",
       "comment": "The prior event is considered erroneous because some or all of the data in the event are incorrect. \nSubsequent events may provide a correct indication of what actually occurred when the prior event was captured. \nThese events may be linked using the corrective event IDs in the error declaration.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "incorrect data"
@@ -1563,7 +1563,7 @@
         "rdfs:Class"
       ],
       "comment": "These identifiers may be used to populate the type attribute of a source or destination element in an EPCIS event.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "Source/Destination Type"
@@ -1575,7 +1575,7 @@
       "@id": "cbv:SDT-location",
       "@type": "cbv:SDT",
       "comment": "The source or destination identifier denotes the physical location of the originating endpoint or terminating endpoint (respectively) of the business transfer of which this EPCIS event is a part. \nWhen a source of this type is specified on an EPCIS event at the originating endpoint of a business transfer, the source identifier SHOULD be consistent with the Read Point specified in that event. \nWhen a destination of this type is specified on an EPCIS event at the terminating endpoint of a business transfer, the destination identifier SHOULD be consistent with the Read Point specified in that event.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "location"
@@ -1587,7 +1587,7 @@
       "@id": "cbv:SDT-owning_party",
       "@type": "cbv:SDT",
       "comment": "The source or destination identifier denotes the party who owns (or is intended to own) the objects at the originating endpoint or terminating endpoint (respectively) of the business transfer of which this EPCIS event is a part.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "owning party"
@@ -1599,7 +1599,7 @@
       "@id": "cbv:SDT-possessing_party",
       "@type": "cbv:SDT",
       "comment": "The source or destination identifier denotes the party who has (or is intended to have) physical possession of the objects at the originating endpoint or terminating endpoint (respectively) of the business transfer of which this EPCIS event is a part.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "possessing party"
@@ -1614,7 +1614,7 @@
         "rdfs:Class"
       ],
       "comment": "These identifiers may be used to populate the type attribute of a component element in the SensorReport of an EPCIS event.",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "Component"
@@ -1626,7 +1626,7 @@
       "@id": "cbv:Comp-x",
       "@type": "cbv:Comp",
       "comment": "Component or projection along the x axis in Cartesian coordinates (X,Y,Z)",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "x coordinate"
@@ -1638,7 +1638,7 @@
       "@id": "cbv:Comp-y",
       "@type": "cbv:Comp",
       "comment": "Component or projection along the y axis in Cartesian coordinates (X,Y,Z)",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "y coordinate"
@@ -1650,7 +1650,7 @@
       "@id": "cbv:Comp-z",
       "@type": "cbv:Comp",
       "comment": "Component or projection along the z axis in Cartesian coordinates (X,Y,Z)",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "z coordinate"
@@ -1662,7 +1662,7 @@
       "@id": "cbv:Comp-axial_distance",
       "@type": "cbv:Comp",
       "comment": "Radial distance from the cylindrical axis in a cylindrical polar coordinate system; the magnitude of the projection of the vector in the plane perpendicular to the cylindrical axis",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "axial distance"
@@ -1674,7 +1674,7 @@
       "@id": "cbv:Comp-azimuth",
       "@type": "cbv:Comp",
       "comment": "Angle measured in the XY plane, anticlockwise from the X axis (in cylindrical or spherical polar coordinate systems) to the plane containing the vector and the Z axis",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "azimuth"
@@ -1686,7 +1686,7 @@
       "@id": "cbv:Comp-height",
       "@type": "cbv:Comp",
       "comment": "Height parallel to the cylindrical axis in a cylindrical polar coordinate system, above a defined reference origin plane (typically the XY plane) ",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "height"
@@ -1698,7 +1698,7 @@
       "@id": "cbv:Comp-spherical_radius",
       "@type": "cbv:Comp",
       "comment": "Radial distance from the centre of a sphere in a spherical polar coordinate system; the magnitude of the vector",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "spherical radius"
@@ -1710,7 +1710,7 @@
       "@id": "cbv:Comp-polar_angle",
       "@type": "cbv:Comp",
       "comment": "Angle measured from the Z axis to the vector in a spherical polar coordinate system",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "polar angle"
@@ -1722,7 +1722,7 @@
       "@id": "cbv:Comp-elevation_angle",
       "@type": "cbv:Comp",
       "comment": "Angle measured from the XY plane to the vector in a spherical polar coordinate system",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "elevation angle"
@@ -1734,7 +1734,7 @@
       "@id": "cbv:Comp-easting",
       "@type": "cbv:Comp",
       "comment": "A component or projection along an east-pointing axis in a geographic Cartesian coordinate system",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "easting"
@@ -1746,7 +1746,7 @@
       "@id": "cbv:Comp-northing",
       "@type": "cbv:Comp",
       "comment": "A component or projection along a north-pointing axis in a geographic Cartesian coordinate system",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "northing"
@@ -1758,7 +1758,7 @@
       "@id": "cbv:Comp-latitude",
       "@type": "cbv:Comp",
       "comment": "The angle of elevation from the equatorial plane in a geographic coordinate system",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "latitude"
@@ -1770,7 +1770,7 @@
       "@id": "cbv:Comp-longitude",
       "@type": "cbv:Comp",
       "comment": "The angle (measured within the equatorial plane) to the east of the prime meridian in a geographic coordinate system",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "longitude"
@@ -1782,7 +1782,7 @@
       "@id": "cbv:Comp-altitude",
       "@type": "cbv:Comp",
       "comment": "The height above a defined surface (such as mean sea level) in a geographic coordinate system",
-      "isDefinedBy": "https://ns.gs1.org/cbv/",
+      "isDefinedBy": "https://ref.gs1.org/cbv/",
       "label": {
         "@language": "en",
         "@value": "altitude"

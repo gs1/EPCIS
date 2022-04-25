@@ -2,9 +2,9 @@
   "@context": {
     "@protected": true,
     "@version": 1.1,
-    "@vocab" : "https://ns.gs1.org/epcis/",
-    "epcis": "https://ns.gs1.org/epcis/",
-    "cbv": "https://ns.gs1.org/cbv/",
+    "@vocab" : "https://ref.gs1.org/epcis/",
+    "epcis": "https://ref.gs1.org/epcis/",
+    "cbv": "https://ref.gs1.org/cbv/",
     "gs1": "https://gs1.org/voc/",
     "vtype": "urn:epcglobal:epcis:vtype:",
     "cbvmda": "urn:epcglobal:cbv:mda:",
@@ -24,25 +24,25 @@
     "eventTimeZoneOffset": {"@type": "xsd:string"},
 
     "action": {"@type": "xsd:string"},
-    "bizStep": {"@type":"@vocab", "@context":{"@vocab":"https://ns.gs1.org/cbv/BizStep-"}},
-    "disposition": {"@type":"@vocab", "@context":{"@vocab":"https://ns.gs1.org/cbv/Disp-"}},
+    "bizStep": {"@type":"@vocab", "@context":{"@vocab":"https://ref.gs1.org/cbv/BizStep-"}},
+    "disposition": {"@type":"@vocab", "@context":{"@vocab":"https://ref.gs1.org/cbv/Disp-"}},
     "persistentDisposition": {"@type": "@id"},
-    "set": {"@type":"@vocab", "@context":{"@vocab":"https://ns.gs1.org/cbv/Disp-"}},
-    "unset": {"@type":"@vocab", "@context":{"@vocab":"https://ns.gs1.org/cbv/Disp-"}},
+    "set": {"@type":"@vocab", "@context":{"@vocab":"https://ref.gs1.org/cbv/Disp-"}},
+    "unset": {"@type":"@vocab", "@context":{"@vocab":"https://ref.gs1.org/cbv/Disp-"}},
     "bizTransactionList": {
       "@type": "@id",
-      "@context": {"type": {"@id":"epcis:bizTransactionType", "@type":"@vocab", "@context":{"@vocab":"https://ns.gs1.org/cbv/BTT-"}}}},
+      "@context": {"type": {"@id":"epcis:bizTransactionType", "@type":"@vocab", "@context":{"@vocab":"https://ref.gs1.org/cbv/BTT-"}}}},
     "bizLocation": {"@type": "@id"},
     "readPoint": {"@type": "@id"},
     "sourceList": {
       "@type": "@id",
       "@context": {
-        "type": {"@id":"epcis:sourceOrDestinationType", "@type":"@vocab", "@context":{"@vocab":"https://ns.gs1.org/cbv/SDT-"}},
+        "type": {"@id":"epcis:sourceOrDestinationType", "@type":"@vocab", "@context":{"@vocab":"https://ref.gs1.org/cbv/SDT-"}},
         "source": {"@id":"epcis:sourceOrDestination", "@type":"@id"}}},
     "destinationList": {
       "@type": "@id",
       "@context": {
-        "type": {"@id":"epcis:sourceOrDestinationType", "@type":"@vocab", "@context":{"@vocab":"https://ns.gs1.org/cbv/SDT-"}},
+        "type": {"@id":"epcis:sourceOrDestinationType", "@type":"@vocab", "@context":{"@vocab":"https://ref.gs1.org/cbv/SDT-"}},
         "destination": {"@id":"epcis:sourceOrDestination", "@type":"@id"}}},
 
     "certificationInfo": {"@type": "@id"},
@@ -57,7 +57,7 @@
     "outputQuantityList": {"@type": "@id"},
     "childQuantityList": {"@type": "@id"},
 
-    "reason": {"@type":"@vocab", "@context":{"@vocab":"https://ns.gs1.org/cbv/ER-"}},
+    "reason": {"@type":"@vocab", "@context":{"@vocab":"https://ref.gs1.org/cbv/ER-"}},
     "errorDeclaration": {"@type": "@id"},
     "correctiveEventIDs": {"@type": "@id"},
     
@@ -87,8 +87,8 @@
     "hexBinaryValue" : {"@type": "xsd:hexBinary"},
     "uriValue" : {"@type": "@id"},
     "uom": {"@type": "xsd:string"},
-    "component": {"@type": "@vocab", "@context":{"@vocab":"https://ns.gs1.org/cbv/Comp-"}},
-    "exception": {"@type": "@vocab", "@context":{"@vocab":"https://ns.gs1.org/voc/"}},
+    "component": {"@type": "@vocab", "@context":{"@vocab":"https://ref.gs1.org/cbv/Comp-"}},
+    "exception": {"@type": "@vocab", "@context":{"@vocab":"https://ref.gs1.org/voc/"}},
     
     "type": "@type",
     "id": "@id",

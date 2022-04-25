@@ -1,7 +1,7 @@
-@prefix cbv:      <https://ns.gs1.org/cbv/> .
+@prefix cbv:      <https://ref.gs1.org/cbv/> .
 @prefix cbvmda:   <urn:epcglobal:cbv:mda:> .
 @prefix dcterms:  <http://purl.org/dc/terms/> .
-@prefix epcis:    <https://ns.gs1.org/epcis/> .
+@prefix epcis:    <https://ref.gs1.org/epcis/> .
 @prefix ex:       <http://epcis.example.com/ns/> .
 @prefix examp:    <http://ns.example.com/epcis/> .
 @prefix example:  <https://ns.example.com/epcis> .
@@ -30,10 +30,10 @@
                                         epcis:eventTimeZoneOffset  "+01:00" ;
                                         epcis:readPoint            <urn:epc:id:sgln:4012345.00005.0> ;
                                         epcis:sensorElementList    [ epcis:sensorReport  [ epcis:booleanValue     true ;
-                                                                                           epcis:exception        <https://ns.gs1.org/voc/ALARM_CONDITION> ;
+                                                                                           epcis:exception        <https://ref.gs1.org/voc/ALARM_CONDITION> ;
                                                                                            epcis:measurementType  gs1:AbsoluteHumidity
                                                                                          ] ;
-                                                                     epcis:sensorReport  [ epcis:exception        <https://ns.gs1.org/voc/ERROR_CONDITION> ;
+                                                                     epcis:sensorReport  [ epcis:exception        <https://ref.gs1.org/voc/ERROR_CONDITION> ;
                                                                                            epcis:measurementType  gs1:Temperature ;
                                                                                            epcis:uriValue         <https://example.com/ErrorCode-A827>
                                                                                          ]

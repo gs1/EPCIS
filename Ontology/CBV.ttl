@@ -1,5 +1,5 @@
-@prefix cbv:   <https://ns.gs1.org/cbv/> .
-@prefix epcis: <https://ns.gs1.org/epcis/> .
+@prefix cbv:   <https://ref.gs1.org/cbv/> .
+@prefix epcis: <https://ref.gs1.org/epcis/> .
 @prefix gs1:   <https://gs1.org/voc/> .
 
 @prefix dct:    <http://purl.org/dc/terms/> .
@@ -24,7 +24,7 @@ cbv: a owl:Ontology;
   # dct:issued   "2021-06-30"^^xsd:date; # after release
   rdfs:seeAlso epcis:, gs1: ;
   owl:versionInfo "2.0";
-  vann:preferredNamespaceUri "https://ns.gs1.org/cbv/";
+  vann:preferredNamespaceUri "https://ref.gs1.org/cbv/";
   vann:preferredNamespacePrefix "cbv".
 
 <https://gs1.org/> a schema:Organization;
