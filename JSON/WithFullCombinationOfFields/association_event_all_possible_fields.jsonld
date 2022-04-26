@@ -11,6 +11,7 @@
         "type": "AssociationEvent",
         "eventTime": "2019-11-01T13:00:00.000Z",
         "eventTimeZoneOffset": "+01:00",
+        "eventID": "ni:///sha-256;3785a2a509892681bb6695cfde36dd75aabdc5d801a028e7b17cded4e0fa320f?ver=CBV2.0",
         "certificationInfo": "epcis:certificationInfo",
         "errorDeclaration": {
           "declarationTime":"2019-11-07T14:00:00.000+01:00",
