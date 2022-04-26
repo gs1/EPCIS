@@ -12,7 +12,7 @@
         "eventTime": "2013-06-08T14:58:56.591Z",
         "eventTimeZoneOffset": "+02:00",
         "eventID":"ni:///sha-256;cd834b5a08e76778617369c29c9ecc1007508a0ae5dcf063e48b6bf05eb10097?ver=CBV2.0",
-        "certificationInfo": "epcis:certificationInfo",
+        "certificationInfo": "https://accreditation-council.example.org/certificate/ABC12345",
         "errorDeclaration": {
           "declarationTime":"2013-11-07T14:00:00.000+01:00",
           "reason":"incorrect_data",
