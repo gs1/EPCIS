@@ -11,10 +11,12 @@
         "type": "TransformationEvent",
         "eventTime": "2013-10-31T14:58:56.591Z",
         "eventTimeZoneOffset": "+02:00",
+        "eventID": "ni:///sha-256;0bf4271d60ed65fb687e95f7216c4c0a4c1181c070f657d41385b6fbd93e97ef?ver=CBV2.0",
+        "certificationInfo": "https://accreditation-council.example.org/certificate/ABC12345",
         "errorDeclaration": {
           "declarationTime":"2013-11-07T14:00:00.000+01:00",
           "reason":"incorrect_data",
-          "correctiveEventIDs":["ni:///sha-256;fec9667280c4710a3fa9558b7bc8ddc2ced0dc442d87f82becae24bb6ca6a46f?ver=CBV2.0"]},
+          "correctiveEventIDs":["ni:///sha-256;fec9667280c4710a3fa9558b7bc8ddc2ced0dc442d87f82becae24bb6ca6a46f?ver=CBV2.0"]
         },
         "inputEPCList": [
           "urn:epc:id:sgtin:4012345.011122.25",
@@ -305,6 +307,9 @@
     },
     {
       "ext1": "http://example.com/ext1/"
+    },
+    {
+      "cbvmda": "http://example.com/cbvmda/"
     }
   ]
 }
