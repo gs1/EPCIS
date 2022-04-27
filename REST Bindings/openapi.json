@@ -6088,8 +6088,7 @@
           }
         },
         "required": [
-          "epcClass",
-          "quantity"
+          "epcClass"
         ],
         "additionalProperties": false
       },
@@ -7173,7 +7172,7 @@
                             "type": "array",
                             "minItems": 1,
                             "items": {
-                              "$ref": "#/components/schemas/id"
+                              "type": "string"
                             }
                           }
                         },
@@ -7188,7 +7187,7 @@
                             "type": "array",
                             "minItems": 1,
                             "items": {
-                              "$ref": "#/components/schemas/quantityElement"
+                              "type": "object"
                             }
                           }
                         },
@@ -7207,7 +7206,7 @@
                             "type": "array",
                             "minItems": 1,
                             "items": {
-                              "$ref": "#/components/schemas/id"
+                              "type": "string"
                             }
                           }
                         },
@@ -7222,7 +7221,7 @@
                             "type": "array",
                             "minItems": 1,
                             "items": {
-                              "$ref": "#/components/schemas/quantityElement"
+                              "type": "object"
                             }
                           }
                         },
@@ -7243,7 +7242,7 @@
                         "type": "array",
                         "minItems": 1,
                         "items": {
-                          "$ref": "#/components/schemas/id"
+                          "type": "string"
                         }
                       }
                     },
@@ -7258,7 +7257,7 @@
                         "type": "array",
                         "minItems": 1,
                         "items": {
-                          "$ref": "#/components/schemas/quantityElement"
+                          "type": "object"
                         }
                       }
                     },
@@ -7273,7 +7272,7 @@
                         "type": "array",
                         "minItems": 1,
                         "items": {
-                          "$ref": "#/components/schemas/id"
+                          "type": "string"
                         }
                       }
                     },
@@ -7288,7 +7287,7 @@
                         "type": "array",
                         "minItems": 1,
                         "items": {
-                          "$ref": "#/components/schemas/quantityElement"
+                          "type": "object"
                         }
                       }
                     },
