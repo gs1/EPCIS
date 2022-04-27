@@ -2058,7 +2058,7 @@
                           "type": "array",
                           "minItems": 1,
                           "items": {
-                            "$ref": "#/definitions/id"
+                            "type": "string"
                           }
                         }
                       },
@@ -2073,7 +2073,7 @@
                           "type": "array",
                           "minItems": 1,
                           "items": {
-                            "$ref": "#/definitions/quantityElement"
+                            "type": "object"
                           }
                         }
                       },
@@ -2092,7 +2092,7 @@
                           "type": "array",
                           "minItems": 1,
                           "items": {
-                            "$ref": "#/definitions/id"
+                            "type": "string"
                           }
                         }
                       },
@@ -2107,7 +2107,7 @@
                           "type": "array",
                           "minItems": 1,
                           "items": {
-                            "$ref": "#/definitions/quantityElement"
+                            "type": "object"
                           }
                         }
                       },
@@ -2128,7 +2128,7 @@
                       "type": "array",
                       "minItems": 1,
                       "items": {
-                        "$ref": "#/definitions/id"
+                        "type": "string"
                       }
                     }
                   },
@@ -2143,7 +2143,7 @@
                       "type": "array",
                       "minItems": 1,
                       "items": {
-                        "$ref": "#/definitions/quantityElement"
+                        "type": "object"
                       }
                     }
                   },
@@ -2158,7 +2158,7 @@
                       "type": "array",
                       "minItems": 1,
                       "items": {
-                        "$ref": "#/definitions/id"
+                        "type": "string"
                       }
                     }
                   },
@@ -2173,7 +2173,7 @@
                       "type": "array",
                       "minItems": 1,
                       "items": {
-                        "$ref": "#/definitions/quantityElement"
+                        "type": "object"
                       }
                     }
                   },
