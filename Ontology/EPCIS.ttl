@@ -50,8 +50,8 @@ rdf:type epcis:jsonldLabel "type".
 epcis:jsonldUriLabel a owl:DatatypeProperty , rdf:Property ;
       rdfs:comment      """JSONLD term (alias) used for the URI of nodes of this class.
 There is no default: many EPCIS classes use blank nodes instead of the standard @id JSONLD term."""@en ;
-      rdfs:domain       rdf:Property;
-      schema:domainIncludes rdf:Property ;
+      rdfs:domain       rdfs:Class;
+      schema:domainIncludes rdfs:Class ;
       rdfs:isDefinedBy  epcis: ;
       rdfs:label        "jsonldUriLabel" ;
       rdfs:range        xsd:string ;

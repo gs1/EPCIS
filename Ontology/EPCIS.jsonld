@@ -154,8 +154,8 @@
         "rdf:Property"
       ],
       "comment": "JSONLD term (alias) used for the URI of nodes of this class.\nThere is no default: many EPCIS classes use blank nodes instead of the standard @id JSONLD term.",
-      "domain": "rdf:Property",
-      "domainIncludes": "rdf:Property",
+      "domain": "rdfs:Class",
+      "domainIncludes": "rdfs:Class",
       "isDefinedBy": "https://ref.gs1.org/epcis/",
       "label": "jsonldUriLabel",
       "range": "xsd:string",
