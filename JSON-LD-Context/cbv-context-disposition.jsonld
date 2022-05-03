@@ -1,9 +1,5 @@
 {
     "@context": {
-        "@protected": true,
-        "@version": 1.1,
-        "cbv": "https://ref.gs1.org/cbv/",
-       
         "active": "cbv:Disp-active",
         "available": "cbv:Disp-available",
         "completeness_verified": "cbv:Disp-completeness_verified",

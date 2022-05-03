@@ -1,9 +1,5 @@
 {
     "@context": {
-        "@protected": true,
-        "@version": 1.1,
-        "cbv": "https://ref.gs1.org/cbv/",
-        
         "did_not_occur":  "cbv:ER-did_not_occur",
         "incorrect_data": "cbv:ER-incorrect_data"
     }

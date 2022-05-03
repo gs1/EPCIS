@@ -3,7 +3,9 @@
         "@protected": true,
         "@version": 1.1,
         "epcis": "https://ref.gs1.org/epcis/",
+        "cbv": "https://ref.gs1.org/cbv/",
         "gs1": "https://gs1.org/voc/",
+        "cbvmda": "urn:epcglobal:cbv:mda:",
         "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
         "owl": "http://www.w3.org/2002/07/owl#",
         "xsd": "http://www.w3.org/2001/XMLSchema#",
@@ -68,8 +70,6 @@
             "@id": "epcis:sourceList",
             "@container": "@set",
             "@context": {
-                "@protected": true,
-                "epcis": "https://ref.gs1.org/epcis/",
                 "source": {
                     "@id": "epcis:sourceOrDestination",
                     "@type": "@id"
@@ -85,8 +85,6 @@
             "@id": "epcis:destinationList",
             "@container": "@set",
             "@context": {
-                "@protected": true,
-                "epcis": "https://ref.gs1.org/epcis/",
                 "destination": {
                     "@id": "epcis:sourceOrDestination",
                     "@type": "@id"
@@ -104,8 +102,6 @@
             "@context": [
                 "https://gs1.github.io/EPCIS/cbv-context-disposition.jsonld",
                 {
-                    "@protected": true,
-                    "epcis": "https://ref.gs1.org/epcis/",
                     "set": {
                         "@id": "epcis:set",
                         "@type": "@vocab",
@@ -137,12 +133,7 @@
             "@id": "epcis:bizTransactionList",
             "@container": "@set",
             "@context": {
-                "@protected": true,
-                "epcis": "https://ref.gs1.org/epcis/",
-                "bizTransaction": {
-                    "@id": "@id",
-                    "@type": "@id"
-                },
+                "bizTransaction": "@id",
                 "type": {
                     "@id": "epcis:bizTransactionType",
                     "@type": "@vocab",
@@ -185,8 +176,6 @@
             "@id": "epcis:sensorElementList",
             "@container": "@set",
             "@context": {
-                "@protected": true,
-                "epcis": "https://ref.gs1.org/epcis/",
                 "deviceID": {
                     "@id": "epcis:deviceID",
                     "@type": "@id"
@@ -211,8 +200,6 @@
                "sensorMetadata": {
                     "@id": "epcis:sensorMetadata",
                     "@context": {
-                        "@protected": true,
-                        "epcis": "https://ref.gs1.org/epcis/",
                         "startTime": {
                             "@id": "epcis:startTime",
                             "@type": "xsd:dateTimeStamp"
@@ -230,8 +217,6 @@
                 "sensorReport": {
                     "@id": "epcis:sensorReport",
                     "@context": {
-                            "@protected": true,
-                            "epcis": "https://ref.gs1.org/epcis/",
                             "type": {
                                 "@context": "https://gs1.github.io/EPCIS/gs1-context-measurement-type.jsonld",
                                 "@id": "epcis:measurementType",
@@ -311,8 +296,6 @@
         "errorDeclaration": {
             "@id": "epcis:errorDeclaration",
             "@context": {
-                "@protected": true,
-                "epcis": "https://ref.gs1.org/epcis/",
                 "reason": {
                     "@id": "epcis:reason",
                     "@type": "@vocab",
