@@ -6,10 +6,13 @@ As a result there are no inconsistencies between the JSON Schemas and the REST A
 The script takes as input the `openapi.yaml` file and injects the corresponding subordinate files producing a final `openapi.json` file.
 
 The `openapi.json` file is generated automatically and it shall never be edited manually. All changes must be made through the
-`openapi.yaml` file. The `openapi.json` file is auto-contained and can be published to any Open API 3.0.3 visualization tool.
+`openapi.yaml` file. The `openapi.json` file is self-contained and can be published to any Open API 3.0.3 visualization tool.
 
 To generate the final, single file, inlined spec you need to ensure you have installed 
-the [Node.js](https://nodejs.org/en/download/) runtime and the [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) package manager. Then on the command line just execute
+the [Node.js](https://nodejs.org/en/download/) runtime and the [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) package manager.
+You may also need to install sync-fetch using `npm install sync-fetch`.
+
+Then on the command line just execute
 
 ```
 npm install
