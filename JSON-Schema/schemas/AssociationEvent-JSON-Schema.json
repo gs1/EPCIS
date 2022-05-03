@@ -37,9 +37,6 @@
                     "disposition": {
                         "$ref": "disposition-JSON-Schema.json#/definitions/disposition"
                     },
-                    "persistentDisposition": {
-                        "$ref": "event-definitions-JSON-Schema.json#/definitions/persistentDisposition"
-                    },
                     "readPoint": {
                         "$ref": "event-definitions-JSON-Schema.json#/definitions/readPoint"
                     },

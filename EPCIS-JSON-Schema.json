@@ -1684,9 +1684,6 @@
             "disposition": {
               "$ref": "#/definitions/disposition"
             },
-            "persistentDisposition": {
-              "$ref": "#/definitions/persistentDisposition"
-            },
             "readPoint": {
               "$ref": "#/definitions/readPoint"
             },
@@ -1837,9 +1834,6 @@
             },
             "disposition": {
               "$ref": "#/definitions/disposition"
-            },
-            "persistentDisposition": {
-              "$ref": "#/definitions/persistentDisposition"
             },
             "readPoint": {
               "$ref": "#/definitions/readPoint"
@@ -2228,9 +2222,6 @@
             },
             "disposition": {
               "$ref": "#/definitions/disposition"
-            },
-            "persistentDisposition": {
-              "$ref": "#/definitions/persistentDisposition"
             },
             "readPoint": {
               "$ref": "#/definitions/readPoint"
