@@ -6875,9 +6875,6 @@
               "disposition": {
                 "$ref": "#/components/schemas/disposition"
               },
-              "persistentDisposition": {
-                "$ref": "#/components/schemas/persistentDisposition"
-              },
               "readPoint": {
                 "$ref": "#/components/schemas/readPoint"
               },
@@ -7003,9 +7000,6 @@
               },
               "disposition": {
                 "$ref": "#/components/schemas/disposition"
-              },
-              "persistentDisposition": {
-                "$ref": "#/components/schemas/persistentDisposition"
               },
               "readPoint": {
                 "$ref": "#/components/schemas/readPoint"
@@ -7342,9 +7336,6 @@
               },
               "disposition": {
                 "$ref": "#/components/schemas/disposition"
-              },
-              "persistentDisposition": {
-                "$ref": "#/components/schemas/persistentDisposition"
               },
               "readPoint": {
                 "$ref": "#/components/schemas/readPoint"
