@@ -2,6 +2,8 @@ const process = require('process');
 const fs = require('fs');
 const path = require('path');
 
+const skippedMembers = ["@protected", "@version", "cbv", "epcis", "gs1"]
+
 function loadJson (fileName) {
   return JSON.parse(fs.readFileSync(fileName, 'utf8'));
 }
@@ -39,7 +41,16 @@ function loadChildContext (url) {
   const contextURL = new URL(url);
   const fileName = path.basename(contextURL.pathname);
   const childContext = loadJson(fileName);
-  return childContext['@context'];
+
+  const childContextInner = childContext['@context'];
+  // Removing the keys we don't want to inline
+  const childKeys = Object.keys(childContextInner);
+  for (const key of childKeys) {
+    if (skippedMembers.includes(key)) {
+      delete childContextInner[key];
+    }
+  }
+  return childContextInner;
 }
 
 function main () {
