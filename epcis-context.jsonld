@@ -39,9 +39,6 @@
     },
     "bizStep": {
       "@context": {
-        "@protected": true,
-        "@version": 1.1,
-        "cbv": "https://ref.gs1.org/cbv/",
         "accepting": "cbv:BizStep-accepting",
         "arriving": "cbv:BizStep-arriving",
         "assembling": "cbv:BizStep-assembling",
@@ -89,9 +86,6 @@
     },
     "disposition": {
       "@context": {
-        "@protected": true,
-        "@version": 1.1,
-        "cbv": "https://ref.gs1.org/cbv/",
         "active": "cbv:Disp-active",
         "available": "cbv:Disp-available",
         "completeness_verified": "cbv:Disp-completeness_verified",
@@ -160,9 +154,6 @@
           "@id": "epcis:sourceOrDestinationType",
           "@type": "@vocab",
           "@context": {
-            "@protected": true,
-            "@version": 1.1,
-            "cbv": "https://ref.gs1.org/cbv/",
             "owning_party": "cbv:SDT-owning_party",
             "possessing_party": "cbv:SDT-possessing_party",
             "location": "cbv:SDT-location"
@@ -184,9 +175,6 @@
           "@id": "epcis:sourceOrDestinationType",
           "@type": "@vocab",
           "@context": {
-            "@protected": true,
-            "@version": 1.1,
-            "cbv": "https://ref.gs1.org/cbv/",
             "owning_party": "cbv:SDT-owning_party",
             "possessing_party": "cbv:SDT-possessing_party",
             "location": "cbv:SDT-location"
@@ -199,9 +187,6 @@
       "@container": "@set",
       "@context": [
         {
-          "@protected": true,
-          "@version": 1.1,
-          "cbv": "https://ref.gs1.org/cbv/",
           "active": "cbv:Disp-active",
           "available": "cbv:Disp-available",
           "completeness_verified": "cbv:Disp-completeness_verified",
@@ -279,9 +264,6 @@
           "@id": "epcis:bizTransactionType",
           "@type": "@vocab",
           "@context": {
-            "@protected": true,
-            "@version": 1.1,
-            "cbv": "https://ref.gs1.org/cbv/",
             "bol": "cbv:BTT-bol",
             "cert": "cbv:BTT-cert",
             "desadv": "cbv:BTT-desadv",
@@ -383,9 +365,6 @@
             "epcis": "https://ref.gs1.org/epcis/",
             "type": {
               "@context": {
-                "@protected": true,
-                "@version": 1.1,
-                "gs1": "https://gs1.org/voc/",
                 "AbsoluteHumidity": "gs1:AbsoluteHumidity",
                 "AbsorbedDose": "gs1:AbsorbedDose",
                 "AbsorbedDoseRate": "gs1:AbsorbedDoseRate",
@@ -464,9 +443,6 @@
             },
             "exception": {
               "@context": {
-                "@protected": true,
-                "@version": 1.1,
-                "gs1": "https://gs1.org/voc/",
                 "ALARM_CONDITION": "gs1:ALARM_CONDITION",
                 "ERROR_CONDITION": "gs1:ERROR_CONDITION"
               },
@@ -495,9 +471,6 @@
             },
             "component": {
               "@context": {
-                "@protected": true,
-                "@version": 1.1,
-                "cbv": "https://ref.gs1.org/cbv/",
                 "x": "cbv:Comp-x",
                 "y": "cbv:Comp-y",
                 "z": "cbv:Comp-z",
@@ -566,9 +539,6 @@
           "@id": "epcis:reason",
           "@type": "@vocab",
           "@context": {
-            "@protected": true,
-            "@version": 1.1,
-            "cbv": "https://ref.gs1.org/cbv/",
             "did_not_occur": "cbv:ER-did_not_occur",
             "incorrect_data": "cbv:ER-incorrect_data"
           }
