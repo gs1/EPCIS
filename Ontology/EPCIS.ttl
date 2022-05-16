@@ -154,7 +154,7 @@ epcis:ILMD  a             owl:Class , rdfs:Class ;
         sw:term_status    "stable" .
 
 epcis:MasterData a      owl:Class , rdfs:Class ;
-        rdfs:comment      "Intermediate node that is connected to EPCISDocumentHeader using masterData, and may include vocabularies using vocabularyList"@en ;
+        rdfs:comment      "Intermediate node that is connected to EPCISDocumentHeader using masterData, and may include vocabulary elements using vocabularyList"@en ;
         rdfs:isDefinedBy  epcis: ;
         rdfs:label        "MasterData" ;
         sw:term_status    "stable" .

@@ -323,7 +323,7 @@
         "owl:Class",
         "rdfs:Class"
       ],
-      "comment": "Intermediate node that is connected to EPCISDocumentHeader using masterData, and may include vocabularies using vocabularyList",
+      "comment": "Intermediate node that is connected to EPCISDocumentHeader using masterData, and may include vocabulary elements using vocabularyList",
       "isDefinedBy": "https://ref.gs1.org/epcis/",
       "label": "MasterData",
       "term_status": "stable"
