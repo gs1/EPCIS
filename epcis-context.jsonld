@@ -574,6 +574,8 @@
     "EPCISDocument": "epcis:EPCISDocument",
     "EPCISQueryDocument": "epcis:EPCISQueryDocument",
     "epcisHeader": "epcis:epcisHeader",
+    "masterData": "epcis:masterData",
+    "vocabularyList": "epcis:vocabularyList",
     "epcisBody": "epcis:epcisBody",
     "queryResults": "epcis:queryResults",
     "subscriptionID": "epcis:subscriptionID",
