@@ -929,7 +929,7 @@ epcis:vocabularyList  a   owl:ObjectProperty , rdf:Property ;
         schema:domainIncludes epcis:MasterData ;
         rdfs:isDefinedBy  epcis: ;
         rdfs:label        "vocabularyList" ;
-        rdfs:range        owl:Class ;
-        schema:rangeIncludes owl:Class ;
+        rdfs:range        owl:Thing ;
+        schema:rangeIncludes owl:Thing ;
         sw:term_status    "stable" .
 

@@ -1657,8 +1657,8 @@
       "domainIncludes": "epcis:MasterData",
       "isDefinedBy": "https://ref.gs1.org/epcis/",
       "label": "vocabularyList",
-      "range": "owl:Class",
-      "rangeIncludes": "owl:Class",
+      "range": "owl:Thing",
+      "rangeIncludes": "owl:Thing",
       "term_status": "stable"
     }
   ]
