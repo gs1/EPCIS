@@ -285,6 +285,17 @@
       "term_status": "stable"
     },
     {
+      "@id": "epcis:EPCISDocumentHeader",
+      "@type": [
+        "owl:Class",
+        "rdfs:Class"
+      ],
+      "comment": "Intermediate node that is connected to EPCISDocument using epcisHeader, and may include master data using masterData",
+      "isDefinedBy": "https://ref.gs1.org/epcis/",
+      "label": "EPCISDocumentHeader",
+      "term_status": "stable"
+    },
+    {
       "@id": "epcis:ErrorDeclaration",
       "@type": [
         "owl:Class",
@@ -304,6 +315,17 @@
       "comment": "Instance/Lot master data (ILMD) is data that describes a specific instance of a physical or digital object, or a specific batch/lot of objects that are produced in batches/lots. ILMD consists of a set of descriptive attributes that provide information about one or more specific objects or lots. It is similar to ordinary master data, which also consists of a set of descriptive attributes that provide information about objects. But whereas master data attributes have the same values for a large class of objects, (e.g., for all objects having a given GTIN), the values of ILMD attributes may be different for much smaller groupings of objects (e.g., a single batch or lot), and may be different for each object (i.e., different for each instance).",
       "isDefinedBy": "https://ref.gs1.org/epcis/",
       "label": "ILMD",
+      "term_status": "stable"
+    },
+    {
+      "@id": "epcis:MasterData",
+      "@type": [
+        "owl:Class",
+        "rdfs:Class"
+      ],
+      "comment": "Intermediate node that is connected to EPCISDocumentHeader using masterData, and may include vocabularies using vocabularyList",
+      "isDefinedBy": "https://ref.gs1.org/epcis/",
+      "label": "MasterData",
       "term_status": "stable"
     },
     {
@@ -817,6 +839,21 @@
       "term_status": "stable"
     },
     {
+      "@id": "epcis:epcisHeader",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "comment": "Header (EPCISDocumentHeader) of an EPCISDocument",
+      "domain": "epcis:EPCISDocument",
+      "domainIncludes": "epcis:EPCISDocument",
+      "isDefinedBy": "https://ref.gs1.org/epcis/",
+      "label": "epcisHeader",
+      "range": "epcis:EPCISDocumentHeader",
+      "rangeIncludes": "epcis:EPCISDocumentHeader",
+      "term_status": "stable"
+    },
+    {
       "@id": "epcis:errorDeclaration",
       "@type": [
         "owl:ObjectProperty",
@@ -990,6 +1027,21 @@
       "label": "instanceIdentifier",
       "range": "xsd:string",
       "rangeIncludes": "xsd:string",
+      "term_status": "stable"
+    },
+    {
+      "@id": "epcis:masterData",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "comment": "Master data included in a document: connects EPCISDocumentHeader to MasterData",
+      "domain": "epcis:EPCISDocumentHeader",
+      "domainIncludes": "epcis:EPCISDocumentHeader",
+      "isDefinedBy": "https://ref.gs1.org/epcis/",
+      "label": "masterData",
+      "range": "epcis:MasterData",
+      "rangeIncludes": "epcis:MasterData",
       "term_status": "stable"
     },
     {
@@ -1592,6 +1644,21 @@
       "label": "value",
       "range": "xsd:double",
       "rangeIncludes": "xsd:double",
+      "term_status": "stable"
+    },
+    {
+      "@id": "epcis:vocabularyList",
+      "@type": [
+        "owl:ObjectProperty",
+        "rdf:Property"
+      ],
+      "comment": "List of vocabulary elements included in master data: connects MasterData to VocabularyElement",
+      "domain": "epcis:MasterData",
+      "domainIncludes": "epcis:MasterData",
+      "isDefinedBy": "https://ref.gs1.org/epcis/",
+      "label": "vocabularyList",
+      "range": "owl:Class",
+      "rangeIncludes": "owl:Class",
       "term_status": "stable"
     }
   ]

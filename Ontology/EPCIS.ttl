@@ -135,6 +135,12 @@ epcis:EPCISDocumentBody a      owl:Class , rdfs:Class ;
         rdfs:label        "EPCISDocumentBody" ;
         sw:term_status    "stable" .
 
+epcis:EPCISDocumentHeader a      owl:Class , rdfs:Class ;
+        rdfs:comment      "Intermediate node that is connected to EPCISDocument using epcisHeader, and may include master data using masterData"@en ;
+        rdfs:isDefinedBy  epcis: ;
+        rdfs:label        "EPCISDocumentHeader" ;
+        sw:term_status    "stable" .
+
 epcis:ErrorDeclaration   a owl:Class , rdfs:Class ;
         rdfs:comment      "When an event contains an ErrorDeclaration element, it indicates that this event has special semantics: instead of the normal semantics which assert that various things happened and that various things are true following the event, the semantics of this event assert that those prior assertions are in error. An event containing an ErrorDeclaration element SHALL be otherwise identical to a prior event, 'otherwise identical' meaning that all fields of the event other than the ErrorDeclaration element and the value of recordTime are exactly equal to the prior event. (Note that includes the eventID field: the eventID of the error declaration will be equal to the eventID of the prior event or null if the eventID of the prior event is null. This is the sole case where the same non-null eventID may appear in two events.) The semantics of an event containing the ErrorDeclaration element are that all assertions implied by the prior event are considered to be erroneous, as of the specified declarationTime. The prior event is not modified in any way, and subsequent queries will return both the prior event and the error declaration."@en ;
         rdfs:isDefinedBy  epcis: ;
@@ -145,6 +151,12 @@ epcis:ILMD  a             owl:Class , rdfs:Class ;
         rdfs:comment      "Instance/Lot master data (ILMD) is data that describes a specific instance of a physical or digital object, or a specific batch/lot of objects that are produced in batches/lots. ILMD consists of a set of descriptive attributes that provide information about one or more specific objects or lots. It is similar to ordinary master data, which also consists of a set of descriptive attributes that provide information about objects. But whereas master data attributes have the same values for a large class of objects, (e.g., for all objects having a given GTIN), the values of ILMD attributes may be different for much smaller groupings of objects (e.g., a single batch or lot), and may be different for each object (i.e., different for each instance)."@en ;
         rdfs:isDefinedBy  epcis: ;
         rdfs:label        "ILMD" ;
+        sw:term_status    "stable" .
+
+epcis:MasterData a      owl:Class , rdfs:Class ;
+        rdfs:comment      "Intermediate node that is connected to EPCISDocumentHeader using masterData, and may include vocabularies using vocabularyList"@en ;
+        rdfs:isDefinedBy  epcis: ;
+        rdfs:label        "MasterData" ;
         sw:term_status    "stable" .
 
 epcis:PersistentDisposition      a owl:Class , rdfs:Class ;
@@ -426,6 +438,16 @@ epcis:epcisBody  a        owl:ObjectProperty , rdf:Property ;
        schema:rangeIncludes epcis:EPCISDocumentBody ;
        sw:term_status    "stable" .
 
+epcis:epcisHeader  a        owl:ObjectProperty , rdf:Property ;
+       rdfs:comment      "Header (EPCISDocumentHeader) of an EPCISDocument"@en ;
+       rdfs:domain       epcis:EPCISDocument ;
+       schema:domainIncludes epcis:EPCISDocument ;
+       rdfs:isDefinedBy  epcis: ;
+       rdfs:label        "epcisHeader" ;
+       rdfs:range        epcis:EPCISDocumentHeader ;
+       schema:rangeIncludes epcis:EPCISDocumentHeader ;
+       sw:term_status    "stable" .
+
 epcis:errorDeclaration   a owl:ObjectProperty , rdf:Property ;
         rdfs:comment      "(Optional) If present, indicates that this event serves to assert that the assertions made by a prior event are in error."@en ;
         rdfs:domain       epcis:EPCISEvent ;
@@ -537,6 +559,15 @@ epcis:instanceIdentifier  a        owl:DatatypeProperty , rdf:Property ;
        schema:rangeIncludes xsd:string ;
        sw:term_status    "stable" .
 
+epcis:masterData  a        owl:ObjectProperty , rdf:Property ;
+        rdfs:comment      "Master data included in a document: connects EPCISDocumentHeader to MasterData"@en ;
+        rdfs:domain       epcis:EPCISDocumentHeader ;
+        schema:domainIncludes epcis:EPCISDocumentHeader ;
+        rdfs:isDefinedBy  epcis: ;
+        rdfs:label        "masterData" ;
+        rdfs:range        epcis:MasterData ;
+        schema:rangeIncludes epcis:MasterData ;
+        sw:term_status    "stable" .
 
 epcis:maxValue  a         owl:DatatypeProperty , rdf:Property ;
         rdfs:comment      "(Optional) Similar to minValue, for the maximum quantitative value."@en ;
@@ -891,3 +922,14 @@ epcis:value  a            owl:DatatypeProperty , rdf:Property ;
         rdfs:range        xsd:double ;
         schema:rangeIncludes xsd:double ;
         sw:term_status    "stable" .
+
+epcis:vocabularyList  a   owl:ObjectProperty , rdf:Property ;
+        rdfs:comment      "List of vocabulary elements included in master data: connects MasterData to VocabularyElement"@en ;
+        rdfs:domain       epcis:MasterData ;
+        schema:domainIncludes epcis:MasterData ;
+        rdfs:isDefinedBy  epcis: ;
+        rdfs:label        "vocabularyList" ;
+        rdfs:range        owl:Class ;
+        schema:rangeIncludes owl:Class ;
+        sw:term_status    "stable" .
+
