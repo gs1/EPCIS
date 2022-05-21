@@ -17,7 +17,7 @@
         "eventTime": "2021-04-27T15:00:00+01:00",
         "eventTimeZoneOffset": "+01:00",
         "epcList": [
-          "https://id.gs1.org/01/09506000134352"
+          "https://id.gs1.org/01/09506000134352/21/12345"
         ],
         "action": "OBSERVE",
         "bizStep": "sensor_reporting",
