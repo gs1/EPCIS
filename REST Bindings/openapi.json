@@ -22,7 +22,7 @@
     },
     {
       "name": "Queries",
-      "description": "Endpoints to create large named or anonymous queries using the <a href=\"https://github.com/gs1/EPCIS/tree/master/REST%20Bindings/query-schema.json\">EPCIS Query Language</a>. Named queries have a custom\nname and are stored until deleted by the user. Anonymous queries are not persisted and only available to the caller.\nEPCIS events queries also support query subscription.\n"
+      "description": "Endpoints to create large named or anonymous queries using the EPCIS Query Language. Named queries have a custom\nname and are stored until deleted by the user. Anonymous queries are not persisted and only available to the caller.\nEPCIS events queries also support query subscription.\n"
     },
     {
       "name": "Subscriptions",
@@ -601,7 +601,7 @@
             "$ref": "#/components/parameters/GS1-CBV-XML-Format"
           }
         ],
-        "description": "This endpoint allows querying EPCIS events that are currently in the repository. \nEvents can be filtered through URL query string parameters as specified by the <a href=\"https://github.com/gs1/EPCIS/tree/master/REST%20Bindings/query-schema.json\">EPCIS Query Language</a>.\n",
+        "description": "This endpoint allows querying EPCIS events that are currently in the repository. \nEvents can be filtered through URL query string parameters as specified by the EPCIS Query Language. \nAn EPCIS 2.0 query body using the REST interface SHALL be serialised as a JSON object. The value of the query key within that JSON object SHALL validate against the schema defined at:  https://ref.gs1.org/standards/epcis/2.0.0/query-schema.json.\n",
         "responses": {
           "200": {
             "$ref": "#/components/responses/200EPCISQueryDocument"
@@ -1071,7 +1071,7 @@
             "$ref": "#/components/parameters/GS1-CBV-XML-Format"
           }
         ],
-        "description": "This endpoint returns all EPCIS events of a specific EPCIS event type up to the amount defined in `perPage`.\nThe server returns a 'Link' header to point to the remaining results.\n\nThe client can further restrict the list of events returned by filtering events using the EPCIS query\nlanguage using URL query string parameters as specified by the<a href=\"https://github.com/gs1/EPCIS/tree/master/REST%20Bindings/query-schema.json\">EPCIS Query Language</a>.  \nThe parameter `eventCountLimit` is used to restrict the maximum number of\nevents to be returned in total, whereas `perPage` restricts the number of events to return per page or paginated results.\n\n\nExample:\n\n```\nhttps://example.com/eventTypes/ObjectEvent/events?EQ_bizStep=shipping%7Cdecommissioning&GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00\n```\n",
+        "description": "This endpoint returns all EPCIS events of a specific EPCIS event type up to the amount defined in `perPage`.\nThe server returns a 'Link' header to point to the remaining results.\n\nThe client can further restrict the list of events returned by filtering events using the EPCIS query\nlanguage using URL query string parameters as specified by the EPCIS Query Language.\nThe parameter `eventCountLimit` is used to restrict the maximum number of\nevents to be returned in total, whereas `perPage` restricts the number of events to return per page or paginated results.\n\n\nExample:\n\n```\nhttps://example.com/eventTypes/ObjectEvent/events?EQ_bizStep=shipping%7Cdecommissioning&GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00\n```\n",
         "responses": {
           "200": {
             "$ref": "#/components/responses/200EPCISQueryDocument"
@@ -1349,7 +1349,7 @@
             "$ref": "#/components/parameters/GS1-CBV-XML-Format"
           }
         ],
-        "description": "This endpoint helps to navigate EPCIS events by electronic product codes. It returns\nEPCIS events up to the amount defined in `perPage`. If applicable, the server returns a `Link` header to point to the remaining\nresults. Optionally, EPCIS events can be further filtered using the <a href=\"https://github.com/gs1/EPCIS/tree/master/REST%20Bindings/query-schema.json\">EPCIS Query Language</a> in as query string parameters.\n\nExample 1 - EPC in a URN form with <a href=\"https://github.com/gs1/EPCIS/tree/master/REST%20Bindings/query-schema.json\">EPCIS Query Language</a> filtering\n\n```\nhttps://example.com/epcs/urn:epc:id:sgtin:0614141.107346.2018?EQ_bizStep=shipping%7Cdecommissioning&GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00\n```\n\nExample 2  - EPC in a constrained GS1 Digital Link form (URL encoded)\n```\nhttps://example.com/epcs/https:%2f%2fexample.org%2f01%2f1234567089012400\n```\n",
+        "description": "This endpoint helps to navigate EPCIS events by electronic product codes. It returns\nEPCIS events up to the amount defined in `perPage`. If applicable, the server returns a `Link` header to point to the remaining\nresults. Optionally, EPCIS events can be further filtered using the EPCIS Query Language as query string parameters.\n\nExample 1 - EPC in a URN form with EPCIS Query Language filtering\n\n```\nhttps://example.com/epcs/urn:epc:id:sgtin:0614141.107346.2018?EQ_bizStep=shipping%7Cdecommissioning&GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00\n```\n\nExample 2  - EPC in a constrained GS1 Digital Link form (URL encoded)\n```\nhttps://example.com/epcs/https:%2f%2fexample.org%2f01%2f1234567089012400\n```\n",
         "responses": {
           "200": {
             "$ref": "#/components/responses/200EPCISQueryDocument"
@@ -1617,7 +1617,7 @@
             "$ref": "#/components/parameters/GS1-CBV-XML-Format"
           }
         ],
-        "description": "This endpoint helps to navigate EPCIS events by business steps. It returns\nEPCIS events up to the amount defined in `perPage`. The server returns a `Link` header to point to the\nremaining results.  Optionally, EPCIS events can be further filtered using the <a href=\"https://github.com/gs1/EPCIS/tree/master/REST%20Bindings/query-schema.json\">EPCIS Query Language</a> in as query\nstring parameters.\n\nExample:\n\n```\nhttps://example.com/bizSteps/receiving?GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00\n```\n",
+        "description": "This endpoint helps to navigate EPCIS events by business steps. It returns\nEPCIS events up to the amount defined in `perPage`. The server returns a `Link` header to point to the\nremaining results.  Optionally, EPCIS events can be further filtered using the EPCIS Query Language in as query\nstring parameters.\n\nExample:\n\n```\nhttps://example.com/bizSteps/receiving?GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00\n```\n",
         "responses": {
           "200": {
             "$ref": "#/components/responses/200EPCISQueryDocument"
@@ -1897,7 +1897,7 @@
             "$ref": "#/components/parameters/GS1-CBV-XML-Format"
           }
         ],
-        "description": "This endpoint helps to navigate EPCIS events by business locations. It returns\nEPCIS events up to the amount defined in `perPage`. The server returns a `Link` header to point to the remaining\nresults.\n\nOptionally, EPCIS events can be further filtered using the <a href=\"https://github.com/gs1/EPCIS/tree/master/REST%20Bindings/query-schema.json\">EPCIS Query Language</a> in as query string parameters.\n\nExample:\n\n```\nhttps://example.com/bizLocations/urn:epc:id:sgln:0012345.11111.400?GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00\n```\n",
+        "description": "This endpoint helps to navigate EPCIS events by business locations. It returns\nEPCIS events up to the amount defined in `perPage`. The server returns a `Link` header to point to the remaining\nresults.\n\nOptionally, EPCIS events can be further filtered using the EPCIS Query Language as query string parameters.\n\nExample:\n\n```\nhttps://example.com/bizLocations/urn:epc:id:sgln:0012345.11111.400?GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00\n```\n",
         "responses": {
           "200": {
             "$ref": "#/components/responses/200EPCISQueryDocument"
@@ -2178,7 +2178,7 @@
             "$ref": "#/components/parameters/GS1-CBV-XML-Format"
           }
         ],
-        "description": "This endpoint helps to navigate EPCIS events by read points. It returns\nEPCIS events up to the amount defined in `perPage`. The server returns a `Link` header to point to the remaining\nresults.\n\nOptionally, EPCIS events can be further filtered using the <a href=\"https://github.com/gs1/EPCIS/tree/master/REST%20Bindings/query-schema.json\">EPCIS Query Language</a> in as query string parameters.\n\nExample:\n\n```\nhttps://example.com/readPoints/urn:epc:id:sgln:0012345.11111.400?GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00\n```\n",
+        "description": "This endpoint helps to navigate EPCIS events by read points. It returns\nEPCIS events up to the amount defined in `perPage`. The server returns a `Link` header to point to the remaining\nresults.\n\nOptionally, EPCIS events can be further filtered using the EPCIS Query Language as query string parameters.\n\nExample:\n\n```\nhttps://example.com/readPoints/urn:epc:id:sgln:0012345.11111.400?GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00\n```\n",
         "responses": {
           "200": {
             "$ref": "#/components/responses/200EPCISQueryDocument"
@@ -2446,7 +2446,7 @@
             "$ref": "#/components/parameters/GS1-CBV-XML-Format"
           }
         ],
-        "description": "This endpoint helps to navigate EPCIS events by dispositions. It returns\nEPCIS events up to the amount defined in `perPage`. The server returns a `Link` header to point to the remaining\nresults.\nOptionally, EPCIS events can be further filtered using the <a href=\"https://github.com/gs1/EPCIS/tree/master/REST%20Bindings/query-schema.json\">EPCIS Query Language</a> in as query string parameters.\n\nExample:\n\n```\nhttps://example.com/dispositions/in_progress?GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00\n```\n",
+        "description": "This endpoint helps to navigate EPCIS events by dispositions. It returns\nEPCIS events up to the amount defined in `perPage`. The server returns a `Link` header to point to the remaining\nresults.\nOptionally, EPCIS events can be further filtered using the EPCIS Query Language as query string parameters.\n\nExample:\n\n```\nhttps://example.com/dispositions/in_progress?GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00\n```\n",
         "responses": {
           "200": {
             "$ref": "#/components/responses/200EPCISQueryDocument"
@@ -2553,7 +2553,7 @@
                 "$ref": "#/components/headers/GS1-Next-Page-Token-Expires"
               }
             },
-            "description": "Queries are like views that are created using the <a href=\"https://github.com/gs1/EPCIS/tree/master/REST%20Bindings/query-schema.json\">EPCIS Query Language</a>. Each query object\nconsists of a query name and the query definition. Performing a `GET` on `/queries` lists all\nexisting queries.\n",
+            "description": "Queries are like views that are created using the <a href=\"https://github.com/gs1/EPCIS/tree/master/REST%20Bindings/query-schema.json\">EPCIS Query Language</a>. Each query object\nconsists of a query name and the query definition. \nAn EPCIS 2.0 query body using the REST interface SHALL be serialised as a JSON object. The value of the query key within that JSON object SHALL validate against the schema defined at:  https://ref.gs1.org/standards/epcis/2.0.0/query-schema.json.\nPerforming a `GET` on `/queries` lists all existing queries.\n",
             "content": {
               "application/json": {
                 "example": "[{\n  \"query\": {\n  \"EQ_bizStep\": [\n      \"shipping\",\n      \"receiving\"\n  ],\n  \"eventType\": [\"ObjectEvent\"]\n},\n\"name\": \"myQuery\"\n}]\n",
@@ -2702,7 +2702,7 @@
                 "$ref": "#/components/headers/GS1-Extensions"
               }
             },
-            "description": "Queries are like views that are created using the <a href=\"https://github.com/gs1/EPCIS/tree/master/REST%20Bindings/query-schema.json\">EPCIS Query Language</a>. Each query object\nconsists of a query name and the query definition.\n",
+            "description": "Queries are like views that are created using the <a href=\"https://github.com/gs1/EPCIS/tree/master/REST%20Bindings/query-schema.json\">EPCIS Query Language</a>. Each query object\nconsists of a query name and the query definition.\nAn EPCIS 2.0 query body using the REST interface SHALL be serialised as a JSON object. The value of the query key within that JSON object SHALL validate against the schema defined at:  https://ref.gs1.org/standards/epcis/2.0.0/query-schema.json.\n",
             "content": {
               "application/json": {
                 "example": {

@@ -23,7 +23,7 @@ tags:
       Endpoints to capture EPCIS events in bulk or individually.
   - name: 'Queries'
     description: |
-      Endpoints to create large named or anonymous queries using the <a href="https://github.com/gs1/EPCIS/tree/master/REST%20Bindings/query-schema.json">EPCIS Query Language</a>. Named queries have a custom
+      Endpoints to create large named or anonymous queries using the EPCIS Query Language. Named queries have a custom
       name and are stored until deleted by the user. Anonymous queries are not persisted and only available to the caller.
       EPCIS events queries also support query subscription.
   - name: 'Subscriptions'
@@ -442,7 +442,8 @@ paths:
         - $ref: '#/components/parameters/GS1-CBV-XML-Format'
       description: |
         This endpoint allows querying EPCIS events that are currently in the repository. 
-        Events can be filtered through URL query string parameters as specified by the <a href="https://github.com/gs1/EPCIS/tree/master/REST%20Bindings/query-schema.json">EPCIS Query Language</a>.
+        Events can be filtered through URL query string parameters as specified by the EPCIS Query Language. 
+        An EPCIS 2.0 query body using the REST interface SHALL be serialised as a JSON object. The value of the query key within that JSON object SHALL validate against the schema defined at:  https://ref.gs1.org/standards/epcis/2.0.0/query-schema.json.
       responses:
         '200':
           $ref: '#/components/responses/200EPCISQueryDocument'
@@ -735,7 +736,7 @@ paths:
         The server returns a 'Link' header to point to the remaining results.
 
         The client can further restrict the list of events returned by filtering events using the EPCIS query
-        language using URL query string parameters as specified by the<a href="https://github.com/gs1/EPCIS/tree/master/REST%20Bindings/query-schema.json">EPCIS Query Language</a>.  
+        language using URL query string parameters as specified by the EPCIS Query Language.
         The parameter `eventCountLimit` is used to restrict the maximum number of
         events to be returned in total, whereas `perPage` restricts the number of events to return per page or paginated results.
 
@@ -932,9 +933,9 @@ paths:
       description: |
         This endpoint helps to navigate EPCIS events by electronic product codes. It returns
         EPCIS events up to the amount defined in `perPage`. If applicable, the server returns a `Link` header to point to the remaining
-        results. Optionally, EPCIS events can be further filtered using the <a href="https://github.com/gs1/EPCIS/tree/master/REST%20Bindings/query-schema.json">EPCIS Query Language</a> in as query string parameters.
+        results. Optionally, EPCIS events can be further filtered using the EPCIS Query Language as query string parameters.
 
-        Example 1 - EPC in a URN form with <a href="https://github.com/gs1/EPCIS/tree/master/REST%20Bindings/query-schema.json">EPCIS Query Language</a> filtering
+        Example 1 - EPC in a URN form with EPCIS Query Language filtering
 
         ```
         https://example.com/epcs/urn:epc:id:sgtin:0614141.107346.2018?EQ_bizStep=shipping%7Cdecommissioning&GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
@@ -1121,7 +1122,7 @@ paths:
       description: |
         This endpoint helps to navigate EPCIS events by business steps. It returns
         EPCIS events up to the amount defined in `perPage`. The server returns a `Link` header to point to the
-        remaining results.  Optionally, EPCIS events can be further filtered using the <a href="https://github.com/gs1/EPCIS/tree/master/REST%20Bindings/query-schema.json">EPCIS Query Language</a> in as query
+        remaining results.  Optionally, EPCIS events can be further filtered using the EPCIS Query Language in as query
         string parameters.
 
         Example:
@@ -1314,7 +1315,7 @@ paths:
         EPCIS events up to the amount defined in `perPage`. The server returns a `Link` header to point to the remaining
         results.
 
-        Optionally, EPCIS events can be further filtered using the <a href="https://github.com/gs1/EPCIS/tree/master/REST%20Bindings/query-schema.json">EPCIS Query Language</a> in as query string parameters.
+        Optionally, EPCIS events can be further filtered using the EPCIS Query Language as query string parameters.
 
         Example:
 
@@ -1510,7 +1511,7 @@ paths:
         EPCIS events up to the amount defined in `perPage`. The server returns a `Link` header to point to the remaining
         results.
 
-        Optionally, EPCIS events can be further filtered using the <a href="https://github.com/gs1/EPCIS/tree/master/REST%20Bindings/query-schema.json">EPCIS Query Language</a> in as query string parameters.
+        Optionally, EPCIS events can be further filtered using the EPCIS Query Language as query string parameters.
 
         Example:
 
@@ -1695,7 +1696,7 @@ paths:
         This endpoint helps to navigate EPCIS events by dispositions. It returns
         EPCIS events up to the amount defined in `perPage`. The server returns a `Link` header to point to the remaining
         results.
-        Optionally, EPCIS events can be further filtered using the <a href="https://github.com/gs1/EPCIS/tree/master/REST%20Bindings/query-schema.json">EPCIS Query Language</a> in as query string parameters.
+        Optionally, EPCIS events can be further filtered using the EPCIS Query Language as query string parameters.
 
         Example:
 
@@ -1772,8 +1773,9 @@ paths:
               $ref: '#/components/headers/GS1-Next-Page-Token-Expires'
           description: |
             Queries are like views that are created using the <a href="https://github.com/gs1/EPCIS/tree/master/REST%20Bindings/query-schema.json">EPCIS Query Language</a>. Each query object
-            consists of a query name and the query definition. Performing a `GET` on `/queries` lists all
-            existing queries.
+            consists of a query name and the query definition. 
+            An EPCIS 2.0 query body using the REST interface SHALL be serialised as a JSON object. The value of the query key within that JSON object SHALL validate against the schema defined at:  https://ref.gs1.org/standards/epcis/2.0.0/query-schema.json.
+            Performing a `GET` on `/queries` lists all existing queries.
           content:
             application/json:
               example: |
@@ -1878,6 +1880,7 @@ paths:
           description: |
             Queries are like views that are created using the <a href="https://github.com/gs1/EPCIS/tree/master/REST%20Bindings/query-schema.json">EPCIS Query Language</a>. Each query object
             consists of a query name and the query definition.
+            An EPCIS 2.0 query body using the REST interface SHALL be serialised as a JSON object. The value of the query key within that JSON object SHALL validate against the schema defined at:  https://ref.gs1.org/standards/epcis/2.0.0/query-schema.json.
           content:
             application/json:
               example: {
