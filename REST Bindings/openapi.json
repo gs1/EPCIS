@@ -5703,7 +5703,7 @@
       "GS1-EPCIS-Version": {
         "allOf": [
           {
-            "example": "2.0"
+            "example": "2.0.0"
           },
           {
             "$ref": "#/components/schemas/version"
@@ -5713,7 +5713,7 @@
       "GS1-EPCIS-Min": {
         "allOf": [
           {
-            "example": "1.0"
+            "example": "1.0.0"
           },
           {
             "$ref": "#/components/schemas/version"
@@ -5723,7 +5723,7 @@
       "GS1-EPCIS-Max": {
         "allOf": [
           {
-            "example": "2.0"
+            "example": "2.0.0"
           },
           {
             "$ref": "#/components/schemas/version"
@@ -5733,7 +5733,7 @@
       "GS1-CBV-Version": {
         "allOf": [
           {
-            "example": "2.0"
+            "example": "2.0.0"
           },
           {
             "$ref": "#/components/schemas/version"
@@ -5743,7 +5743,7 @@
       "GS1-CBV-Min": {
         "allOf": [
           {
-            "example": "1.2"
+            "example": "1.2.0"
           },
           {
             "$ref": "#/components/schemas/version"
@@ -5753,7 +5753,7 @@
       "GS1-CBV-Max": {
         "allOf": [
           {
-            "example": "2.0"
+            "example": "2.0.0"
           },
           {
             "$ref": "#/components/schemas/version"
