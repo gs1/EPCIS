@@ -1269,6 +1269,78 @@ paths:
         '500':
           $ref: '#/components/responses/500ImplementationException'
 
+  /bizLocations/{bizLocation}/events:
+    parameters:
+      - $ref: '#/components/parameters/BizLocation'
+      - $ref: '#/components/parameters/GS1-Extensions'
+    options:
+      tags:
+        - 'Discovery'
+      summary: Query the metadata of the endpoint to access EPCIS events by business location.
+      description: |
+        EPCIS 2.0 supports a number of custom headers to describe custom vocabularies and support multiple versions
+        of EPCIS and CBV. The `OPTIONS` method allows the client to discover which vocabularies and EPCIS and CBV
+        versions are used.
+      responses:
+        '204':
+          $ref: '#/components/responses/204DefaultDiscoveryResponse'
+        '401':
+          $ref: '#/components/responses/401UnauthorizedRequest'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '404':
+          $ref: '#/components/responses/404ResourceNotFound'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
+        '414':
+          $ref: '#/components/responses/414URLTooLong'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
+    get:
+      tags:
+        - 'Events'
+      summary: Returns all EPCIS events related to the read point.
+      parameters:
+        - $ref: '#/components/parameters/NextPageToken'
+        - $ref: '#/components/parameters/PerPage'
+        - $ref: '#/components/parameters/GS1-CBV-Min'
+        - $ref: '#/components/parameters/GS1-CBV-Max'
+        - $ref: '#/components/parameters/GS1-EPCIS-Min'
+        - $ref: '#/components/parameters/GS1-EPCIS-Max'
+        - $ref: '#/components/parameters/GS1-EPC-Format'
+        - $ref: '#/components/parameters/GS1-CBV-XML-Format'
+      description: |
+        This endpoint helps to navigate EPCIS events by business locations. It returns
+        EPCIS events up to the amount defined in `perPage`. The server returns a `Link` header to point to the remaining
+        results.
+
+        Optionally, EPCIS events can be further filtered using the <a href="https://github.com/gs1/EPCIS/tree/master/REST%20Bindings/query-schema.json">EPCIS Query Language</a> in as query string parameters.
+
+        Example:
+
+        ```
+        https://example.com/bizLocations/urn:epc:id:sgln:0012345.11111.400?GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00
+        ```
+      responses:
+        '200':
+          $ref: '#/components/responses/200EPCISQueryDocument'
+        '400':
+          $ref: '#/components/responses/400QueryIssues'
+        '401':
+          $ref: '#/components/responses/401UnauthorizedRequest'
+        '403':
+          $ref: '#/components/responses/403ClientUnauthorized'
+        '404':
+          $ref: '#/components/responses/404ResourceNotFound'
+        '414':
+          $ref: '#/components/responses/414URLTooLong'
+        '406':
+          $ref: '#/components/responses/406NotAcceptable'
+        '500':
+          $ref: '#/components/responses/500ImplementationException'
+
+
+
   /readPoints:
     parameters:
       - $ref: '#/components/parameters/GS1-Extensions'
