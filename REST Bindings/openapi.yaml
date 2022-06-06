@@ -5013,7 +5013,7 @@ components:
         minItems: 1
         items: 
           type: string
-          format: URI
+          format: uri
 
     MATCH_parentID:
       name: MATCH_parentID
@@ -5027,7 +5027,7 @@ components:
         minItems: 1
         items: 
           type: string
-          format: URI
+          format: uri
 
     MATCH_inputEPC:
       name: MATCH_inputEPC
@@ -5041,7 +5041,7 @@ components:
         minItems: 1
         items: 
           type: string
-          format: URI
+          format: uri
 
     MATCH_outputEPC:
       name: MATCH_outputEPC
@@ -5055,7 +5055,7 @@ components:
         minItems: 1
         items: 
           type: string
-          format: URI
+          format: uri
 
     MATCH_anyEPC:
       name: MATCH_anyEPC
@@ -5069,7 +5069,7 @@ components:
         minItems: 1
         items: 
           type: string
-          format: URI
+          format: uri
 
     MATCH_epcClass:
       name: MATCH_epcClass
@@ -5083,7 +5083,7 @@ components:
         minItems: 1
         items: 
           type: string
-          format: URI
+          format: uri
 
     MATCH_inputEPCClass:
       name: MATCH_inputEPCClass
@@ -5097,7 +5097,7 @@ components:
         minItems: 1
         items: 
           type: string
-          format: URI
+          format: uri
 
     MATCH_outputEPCClass:
       name: MATCH_outputEPCClass
@@ -5111,7 +5111,7 @@ components:
         minItems: 1
         items: 
           type: string
-          format: URI
+          format: uri
 
     MATCH_anyEPCClass:
       name: MATCH_anyEPCClass
@@ -5125,7 +5125,7 @@ components:
         minItems: 1
         items: 
           type: string
-          format: URI
+          format: uri
 
     EQ_quantity:
       name: EQ_quantity

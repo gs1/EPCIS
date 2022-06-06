@@ -9331,7 +9331,7 @@
           "minItems": 1,
           "items": {
             "type": "string",
-            "format": "URI"
+            "format": "uri"
           }
         }
       },
@@ -9347,7 +9347,7 @@
           "minItems": 1,
           "items": {
             "type": "string",
-            "format": "URI"
+            "format": "uri"
           }
         }
       },
@@ -9363,7 +9363,7 @@
           "minItems": 1,
           "items": {
             "type": "string",
-            "format": "URI"
+            "format": "uri"
           }
         }
       },
@@ -9379,7 +9379,7 @@
           "minItems": 1,
           "items": {
             "type": "string",
-            "format": "URI"
+            "format": "uri"
           }
         }
       },
@@ -9395,7 +9395,7 @@
           "minItems": 1,
           "items": {
             "type": "string",
-            "format": "URI"
+            "format": "uri"
           }
         }
       },
@@ -9411,7 +9411,7 @@
           "minItems": 1,
           "items": {
             "type": "string",
-            "format": "URI"
+            "format": "uri"
           }
         }
       },
@@ -9427,7 +9427,7 @@
           "minItems": 1,
           "items": {
             "type": "string",
-            "format": "URI"
+            "format": "uri"
           }
         }
       },
@@ -9443,7 +9443,7 @@
           "minItems": 1,
           "items": {
             "type": "string",
-            "format": "URI"
+            "format": "uri"
           }
         }
       },
@@ -9459,7 +9459,7 @@
           "minItems": 1,
           "items": {
             "type": "string",
-            "format": "URI"
+            "format": "uri"
           }
         }
       },
