@@ -64,6 +64,13 @@
         "format": "uri"
       }
     },
+    "EQ_readPoint": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      }
+    },    
     "WD_readPoint": {
       "type": "array",
       "items": {
