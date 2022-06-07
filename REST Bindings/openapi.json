@@ -6307,23 +6307,14 @@
           "member": {
             "type": "array",
             "items": {
-              "anyOf": [
-                {
-                  "$ref": "#/components/schemas/EPCISEventTypes"
-                },
-                {
-                  "type": "string",
-                  "format": "uri"
-                }
-              ]
+              "$ref": "#/components/schemas/EPCISEventTypes"
             },
             "uniqueItems": true
           }
         }
       },
       "EPCISEventTypes": {
-        "type": "string",
-        "description": "The five types of EPCIS events.",
+        "description": "The five types of EPCIS events or an extended event denoted by a URI.",
         "example": [
           "AggregationEvent",
           "AssociationEvent",
@@ -6331,12 +6322,21 @@
           "TransactionEvent",
           "TransformationEvent"
         ],
-        "enum": [
-          "AggregationEvent",
-          "AssociationEvent",
-          "ObjectEvent",
-          "TransactionEvent",
-          "TransformationEvent"
+        "anyOf": [
+          {
+            "type": "string",
+            "enum": [
+              "AggregationEvent",
+              "AssociationEvent",
+              "ObjectEvent",
+              "TransactionEvent",
+              "TransformationEvent"
+            ]
+          },
+          {
+            "type": "string",
+            "format": "uri"
+          }
         ]
       },
       "TopLevelResources": {
@@ -8920,14 +8920,7 @@
           "type": "array",
           "minItems": 1,
           "items": {
-            "type": "string",
-            "enum": [
-              "ObjectEvent",
-              "AggregationEvent",
-              "AssociationEvent",
-              "TransactionEvent",
-              "TransformationEvent"
-            ]
+            "$ref": "#/components/schemas/EPCISEventTypes"
           }
         }
       },
