@@ -4779,7 +4779,6 @@ components:
                 - "unpacking"
                 - "void_shipping"
             - format: uri
-          ]
 
     EQ_disposition:
       name: EQ_disposition
@@ -4830,7 +4829,6 @@ components:
                 - "unavailable"
                 - "unknown"
             - format: uri
-          ]
 
     EQ_persistentDisposition_set:
       name: EQ_persistentDisposition_set
@@ -4881,7 +4879,6 @@ components:
                 - "unavailable"
                 - "unknown"
             - format: uri
-          ]
 
     EQ_persistentDisposition_unset:
       name: EQ_persistentDisposition_unset
@@ -4932,7 +4929,6 @@ components:
                 - "unavailable"
                 - "unknown"
             - format: uri
-          ]
 
     EQ_readPoint:
       name: EQ_readPoint
