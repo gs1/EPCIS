@@ -4656,8 +4656,8 @@ components:
         type: array
         minItems: 1
         items: 
-          - type: string
-          - enum: 
+          type: string
+          enum: 
             - "ObjectEvent"
             - "AggregationEvent"
             - "AssociationEvent"
@@ -4716,11 +4716,11 @@ components:
         type: array
         minItems: 1
         items: 
-          - type: string
-          - enum: 
-              - "ADD"
-              - "OBSERVE"
-              - "DELETE"
+          type: string
+          enum: 
+            - "ADD"
+            - "OBSERVE"
+            - "DELETE"
 
     EQ_bizStep:
       name: EQ_bizStep

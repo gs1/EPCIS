@@ -9469,7 +9469,7 @@
         "in": "query",
         "required": false,
         "schema": {
-          "type": "integer"
+          "type": "number"
         }
       },
       "GT_quantity": {
