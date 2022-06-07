@@ -3876,26 +3876,26 @@ components:
         member:
           type: array
           items:
-            anyOf:
-              - $ref: '#/components/schemas/EPCISEventTypes'
-              - type: string
-                format: uri
+              $ref: '#/components/schemas/EPCISEventTypes'
           uniqueItems: true
     EPCISEventTypes:
-      type: string
-      description: The five types of EPCIS events.
+      description: The five types of EPCIS events or an extended event denoted by a URI.
       example:
         - AggregationEvent
         - AssociationEvent
         - ObjectEvent
         - TransactionEvent
         - TransformationEvent
-      enum:
-        - AggregationEvent
-        - AssociationEvent
-        - ObjectEvent
-        - TransactionEvent
-        - TransformationEvent
+      anyOf:
+        - type: string
+          enum:
+            - AggregationEvent
+            - AssociationEvent
+            - ObjectEvent
+            - TransactionEvent
+            - TransformationEvent
+        - type: string
+          format: uri
     TopLevelResources:
       type: string
       description: The seven top level resources of an EPCIS.
@@ -4007,7 +4007,7 @@ components:
         member:
           type: array
           items:
-            type: string
+            $ref: 'https://gs1.github.io/EPCIS/REST%20Bindings/JSON-Schema-Stub.json#/definitions/bizStep'
           uniqueItems: true
     DispositionCollection:
       example: {
@@ -4070,7 +4070,7 @@ components:
         member:
           type: array
           items:
-            type: string
+            $ref: 'https://gs1.github.io/EPCIS/REST%20Bindings/JSON-Schema-Stub.json#/definitions/disposition'
           uniqueItems: true
     UriCollection:
       description: A list of items which are URIs such as EPCs or business locations. 
@@ -4656,13 +4656,7 @@ components:
         type: array
         minItems: 1
         items: 
-          type: string
-          enum: 
-            - "ObjectEvent"
-            - "AggregationEvent"
-            - "AssociationEvent"
-            - "TransactionEvent"
-            - "TransformationEvent"
+          $ref: '#/components/schemas/EPCISEventTypes'
 
     GE_eventTime:
       name: GE_eventTime
@@ -4716,11 +4710,11 @@ components:
         type: array
         minItems: 1
         items: 
-          type: string
-          enum: 
-            - "ADD"
-            - "OBSERVE"
-            - "DELETE"
+           type: string
+           enum: 
+              - "ADD"
+              - "OBSERVE"
+              - "DELETE"
 
     EQ_bizStep:
       name: EQ_bizStep
@@ -4734,51 +4728,7 @@ components:
         type: array
         minItems: 1
         items: 
-          type: string
-          anyOf: 
-            - enum:
-                - "accepting"
-                - "arriving"
-                - "assembling"
-                - "collecting"
-                - "commissioning"
-                - "consigning"
-                - "creating_class_instance"
-                - "cycle_counting"
-                - "decommissioning"
-                - "departing"
-                - "destroying"
-                - "disassembling"
-                - "dispensing"
-                - "encoding"
-                - "entering_exiting"
-                - "holding"
-                - "inspecting"
-                - "installing"
-                - "killing"
-                - "loading"
-                - "other"
-                - "packing"
-                - "picking"
-                - "receiving"
-                - "removing"
-                - "repackaging"
-                - "repairing"
-                - "replacing"
-                - "reserving"
-                - "retail_selling"
-                - "sampling"
-                - "sensor_reporting"
-                - "shipping"
-                - "staging_outbound"
-                - "stock_taking"
-                - "stocking"
-                - "storing"
-                - "transporting"
-                - "unloading"
-                - "unpacking"
-                - "void_shipping"
-            - format: uri
+          $ref: 'https://gs1.github.io/EPCIS/REST%20Bindings/JSON-Schema-Stub.json#/definitions/bizStep'
 
     EQ_disposition:
       name: EQ_disposition
@@ -4792,43 +4742,7 @@ components:
         type: array
         minItems: 1
         items: 
-          type: string
-          anyOf: 
-            - enum:
-                - "active"
-                - "available"
-                - "completeness_inferred"
-                - "completeness_verified"
-                - "conformant"
-                - "container_closed"
-                - "container_open"
-                - "damaged"
-                - "destroyed"
-                - "dispensed"
-                - "disposed"
-                - "encoded"
-                - "expired"
-                - "in_progress"
-                - "in_transit"
-                - "inactive"
-                - "mismatch_class"
-                - "mismatch_instance"
-                - "mismatch_quantity"
-                - "needs_replacement"
-                - "no_pedigree_match"
-                - "non_conformant"
-                - "non_sellable_other"
-                - "partially_dispensed"
-                - "recalled"
-                - "reserved"
-                - "retail_sold"
-                - "returned"
-                - "sellable_accessible"
-                - "sellable_not_accessible"
-                - "stolen"
-                - "unavailable"
-                - "unknown"
-            - format: uri
+          $ref: 'https://gs1.github.io/EPCIS/REST%20Bindings/JSON-Schema-Stub.json#/definitions/disposition'
 
     EQ_persistentDisposition_set:
       name: EQ_persistentDisposition_set
@@ -4842,43 +4756,8 @@ components:
         type: array
         minItems: 1
         items: 
-          type: string
-          anyOf: 
-            - enum:
-                - "active"
-                - "available"
-                - "completeness_inferred"
-                - "completeness_verified"
-                - "conformant"
-                - "container_closed"
-                - "container_open"
-                - "damaged"
-                - "destroyed"
-                - "dispensed"
-                - "disposed"
-                - "encoded"
-                - "expired"
-                - "in_progress"
-                - "in_transit"
-                - "inactive"
-                - "mismatch_class"
-                - "mismatch_instance"
-                - "mismatch_quantity"
-                - "needs_replacement"
-                - "no_pedigree_match"
-                - "non_conformant"
-                - "non_sellable_other"
-                - "partially_dispensed"
-                - "recalled"
-                - "reserved"
-                - "retail_sold"
-                - "returned"
-                - "sellable_accessible"
-                - "sellable_not_accessible"
-                - "stolen"
-                - "unavailable"
-                - "unknown"
-            - format: uri
+          $ref: 'https://gs1.github.io/EPCIS/REST%20Bindings/JSON-Schema-Stub.json#/definitions/disposition'
+
 
     EQ_persistentDisposition_unset:
       name: EQ_persistentDisposition_unset
@@ -4892,43 +4771,8 @@ components:
         type: array
         minItems: 1
         items: 
-          type: string
-          anyOf:
-            - enum:
-                - "active"
-                - "available"
-                - "completeness_inferred"
-                - "completeness_verified"
-                - "conformant"
-                - "container_closed"
-                - "container_open"
-                - "damaged"
-                - "destroyed"
-                - "dispensed"
-                - "disposed"
-                - "encoded"
-                - "expired"
-                - "in_progress"
-                - "in_transit"
-                - "inactive"
-                - "mismatch_class"
-                - "mismatch_instance"
-                - "mismatch_quantity"
-                - "needs_replacement"
-                - "no_pedigree_match"
-                - "non_conformant"
-                - "non_sellable_other"
-                - "partially_dispensed"
-                - "recalled"
-                - "reserved"
-                - "retail_sold"
-                - "returned"
-                - "sellable_accessible"
-                - "sellable_not_accessible"
-                - "stolen"
-                - "unavailable"
-                - "unknown"
-            - format: uri
+          $ref: 'https://gs1.github.io/EPCIS/REST%20Bindings/JSON-Schema-Stub.json#/definitions/disposition'
+
 
     EQ_readPoint:
       name: EQ_readPoint
@@ -5143,7 +4987,7 @@ components:
       in: query
       required: false
       schema:
-        type: integer
+        type: number
 
     GE_quantity:
       name: GE_quantity
@@ -5151,7 +4995,7 @@ components:
       in: query
       required: false
       schema:
-        type: integer
+        type: number
 
     LT_quantity:
       name: LT_quantity
@@ -5159,7 +5003,7 @@ components:
       in: query
       required: false
       schema:
-        type: integer
+        type: number
 
     LE_quantity:
       name: LE_quantity
@@ -5167,7 +5011,7 @@ components:
       in: query
       required: false
       schema:
-        type: integer
+        type: number
 
     EQ_eventID:
       name: EQ_eventID
@@ -5181,6 +5025,7 @@ components:
         minItems: 1
         items: 
           type: string
+          format: uri
 
     EXISTS_errorDeclaration:
       name: EXISTS_errorDeclaration
@@ -5221,7 +5066,7 @@ components:
         type: array
         minItems: 1
         items: 
-          type: string
+          $ref: 'https://gs1.github.io/EPCIS/REST%20Bindings/JSON-Schema-Stub.json#/definitions/error-reason'
 
     EQ_correctiveEventID:
       name: EQ_correctiveEventID
@@ -5235,6 +5080,7 @@ components:
         minItems: 1
         items: 
           type: string
+          format: uri
 
     orderBy:
       name: orderBy
@@ -5323,7 +5169,7 @@ components:
         type: array
         minItems: 1
         items: 
-          type: string
+          $ref: 'https://gs1.github.io/EPCIS/REST%20Bindings/JSON-Schema-Stub.json#/definitions/measurementType'
 
     EQ_deviceID:
       name: EQ_deviceID
