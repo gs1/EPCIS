@@ -64,6 +64,45 @@
         "format": "uri"
       }
     },
+    "EQ_disposition": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      }
+    },
+    "EQ_persistentDisposition_set": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      }
+    },
+    "EQ_persistentDisposition_unset": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      }
+    },
+    "EQ_quantity": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      }
+    },
+    "GT_quantity": {
+      "type": "number"
+    },
+    "GE_quantity": {
+      "type": "number"
+    },
+    "LT_quantity": {
+      "type": "number"
+    },
+    "LE_quantity": {
+      "type": "number"
+    },
     "EQ_readPoint": {
       "type": "array",
       "items": {
@@ -86,27 +125,6 @@
       }
     },
     "WD_bizLocation": {
-      "type": "array",
-      "items": {
-        "type": "string",
-        "format": "uri"
-      }
-    },
-    "EQ_bizTransaction_type": {
-      "type": "array",
-      "items": {
-        "type": "string",
-        "format": "uri"
-      }
-    },
-    "EQ_source_type": {
-      "type": "array",
-      "items": {
-        "type": "string",
-        "format": "uri"
-      }
-    },
-    "EQ_destination_type": {
       "type": "array",
       "items": {
         "type": "string",
@@ -186,8 +204,13 @@
     "EQ_eventID": {
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "string",
+        "format": "uri"
       }
+    },
+    "EXISTS_errorDeclaration": {
+      "type": "integer",
+      "nullable": true
     },
     "GE_errorDeclaration_Time": {
       "type": "string",
@@ -200,20 +223,26 @@
     "EQ_errorReason": {
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "string",
+        "format": "uri"
       }
     },
     "EQ_correctiveEventID": {
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "string",
+        "format": "uri"
       }
     },
     "orderBy": {
       "type": "string"
     },
     "orderDirection": {
-      "type": "string"
+      "type": "string",
+        "enum": [
+          "ASC",
+          "DESC"
+        ]      
     },
     "eventCountLimit": {
       "type": "integer"
@@ -252,37 +281,43 @@
     "EQ_type": {
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "string",
+        "format": "uri"        
       }
     },
     "EQ_deviceID": {
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "string",
+        "format": "uri"        
       }
     },
     "EQ_dataProcessingMethod": {
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "string",
+        "format": "uri"        
       }
     },
     "EQ_microorganism": {
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "string",
+        "format": "uri"        
       }
     },
     "EQ_chemicalSubstance": {
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "string",
+        "format": "uri"        
       }
     },
     "EQ_bizRules": {
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "string",
+        "format": "uri"        
       }
     },
     "EQ_stringValue": {
@@ -292,10 +327,7 @@
       }
     },
     "EQ_booleanValue": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
+      "type": "boolean"
     },
     "EQ_hexBinaryValue": {
       "type": "array",
@@ -306,7 +338,8 @@
     "EQ_uriValue": {
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "string",
+        "format": "uri"
       }
     },
     "GE_sDev": {
@@ -315,10 +348,22 @@
     "LT_sDev": {
       "type": "number"
     },
+    "GT_sDev": {
+      "type": "number"
+    },
+    "LE_sDev": {
+      "type": "number"
+    },
     "GE_percRank": {
       "type": "number"
     },
     "LT_percRank": {
+      "type": "number"
+    },
+    "GT_percRank": {
+      "type": "number"
+    },
+    "LE_percRank": {
       "type": "number"
     },
     "GE_percValue": {
@@ -326,9 +371,36 @@
     },
     "LT_percValue": {
       "type": "number"
+    },
+    "GT_percValue": {
+      "type": "number"
+    },
+    "LE_percValue": {
+      "type": "number"
     }
   },
   "patternProperties": {
+    "^EQ_bizTransaction_[a-z][a-zA-Z0-9_]+$": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      }
+    },
+    "^EQ_source_[a-z][a-zA-Z0-9_]+$": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      }
+    },
+    "^EQ_destination_[a-z][a-zA-Z0-9_]+$": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      }
+    },
     "^EQ_[a-z][a-zA-Z0-9]*\\:\\w+$": {
       "oneOf": [
         {
@@ -611,7 +683,7 @@
         "type": "string"
       }
     },
-    "^EQ_ATTR_\\w+_attrname$": {
+    "^EQ_ATTR_\\w+_\\w+$": {
       "type": "array",
       "items": {
         "type": "string"
@@ -692,28 +764,48 @@
       }
     },
     "^GT_INNER_ERROR_DECLARATION_[a-z][a-zA-Z0-9]*\\:\\w+$": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
+      "oneOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "string",
+          "format": "date-time"
+        }
+      ]
     },
     "^GE_INNER_ERROR_DECLARATION_[a-z][a-zA-Z0-9]*\\:\\w+$": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
+      "oneOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "string",
+          "format": "date-time"
+        }
+      ]
     },
     "^LT_INNER_ERROR_DECLARATION_[a-z][a-zA-Z0-9]*\\:\\w+$": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
+      "oneOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "string",
+          "format": "date-time"
+        }
+      ]
     },
     "^LE_INNER_ERROR_DECLARATION_[a-z][a-zA-Z0-9]*\\:\\w+$": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
+      "oneOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "string",
+          "format": "date-time"
+        }
+      ]
     },
     "^EXISTS_ERROR_DECLARATION_[a-z][a-zA-Z0-9]*\\:\\w+$": {
       "type": "integer",
@@ -735,10 +827,22 @@
     "^LT_minValue_[A-Z0-9]{2,4}$": {
       "type": "number"
     },
+    "^GT_minValue_[A-Z0-9]{2,4}$": {
+      "type": "number"
+    },
+    "^LE_minValue_[A-Z0-9]{2,4}$": {
+      "type": "number"
+    },
     "^GE_maxValue_[A-Z0-9]{2,4}$": {
       "type": "number"
     },
     "^LT_maxValue_[A-Z0-9]{2,4}$": {
+      "type": "number"
+    },
+    "^GT_maxValue_[A-Z0-9]{2,4}$": {
+      "type": "number"
+    },
+    "^LE_maxValue_[A-Z0-9]{2,4}$": {
       "type": "number"
     },
     "^GE_meanValue_[A-Z0-9]{2,4}$": {
@@ -747,10 +851,22 @@
     "^LT_meanValue_[A-Z0-9]{2,4}$": {
       "type": "number"
     },
+    "^GT_meanValue_[A-Z0-9]{2,4}$": {
+      "type": "number"
+    },
+    "^LE_meanValue_[A-Z0-9]{2,4}$": {
+      "type": "number"
+    },
     "^GE_value_[A-Z0-9]{2,4}$": {
       "type": "number"
     },
     "^LT_value_[A-Z0-9]{2,4}$": {
+      "type": "number"
+    },
+    "^GT_value_[A-Z0-9]{2,4}$": {
+      "type": "number"
+    },
+    "^LE_value_[A-Z0-9]{2,4}$": {
       "type": "number"
     },
     "^EQ_quantity_[A-Z0-9]{2,4}$": {
@@ -1185,15 +1301,15 @@
         }
       ]
     },
-    "EXISTS_SENSORELEMENT_[a-z][a-zA-Z0-9]*\\:\\w+$": {
+    "^EXISTS_SENSORELEMENT_[a-z][a-zA-Z0-9]*\\:\\w+$": {
       "type": "integer",
       "nullable": true
     },
-    "EXISTS_SENSORMETADATA_[a-z][a-zA-Z0-9]*\\:\\w+$": {
+    "^EXISTS_SENSORMETADATA_[a-z][a-zA-Z0-9]*\\:\\w+$": {
       "type": "integer",
       "nullable": true
     },
-    "EXISTS_SENSORREPORT_[a-z][a-zA-Z0-9]*\\:\\w+$": {
+    "^EXISTS_SENSORREPORT_[a-z][a-zA-Z0-9]*\\:\\w+$": {
       "type": "integer",
       "nullable": true
     }
