@@ -28,6 +28,18 @@
         },
         "Extended-Event": {
             "type": "object"
+        },
+        "bizStep": {
+            "type": "string"
+        },
+        "disposition": {
+            "type": "string"
+        },
+        "error-reason": {
+            "type": "string"
+        },
+        "measurementType": {
+            "type": "string"
         }
     }
 }
