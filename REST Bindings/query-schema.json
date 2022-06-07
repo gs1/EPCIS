@@ -660,10 +660,25 @@
       }
     },
     "^EQ_ATTR_\\w+_\\w+$": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
+      "oneOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        {
+          "oneOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string",
+              "format": "date-time"
+            }
+          ]
+        }
+      ]
     },
     "^EQ_ERROR_DECLARATION_[a-z][a-zA-Z0-9]*\\:\\w+$": {
       "oneOf": [
@@ -675,9 +690,6 @@
         },
         {
           "oneOf": [
-            {
-              "type": "integer"
-            },
             {
               "type": "number"
             },
@@ -734,11 +746,26 @@
       ]
     },
     "^EQ_INNER_ERROR_DECLARATION_[a-z][a-zA-Z0-9]*\\:\\w+$": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
+      "oneOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        {
+          "oneOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string",
+              "format": "date-time"
+            }
+          ]
+        }
+      ]
+     },
     "^GT_INNER_ERROR_DECLARATION_[a-z][a-zA-Z0-9]*\\:\\w+$": {
       "oneOf": [
         {
@@ -888,29 +915,89 @@
       "type": "number"
     },
     "^EQ_readPoint_[a-z][a-zA-Z0-9]*\\:\\w+$": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
+      "oneOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        {
+          "oneOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string",
+              "format": "date-time"
+            }
+          ]
+        }
+      ]
+     },
     "^EQ_INNER_readPoint_[a-z][a-zA-Z0-9]*\\:\\w+$": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
+      "oneOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        {
+          "oneOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string",
+              "format": "date-time"
+            }
+          ]
+        }
+      ]
     },
     "^EQ_bizLocation_[a-z][a-zA-Z0-9]*\\:\\w+$": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
+      "oneOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        {
+          "oneOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string",
+              "format": "date-time"
+            }
+          ]
+        }
+      ]
+     },
     "^EQ_INNER_bizLocation_[a-z][a-zA-Z0-9]*\\:\\w+$": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
+      "oneOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        {
+          "oneOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string",
+              "format": "date-time"
+            }
+          ]
+        }
+      ]
+     },
     "^EQ_SENSORELEMENT_[a-z][a-zA-Z0-9]*\\:\\w+$": {
       "oneOf": [
         {
