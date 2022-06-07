@@ -112,7 +112,7 @@
           "Discovery"
         ],
         "summary": "Discover the settings of the capture interface.",
-        "description": "The `OPTIONS` method is used as a discovery service for `/capture`. It describes\n\n- which EPCIS and CBV versions are supported,\n- the EPCIS and CBV extensions,\n- the maximum payload size as count of EPCIS events (`GS1-EPCIS-Capture-Limit` header) or as a maximum payload size in bytes (`GS1-EPCIS-Capture-File-Size-Limit` header)\n- what the server will do if an error occurred during capture (`GS1-Capture-Error-Behaviour` header).\n\nThe list of headers is not exhaustive. It only describes the functionality specific to EPCIS 2.0.\n",
+        "description": "The `OPTIONS` method is used as a discovery service for `/capture`. It describes\n- which EPCIS and CBV versions are supported,\n- the EPCIS and CBV extensions,\n- the maximum payload size as count of EPCIS events (`GS1-EPCIS-Capture-Limit` header) or as a maximum payload size in bytes (`GS1-EPCIS-Capture-File-Size-Limit` header)\n- what the server will do if an error occurred during capture (`GS1-Capture-Error-Behaviour` header).\nThe list of headers is not exhaustive. It only describes the functionality specific to EPCIS 2.0.\n",
         "responses": {
           "204": {
             "$ref": "#/components/responses/204CaptureEndpointDiscovery"
@@ -147,7 +147,7 @@
             "$ref": "#/components/parameters/GS1-Capture-Error-Behaviour"
           }
         ],
-        "description": "EPCIS events are added in bulk using the capture interface. Four design considerations were made to remain compatible with EPCIS 1.2:\n\n- EPCIS 2.0 keeps event IDs optional. If event IDs are missing, the server should populate the event ID with a unique value.\nOtherwise, it won't be possible to retrieve these events by eventID.\n- By default, EPCIS events are only stored if the entire capture job was successful. This behaviour can be changed with the `GS1-Capture-Error-Behaviour` header.\n- EPCIS master data can be captured in the header (`epcisHeader`) of an `EPCISDocument`.\n- This endpoint should support both `EPCISDocument` and `EPCISQueryDocument` as input.\n\nTo prevent timeouts for large payloads, the client potentially may need to split the payload into several capture calls. To that end, the server can specify a capture\nlimit (number of EPCIS events) and file size limit (payload size).\n\nA successful capturing of events does not guarantee that events will be stored. Instead, the server returns a\ncapture id, which the client can use to obtain information about the capture job.\n",
+        "description": "EPCIS events are added in bulk using the capture interface. Four design considerations were made to remain compatible with EPCIS 1.2:\n- EPCIS 2.0 keeps event IDs optional. If event IDs are missing, the server should populate the event ID with a unique value.\nOtherwise, it won't be possible to retrieve these events by eventID.\n- By default, EPCIS events are only stored if the entire capture job was successful. This behaviour can be changed with the `GS1-Capture-Error-Behaviour` header.\n- EPCIS master data can be captured in the header (`epcisHeader`) of an `EPCISDocument`.\n- This endpoint should support both `EPCISDocument` and `EPCISQueryDocument` as input.\nTo prevent timeouts for large payloads, the client potentially may need to split the payload into several capture calls. To that end, the server can specify a capture\nlimit (number of EPCIS events) and file size limit (payload size).\nA successful capturing of events does not guarantee that events will be stored. Instead, the server returns a\ncapture id, which the client can use to obtain information about the capture job.\n",
         "requestBody": {
           "required": true,
           "content": {
@@ -373,7 +373,7 @@
                 "$ref": "#/components/headers/GS1-Next-Page-Token-Expires"
               }
             },
-            "description": "A capture job document has at least the following properties:\n\n- `running`: whether or not the capture job is still active.\n- `success`: whether or not at least one error occurred.\n- `captureErrorBehaviour`: GS1-Capture-Error-Behaviour header value provided with POST data to capture.\n- `errors` or `errorFile`: with the errors if `success` is `false`.\n\n### captureErrorBehaviour value is `rollback`\n\n| Capture job `running` | Capture job `success` | Capture job outcome |\n|:--------|:---------|:---------|\n| `true` | `true` | Still capturing EPCIS events. No errors occurred so far. |\n| `true` | `false` | At least one error occurred. Rollback is in progress. |\n| `false` | `true` | All EPCIS events are captured. |\n| `false` | `false` | All EPCIS events are rejected. |\n\n### captureErrorBehaviour value is `proceed`\n\n| Capture job `running` | Capture job `success` | Capture job outcome |\n|:--------|:---------|:---------|\n| `true` | `true` | Still capturing EPCIS events. No errors occurred so far. |\n| `true` | `false` | At least one error occurred but more EPCIS events are currently being captured. |\n| `false` | `true` | All EPCIS events were captured without an error. |\n| `false` | `false` | Some EPCIS events were captured but errors occurred. |\n\nIf `success` is `false`, check the `errors` or `errorFile` property for details.\n",
+            "description": "A capture job document has at least the following properties:\n- `running`: whether or not the capture job is still active.\n- `success`: whether or not at least one error occurred.\n- `captureErrorBehaviour`: GS1-Capture-Error-Behaviour header value provided with POST data to capture.\n- `errors` or `errorFile`: with the errors if `success` is `false`.\n### captureErrorBehaviour value is `rollback`\n| Capture job `running` | Capture job `success` | Capture job outcome |\n|:--------|:---------|:---------|\n| `true` | `true` | Still capturing EPCIS events. No errors occurred so far. |\n| `true` | `false` | At least one error occurred. Rollback is in progress. |\n| `false` | `true` | All EPCIS events are captured. |\n| `false` | `false` | All EPCIS events are rejected. |\n### captureErrorBehaviour value is `proceed`\n| Capture job `running` | Capture job `success` | Capture job outcome |\n|:--------|:---------|:---------|\n| `true` | `true` | Still capturing EPCIS events. No errors occurred so far. |\n| `true` | `false` | At least one error occurred but more EPCIS events are currently being captured. |\n| `false` | `true` | All EPCIS events were captured without an error. |\n| `false` | `false` | Some EPCIS events were captured but errors occurred. |\nIf `success` is `false`, check the `errors` or `errorFile` property for details.\n",
             "content": {
               "application/json": {
                 "example": [
@@ -487,7 +487,7 @@
                 "$ref": "#/components/headers/GS1-Extensions"
               }
             },
-            "description": "A capture job document has at least the following properties:\n\n- `running`: whether or not the capture job is still active.\n- `success`: whether or not at least one error occurred.\n- `captureErrorBehaviour`: GS1-Capture-Error-Behaviour header value provided with POST data to capture.\n- `errors` or `errorFile`: with the errors if `success` is `false`.\n\n### captureErrorBehaviour value is `rollback`\n\n| Capture job `running` | Capture job `success` | Capture job outcome |\n|:--------|:---------|:---------| \n| `true` | `true` | Still capturing EPCIS events. No errors occurred so far. |\n| `true` | `false` | At least one error occurred. Rollback is in progress. |\n| `false` | `true` | All EPCIS events are captured. |\n| `false` | `false` | All EPCIS events are rejected. |\n\n### captureErrorBehaviour value is `proceed`\n\n| Capture job `running` | Capture job `success` | Capture job outcome |\n|:--------|:---------|:---------|\n| `true` | `true` | Still capturing EPCIS events. No errors occurred so far. |\n| `true` | `false` | At least one error occurred but more EPCIS events are currently being captured. |\n| `false` | `true` | All EPCIS events were captured without an error. |\n| `false` | `false` | Some EPCIS events were captured but errors occurred. |\n\nIf `success` is `false`, check the `errors` or `errorFile` property for details.\n",
+            "description": "A capture job document has at least the following properties:\n- `running`: whether or not the capture job is still active.\n- `success`: whether or not at least one error occurred.\n- `captureErrorBehaviour`: GS1-Capture-Error-Behaviour header value provided with POST data to capture.\n- `errors` or `errorFile`: with the errors if `success` is `false`.\n### captureErrorBehaviour value is `rollback`\n| Capture job `running` | Capture job `success` | Capture job outcome |\n|:--------|:---------|:---------| \n| `true` | `true` | Still capturing EPCIS events. No errors occurred so far. |\n| `true` | `false` | At least one error occurred. Rollback is in progress. |\n| `false` | `true` | All EPCIS events are captured. |\n| `false` | `false` | All EPCIS events are rejected. |\n### captureErrorBehaviour value is `proceed`\n| Capture job `running` | Capture job `success` | Capture job outcome |\n|:--------|:---------|:---------|\n| `true` | `true` | Still capturing EPCIS events. No errors occurred so far. |\n| `true` | `false` | At least one error occurred but more EPCIS events are currently being captured. |\n| `false` | `true` | All EPCIS events were captured without an error. |\n| `false` | `false` | Some EPCIS events were captured but errors occurred. |\nIf `success` is `false`, check the `errors` or `errorFile` property for details.\n",
             "content": {
               "application/json": {
                 "example": {
@@ -599,9 +599,168 @@
           },
           {
             "$ref": "#/components/parameters/GS1-CBV-XML-Format"
+          },
+          {
+            "$ref": "#/components/parameters/eventType"
+          },
+          {
+            "$ref": "#/components/parameters/GE_eventTime"
+          },
+          {
+            "$ref": "#/components/parameters/LT_eventTime"
+          },
+          {
+            "$ref": "#/components/parameters/GE_recordTime"
+          },
+          {
+            "$ref": "#/components/parameters/LT_recordTime"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_action"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_bizStep"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_disposition"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_persistentDisposition_set"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_persistentDisposition_unset"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_readPoint"
+          },
+          {
+            "$ref": "#/components/parameters/WD_readPoint"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_bizLocation"
+          },
+          {
+            "$ref": "#/components/parameters/WD_bizLocation"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_transformationID"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_epc"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_parentID"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_inputEPC"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_outputEPC"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_anyEPC"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_epcClass"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_inputEPCClass"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_outputEPCClass"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_anyEPCClass"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_quantity"
+          },
+          {
+            "$ref": "#/components/parameters/GT_quantity"
+          },
+          {
+            "$ref": "#/components/parameters/GE_quantity"
+          },
+          {
+            "$ref": "#/components/parameters/LT_quantity"
+          },
+          {
+            "$ref": "#/components/parameters/LE_quantity"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_eventID"
+          },
+          {
+            "$ref": "#/components/parameters/EXISTS_errorDeclaration"
+          },
+          {
+            "$ref": "#/components/parameters/GE_errorDeclarationTime"
+          },
+          {
+            "$ref": "#/components/parameters/LT_errorDeclarationTime"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_errorReason"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_correctiveEventID"
+          },
+          {
+            "$ref": "#/components/parameters/orderBy"
+          },
+          {
+            "$ref": "#/components/parameters/orderDirection"
+          },
+          {
+            "$ref": "#/components/parameters/eventCountLimit"
+          },
+          {
+            "$ref": "#/components/parameters/maxEventCount"
+          },
+          {
+            "$ref": "#/components/parameters/GE_startTime"
+          },
+          {
+            "$ref": "#/components/parameters/LT_startTime"
+          },
+          {
+            "$ref": "#/components/parameters/GE_endTime"
+          },
+          {
+            "$ref": "#/components/parameters/LT_endTime"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_type"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_deviceID"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_dataProcessingMethod"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_microorganism"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_chemicalSubstance"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_bizRules"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_stringValue"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_hexBinaryValue"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_uriValue"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_booleanValue"
           }
         ],
-        "description": "This endpoint allows querying EPCIS events that are currently in the repository. \nEvents can be filtered through URL query string parameters as specified by the EPCIS Query Language. \nAn EPCIS 2.0 query body using the REST interface SHALL be serialised as a JSON object. The value of the query key within that JSON object SHALL validate against the schema defined at:  https://ref.gs1.org/standards/epcis/2.0.0/query-schema.json.\n",
+        "description": "This endpoint allows querying EPCIS events that are currently in the repository. \nEvents can be filtered through URL query string parameters as specified by the EPCIS Query Language. \nAn EPCIS 2.0 query body using the REST interface SHALL be serialised as a JSON object. The value of the query key within that JSON object SHALL validate against the schema defined at:  https://ref.gs1.org/standards/epcis/2.0.0/query-schema.json.\nAn EPCIS 2.0 query may also be expressed via parameters in the URI query string.  The query parameters with fixed fieldnames are included in this OpenAPI interface.  However, this list is not exhaustive and the EPCIS 2.0 standard defines additional query parameters with flexible names, depending on the specific value of `uom`, `type` or `fieldname` that appears within the name of the parameter.\n",
         "responses": {
           "200": {
             "$ref": "#/components/responses/200EPCISQueryDocument"
@@ -1069,9 +1228,165 @@
           },
           {
             "$ref": "#/components/parameters/GS1-CBV-XML-Format"
+          },
+          {
+            "$ref": "#/components/parameters/GE_eventTime"
+          },
+          {
+            "$ref": "#/components/parameters/LT_eventTime"
+          },
+          {
+            "$ref": "#/components/parameters/GE_recordTime"
+          },
+          {
+            "$ref": "#/components/parameters/LT_recordTime"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_action"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_bizStep"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_disposition"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_persistentDisposition_set"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_persistentDisposition_unset"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_readPoint"
+          },
+          {
+            "$ref": "#/components/parameters/WD_readPoint"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_bizLocation"
+          },
+          {
+            "$ref": "#/components/parameters/WD_bizLocation"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_transformationID"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_epc"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_parentID"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_inputEPC"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_outputEPC"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_anyEPC"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_epcClass"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_inputEPCClass"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_outputEPCClass"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_anyEPCClass"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_quantity"
+          },
+          {
+            "$ref": "#/components/parameters/GT_quantity"
+          },
+          {
+            "$ref": "#/components/parameters/GE_quantity"
+          },
+          {
+            "$ref": "#/components/parameters/LT_quantity"
+          },
+          {
+            "$ref": "#/components/parameters/LE_quantity"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_eventID"
+          },
+          {
+            "$ref": "#/components/parameters/EXISTS_errorDeclaration"
+          },
+          {
+            "$ref": "#/components/parameters/GE_errorDeclarationTime"
+          },
+          {
+            "$ref": "#/components/parameters/LT_errorDeclarationTime"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_errorReason"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_correctiveEventID"
+          },
+          {
+            "$ref": "#/components/parameters/orderBy"
+          },
+          {
+            "$ref": "#/components/parameters/orderDirection"
+          },
+          {
+            "$ref": "#/components/parameters/eventCountLimit"
+          },
+          {
+            "$ref": "#/components/parameters/maxEventCount"
+          },
+          {
+            "$ref": "#/components/parameters/GE_startTime"
+          },
+          {
+            "$ref": "#/components/parameters/LT_startTime"
+          },
+          {
+            "$ref": "#/components/parameters/GE_endTime"
+          },
+          {
+            "$ref": "#/components/parameters/LT_endTime"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_type"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_deviceID"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_dataProcessingMethod"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_microorganism"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_chemicalSubstance"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_bizRules"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_stringValue"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_hexBinaryValue"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_uriValue"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_booleanValue"
           }
         ],
-        "description": "This endpoint returns all EPCIS events of a specific EPCIS event type up to the amount defined in `perPage`.\nThe server returns a 'Link' header to point to the remaining results.\n\nThe client can further restrict the list of events returned by filtering events using the EPCIS query\nlanguage using URL query string parameters as specified by the EPCIS Query Language.\nThe parameter `eventCountLimit` is used to restrict the maximum number of\nevents to be returned in total, whereas `perPage` restricts the number of events to return per page or paginated results.\n\n\nExample:\n\n```\nhttps://example.com/eventTypes/ObjectEvent/events?EQ_bizStep=shipping%7Cdecommissioning&GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00\n```\n",
+        "description": "This endpoint returns all EPCIS events of a specific EPCIS event type up to the amount defined in `perPage`.\nThe server returns a 'Link' header to point to the remaining results.\nThe client can further restrict the list of events returned by filtering events using the EPCIS query\nlanguage using URL query string parameters as specified by the EPCIS Query Language.\nThe parameter `eventCountLimit` is used to restrict the maximum number of\nevents to be returned in total, whereas `perPage` restricts the number of events to return per page or paginated results.\nExample:\n```\nhttps://example.com/eventTypes/ObjectEvent/events?EQ_bizStep=shipping%7Cdecommissioning&GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00\n```\nAn EPCIS 2.0 query may also be expressed via parameters in the URI query string.  The query parameters with fixed fieldnames are included in this OpenAPI interface.  However, this list is not exhaustive and the EPCIS 2.0 standard defines additional query parameters with flexible names, depending on the specific value of `uom`, `type` or `fieldname` that appears within the name of the parameter.\n",
         "responses": {
           "200": {
             "$ref": "#/components/responses/200EPCISQueryDocument"
@@ -1347,9 +1662,165 @@
           },
           {
             "$ref": "#/components/parameters/GS1-CBV-XML-Format"
+          },
+          {
+            "$ref": "#/components/parameters/eventType"
+          },
+          {
+            "$ref": "#/components/parameters/GE_eventTime"
+          },
+          {
+            "$ref": "#/components/parameters/LT_eventTime"
+          },
+          {
+            "$ref": "#/components/parameters/GE_recordTime"
+          },
+          {
+            "$ref": "#/components/parameters/LT_recordTime"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_action"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_bizStep"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_disposition"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_persistentDisposition_set"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_persistentDisposition_unset"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_readPoint"
+          },
+          {
+            "$ref": "#/components/parameters/WD_readPoint"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_bizLocation"
+          },
+          {
+            "$ref": "#/components/parameters/WD_bizLocation"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_transformationID"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_epc"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_parentID"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_inputEPC"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_outputEPC"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_epcClass"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_inputEPCClass"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_outputEPCClass"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_anyEPCClass"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_quantity"
+          },
+          {
+            "$ref": "#/components/parameters/GT_quantity"
+          },
+          {
+            "$ref": "#/components/parameters/GE_quantity"
+          },
+          {
+            "$ref": "#/components/parameters/LT_quantity"
+          },
+          {
+            "$ref": "#/components/parameters/LE_quantity"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_eventID"
+          },
+          {
+            "$ref": "#/components/parameters/EXISTS_errorDeclaration"
+          },
+          {
+            "$ref": "#/components/parameters/GE_errorDeclarationTime"
+          },
+          {
+            "$ref": "#/components/parameters/LT_errorDeclarationTime"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_errorReason"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_correctiveEventID"
+          },
+          {
+            "$ref": "#/components/parameters/orderBy"
+          },
+          {
+            "$ref": "#/components/parameters/orderDirection"
+          },
+          {
+            "$ref": "#/components/parameters/eventCountLimit"
+          },
+          {
+            "$ref": "#/components/parameters/maxEventCount"
+          },
+          {
+            "$ref": "#/components/parameters/GE_startTime"
+          },
+          {
+            "$ref": "#/components/parameters/LT_startTime"
+          },
+          {
+            "$ref": "#/components/parameters/GE_endTime"
+          },
+          {
+            "$ref": "#/components/parameters/LT_endTime"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_type"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_deviceID"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_dataProcessingMethod"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_microorganism"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_chemicalSubstance"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_bizRules"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_stringValue"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_hexBinaryValue"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_uriValue"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_booleanValue"
           }
         ],
-        "description": "This endpoint helps to navigate EPCIS events by electronic product codes. It returns\nEPCIS events up to the amount defined in `perPage`. If applicable, the server returns a `Link` header to point to the remaining\nresults. Optionally, EPCIS events can be further filtered using the EPCIS Query Language as query string parameters.\n\nExample 1 - EPC in a URN form with EPCIS Query Language filtering\n\n```\nhttps://example.com/epcs/urn:epc:id:sgtin:0614141.107346.2018?EQ_bizStep=shipping%7Cdecommissioning&GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00\n```\n\nExample 2  - EPC in a constrained GS1 Digital Link form (URL encoded)\n```\nhttps://example.com/epcs/https:%2f%2fexample.org%2f01%2f1234567089012400\n```\n",
+        "description": "This endpoint helps to navigate EPCIS events by electronic product codes. It returns\nEPCIS events up to the amount defined in `perPage`. If applicable, the server returns a `Link` header to point to the remaining\nresults. Optionally, EPCIS events can be further filtered using the EPCIS Query Language as query string parameters.\nExample 1 - EPC in a URN form with EPCIS Query Language filtering\n```\nhttps://example.com/epcs/urn:epc:id:sgtin:0614141.107346.2018?EQ_bizStep=shipping%7Cdecommissioning&GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00\n```\n\nExample 2  - EPC in a constrained GS1 Digital Link form (URL encoded)\n```\nhttps://example.com/epcs/https:%2f%2fexample.org%2f01%2f1234567089012400\n```\nAn EPCIS 2.0 query may also be expressed via the URI query string.  The query parameters with fixed fieldnames are included in this OpenAPI interface.  However, this list is not exhaustive and the EPCIS 2.0 standard defines additional query parameters with flexible names, depending on the specific value of `uom`, `type` or `fieldname` that appears within the name of the parameter.\n",
         "responses": {
           "200": {
             "$ref": "#/components/responses/200EPCISQueryDocument"
@@ -1615,9 +2086,165 @@
           },
           {
             "$ref": "#/components/parameters/GS1-CBV-XML-Format"
+          },
+          {
+            "$ref": "#/components/parameters/eventType"
+          },
+          {
+            "$ref": "#/components/parameters/GE_eventTime"
+          },
+          {
+            "$ref": "#/components/parameters/LT_eventTime"
+          },
+          {
+            "$ref": "#/components/parameters/GE_recordTime"
+          },
+          {
+            "$ref": "#/components/parameters/LT_recordTime"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_action"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_disposition"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_persistentDisposition_set"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_persistentDisposition_unset"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_readPoint"
+          },
+          {
+            "$ref": "#/components/parameters/WD_readPoint"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_bizLocation"
+          },
+          {
+            "$ref": "#/components/parameters/WD_bizLocation"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_transformationID"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_epc"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_parentID"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_inputEPC"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_outputEPC"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_anyEPC"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_epcClass"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_inputEPCClass"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_outputEPCClass"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_anyEPCClass"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_quantity"
+          },
+          {
+            "$ref": "#/components/parameters/GT_quantity"
+          },
+          {
+            "$ref": "#/components/parameters/GE_quantity"
+          },
+          {
+            "$ref": "#/components/parameters/LT_quantity"
+          },
+          {
+            "$ref": "#/components/parameters/LE_quantity"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_eventID"
+          },
+          {
+            "$ref": "#/components/parameters/EXISTS_errorDeclaration"
+          },
+          {
+            "$ref": "#/components/parameters/GE_errorDeclarationTime"
+          },
+          {
+            "$ref": "#/components/parameters/LT_errorDeclarationTime"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_errorReason"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_correctiveEventID"
+          },
+          {
+            "$ref": "#/components/parameters/orderBy"
+          },
+          {
+            "$ref": "#/components/parameters/orderDirection"
+          },
+          {
+            "$ref": "#/components/parameters/eventCountLimit"
+          },
+          {
+            "$ref": "#/components/parameters/maxEventCount"
+          },
+          {
+            "$ref": "#/components/parameters/GE_startTime"
+          },
+          {
+            "$ref": "#/components/parameters/LT_startTime"
+          },
+          {
+            "$ref": "#/components/parameters/GE_endTime"
+          },
+          {
+            "$ref": "#/components/parameters/LT_endTime"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_type"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_deviceID"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_dataProcessingMethod"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_microorganism"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_chemicalSubstance"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_bizRules"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_stringValue"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_hexBinaryValue"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_uriValue"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_booleanValue"
           }
         ],
-        "description": "This endpoint helps to navigate EPCIS events by business steps. It returns\nEPCIS events up to the amount defined in `perPage`. The server returns a `Link` header to point to the\nremaining results.  Optionally, EPCIS events can be further filtered using the EPCIS Query Language in as query\nstring parameters.\n\nExample:\n\n```\nhttps://example.com/bizSteps/receiving?GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00\n```\n",
+        "description": "This endpoint helps to navigate EPCIS events by business steps. It returns\nEPCIS events up to the amount defined in `perPage`. The server returns a `Link` header to point to the\nremaining results.  Optionally, EPCIS events can be further filtered using the EPCIS Query Language in as query\nstring parameters.\nExample:\n```\nhttps://example.com/bizSteps/receiving?GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00\n```\nAn EPCIS 2.0 query may also be expressed via the URI query string.  The query parameters with fixed fieldnames are included in this OpenAPI interface.  However, this list is not exhaustive and the EPCIS 2.0 standard defines additional query parameters with flexible names, depending on the specific value of `uom`, `type` or `fieldname` that appears within the name of the parameter.\n",
         "responses": {
           "200": {
             "$ref": "#/components/responses/200EPCISQueryDocument"
@@ -1870,7 +2497,7 @@
         "tags": [
           "Events"
         ],
-        "summary": "Returns all EPCIS events related to the read point.",
+        "summary": "Returns all EPCIS events related to the business location.",
         "parameters": [
           {
             "$ref": "#/components/parameters/NextPageToken"
@@ -1895,9 +2522,165 @@
           },
           {
             "$ref": "#/components/parameters/GS1-CBV-XML-Format"
+          },
+          {
+            "$ref": "#/components/parameters/eventType"
+          },
+          {
+            "$ref": "#/components/parameters/GE_eventTime"
+          },
+          {
+            "$ref": "#/components/parameters/LT_eventTime"
+          },
+          {
+            "$ref": "#/components/parameters/GE_recordTime"
+          },
+          {
+            "$ref": "#/components/parameters/LT_recordTime"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_action"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_bizStep"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_disposition"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_persistentDisposition_set"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_persistentDisposition_unset"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_readPoint"
+          },
+          {
+            "$ref": "#/components/parameters/WD_readPoint"
+          },
+          {
+            "$ref": "#/components/parameters/WD_bizLocation"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_transformationID"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_epc"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_parentID"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_inputEPC"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_outputEPC"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_anyEPC"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_epcClass"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_inputEPCClass"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_outputEPCClass"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_anyEPCClass"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_quantity"
+          },
+          {
+            "$ref": "#/components/parameters/GT_quantity"
+          },
+          {
+            "$ref": "#/components/parameters/GE_quantity"
+          },
+          {
+            "$ref": "#/components/parameters/LT_quantity"
+          },
+          {
+            "$ref": "#/components/parameters/LE_quantity"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_eventID"
+          },
+          {
+            "$ref": "#/components/parameters/EXISTS_errorDeclaration"
+          },
+          {
+            "$ref": "#/components/parameters/GE_errorDeclarationTime"
+          },
+          {
+            "$ref": "#/components/parameters/LT_errorDeclarationTime"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_errorReason"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_correctiveEventID"
+          },
+          {
+            "$ref": "#/components/parameters/orderBy"
+          },
+          {
+            "$ref": "#/components/parameters/orderDirection"
+          },
+          {
+            "$ref": "#/components/parameters/eventCountLimit"
+          },
+          {
+            "$ref": "#/components/parameters/maxEventCount"
+          },
+          {
+            "$ref": "#/components/parameters/GE_startTime"
+          },
+          {
+            "$ref": "#/components/parameters/LT_startTime"
+          },
+          {
+            "$ref": "#/components/parameters/GE_endTime"
+          },
+          {
+            "$ref": "#/components/parameters/LT_endTime"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_type"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_deviceID"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_dataProcessingMethod"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_microorganism"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_chemicalSubstance"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_bizRules"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_stringValue"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_hexBinaryValue"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_uriValue"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_booleanValue"
           }
         ],
-        "description": "This endpoint helps to navigate EPCIS events by business locations. It returns\nEPCIS events up to the amount defined in `perPage`. The server returns a `Link` header to point to the remaining\nresults.\n\nOptionally, EPCIS events can be further filtered using the EPCIS Query Language as query string parameters.\n\nExample:\n\n```\nhttps://example.com/bizLocations/urn:epc:id:sgln:0012345.11111.400?GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00\n```\n",
+        "description": "This endpoint helps to navigate EPCIS events by business locations. It returns\nEPCIS events up to the amount defined in `perPage`. The server returns a `Link` header to point to the remaining\nresults.\nOptionally, EPCIS events can be further filtered using the EPCIS Query Language as query string parameters.\nExample:\n```\nhttps://example.com/bizLocations/urn:epc:id:sgln:0012345.11111.400?GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00\n```\nAn EPCIS 2.0 query may also be expressed via the URI query string.  The query parameters with fixed fieldnames are included in this OpenAPI interface.  However, this list is not exhaustive and the EPCIS 2.0 standard defines additional query parameters with flexible names, depending on the specific value of `uom`, `type` or `fieldname` that appears within the name of the parameter.\n",
         "responses": {
           "200": {
             "$ref": "#/components/responses/200EPCISQueryDocument"
@@ -2176,9 +2959,165 @@
           },
           {
             "$ref": "#/components/parameters/GS1-CBV-XML-Format"
+          },
+          {
+            "$ref": "#/components/parameters/eventType"
+          },
+          {
+            "$ref": "#/components/parameters/GE_eventTime"
+          },
+          {
+            "$ref": "#/components/parameters/LT_eventTime"
+          },
+          {
+            "$ref": "#/components/parameters/GE_recordTime"
+          },
+          {
+            "$ref": "#/components/parameters/LT_recordTime"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_action"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_bizStep"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_disposition"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_persistentDisposition_set"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_persistentDisposition_unset"
+          },
+          {
+            "$ref": "#/components/parameters/WD_readPoint"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_bizLocation"
+          },
+          {
+            "$ref": "#/components/parameters/WD_bizLocation"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_transformationID"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_epc"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_parentID"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_inputEPC"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_outputEPC"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_anyEPC"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_epcClass"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_inputEPCClass"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_outputEPCClass"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_anyEPCClass"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_quantity"
+          },
+          {
+            "$ref": "#/components/parameters/GT_quantity"
+          },
+          {
+            "$ref": "#/components/parameters/GE_quantity"
+          },
+          {
+            "$ref": "#/components/parameters/LT_quantity"
+          },
+          {
+            "$ref": "#/components/parameters/LE_quantity"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_eventID"
+          },
+          {
+            "$ref": "#/components/parameters/EXISTS_errorDeclaration"
+          },
+          {
+            "$ref": "#/components/parameters/GE_errorDeclarationTime"
+          },
+          {
+            "$ref": "#/components/parameters/LT_errorDeclarationTime"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_errorReason"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_correctiveEventID"
+          },
+          {
+            "$ref": "#/components/parameters/orderBy"
+          },
+          {
+            "$ref": "#/components/parameters/orderDirection"
+          },
+          {
+            "$ref": "#/components/parameters/eventCountLimit"
+          },
+          {
+            "$ref": "#/components/parameters/maxEventCount"
+          },
+          {
+            "$ref": "#/components/parameters/GE_startTime"
+          },
+          {
+            "$ref": "#/components/parameters/LT_startTime"
+          },
+          {
+            "$ref": "#/components/parameters/GE_endTime"
+          },
+          {
+            "$ref": "#/components/parameters/LT_endTime"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_type"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_deviceID"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_dataProcessingMethod"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_microorganism"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_chemicalSubstance"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_bizRules"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_stringValue"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_hexBinaryValue"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_uriValue"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_booleanValue"
           }
         ],
-        "description": "This endpoint helps to navigate EPCIS events by read points. It returns\nEPCIS events up to the amount defined in `perPage`. The server returns a `Link` header to point to the remaining\nresults.\n\nOptionally, EPCIS events can be further filtered using the EPCIS Query Language as query string parameters.\n\nExample:\n\n```\nhttps://example.com/readPoints/urn:epc:id:sgln:0012345.11111.400?GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00\n```\n",
+        "description": "This endpoint helps to navigate EPCIS events by read points. It returns\nEPCIS events up to the amount defined in `perPage`. The server returns a `Link` header to point to the remaining\nresults.\nOptionally, EPCIS events can be further filtered using the EPCIS Query Language as query string parameters.\nExample:\n```\nhttps://example.com/readPoints/urn:epc:id:sgln:0012345.11111.400?GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00\n```\nAn EPCIS 2.0 query may also be expressed via the URI query string.  The query parameters with fixed fieldnames are included in this OpenAPI interface.  However, this list is not exhaustive and the EPCIS 2.0 standard defines additional query parameters with flexible names, depending on the specific value of `uom`, `type` or `fieldname` that appears within the name of the parameter.\n",
         "responses": {
           "200": {
             "$ref": "#/components/responses/200EPCISQueryDocument"
@@ -2444,9 +3383,168 @@
           },
           {
             "$ref": "#/components/parameters/GS1-CBV-XML-Format"
+          },
+          {
+            "$ref": "#/components/parameters/eventType"
+          },
+          {
+            "$ref": "#/components/parameters/GE_eventTime"
+          },
+          {
+            "$ref": "#/components/parameters/LT_eventTime"
+          },
+          {
+            "$ref": "#/components/parameters/GE_recordTime"
+          },
+          {
+            "$ref": "#/components/parameters/LT_recordTime"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_action"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_bizStep"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_disposition"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_persistentDisposition_set"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_persistentDisposition_unset"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_readPoint"
+          },
+          {
+            "$ref": "#/components/parameters/WD_readPoint"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_bizLocation"
+          },
+          {
+            "$ref": "#/components/parameters/WD_bizLocation"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_transformationID"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_epc"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_parentID"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_inputEPC"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_outputEPC"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_anyEPC"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_epcClass"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_inputEPCClass"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_outputEPCClass"
+          },
+          {
+            "$ref": "#/components/parameters/MATCH_anyEPCClass"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_quantity"
+          },
+          {
+            "$ref": "#/components/parameters/GT_quantity"
+          },
+          {
+            "$ref": "#/components/parameters/GE_quantity"
+          },
+          {
+            "$ref": "#/components/parameters/LT_quantity"
+          },
+          {
+            "$ref": "#/components/parameters/LE_quantity"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_eventID"
+          },
+          {
+            "$ref": "#/components/parameters/EXISTS_errorDeclaration"
+          },
+          {
+            "$ref": "#/components/parameters/GE_errorDeclarationTime"
+          },
+          {
+            "$ref": "#/components/parameters/LT_errorDeclarationTime"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_errorReason"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_correctiveEventID"
+          },
+          {
+            "$ref": "#/components/parameters/orderBy"
+          },
+          {
+            "$ref": "#/components/parameters/orderDirection"
+          },
+          {
+            "$ref": "#/components/parameters/eventCountLimit"
+          },
+          {
+            "$ref": "#/components/parameters/maxEventCount"
+          },
+          {
+            "$ref": "#/components/parameters/GE_startTime"
+          },
+          {
+            "$ref": "#/components/parameters/LT_startTime"
+          },
+          {
+            "$ref": "#/components/parameters/GE_endTime"
+          },
+          {
+            "$ref": "#/components/parameters/LT_endTime"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_type"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_deviceID"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_dataProcessingMethod"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_microorganism"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_chemicalSubstance"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_bizRules"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_stringValue"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_hexBinaryValue"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_uriValue"
+          },
+          {
+            "$ref": "#/components/parameters/EQ_booleanValue"
           }
         ],
-        "description": "This endpoint helps to navigate EPCIS events by dispositions. It returns\nEPCIS events up to the amount defined in `perPage`. The server returns a `Link` header to point to the remaining\nresults.\nOptionally, EPCIS events can be further filtered using the EPCIS Query Language as query string parameters.\n\nExample:\n\n```\nhttps://example.com/dispositions/in_progress?GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00\n```\n",
+        "description": "This endpoint helps to navigate EPCIS events by dispositions. It returns\nEPCIS events up to the amount defined in `perPage`. The server returns a `Link` header to point to the remaining\nresults.\nOptionally, EPCIS events can be further filtered using the EPCIS Query Language as query string parameters.\nExample:\n```\nhttps://example.com/dispositions/in_progress?GE_eventTime=2015-03-15T00%3A00%3A00.000-04%3A00\n```\nAn EPCIS 2.0 query may also be expressed via the URI query string.  The query parameters with fixed fieldnames are included in this OpenAPI interface.  However, this list is not exhaustive and the EPCIS 2.0 standard defines additional query parameters with flexible names, depending on the specific value of `uom`, `type` or `fieldname` that appears within the name of the parameter.\n",
         "responses": {
           "200": {
             "$ref": "#/components/responses/200EPCISQueryDocument"
@@ -2971,7 +4069,7 @@
             "$ref": "#/components/parameters/GS1-CBV-XML-Format"
           }
         ],
-        "description": "EPCIS 2.0 implementations must support Webhook subscriptions. \nCreating a query subscription requires the client to provide a single endpoint to which the\nserver will send events (as `EPCISQueryDocument`) and an optional string `signatureToken`. \nThis `signatureToken` must be generated by the client and is used by the server to authenticate itself and sign messages when sending events. The signature must be contained on the `GS1-Signature` HTTP header of the server request. \n\nThe choice of signature type is implementation specific but examples would be using HMAC with SHA-256 directly or a wrapper supporting various symmetric or asymetric \ncryptographic algorithms such as Json Web Signature (JWS).\n\nWhen the client subscribes to a query, it must either set `stream` to `true`, to be notified whenever a new EPCIS\nevent matches the query, or the client must define a query schedule. If these are missing the query subscription is invalid because the server won't\nknow when to notify a client.\n\n## Scheduled query: Receive query results at 1.05am\n\nA scheduled query subscription is a time-based query execution. EPCIS 2.0 scheduled queries are scheduled\nin the same manner as cron jobs.\n\nFor example, this query subscription is scheduled to trigger every morning at 1.05am. By setting\n`reportIfEmpty` to `true`, the client's callback URL (`dest`) will be called even if there are no new events that match\nthe query.\n\n```\nPOST /queries/MyQuery/subscriptions\n{\n  \"dest\": \"https://client.example.com/queryCallback\",\n  \"signatureToken\": \"13df38d8275b13f05704629e5f1cf3d45d6132d5\",\n  \"reportIfEmpty\": true,\n  \"schedule\": {\n    \"hour\":\"1\",\n    \"minute\": \"5\"\n  }\n}\n```\n\n## Streaming query subscription: Whenever a captured EPCIS event matches the query criteria\n\nIf no query schedule is specified, the client must explicitly set `stream` to `true`. This restriction is to\nprevent clients from accidentally subscribing to EPCIS event streams.\n\n```\nPOST /queries/MyQuery/subscriptions\n{\n  \"dest\": \"https://client.example.com/queryCallback\",\n  \"signatureToken\": \"13df38d8275b13f05704629e5f1cf3d45d6132d5\",\n  \"stream\": true\n}\n```\n",
+        "description": "EPCIS 2.0 implementations must support Webhook subscriptions. \nCreating a query subscription requires the client to provide a single endpoint to which the\nserver will send events (as `EPCISQueryDocument`) and an optional string `signatureToken`. \nThis `signatureToken` must be generated by the client and is used by the server to authenticate itself and sign messages when sending events. The signature must be contained on the `GS1-Signature` HTTP header of the server request. \n\nThe choice of signature type is implementation specific but examples would be using HMAC with SHA-256 directly or a wrapper supporting various symmetric or asymetric \ncryptographic algorithms such as Json Web Signature (JWS).\nWhen the client subscribes to a query, it must either set `stream` to `true`, to be notified whenever a new EPCIS\nevent matches the query, or the client must define a query schedule. If these are missing the query subscription is invalid because the server won't\nknow when to notify a client.\n## Scheduled query: Receive query results at 1.05am\nA scheduled query subscription is a time-based query execution. EPCIS 2.0 scheduled queries are scheduled\nin the same manner as cron jobs.\nFor example, this query subscription is scheduled to trigger every morning at 1.05am. By setting\n`reportIfEmpty` to `true`, the client's callback URL (`dest`) will be called even if there are no new events that match\nthe query.\n```\nPOST /queries/MyQuery/subscriptions\n{\n  \"dest\": \"https://client.example.com/queryCallback\",\n  \"signatureToken\": \"13df38d8275b13f05704629e5f1cf3d45d6132d5\",\n  \"reportIfEmpty\": true,\n  \"schedule\": {\n    \"hour\":\"1\",\n    \"minute\": \"5\"\n  }\n}\n```\n## Streaming query subscription: Whenever a captured EPCIS event matches the query criteria\nIf no query schedule is specified, the client must explicitly set `stream` to `true`. This restriction is to\nprevent clients from accidentally subscribing to EPCIS event streams.\n```\nPOST /queries/MyQuery/subscriptions\n{\n  \"dest\": \"https://client.example.com/queryCallback\",\n  \"signatureToken\": \"13df38d8275b13f05704629e5f1cf3d45d6132d5\",\n  \"stream\": true\n}\n```\n",
         "requestBody": {
           "content": {
             "application/json": {
@@ -3068,7 +4166,7 @@
                   }
                 ],
                 "requestBody": {
-                  "description": "The server sends the query result to the client as a series of `EPCISQueryDocument`. There is no pagination for a `POST` request, the\nserver must either send each EPCIS event individually or group EPCIS events in manageable batches.\n\nIf an error occurs server-side, the server must send the error in the format that is already used for\nreturning `4xx` or `5xx` responses.\n",
+                  "description": "The server sends the query result to the client as a series of `EPCISQueryDocument`. There is no pagination for a `POST` request, the\nserver must either send each EPCIS event individually or group EPCIS events in manageable batches.\nIf an error occurs server-side, the server must send the error in the format that is already used for\nreturning `4xx` or `5xx` responses.\n",
                   "required": true,
                   "content": {
                     "application/json": {
@@ -3396,7 +4494,7 @@
             "$ref": "#/components/parameters/GS1-CBV-XML-Format"
           }
         ],
-        "description": "The `GET` endpoint  is to retrieve results of a named query.\nFurthermore, this endpoint can also be used to subscribe to queries using Websocket. To do this, the client\nmust specify the query schedule or set the `stream` parameter to `true` as a URL query string parameter. Please\nnote that scheduling parameters and the `stream` parameter are mutually exclusive.\n\n## Scheduled query: Receive query results at 1.05am\n\nHandshake from client for scheduled query:\n\n```\nGET https://example.com/queries/MyQuery/events?minute=5&hour=1\nHost: example.com\nUpgrade: websocket\nConnection: Upgrade\n```\n\nHandshake from the server:\n\n```\nHTTP/1.1 101 Switching Protocols\nUpgrade: websocket\nConnection: Upgrade\n```\n\n## Streaming query subscription: Whenever a captured EPCIS event matches the query criteria\n\nHandshake from client for streaming:\n\n```\nGET https://example.com/queries/MyQuery/events?stream=true\nHost: example.com\nUpgrade: websocket\nConnection: Upgrade\n```\n\nHandshake from the server:\n\n```\nHTTP/1.1 101 Switching Protocols\nUpgrade: websocket\nConnection: Upgrade\n```\n",
+        "description": "The `GET` endpoint  is to retrieve results of a named query.\nFurthermore, this endpoint can also be used to subscribe to queries using Websocket. To do this, the client\nmust specify the query schedule or set the `stream` parameter to `true` as a URL query string parameter. Please\nnote that scheduling parameters and the `stream` parameter are mutually exclusive.\n## Scheduled query: Receive query results at 1.05am\nHandshake from client for scheduled query:\n```\nGET https://example.com/queries/MyQuery/events?minute=5&hour=1\nHost: example.com\nUpgrade: websocket\nConnection: Upgrade\n```\nHandshake from the server:\n```\nHTTP/1.1 101 Switching Protocols\nUpgrade: websocket\nConnection: Upgrade\n```\n## Streaming query subscription: Whenever a captured EPCIS event matches the query criteria\nHandshake from client for streaming:\n```\nGET https://example.com/queries/MyQuery/events?stream=true\nHost: example.com\nUpgrade: websocket\nConnection: Upgrade\n```\nHandshake from the server:\n```\nHTTP/1.1 101 Switching Protocols\nUpgrade: websocket\nConnection: Upgrade\n```\n",
         "responses": {
           "101": {
             "$ref": "#/components/responses/101WebsocketCreated"
@@ -5035,7 +6133,7 @@
         ]
       },
       "CaptureJob": {
-        "description": "When EPCIS events are added through the capture interface, the capture process can run asynchronously. If the payload\nis syntactically correct and the client is allowed to call `/capture`, the server returns a `202` HTTP response code. This\ndoes not guarantee successful storage of all EPCIS events. The capture job exposes the state of the capture job to the client.\n\nA capture job document has at least the following properties:\n\n- `running`: whether or not the capture job is still active.\n- `success`: whether or not at least one error occurred.\n- `captureErrorBehaviour`: GS1-Capture-Error-Behaviour header value provided with POST data to capture.\n- `errors` or `errorFile`: with the errors if `success` is `false`.\n\n### captureErrorBehaviour value is `rollback`\n\n| Capture job `running` | Capture job `success` | Capture job outcome |\n|:--------|:---------|:---------|\n| `true` | `true` | Still capturing EPCIS events. No errors occurred so far. |\n| `true` | `false` | At least one error occurred. Rollback is in progress. |\n| `false` | `true` | All EPCIS events are captured. |\n| `false` | `false` | All EPCIS events are rejected. |\n\n### captureErrorBehaviour value is `proceed`\n\n| Capture job `running` | Capture job `success` | Capture job outcome |\n|:--------|:---------|:---------|\n| `true` | `true` | Still capturing EPCIS events. No errors occurred so far. |\n| `true` | `false` | At least one error occurred but more EPCIS events are currently being captured. |\n| `false` | `true` | All EPCIS events were captured without an error. |\n| `false` | `false` | Some EPCIS events were captured but errors occurred. |\n\nIf `success` is `false`, check the `errors` or `errorFile` property for details.\n",
+        "description": "When EPCIS events are added through the capture interface, the capture process can run asynchronously. If the payload\nis syntactically correct and the client is allowed to call `/capture`, the server returns a `202` HTTP response code. This\ndoes not guarantee successful storage of all EPCIS events. The capture job exposes the state of the capture job to the client.\nA capture job document has at least the following properties:\n- `running`: whether or not the capture job is still active.\n- `success`: whether or not at least one error occurred.\n- `captureErrorBehaviour`: GS1-Capture-Error-Behaviour header value provided with POST data to capture.\n- `errors` or `errorFile`: with the errors if `success` is `false`.\n### captureErrorBehaviour value is `rollback`\n| Capture job `running` | Capture job `success` | Capture job outcome |\n|:--------|:---------|:---------|\n| `true` | `true` | Still capturing EPCIS events. No errors occurred so far. |\n| `true` | `false` | At least one error occurred. Rollback is in progress. |\n| `false` | `true` | All EPCIS events are captured. |\n| `false` | `false` | All EPCIS events are rejected. |\n### captureErrorBehaviour value is `proceed`\n| Capture job `running` | Capture job `success` | Capture job outcome |\n|:--------|:---------|:---------|\n| `true` | `true` | Still capturing EPCIS events. No errors occurred so far. |\n| `true` | `false` | At least one error occurred but more EPCIS events are currently being captured. |\n| `false` | `true` | All EPCIS events were captured without an error. |\n| `false` | `false` | Some EPCIS events were captured but errors occurred. |\nIf `success` is `false`, check the `errors` or `errorFile` property for details.\n",
         "example": {
           "captureID": "id9261379075",
           "createdAt": "2022-01-21T17:32:28Z",
@@ -5150,7 +6248,7 @@
         "example": "<https://example.com/epcis/events?perPage=30&nextPageToken=3A15506738749783AU6D7DENAKwM2gQRRwGrataeq>; rel=\"next\""
       },
       "PerPage": {
-        "description": "This parameter helps to control the amount of data returned to the client through pagination.\nIn the case of EPCIS events, `perPage` specifies the maximum number of events in a response to the client.\nIt does not mandate that the server reaches this limit. For example, if the server sees that some EPCIS events are very\nlarge, the server can decide to return fewer events to avoid creating an error because the response body is too\nlarge.\n\nAs long as there are more resources to retrieve, the `Link` header contains the URL of the next page and\nthe attribute `rel=\"next\"`. The last page is indicated by the absence of the `rel=\"next\"`. Depending on the\nimplementation, there can be a global upper limit for the `perPage` value that the client cannot override,\nwhich should be stated in the documentation.\n",
+        "description": "This parameter helps to control the amount of data returned to the client through pagination.\nIn the case of EPCIS events, `perPage` specifies the maximum number of events in a response to the client.\nIt does not mandate that the server reaches this limit. For example, if the server sees that some EPCIS events are very\nlarge, the server can decide to return fewer events to avoid creating an error because the response body is too\nlarge.\nAs long as there are more resources to retrieve, the `Link` header contains the URL of the next page and\nthe attribute `rel=\"next\"`. The last page is indicated by the absence of the `rel=\"next\"`. Depending on the\nimplementation, there can be a global upper limit for the `perPage` value that the client cannot override,\nwhich should be stated in the documentation.\n",
         "type": "integer",
         "default": 30
       },
@@ -5574,7 +6672,7 @@
         }
       },
       "QueryStreamSubscription": {
-        "description": "If no query schedule is specified, the client must explicitly set `stream` to `true`. This restriction is to\nprevent clients from accidentally subscribing to EPCIS event streams.\n\nExample:\n\n```\nPOST /queries/MyQuery/subscriptions\n{\n  \"dest\": \"https://client.example.com/queryCallback\",\n  \"signatureToken\": \"13df38d8275b13f05704629e5f1cf3d45d6132d5\",\n  \"stream\": true\n}\n```\n",
+        "description": "If no query schedule is specified, the client must explicitly set `stream` to `true`. This restriction is to\nprevent clients from accidentally subscribing to EPCIS event streams.\nExample:\n```\nPOST /queries/MyQuery/subscriptions\n{\n  \"dest\": \"https://client.example.com/queryCallback\",\n  \"signatureToken\": \"13df38d8275b13f05704629e5f1cf3d45d6132d5\",\n  \"stream\": true\n}\n```\n",
         "type": "object",
         "example": {
           "stream": true
@@ -5589,7 +6687,7 @@
         }
       },
       "QueryScheduleSubscription": {
-        "description": "A scheduled query subscription is a time-based query execution scheduler. EPCIS 2.0 scheduled queries are scheduled\nin the same manner as cron jobs.\n\nFor example, this query subscription is scheduled to trigger every morning at 1.05am. By setting\n`reportIfEmpty` to `true`, the client's callback URL will be called even if there are no new events that match\nthe query.\n\n```\nPOST /queries/MyQuery/subscriptions\n{\n  \"dest\": \"https://client.example.com/queryCallback\",\n  \"signatureToken\": \"13df38d8275b13f05704629e5f1cf3d45d6132d5\",\n  \"reportIfEmpty\": true,\n  \"schedule\": {\n    \"hour\":\"1\",\n    \"minute\": \"5\"\n  }\n}\n```\n",
+        "description": "A scheduled query subscription is a time-based query execution scheduler. EPCIS 2.0 scheduled queries are scheduled\nin the same manner as cron jobs.\nFor example, this query subscription is scheduled to trigger every morning at 1.05am. By setting\n`reportIfEmpty` to `true`, the client's callback URL will be called even if there are no new events that match\nthe query.\n```\nPOST /queries/MyQuery/subscriptions\n{\n  \"dest\": \"https://client.example.com/queryCallback\",\n  \"signatureToken\": \"13df38d8275b13f05704629e5f1cf3d45d6132d5\",\n  \"reportIfEmpty\": true,\n  \"schedule\": {\n    \"hour\":\"1\",\n    \"minute\": \"5\"\n  }\n}\n```\n",
         "type": "object",
         "example": {
           "schedule": {
@@ -7778,7 +8876,7 @@
       "GS1-EPC-Format": {
         "in": "header",
         "name": "GS1-EPC-Format",
-        "description": "Header used by the client to indicate whether EPCs are expressed as GS1 Digital Link URIs or as EPC URNs.\nIt is also used by the server to announce which EPC formats are supported. \nIf absent the default value is `Always_GS1_Digital_Link`:\n\n - No_Preference: No preference in the representation, i.e. any format is accepted.\n - Always_GS1_Digital_Link: URIs are returned as GS1 Digital Link.\n - Always_EPC_URN: URIs are returned as URN.\n - Never_Translates: EPCs are never translated, i.e. the original format is kept.\n",
+        "description": "Header used by the client to indicate whether EPCs are expressed as GS1 Digital Link URIs or as EPC URNs.\nIt is also used by the server to announce which EPC formats are supported. \nIf absent the default value is `Always_GS1_Digital_Link`:\n - No_Preference: No preference in the representation, i.e. any format is accepted.\n - Always_GS1_Digital_Link: URIs are returned as GS1 Digital Link.\n - Always_EPC_URN: URIs are returned as URN.\n - Never_Translates: EPCs are never translated, i.e. the original format is kept.\n",
         "schema": {
           "$ref": "#/components/schemas/GS1-EPC-Format"
         }
@@ -7786,7 +8884,7 @@
       "GS1-CBV-XML-Format": {
         "in": "header",
         "name": "GS1-CBV-XML-Format",
-        "description": "When requesting XML content-type only, users can use this header to request\nreceiving events with CBV values in either URN or Web URI format.\nThis option is not available for JSON/JSON-LD.\n\n- No_Preference: The server chooses the representation.\n- Always_Web_URI: CBV values are returned as Web URI.\n- Always_URN: CBV values are returned as URNs.\n- Never_Translates: The original format is kept.\n",
+        "description": "When requesting XML content-type only, users can use this header to request\nreceiving events with CBV values in either URN or Web URI format.\nThis option is not available for JSON/JSON-LD.\n- No_Preference: The server chooses the representation.\n- Always_Web_URI: CBV values are returned as Web URI.\n- Always_URN: CBV values are returned as URNs.\n- Never_Translates: The original format is kept.\n",
         "schema": {
           "$ref": "#/components/schemas/GS1-CBV-XML-Format"
         }
@@ -7808,6 +8906,917 @@
         "required": false,
         "schema": {
           "$ref": "#/components/schemas/GS1-Capture-Error-Behaviour"
+        }
+      },
+      "eventType": {
+        "in": "query",
+        "name": "eventType",
+        "description": "If specified, the result will only include events whose `type` matches one of the types specified in the parameter value. Each element of the parameter value may be one of the following strings: `ObjectEvent`, `AggregationEvent`, `TransactionEvent`, `TransformationEvent` or `AssociationEvent`. An element of the parameter value may also be the name of an extension event type. If omitted, all event types will be considered for inclusion in the result.",
+        "style": "pipeDelimited",
+        "explode": false,
+        "required": false,
+        "example": "ObjectEvent",
+        "schema": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "enum": [
+              "ObjectEvent",
+              "AggregationEvent",
+              "AssociationEvent",
+              "TransactionEvent",
+              "TransformationEvent"
+            ]
+          }
+        }
+      },
+      "GE_eventTime": {
+        "name": "GE_eventTime",
+        "description": "If specified, only events with `eventTime` greater than or equal to the specified value will be included in the result. If omitted, events are included regardless of their `eventTime` (unless constrained by the `LT_eventTime` parameter).",
+        "in": "query",
+        "required": false,
+        "example": "2022-06-30T00:15:47.000-05:00",
+        "schema": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "LT_eventTime": {
+        "name": "LT_eventTime",
+        "description": "If specified, only events with `eventTime` less than the specified value will be included in the result. If omitted, events are included regardless of their `eventTime` (unless constrained by the `GE_eventTime` parameter).",
+        "in": "query",
+        "required": false,
+        "example": "2022-06-30T00:15:47.000-05:00",
+        "schema": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "GE_recordTime": {
+        "name": "GE_recordTime",
+        "description": "If provided, only events with `recordTime` greater than or equal to the specified value will be returned. The automatic limitation based on event record time (section 8.2.5.2) may implicitly provide a constraint similar to this parameter. If omitted, events are included regardless of their `recordTime`, other than automatic limitation based on event record time",
+        "in": "query",
+        "required": false,
+        "example": "2022-06-30T00:15:47.000-05:00",
+        "schema": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "LT_recordTime": {
+        "name": "LT_recordTime",
+        "description": "If provided, only events with `recordTime` less than the specified value will be returned. If omitted, events are included regardless of their `recordTime` (unless constrained by the `GE_recordTime` parameter or the automatic limitation based on event record time)",
+        "in": "query",
+        "required": false,
+        "example": "2022-06-30T00:15:47.000-05:00",
+        "schema": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "EQ_action": {
+        "name": "EQ_action",
+        "description": "If specified, the result will only include events that (a) have an `action` field; and where (b) the value of the `action` field matches one of the specified values. The properties of the value of this parameter each must be one of the strings `ADD`, `OBSERVE`, or `DELETE`; if not, the implementation SHALL raise a `QueryParameterException`. If omitted, events are included regardless of their `action` field.",
+        "in": "query",
+        "style": "pipeDelimited",
+        "explode": false,
+        "required": false,
+        "example": "OBSERVE",
+        "schema": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "enum": [
+              "ADD",
+              "OBSERVE",
+              "DELETE"
+            ]
+          }
+        }
+      },
+      "EQ_bizStep": {
+        "name": "EQ_bizStep",
+        "description": "If specified, the result will only include events that (a) have a non-null `bizStep` field; and where (b) the value of the `bizStep` field matches one of the specified values. - see <a href=\"https://ref.mh1.eu/cbv/BizStep\" target=\"_blank\">CBV BizStep</a> for standard values.  Standard values should be expressed as bare words, e.g. `shipping`, whereas custom values should be expressed as URIs or CURIEs for which the namespace prefix is defined. If this parameter is omitted, events are returned regardless of the value of the `bizStep` field or whether the `bizStep` field exists at all.",
+        "in": "query",
+        "style": "pipeDelimited",
+        "explode": false,
+        "required": false,
+        "example": "shipping",
+        "schema": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "anyOf": [
+              {
+                "enum": [
+                  "accepting",
+                  "arriving",
+                  "assembling",
+                  "collecting",
+                  "commissioning",
+                  "consigning",
+                  "creating_class_instance",
+                  "cycle_counting",
+                  "decommissioning",
+                  "departing",
+                  "destroying",
+                  "disassembling",
+                  "dispensing",
+                  "encoding",
+                  "entering_exiting",
+                  "holding",
+                  "inspecting",
+                  "installing",
+                  "killing",
+                  "loading",
+                  "other",
+                  "packing",
+                  "picking",
+                  "receiving",
+                  "removing",
+                  "repackaging",
+                  "repairing",
+                  "replacing",
+                  "reserving",
+                  "retail_selling",
+                  "sampling",
+                  "sensor_reporting",
+                  "shipping",
+                  "staging_outbound",
+                  "stock_taking",
+                  "stocking",
+                  "storing",
+                  "transporting",
+                  "unloading",
+                  "unpacking",
+                  "void_shipping"
+                ]
+              },
+              {
+                "format": "uri"
+              }
+            ]
+          }
+        }
+      },
+      "EQ_disposition": {
+        "name": "EQ_disposition",
+        "description": "If specified, the result will only include events that (a) have a non-null `disposition` field; and where (b) the value of the `disposition` field matches one of the specified values. - see <a href=\"https://ref.mh1.eu/cbv/Disp\" target=\"_blank\">CBV Disposition</a> for standard values.  Standard values should be expressed as bare words, e.g. `in_transit`, whereas custom values should be expressed as URIs or CURIEs for which the namespace prefix is defined. If this parameter is omitted, events are returned regardless of the value of the `disposition` field or whether the `disposition` field exists at all.",
+        "in": "query",
+        "style": "pipeDelimited",
+        "explode": false,
+        "required": false,
+        "example": "in_transit",
+        "schema": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "anyOf": [
+              {
+                "enum": [
+                  "active",
+                  "available",
+                  "completeness_inferred",
+                  "completeness_verified",
+                  "conformant",
+                  "container_closed",
+                  "container_open",
+                  "damaged",
+                  "destroyed",
+                  "dispensed",
+                  "disposed",
+                  "encoded",
+                  "expired",
+                  "in_progress",
+                  "in_transit",
+                  "inactive",
+                  "mismatch_class",
+                  "mismatch_instance",
+                  "mismatch_quantity",
+                  "needs_replacement",
+                  "no_pedigree_match",
+                  "non_conformant",
+                  "non_sellable_other",
+                  "partially_dispensed",
+                  "recalled",
+                  "reserved",
+                  "retail_sold",
+                  "returned",
+                  "sellable_accessible",
+                  "sellable_not_accessible",
+                  "stolen",
+                  "unavailable",
+                  "unknown"
+                ]
+              },
+              {
+                "format": "uri"
+              }
+            ]
+          }
+        }
+      },
+      "EQ_persistentDisposition_set": {
+        "name": "EQ_persistentDisposition_set",
+        "description": "If specified, the result will only include events that (a) have a non-null `persistentDisposition` field; and where (b) the value of the `set` field within the value of the `persistentDisposition` field matches one of the specified values. - see <a href=\"https://ref.mh1.eu/cbv/Disp\" target=\"_blank\">CBV Disposition</a> for standard values.  Standard values should be expressed as bare words, e.g. `in_transit`, whereas custom values should be expressed as URIs or CURIEs for which the namespace prefix is defined. If this parameter is omitted, events are returned regardless of the value of the `set` field within `persistentDisposition` field or whether the `persistentDisposition` field exists at all.",
+        "in": "query",
+        "style": "pipeDelimited",
+        "explode": false,
+        "required": false,
+        "example": "in_transit",
+        "schema": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "anyOf": [
+              {
+                "enum": [
+                  "active",
+                  "available",
+                  "completeness_inferred",
+                  "completeness_verified",
+                  "conformant",
+                  "container_closed",
+                  "container_open",
+                  "damaged",
+                  "destroyed",
+                  "dispensed",
+                  "disposed",
+                  "encoded",
+                  "expired",
+                  "in_progress",
+                  "in_transit",
+                  "inactive",
+                  "mismatch_class",
+                  "mismatch_instance",
+                  "mismatch_quantity",
+                  "needs_replacement",
+                  "no_pedigree_match",
+                  "non_conformant",
+                  "non_sellable_other",
+                  "partially_dispensed",
+                  "recalled",
+                  "reserved",
+                  "retail_sold",
+                  "returned",
+                  "sellable_accessible",
+                  "sellable_not_accessible",
+                  "stolen",
+                  "unavailable",
+                  "unknown"
+                ]
+              },
+              {
+                "format": "uri"
+              }
+            ]
+          }
+        }
+      },
+      "EQ_persistentDisposition_unset": {
+        "name": "EQ_persistentDisposition_unset",
+        "description": "If specified, the result will only include events that (a) have a non-null `persistentDisposition` field; and where (b) the value of the `unset` field within the value of the `persistentDisposition` field matches one of the specified values. - see <a href=\"https://ref.mh1.eu/cbv/Disp\" target=\"_blank\">CBV Disposition</a> for standard values.  Standard values should be expressed as bare words, e.g. `in_transit`, whereas custom values should be expressed as URIs or CURIEs for which the namespace prefix is defined. If this parameter is omitted, events are returned regardless of the value of the `unset` field within `persistentDisposition` field or whether the `persistentDisposition` field exists at all.",
+        "in": "query",
+        "style": "pipeDelimited",
+        "explode": false,
+        "required": false,
+        "example": "in_transit",
+        "schema": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "anyOf": [
+              {
+                "enum": [
+                  "active",
+                  "available",
+                  "completeness_inferred",
+                  "completeness_verified",
+                  "conformant",
+                  "container_closed",
+                  "container_open",
+                  "damaged",
+                  "destroyed",
+                  "dispensed",
+                  "disposed",
+                  "encoded",
+                  "expired",
+                  "in_progress",
+                  "in_transit",
+                  "inactive",
+                  "mismatch_class",
+                  "mismatch_instance",
+                  "mismatch_quantity",
+                  "needs_replacement",
+                  "no_pedigree_match",
+                  "non_conformant",
+                  "non_sellable_other",
+                  "partially_dispensed",
+                  "recalled",
+                  "reserved",
+                  "retail_sold",
+                  "returned",
+                  "sellable_accessible",
+                  "sellable_not_accessible",
+                  "stolen",
+                  "unavailable",
+                  "unknown"
+                ]
+              },
+              {
+                "format": "uri"
+              }
+            ]
+          }
+        }
+      },
+      "EQ_readPoint": {
+        "name": "EQ_readPoint",
+        "description": "If specified, the result will only include events that (a) have a non-null `readPoint` field; and where (b) the value of the `readPoint` field matches one of the specified URIs. If this parameter and `WD_readPoint` are both omitted, events are returned regardless of the value of the `readPoint` field or whether the `readPoint` field exists at all.",
+        "in": "query",
+        "style": "pipeDelimited",
+        "explode": false,
+        "required": false,
+        "example": "urn:epc:id:sgln:0012345.11111.400",
+        "schema": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      },
+      "WD_readPoint": {
+        "name": "WD_readPoint",
+        "description": "If specified, the result will only include events that (a) have a non-null `readPoint` field; and where (b) the value of the `readPoint` field matches one of the specified URIs, or is a direct or indirect descendant of one of the specified values. The meaning of 'direct or indirect descendant' is specified by master data, as described in section 6.5. (WD is an abbreviation for 'with descendants.') If this parameter and `EQ_readPoint` are both omitted, events are returned regardless of the value of the `readPoint` field or whether the `readPoint` field exists at all.",
+        "in": "query",
+        "style": "pipeDelimited",
+        "explode": false,
+        "required": false,
+        "example": "urn:epc:id:sgln:0012345.11111.400",
+        "schema": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      },
+      "EQ_bizLocation": {
+        "name": "EQ_bizLocation",
+        "description": "If specified, the result will only include events that (a) have a non-null `bizLocation` field; and where (b) the value of the `bizLocation` field matches one of the specified URIs. If this parameter and `WD_bizLocation` are both omitted, events are returned regardless of the value of the `bizLocation` field or whether the `bizLocation` field exists at all.",
+        "in": "query",
+        "style": "pipeDelimited",
+        "explode": false,
+        "required": false,
+        "example": "urn:epc:id:sgln:0012345.11111.400",
+        "schema": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      },
+      "WD_bizLocation": {
+        "name": "WD_bizLocation",
+        "description": "If specified, the result will only include events that (a) have a non-null `bizLocation` field; and where (b) the value of the `bizLocation` field matches one of the specified URIs, or is a direct or indirect descendant of one of the specified values. The meaning of 'direct or indirect descendant' is specified by master data, as described in section 6.5. (WD is an abbreviation for 'with descendants.') If this parameter and `EQ_bizLocation` are both omitted, events are returned regardless of the value of the `bizLocation` field or whether the `bizLocation` field exists at all.",
+        "in": "query",
+        "style": "pipeDelimited",
+        "explode": false,
+        "required": false,
+        "example": "urn:epc:id:sgln:0012345.11111.400",
+        "schema": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      },
+      "EQ_transformationID": {
+        "name": "EQ_transformationID",
+        "description": "If this parameter is specified, the result will only include events that (a) have a `transformationID` field (that is, `TransformationEvent`s or extension event type that extend `TransformationEvent`); and where (b) the `transformationID` field is equal to one of the values specified in this parameter.",
+        "in": "query",
+        "style": "pipeDelimited",
+        "explode": false,
+        "required": false,
+        "schema": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "MATCH_epc": {
+        "name": "MATCH_epc",
+        "description": "If this parameter is specified, the result will only include events that (a) have an `epcList` or a `childEPCs` field (that is, `ObjectEvent`, `AggregationEvent`, `TransactionEvent`, `AssociationEvent` or extension event types that extend one of those event types); and where (b) one of the EPCs listed in the `epcList` or `childEPCs` field (depending on event type) matches one of the URIs specified in this parameter, where the meaning of 'matches' is as specified in section 8.2.7.1.1.  If this parameter is omitted, events are included regardless of their `epcList` or `childEPCs` field or whether the `epcList` or `childEPCs` field exists.",
+        "in": "query",
+        "style": "pipeDelimited",
+        "explode": false,
+        "required": false,
+        "schema": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      },
+      "MATCH_parentID": {
+        "name": "MATCH_parentID",
+        "description": "If this parameter is specified, the result will only include events that (a) have a `parentID` field (that is, `AggregationEvent`, `TransactionEvent`, `AssociationEvent` or extension event types that extend one of those event types); and where (b) one of the EPCs listed in the `parentID` field matches one of the URIs specified in this parameter, where the meaning of 'matches' is as specified in section 8.2.7.1.1.  If this parameter is omitted, events are included regardless of their `parentID` field or whether the `parentID` field exists.",
+        "in": "query",
+        "style": "pipeDelimited",
+        "explode": false,
+        "required": false,
+        "schema": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      },
+      "MATCH_inputEPC": {
+        "name": "MATCH_inputEPC",
+        "description": "If this parameter is specified, the result will only include events that (a) have an `inputEPCList` (that is, `TransformationEvent` or an extension event type that extends `TransformationEvent`); and where (b) one of the EPCs listed in the `inputEPCList` field matches one of the URIs specified in this parameter. The meaning of 'matches' is as specified in section 8.2.7.1.1. If this parameter is omitted, events are included regardless of their `inputEPCList` field or whether the `inputEPCList` field exists.",
+        "in": "query",
+        "style": "pipeDelimited",
+        "explode": false,
+        "required": false,
+        "schema": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      },
+      "MATCH_outputEPC": {
+        "name": "MATCH_outputEPC",
+        "description": "If this parameter is specified, the result will only include events that (a) have an `outputEPCList` (that is, `TransformationEvent` or an extension event type that extends `TransformationEvent`); and where (b) one of the EPCs listed in the `outputEPCList` field matches one of the URIs specified in this parameter. The meaning of 'matches' is as specified in section 8.2.7.1.1. If this parameter is omitted, events are included regardless of their `outputEPCList` field or whether the `outputEPCList` field exists.",
+        "in": "query",
+        "style": "pipeDelimited",
+        "explode": false,
+        "required": false,
+        "schema": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      },
+      "MATCH_anyEPC": {
+        "name": "MATCH_anyEPC",
+        "description": "If this parameter is specified, the result will only include events that (a) have an `epcList` field, a `childEPCs` field, a `parentID` field, an `inputEPCList` field, or an `outputEPCList` field (that is, `ObjectEvent`, `AggregationEvent`, `TransactionEvent`, `TransformationEvent`, `AssociationEvent` or extension event types that extend one of those event types); and where (b) the `parentID` field or one of the EPCs listed in the `epcList`, `childEPCs`, `inputEPCList`, or `outputEPCList` field (depending on event type) matches one of URIs specified in this parameter. The meaning of 'matches' is as specified in section 8.2.7.1.1.",
+        "in": "query",
+        "style": "pipeDelimited",
+        "explode": false,
+        "required": false,
+        "schema": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      },
+      "MATCH_epcClass": {
+        "name": "MATCH_epcClass",
+        "description": "If this parameter is specified, the result will only include events that (a) have a `quantityList` or a `childQuantityList` field (that is, `ObjectEvent`, `AggregationEvent`, `TransactionEvent`, `AssociationEvent` or extension event types that extend one of those event types); and where (b) one of the EPC classes listed in the `quantityList` or `childQuantityList` field (depending on event type) matches one of the EPC patterns or URIs specified in this parameter. The result will also include QuantityEvents whose `epcClass` field matches one of the URIs specified in this parameter. The meaning of 'matches' is as specified in section 8.2.7.1.1.",
+        "in": "query",
+        "style": "pipeDelimited",
+        "explode": false,
+        "required": false,
+        "schema": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      },
+      "MATCH_inputEPCClass": {
+        "name": "MATCH_inputEPCClass",
+        "description": "If this parameter is specified, the result will only include events that (a) have an `inputQuantityList` field (that is, `TransformationEvent` or extension event types that extend it); and where (b) one of the EPC classes listed in the `inputQuantityList` field (depending on event type) matches one of the EPC patterns or URIs specified in this parameter. The meaning of 'matches' is as specified in section 8.2.7.1.1",
+        "in": "query",
+        "style": "pipeDelimited",
+        "explode": false,
+        "required": false,
+        "schema": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      },
+      "MATCH_outputEPCClass": {
+        "name": "MATCH_outputEPCClass",
+        "description": "If this parameter is specified, the result will only include events that (a) have an `outputQuantityList` field (that is, `TransformationEvent` or extension event types that extend it); and where (b) one of the EPC classes listed in the `outputQuantityList` field (depending on event type) matches one of the EPC patterns or URIs specified in this parameter. The meaning of 'matches' is as specified in section 8.2.7.1.1",
+        "in": "query",
+        "style": "pipeDelimited",
+        "explode": false,
+        "required": false,
+        "schema": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      },
+      "MATCH_anyEPCClass": {
+        "name": "MATCH_anyEPCClass",
+        "description": "If this parameter is specified, the result will only include events that (a) have a `quantityList`, `childQuantityList`, `inputQuantityList`, or `outputQuantityList` field (that is, `ObjectEvent`, `AggregationEvent`, `TransactionEvent`, `TransformationEvent`, `AssociationEvent` or extension event types that extend one of those event types); and where (b) one of the EPC classes listed in any of those fields matches one of the EPC patterns or URIs specified in this parameter. The result will also include `QuantityEvent`s whose `epcClass` field matches one of the URIs specified in this parameter. The meaning of 'matches' is as specified in section 8.2.7.1.1.",
+        "in": "query",
+        "style": "pipeDelimited",
+        "explode": false,
+        "required": false,
+        "schema": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      },
+      "EQ_quantity": {
+        "name": "EQ_quantity",
+        "description": "(DEPCRECATED in EPCIS 1.1, REPURPOSED in EPCIS 2.0) If this parameter is specified, the result will only include events that (a) have a `quantity` field as part of a `QuantityElement`; and where (b) the `quantity` field is equal to the specified parameter.",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "GT_quantity": {
+        "name": "GT_quantity",
+        "description": "(DEPCRECATED in EPCIS 1.1, REPURPOSED in EPCIS 2.0) If this parameter is specified, the result will only include events that (a) have a `quantity` field as part of a `QuantityElement`; and where (b) the `quantity` field is greater than the specified parameter.",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "GE_quantity": {
+        "name": "GE_quantity",
+        "description": "(DEPCRECATED in EPCIS 1.1, REPURPOSED in EPCIS 2.0) If this parameter is specified, the result will only include events that (a) have a `quantity` field as part of a `QuantityElement`; and where (b) the `quantity` field is greater than or equal to the specified parameter.",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "LT_quantity": {
+        "name": "LT_quantity",
+        "description": "(DEPCRECATED in EPCIS 1.1, REPURPOSED in EPCIS 2.0) If this parameter is specified, the result will only include events that (a) have a `quantity` field as part of a `QuantityElement`; and where (b) the `quantity` field is less than the specified parameter.",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "LE_quantity": {
+        "name": "LE_quantity",
+        "description": "(DEPCRECATED in EPCIS 1.1, REPURPOSED in EPCIS 2.0) If this parameter is specified, the result will only include events that (a) have a `quantity` field as part of a `QuantityElement`; and where (b) the `quantity` field is less than or equal to the specified parameter.",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "EQ_eventID": {
+        "name": "EQ_eventID",
+        "description": "If this parameter is specified, the result will only include events that (a) have a non-null `eventID` field; and where (b) the `eventID` field is equal to one of the values specified in this parameter. If this parameter is omitted, events are returned regardless of the value of the `eventID` field or whether the `eventID` field exists at all.",
+        "in": "query",
+        "style": "pipeDelimited",
+        "explode": false,
+        "required": false,
+        "schema": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "EXISTS_errorDeclaration": {
+        "name": "EXISTS_errorDeclaration",
+        "description": "If this parameter is specified (and has a value of true), the result will only include events that contain an `ErrorDeclaration`. If this parameter is omitted (or has a value of false), events are returned regardless of whether they contain an `ErrorDeclaration`.",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "boolean"
+        }
+      },
+      "GE_errorDeclarationTime": {
+        "name": "GE_errorDeclarationTime",
+        "description": "If this parameter is specified, the result will only include events that (a) contain an `ErrorDeclaration`; and where (b) the value of the `errorDeclarationTime` field is greater than or equal to the specified value. If this parameter is omitted, events are returned regardless of whether they contain an `ErrorDeclaration` or what the value of the `errorDeclarationTime` field is.",
+        "in": "query",
+        "required": false,
+        "example": "2022-06-30T00:15:47.000-05:00",
+        "schema": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "LT_errorDeclarationTime": {
+        "name": "LT_errorDeclarationTime",
+        "description": "If this parameter is specified, the result will only include events that (a) contain an `ErrorDeclaration`; and where (b) the value of the `errorDeclarationTime` field is less than to the specified value. If this parameter is omitted, events are returned regardless of whether they contain an `ErrorDeclaration` or what the value of the `errorDeclarationTime` field is.",
+        "in": "query",
+        "required": false,
+        "example": "2022-06-30T00:15:47.000-05:00",
+        "schema": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "EQ_errorReason": {
+        "name": "EQ_errorReason",
+        "description": "If this parameter is specified, the result will only include events that (a) contain an `ErrorDeclaration`; and where (b) the error declaration contains a non-null `reason` field; and where (c) the `reason` field is equal to one of the values specified in this parameter. If this parameter is omitted, events are returned regardless of whether they contain an `ErrorDeclaration` or what the value of the `reason` field is.",
+        "in": "query",
+        "style": "pipeDelimited",
+        "explode": false,
+        "required": false,
+        "schema": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "EQ_correctiveEventID": {
+        "name": "EQ_correctiveEventID",
+        "description": "If this parameter is specified, the result will only include events that (a) contain an `ErrorDeclaration`; and where (b) one of the elements of the `correctiveEventIDs` list is equal to one of the values specified in this parameter. If this parameter is omitted, events are returned regardless of whether they contain an `ErrorDeclaration` or the contents of the `correctiveEventIDs` list.",
+        "in": "query",
+        "style": "pipeDelimited",
+        "explode": false,
+        "required": false,
+        "schema": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "orderBy": {
+        "name": "orderBy",
+        "description": "If specified, names a single field that will be used to order the results. The `orderDirection` field specifies whether the ordering is in ascending sequence or descending sequence. Events included in the result that lack the specified field altogether may occur in any position within the result event list. The value of this parameter SHALL be one of: `eventTime`, `recordTime`, or the fully qualified name of an extension field whose type is Int, Float, Time, or String. A fully qualified fieldname is constructed as for the `EQ_fieldname` parameter. In the case of a field of type String, sorting SHALL be according to their case-sensitive lexical ordering, considering UTF-8/ASCII code values of each successive character. If omitted, no order is specified. The implementation MAY order the results in any order it chooses, and that order MAY differ even when the same query is executed twice on the same data. (In EPCIS 1.0, the value `quantity` was also permitted, but its use is deprecated in EPCIS 1.1.)",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "orderDirection": {
+        "name": "orderDirection",
+        "description": "If specified and `orderBy` is also specified, specifies whether the results are ordered in ascending or descending sequence according to the key specified by `orderBy`. The value of this parameter must be one of `ASC` (for ascending order) or `DESC` (for descending order); if not, the implementation SHALL raise a `QueryParameterException`. If omitted, defaults to `DESC`.",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "ASC",
+            "DESC"
+          ]
+        }
+      },
+      "eventCountLimit": {
+        "name": "eventCountLimit",
+        "description": "If specified, the results will only include the first N events that match the other criteria, where N is the value of this parameter. The ordering specified by the `orderBy` and `orderDirection` parameters determine the meaning of “first” for this purpose. If omitted, all events matching the specified criteria will be included in the results. This parameter and `maxEventCount` are mutually exclusive; if both are specified, a `QueryParameterException` SHALL be raised. This parameter may only be used when `orderBy` is specified; if `orderBy` is omitted and `eventCountLimit` is specified, a `QueryParameterException` SHALL be raised. This parameter differs from `maxEventCount` in that this parameter limits the amount of data returned, whereas `maxEventCount` causes an exception to be thrown if the limit is exceeded. Explanation (non-normative): A common use of the `orderBy`, `orderDirection`, and `eventCountLimit` parameters is for extremal queries. For example, to select the most recent event matching some criteria, the query would include parameters that select events matching the desired criteria, and set `orderBy` to `eventTime`, `orderDirection` to `DESC`, and `eventCountLimit` to 1.",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "maxEventCount": {
+        "name": "maxEventCount",
+        "description": "If specified, at most this many events will be included in the query result. If the query would otherwise return more than this number of events, a `QueryTooLargeException` SHALL be raised instead of a normal query result. This parameter and `eventCountLimit` are mutually exclusive; if both are specified, a `QueryParameterException` SHALL be raised. If this parameter is omitted, any number of events may be included in the query result. Note, however, that the EPCIS implementation is free to raise a `QueryTooLargeException` regardless of the setting of this parameter (see section 8.2.3).",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "GE_startTime": {
+        "name": "GE_startTime",
+        "description": "If specified, only events with `startTime` greater than or equal to the specified value will be included in the result. If omitted, events are included regardless of their `startTime` (unless constrained by the `LT_startTime` parameter).",
+        "in": "query",
+        "required": false,
+        "example": "2022-06-30T00:15:47.000-05:00",
+        "schema": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "LT_startTime": {
+        "name": "LT_startTime",
+        "description": "If specified, only events with `startTime` less than the specified value will be included in the result. If omitted, events are included regardless of their `startTime` (unless constrained by the `GE_startTime` parameter).",
+        "in": "query",
+        "required": false,
+        "example": "2022-06-30T00:15:47.000-05:00",
+        "schema": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "GE_endTime": {
+        "name": "GE_endTime",
+        "description": "If specified, only events with `endTime` greater than or equal to the specified value will be included in the result. If omitted, events are included regardless of their `endTime` (unless constrained by the `LT_endTime` parameter).",
+        "in": "query",
+        "required": false,
+        "example": "2022-06-30T00:15:47.000-05:00",
+        "schema": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "LT_endTime": {
+        "name": "LT_endTime",
+        "description": "If specified, only events with `endTime` less than the specified value will be included in the result. If omitted, events are included regardless of their `endTime` (unless constrained by the `GE_endTime` parameter).",
+        "in": "query",
+        "required": false,
+        "example": "2022-06-30T00:15:47.000-05:00",
+        "schema": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "EQ_type": {
+        "name": "EQ_type",
+        "description": "If this parameter is specified, the result will only include events that (a) accommodate one or more `sensorElement` fields; and where (b) the `type` attribute in one of these `sensorElement` fields is equal to one of the values specified in this parameter. If this parameter is omitted, events are returned regardless of the value of the `type` attribute or whether a `sensorElement` field exists at all. Standard values for `type` are defined at <a href=\"https://gs1.org/voc/MeasurementType\" target=\"_blank\">https://gs1.org/voc/MeasurementType</a>.  Standard values SHALL be expressed as bare words, e.g. `Temperature`.",
+        "in": "query",
+        "style": "pipeDelimited",
+        "explode": false,
+        "required": false,
+        "example": "Temperature",
+        "schema": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "EQ_deviceID": {
+        "name": "EQ_deviceID",
+        "description": "If this parameter is specified, the result will only include events that (a) accommodate a `deviceID` attribute; and where (b) the `deviceID` attribute is equal to one of the URIs specified in this parameter. If this parameter is omitted, events are returned regardless of the value of the `deviceID` attribute or whether the `deviceID` attribute exists at all.",
+        "in": "query",
+        "style": "pipeDelimited",
+        "explode": false,
+        "required": false,
+        "schema": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      },
+      "EQ_dataProcessingMethod": {
+        "name": "EQ_dataProcessingMethod",
+        "description": "If this parameter is specified, the result will only include events that (a) accommodate a `dataProcessingMethod` attribute; and where (b) the `dataProcessingMethod` attribute is equal to one of the URIs specified in this parameter. If this parameter is omitted, events are returned regardless of the value of the `dataProcessingMethod` attribute or whether the `dataProcessingMethod` attribute exists at all.",
+        "in": "query",
+        "style": "pipeDelimited",
+        "explode": false,
+        "required": false,
+        "schema": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      },
+      "EQ_microorganism": {
+        "name": "EQ_microorganism",
+        "description": "If this parameter is specified, the result will only include events that (a) accommodate a `microorganism` attribute; and where (b) the `microorganism` attribute is equal to one of the URIs specified in this parameter. If this parameter is omitted, events are returned regardless of the value of the `microorganism` attribute or whether the `microorganism` attribute exists at all.",
+        "in": "query",
+        "style": "pipeDelimited",
+        "explode": false,
+        "required": false,
+        "schema": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      },
+      "EQ_chemicalSubstance": {
+        "name": "EQ_chemicalSubstance",
+        "description": "If this parameter is specified, the result will only include events that (a) accommodate a `chemicalSubstance` attribute; and where (b) the `chemicalSubstance` attribute is equal to one of the URIs specified in this parameter. If this parameter is omitted, events are returned regardless of the value of the `chemicalSubstance` attribute or whether the `chemicalSubstance` attribute exists at all.",
+        "in": "query",
+        "style": "pipeDelimited",
+        "explode": false,
+        "required": false,
+        "schema": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      },
+      "EQ_bizRules": {
+        "name": "EQ_bizRules",
+        "description": "If this parameter is specified, the result will only include events that (a) accommodate a `bizRules` attribute; and where (b) the `bizRules` attribute is equal to one of the URIs specified in this parameter. If this parameter is omitted, events are returned regardless of the value of the `bizRules` attribute or whether the `bizRules` attribute exists at all.",
+        "in": "query",
+        "style": "pipeDelimited",
+        "explode": false,
+        "required": false,
+        "schema": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      },
+      "EQ_stringValue": {
+        "name": "EQ_stringValue",
+        "description": "If this parameter is specified, the result will only include events that (a) accommodate a `stringValue` attribute; and where (b) the `stringValue` attribute is equal to one of the strings specified in this parameter. If this parameter is omitted, events are returned regardless of the value of the `stringValue` attribute or whether the `stringValue` attribute exists at all.",
+        "in": "query",
+        "style": "pipeDelimited",
+        "explode": false,
+        "required": false,
+        "schema": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "EQ_hexBinaryValue": {
+        "name": "EQ_hexBinaryValue",
+        "description": "If this parameter is specified, the result will only include events that (a) accommodate a `hexBinaryValue` attribute; and where (b) the `hexBinaryValue` attribute is equal to one of the strings specified in this parameter. If this parameter is omitted, events are returned regardless of the value of the `hexBinaryValue` attribute or whether the `hexBinaryValue` attribute exists at all.",
+        "in": "query",
+        "style": "pipeDelimited",
+        "explode": false,
+        "required": false,
+        "schema": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "EQ_uriValue": {
+        "name": "EQ_uriValue",
+        "description": "If this parameter is specified, the result will only include events that (a) accommodate a `uriValue` attribute; and where (b) the `uriValue` attribute is equal to one of the strings specified in this parameter. If this parameter is omitted, events are returned regardless of the value of the `uriValue` attribute or whether the `uriValue` attribute exists at all.",
+        "in": "query",
+        "style": "pipeDelimited",
+        "explode": false,
+        "required": false,
+        "schema": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      },
+      "EQ_booleanValue": {
+        "name": "EQ_booleanValue",
+        "description": "If this parameter is specified, the result will only include events that (a) accommodate a `booleanValue` attribute; and where (b) the `booleanValue` attribute is equal to the specified value (i.e. `true` or `false`). If this parameter is omitted, events are returned regardless of the value of the `booleanValue` attribute or whether the `booleanValue` attribute exists at all",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "boolean"
         }
       }
     },
@@ -7891,7 +9900,7 @@
         }
       },
       "GS1-Capture-Error-Behaviour": {
-        "description": "A header to control how the capture interface will behave in case of an error:\n\n- `rollback`: \"All or nothing\". Either the capture job is entirely successful or all EPCIS events are rejected.\n- `proceed`: \"Greedy capture\". The capture interface tries to capture as many EPCIS events as possible, even if there are errors.\n- `all`: This is to be used only by the server to announce it supports both `rollback` and `proceed`.\n\nThe default behaviour is `rollback`, as in EPCIS 1.2.\n",
+        "description": "A header to control how the capture interface will behave in case of an error:\n- `rollback`: \"All or nothing\". Either the capture job is entirely successful or all EPCIS events are rejected.\n- `proceed`: \"Greedy capture\". The capture interface tries to capture as many EPCIS events as possible, even if there are errors.\n- `all`: This is to be used only by the server to announce it supports both `rollback` and `proceed`.\nThe default behaviour is `rollback`, as in EPCIS 1.2.\n",
         "schema": {
           "$ref": "#/components/schemas/GS1-Capture-Error-Behaviour"
         }
