@@ -342,18 +342,6 @@
         "format": "uri"
       }
     },
-    "GE_sDev": {
-      "type": "number"
-    },
-    "LT_sDev": {
-      "type": "number"
-    },
-    "GT_sDev": {
-      "type": "number"
-    },
-    "LE_sDev": {
-      "type": "number"
-    },
     "GE_percRank": {
       "type": "number"
     },
@@ -364,18 +352,6 @@
       "type": "number"
     },
     "LE_percRank": {
-      "type": "number"
-    },
-    "GE_percValue": {
-      "type": "number"
-    },
-    "LT_percValue": {
-      "type": "number"
-    },
-    "GT_percValue": {
-      "type": "number"
-    },
-    "LE_percValue": {
       "type": "number"
     }
   },
@@ -684,10 +660,25 @@
       }
     },
     "^EQ_ATTR_\\w+_\\w+$": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
+      "oneOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        {
+          "oneOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string",
+              "format": "date-time"
+            }
+          ]
+        }
+      ]
     },
     "^EQ_ERROR_DECLARATION_[a-z][a-zA-Z0-9]*\\:\\w+$": {
       "oneOf": [
@@ -699,9 +690,6 @@
         },
         {
           "oneOf": [
-            {
-              "type": "integer"
-            },
             {
               "type": "number"
             },
@@ -758,11 +746,26 @@
       ]
     },
     "^EQ_INNER_ERROR_DECLARATION_[a-z][a-zA-Z0-9]*\\:\\w+$": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
+      "oneOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        {
+          "oneOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string",
+              "format": "date-time"
+            }
+          ]
+        }
+      ]
+     },
     "^GT_INNER_ERROR_DECLARATION_[a-z][a-zA-Z0-9]*\\:\\w+$": {
       "oneOf": [
         {
@@ -857,6 +860,18 @@
     "^LE_meanValue_[A-Z0-9]{2,4}$": {
       "type": "number"
     },
+    "^GE_sDev_[A-Z0-9]{2,4}$": {
+      "type": "number"
+    },
+    "^LT_sDev_[A-Z0-9]{2,4}$": {
+      "type": "number"
+    },
+    "^GT_sDev_[A-Z0-9]{2,4}$": {
+      "type": "number"
+    },
+    "^LE_sDev_[A-Z0-9]{2,4}$": {
+      "type": "number"
+    },
     "^GE_value_[A-Z0-9]{2,4}$": {
       "type": "number"
     },
@@ -867,6 +882,18 @@
       "type": "number"
     },
     "^LE_value_[A-Z0-9]{2,4}$": {
+      "type": "number"
+    },
+    "^GE_percValue_[A-Z0-9]{2,4}$": {
+      "type": "number"
+    },
+    "^LT_percValue_[A-Z0-9]{2,4}$": {
+      "type": "number"
+    },
+    "^GT_percValue_[A-Z0-9]{2,4}$": {
+      "type": "number"
+    },
+    "^LE_percValue_[A-Z0-9]{2,4}$": {
       "type": "number"
     },
     "^EQ_quantity_[A-Z0-9]{2,4}$": {
@@ -888,29 +915,89 @@
       "type": "number"
     },
     "^EQ_readPoint_[a-z][a-zA-Z0-9]*\\:\\w+$": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
+      "oneOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        {
+          "oneOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string",
+              "format": "date-time"
+            }
+          ]
+        }
+      ]
+     },
     "^EQ_INNER_readPoint_[a-z][a-zA-Z0-9]*\\:\\w+$": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
+      "oneOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        {
+          "oneOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string",
+              "format": "date-time"
+            }
+          ]
+        }
+      ]
     },
     "^EQ_bizLocation_[a-z][a-zA-Z0-9]*\\:\\w+$": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
+      "oneOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        {
+          "oneOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string",
+              "format": "date-time"
+            }
+          ]
+        }
+      ]
+     },
     "^EQ_INNER_bizLocation_[a-z][a-zA-Z0-9]*\\:\\w+$": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
+      "oneOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        {
+          "oneOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string",
+              "format": "date-time"
+            }
+          ]
+        }
+      ]
+     },
     "^EQ_SENSORELEMENT_[a-z][a-zA-Z0-9]*\\:\\w+$": {
       "oneOf": [
         {
