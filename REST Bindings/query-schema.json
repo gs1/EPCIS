@@ -1056,198 +1056,63 @@
       },
       "additionalProperties": false
     },
-    "@context": {
+    "time": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "disposition": {
       "anyOf": [
         {
+          "$ref": "#/definitions/vocab-other-uri"
+        },
+        {
           "type": "string",
-          "format": "uri"
-        },
-        {
-          "type": "object"
-        },
-        {
-          "type": "array",
-          "uniqueItems": true,
-          "items": {
-            "anyOf": [
-              {
-                "type": "string",
-                "format": "uri"
-              },
-              {
-                "type": "object"
-              }
-            ]
-          }
+          "enum": [
+            "active",
+            "container_closed",
+            "damaged",
+            "destroyed",
+            "dispensed",
+            "disposed",
+            "encoded",
+            "expired",
+            "in_progress",
+            "in_transit",
+            "inactive",
+            "no_pedigree_match",
+            "non_sellable_other",
+            "partially_dispensed",
+            "recalled",
+            "reserved",
+            "retail_sold",
+            "returned",
+            "sellable_accessible",
+            "sellable_not_accessible",
+            "stolen",
+            "unknown",
+            "available",
+            "completeness_verified",
+            "completeness_inferred",
+            "conformant",
+            "container_open",
+            "mismatch_instance",
+            "mismatch_class",
+            "mismatch_quantity",
+            "needs_replacement",
+            "non_conformant",
+            "unavailable"
+          ]
         }
       ]
-    },
-    "vocab-uri": {
-      "type": "string",
-      "format": "uri"
     },
     "vocab-other-uri": {
       "type": "string",
       "format": "uri",
       "pattern": "^(?!(urn:epcglobal:cbv|https?:\\/\\/ns\\.gs1\\.org/cbv\\/))"
     },
-    "vocab-nonGS1WebVoc-uri": {
-      "type": "string",
-      "format": "uri",
-      "pattern": "^(?!(https?:\\/\\/gs1\\.org\\/voc\\/|https?:\\/\\/www\\.gs1\\.org\\/voc\\/))"
-    },
-    "required-ld-context": {
-      "type": "object",
-      "required": [
-        "@context"
-      ]
-    },
-    "version": {
-      "type": "string",
-      "pattern": "^\\d+(\\.\\d+)*$"
-    },
-    "id": {
-      "type": "string",
-      "format": "uri"
-    },
     "uri": {
       "type": "string",
       "format": "uri"
-    },
-    "time": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "decimal": {
-      "type": "number"
-    },
-    "boolean": {
-      "type": "boolean"
-    },
-    "hexBinary": {
-      "type": "string",
-      "pattern": "^[A-Fa-f0-9]+$"
-    },
-    "string": {
-      "type": "string"
-    },
-    "action": {
-      "type": "string",
-      "enum": [
-        "OBSERVE",
-        "ADD",
-        "DELETE"
-      ]
-    },
-    "persistentDisposition": {
-      "allOf": [
-        {
-          "type": "object",
-          "properties": {
-            "set": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/disposition"
-              },
-              "minItems": 1,
-              "uniqueItems": true
-            },
-            "unset": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/disposition"
-              },
-              "minItems": 1,
-              "uniqueItems": true
-            }
-          },
-          "additionalProperties": false
-        },
-        {
-          "anyOf": [
-            {
-              "type": "object",
-              "required": [
-                "set"
-              ]
-            },
-            {
-              "type": "object",
-              "required": [
-                "unset"
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    "epcList": {
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/uri"
-      },
-      "uniqueItems": true
-    },
-    "quantityList": {
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/quantityElement"
-      }
-    },
-    "uom": {
-      "type": "string",
-      "pattern": "^[A-Z0-9]{2,3}$"
-    },
-    "eventID": {
-      "$ref": "#/definitions/uri"
-    },
-    "certificationInfo": {
-      "anyOf": [
-        {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/uri"
-          }
-        },
-        {
-          "$ref": "#/definitions/uri"
-        }
-      ]
-    },
-    "errorDeclaration": {
-      "type": "object",
-      "properties": {
-        "declarationTime": {
-          "$ref": "#/definitions/time"
-        },
-        "reason": {
-          "$ref": "#/definitions/error-reason"
-        },
-        "correctiveEventIDs": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/eventID"
-          }
-        }
-      },
-      "required": [
-        "declarationTime"
-      ],
-      "propertyNames": {
-        "anyOf": [
-          {
-            "$ref": "#/definitions/vocab-uri"
-          },
-          {
-            "type": "string",
-            "enum": [
-              "declarationTime",
-              "reason",
-              "correctiveEventIDs"
-            ]
-          }
-        ]
-      }
     },
     "quantityElement": {
       "type": "object",
@@ -1267,88 +1132,102 @@
       ],
       "additionalProperties": false
     },
-    "bizTransaction": {
-      "type": "object",
-      "properties": {
-        "type": {
-          "$ref": "#/definitions/bizTransaction-type"
+    "error-reason": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/vocab-other-uri"
         },
-        "bizTransaction": {
-          "$ref": "#/definitions/uri"
+        {
+          "type": "string",
+          "enum": [
+            "did_not_occur",
+            "incorrect_data"
+          ]
         }
-      },
-      "required": [
-        "bizTransaction"
-      ],
-      "additionalProperties": false
-    },
-    "readPoint": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "$ref": "#/definitions/uri"
-        }
-      },
-      "required": [
-        "id"
       ]
     },
-    "bizLocation": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "$ref": "#/definitions/uri"
+    "eventID": {
+      "$ref": "#/definitions/uri"
+    },
+    "vocab-uri": {
+      "type": "string",
+      "format": "uri"
+    },
+    "decimal": {
+      "type": "number"
+    },
+    "uom": {
+      "type": "string",
+      "pattern": "^[A-Z0-9]{2,3}$"
+    },
+    "bizTransaction-type": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/vocab-other-uri"
+        },
+        {
+          "type": "string",
+          "enum": [
+            "bol",
+            "cert",
+            "desadv",
+            "inv",
+            "pedigree",
+            "po",
+            "poc",
+            "prodorder",
+            "recadv",
+            "rma",
+            "testprd",
+            "testres",
+            "upevt"
+          ]
         }
-      },
-      "required": [
-        "id"
       ]
     },
-    "source": {
+    "source-dest-type": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/vocab-other-uri"
+        },
+        {
+          "type": "string",
+          "enum": [
+            "owning_party",
+            "possessing_party",
+            "location"
+          ]
+        }
+      ]
+    },
+    "sensorMetadata": {
       "type": "object",
       "properties": {
-        "type": {
-          "$ref": "#/definitions/source-dest-type"
+        "time": {
+          "$ref": "#/definitions/time"
         },
-        "source": {
+        "deviceID": {
+          "$ref": "#/definitions/uri"
+        },
+        "deviceMetadata": {
+          "$ref": "#/definitions/uri"
+        },
+        "rawData": {
+          "$ref": "#/definitions/uri"
+        },
+        "startTime": {
+          "$ref": "#/definitions/time"
+        },
+        "endTime": {
+          "$ref": "#/definitions/time"
+        },
+        "dataProcessingMethod": {
+          "$ref": "#/definitions/uri"
+        },
+        "bizRules": {
           "$ref": "#/definitions/uri"
         }
       },
-      "required": [
-        "type",
-        "source"
-      ],
-      "additionalProperties": false
-    },
-    "destination": {
-      "type": "object",
-      "properties": {
-        "type": {
-          "$ref": "#/definitions/source-dest-type"
-        },
-        "destination": {
-          "$ref": "#/definitions/uri"
-        }
-      },
-      "required": [
-        "type",
-        "destination"
-      ],
-      "additionalProperties": false
-    },
-    "sensorElement": {
-      "type": "object",
-      "properties": {
-        "sensorMetadata": {
-          "$ref": "#/definitions/sensorMetadata"
-        },
-        "sensorReport": {
-          "$ref": "#/definitions/sensorReportList"
-        }
-      },
-      "required": [
-        "sensorReport"
-      ],
       "propertyNames": {
         "anyOf": [
           {
@@ -1357,8 +1236,14 @@
           {
             "type": "string",
             "enum": [
-              "sensorMetadata",
-              "sensorReport"
+              "time",
+              "deviceID",
+              "deviceMetadata",
+              "rawData",
+              "startTime",
+              "endTime",
+              "dataProcessingMethod",
+              "bizRules"
             ]
           }
         ]
@@ -1487,230 +1372,6 @@
         ]
       }
     },
-    "sensorMetadata": {
-      "type": "object",
-      "properties": {
-        "time": {
-          "$ref": "#/definitions/time"
-        },
-        "deviceID": {
-          "$ref": "#/definitions/uri"
-        },
-        "deviceMetadata": {
-          "$ref": "#/definitions/uri"
-        },
-        "rawData": {
-          "$ref": "#/definitions/uri"
-        },
-        "startTime": {
-          "$ref": "#/definitions/time"
-        },
-        "endTime": {
-          "$ref": "#/definitions/time"
-        },
-        "dataProcessingMethod": {
-          "$ref": "#/definitions/uri"
-        },
-        "bizRules": {
-          "$ref": "#/definitions/uri"
-        }
-      },
-      "propertyNames": {
-        "anyOf": [
-          {
-            "$ref": "#/definitions/vocab-uri"
-          },
-          {
-            "type": "string",
-            "enum": [
-              "time",
-              "deviceID",
-              "deviceMetadata",
-              "rawData",
-              "startTime",
-              "endTime",
-              "dataProcessingMethod",
-              "bizRules"
-            ]
-          }
-        ]
-      }
-    },
-    "ilmd": {
-      "type": "object",
-      "propertyNames": {
-        "type": "string",
-        "format": "uri"
-      }
-    },
-    "Event": {
-      "type": "object",
-      "properties": {
-        "@context": {
-          "$ref": "#/definitions/@context"
-        },
-        "eventTime": {
-          "$ref": "#/definitions/time"
-        },
-        "recordTime": {
-          "$ref": "#/definitions/time"
-        },
-        "eventTimeZoneOffset": {
-          "type": "string",
-          "pattern": "^([+]|[-])((0[0-9]|1[0-3]):([0-5][0-9])|14:00)$"
-        },
-        "eventID": {
-          "$ref": "#/definitions/eventID"
-        },
-        "certificationInfo": {
-          "$ref": "#/definitions/certificationInfo"
-        },
-        "errorDeclaration": {
-          "$ref": "#/definitions/errorDeclaration"
-        }
-      },
-      "required": [
-        "eventTime",
-        "eventTimeZoneOffset"
-      ]
-    },
-    "common-event-properties": {
-      "anyOf": [
-        {
-          "type": "string",
-          "enum": [
-            "@context",
-            "type",
-            "eventTime",
-            "recordTime",
-            "eventTimeZoneOffset",
-            "eventID",
-            "certificationInfo",
-            "errorDeclaration"
-          ]
-        },
-        {
-          "$ref": "#/definitions/vocab-uri"
-        }
-      ]
-    },
-    "Extended-Event": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/Event"
-        },
-        {
-          "type": "object",
-          "properties": {
-            "type": {
-              "$ref": "#/definitions/vocab-uri"
-            }
-          },
-          "required": [
-            "type"
-          ]
-        }
-      ]
-    },
-    "disposition": {
-      "anyOf": [
-        {
-          "$ref": "#/definitions/vocab-other-uri"
-        },
-        {
-          "type": "string",
-          "enum": [
-            "active",
-            "container_closed",
-            "damaged",
-            "destroyed",
-            "dispensed",
-            "disposed",
-            "encoded",
-            "expired",
-            "in_progress",
-            "in_transit",
-            "inactive",
-            "no_pedigree_match",
-            "non_sellable_other",
-            "partially_dispensed",
-            "recalled",
-            "reserved",
-            "retail_sold",
-            "returned",
-            "sellable_accessible",
-            "sellable_not_accessible",
-            "stolen",
-            "unknown",
-            "available",
-            "completeness_verified",
-            "completeness_inferred",
-            "conformant",
-            "container_open",
-            "mismatch_instance",
-            "mismatch_class",
-            "mismatch_quantity",
-            "needs_replacement",
-            "non_conformant",
-            "unavailable"
-          ]
-        }
-      ]
-    },
-    "error-reason": {
-      "anyOf": [
-        {
-          "$ref": "#/definitions/vocab-other-uri"
-        },
-        {
-          "type": "string",
-          "enum": [
-            "did_not_occur",
-            "incorrect_data"
-          ]
-        }
-      ]
-    },
-    "bizTransaction-type": {
-      "anyOf": [
-        {
-          "$ref": "#/definitions/vocab-other-uri"
-        },
-        {
-          "type": "string",
-          "enum": [
-            "bol",
-            "cert",
-            "desadv",
-            "inv",
-            "pedigree",
-            "po",
-            "poc",
-            "prodorder",
-            "recadv",
-            "rma",
-            "testprd",
-            "testres",
-            "upevt"
-          ]
-        }
-      ]
-    },
-    "source-dest-type": {
-      "anyOf": [
-        {
-          "$ref": "#/definitions/vocab-other-uri"
-        },
-        {
-          "type": "string",
-          "enum": [
-            "owning_party",
-            "possessing_party",
-            "location"
-          ]
-        }
-      ]
-    },
     "measurementType": {
       "anyOf": [
         {
@@ -1795,6 +1456,11 @@
         }
       ]
     },
+    "vocab-nonGS1WebVoc-uri": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^(?!(https?:\\/\\/gs1\\.org\\/voc\\/|https?:\\/\\/www\\.gs1\\.org\\/voc\\/))"
+    },
     "sensorAlertType": {
       "anyOf": [
         {
@@ -1833,6 +1499,129 @@
             "altitude"
           ]
         }
+      ]
+    },
+    "string": {
+      "type": "string"
+    },
+    "boolean": {
+      "type": "boolean"
+    },
+    "hexBinary": {
+      "type": "string",
+      "pattern": "^[A-Fa-f0-9]+$"
+    },
+    "@context": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "type": "object"
+        },
+        {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uri"
+              },
+              {
+                "type": "object"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "certificationInfo": {
+      "anyOf": [
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/uri"
+          }
+        },
+        {
+          "$ref": "#/definitions/uri"
+        }
+      ]
+    },
+    "errorDeclaration": {
+      "type": "object",
+      "properties": {
+        "declarationTime": {
+          "$ref": "#/definitions/time"
+        },
+        "reason": {
+          "$ref": "#/definitions/error-reason"
+        },
+        "correctiveEventIDs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/eventID"
+          }
+        }
+      },
+      "required": [
+        "declarationTime"
+      ],
+      "propertyNames": {
+        "anyOf": [
+          {
+            "$ref": "#/definitions/vocab-uri"
+          },
+          {
+            "type": "string",
+            "enum": [
+              "declarationTime",
+              "reason",
+              "correctiveEventIDs"
+            ]
+          }
+        ]
+      }
+    },
+    "Event": {
+      "type": "object",
+      "properties": {
+        "@context": {
+          "$ref": "#/definitions/@context"
+        },
+        "eventTime": {
+          "$ref": "#/definitions/time"
+        },
+        "recordTime": {
+          "$ref": "#/definitions/time"
+        },
+        "eventTimeZoneOffset": {
+          "type": "string",
+          "pattern": "^([+]|[-])((0[0-9]|1[0-3]):([0-5][0-9])|14:00)$"
+        },
+        "eventID": {
+          "$ref": "#/definitions/eventID"
+        },
+        "certificationInfo": {
+          "$ref": "#/definitions/certificationInfo"
+        },
+        "errorDeclaration": {
+          "$ref": "#/definitions/errorDeclaration"
+        }
+      },
+      "required": [
+        "eventTime",
+        "eventTimeZoneOffset"
+      ]
+    },
+    "action": {
+      "type": "string",
+      "enum": [
+        "OBSERVE",
+        "ADD",
+        "DELETE"
       ]
     },
     "bizStep": {
