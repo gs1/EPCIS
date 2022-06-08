@@ -91,20 +91,20 @@
         "EQ_quantity": {
           "type": "array",
           "items": {
-            "type": "number"
+            "$ref": "../JSON-Schema/schemas/event-definitions-JSON-Schema.json#/definitions/decimal"
           }
         },
         "GT_quantity": {
-          "type": "number"
+          "$ref": "../JSON-Schema/schemas/event-definitions-JSON-Schema.json#/definitions/decimal"
         },
         "GE_quantity": {
-          "type": "number"
+          "$ref": "../JSON-Schema/schemas/event-definitions-JSON-Schema.json#/definitions/decimal"
         },
         "LT_quantity": {
-          "type": "number"
+          "$ref": "../JSON-Schema/schemas/event-definitions-JSON-Schema.json#/definitions/decimal"
         },
         "LE_quantity": {
-          "type": "number"
+          "$ref": "../JSON-Schema/schemas/event-definitions-JSON-Schema.json#/definitions/decimal"
         },
         "EQ_readPoint": {
           "type": "array",
@@ -144,36 +144,31 @@
         "MATCH_epc": {
           "type": "array",
           "items": {
-            "type": "string",
-            "format": "uri"
+            "$ref": "../JSON-Schema/schemas/definitions-JSON-Schema.json#/definitions/id"
           }
         },
         "MATCH_parentID": {
           "type": "array",
           "items": {
-            "type": "string",
-            "format": "uri"
+            "$ref": "../JSON-Schema/schemas/definitions-JSON-Schema.json#/definitions/id"
           }
         },
         "MATCH_inputEPC": {
           "type": "array",
           "items": {
-            "type": "string",
-            "format": "uri"
+            "$ref": "../JSON-Schema/schemas/definitions-JSON-Schema.json#/definitions/id"
           }
         },
         "MATCH_outputEPC": {
           "type": "array",
           "items": {
-            "type": "string",
-            "format": "uri"
+            "$ref": "../JSON-Schema/schemas/definitions-JSON-Schema.json#/definitions/id"
           }
         },
         "MATCH_anyEPC": {
           "type": "array",
           "items": {
-            "type": "string",
-            "format": "uri"
+            "$ref": "../JSON-Schema/schemas/definitions-JSON-Schema.json#/definitions/id"
           }
         },
         "MATCH_epcClass": {

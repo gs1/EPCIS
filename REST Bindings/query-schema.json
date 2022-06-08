@@ -91,20 +91,20 @@
         "EQ_quantity": {
           "type": "array",
           "items": {
-            "type": "number"
+            "$ref": "#/definitions/decimal"
           }
         },
         "GT_quantity": {
-          "type": "number"
+          "$ref": "#/definitions/decimal"
         },
         "GE_quantity": {
-          "type": "number"
+          "$ref": "#/definitions/decimal"
         },
         "LT_quantity": {
-          "type": "number"
+          "$ref": "#/definitions/decimal"
         },
         "LE_quantity": {
-          "type": "number"
+          "$ref": "#/definitions/decimal"
         },
         "EQ_readPoint": {
           "type": "array",
@@ -144,36 +144,31 @@
         "MATCH_epc": {
           "type": "array",
           "items": {
-            "type": "string",
-            "format": "uri"
+            "$ref": "#/definitions/id"
           }
         },
         "MATCH_parentID": {
           "type": "array",
           "items": {
-            "type": "string",
-            "format": "uri"
+            "$ref": "#/definitions/id"
           }
         },
         "MATCH_inputEPC": {
           "type": "array",
           "items": {
-            "type": "string",
-            "format": "uri"
+            "$ref": "#/definitions/id"
           }
         },
         "MATCH_outputEPC": {
           "type": "array",
           "items": {
-            "type": "string",
-            "format": "uri"
+            "$ref": "#/definitions/id"
           }
         },
         "MATCH_anyEPC": {
           "type": "array",
           "items": {
-            "type": "string",
-            "format": "uri"
+            "$ref": "#/definitions/id"
           }
         },
         "MATCH_epcClass": {
@@ -1324,6 +1319,10 @@
           ]
         }
       ]
+    },
+    "id": {
+      "type": "string",
+      "format": "uri"
     }
   },
   "allOf": [
