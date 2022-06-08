@@ -27,6 +27,10 @@
         }
       ]
     },
+    "uri": {
+      "type": "string",
+      "format": "uri"
+    },
     "EPCIS-Query": {
       "type": "object",
       "properties": {
@@ -102,36 +106,31 @@
         "EQ_readPoint": {
           "type": "array",
           "items": {
-            "type": "string",
-            "format": "uri"
+            "$ref": "#/definitions/uri"
           }
         },
         "WD_readPoint": {
           "type": "array",
           "items": {
-            "type": "string",
-            "format": "uri"
+            "$ref": "#/definitions/uri"
           }
         },
         "EQ_bizLocation": {
           "type": "array",
           "items": {
-            "type": "string",
-            "format": "uri"
+            "$ref": "#/definitions/uri"
           }
         },
         "WD_bizLocation": {
           "type": "array",
           "items": {
-            "type": "string",
-            "format": "uri"
+            "$ref": "#/definitions/uri"
           }
         },
         "EQ_transformationID": {
           "type": "array",
           "items": {
-            "type": "string",
-            "format": "uri"
+            "$ref": "#/definitions/uri"
           }
         },
         "MATCH_epc": {
@@ -167,29 +166,25 @@
         "MATCH_epcClass": {
           "type": "array",
           "items": {
-            "type": "string",
-            "format": "uri"
+            "$ref": "#/definitions/uri"
           }
         },
         "MATCH_inputEPCClass": {
           "type": "array",
           "items": {
-            "type": "string",
-            "format": "uri"
+            "$ref": "#/definitions/uri"
           }
         },
         "MATCH_outputEPCClass": {
           "type": "array",
           "items": {
-            "type": "string",
-            "format": "uri"
+            "$ref": "#/definitions/uri"
           }
         },
         "MATCH_anyEPCClass": {
           "type": "array",
           "items": {
-            "type": "string",
-            "format": "uri"
+            "$ref": "#/definitions/uri"
           }
         },
         "EQ_eventID": {
@@ -267,36 +262,31 @@
         "EQ_deviceID": {
           "type": "array",
           "items": {
-            "type": "string",
-            "format": "uri"
+            "$ref": "#/definitions/uri"
           }
         },
         "EQ_dataProcessingMethod": {
           "type": "array",
           "items": {
-            "type": "string",
-            "format": "uri"
+            "$ref": "#/definitions/uri"
           }
         },
         "EQ_microorganism": {
           "type": "array",
           "items": {
-            "type": "string",
-            "format": "uri"
+            "$ref": "#/definitions/uri"
           }
         },
         "EQ_chemicalSubstance": {
           "type": "array",
           "items": {
-            "type": "string",
-            "format": "uri"
+            "$ref": "#/definitions/uri"
           }
         },
         "EQ_bizRules": {
           "type": "array",
           "items": {
-            "type": "string",
-            "format": "uri"
+            "$ref": "#/definitions/uri"
           }
         },
         "EQ_stringValue": {
@@ -317,8 +307,7 @@
         "EQ_uriValue": {
           "type": "array",
           "items": {
-            "type": "string",
-            "format": "uri"
+            "$ref": "#/definitions/uri"
           }
         },
         "GE_percRank": {
@@ -338,22 +327,19 @@
         "^EQ_bizTransaction_[a-z][a-zA-Z0-9_]+$": {
           "type": "array",
           "items": {
-            "type": "string",
-            "format": "uri"
+            "$ref": "#/definitions/uri"
           }
         },
         "^EQ_source_[a-z][a-zA-Z0-9_]+$": {
           "type": "array",
           "items": {
-            "type": "string",
-            "format": "uri"
+            "$ref": "#/definitions/uri"
           }
         },
         "^EQ_destination_[a-z][a-zA-Z0-9_]+$": {
           "type": "array",
           "items": {
-            "type": "string",
-            "format": "uri"
+            "$ref": "#/definitions/uri"
           }
         },
         "^EQ_[a-z][a-zA-Z0-9]*\\\\:\\\\w+$": {
@@ -759,10 +745,6 @@
       "type": "string",
       "format": "uri",
       "pattern": "^(?!(urn:epcglobal:cbv|https?:\\/\\/ns\\.gs1\\.org/cbv\\/))"
-    },
-    "uri": {
-      "type": "string",
-      "format": "uri"
     },
     "quantityElement": {
       "type": "object",
