@@ -387,142 +387,46 @@
           "$ref": "#/definitions/string-array-or-date-string-or-number"
         },
         "^GT_ILMD_[a-z][a-zA-Z0-9]*\\\\:\\\\w+$": {
-          "oneOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string",
-              "format": "date-time"
-            }
-          ]
+          "$ref": "#/definitions/date-string-or-number"
         },
         "^GE_ILMD_[a-z][a-zA-Z0-9]*\\\\:\\\\w+$": {
-          "oneOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string",
-              "format": "date-time"
-            }
-          ]
+          "$ref": "#/definitions/date-string-or-number"
         },
         "^LT_ILMD_[a-z][a-zA-Z0-9]*\\\\:\\\\w+$": {
-          "oneOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string",
-              "format": "date-time"
-            }
-          ]
+          "$ref": "#/definitions/date-string-or-number"
         },
         "^LE_ILMD_[a-z][a-zA-Z0-9]*\\\\:\\\\w+$": {
-          "oneOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string",
-              "format": "date-time"
-            }
-          ]
+          "$ref": "#/definitions/date-string-or-number"
         },
         "^EQ_INNER_[a-z][a-zA-Z0-9]*\\\\:\\\\w+$": {
           "$ref": "#/definitions/string-array-or-date-string-or-number"
         },
         "^GT_INNER_[a-z][a-zA-Z0-9]*\\\\:\\\\w+$": {
-          "oneOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string",
-              "format": "date-time"
-            }
-          ]
+          "$ref": "#/definitions/date-string-or-number"
         },
         "^GE_INNER_[a-z][a-zA-Z0-9]*\\\\:\\\\w+$": {
-          "oneOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string",
-              "format": "date-time"
-            }
-          ]
+          "$ref": "#/definitions/date-string-or-number"
         },
         "^LT_INNER_[a-z][a-zA-Z0-9]*\\\\:\\\\w+$": {
-          "oneOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string",
-              "format": "date-time"
-            }
-          ]
+          "$ref": "#/definitions/date-string-or-number"
         },
         "^LE_INNER_[a-z][a-zA-Z0-9]*\\\\:\\\\w+$": {
-          "oneOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string",
-              "format": "date-time"
-            }
-          ]
+          "$ref": "#/definitions/date-string-or-number"
         },
         "^EQ_INNER_ILMD_[a-z][a-zA-Z0-9]*\\\\:\\\\w+$": {
           "$ref": "#/definitions/string-array-or-date-string-or-number"
         },
         "^GT_INNER_ILMD_[a-z][a-zA-Z0-9]*\\\\:\\\\w+$": {
-          "oneOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string",
-              "format": "date-time"
-            }
-          ]
+          "$ref": "#/definitions/date-string-or-number"
         },
         "^GE_INNER_ILMD_[a-z][a-zA-Z0-9]*\\\\:\\\\w+$": {
-          "oneOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string",
-              "format": "date-time"
-            }
-          ]
+          "$ref": "#/definitions/date-string-or-number"
         },
         "^LT_INNER_ILMD_[a-z][a-zA-Z0-9]*\\\\:\\\\w+$": {
-          "oneOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string",
-              "format": "date-time"
-            }
-          ]
+          "$ref": "#/definitions/date-string-or-number"
         },
         "^LE_INNER_ILMD_[a-z][a-zA-Z0-9]*\\\\:\\\\w+$": {
-          "oneOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string",
-              "format": "date-time"
-            }
-          ]
+          "$ref": "#/definitions/date-string-or-number"
         },
         "^EXISTS_[a-z][a-zA-Z0-9]*\\\\:\\\\w+$": {
           "type": "integer",
@@ -553,95 +457,31 @@
           "$ref": "#/definitions/string-array-or-date-string-or-number"
         },
         "^GT_ERROR_DECLARATION_[a-z][a-zA-Z0-9]*\\\\:\\\\w+$": {
-          "oneOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string",
-              "format": "date-time"
-            }
-          ]
+          "$ref": "#/definitions/date-string-or-number"
         },
         "^GE_ERROR_DECLARATION_[a-z][a-zA-Z0-9]*\\\\:\\\\w+$": {
-          "oneOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string",
-              "format": "date-time"
-            }
-          ]
+          "$ref": "#/definitions/date-string-or-number"
         },
         "^LT_ERROR_DECLARATION_[a-z][a-zA-Z0-9]*\\\\:\\\\w+$": {
-          "oneOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string",
-              "format": "date-time"
-            }
-          ]
+          "$ref": "#/definitions/date-string-or-number"
         },
         "^LE_ERROR_DECLARATION_[a-z][a-zA-Z0-9]*\\\\:\\\\w+$": {
-          "oneOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string",
-              "format": "date-time"
-            }
-          ]
+          "$ref": "#/definitions/date-string-or-number"
         },
         "^EQ_INNER_ERROR_DECLARATION_[a-z][a-zA-Z0-9]*\\\\:\\\\w+$": {
           "$ref": "#/definitions/string-array-or-date-string-or-number"
         },
         "^GT_INNER_ERROR_DECLARATION_[a-z][a-zA-Z0-9]*\\\\:\\\\w+$": {
-          "oneOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string",
-              "format": "date-time"
-            }
-          ]
+          "$ref": "#/definitions/date-string-or-number"
         },
         "^GE_INNER_ERROR_DECLARATION_[a-z][a-zA-Z0-9]*\\\\:\\\\w+$": {
-          "oneOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string",
-              "format": "date-time"
-            }
-          ]
+          "$ref": "#/definitions/date-string-or-number"
         },
         "^LT_INNER_ERROR_DECLARATION_[a-z][a-zA-Z0-9]*\\\\:\\\\w+$": {
-          "oneOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string",
-              "format": "date-time"
-            }
-          ]
+          "$ref": "#/definitions/date-string-or-number"
         },
         "^LE_INNER_ERROR_DECLARATION_[a-z][a-zA-Z0-9]*\\\\:\\\\w+$": {
-          "oneOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string",
-              "format": "date-time"
-            }
-          ]
+          "$ref": "#/definitions/date-string-or-number"
         },
         "^EXISTS_ERROR_DECLARATION_[a-z][a-zA-Z0-9]*\\\\:\\\\w+$": {
           "type": "integer",
@@ -763,283 +603,91 @@
           "$ref": "#/definitions/string-array-or-date-string-or-number"
         },
         "^GT_SENSORELEMENT_[a-z][a-zA-Z0-9]*\\\\:\\\\w+$": {
-          "oneOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string",
-              "format": "date-time"
-            }
-          ]
+          "$ref": "#/definitions/date-string-or-number"
         },
         "^GE_SENSORELEMENT_[a-z][a-zA-Z0-9]*\\\\:\\\\w+$": {
-          "oneOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string",
-              "format": "date-time"
-            }
-          ]
+          "$ref": "#/definitions/date-string-or-number"
         },
         "^LT_SENSORELEMENT_[a-z][a-zA-Z0-9]*\\\\:\\\\w+$": {
-          "oneOf": [
-            {
-              "type": "string",
-              "format": "date-time"
-            },
-            {
-              "type": "number"
-            }
-          ]
+          "$ref": "#/definitions/date-string-or-number"
         },
         "^LE_SENSORELEMENT_[a-z][a-zA-Z0-9]*\\\\:\\\\w+$": {
-          "oneOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string",
-              "format": "date-time"
-            }
-          ]
+          "$ref": "#/definitions/date-string-or-number"
         },
         "^EQ_SENSORMETADATA_[a-z][a-zA-Z0-9]*\\\\:\\\\w+$": {
           "$ref": "#/definitions/string-array-or-date-string-or-number"
         },
         "^GT_SENSORMETADATA_[a-z][a-zA-Z0-9]*\\\\:\\\\w+$": {
-          "oneOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string",
-              "format": "date-time"
-            }
-          ]
+          "$ref": "#/definitions/date-string-or-number"
         },
         "^GE_SENSORMETADATA_[a-z][a-zA-Z0-9]*\\\\:\\\\w+$": {
-          "oneOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string",
-              "format": "date-time"
-            }
-          ]
+          "$ref": "#/definitions/date-string-or-number"
         },
         "^LT_SENSORMETADATA_[a-z][a-zA-Z0-9]*\\\\:\\\\w+$": {
-          "oneOf": [
-            {
-              "type": "string",
-              "format": "date-time"
-            },
-            {
-              "type": "number"
-            }
-          ]
+          "$ref": "#/definitions/date-string-or-number"
         },
         "^LE_SENSORMETADATA_[a-z][a-zA-Z0-9]*\\\\:\\\\w+$": {
-          "oneOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string",
-              "format": "date-time"
-            }
-          ]
+          "$ref": "#/definitions/date-string-or-number"
         },
         "^EQ_SENSORREPORT_[a-z][a-zA-Z0-9]*\\\\:\\\\w+$": {
           "$ref": "#/definitions/string-array-or-date-string-or-number"
         },
         "^GT_SENSORREPORT_[a-z][a-zA-Z0-9]*\\\\:\\\\w+$": {
-          "oneOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string",
-              "format": "date-time"
-            }
-          ]
+          "$ref": "#/definitions/date-string-or-number"
         },
         "^GE_SENSORREPORT_[a-z][a-zA-Z0-9]*\\\\:\\\\w+$": {
-          "oneOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string",
-              "format": "date-time"
-            }
-          ]
+          "$ref": "#/definitions/date-string-or-number"
         },
         "^LT_SENSORREPORT_[a-z][a-zA-Z0-9]*\\\\:\\\\w+$": {
-          "oneOf": [
-            {
-              "type": "string",
-              "format": "date-time"
-            },
-            {
-              "type": "number"
-            }
-          ]
+          "$ref": "#/definitions/date-string-or-number"
         },
         "^LE_SENSORREPORT_[a-z][a-zA-Z0-9]*\\\\:\\\\w+$": {
-          "oneOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string",
-              "format": "date-time"
-            }
-          ]
+          "$ref": "#/definitions/date-string-or-number"
         },
         "^EQ_INNER_SENSORELEMENT_[a-z][a-zA-Z0-9]*\\\\:\\\\w+$": {
           "$ref": "#/definitions/string-array-or-date-string-or-number"
         },
         "^GT_INNER_SENSORELEMENT_[a-z][a-zA-Z0-9]*\\\\:\\\\w+$": {
-          "oneOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string",
-              "format": "date-time"
-            }
-          ]
+          "$ref": "#/definitions/date-string-or-number"
         },
         "^GE_INNER_SENSORELEMENT_[a-z][a-zA-Z0-9]*\\\\:\\\\w+$": {
-          "oneOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string",
-              "format": "date-time"
-            }
-          ]
+          "$ref": "#/definitions/date-string-or-number"
         },
         "^LT_INNER_SENSORELEMENT_[a-z][a-zA-Z0-9]*\\\\:\\\\w+$": {
-          "oneOf": [
-            {
-              "type": "string",
-              "format": "date-time"
-            },
-            {
-              "type": "number"
-            }
-          ]
+          "$ref": "#/definitions/date-string-or-number"
         },
         "^LE_INNER_SENSORELEMENT_[a-z][a-zA-Z0-9]*\\\\:\\\\w+$": {
-          "oneOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string",
-              "format": "date-time"
-            }
-          ]
+          "$ref": "#/definitions/date-string-or-number"
         },
         "^EQ_INNER_SENSORMETADATA_[a-z][a-zA-Z0-9]*\\\\:\\\\w+$": {
           "$ref": "#/definitions/string-array-or-date-string-or-number"
         },
         "^GT_INNER_SENSORMETADATA_[a-z][a-zA-Z0-9]*\\\\:\\\\w+$": {
-          "oneOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string",
-              "format": "date-time"
-            }
-          ]
+          "$ref": "#/definitions/date-string-or-number"
         },
         "^GE_INNER_SENSORMETADATA_[a-z][a-zA-Z0-9]*\\\\:\\\\w+$": {
-          "oneOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string",
-              "format": "date-time"
-            }
-          ]
+          "$ref": "#/definitions/date-string-or-number"
         },
         "^LT_INNER_SENSORMETADATA_[a-z][a-zA-Z0-9]*\\\\:\\\\w+$": {
-          "oneOf": [
-            {
-              "type": "string",
-              "format": "date-time"
-            },
-            {
-              "type": "number"
-            }
-          ]
+          "$ref": "#/definitions/date-string-or-number"
         },
         "^LE_INNER_SENSORMETADATA_[a-z][a-zA-Z0-9]*\\\\:\\\\w+$": {
-          "oneOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string",
-              "format": "date-time"
-            }
-          ]
+          "$ref": "#/definitions/date-string-or-number"
         },
         "^EQ_INNER_SENSORREPORT_[a-z][a-zA-Z0-9]*\\\\:\\\\w+$": {
           "$ref": "#/definitions/string-array-or-date-string-or-number"
         },
         "^GT_INNER_SENSORREPORT_[a-z][a-zA-Z0-9]*\\\\:\\\\w+$": {
-          "oneOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string",
-              "format": "date-time"
-            }
-          ]
+          "$ref": "#/definitions/date-string-or-number"
         },
         "^GE_INNER_SENSORREPORT_[a-z][a-zA-Z0-9]*\\\\:\\\\w+$": {
-          "oneOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string",
-              "format": "date-time"
-            }
-          ]
+          "$ref": "#/definitions/date-string-or-number"
         },
         "^LT_INNER_SENSORREPORT_[a-z][a-zA-Z0-9]*\\\\:\\\\w+$": {
-          "oneOf": [
-            {
-              "type": "string",
-              "format": "date-time"
-            },
-            {
-              "type": "number"
-            }
-          ]
+          "$ref": "#/definitions/date-string-or-number"
         },
         "^LE_INNER_SENSORREPORT_[a-z][a-zA-Z0-9]*\\\\:\\\\w+$": {
-          "oneOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string",
-              "format": "date-time"
-            }
-          ]
+          "$ref": "#/definitions/date-string-or-number"
         },
         "^EXISTS_SENSORELEMENT_[a-z][a-zA-Z0-9]*\\\\:\\\\w+$": {
           "type": "integer",

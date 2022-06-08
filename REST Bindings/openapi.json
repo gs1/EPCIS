@@ -6918,141 +6918,6 @@
         "type": "string",
         "format": "date-time"
       },
-      "vocabulary": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "$ref": "#/components/schemas/uri"
-          },
-          "vocabularyElementList": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/vocabularyElement"
-            }
-          }
-        },
-        "required": [
-          "type"
-        ]
-      },
-      "vocabularyElement": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "$ref": "#/components/schemas/uri"
-          },
-          "attributes": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/attribute"
-            }
-          },
-          "children": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/uri"
-            }
-          }
-        },
-        "required": [
-          "id"
-        ]
-      },
-      "attribute": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "$ref": "#/components/schemas/uri"
-          },
-          "attribute": {
-            "anyOf": [
-              {
-                "type": "number"
-              },
-              {
-                "type": "string"
-              },
-              {
-                "type": "object"
-              }
-            ]
-          }
-        },
-        "required": [
-          "id"
-        ]
-      },
-      "eventList": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/EPCISEvent"
-        }
-      },
-      "vocabularyList": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/vocabulary"
-        }
-      },
-      "resultsBody": {
-        "type": "object",
-        "properties": {
-          "eventList": {
-            "$ref": "#/components/schemas/eventList"
-          },
-          "vocabularyList": {
-            "$ref": "#/components/schemas/vocabularyList"
-          }
-        },
-        "required": [
-          "eventList"
-        ]
-      },
-      "queryResults": {
-        "type": "object",
-        "properties": {
-          "queryName": {
-            "type": "string"
-          },
-          "subscriptionID": {
-            "type": "string"
-          },
-          "resultsBody": {
-            "$ref": "#/components/schemas/resultsBody"
-          }
-        },
-        "required": [
-          "queryName",
-          "resultsBody"
-        ]
-      },
-      "epcisQueryDocumentBody": {
-        "type": "object",
-        "properties": {
-          "queryResults": {
-            "$ref": "#/components/schemas/queryResults"
-          }
-        },
-        "required": [
-          "queryResults"
-        ]
-      },
-      "epcisHeader": {
-        "type": "object",
-        "properties": {
-          "epcisMasterData": {
-            "type": "object",
-            "properties": {
-              "vocabularyList": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/vocabulary"
-                }
-              }
-            }
-          }
-        }
-      },
       "epcisDocument": {
         "type": "object",
         "properties": {
@@ -7106,170 +6971,59 @@
           "epcisBody"
         ]
       },
-      "epcisQueryDocument": {
-        "type": "object",
-        "properties": {
-          "@context": {
-            "$ref": "#/components/schemas/LDContext"
-          },
-          "id": {
-            "$ref": "#/components/schemas/id"
-          },
-          "type": {
-            "type": "string",
-            "enum": [
-              "EPCISQueryDocument"
-            ]
-          },
-          "schemaVersion": {
-            "$ref": "#/components/schemas/version"
-          },
-          "creationDate": {
-            "$ref": "#/components/schemas/time"
-          },
-          "epcisBody": {
-            "$ref": "#/components/schemas/epcisQueryDocumentBody"
-          }
-        },
-        "required": [
-          "@context",
-          "type",
-          "epcisBody"
-        ]
-      },
-      "EPCIS-Document": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/epcisDocument"
-          },
-          {
-            "$ref": "#/components/schemas/epcisQueryDocument"
-          }
-        ]
-      },
       "uri": {
         "type": "string",
         "format": "uri"
       },
-      "time": {
-        "type": "string",
-        "format": "date-time"
-      },
-      "decimal": {
-        "type": "number"
-      },
-      "boolean": {
-        "type": "boolean"
-      },
-      "hexBinary": {
-        "type": "string",
-        "pattern": "^[A-Fa-f0-9]+$"
-      },
-      "string": {
-        "type": "string"
-      },
-      "action": {
-        "type": "string",
-        "enum": [
-          "OBSERVE",
-          "ADD",
-          "DELETE"
-        ]
-      },
-      "persistentDisposition": {
-        "allOf": [
+      "disposition": {
+        "anyOf": [
           {
-            "type": "object",
-            "properties": {
-              "set": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/disposition"
-                },
-                "minItems": 1,
-                "uniqueItems": true
-              },
-              "unset": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/disposition"
-                },
-                "minItems": 1,
-                "uniqueItems": true
-              }
-            },
-            "additionalProperties": false
+            "$ref": "#/components/schemas/vocab-other-uri"
           },
           {
-            "anyOf": [
-              {
-                "type": "object",
-                "required": [
-                  "set"
-                ]
-              },
-              {
-                "type": "object",
-                "required": [
-                  "unset"
-                ]
-              }
+            "type": "string",
+            "enum": [
+              "active",
+              "container_closed",
+              "damaged",
+              "destroyed",
+              "dispensed",
+              "disposed",
+              "encoded",
+              "expired",
+              "in_progress",
+              "in_transit",
+              "inactive",
+              "no_pedigree_match",
+              "non_sellable_other",
+              "partially_dispensed",
+              "recalled",
+              "reserved",
+              "retail_sold",
+              "returned",
+              "sellable_accessible",
+              "sellable_not_accessible",
+              "stolen",
+              "unknown",
+              "available",
+              "completeness_verified",
+              "completeness_inferred",
+              "conformant",
+              "container_open",
+              "mismatch_instance",
+              "mismatch_class",
+              "mismatch_quantity",
+              "needs_replacement",
+              "non_conformant",
+              "unavailable"
             ]
           }
         ]
       },
-      "epcList": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/uri"
-        },
-        "uniqueItems": true
-      },
-      "quantityList": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/quantityElement"
-        }
-      },
-      "uom": {
+      "vocab-other-uri": {
         "type": "string",
-        "pattern": "^[A-Z0-9]{2,3}$"
-      },
-      "eventID": {
-        "$ref": "#/components/schemas/uri"
-      },
-      "certificationInfo": {
-        "anyOf": [
-          {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/uri"
-            }
-          },
-          {
-            "$ref": "#/components/schemas/uri"
-          }
-        ]
-      },
-      "errorDeclaration": {
-        "type": "object",
-        "properties": {
-          "declarationTime": {
-            "$ref": "#/components/schemas/time"
-          },
-          "reason": {
-            "$ref": "#/components/schemas/error-reason"
-          },
-          "correctiveEventIDs": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/eventID"
-            }
-          }
-        },
-        "required": [
-          "declarationTime"
-        ]
+        "format": "uri",
+        "pattern": "^(?!(urn:epcglobal:cbv|https?:\\/\\/ns\\.gs1\\.org/cbv\\/))"
       },
       "quantityElement": {
         "type": "object",
@@ -7289,88 +7043,106 @@
         ],
         "additionalProperties": false
       },
-      "bizTransaction": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "$ref": "#/components/schemas/bizTransaction-type"
-          },
-          "bizTransaction": {
-            "$ref": "#/components/schemas/uri"
-          }
-        },
-        "required": [
-          "bizTransaction"
-        ],
-        "additionalProperties": false
+      "time": {
+        "type": "string",
+        "format": "date-time"
       },
-      "readPoint": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "$ref": "#/components/schemas/uri"
+      "error-reason": {
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/vocab-other-uri"
+          },
+          {
+            "type": "string",
+            "enum": [
+              "did_not_occur",
+              "incorrect_data"
+            ]
           }
-        },
-        "required": [
-          "id"
         ]
       },
-      "bizLocation": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "$ref": "#/components/schemas/uri"
+      "eventID": {
+        "$ref": "#/components/schemas/uri"
+      },
+      "vocab-uri": {
+        "type": "string",
+        "format": "uri"
+      },
+      "decimal": {
+        "type": "number"
+      },
+      "uom": {
+        "type": "string",
+        "pattern": "^[A-Z0-9]{2,3}$"
+      },
+      "bizTransaction-type": {
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/vocab-other-uri"
+          },
+          {
+            "type": "string",
+            "enum": [
+              "bol",
+              "cert",
+              "desadv",
+              "inv",
+              "pedigree",
+              "po",
+              "poc",
+              "prodorder",
+              "recadv",
+              "rma",
+              "testprd",
+              "testres",
+              "upevt"
+            ]
           }
-        },
-        "required": [
-          "id"
         ]
       },
-      "source": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "$ref": "#/components/schemas/source-dest-type"
+      "source-dest-type": {
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/vocab-other-uri"
           },
-          "source": {
-            "$ref": "#/components/schemas/uri"
+          {
+            "type": "string",
+            "enum": [
+              "owning_party",
+              "possessing_party",
+              "location"
+            ]
           }
-        },
-        "required": [
-          "type",
-          "source"
-        ],
-        "additionalProperties": false
-      },
-      "destination": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "$ref": "#/components/schemas/source-dest-type"
-          },
-          "destination": {
-            "$ref": "#/components/schemas/uri"
-          }
-        },
-        "required": [
-          "type",
-          "destination"
-        ],
-        "additionalProperties": false
-      },
-      "sensorElement": {
-        "type": "object",
-        "properties": {
-          "sensorMetadata": {
-            "$ref": "#/components/schemas/sensorMetadata"
-          },
-          "sensorReport": {
-            "$ref": "#/components/schemas/sensorReportList"
-          }
-        },
-        "required": [
-          "sensorReport"
         ]
+      },
+      "sensorMetadata": {
+        "type": "object",
+        "properties": {
+          "time": {
+            "$ref": "#/components/schemas/time"
+          },
+          "deviceID": {
+            "$ref": "#/components/schemas/uri"
+          },
+          "deviceMetadata": {
+            "$ref": "#/components/schemas/uri"
+          },
+          "rawData": {
+            "$ref": "#/components/schemas/uri"
+          },
+          "startTime": {
+            "$ref": "#/components/schemas/time"
+          },
+          "endTime": {
+            "$ref": "#/components/schemas/time"
+          },
+          "dataProcessingMethod": {
+            "$ref": "#/components/schemas/uri"
+          },
+          "bizRules": {
+            "$ref": "#/components/schemas/uri"
+          }
+        }
       },
       "sensorReportList": {
         "type": "array",
@@ -7459,230 +7231,6 @@
           "type"
         ]
       },
-      "sensorMetadata": {
-        "type": "object",
-        "properties": {
-          "time": {
-            "$ref": "#/components/schemas/time"
-          },
-          "deviceID": {
-            "$ref": "#/components/schemas/uri"
-          },
-          "deviceMetadata": {
-            "$ref": "#/components/schemas/uri"
-          },
-          "rawData": {
-            "$ref": "#/components/schemas/uri"
-          },
-          "startTime": {
-            "$ref": "#/components/schemas/time"
-          },
-          "endTime": {
-            "$ref": "#/components/schemas/time"
-          },
-          "dataProcessingMethod": {
-            "$ref": "#/components/schemas/uri"
-          },
-          "bizRules": {
-            "$ref": "#/components/schemas/uri"
-          }
-        }
-      },
-      "ilmd": {
-        "type": "object"
-      },
-      "Event": {
-        "type": "object",
-        "properties": {
-          "@context": {
-            "$ref": "#/components/schemas/LDContext"
-          },
-          "eventTime": {
-            "$ref": "#/components/schemas/time"
-          },
-          "recordTime": {
-            "$ref": "#/components/schemas/time"
-          },
-          "eventTimeZoneOffset": {
-            "type": "string",
-            "pattern": "^([+]|[-])((0[0-9]|1[0-3]):([0-5][0-9])|14:00)$"
-          },
-          "eventID": {
-            "$ref": "#/components/schemas/eventID"
-          },
-          "certificationInfo": {
-            "$ref": "#/components/schemas/certificationInfo"
-          },
-          "errorDeclaration": {
-            "$ref": "#/components/schemas/errorDeclaration"
-          }
-        },
-        "required": [
-          "eventTime",
-          "eventTimeZoneOffset"
-        ]
-      },
-      "common-event-properties": {
-        "anyOf": [
-          {
-            "type": "string",
-            "enum": [
-              "@context",
-              "type",
-              "eventTime",
-              "recordTime",
-              "eventTimeZoneOffset",
-              "eventID",
-              "certificationInfo",
-              "errorDeclaration"
-            ]
-          },
-          {
-            "$ref": "#/components/schemas/vocab-uri"
-          }
-        ]
-      },
-      "Extended-Event": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/Event"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "type": {
-                "$ref": "#/components/schemas/vocab-uri"
-              }
-            },
-            "required": [
-              "type"
-            ]
-          }
-        ]
-      },
-      "disposition": {
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/vocab-other-uri"
-          },
-          {
-            "type": "string",
-            "enum": [
-              "active",
-              "container_closed",
-              "damaged",
-              "destroyed",
-              "dispensed",
-              "disposed",
-              "encoded",
-              "expired",
-              "in_progress",
-              "in_transit",
-              "inactive",
-              "no_pedigree_match",
-              "non_sellable_other",
-              "partially_dispensed",
-              "recalled",
-              "reserved",
-              "retail_sold",
-              "returned",
-              "sellable_accessible",
-              "sellable_not_accessible",
-              "stolen",
-              "unknown",
-              "available",
-              "completeness_verified",
-              "completeness_inferred",
-              "conformant",
-              "container_open",
-              "mismatch_instance",
-              "mismatch_class",
-              "mismatch_quantity",
-              "needs_replacement",
-              "non_conformant",
-              "unavailable"
-            ]
-          }
-        ]
-      },
-      "vocab-uri": {
-        "type": "string",
-        "format": "uri"
-      },
-      "vocab-other-uri": {
-        "type": "string",
-        "format": "uri",
-        "pattern": "^(?!(urn:epcglobal:cbv|https?:\\/\\/ns\\.gs1\\.org/cbv\\/))"
-      },
-      "vocab-nonGS1WebVoc-uri": {
-        "type": "string",
-        "format": "uri",
-        "pattern": "^(?!(https?:\\/\\/gs1\\.org\\/voc\\/|https?:\\/\\/www\\.gs1\\.org\\/voc\\/))"
-      },
-      "required-ld-context": {
-        "type": "object",
-        "required": [
-          "@context"
-        ]
-      },
-      "id": {
-        "type": "string",
-        "format": "uri"
-      },
-      "error-reason": {
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/vocab-other-uri"
-          },
-          {
-            "type": "string",
-            "enum": [
-              "did_not_occur",
-              "incorrect_data"
-            ]
-          }
-        ]
-      },
-      "bizTransaction-type": {
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/vocab-other-uri"
-          },
-          {
-            "type": "string",
-            "enum": [
-              "bol",
-              "cert",
-              "desadv",
-              "inv",
-              "pedigree",
-              "po",
-              "poc",
-              "prodorder",
-              "recadv",
-              "rma",
-              "testprd",
-              "testres",
-              "upevt"
-            ]
-          }
-        ]
-      },
-      "source-dest-type": {
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/vocab-other-uri"
-          },
-          {
-            "type": "string",
-            "enum": [
-              "owning_party",
-              "possessing_party",
-              "location"
-            ]
-          }
-        ]
-      },
       "measurementType": {
         "anyOf": [
           {
@@ -7767,6 +7315,11 @@
           }
         ]
       },
+      "vocab-nonGS1WebVoc-uri": {
+        "type": "string",
+        "format": "uri",
+        "pattern": "^(?!(https?:\\/\\/gs1\\.org\\/voc\\/|https?:\\/\\/www\\.gs1\\.org\\/voc\\/))"
+      },
       "sensorAlertType": {
         "anyOf": [
           {
@@ -7805,6 +7358,127 @@
               "altitude"
             ]
           }
+        ]
+      },
+      "string": {
+        "type": "string"
+      },
+      "boolean": {
+        "type": "boolean"
+      },
+      "hexBinary": {
+        "type": "string",
+        "pattern": "^[A-Fa-f0-9]+$"
+      },
+      "certificationInfo": {
+        "anyOf": [
+          {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/uri"
+            }
+          },
+          {
+            "$ref": "#/components/schemas/uri"
+          }
+        ]
+      },
+      "errorDeclaration": {
+        "type": "object",
+        "properties": {
+          "declarationTime": {
+            "$ref": "#/components/schemas/time"
+          },
+          "reason": {
+            "$ref": "#/components/schemas/error-reason"
+          },
+          "correctiveEventIDs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/eventID"
+            }
+          }
+        },
+        "required": [
+          "declarationTime"
+        ]
+      },
+      "Event": {
+        "type": "object",
+        "properties": {
+          "@context": {
+            "$ref": "#/components/schemas/LDContext"
+          },
+          "eventTime": {
+            "$ref": "#/components/schemas/time"
+          },
+          "recordTime": {
+            "$ref": "#/components/schemas/time"
+          },
+          "eventTimeZoneOffset": {
+            "type": "string",
+            "pattern": "^([+]|[-])((0[0-9]|1[0-3]):([0-5][0-9])|14:00)$"
+          },
+          "eventID": {
+            "$ref": "#/components/schemas/eventID"
+          },
+          "certificationInfo": {
+            "$ref": "#/components/schemas/certificationInfo"
+          },
+          "errorDeclaration": {
+            "$ref": "#/components/schemas/errorDeclaration"
+          }
+        },
+        "required": [
+          "eventTime",
+          "eventTimeZoneOffset"
+        ]
+      },
+      "vocabularyElement": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/uri"
+          },
+          "attributes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/attribute"
+            }
+          },
+          "children": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/uri"
+            }
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "attribute": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/uri"
+          },
+          "attribute": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "object"
+              }
+            ]
+          }
+        },
+        "required": [
+          "id"
         ]
       },
       "ObjectEvent": {
@@ -7981,6 +7655,27 @@
           }
         ]
       },
+      "epcList": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/uri"
+        },
+        "uniqueItems": true
+      },
+      "quantityList": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/quantityElement"
+        }
+      },
+      "action": {
+        "type": "string",
+        "enum": [
+          "OBSERVE",
+          "ADD",
+          "DELETE"
+        ]
+      },
       "bizStep": {
         "anyOf": [
           {
@@ -8033,6 +7728,158 @@
             ]
           }
         ]
+      },
+      "persistentDisposition": {
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "set": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/disposition"
+                },
+                "minItems": 1,
+                "uniqueItems": true
+              },
+              "unset": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/disposition"
+                },
+                "minItems": 1,
+                "uniqueItems": true
+              }
+            },
+            "additionalProperties": false
+          },
+          {
+            "anyOf": [
+              {
+                "type": "object",
+                "required": [
+                  "set"
+                ]
+              },
+              {
+                "type": "object",
+                "required": [
+                  "unset"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "readPoint": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/uri"
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "bizLocation": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/uri"
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "bizTransaction": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/bizTransaction-type"
+          },
+          "bizTransaction": {
+            "$ref": "#/components/schemas/uri"
+          }
+        },
+        "required": [
+          "bizTransaction"
+        ],
+        "additionalProperties": false
+      },
+      "source": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/source-dest-type"
+          },
+          "source": {
+            "$ref": "#/components/schemas/uri"
+          }
+        },
+        "required": [
+          "type",
+          "source"
+        ],
+        "additionalProperties": false
+      },
+      "destination": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/source-dest-type"
+          },
+          "destination": {
+            "$ref": "#/components/schemas/uri"
+          }
+        },
+        "required": [
+          "type",
+          "destination"
+        ],
+        "additionalProperties": false
+      },
+      "sensorElement": {
+        "type": "object",
+        "properties": {
+          "sensorMetadata": {
+            "$ref": "#/components/schemas/sensorMetadata"
+          },
+          "sensorReport": {
+            "$ref": "#/components/schemas/sensorReportList"
+          }
+        },
+        "required": [
+          "sensorReport"
+        ]
+      },
+      "ilmd": {
+        "type": "object"
+      },
+      "common-event-properties": {
+        "anyOf": [
+          {
+            "type": "string",
+            "enum": [
+              "@context",
+              "type",
+              "eventTime",
+              "recordTime",
+              "eventTimeZoneOffset",
+              "eventID",
+              "certificationInfo",
+              "errorDeclaration"
+            ]
+          },
+          {
+            "$ref": "#/components/schemas/vocab-uri"
+          }
+        ]
+      },
+      "id": {
+        "type": "string",
+        "format": "uri"
       },
       "AggregationEvent": {
         "allOf": [
@@ -8614,6 +8461,149 @@
               }
             ]
           }
+        ]
+      },
+      "Extended-Event": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Event"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "$ref": "#/components/schemas/vocab-uri"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
+      "vocabulary": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/uri"
+          },
+          "vocabularyElementList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/vocabularyElement"
+            }
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "eventList": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/EPCISEvent"
+        }
+      },
+      "vocabularyList": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/vocabulary"
+        }
+      },
+      "resultsBody": {
+        "type": "object",
+        "properties": {
+          "eventList": {
+            "$ref": "#/components/schemas/eventList"
+          },
+          "vocabularyList": {
+            "$ref": "#/components/schemas/vocabularyList"
+          }
+        },
+        "required": [
+          "eventList"
+        ]
+      },
+      "queryResults": {
+        "type": "object",
+        "properties": {
+          "queryName": {
+            "type": "string"
+          },
+          "subscriptionID": {
+            "type": "string"
+          },
+          "resultsBody": {
+            "$ref": "#/components/schemas/resultsBody"
+          }
+        },
+        "required": [
+          "queryName",
+          "resultsBody"
+        ]
+      },
+      "epcisHeader": {
+        "type": "object",
+        "properties": {
+          "epcisMasterData": {
+            "type": "object",
+            "properties": {
+              "vocabularyList": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/vocabulary"
+                }
+              }
+            }
+          }
+        }
+      },
+      "epcisQueryDocumentBody": {
+        "type": "object",
+        "properties": {
+          "queryResults": {
+            "$ref": "#/components/schemas/queryResults"
+          }
+        },
+        "required": [
+          "queryResults"
+        ]
+      },
+      "epcisQueryDocument": {
+        "type": "object",
+        "properties": {
+          "@context": {
+            "$ref": "#/components/schemas/LDContext"
+          },
+          "id": {
+            "$ref": "#/components/schemas/id"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "EPCISQueryDocument"
+            ]
+          },
+          "schemaVersion": {
+            "$ref": "#/components/schemas/version"
+          },
+          "creationDate": {
+            "$ref": "#/components/schemas/time"
+          },
+          "epcisBody": {
+            "$ref": "#/components/schemas/epcisQueryDocumentBody"
+          }
+        },
+        "required": [
+          "@context",
+          "type",
+          "epcisBody"
+        ]
+      },
+      "required-ld-context": {
+        "type": "object",
+        "required": [
+          "@context"
         ]
       }
     },
