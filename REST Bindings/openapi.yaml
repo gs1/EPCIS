@@ -4718,7 +4718,7 @@ components:
 
     EQ_bizStep:
       name: EQ_bizStep
-      description: "If specified, the result will only include events that (a) have a non-null `bizStep` field; and where (b) the value of the `bizStep` field matches one of the specified values. - see <a href=\"https://ref.mh1.eu/cbv/BizStep\" target=\"_blank\">CBV BizStep</a> for standard values.  Standard values should be expressed as bare words, e.g. `shipping`, whereas custom values should be expressed as URIs or CURIEs for which the namespace prefix is defined. If this parameter is omitted, events are returned regardless of the value of the `bizStep` field or whether the `bizStep` field exists at all."
+      description: "If specified, the result will only include events that (a) have a non-null `bizStep` field; and where (b) the value of the `bizStep` field matches one of the specified values. - see <a href=\"https://ref.gs1.org/cbv/BizStep\" target=\"_blank\">CBV BizStep</a> for standard values.  Standard values should be expressed as bare words, e.g. `shipping`, whereas custom values should be expressed as URIs or CURIEs for which the namespace prefix is defined. If this parameter is omitted, events are returned regardless of the value of the `bizStep` field or whether the `bizStep` field exists at all."
       in: query
       style: pipeDelimited
       explode: false
@@ -4732,7 +4732,7 @@ components:
 
     EQ_disposition:
       name: EQ_disposition
-      description: "If specified, the result will only include events that (a) have a non-null `disposition` field; and where (b) the value of the `disposition` field matches one of the specified values. - see <a href=\"https://ref.mh1.eu/cbv/Disp\" target=\"_blank\">CBV Disposition</a> for standard values.  Standard values should be expressed as bare words, e.g. `in_transit`, whereas custom values should be expressed as URIs or CURIEs for which the namespace prefix is defined. If this parameter is omitted, events are returned regardless of the value of the `disposition` field or whether the `disposition` field exists at all."
+      description: "If specified, the result will only include events that (a) have a non-null `disposition` field; and where (b) the value of the `disposition` field matches one of the specified values. - see <a href=\"https://ref.gs1.org/cbv/Disp\" target=\"_blank\">CBV Disposition</a> for standard values.  Standard values should be expressed as bare words, e.g. `in_transit`, whereas custom values should be expressed as URIs or CURIEs for which the namespace prefix is defined. If this parameter is omitted, events are returned regardless of the value of the `disposition` field or whether the `disposition` field exists at all."
       in: query
       style: pipeDelimited
       explode: false
@@ -4746,7 +4746,7 @@ components:
 
     EQ_persistentDisposition_set:
       name: EQ_persistentDisposition_set
-      description: "If specified, the result will only include events that (a) have a non-null `persistentDisposition` field; and where (b) the value of the `set` field within the value of the `persistentDisposition` field matches one of the specified values. - see <a href=\"https://ref.mh1.eu/cbv/Disp\" target=\"_blank\">CBV Disposition</a> for standard values.  Standard values should be expressed as bare words, e.g. `in_transit`, whereas custom values should be expressed as URIs or CURIEs for which the namespace prefix is defined. If this parameter is omitted, events are returned regardless of the value of the `set` field within `persistentDisposition` field or whether the `persistentDisposition` field exists at all."
+      description: "If specified, the result will only include events that (a) have a non-null `persistentDisposition` field; and where (b) the value of the `set` field within the value of the `persistentDisposition` field matches one of the specified values. - see <a href=\"https://ref.gs1.org/cbv/Disp\" target=\"_blank\">CBV Disposition</a> for standard values.  Standard values should be expressed as bare words, e.g. `in_transit`, whereas custom values should be expressed as URIs or CURIEs for which the namespace prefix is defined. If this parameter is omitted, events are returned regardless of the value of the `set` field within `persistentDisposition` field or whether the `persistentDisposition` field exists at all."
       in: query
       style: pipeDelimited
       explode: false
@@ -4761,7 +4761,7 @@ components:
 
     EQ_persistentDisposition_unset:
       name: EQ_persistentDisposition_unset
-      description: "If specified, the result will only include events that (a) have a non-null `persistentDisposition` field; and where (b) the value of the `unset` field within the value of the `persistentDisposition` field matches one of the specified values. - see <a href=\"https://ref.mh1.eu/cbv/Disp\" target=\"_blank\">CBV Disposition</a> for standard values.  Standard values should be expressed as bare words, e.g. `in_transit`, whereas custom values should be expressed as URIs or CURIEs for which the namespace prefix is defined. If this parameter is omitted, events are returned regardless of the value of the `unset` field within `persistentDisposition` field or whether the `persistentDisposition` field exists at all."
+      description: "If specified, the result will only include events that (a) have a non-null `persistentDisposition` field; and where (b) the value of the `unset` field within the value of the `persistentDisposition` field matches one of the specified values. - see <a href=\"https://ref.gs1.org/cbv/Disp\" target=\"_blank\">CBV Disposition</a> for standard values.  Standard values should be expressed as bare words, e.g. `in_transit`, whereas custom values should be expressed as URIs or CURIEs for which the namespace prefix is defined. If this parameter is omitted, events are returned regardless of the value of the `unset` field within `persistentDisposition` field or whether the `persistentDisposition` field exists at all."
       in: query
       style: pipeDelimited
       explode: false
