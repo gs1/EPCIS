@@ -36,14 +36,7 @@
         "eventType": {
           "type": "array",
           "items": {
-            "type": "string",
-            "enum": [
-              "ObjectEvent",
-              "AggregationEvent",
-              "AssociationEvent",
-              "TransformationEvent",
-              "TransactionEvent"
-            ]
+            "$ref": "../JSON-Schema/schemas/event-definitions-JSON-Schema.json#/definitions/eventType"
           }
         },
         "GE_eventTime": {

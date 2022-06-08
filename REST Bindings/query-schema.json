@@ -36,14 +36,7 @@
         "eventType": {
           "type": "array",
           "items": {
-            "type": "string",
-            "enum": [
-              "ObjectEvent",
-              "AggregationEvent",
-              "AssociationEvent",
-              "TransformationEvent",
-              "TransactionEvent"
-            ]
+            "$ref": "#/definitions/eventType"
           }
         },
         "GE_eventTime": {
@@ -699,9 +692,23 @@
       },
       "additionalProperties": false
     },
-    "time": {
-      "type": "string",
-      "format": "date-time"
+    "eventType": {
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": [
+            "ObjectEvent",
+            "AggregationEvent",
+            "AssociationEvent",
+            "TransformationEvent",
+            "TransactionEvent"
+          ]
+        },
+        {
+          "type": "string",
+          "format": "uri"
+        }
+      ]
     },
     "disposition": {
       "anyOf": [
@@ -774,6 +781,10 @@
         "epcClass"
       ],
       "additionalProperties": false
+    },
+    "time": {
+      "type": "string",
+      "format": "date-time"
     },
     "error-reason": {
       "anyOf": [
