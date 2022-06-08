@@ -536,6 +536,24 @@
         "DELETE"
       ]
     },
+    "eventType": {
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": [
+            "ObjectEvent",
+            "AggregationEvent",
+            "AssociationEvent",
+            "TransformationEvent",
+            "TransactionEvent"
+          ]
+        },
+        {
+          "type": "string",
+          "format": "uri"
+        }
+      ]
+    },
     "persistentDisposition": {
       "allOf": [
         {

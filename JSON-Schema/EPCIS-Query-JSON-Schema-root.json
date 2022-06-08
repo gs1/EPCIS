@@ -1,5 +1,5 @@
 {
-  "$id": "https://gs1.github.io/EPCIS/REST%20Bindings/query-schema.json",
+  "$id": "https://gs1.github.io/EPCIS/JSON-Schema/EPCIS-Query-JSON-Schema-root.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "EPCIS Query Schema",
   "definitions": {
@@ -35,73 +35,73 @@
       "type": "object",
       "properties": {
         "@context": {
-          "$ref": "#/definitions/%40context"
+          "$ref": "../JSON-Schema/schemas/definitions-JSON-Schema.json#/definitions/%40context"
         },
         "eventType": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/eventType"
+            "$ref": "../JSON-Schema/schemas/event-definitions-JSON-Schema.json#/definitions/eventType"
           }
         },
         "GE_eventTime": {
-          "$ref": "#/definitions/time"
+          "$ref": "../JSON-Schema/schemas/event-definitions-JSON-Schema.json#/definitions/time"
         },
         "LT_eventTime": {
-          "$ref": "#/definitions/time"
+          "$ref": "../JSON-Schema/schemas/event-definitions-JSON-Schema.json#/definitions/time"
         },
         "GE_recordTime": {
-          "$ref": "#/definitions/time"
+          "$ref": "../JSON-Schema/schemas/event-definitions-JSON-Schema.json#/definitions/time"
         },
         "LT_recordTime": {
-          "$ref": "#/definitions/time"
+          "$ref": "../JSON-Schema/schemas/event-definitions-JSON-Schema.json#/definitions/time"
         },
         "EQ_action": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/action"
+            "$ref": "../JSON-Schema/schemas/event-definitions-JSON-Schema.json#/definitions/action"
           }
         },
         "EQ_bizStep": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/bizStep"
+            "$ref": "../JSON-Schema/schemas/bizStep-JSON-Schema.json#/definitions/bizStep"
           }
         },
         "EQ_disposition": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/disposition"
+            "$ref": "../JSON-Schema/schemas/disposition-JSON-Schema.json#/definitions/disposition"
           }
         },
         "EQ_persistentDisposition_set": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/disposition"
+            "$ref": "../JSON-Schema/schemas/disposition-JSON-Schema.json#/definitions/disposition"
           }
         },
         "EQ_persistentDisposition_unset": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/disposition"
+            "$ref": "../JSON-Schema/schemas/disposition-JSON-Schema.json#/definitions/disposition"
           }
         },
         "EQ_quantity": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/decimal"
+            "$ref": "../JSON-Schema/schemas/event-definitions-JSON-Schema.json#/definitions/decimal"
           }
         },
         "GT_quantity": {
-          "$ref": "#/definitions/decimal"
+          "$ref": "../JSON-Schema/schemas/event-definitions-JSON-Schema.json#/definitions/decimal"
         },
         "GE_quantity": {
-          "$ref": "#/definitions/decimal"
+          "$ref": "../JSON-Schema/schemas/event-definitions-JSON-Schema.json#/definitions/decimal"
         },
         "LT_quantity": {
-          "$ref": "#/definitions/decimal"
+          "$ref": "../JSON-Schema/schemas/event-definitions-JSON-Schema.json#/definitions/decimal"
         },
         "LE_quantity": {
-          "$ref": "#/definitions/decimal"
+          "$ref": "../JSON-Schema/schemas/event-definitions-JSON-Schema.json#/definitions/decimal"
         },
         "EQ_readPoint": {
           "type": "array",
@@ -136,31 +136,31 @@
         "MATCH_epc": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/id"
+            "$ref": "../JSON-Schema/schemas/definitions-JSON-Schema.json#/definitions/id"
           }
         },
         "MATCH_parentID": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/id"
+            "$ref": "../JSON-Schema/schemas/definitions-JSON-Schema.json#/definitions/id"
           }
         },
         "MATCH_inputEPC": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/id"
+            "$ref": "../JSON-Schema/schemas/definitions-JSON-Schema.json#/definitions/id"
           }
         },
         "MATCH_outputEPC": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/id"
+            "$ref": "../JSON-Schema/schemas/definitions-JSON-Schema.json#/definitions/id"
           }
         },
         "MATCH_anyEPC": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/id"
+            "$ref": "../JSON-Schema/schemas/definitions-JSON-Schema.json#/definitions/id"
           }
         },
         "MATCH_epcClass": {
@@ -190,7 +190,7 @@
         "EQ_eventID": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/eventID"
+            "$ref": "../JSON-Schema/schemas/event-definitions-JSON-Schema.json#/definitions/eventID"
           }
         },
         "EXISTS_errorDeclaration": {
@@ -198,21 +198,21 @@
           "nullable": true
         },
         "GE_errorDeclaration_Time": {
-          "$ref": "#/definitions/time"
+          "$ref": "../JSON-Schema/schemas/event-definitions-JSON-Schema.json#/definitions/time"
         },
         "LT_errorDeclaration_Time": {
-          "$ref": "#/definitions/time"
+          "$ref": "../JSON-Schema/schemas/event-definitions-JSON-Schema.json#/definitions/time"
         },
         "EQ_errorReason": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/error-reason"
+            "$ref": "../JSON-Schema/schemas/error-reason-JSON-Schema.json#/definitions/error-reason"
           }
         },
         "EQ_correctiveEventID": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/eventID"
+            "$ref": "../JSON-Schema/schemas/event-definitions-JSON-Schema.json#/definitions/eventID"
           }
         },
         "orderBy": {
@@ -236,27 +236,27 @@
           "nullable": true
         },
         "GE_time": {
-          "$ref": "#/definitions/time"
+          "$ref": "../JSON-Schema/schemas/event-definitions-JSON-Schema.json#/definitions/time"
         },
         "LT_time": {
-          "$ref": "#/definitions/time"
+          "$ref": "../JSON-Schema/schemas/event-definitions-JSON-Schema.json#/definitions/time"
         },
         "GE_startTime": {
-          "$ref": "#/definitions/time"
+          "$ref": "../JSON-Schema/schemas/event-definitions-JSON-Schema.json#/definitions/time"
         },
         "LT_startTime": {
-          "$ref": "#/definitions/time"
+          "$ref": "../JSON-Schema/schemas/event-definitions-JSON-Schema.json#/definitions/time"
         },
         "GE_endTime": {
-          "$ref": "#/definitions/time"
+          "$ref": "../JSON-Schema/schemas/event-definitions-JSON-Schema.json#/definitions/time"
         },
         "LT_endTime": {
-          "$ref": "#/definitions/time"
+          "$ref": "../JSON-Schema/schemas/event-definitions-JSON-Schema.json#/definitions/time"
         },
         "EQ_type": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/measurementType"
+            "$ref": "../JSON-Schema/schemas/measurement-type-JSON-Schema.json#/definitions/measurementType"
           }
         },
         "EQ_deviceID": {
@@ -677,287 +677,6 @@
         }
       },
       "additionalProperties": false
-    },
-    "eventType": {
-      "anyOf": [
-        {
-          "type": "string",
-          "enum": [
-            "ObjectEvent",
-            "AggregationEvent",
-            "AssociationEvent",
-            "TransformationEvent",
-            "TransactionEvent"
-          ]
-        },
-        {
-          "type": "string",
-          "format": "uri"
-        }
-      ]
-    },
-    "disposition": {
-      "anyOf": [
-        {
-          "$ref": "#/definitions/vocab-other-uri"
-        },
-        {
-          "type": "string",
-          "enum": [
-            "active",
-            "container_closed",
-            "damaged",
-            "destroyed",
-            "dispensed",
-            "disposed",
-            "encoded",
-            "expired",
-            "in_progress",
-            "in_transit",
-            "inactive",
-            "no_pedigree_match",
-            "non_sellable_other",
-            "partially_dispensed",
-            "recalled",
-            "reserved",
-            "retail_sold",
-            "returned",
-            "sellable_accessible",
-            "sellable_not_accessible",
-            "stolen",
-            "unknown",
-            "available",
-            "completeness_verified",
-            "completeness_inferred",
-            "conformant",
-            "container_open",
-            "mismatch_instance",
-            "mismatch_class",
-            "mismatch_quantity",
-            "needs_replacement",
-            "non_conformant",
-            "unavailable"
-          ]
-        }
-      ]
-    },
-    "vocab-other-uri": {
-      "type": "string",
-      "format": "uri",
-      "pattern": "^(?!(urn:epcglobal:cbv|https?:\\/\\/ns\\.gs1\\.org/cbv\\/))"
-    },
-    "time": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "error-reason": {
-      "anyOf": [
-        {
-          "$ref": "#/definitions/vocab-other-uri"
-        },
-        {
-          "type": "string",
-          "enum": [
-            "did_not_occur",
-            "incorrect_data"
-          ]
-        }
-      ]
-    },
-    "eventID": {
-      "$ref": "#/definitions/uri"
-    },
-    "vocab-uri": {
-      "type": "string",
-      "format": "uri"
-    },
-    "decimal": {
-      "type": "number"
-    },
-    "uom": {
-      "type": "string",
-      "pattern": "^[A-Z0-9]{2,3}$"
-    },
-    "measurementType": {
-      "anyOf": [
-        {
-          "$ref": "#/definitions/vocab-nonGS1WebVoc-uri"
-        },
-        {
-          "type": "string",
-          "enum": [
-            "AbsoluteHumidity",
-            "AbsorbedDose",
-            "AbsorbedDoseRate",
-            "Acceleration",
-            "Radioactivity",
-            "Altitude",
-            "AmountOfSubstance",
-            "AmountOfSubstancePerUnitVolume",
-            "Angle",
-            "AngularAcceleration",
-            "AngularMomentum",
-            "AngularVelocity",
-            "Area",
-            "Capacitance",
-            "Conductance",
-            "Conductivity",
-            "Count",
-            "Density",
-            "Dimensionless",
-            "DoseEquivalent",
-            "DoseEquivalentRate",
-            "DynamicViscosity",
-            "ElectricCharge",
-            "ElectricCurrent",
-            "ElectricCurrentDensity",
-            "ElectricFieldStrength",
-            "Energy",
-            "Exposure",
-            "Force",
-            "Frequency",
-            "Illuminance",
-            "Inductance",
-            "Irradiance",
-            "KinematicViscosity",
-            "Length",
-            "LinearMomentum",
-            "Luminance",
-            "LuminousFlux",
-            "LuminousIntensity",
-            "MagneticFlux",
-            "MagneticFluxDensity",
-            "MagneticVectorPotential",
-            "Mass",
-            "MassConcentration",
-            "MassFlowRate",
-            "MassPerAreaTime",
-            "MemoryCapacity",
-            "MolalityOfSolute",
-            "MolarEnergy",
-            "MolarMass",
-            "MolarVolume",
-            "Power",
-            "Pressure",
-            "RadiantFlux",
-            "RadiantIntensity",
-            "RelativeHumidity",
-            "Resistance",
-            "Resistivity",
-            "SolidAngle",
-            "SpecificVolume",
-            "Speed",
-            "SurfaceDensity",
-            "SurfaceTension",
-            "Temperature",
-            "Time",
-            "Torque",
-            "Voltage",
-            "Volume",
-            "VolumeFlowRate",
-            "VolumeFraction",
-            "VolumetricFlux",
-            "Wavenumber"
-          ]
-        }
-      ]
-    },
-    "vocab-nonGS1WebVoc-uri": {
-      "type": "string",
-      "format": "uri",
-      "pattern": "^(?!(https?:\\/\\/gs1\\.org\\/voc\\/|https?:\\/\\/www\\.gs1\\.org\\/voc\\/))"
-    },
-    
-    "@context": {
-      "anyOf": [
-        {
-          "type": "string",
-          "format": "uri"
-        },
-        {
-          "type": "object"
-        },
-        {
-          "type": "array",
-          "uniqueItems": true,
-          "items": {
-            "anyOf": [
-              {
-                "type": "string",
-                "format": "uri"
-              },
-              {
-                "type": "object"
-              }
-            ]
-          }
-        }
-      ]
-    },
-    "action": {
-      "type": "string",
-      "enum": [
-        "OBSERVE",
-        "ADD",
-        "DELETE"
-      ]
-    },
-    "bizStep": {
-      "anyOf": [
-        {
-          "$ref": "#/definitions/vocab-other-uri"
-        },
-        {
-          "type": "string",
-          "enum": [
-            "accepting",
-            "arriving",
-            "assembling",
-            "collecting",
-            "commissioning",
-            "consigning",
-            "creating_class_instance",
-            "cycle_counting",
-            "decommissioning",
-            "departing",
-            "destroying",
-            "disassembling",
-            "dispensing",
-            "encoding",
-            "entering_exiting",
-            "holding",
-            "inspecting",
-            "installing",
-            "killing",
-            "loading",
-            "other",
-            "packing",
-            "picking",
-            "receiving",
-            "removing",
-            "repackaging",
-            "repairing",
-            "replacing",
-            "reserving",
-            "retail_selling",
-            "shipping",
-            "staging_outbound",
-            "stock_taking",
-            "stocking",
-            "storing",
-            "transporting",
-            "unloading",
-            "unpacking",
-            "void_shipping",
-            "sensor_reporting",
-            "sampling"
-          ]
-        }
-      ]
-    },
-    "id": {
-      "type": "string",
-      "format": "uri"
     }
   },
   "allOf": [

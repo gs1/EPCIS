@@ -7,14 +7,25 @@ The `EPCIS-JSON-Schema-root.json` is the root file that has pointers to the diff
 To generate the final, single file, inlined JSON Schema you need to ensure you have installed 
 the [Node.js](https://nodejs.org/en/download/) runtime. Then on the command line just execute
 
-```
+```sh
 chmod +x generate-inline-schema.sh
 generate-inline-schema.sh
 ```
 
 After successfully running the script above, the single, inlined schema file `EPCIS-JSON-Schema.json` 
-will be generated on the root folder of the EPCIS repository. It is included to allow 
-online validators to just work with one file. It contains all the Schemas defined by this specification. 
+will be generated on the root folder of the EPCIS git repository. It is included to allow 
+online validators to just work with one file. It contains all the Schemas defined by this specification.
+
+For generating the EPCIS Query Schema you can
+
+```sh
+chmod +x generate-inline-query-schema.sh
+generate-inline-query-schema.sh
+```
+
+After successfully running the script above, the single, inlined schema file `query-schema.json`
+will be generated on the `REST API` folder of the EPCIS git repository. It is included to allow
+online validators to just work with one file.
 
 ## Validation
 
