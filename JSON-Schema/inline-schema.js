@@ -38,17 +38,14 @@ function visit(parent, key, index, node, currentDefinitions) {
   if (typeof node === "object" && !Array.isArray(node)) {
     Object.keys(node).forEach((aKey) => {
       if (key === "definitions" && pendingDefinitions[aKey]) {
-        definitions[aKey] = currentDefinitions[aKey];
         visit(node, aKey, null, node[aKey], currentDefinitions);
+        definitions[aKey] = currentDefinitions[aKey];
         delete pendingDefinitions[aKey];
       } else if (key !== "definitions") {
           visit(node, aKey, null, node[aKey], currentDefinitions);
       }
     });
   } else if (typeof node === "string" && key === "$ref") {
-    if (node === "EPCIS-Event-JSON-Schema.json#/definitions/EPCIS-Document-Event") {
-      console.error("......");
-    }
     // Here we inline the definition from the file indicated
     if (!node.startsWith("#")) {
       const localizedDefinition = localizeDefinition(node);
@@ -59,14 +56,22 @@ function visit(parent, key, index, node, currentDefinitions) {
       loadChildSchema(node);
       parent.$ref = localizedDefinition;
     } else {
-        const definitionName = getDefinitionName(node);
-        visit(currentDefinitions, definitionName, null, currentDefinitions[definitionName], currentDefinitions);
-        definitions[definitionName] = currentDefinitions[definitionName];
+      const definitionName = getDefinitionName(node);
+      if (!definitions[definitionName]) {
+        pendingDefinitions[definitionName] = true;
+        visit(
+          currentDefinitions,
+          definitionName,
+          null,
+          currentDefinitions[definitionName],
+          currentDefinitions
+        );
+      }
     }
   } else if (Array.isArray(node)) {
-      node.forEach((aElement, aIndex) => {
-        visit(node, key, aIndex, aElement, currentDefinitions);
-      });
+    node.forEach((aElement, aIndex) => {
+      visit(node, key, aIndex, aElement, currentDefinitions);
+    });
   }
 }
 
