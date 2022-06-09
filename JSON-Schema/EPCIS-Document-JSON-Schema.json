@@ -203,7 +203,7 @@
                     "enum": ["EPCISDocument"]
                 },
                 "@context": {
-                    "$ref": "schemas/definitions-JSON-Schema.json#/definitions/@context"
+                    "$ref": "schemas/definitions-JSON-Schema.json#/definitions/%40context"
                 },
                 "schemaVersion": {
                     "$ref": "schemas/definitions-JSON-Schema.json#/definitions/version"
@@ -269,7 +269,7 @@
             "type": "object",
             "properties": {
                 "@context": {
-                    "$ref": "schemas/definitions-JSON-Schema.json#/definitions/@context"
+                    "$ref": "schemas/definitions-JSON-Schema.json#/definitions/%40context"
                 },
                 "id": {
                     "$ref": "schemas/definitions-JSON-Schema.json#/definitions/id"

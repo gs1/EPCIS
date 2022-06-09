@@ -2013,7 +2013,7 @@
           ]
         },
         "@context": {
-          "$ref": "#/definitions/@context"
+          "$ref": "#/definitions/%40context"
         },
         "schemaVersion": {
           "$ref": "#/definitions/version"
@@ -2269,7 +2269,7 @@
       "type": "object",
       "properties": {
         "@context": {
-          "$ref": "#/definitions/@context"
+          "$ref": "#/definitions/%40context"
         },
         "id": {
           "$ref": "#/definitions/id"
