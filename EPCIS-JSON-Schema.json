@@ -225,9 +225,118 @@
       "type": "string",
       "format": "uri"
     },
+    "attribute": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/uri"
+        },
+        "attribute": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "object"
+            }
+          ]
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "vocabularyElement": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/uri"
+        },
+        "attributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/attribute"
+          }
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/uri"
+          }
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "vocabulary": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "$ref": "#/definitions/uri"
+        },
+        "vocabularyElementList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/vocabularyElement"
+          }
+        }
+      },
+      "required": [
+        "type"
+      ]
+    },
     "vocab-uri": {
       "type": "string",
       "format": "uri"
+    },
+    "epcisHeader": {
+      "type": "object",
+      "properties": {
+        "epcisMasterData": {
+          "type": "object",
+          "properties": {
+            "vocabularyList": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/vocabulary"
+              }
+            }
+          }
+        }
+      },
+      "propertyNames": {
+        "anyOf": [
+          {
+            "type": "string",
+            "enum": [
+              "epcisMasterData"
+            ]
+          },
+          {
+            "$ref": "#/definitions/vocab-uri"
+          }
+        ]
+      }
+    },
+    "eventID": {
+      "$ref": "#/definitions/uri"
+    },
+    "certificationInfo": {
+      "anyOf": [
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/uri"
+          }
+        },
+        {
+          "$ref": "#/definitions/uri"
+        }
+      ]
     },
     "vocab-other-uri": {
       "type": "string",
@@ -247,6 +356,41 @@
           ]
         }
       ]
+    },
+    "errorDeclaration": {
+      "type": "object",
+      "properties": {
+        "declarationTime": {
+          "$ref": "#/definitions/time"
+        },
+        "reason": {
+          "$ref": "#/definitions/error-reason"
+        },
+        "correctiveEventIDs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/eventID"
+          }
+        }
+      },
+      "required": [
+        "declarationTime"
+      ],
+      "propertyNames": {
+        "anyOf": [
+          {
+            "$ref": "#/definitions/vocab-uri"
+          },
+          {
+            "type": "string",
+            "enum": [
+              "declarationTime",
+              "reason",
+              "correctiveEventIDs"
+            ]
+          }
+        ]
+      }
     },
     "Event": {
       "type": "object",
@@ -286,62 +430,8 @@
       },
       "uniqueItems": true
     },
-    "eventID": {
-      "$ref": "#/definitions/uri"
-    },
-    "certificationInfo": {
-      "anyOf": [
-        {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/uri"
-          }
-        },
-        {
-          "$ref": "#/definitions/uri"
-        }
-      ]
-    },
-    "errorDeclaration": {
-      "type": "object",
-      "properties": {
-        "declarationTime": {
-          "$ref": "#/definitions/time"
-        },
-        "reason": {
-          "$ref": "#/definitions/error-reason"
-        },
-        "correctiveEventIDs": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/eventID"
-          }
-        }
-      },
-      "required": [
-        "declarationTime"
-      ],
-      "propertyNames": {
-        "anyOf": [
-          {
-            "$ref": "#/definitions/vocab-uri"
-          },
-          {
-            "type": "string",
-            "enum": [
-              "declarationTime",
-              "reason",
-              "correctiveEventIDs"
-            ]
-          }
-        ]
-      }
-    },
-    "quantityList": {
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/quantityElement"
-      }
+    "decimal": {
+      "type": "number"
     },
     "uom": {
       "type": "string",
@@ -365,8 +455,11 @@
       ],
       "additionalProperties": false
     },
-    "decimal": {
-      "type": "number"
+    "quantityList": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/quantityElement"
+      }
     },
     "action": {
       "type": "string",
@@ -625,6 +718,55 @@
       ],
       "additionalProperties": false
     },
+    "sensorMetadata": {
+      "type": "object",
+      "properties": {
+        "time": {
+          "$ref": "#/definitions/time"
+        },
+        "deviceID": {
+          "$ref": "#/definitions/uri"
+        },
+        "deviceMetadata": {
+          "$ref": "#/definitions/uri"
+        },
+        "rawData": {
+          "$ref": "#/definitions/uri"
+        },
+        "startTime": {
+          "$ref": "#/definitions/time"
+        },
+        "endTime": {
+          "$ref": "#/definitions/time"
+        },
+        "dataProcessingMethod": {
+          "$ref": "#/definitions/uri"
+        },
+        "bizRules": {
+          "$ref": "#/definitions/uri"
+        }
+      },
+      "propertyNames": {
+        "anyOf": [
+          {
+            "$ref": "#/definitions/vocab-uri"
+          },
+          {
+            "type": "string",
+            "enum": [
+              "time",
+              "deviceID",
+              "deviceMetadata",
+              "rawData",
+              "startTime",
+              "endTime",
+              "dataProcessingMethod",
+              "bizRules"
+            ]
+          }
+        ]
+      }
+    },
     "vocab-nonGS1WebVoc-uri": {
       "type": "string",
       "format": "uri",
@@ -754,40 +896,15 @@
         }
       ]
     },
-    "sensorElement": {
-      "type": "object",
-      "properties": {
-        "sensorMetadata": {
-          "$ref": "#/definitions/sensorMetadata"
-        },
-        "sensorReport": {
-          "$ref": "#/definitions/sensorReportList"
-        }
-      },
-      "required": [
-        "sensorReport"
-      ],
-      "propertyNames": {
-        "anyOf": [
-          {
-            "$ref": "#/definitions/vocab-uri"
-          },
-          {
-            "type": "string",
-            "enum": [
-              "sensorMetadata",
-              "sensorReport"
-            ]
-          }
-        ]
-      }
+    "string": {
+      "type": "string"
     },
-    "sensorReportList": {
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/sensorReport"
-      },
-      "minItems": 1
+    "boolean": {
+      "type": "boolean"
+    },
+    "hexBinary": {
+      "type": "string",
+      "pattern": "^[A-Fa-f0-9]+$"
     },
     "sensorReport": {
       "type": "object",
@@ -905,34 +1022,26 @@
         ]
       }
     },
-    "sensorMetadata": {
+    "sensorReportList": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/sensorReport"
+      },
+      "minItems": 1
+    },
+    "sensorElement": {
       "type": "object",
       "properties": {
-        "time": {
-          "$ref": "#/definitions/time"
+        "sensorMetadata": {
+          "$ref": "#/definitions/sensorMetadata"
         },
-        "deviceID": {
-          "$ref": "#/definitions/uri"
-        },
-        "deviceMetadata": {
-          "$ref": "#/definitions/uri"
-        },
-        "rawData": {
-          "$ref": "#/definitions/uri"
-        },
-        "startTime": {
-          "$ref": "#/definitions/time"
-        },
-        "endTime": {
-          "$ref": "#/definitions/time"
-        },
-        "dataProcessingMethod": {
-          "$ref": "#/definitions/uri"
-        },
-        "bizRules": {
-          "$ref": "#/definitions/uri"
+        "sensorReport": {
+          "$ref": "#/definitions/sensorReportList"
         }
       },
+      "required": [
+        "sensorReport"
+      ],
       "propertyNames": {
         "anyOf": [
           {
@@ -941,28 +1050,12 @@
           {
             "type": "string",
             "enum": [
-              "time",
-              "deviceID",
-              "deviceMetadata",
-              "rawData",
-              "startTime",
-              "endTime",
-              "dataProcessingMethod",
-              "bizRules"
+              "sensorMetadata",
+              "sensorReport"
             ]
           }
         ]
       }
-    },
-    "boolean": {
-      "type": "boolean"
-    },
-    "hexBinary": {
-      "type": "string",
-      "pattern": "^[A-Fa-f0-9]+$"
-    },
-    "string": {
-      "type": "string"
     },
     "ilmd": {
       "type": "object",
@@ -2000,6 +2093,12 @@
         }
       }
     },
+    "eventList": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/EPCIS-Document-Event"
+      }
+    },
     "epcisDocument": {
       "type": "object",
       "properties": {
@@ -2073,76 +2172,6 @@
             "$ref": "#/definitions/vocab-uri"
           }
         ]
-      }
-    },
-    "vocabulary": {
-      "type": "object",
-      "properties": {
-        "type": {
-          "$ref": "#/definitions/uri"
-        },
-        "vocabularyElementList": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/vocabularyElement"
-          }
-        }
-      },
-      "required": [
-        "type"
-      ]
-    },
-    "vocabularyElement": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "$ref": "#/definitions/uri"
-        },
-        "attributes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/attribute"
-          }
-        },
-        "children": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/uri"
-          }
-        }
-      },
-      "required": [
-        "id"
-      ]
-    },
-    "attribute": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "$ref": "#/definitions/uri"
-        },
-        "attribute": {
-          "anyOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string"
-            },
-            {
-              "type": "object"
-            }
-          ]
-        }
-      },
-      "required": [
-        "id"
-      ]
-    },
-    "eventList": {
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/EPCIS-Document-Event"
       }
     },
     "vocabularyList": {
@@ -2228,35 +2257,6 @@
             "type": "string",
             "enum": [
               "queryResults"
-            ]
-          },
-          {
-            "$ref": "#/definitions/vocab-uri"
-          }
-        ]
-      }
-    },
-    "epcisHeader": {
-      "type": "object",
-      "properties": {
-        "epcisMasterData": {
-          "type": "object",
-          "properties": {
-            "vocabularyList": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/vocabulary"
-              }
-            }
-          }
-        }
-      },
-      "propertyNames": {
-        "anyOf": [
-          {
-            "type": "string",
-            "enum": [
-              "epcisMasterData"
             ]
           },
           {

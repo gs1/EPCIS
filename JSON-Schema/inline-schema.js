@@ -25,6 +25,8 @@ function inline(fileName, schemaId) {
   // Once we have the definitions we add them to the root schema
   inputJson.definitions = definitions;
 
+  // console.error(pendingDefinitions);
+
   return inputJson;
 }
 
@@ -66,6 +68,8 @@ function visit(parent, key, index, node, currentDefinitions) {
           currentDefinitions[definitionName],
           currentDefinitions
         );
+        definitions[definitionName] = currentDefinitions[definitionName];
+        delete pendingDefinitions[definitionName];
       }
     }
   } else if (Array.isArray(node)) {
