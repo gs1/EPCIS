@@ -678,6 +678,32 @@
       },
       "additionalProperties": false
     },
+    "@context": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "type": "object"
+        },
+        {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uri"
+              },
+              {
+                "type": "object"
+              }
+            ]
+          }
+        }
+      ]
+    },
     "eventType": {
       "anyOf": [
         {
@@ -695,6 +721,76 @@
           "format": "uri"
         }
       ]
+    },
+    "time": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "action": {
+      "type": "string",
+      "enum": [
+        "OBSERVE",
+        "ADD",
+        "DELETE"
+      ]
+    },
+    "bizStep": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/vocab-other-uri"
+        },
+        {
+          "type": "string",
+          "enum": [
+            "accepting",
+            "arriving",
+            "assembling",
+            "collecting",
+            "commissioning",
+            "consigning",
+            "creating_class_instance",
+            "cycle_counting",
+            "decommissioning",
+            "departing",
+            "destroying",
+            "disassembling",
+            "dispensing",
+            "encoding",
+            "entering_exiting",
+            "holding",
+            "inspecting",
+            "installing",
+            "killing",
+            "loading",
+            "other",
+            "packing",
+            "picking",
+            "receiving",
+            "removing",
+            "repackaging",
+            "repairing",
+            "replacing",
+            "reserving",
+            "retail_selling",
+            "shipping",
+            "staging_outbound",
+            "stock_taking",
+            "stocking",
+            "storing",
+            "transporting",
+            "unloading",
+            "unpacking",
+            "void_shipping",
+            "sensor_reporting",
+            "sampling"
+          ]
+        }
+      ]
+    },
+    "vocab-other-uri": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^(?!(urn:epcglobal:cbv|https?:\\/\\/ns\\.gs1\\.org/cbv\\/))"
     },
     "disposition": {
       "anyOf": [
@@ -741,14 +837,15 @@
         }
       ]
     },
-    "vocab-other-uri": {
-      "type": "string",
-      "format": "uri",
-      "pattern": "^(?!(urn:epcglobal:cbv|https?:\\/\\/ns\\.gs1\\.org/cbv\\/))"
+    "decimal": {
+      "type": "number"
     },
-    "time": {
+    "id": {
       "type": "string",
-      "format": "date-time"
+      "format": "uri"
+    },
+    "eventID": {
+      "$ref": "#/definitions/uri"
     },
     "error-reason": {
       "anyOf": [
@@ -763,20 +860,6 @@
           ]
         }
       ]
-    },
-    "eventID": {
-      "$ref": "#/definitions/uri"
-    },
-    "vocab-uri": {
-      "type": "string",
-      "format": "uri"
-    },
-    "decimal": {
-      "type": "number"
-    },
-    "uom": {
-      "type": "string",
-      "pattern": "^[A-Z0-9]{2,3}$"
     },
     "measurementType": {
       "anyOf": [
@@ -866,98 +949,6 @@
       "type": "string",
       "format": "uri",
       "pattern": "^(?!(https?:\\/\\/gs1\\.org\\/voc\\/|https?:\\/\\/www\\.gs1\\.org\\/voc\\/))"
-    },
-    
-    "@context": {
-      "anyOf": [
-        {
-          "type": "string",
-          "format": "uri"
-        },
-        {
-          "type": "object"
-        },
-        {
-          "type": "array",
-          "uniqueItems": true,
-          "items": {
-            "anyOf": [
-              {
-                "type": "string",
-                "format": "uri"
-              },
-              {
-                "type": "object"
-              }
-            ]
-          }
-        }
-      ]
-    },
-    "action": {
-      "type": "string",
-      "enum": [
-        "OBSERVE",
-        "ADD",
-        "DELETE"
-      ]
-    },
-    "bizStep": {
-      "anyOf": [
-        {
-          "$ref": "#/definitions/vocab-other-uri"
-        },
-        {
-          "type": "string",
-          "enum": [
-            "accepting",
-            "arriving",
-            "assembling",
-            "collecting",
-            "commissioning",
-            "consigning",
-            "creating_class_instance",
-            "cycle_counting",
-            "decommissioning",
-            "departing",
-            "destroying",
-            "disassembling",
-            "dispensing",
-            "encoding",
-            "entering_exiting",
-            "holding",
-            "inspecting",
-            "installing",
-            "killing",
-            "loading",
-            "other",
-            "packing",
-            "picking",
-            "receiving",
-            "removing",
-            "repackaging",
-            "repairing",
-            "replacing",
-            "reserving",
-            "retail_selling",
-            "shipping",
-            "staging_outbound",
-            "stock_taking",
-            "stocking",
-            "storing",
-            "transporting",
-            "unloading",
-            "unpacking",
-            "void_shipping",
-            "sensor_reporting",
-            "sampling"
-          ]
-        }
-      ]
-    },
-    "id": {
-      "type": "string",
-      "format": "uri"
     }
   },
   "allOf": [

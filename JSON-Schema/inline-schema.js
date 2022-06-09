@@ -12,10 +12,12 @@ function inline(fileName, schemaId) {
   const inputJson = loadJson(fileName);
   inputJson.$id = schemaId;
 
-  // Initial pending definitions are all from the input file
-  Object.keys(inputJson.definitions).forEach(
-    (aKey) => (pendingDefinitions[aKey] = true)
-  );
+  if (inputJson.definitions) {
+    // Initial pending definitions are all from the input file
+    Object.keys(inputJson.definitions).forEach(
+      (aKey) => (pendingDefinitions[aKey] = true)
+    );
+  }
 
   // We visit and inline the input Json
   visit(null, null, null, inputJson, inputJson.definitions);
@@ -44,19 +46,23 @@ function visit(parent, key, index, node, currentDefinitions) {
       }
     });
   } else if (typeof node === "string" && key === "$ref") {
-      // Here we inline the definition from the file indicated
-      if (!node.startsWith("#")) {
-        const localizedDefinition = localizeDefinition(node);
-        // The definition is now pending and will be added from its child Schema
-        // This way enable only adding those definitions that are really needed
-        pendingDefinitions[getDefinitionName(localizedDefinition)] = true;
-        // Child Schemas could be loaded several times but we do not care
-        loadChildSchema(node);
-        parent.$ref = localizedDefinition;
-      } else {
-          const definitionName = getDefinitionName(node);
-          definitions[definitionName] = currentDefinitions[definitionName];
-      }
+    if (node === "EPCIS-Event-JSON-Schema.json#/definitions/EPCIS-Document-Event") {
+      console.error("......");
+    }
+    // Here we inline the definition from the file indicated
+    if (!node.startsWith("#")) {
+      const localizedDefinition = localizeDefinition(node);
+      // The definition is now pending and will be added from its child Schema
+      // This way enable only adding those definitions that are really needed
+      pendingDefinitions[getDefinitionName(localizedDefinition)] = true;
+      // Child Schemas could be loaded several times but we do not care
+      loadChildSchema(node);
+      parent.$ref = localizedDefinition;
+    } else {
+        const definitionName = getDefinitionName(node);
+        visit(currentDefinitions, definitionName, null, currentDefinitions[definitionName], currentDefinitions);
+        definitions[definitionName] = currentDefinitions[definitionName];
+    }
   } else if (Array.isArray(node)) {
       node.forEach((aElement, aIndex) => {
         visit(node, key, aIndex, aElement, currentDefinitions);

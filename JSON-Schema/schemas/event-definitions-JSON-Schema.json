@@ -457,7 +457,7 @@
             "type": "object",
             "properties": {
                 "@context": {
-                    "$ref": "definitions-JSON-Schema.json#/definitions/@context"
+                    "$ref": "definitions-JSON-Schema.json#/definitions/%40context"
                 },
                 "eventTime": {
                     "$ref": "#/definitions/time"
