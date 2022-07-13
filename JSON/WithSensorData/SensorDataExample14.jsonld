@@ -1,5 +1,5 @@
 {
-  "@context": ["https://gs1.github.io/EPCIS/epcis-context.jsonld"],
+  "@context": ["https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld"],
   "type": "EPCISDocument",
   "schemaVersion": "2.0",
   "creationDate": "2019-10-07T15:00:00.000+01:00",

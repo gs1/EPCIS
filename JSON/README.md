@@ -99,6 +99,6 @@ Examples were derived from XML examples, then significantly added and commented 
 - `Example_9.6.2-ObjectEvent.jsonld`: object event involving source and destination
 - `Example_9.6.3-AggregationEvent.jsonld`: aggregation events involving childEPCs and childQuantityLists
 - `Example_9.6.4-TransformationEvent.jsonld`: transformation event with `ilmd` (Instance/Lot Master Data)
-- `PersistentDisposition-example.jsonld`: aggregation event involving the change of persistent disposition from `completeness_inferred` to `completeness_verified`
+- `PersistentDisposition-example.jsonld`: object event involving the change of persistent disposition from `completeness_inferred` to `completeness_verified`
 
 Further explanations about individual examples are found in sub-directories

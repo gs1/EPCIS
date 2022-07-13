@@ -1,6 +1,6 @@
 {
-  "@context": ["https://gs1.github.io/EPCIS/epcis-context.jsonld",{"example": "http://ns.example.com/epcis/"}],
-  
+  "@context": ["https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld",{"example": "http://ns.example.com/epcis/"}],
+
   "id": "https://id.example.org/document1",
   "type": "EPCISDocument",
   "schemaVersion": "2.0",
@@ -20,5 +20,5 @@
 
    ]
   }
-  
+
 }

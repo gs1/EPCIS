@@ -1,5 +1,5 @@
 {
-  "@context": ["https://gs1.github.io/EPCIS/epcis-context.jsonld",{"example": "http://ns.example.com/epcis/"}],
+  "@context": ["https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld",{"example": "http://ns.example.com/epcis/"}],
 
   "type": "EPCISDocument",
   "creationDate": "2020-07-03T00:05:00-06:00",
