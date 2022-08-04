@@ -6879,7 +6879,7 @@
         ]
       },
       "GS1-Extensions": {
-        "example": "example-epc-ext=http://org1.example.com/epcis/,\nexample-epc-ext2=http://vendor.example.com/epcis/\n",
+        "example": "\"example-epc-ext\":\"http://org1.example.com/epcis/\",\n\"example-epc-ext2\":\"http://vendor.example.com/epcis/\"\n",
         "type": "object"
       },
       "GS1-Vendor-Version": {
