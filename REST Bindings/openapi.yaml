@@ -4364,8 +4364,8 @@ components:
         - Never_Translates
     GS1-Extensions:
       example: |
-        example-epc-ext=http://org1.example.com/epcis/,
-        example-epc-ext2=http://vendor.example.com/epcis/
+        "example-epc-ext":"http://org1.example.com/epcis/",
+        "example-epc-ext2":"http://vendor.example.com/epcis/"
       type: object
     GS1-Vendor-Version:
       example: example-version-1.0
