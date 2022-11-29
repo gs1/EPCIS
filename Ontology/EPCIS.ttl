@@ -672,8 +672,9 @@ epcis:percValue  a        owl:DatatypeProperty , rdf:Property ;
 
 epcis:persistentDisposition a owl:ObjectProperty , rdf:Property ;
         rdfs:comment      "(Optional) One or more business conditions of the objects associated with the EPCs.  Each persistentDisposition is explicitly set and unset independently of other persistentDisposition values."@en ;
-        rdfs:domain       epcis:EPCISEvent ;
-        schema:domainIncludes epcis:EPCISEvent ;
+        rdfs:domain       [a owl:Class ;
+                           owl:unionOf (epcis:ObjectEvent epcis:TransactionEvent)] ;
+        schema:domainIncludes epcis:ObjectEvent, epcis:TransactionEvent;
         rdfs:isDefinedBy  epcis: ;
         rdfs:label        "persistentDisposition" ;
         rdfs:range        epcis:PersistentDisposition ;

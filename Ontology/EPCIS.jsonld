@@ -1224,9 +1224,20 @@
         "rdf:Property"
       ],
       "comment": "(Optional) One or more business conditions of the objects associated with the EPCs.  Each persistentDisposition is explicitly set and unset independently of other persistentDisposition values.",
-      "domain": "epcis:EPCISEvent",
-      "domainIncludes": "epcis:EPCISEvent",
-      "isDefinedBy": "https://ref.gs1.org/epcis/",
+      "domain": {
+        "@type": "owl:Class",
+        "unionOf": {
+          "@list": [
+            "epcis:ObjectEvent",
+            "epcis:TransactionEvent"
+          ]
+        }
+      },
+      "domainIncludes": [
+        "epcis:ObjectEvent",
+        "epcis:TransactionEvent"
+      ],
+       "isDefinedBy": "https://ref.gs1.org/epcis/",
       "label": "persistentDisposition",
       "range": "epcis:PersistentDisposition",
       "rangeIncludes": "epcis:PersistentDisposition",
