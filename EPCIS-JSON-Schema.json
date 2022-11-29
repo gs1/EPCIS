@@ -807,9 +807,6 @@
         "dataProcessingMethod": {
           "$ref": "#/definitions/uri"
         },
-        "bizRules": {
-          "$ref": "#/definitions/uri"
-        },
         "time": {
           "$ref": "#/definitions/time"
         },
@@ -879,7 +876,6 @@
               "deviceMetadata",
               "rawData",
               "dataProcessingMethod",
-              "bizRules",
               "time",
               "microorganism",
               "chemicalSubstance",
