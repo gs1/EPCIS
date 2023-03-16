@@ -104,7 +104,7 @@
                 "microorganism": "https://www.ncbi.nlm.nih.gov/taxonomy/1126011",
                 "chemicalSubstance": "https://identifiers.org/inchikey:CZMRCDWAGMRECN-UGDNZRGBSA-N",
                 "value": 26,
-                "component": "example:x",
+                "component": "cbv:Comp-latitude",
                 "stringValue": "SomeString",
                 "booleanValue": true,
                 "hexBinaryValue": "f0f0f0",
