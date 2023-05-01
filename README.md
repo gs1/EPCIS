@@ -12,3 +12,11 @@ Please do not attempt to submit any public review comments as GitHub issues - we
 Anyone was able to submit comments, whether you participate in the GS1 Global Standards Management Process (GSMP) or not - further details were at the link above.
 
 Public review for EPCIS/CBV 2.0 ended on 11th November 2021.  Many thanks for all the feedback.
+
+The current ratified standards are available at https://ref.gs1.org/standards/epcis and https://ref.gs1.org/standards/cbv
+
+Normative artefacts are available at https://ref.gs1.org/standards/epcis/artefacts
+
+Example data are available at https://ref.gs1.org/docs/epcis/examples
+
+Ontologies for EPCIS and CBV are available at https://ref.gs1.org/epcis and https://ref.gs1.org/cbv
