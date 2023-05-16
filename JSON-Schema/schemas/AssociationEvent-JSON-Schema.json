@@ -71,7 +71,7 @@
                 "required": ["type", "action", "parentID"],
                 "propertyNames": {
                     "anyOf": [
-                        {      
+                        {
                             "$ref": "event-definitions-JSON-Schema.json#/definitions/common-event-properties"
                         },
                         {
@@ -83,7 +83,6 @@
                                 "action",
                                 "bizStep",
                                 "disposition",
-                                "persistentDisposition",
                                 "readPoint",
                                 "bizLocation",
                                 "bizTransactionList",

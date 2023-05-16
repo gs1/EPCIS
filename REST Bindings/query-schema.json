@@ -31,6 +31,278 @@
       "type": "string",
       "format": "uri"
     },
+    "@context": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "type": "object"
+        },
+        {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uri"
+              },
+              {
+                "type": "object"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "eventType": {
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": [
+            "ObjectEvent",
+            "AggregationEvent",
+            "AssociationEvent",
+            "TransformationEvent",
+            "TransactionEvent"
+          ]
+        },
+        {
+          "type": "string",
+          "format": "uri"
+        }
+      ]
+    },
+    "time": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "action": {
+      "type": "string",
+      "enum": [
+        "OBSERVE",
+        "ADD",
+        "DELETE"
+      ]
+    },
+    "vocab-other-uri": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^(?!(urn:epcglobal:cbv|https?:\\/\\/ns\\.gs1\\.org/cbv\\/))"
+    },
+    "bizStep": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/vocab-other-uri"
+        },
+        {
+          "type": "string",
+          "enum": [
+            "accepting",
+            "arriving",
+            "assembling",
+            "collecting",
+            "commissioning",
+            "consigning",
+            "creating_class_instance",
+            "cycle_counting",
+            "decommissioning",
+            "departing",
+            "destroying",
+            "disassembling",
+            "dispensing",
+            "encoding",
+            "entering_exiting",
+            "holding",
+            "inspecting",
+            "installing",
+            "killing",
+            "loading",
+            "other",
+            "packing",
+            "picking",
+            "receiving",
+            "removing",
+            "repackaging",
+            "repairing",
+            "replacing",
+            "reserving",
+            "retail_selling",
+            "shipping",
+            "staging_outbound",
+            "stock_taking",
+            "stocking",
+            "storing",
+            "transporting",
+            "unloading",
+            "unpacking",
+            "void_shipping",
+            "sensor_reporting",
+            "sampling"
+          ]
+        }
+      ]
+    },
+    "disposition": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/vocab-other-uri"
+        },
+        {
+          "type": "string",
+          "enum": [
+            "active",
+            "container_closed",
+            "damaged",
+            "destroyed",
+            "dispensed",
+            "disposed",
+            "encoded",
+            "expired",
+            "in_progress",
+            "in_transit",
+            "inactive",
+            "no_pedigree_match",
+            "non_sellable_other",
+            "partially_dispensed",
+            "recalled",
+            "reserved",
+            "retail_sold",
+            "returned",
+            "sellable_accessible",
+            "sellable_not_accessible",
+            "stolen",
+            "unknown",
+            "available",
+            "completeness_verified",
+            "completeness_inferred",
+            "conformant",
+            "container_open",
+            "mismatch_instance",
+            "mismatch_class",
+            "mismatch_quantity",
+            "needs_replacement",
+            "non_conformant",
+            "unavailable"
+          ]
+        }
+      ]
+    },
+    "decimal": {
+      "type": "number"
+    },
+    "id": {
+      "type": "string",
+      "format": "uri"
+    },
+    "eventID": {
+      "$ref": "#/definitions/uri"
+    },
+    "error-reason": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/vocab-other-uri"
+        },
+        {
+          "type": "string",
+          "enum": [
+            "did_not_occur",
+            "incorrect_data"
+          ]
+        }
+      ]
+    },
+    "vocab-nonGS1WebVoc-uri": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^(?!(https?:\\/\\/gs1\\.org\\/voc\\/|https?:\\/\\/www\\.gs1\\.org\\/voc\\/))"
+    },
+    "measurementType": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/vocab-nonGS1WebVoc-uri"
+        },
+        {
+          "type": "string",
+          "enum": [
+            "AbsoluteHumidity",
+            "AbsorbedDose",
+            "AbsorbedDoseRate",
+            "Acceleration",
+            "Radioactivity",
+            "Altitude",
+            "AmountOfSubstance",
+            "AmountOfSubstancePerUnitVolume",
+            "Angle",
+            "AngularAcceleration",
+            "AngularMomentum",
+            "AngularVelocity",
+            "Area",
+            "Capacitance",
+            "Conductance",
+            "Conductivity",
+            "Count",
+            "Density",
+            "Dimensionless",
+            "DoseEquivalent",
+            "DoseEquivalentRate",
+            "DynamicViscosity",
+            "ElectricCharge",
+            "ElectricCurrent",
+            "ElectricCurrentDensity",
+            "ElectricFieldStrength",
+            "Energy",
+            "Exposure",
+            "Force",
+            "Frequency",
+            "Illuminance",
+            "Inductance",
+            "Irradiance",
+            "KinematicViscosity",
+            "Length",
+            "LinearMomentum",
+            "Luminance",
+            "LuminousFlux",
+            "LuminousIntensity",
+            "MagneticFlux",
+            "MagneticFluxDensity",
+            "MagneticVectorPotential",
+            "Mass",
+            "MassConcentration",
+            "MassFlowRate",
+            "MassPerAreaTime",
+            "MemoryCapacity",
+            "MolalityOfSolute",
+            "MolarEnergy",
+            "MolarMass",
+            "MolarVolume",
+            "Power",
+            "Pressure",
+            "RadiantFlux",
+            "RadiantIntensity",
+            "RelativeHumidity",
+            "Resistance",
+            "Resistivity",
+            "SolidAngle",
+            "SpecificVolume",
+            "Speed",
+            "SurfaceDensity",
+            "SurfaceTension",
+            "Temperature",
+            "Time",
+            "Torque",
+            "Voltage",
+            "Volume",
+            "VolumeFlowRate",
+            "VolumeFraction",
+            "VolumetricFlux",
+            "Wavenumber"
+          ]
+        }
+      ]
+    },
     "EPCIS-Query": {
       "type": "object",
       "properties": {
@@ -677,287 +949,6 @@
         }
       },
       "additionalProperties": false
-    },
-    "eventType": {
-      "anyOf": [
-        {
-          "type": "string",
-          "enum": [
-            "ObjectEvent",
-            "AggregationEvent",
-            "AssociationEvent",
-            "TransformationEvent",
-            "TransactionEvent"
-          ]
-        },
-        {
-          "type": "string",
-          "format": "uri"
-        }
-      ]
-    },
-    "disposition": {
-      "anyOf": [
-        {
-          "$ref": "#/definitions/vocab-other-uri"
-        },
-        {
-          "type": "string",
-          "enum": [
-            "active",
-            "container_closed",
-            "damaged",
-            "destroyed",
-            "dispensed",
-            "disposed",
-            "encoded",
-            "expired",
-            "in_progress",
-            "in_transit",
-            "inactive",
-            "no_pedigree_match",
-            "non_sellable_other",
-            "partially_dispensed",
-            "recalled",
-            "reserved",
-            "retail_sold",
-            "returned",
-            "sellable_accessible",
-            "sellable_not_accessible",
-            "stolen",
-            "unknown",
-            "available",
-            "completeness_verified",
-            "completeness_inferred",
-            "conformant",
-            "container_open",
-            "mismatch_instance",
-            "mismatch_class",
-            "mismatch_quantity",
-            "needs_replacement",
-            "non_conformant",
-            "unavailable"
-          ]
-        }
-      ]
-    },
-    "vocab-other-uri": {
-      "type": "string",
-      "format": "uri",
-      "pattern": "^(?!(urn:epcglobal:cbv|https?:\\/\\/ns\\.gs1\\.org/cbv\\/))"
-    },
-    "time": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "error-reason": {
-      "anyOf": [
-        {
-          "$ref": "#/definitions/vocab-other-uri"
-        },
-        {
-          "type": "string",
-          "enum": [
-            "did_not_occur",
-            "incorrect_data"
-          ]
-        }
-      ]
-    },
-    "eventID": {
-      "$ref": "#/definitions/uri"
-    },
-    "vocab-uri": {
-      "type": "string",
-      "format": "uri"
-    },
-    "decimal": {
-      "type": "number"
-    },
-    "uom": {
-      "type": "string",
-      "pattern": "^[A-Z0-9]{2,3}$"
-    },
-    "measurementType": {
-      "anyOf": [
-        {
-          "$ref": "#/definitions/vocab-nonGS1WebVoc-uri"
-        },
-        {
-          "type": "string",
-          "enum": [
-            "AbsoluteHumidity",
-            "AbsorbedDose",
-            "AbsorbedDoseRate",
-            "Acceleration",
-            "Radioactivity",
-            "Altitude",
-            "AmountOfSubstance",
-            "AmountOfSubstancePerUnitVolume",
-            "Angle",
-            "AngularAcceleration",
-            "AngularMomentum",
-            "AngularVelocity",
-            "Area",
-            "Capacitance",
-            "Conductance",
-            "Conductivity",
-            "Count",
-            "Density",
-            "Dimensionless",
-            "DoseEquivalent",
-            "DoseEquivalentRate",
-            "DynamicViscosity",
-            "ElectricCharge",
-            "ElectricCurrent",
-            "ElectricCurrentDensity",
-            "ElectricFieldStrength",
-            "Energy",
-            "Exposure",
-            "Force",
-            "Frequency",
-            "Illuminance",
-            "Inductance",
-            "Irradiance",
-            "KinematicViscosity",
-            "Length",
-            "LinearMomentum",
-            "Luminance",
-            "LuminousFlux",
-            "LuminousIntensity",
-            "MagneticFlux",
-            "MagneticFluxDensity",
-            "MagneticVectorPotential",
-            "Mass",
-            "MassConcentration",
-            "MassFlowRate",
-            "MassPerAreaTime",
-            "MemoryCapacity",
-            "MolalityOfSolute",
-            "MolarEnergy",
-            "MolarMass",
-            "MolarVolume",
-            "Power",
-            "Pressure",
-            "RadiantFlux",
-            "RadiantIntensity",
-            "RelativeHumidity",
-            "Resistance",
-            "Resistivity",
-            "SolidAngle",
-            "SpecificVolume",
-            "Speed",
-            "SurfaceDensity",
-            "SurfaceTension",
-            "Temperature",
-            "Time",
-            "Torque",
-            "Voltage",
-            "Volume",
-            "VolumeFlowRate",
-            "VolumeFraction",
-            "VolumetricFlux",
-            "Wavenumber"
-          ]
-        }
-      ]
-    },
-    "vocab-nonGS1WebVoc-uri": {
-      "type": "string",
-      "format": "uri",
-      "pattern": "^(?!(https?:\\/\\/gs1\\.org\\/voc\\/|https?:\\/\\/www\\.gs1\\.org\\/voc\\/))"
-    },
-    
-    "@context": {
-      "anyOf": [
-        {
-          "type": "string",
-          "format": "uri"
-        },
-        {
-          "type": "object"
-        },
-        {
-          "type": "array",
-          "uniqueItems": true,
-          "items": {
-            "anyOf": [
-              {
-                "type": "string",
-                "format": "uri"
-              },
-              {
-                "type": "object"
-              }
-            ]
-          }
-        }
-      ]
-    },
-    "action": {
-      "type": "string",
-      "enum": [
-        "OBSERVE",
-        "ADD",
-        "DELETE"
-      ]
-    },
-    "bizStep": {
-      "anyOf": [
-        {
-          "$ref": "#/definitions/vocab-other-uri"
-        },
-        {
-          "type": "string",
-          "enum": [
-            "accepting",
-            "arriving",
-            "assembling",
-            "collecting",
-            "commissioning",
-            "consigning",
-            "creating_class_instance",
-            "cycle_counting",
-            "decommissioning",
-            "departing",
-            "destroying",
-            "disassembling",
-            "dispensing",
-            "encoding",
-            "entering_exiting",
-            "holding",
-            "inspecting",
-            "installing",
-            "killing",
-            "loading",
-            "other",
-            "packing",
-            "picking",
-            "receiving",
-            "removing",
-            "repackaging",
-            "repairing",
-            "replacing",
-            "reserving",
-            "retail_selling",
-            "shipping",
-            "staging_outbound",
-            "stock_taking",
-            "stocking",
-            "storing",
-            "transporting",
-            "unloading",
-            "unpacking",
-            "void_shipping",
-            "sensor_reporting",
-            "sampling"
-          ]
-        }
-      ]
-    },
-    "id": {
-      "type": "string",
-      "format": "uri"
     }
   },
   "allOf": [
